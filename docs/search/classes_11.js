@@ -12,6 +12,6 @@ var searchData=
   ['richards',['Richards',['../classcmf_1_1upslope_1_1connections_1_1_richards.html',1,'cmf::upslope::connections']]],
   ['richards_5flateral',['Richards_lateral',['../classcmf_1_1upslope_1_1connections_1_1_richards__lateral.html',1,'cmf::upslope::connections']]],
   ['rkfintegrator',['RKFIntegrator',['../classcmf_1_1math_1_1_r_k_f_integrator.html',1,'cmf::math']]],
-  ['rootuptakestessfunction',['RootUptakeStessFunction',['../classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stess_function.html',1,'cmf::upslope::ET']]],
+  ['rootuptakestressfunction',['RootUptakeStressFunction',['../classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stress_function.html',1,'cmf::upslope::ET']]],
   ['rutterinterception',['RutterInterception',['../classcmf_1_1upslope_1_1connections_1_1_rutter_interception.html',1,'cmf::upslope::connections']]]
 ];

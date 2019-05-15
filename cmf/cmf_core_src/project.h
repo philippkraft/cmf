@@ -31,7 +31,7 @@
 #include "upslope/cell_vector.h"
 /// The main namespace of the model framework. Contains the other namespaces and the project class
 namespace cmf {
-	class bc_iterator;
+
 
 	/// @brief The study area, holding all cells, outlets and streams
 	/// \todo Describe tracers

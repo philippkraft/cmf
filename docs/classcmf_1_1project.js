@@ -5,7 +5,6 @@ var classcmf_1_1project =
     [ "get_cells", "classcmf_1_1project.html#abe710944d27310cb8e904d33e8be0533", null ],
     [ "get_node", "classcmf_1_1project.html#a1058c15183b0b1f90b8d8f945674b087", null ],
     [ "get_reach", "classcmf_1_1project.html#af73f27aff5f0af8f59e4da5dcaeae378", null ],
-    [ "get_states", "classcmf_1_1project.html#a630ff0c86cdfcab272faf1aefb76ab9a", null ],
     [ "get_storages", "classcmf_1_1project.html#a9ca28921f3700300cdc93947432113bf", null ],
     [ "NewCell", "classcmf_1_1project.html#aa4310fe69c635f5b8e22e807458fa4fa", null ],
     [ "NewNeumannBoundary", "classcmf_1_1project.html#a6820cd7d62e83a66fd46f2c7d3a29906", null ],

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['d',['d',['../classcmf_1_1water_1_1generic__gradient__connection.html#a412ac02aa43d02e6d986bf0f07a96f8e',1,'cmf::water::generic_gradient_connection']]],
+  ['d',['d',['../classcmf_1_1water_1_1_linear_gradient_flux.html#a412ac02aa43d02e6d986bf0f07a96f8e',1,'cmf::water::LinearGradientFlux']]],
   ['daily',['daily',['../classcmf_1_1atmosphere_1_1_meteo_station.html#a834ff62d085e03338565c57f23bc09a8',1,'cmf::atmosphere::MeteoStation']]],
   ['darcy',['Darcy',['../classcmf_1_1upslope_1_1connections_1_1_darcy.html',1,'cmf::upslope::connections']]],
   ['darcykinematic',['DarcyKinematic',['../classcmf_1_1upslope_1_1connections_1_1_darcy_kinematic.html',1,'DarcyKinematic'],['../classcmf_1_1upslope_1_1connections_1_1_darcy_kinematic.html#a729a77db6bc51ba8e6a99f69d3609d27',1,'cmf::upslope::connections::DarcyKinematic::DarcyKinematic()']]],
@@ -24,5 +24,6 @@ var searchData=
   ['doy',['DOY',['../structcmf_1_1math_1_1_date.html#a3c008743c61957e5cd34fe3c1769a6d0',1,'cmf::math::Date']]],
   ['dpsim_5fdw',['dPsiM_dW',['../classcmf_1_1upslope_1_1_van_genuchten_mualem.html#a61b1a7a0f6bd50fca523ea1ef889b5ee',1,'cmf::upslope::VanGenuchtenMualem']]],
   ['dt_5fmin',['dt_min',['../classcmf_1_1math_1_1_implicit_euler.html#abf762d416b930154f35ccc0d2a00150a',1,'cmf::math::ImplicitEuler']]],
-  ['dxdt',['dxdt',['../classcmf_1_1math_1_1_state_variable.html#a16b8a96d3af57038ac1190b88d4c00e8',1,'cmf::math::StateVariable::dxdt()'],['../classcmf_1_1water_1_1_solute_storage.html#a5cfe4250c9c98fc0bc752a565bdd90d7',1,'cmf::water::SoluteStorage::dxdt()'],['../classcmf_1_1water_1_1_water_storage.html#a5cfe4250c9c98fc0bc752a565bdd90d7',1,'cmf::water::WaterStorage::dxdt()'],['../classcmf_1_1jacobian_1_1_jacobian.html#ae713a21d048578550f273cf36c83e6f8',1,'cmf.jacobian.Jacobian.dxdt()']]]
+  ['dxdt',['dxdt',['../classcmf_1_1math_1_1_state_variable.html#a16b8a96d3af57038ac1190b88d4c00e8',1,'cmf::math::StateVariable::dxdt()'],['../classcmf_1_1water_1_1_solute_storage.html#a5cfe4250c9c98fc0bc752a565bdd90d7',1,'cmf::water::SoluteStorage::dxdt()'],['../classcmf_1_1water_1_1_water_storage.html#a5cfe4250c9c98fc0bc752a565bdd90d7',1,'cmf::water::WaterStorage::dxdt()'],['../classcmf_1_1jacobian_1_1_jacobian.html#ae713a21d048578550f273cf36c83e6f8',1,'cmf.jacobian.Jacobian.dxdt()']]],
+  ['dxdt_5fmethod_5fcalls',['dxdt_method_calls',['../structcmf_1_1math_1_1_c_vode_info.html#a9184891b93960e9f4f9fb3c6094dfaa1',1,'cmf::math::CVodeInfo']]]
 ];

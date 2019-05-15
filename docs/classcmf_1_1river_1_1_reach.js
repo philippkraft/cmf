@@ -1,5 +1,6 @@
 var classcmf_1_1river_1_1_reach =
 [
+    [ "list", "classcmf_1_1river_1_1_reach.html#a65038c02ffb04ca17a7479ad20b0b63c", null ],
     [ "conc", "classcmf_1_1river_1_1_reach.html#a750070a3d0ee0d1800465b6e47f92e40", null ],
     [ "conc", "classcmf_1_1river_1_1_reach.html#ababf4d22a9d3952540e2204915dbc15b", null ],
     [ "conc", "classcmf_1_1river_1_1_reach.html#a09c41a9b1f92c291ae72ffad3e3ff44d", null ],
@@ -19,10 +20,10 @@ var classcmf_1_1river_1_1_reach =
     [ "get_reachtype", "classcmf_1_1river_1_1_reach.html#a4f8492be0f3db08244db6e85074991cd", null ],
     [ "get_root", "classcmf_1_1river_1_1_reach.html#ad4701ce7af46049bb13c4170fa53a62f", null ],
     [ "get_state_variable_content", "classcmf_1_1river_1_1_reach.html#afac22fccd2df2d35c22acfcb75239427", null ],
-    [ "get_states", "classcmf_1_1river_1_1_reach.html#a630ff0c86cdfcab272faf1aefb76ab9a", null ],
     [ "get_upstream", "classcmf_1_1river_1_1_reach.html#abe8fc72bf4b588cf7614cc49651a387c", null ],
     [ "get_volume", "classcmf_1_1river_1_1_reach.html#a56a03fc6fead8765d35e9b54a5b6ad08", null ],
     [ "get_width", "classcmf_1_1river_1_1_reach.html#a279234cd63e4fa6fe6488e17c36b600c", null ],
+    [ "is_connected", "classcmf_1_1river_1_1_reach.html#adc4ae437d7a2f33ee85fe811fc8b6d0f", null ],
     [ "is_empty", "classcmf_1_1river_1_1_reach.html#ab3f02f11f233972d7c26cf26a9090613", null ],
     [ "is_storage", "classcmf_1_1river_1_1_reach.html#ace09b97c37ded843368a00c04e89b55f", null ],
     [ "MarkStateChangeHandled", "classcmf_1_1river_1_1_reach.html#ae45a5bd291cb989067417aba8e565d0c", null ],

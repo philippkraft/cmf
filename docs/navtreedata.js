@@ -27,13 +27,14 @@ var NAVTREE =
     [ "Scientific background of cmf", "cmf_introduction.html", null ],
     [ "Finite Volume Method", "finite_volume_method.html", null ],
     [ "Tutorial", "tutorial.html", "tutorial" ],
-    [ "List of cmf publications", "publication_list.html", null ],
+    [ "List of cmf publications", "publication_list.html", "publication_list" ],
     [ "Installation instructions", "cmf_install.html", "cmf_install" ],
     [ "Recommended Software Environment", "cmf_recommended_software_environment.html", null ],
     [ "Contributing to cmf", "contrib_overview.html", "contrib_overview" ],
     [ "Tutorial", "tutorial.html", [
       [ "Tutorial", "tutorial.html", null ],
-      [ "Publications", "publication_list.html", null ]
+      [ "Publications", "publication_list.html", null ],
+      [ "Original Publication", "ems2011.html", null ]
     ] ],
     [ "API Documentation", "usergroup0.html", [
       [ "Modules", "modules.html", "modules" ],
@@ -67,16 +68,16 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"classcmf_1_1atmosphere_1_1_timeseries_rain_source.html#a1ac09266985df622ef90ce40783058cb",
-"classcmf_1_1math_1_1_integrator.html#a2555e45d78dda4746f757a85d788c521",
-"classcmf_1_1river_1_1_i_volume_height_function.html",
-"classcmf_1_1upslope_1_1_e_t_1_1_canopy_storage_evaporation.html#a2cf1a197d5e389c8da4df31b4e8ae112",
-"classcmf_1_1upslope_1_1_macro_pore.html#a2b14436c9dfb7b52bad2784c81a31eab",
-"classcmf_1_1upslope_1_1connections_1_1_darcy.html#ac62da234b5e528b9783dd4dcd81f5f47",
-"classcmf_1_1upslope_1_1connections_1_1_rutter_interception.html#abc8d7bf5d699f04bb717e989dab315ab",
-"classcmf_1_1water_1_1_linear_storage_connection.html#a97e72365a8d2e46e7d1cb5c702164561",
-"classcmf_1_1water_1_1flux__node.html#a2af5152c6437f23d8e1f8d2817bad85b",
-"group__connections.html"
+"classcmf_1_1atmosphere_1_1_timeseries_rain_source.html#a2b14436c9dfb7b52bad2784c81a31eab",
+"classcmf_1_1math_1_1_heun_integrator.html#a8b8450957199e4ab5e30676dac06be64",
+"classcmf_1_1river_1_1_manning___diffusive.html#a9452e9ff83a825e3420347a45ba9b313",
+"classcmf_1_1upslope_1_1_e_t_1_1_hargreave_e_t.html#a61a28d902eac9e4a2ffacaba4ad7d70c",
+"classcmf_1_1upslope_1_1_macro_pore.html#a93d475ad0c2afaaf86abb26f0231e60e",
+"classcmf_1_1upslope_1_1connections_1_1_darcy.html#a2cf1a197d5e389c8da4df31b4e8ae112",
+"classcmf_1_1upslope_1_1connections_1_1_rutter_interception.html#a137cf279253d55feb9629e4423e34191",
+"classcmf_1_1water_1_1_freundlich_adsorbtion.html#a7e415e3d549f3005130ad55c32052ad6",
+"classcmf_1_1water_1_1flux__node.html#ace09b97c37ded843368a00c04e89b55f",
+"structcmf_1_1math_1_1_c_vode_info.html#a963ee282304097a04ab6a98431ba1faa"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

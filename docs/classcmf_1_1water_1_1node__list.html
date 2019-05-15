@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">2.0.0b2</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -104,30 +104,10 @@ $(document).ready(function(){initNavTree('classcmf_1_1water_1_1node__list.html',
 
 <p>A collection of nodes for fast access of the waterbalance.  
  <a href="classcmf_1_1water_1_1node__list.html#details">More...</a></p>
-<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for node_list:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="classcmf_1_1water_1_1node__list__inherit__graph.png" border="0" usemap="#node__list_inherit__map" alt="Inheritance graph"/></div>
-<map name="node__list_inherit__map" id="node__list_inherit__map">
-<area shape="rect" id="node2" href="classcmf_1_1math_1_1_state_variable_owner.html" title="An abstract class, that owns one or more state variables, that can add them to a vector of state vari..." alt="" coords="5,5,143,32"/>
-</map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for node_list:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="classcmf_1_1water_1_1node__list__coll__graph.png" border="0" usemap="#node__list_coll__map" alt="Collaboration graph"/></div>
-<map name="node__list_coll__map" id="node__list_coll__map">
-<area shape="rect" id="node2" href="classcmf_1_1math_1_1_state_variable_owner.html" title="An abstract class, that owns one or more state variables, that can add them to a vector of state vari..." alt="" coords="5,5,143,32"/>
-</map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A collection of nodes for fast access of the waterbalance. </p>
 <p>In setups with many storages and rather fast computations, the speed of data access for output generation can take a high portion of the total run time. To accelerate data access, one can use the <a class="el" href="classcmf_1_1water_1_1node__list.html" title="A collection of nodes for fast access of the waterbalance. ">node_list</a> object</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Add a get_volume / set_volume function pair, to complement get_potential / set_potential </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Add a get_volume / set_volume function pair, to complement get_potential / set_potential </dd></dl>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -170,10 +150,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <a class="el" href="classcmf_1_1math_1_1num__array.html">cmf::math::num_array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1node__list.html#af3c055062ae0df28a164a05db6c1327e">get_potentials</a> ()</td></tr>
 <tr class="memdesc:af3c055062ae0df28a164a05db6c1327e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the potential of the nodes. <br /></td></tr>
 <tr class="separator:af3c055062ae0df28a164a05db6c1327e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a630ff0c86cdfcab272faf1aefb76ab9a"><td class="memItemLeft" align="right" valign="top"><a id="a630ff0c86cdfcab272faf1aefb76ab9a"></a>
-cmf::math::StateVariableList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1node__list.html#a630ff0c86cdfcab272faf1aefb76ab9a">get_states</a> ()</td></tr>
-<tr class="memdesc:a630ff0c86cdfcab272faf1aefb76ab9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements StateVariableOwner. <br /></td></tr>
-<tr class="separator:a630ff0c86cdfcab272faf1aefb76ab9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22ec1f20bca3a173a3cbf0b48fbe8637"><td class="memItemLeft" align="right" valign="top"><a id="a22ec1f20bca3a173a3cbf0b48fbe8637"></a>
 <a class="el" href="classcmf_1_1water_1_1node__list.html">node_list</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1node__list.html#a22ec1f20bca3a173a3cbf0b48fbe8637">getslice</a> (ptrdiff_t begin, ptrdiff_t end, ptrdiff_t step=1) const</td></tr>
 <tr class="memdesc:a22ec1f20bca3a173a3cbf0b48fbe8637"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a slice of the <a class="el" href="classcmf_1_1water_1_1node__list.html" title="A collection of nodes for fast access of the waterbalance. ">node_list</a>. <br /></td></tr>
@@ -181,6 +157,10 @@ cmf::math::StateVariableList&#160;</td><td class="memItemRight" valign="bottom">
 <tr class="memitem:ae41c46a0213d9546f4fb7b4141d75a65"><td class="memItemLeft" align="right" valign="top">real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1node__list.html#ae41c46a0213d9546f4fb7b4141d75a65">global_water_balance</a> (<a class="el" href="classcmf_1_1math_1_1_time.html">cmf::math::Time</a> t) const</td></tr>
 <tr class="memdesc:ae41c46a0213d9546f4fb7b4141d75a65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the sum of the water balances of the nodes.  <a href="#ae41c46a0213d9546f4fb7b4141d75a65">More...</a><br /></td></tr>
 <tr class="separator:ae41c46a0213d9546f4fb7b4141d75a65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad02ec6fbfdc75fc619a054342655b68"><td class="memItemLeft" align="right" valign="top"><a id="aad02ec6fbfdc75fc619a054342655b68"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1node__list.html#aad02ec6fbfdc75fc619a054342655b68">operator cmf::math::state_list</a> ()</td></tr>
+<tr class="memdesc:aad02ec6fbfdc75fc619a054342655b68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements StateVariableOwner. <br /></td></tr>
+<tr class="separator:aad02ec6fbfdc75fc619a054342655b68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4af265093b696b4ec185466517d05aeb"><td class="memItemLeft" align="right" valign="top"><a id="a4af265093b696b4ec185466517d05aeb"></a>
 <a class="el" href="classcmf_1_1water_1_1node__list.html">cmf::water::node_list</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1node__list.html#a4af265093b696b4ec185466517d05aeb">operator+</a> (const <a class="el" href="classcmf_1_1water_1_1node__list.html">cmf::water::node_list</a> &amp;right) const</td></tr>
 <tr class="memdesc:a4af265093b696b4ec185466517d05aeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the union of two node_lists. <br /></td></tr>
@@ -323,7 +303,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:34</td>
+<td>Generated: Fri Apr 26 2019 12:43:51</td>
 </tr></table>
 </small></address>
 </body>

@@ -2,7 +2,14 @@ var namespacecmf_1_1math =
 [
     [ "BDF2", "classcmf_1_1math_1_1_b_d_f2.html", "classcmf_1_1math_1_1_b_d_f2" ],
     [ "cubicspline", "classcmf_1_1math_1_1cubicspline.html", null ],
-    [ "CVodeIntegrator", "classcmf_1_1math_1_1_c_vode_integrator.html", "classcmf_1_1math_1_1_c_vode_integrator" ],
+    [ "CVodeAdams", "classcmf_1_1math_1_1_c_vode_adams.html", "classcmf_1_1math_1_1_c_vode_adams" ],
+    [ "CVodeBanded", "classcmf_1_1math_1_1_c_vode_banded.html", "classcmf_1_1math_1_1_c_vode_banded" ],
+    [ "CVodeBase", "classcmf_1_1math_1_1_c_vode_base.html", "classcmf_1_1math_1_1_c_vode_base" ],
+    [ "CVodeDense", "classcmf_1_1math_1_1_c_vode_dense.html", "classcmf_1_1math_1_1_c_vode_dense" ],
+    [ "CVodeDiag", "classcmf_1_1math_1_1_c_vode_diag.html", "classcmf_1_1math_1_1_c_vode_diag" ],
+    [ "CVodeInfo", "structcmf_1_1math_1_1_c_vode_info.html", "structcmf_1_1math_1_1_c_vode_info" ],
+    [ "CVodeKrylov", "classcmf_1_1math_1_1_c_vode_krylov.html", "classcmf_1_1math_1_1_c_vode_krylov" ],
+    [ "CVodeOptions", "structcmf_1_1math_1_1_c_vode_options.html", "structcmf_1_1math_1_1_c_vode_options" ],
     [ "Date", "structcmf_1_1math_1_1_date.html", "structcmf_1_1math_1_1_date" ],
     [ "ExplicitEuler_fixed", "classcmf_1_1math_1_1_explicit_euler__fixed.html", "classcmf_1_1math_1_1_explicit_euler__fixed" ],
     [ "HeunIntegrator", "classcmf_1_1math_1_1_heun_integrator.html", "classcmf_1_1math_1_1_heun_integrator" ],
@@ -15,7 +22,6 @@ var namespacecmf_1_1math =
     [ "RKFIntegrator", "classcmf_1_1math_1_1_r_k_f_integrator.html", "classcmf_1_1math_1_1_r_k_f_integrator" ],
     [ "SoluteWaterIntegrator", "classcmf_1_1math_1_1_solute_water_integrator.html", "classcmf_1_1math_1_1_solute_water_integrator" ],
     [ "StateVariable", "classcmf_1_1math_1_1_state_variable.html", "classcmf_1_1math_1_1_state_variable" ],
-    [ "StateVariableOwner", "classcmf_1_1math_1_1_state_variable_owner.html", "classcmf_1_1math_1_1_state_variable_owner" ],
     [ "Time", "classcmf_1_1math_1_1_time.html", "classcmf_1_1math_1_1_time" ],
     [ "timeseries", "classcmf_1_1math_1_1timeseries.html", "classcmf_1_1math_1_1timeseries" ]
 ];

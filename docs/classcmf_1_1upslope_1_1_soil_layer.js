@@ -1,5 +1,6 @@
 var classcmf_1_1upslope_1_1_soil_layer =
 [
+    [ "list", "classcmf_1_1upslope_1_1_soil_layer.html#a65038c02ffb04ca17a7479ad20b0b63c", null ],
     [ "conc", "classcmf_1_1upslope_1_1_soil_layer.html#ababf4d22a9d3952540e2204915dbc15b", null ],
     [ "conc", "classcmf_1_1upslope_1_1_soil_layer.html#ad7aa4277a82890dc86f7bca2b828d75f", null ],
     [ "conc", "classcmf_1_1upslope_1_1_soil_layer.html#a09c41a9b1f92c291ae72ffad3e3ff44d", null ],
@@ -22,12 +23,13 @@ var classcmf_1_1upslope_1_1_soil_layer =
     [ "get_saturated_depth", "classcmf_1_1upslope_1_1_soil_layer.html#a3d9635377f03311df4c6c1f931248871", null ],
     [ "get_soil", "classcmf_1_1upslope_1_1_soil_layer.html#ac8c8c28076a99ffdce0c3a2a6c103f4d", null ],
     [ "get_state_variable_content", "classcmf_1_1upslope_1_1_soil_layer.html#afac22fccd2df2d35c22acfcb75239427", null ],
-    [ "get_states", "classcmf_1_1upslope_1_1_soil_layer.html#a630ff0c86cdfcab272faf1aefb76ab9a", null ],
+    [ "get_Tact", "classcmf_1_1upslope_1_1_soil_layer.html#aa7ad76afe33bd5393581a12b7ea8b747", null ],
     [ "get_theta", "classcmf_1_1upslope_1_1_soil_layer.html#a696ccf458e7402c896812ee224e6a796", null ],
     [ "get_upper_boundary", "classcmf_1_1upslope_1_1_soil_layer.html#a89a55cd275e5a020d1fa1022e72fcf51", null ],
     [ "get_volume", "classcmf_1_1upslope_1_1_soil_layer.html#a56a03fc6fead8765d35e9b54a5b6ad08", null ],
     [ "get_wetness", "classcmf_1_1upslope_1_1_soil_layer.html#aa692373ebfb4f1f94de2abc95659835a", null ],
     [ "head_to_volume", "classcmf_1_1upslope_1_1_soil_layer.html#abbf5c2baa054564e906bd5bd45d8bc89", null ],
+    [ "is_connected", "classcmf_1_1upslope_1_1_soil_layer.html#adc4ae437d7a2f33ee85fe811fc8b6d0f", null ],
     [ "is_empty", "classcmf_1_1upslope_1_1_soil_layer.html#ab3f02f11f233972d7c26cf26a9090613", null ],
     [ "is_storage", "classcmf_1_1upslope_1_1_soil_layer.html#ace09b97c37ded843368a00c04e89b55f", null ],
     [ "MarkStateChangeHandled", "classcmf_1_1upslope_1_1_soil_layer.html#ae45a5bd291cb989067417aba8e565d0c", null ],
@@ -36,6 +38,7 @@ var classcmf_1_1upslope_1_1_soil_layer =
     [ "remove_connection", "classcmf_1_1upslope_1_1_soil_layer.html#ab933615f7c65dfd492770c3e1475a881", null ],
     [ "set_ice_fraction", "classcmf_1_1upslope_1_1_soil_layer.html#a424d8212119618ce87293c502b052934", null ],
     [ "set_potential", "classcmf_1_1upslope_1_1_soil_layer.html#a6dacff6b3dfe19051e9495a8b8782b5d", null ],
+    [ "set_root_uptake_stress_function", "classcmf_1_1upslope_1_1_soil_layer.html#a953f04742e7a75736a47ec64ac39cb05", null ],
     [ "set_rootfraction", "classcmf_1_1upslope_1_1_soil_layer.html#a652e6997fe0ab85c45edea45cbb1684c", null ],
     [ "set_state_variable_content", "classcmf_1_1upslope_1_1_soil_layer.html#af4e317b28d48091741e40af5e9da79a1", null ],
     [ "set_volume", "classcmf_1_1upslope_1_1_soil_layer.html#a31b0a05543af754adf863c0bd7934a3e", null ],
@@ -45,6 +48,7 @@ var classcmf_1_1upslope_1_1_soil_layer =
     [ "volume_to_head", "classcmf_1_1upslope_1_1_soil_layer.html#a7da35b7d8b4c7b15949cdfdcebcc21ce", null ],
     [ "waterbalance", "classcmf_1_1upslope_1_1_soil_layer.html#a2b14436c9dfb7b52bad2784c81a31eab", null ],
     [ "m_retentioncurve", "classcmf_1_1upslope_1_1_soil_layer.html#a95712d52a9c5dcc9517aadae70f16f0c", null ],
+    [ "m_uptakefunction", "classcmf_1_1upslope_1_1_soil_layer.html#a5842f24490f7418573b14084886c2eb0", null ],
     [ "Name", "classcmf_1_1upslope_1_1_soil_layer.html#adc852f586959ce13117d737cf3f14899", null ],
     [ "node_id", "classcmf_1_1upslope_1_1_soil_layer.html#ac4c7b16573e373dd2677dc667fba9acc", null ],
     [ "position", "classcmf_1_1upslope_1_1_soil_layer.html#a8ed0f24ab14c3bcc91bd51796fb61b6a", null ]

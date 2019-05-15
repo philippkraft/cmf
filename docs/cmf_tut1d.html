@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">2.0.0b2</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -108,8 +108,8 @@ $(document).ready(function(){initNavTree('cmf_tut1d.html','');});
 <div class="fragment"><div class="line"><span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(10):</div><div class="line">    depth = (i+1) * 0.1</div><div class="line">    cell.add_layer(depth,r_curve)</div></div><!-- fragment --><p>Connect layers with Richards perc.</p>
 <div class="fragment"><div class="line"><span class="keywordflow">for</span> upper,lower <span class="keywordflow">in</span> zip(cell.layers[:-1],cell.layers[1:]):</div><div class="line">    cmf.Richards(upper,lower)</div></div><!-- fragment --><p>this can be shorten as</p>
 <div class="fragment"><div class="line">cell.install_connection(cmf.Richards)</div></div><!-- fragment --><p>Using this command, all layers of the cell get connected with Richards equation.</p>
-<p>Now we need to create an integrator for the resulting system. Since the Richards equation procduces a very stiff (difficult to solve) system, one needs to use an implicit solver with an adaptive time stepping scheme. The <a class="el" href="classcmf_1_1math_1_1_c_vode_integrator.html">CVodeIntegrator</a>, a wrapper for the <a href="https://computation.llnl.gov/casc/sundials/main.html">CVODE-solver</a> by Hindmarsh et al. (2005) is such a solver and recommended for all cmf models using Richards equation.</p>
-<div class="fragment"><div class="line">solver = cmf.CVodeIntegrator(project,1e-6)</div><div class="line">solver.t = cmf.Time(1,1,2011)</div></div><!-- fragment --><p>Now we set the initial conditions</p>
+<p>Now we need to create an integrator for the resulting system. Since the Richards equation procduces a very stiff (difficult to solve) system, one needs to use an implicit solver with an adaptive time stepping scheme. The <a class="el" href="classcmf_1_1math_1_1_c_vode_krylov.html">CVodeKrylov</a>, a wrapper for the <a href="https://computation.llnl.gov/casc/sundials/main.html">CVODE-solver</a> by Hindmarsh et al. (2005) is such a solver and recommended for all cmf models using Richards equation.</p>
+<div class="fragment"><div class="line">solver = cmf.CVodeKrylov(project,1e-6)</div><div class="line">solver.t = cmf.Time(1,1,2011)</div></div><!-- fragment --><p>Now we set the initial conditions</p>
 <div class="fragment"><div class="line"><span class="comment"># Set all layers to a potential of -2 m</span></div><div class="line">cell.saturated_depth = 2.</div><div class="line"><span class="comment"># 100 mm water in the surface water storage for percolation</span></div><div class="line">cell.surfacewater.depth = 0.1</div></div><!-- fragment --><p>This is the setup code for our simple 1D Richards-Model. To run the model we create the run time loop using the solver.run iterator and we save soil moisture and potential for each layer into lists.</p>
 <div class="image">
 <img src="CmfTut1d-result-no-boundary.png" alt="CmfTut1d-result-no-boundary.png"/>
@@ -135,7 +135,7 @@ $(document).ready(function(){initNavTree('cmf_tut1d.html','');});
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:26</td>
+<td>Generated: Fri Apr 26 2019 12:43:38</td>
 </tr></table>
 </small></address>
 </body>

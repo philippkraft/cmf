@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">2.0.0b2</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -96,6 +96,7 @@ $(document).ready(function(){initNavTree('classcmf_1_1water_1_1_solute_storage.h
 <div class="header">
   <div class="summary">
 <a href="classcmf_1_1water_1_1_solute_storage-members.html">List of all members</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a>  </div>
@@ -134,6 +135,13 @@ $(document).ready(function(){initNavTree('classcmf_1_1water_1_1_solute_storage.h
 \begin{eqnarray*} \frac{dX}{dt}&amp;=&amp;\sum_{f=1}^{F}\left( q_f [X]_f\right) + X_{in} - r^-X \left[\frac{mol}{day}\right]\\ F&amp;=&amp; \mbox{Number of fluxes in water storage} \\ q_f&amp;=&amp; \mbox{Water flux in } \frac{m^3}{day} \\ \left[X\right]_f &amp;=&amp; \mbox{Concentration of solute X in flux }q_f \mbox{ in } \frac{mol}{m^3} \\ X_{in} &amp;=&amp; \mbox{Absolute source or sink term} \frac{mol}{day} \\ r^- &amp;=&amp; \mbox{Decay rate} \frac 1{day} \\ V &amp;=&amp; \mbox{Volume of water in water storage }\left[m^3\right] \end{eqnarray*}
 </p>
  </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a65038c02ffb04ca17a7479ad20b0b63c"><td class="memItemLeft" align="right" valign="top"><a id="a65038c02ffb04ca17a7479ad20b0b63c"></a>
+typedef std::vector&lt; <a class="el" href="classcmf_1_1math_1_1_state_variable.html#a09457664ddfda50e59692fb90f0fbf30">StateVariable</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_state_variable.html#a65038c02ffb04ca17a7479ad20b0b63c">list</a></td></tr>
+<tr class="memdesc:a65038c02ffb04ca17a7479ad20b0b63c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Not part of the API, used to create sparse structure. <br /></td></tr>
+<tr class="separator:a65038c02ffb04ca17a7479ad20b0b63c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5cfe4250c9c98fc0bc752a565bdd90d7"><td class="memItemLeft" align="right" valign="top"><a id="a5cfe4250c9c98fc0bc752a565bdd90d7"></a>
@@ -148,6 +156,14 @@ real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_state_variable.html#a5b794a3d74e0b878ff0a4200015e7cc2">get_state</a> () const</td></tr>
 <tr class="memdesc:a5b794a3d74e0b878ff0a4200015e7cc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current state of the variable. <br /></td></tr>
 <tr class="separator:a5b794a3d74e0b878ff0a4200015e7cc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c2e209032b3378850ee8d387c6b4b92"><td class="memItemLeft" align="right" valign="top"><a id="a9c2e209032b3378850ee8d387c6b4b92"></a>
+const <a class="el" href="classcmf_1_1water_1_1_water_storage.html">WaterStorage</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_solute_storage.html#a9c2e209032b3378850ee8d387c6b4b92">get_water</a> () const</td></tr>
+<tr class="memdesc:a9c2e209032b3378850ee8d387c6b4b92"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the waterstorge of the solute storage <br /></td></tr>
+<tr class="separator:a9c2e209032b3378850ee8d387c6b4b92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc4ae437d7a2f33ee85fe811fc8b6d0f"><td class="memItemLeft" align="right" valign="top"><a id="adc4ae437d7a2f33ee85fe811fc8b6d0f"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_solute_storage.html#adc4ae437d7a2f33ee85fe811fc8b6d0f">is_connected</a> (const <a class="el" href="classcmf_1_1math_1_1_state_variable.html">cmf::math::StateVariable</a> &amp;other) const</td></tr>
+<tr class="memdesc:adc4ae437d7a2f33ee85fe811fc8b6d0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns True if this solute storage is effected by another state. <br /></td></tr>
+<tr class="separator:adc4ae437d7a2f33ee85fe811fc8b6d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a812d6746d18e89eb269470365a89daaf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_solute_storage.html#a812d6746d18e89eb269470365a89daaf">set_conc</a> (real NewConcentration)</td></tr>
 <tr class="memdesc:a812d6746d18e89eb269470365a89daaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">set a new concentration of dissolved tracers.  <a href="#a812d6746d18e89eb269470365a89daaf">More...</a><br /></td></tr>
 <tr class="separator:a812d6746d18e89eb269470365a89daaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -212,7 +228,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:34</td>
+<td>Generated: Fri Apr 26 2019 12:43:52</td>
 </tr></table>
 </small></address>
 </body>

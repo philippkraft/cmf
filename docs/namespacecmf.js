@@ -11,9 +11,6 @@ var namespacecmf =
       ] ]
     ] ],
     [ "geometry", "namespacecmf_1_1geometry.html", "namespacecmf_1_1geometry" ],
-    [ "geos_shapereader", null, [
-      [ "Shapefile", "classcmf_1_1geos__shapereader_1_1_shapefile.html", "classcmf_1_1geos__shapereader_1_1_shapefile" ]
-    ] ],
     [ "jacobian", null, [
       [ "Jacobian", "classcmf_1_1jacobian_1_1_jacobian.html", "classcmf_1_1jacobian_1_1_jacobian" ]
     ] ],
@@ -24,8 +21,9 @@ var namespacecmf =
     ] ],
     [ "math", "namespacecmf_1_1math.html", "namespacecmf_1_1math" ],
     [ "river", "namespacecmf_1_1river.html", "namespacecmf_1_1river" ],
-    [ "stopwatch", null, [
-      [ "StopWatch", "classcmf_1_1stopwatch_1_1_stop_watch.html", null ]
+    [ "timetools", null, [
+      [ "StopWatch", "classcmf_1_1timetools_1_1_stop_watch.html", "classcmf_1_1timetools_1_1_stop_watch" ],
+      [ "timerange", "classcmf_1_1timetools_1_1timerange.html", null ]
     ] ],
     [ "upslope", "namespacecmf_1_1upslope.html", "namespacecmf_1_1upslope" ],
     [ "water", "namespacecmf_1_1water.html", "namespacecmf_1_1water" ],

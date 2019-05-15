@@ -1,5 +1,6 @@
 var classcmf_1_1river_1_1_open_water_storage =
 [
+    [ "list", "classcmf_1_1river_1_1_open_water_storage.html#a65038c02ffb04ca17a7479ad20b0b63c", null ],
     [ "OpenWaterStorage", "classcmf_1_1river_1_1_open_water_storage.html#a327232fa607c77be54ac2d0c3737bb21", null ],
     [ "OpenWaterStorage", "classcmf_1_1river_1_1_open_water_storage.html#a0eb38ddd43bfbef28556b2906793675b", null ],
     [ "conc", "classcmf_1_1river_1_1_open_water_storage.html#a750070a3d0ee0d1800465b6e47f92e40", null ],
@@ -14,8 +15,8 @@ var classcmf_1_1river_1_1_open_water_storage =
     [ "get_potential", "classcmf_1_1river_1_1_open_water_storage.html#a923af9ca71ce3a008d07d88216f1a351", null ],
     [ "get_project", "classcmf_1_1river_1_1_open_water_storage.html#ae4c3731109c42d8e7f70eb646fb573ec", null ],
     [ "get_state_variable_content", "classcmf_1_1river_1_1_open_water_storage.html#afac22fccd2df2d35c22acfcb75239427", null ],
-    [ "get_states", "classcmf_1_1river_1_1_open_water_storage.html#a630ff0c86cdfcab272faf1aefb76ab9a", null ],
     [ "get_volume", "classcmf_1_1river_1_1_open_water_storage.html#a56a03fc6fead8765d35e9b54a5b6ad08", null ],
+    [ "is_connected", "classcmf_1_1river_1_1_open_water_storage.html#adc4ae437d7a2f33ee85fe811fc8b6d0f", null ],
     [ "is_empty", "classcmf_1_1river_1_1_open_water_storage.html#ab3f02f11f233972d7c26cf26a9090613", null ],
     [ "is_storage", "classcmf_1_1river_1_1_open_water_storage.html#ace09b97c37ded843368a00c04e89b55f", null ],
     [ "MarkStateChangeHandled", "classcmf_1_1river_1_1_open_water_storage.html#ae45a5bd291cb989067417aba8e565d0c", null ],

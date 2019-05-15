@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">2.0.0b2</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -141,26 +141,23 @@ Modules</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1bidirectional__kinematic__exchange.html">bidirectional_kinematic_exchange</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A conceptual flux between two storages that can be positive as well as negative.  <a href="classcmf_1_1water_1_1bidirectional__kinematic__exchange.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_constant_flux.html">ConstantFlux</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produces a constant but changeable flux from a source to a target, if enough water is present in the source.  <a href="classcmf_1_1water_1_1_constant_flux.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1constraint__kinematic__wave.html">constraint_kinematic_wave</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates flux out of a storage as a linear function of its volume to a power, constraint by the volume stored in the target storage.  <a href="classcmf_1_1water_1_1constraint__kinematic__wave.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_constant_state_flux.html">ConstantStateFlux</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates a flux to or from a water storage to hold it's state at a more or less constant level.  <a href="classcmf_1_1water_1_1_constant_state_flux.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_constraint_linear_storage_connection.html">ConstraintLinearStorageConnection</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates flux out of a storage as a linear function of its volume, constraint by the volume stored in the target storage.  <a href="classcmf_1_1water_1_1_constraint_linear_storage_connection.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_constraint_linear_storage_flux.html">ConstraintLinearStorageFlux</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates flux out of a storage as a linear function of its volume, constraint by the volume stored in the target storage.  <a href="classcmf_1_1water_1_1_constraint_linear_storage_flux.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_exponential_decline_connection.html">ExponentialDeclineConnection</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A conceptual TOPmodel inspired connection.  <a href="classcmf_1_1water_1_1_exponential_decline_connection.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1external__control__connection.html">external_control_connection</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flux from one node to another, controlled by the user or an external program, by changing the flux constant.  <a href="classcmf_1_1water_1_1external__control__connection.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_externally_controlled_flux.html">ExternallyControlledFlux</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flux from one node to another, controlled by the user or an external program, by changing the flux constant.  <a href="classcmf_1_1water_1_1_externally_controlled_flux.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1flux__connection.html">flux_connection</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The connections in cmf hold the processes for the calculation of fluxes between water storages and model boundaries.  <a href="classcmf_1_1water_1_1flux__connection.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1kinematic__wave.html">kinematic_wave</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates flux out of a storage as a linear function of its volume to a power.  <a href="classcmf_1_1water_1_1kinematic__wave.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_linear_storage_connection.html">LinearStorageConnection</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates flux out of a storage as a linear function of its volume.  <a href="classcmf_1_1water_1_1_linear_storage_connection.html#details">More...</a><br /></td></tr>
@@ -174,14 +171,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1connections_1_1_snowfall.html">Snowfall</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A connection routing snowfall (precipitation below freezing Temp) to the snow pack.  <a href="classcmf_1_1upslope_1_1connections_1_1_snowfall.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1statecontrol__connection.html">statecontrol_connection</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates a flux to or from a water storage to hold it's state at a more or less constant level.  <a href="classcmf_1_1water_1_1statecontrol__connection.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_technical_flux.html">TechnicalFlux</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produces a constant but changeable flux from a source to a target, if enough water is present in the source.  <a href="classcmf_1_1water_1_1_technical_flux.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1waterbalance__connection.html">waterbalance_connection</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes the sum of all other fluxes to a target.  <a href="classcmf_1_1water_1_1waterbalance__connection.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_waterbalance_flux.html">WaterbalanceFlux</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes the sum of all other fluxes to a target.  <a href="classcmf_1_1water_1_1_waterbalance_flux.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -190,7 +181,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga3ca6395c6f915175843479e8b5b5b464"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a constant flux between two nodes can be set.  <a href="group__connections.html#ga3ca6395c6f915175843479e8b5b5b464">More...</a><br /></td></tr>
 <tr class="separator:ga3ca6395c6f915175843479e8b5b5b464"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gada32a857d55074e1ac36cb98967de0cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__connections.html#gada32a857d55074e1ac36cb98967de0cb">set_flux</a> (<a class="el" href="classcmf_1_1water_1_1flux__node.html#a8639fccad8de481d6f5d4d2faeab3709">flux_node::ptr</a> source, <a class="el" href="classcmf_1_1water_1_1flux__node.html#a8639fccad8de481d6f5d4d2faeab3709">flux_node::ptr</a> target, real flux_value)</td></tr>
-<tr class="memdesc:gada32a857d55074e1ac36cb98967de0cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a constant flux between two nodes, if an <a class="el" href="classcmf_1_1water_1_1external__control__connection.html" title="Flux from one node to another, controlled by the user or an external program, by changing the flux co...">external_control_connection</a> exists.  <a href="group__connections.html#gada32a857d55074e1ac36cb98967de0cb">More...</a><br /></td></tr>
+<tr class="memdesc:gada32a857d55074e1ac36cb98967de0cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a constant flux between two nodes, if an external_control_connection exists.  <a href="group__connections.html#gada32a857d55074e1ac36cb98967de0cb">More...</a><br /></td></tr>
 <tr class="separator:gada32a857d55074e1ac36cb98967de0cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4c3e16bbaac01f92b06b47a0bcdf1e30"><td class="memItemLeft" align="right" valign="top">real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__connections.html#ga4c3e16bbaac01f92b06b47a0bcdf1e30">snowfraction</a> (real T)</td></tr>
 <tr class="memdesc:ga4c3e16bbaac01f92b06b47a0bcdf1e30"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to calculate the snow fraction of the precipitation according to the air temperature.  <a href="group__connections.html#ga4c3e16bbaac01f92b06b47a0bcdf1e30">More...</a><br /></td></tr>
@@ -224,7 +215,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Checks if a constant flux between two nodes can be set. </p>
-<p>Returns true if the nodes are connected by an <a class="el" href="classcmf_1_1water_1_1external__control__connection.html" title="Flux from one node to another, controlled by the user or an external program, by changing the flux co...">external_control_connection</a> </p>
+<p>Returns true if the nodes are connected by an external_control_connection </p>
 
 </div>
 </div>
@@ -260,7 +251,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets a constant flux between two nodes, if an <a class="el" href="classcmf_1_1water_1_1external__control__connection.html" title="Flux from one node to another, controlled by the user or an external program, by changing the flux co...">external_control_connection</a> exists. </p>
+<p>Sets a constant flux between two nodes, if an external_control_connection exists. </p>
 
 </div>
 </div>
@@ -293,7 +284,7 @@ Functions</h2></td></tr>
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:27</td>
+<td>Generated: Fri Apr 26 2019 12:43:39</td>
 </tr></table>
 </small></address>
 </body>

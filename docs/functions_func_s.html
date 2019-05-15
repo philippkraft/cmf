@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">2.0.0b2</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -117,6 +117,9 @@ $(document).ready(function(){initNavTree('functions_func_s.html','');});
 <li>set_downstream()
 : <a class="el" href="classcmf_1_1river_1_1_reach.html#ac8601c12fe7debb12bc2013bd222a531">Reach</a>
 </li>
+<li>set_error_msg()
+: <a class="el" href="classcmf_1_1math_1_1_c_vode_base.html#acb9eebaa656608e0dea051921142db64">CVodeBase</a>
+</li>
 <li>set_flux()
 : <a class="el" href="classcmf_1_1water_1_1_neumann_boundary.html#abb3e6360850632653a601e2a0b8631c5">NeumannBoundary</a>
 </li>
@@ -161,6 +164,9 @@ $(document).ready(function(){initNavTree('functions_func_s.html','');});
 <li>set_rainfall()
 : <a class="el" href="classcmf_1_1upslope_1_1_cell.html#a53f05bc29b8f0da4e2fa577bbe6afe2e">Cell</a>
 </li>
+<li>set_root_uptake_stress_function()
+: <a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html#a953f04742e7a75736a47ec64ac39cb05">SoilLayer</a>
+</li>
 <li>set_rootfraction()
 : <a class="el" href="classcmf_1_1upslope_1_1layer__list.html#a60366e0aa2f94ce88904c744a0a0bc2e">layer_list</a>
 , <a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html#a652e6997fe0ab85c45edea45cbb1684c">SoilLayer</a>
@@ -178,17 +184,10 @@ $(document).ready(function(){initNavTree('functions_func_s.html','');});
 : <a class="el" href="classcmf_1_1water_1_1node__list.html#a41102e95e818beaf63ff6111811f5b0e">node_list</a>
 </li>
 <li>set_state()
-: <a class="el" href="classcmf_1_1math_1_1_integrator.html#a976988a79f9412a6aebd72de9f9c1d21">Integrator</a>
-, <a class="el" href="classcmf_1_1math_1_1_state_variable.html#a0d5dd145810bcfdea803d83d12302c96">StateVariable</a>
+: <a class="el" href="classcmf_1_1math_1_1_state_variable.html#a0d5dd145810bcfdea803d83d12302c96">StateVariable</a>
 </li>
 <li>set_state_variable_content()
 : <a class="el" href="classcmf_1_1water_1_1_water_storage.html#af4e317b28d48091741e40af5e9da79a1">WaterStorage</a>
-</li>
-<li>set_states()
-: <a class="el" href="classcmf_1_1math_1_1_integrator.html#a1027f294d9f88e969db2fa1fd4e72fcc">Integrator</a>
-</li>
-<li>set_stressfunction()
-: <a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1stressed_e_t.html#a6caef9415c11054ab25f0c79e6093a94">stressedET</a>
 </li>
 <li>set_t()
 : <a class="el" href="classcmf_1_1math_1_1_integrator.html#abbcac7828b36acc5978238f8d3248edf">Integrator</a>
@@ -200,7 +199,7 @@ $(document).ready(function(){initNavTree('functions_func_s.html','');});
 : <a class="el" href="classcmf_1_1water_1_1flux__connection.html#a5edf702b615e8af8d847ecd63d13eb25">flux_connection</a>
 </li>
 <li>set_uptakestress()
-: <a class="el" href="classcmf_1_1upslope_1_1_cell.html#acdb6508f4a661bd7d1998d11c2a7ea44">Cell</a>
+: <a class="el" href="classcmf_1_1upslope_1_1_cell.html#a33fa587d702b342c9ab59558cb1c5ee1">Cell</a>
 </li>
 <li>set_volume()
 : <a class="el" href="classcmf_1_1upslope_1_1layer__list.html#ab920165ad5c562168491356b6b63490d">layer_list</a>
@@ -219,24 +218,14 @@ $(document).ready(function(){initNavTree('functions_func_s.html','');});
 <li>SetSunshineFraction()
 : <a class="el" href="classcmf_1_1atmosphere_1_1_meteo_station.html#a793d71ee88f47c4628497640924ebf5c">MeteoStation</a>
 </li>
-<li>shapes()
-: <a class="el" href="classcmf_1_1geos__shapereader_1_1_shapefile.html#a2339a14f47737a7c41d4ff59410fd035">Shapefile</a>
-</li>
 <li>ShuttleworthWallace()
 : <a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html#a513a4a2688ac1877ad39a5b3d5edbd70">ShuttleworthWallace</a>
-</li>
-<li>SimpleInfiltration()
-: <a class="el" href="classcmf_1_1upslope_1_1connections_1_1_simple_infiltration.html#a3d51db08ca967f5259802d9581abf451">SimpleInfiltration</a>
-</li>
-<li>SimpleTindexSnowMelt()
-: <a class="el" href="classcmf_1_1upslope_1_1connections_1_1_simple_tindex_snow_melt.html#a6cf2696962509562999f3496dc337e5a">SimpleTindexSnowMelt</a>
 </li>
 <li>size()
 : <a class="el" href="classcmf_1_1atmosphere_1_1_meteo_station_list.html#a259cb5a711406a8c3e5d937eb9350cca">MeteoStationList</a>
 , <a class="el" href="classcmf_1_1atmosphere_1_1_rainfall_station_list.html#a259cb5a711406a8c3e5d937eb9350cca">RainfallStationList</a>
 , <a class="el" href="classcmf_1_1geometry_1_1point__vector.html#a259cb5a711406a8c3e5d937eb9350cca">point_vector</a>
 , <a class="el" href="classcmf_1_1math_1_1integratable__list.html#a259cb5a711406a8c3e5d937eb9350cca">integratable_list</a>
-, <a class="el" href="classcmf_1_1math_1_1_integrator.html#a259cb5a711406a8c3e5d937eb9350cca">Integrator</a>
 , <a class="el" href="classcmf_1_1math_1_1timeseries.html#a259cb5a711406a8c3e5d937eb9350cca">timeseries</a>
 , <a class="el" href="classcmf_1_1project.html#a259cb5a711406a8c3e5d937eb9350cca">project</a>
 , <a class="el" href="classcmf_1_1upslope_1_1layer__list.html#a259cb5a711406a8c3e5d937eb9350cca">layer_list</a>
@@ -251,13 +240,10 @@ $(document).ready(function(){initNavTree('functions_func_s.html','');});
 : <a class="el" href="classcmf_1_1water_1_1solute__vector.html#a9f7abd61d326b33bc56fb0c7219b8d5c">solute_vector</a>
 </li>
 <li>SoluteWaterIntegrator()
-: <a class="el" href="classcmf_1_1math_1_1_solute_water_integrator.html#a6a9aaf3d4ccd68cf5afa4c481107e93e">SoluteWaterIntegrator</a>
+: <a class="el" href="classcmf_1_1math_1_1_solute_water_integrator.html#a6246501e7dc1f210273226946dd2452a">SoluteWaterIntegrator</a>
 </li>
 <li>StateChangeAction()
 : <a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html#a1d8ca0c74f855bf09606b6e6815f932f">SoilLayer</a>
-</li>
-<li>statecontrol_connection()
-: <a class="el" href="classcmf_1_1water_1_1statecontrol__connection.html#abef003dabcbcd4d70ed67dc7d294ba93">statecontrol_connection</a>
 </li>
 <li>StateIsChanged()
 : <a class="el" href="classcmf_1_1math_1_1_state_variable.html#a2cf1e9d2df8900cf74cbc0773726ca91">StateVariable</a>
@@ -298,7 +284,7 @@ $(document).ready(function(){initNavTree('functions_func_s.html','');});
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:37</td>
+<td>Generated: Fri Apr 26 2019 12:43:56</td>
 </tr></table>
 </small></address>
 </body>

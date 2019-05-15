@@ -63,7 +63,7 @@ var group__meteo =
     ] ],
     [ "log_wind_profile", "classcmf_1_1atmosphere_1_1log__wind__profile.html", [
       [ "ptr", "classcmf_1_1atmosphere_1_1log__wind__profile.html#aa06042a0c1f24ef10f5e0f56fc737cb1", null ],
-      [ "get_aerodynamic_resistance", "classcmf_1_1atmosphere_1_1log__wind__profile.html#a81b50f7bae77b44b785ad678638efd5f", null ]
+      [ "get_aerodynamic_resistance", "classcmf_1_1atmosphere_1_1log__wind__profile.html#aead8bd4c09ed090e26bf36a27df5e624", null ]
     ] ],
     [ "Meteorology", "classcmf_1_1atmosphere_1_1_meteorology.html", [
       [ "copy", "classcmf_1_1atmosphere_1_1_meteorology.html#a8dd72dfaf4b4faf524ddb7ccb5f06e2e", null ],
@@ -175,7 +175,7 @@ var group__meteo =
       [ "position", "classcmf_1_1atmosphere_1_1_rain_source.html#a8ed0f24ab14c3bcc91bd51796fb61b6a", null ]
     ] ],
     [ "Weather", "structcmf_1_1atmosphere_1_1_weather.html", [
-      [ "Weather", "structcmf_1_1atmosphere_1_1_weather.html#a7ea0e0e992257fe53aebc2153715a23f", null ],
+      [ "Weather", "structcmf_1_1atmosphere_1_1_weather.html#a744d278ec9f511cf23396d421291bcbe", null ],
       [ "operator*", "structcmf_1_1atmosphere_1_1_weather.html#a1bed1ddf8db0e3c283b0f702f8c3ff7b", null ],
       [ "operator*=", "structcmf_1_1atmosphere_1_1_weather.html#af84106dc3e352a33b455010ee88ebd1b", null ],
       [ "operator+", "structcmf_1_1atmosphere_1_1_weather.html#ade0ab6638c493122965a47a0572e6158", null ],
@@ -185,6 +185,7 @@ var group__meteo =
       [ "e_a", "structcmf_1_1atmosphere_1_1_weather.html#a37675f7ad31912a675e6cfebbe9a938e", null ],
       [ "e_s", "structcmf_1_1atmosphere_1_1_weather.html#aa215660666f43dd5bf4401ea26232d05", null ],
       [ "instrument_height", "structcmf_1_1atmosphere_1_1_weather.html#a854fe28d1967524be6d0d662a2e95f51", null ],
+      [ "Ra", "structcmf_1_1atmosphere_1_1_weather.html#a05a4ebda8a9a5f8d72f6b2a462c0c6bd", null ],
       [ "Rs", "structcmf_1_1atmosphere_1_1_weather.html#ad64417a28c816d614e4501b01ca36a46", null ],
       [ "sunshine", "structcmf_1_1atmosphere_1_1_weather.html#a9a03488c56c9a496ac0c6d957f8ccf93", null ],
       [ "T", "structcmf_1_1atmosphere_1_1_weather.html#ac94a6e5794c2d7b59588b14025cfba20", null ],

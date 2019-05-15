@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">2.0.0b2</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -96,6 +96,7 @@ $(document).ready(function(){initNavTree('classcmf_1_1upslope_1_1_soil_layer.htm
 <div class="header">
   <div class="summary">
 <a href="classcmf_1_1upslope_1_1_soil_layer-members.html">List of all members</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
@@ -114,11 +115,10 @@ $(document).ready(function(){initNavTree('classcmf_1_1upslope_1_1_soil_layer.htm
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classcmf_1_1upslope_1_1_soil_layer__inherit__graph.png" border="0" usemap="#_soil_layer_inherit__map" alt="Inheritance graph"/></div>
 <map name="_soil_layer_inherit__map" id="_soil_layer_inherit__map">
-<area shape="rect" id="node2" href="classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water. " alt="" coords="147,80,249,107"/>
+<area shape="rect" id="node2" href="classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water. " alt="" coords="60,80,163,107"/>
 <area shape="rect" id="node3" href="classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable. " alt="" coords="5,5,105,32"/>
-<area shape="rect" id="node4" href="classcmf_1_1math_1_1_state_variable_owner.html" title="An abstract class, that owns one or more state variables, that can add them to a vector of state vari..." alt="" coords="129,5,267,32"/>
-<area shape="rect" id="node5" href="classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="291,5,369,32"/>
-<area shape="rect" id="node6" href="classcmf_1_1upslope_1_1conductable.html" title="An abstract interface for all classes providing a conductivity (e.g. " alt="" coords="273,80,365,107"/>
+<area shape="rect" id="node4" href="classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="130,5,207,32"/>
+<area shape="rect" id="node5" href="classcmf_1_1upslope_1_1conductable.html" title="An abstract interface for all classes providing a conductivity (e.g. " alt="" coords="187,80,279,107"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -128,19 +128,25 @@ $(document).ready(function(){initNavTree('classcmf_1_1upslope_1_1_soil_layer.htm
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classcmf_1_1upslope_1_1_soil_layer__coll__graph.png" border="0" usemap="#_soil_layer_coll__map" alt="Collaboration graph"/></div>
 <map name="_soil_layer_coll__map" id="_soil_layer_coll__map">
-<area shape="rect" id="node2" href="classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water. " alt="" coords="171,184,273,211"/>
-<area shape="rect" id="node3" href="classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable. " alt="" coords="5,95,105,121"/>
-<area shape="rect" id="node4" href="classcmf_1_1math_1_1_state_variable_owner.html" title="An abstract class, that owns one or more state variables, that can add them to a vector of state vari..." alt="" coords="232,95,369,121"/>
-<area shape="rect" id="node8" href="classcmf_1_1upslope_1_1_cell.html" title="This class is the basic landscape object. " alt="" coords="400,184,444,211"/>
-<area shape="rect" id="node5" href="classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="130,95,207,121"/>
-<area shape="rect" id="node6" href="classcmf_1_1geometry_1_1point.html" title="2D&#45;Point Class. " alt="" coords="386,5,437,32"/>
-<area shape="rect" id="node7" href="classcmf_1_1upslope_1_1conductable.html" title="An abstract interface for all classes providing a conductivity (e.g. " alt="" coords="553,184,645,211"/>
-<area shape="rect" id="node9" href="classcmf_1_1upslope_1_1vegetation_1_1_vegetation.html" title="Holds the vegetation parameters for the calculation of ET and fractionating rainfall. Not every ET method uses all parameters. " alt="" coords="393,95,477,121"/>
+<area shape="rect" id="node2" href="classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water. " alt="" coords="105,184,207,211"/>
+<area shape="rect" id="node3" href="classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable. " alt="" coords="107,95,207,121"/>
+<area shape="rect" id="node4" href="classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="5,95,83,121"/>
+<area shape="rect" id="node5" href="classcmf_1_1geometry_1_1point.html" title="2D&#45;Point Class. " alt="" coords="152,5,203,32"/>
+<area shape="rect" id="node6" href="classcmf_1_1upslope_1_1conductable.html" title="An abstract interface for all classes providing a conductivity (e.g. " alt="" coords="283,184,375,211"/>
+<area shape="rect" id="node7" href="classcmf_1_1upslope_1_1_cell.html" title="This class is the basic landscape object. " alt="" coords="399,184,443,211"/>
+<area shape="rect" id="node8" href="classcmf_1_1upslope_1_1vegetation_1_1_vegetation.html" title="Holds the vegetation parameters for the calculation of ET and fractionating rainfall. Not every ET method uses all parameters. " alt="" coords="379,95,463,121"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A representation of a <a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html" title="A representation of a SoilLayer. ">SoilLayer</a>. </p>
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a65038c02ffb04ca17a7479ad20b0b63c"><td class="memItemLeft" align="right" valign="top"><a id="a65038c02ffb04ca17a7479ad20b0b63c"></a>
+typedef std::vector&lt; <a class="el" href="classcmf_1_1math_1_1_state_variable.html#a09457664ddfda50e59692fb90f0fbf30">StateVariable</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_state_variable.html#a65038c02ffb04ca17a7479ad20b0b63c">list</a></td></tr>
+<tr class="memdesc:a65038c02ffb04ca17a7479ad20b0b63c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Not part of the API, used to create sparse structure. <br /></td></tr>
+<tr class="separator:a65038c02ffb04ca17a7479ad20b0b63c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ababf4d22a9d3952540e2204915dbc15b"><td class="memItemLeft" align="right" valign="top"><a id="ababf4d22a9d3952540e2204915dbc15b"></a>
@@ -235,10 +241,9 @@ virtual <a class="el" href="classcmf_1_1upslope_1_1_retention_curve.html">cmf::u
 char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_water_storage.html#afac22fccd2df2d35c22acfcb75239427">get_state_variable_content</a> () const</td></tr>
 <tr class="memdesc:afac22fccd2df2d35c22acfcb75239427"><td class="mdescLeft">&#160;</td><td class="mdescRight">A character indicating the integrated variable (either 'V' for Volume or 'h' for head) <br /></td></tr>
 <tr class="separator:afac22fccd2df2d35c22acfcb75239427"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a630ff0c86cdfcab272faf1aefb76ab9a"><td class="memItemLeft" align="right" valign="top"><a id="a630ff0c86cdfcab272faf1aefb76ab9a"></a>
-cmf::math::StateVariableList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_water_storage.html#a630ff0c86cdfcab272faf1aefb76ab9a">get_states</a> ()</td></tr>
-<tr class="memdesc:a630ff0c86cdfcab272faf1aefb76ab9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the state variables, owned by an object derived from StateVariableOwner, to the given vector. <br /></td></tr>
-<tr class="separator:a630ff0c86cdfcab272faf1aefb76ab9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7ad76afe33bd5393581a12b7ea8b747"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html#aa7ad76afe33bd5393581a12b7ea8b747">get_Tact</a> (double Tpot)</td></tr>
+<tr class="memdesc:aa7ad76afe33bd5393581a12b7ea8b747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a factor to indicate the draught stress to be multiplied with ETpot.  <a href="#aa7ad76afe33bd5393581a12b7ea8b747">More...</a><br /></td></tr>
+<tr class="separator:aa7ad76afe33bd5393581a12b7ea8b747"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a696ccf458e7402c896812ee224e6a796"><td class="memItemLeft" align="right" valign="top"><a id="a696ccf458e7402c896812ee224e6a796"></a>
 virtual real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html#a696ccf458e7402c896812ee224e6a796">get_theta</a> () const</td></tr>
 <tr class="memdesc:a696ccf458e7402c896812ee224e6a796"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the actual volumetric water content of the water storage. <br /></td></tr>
@@ -255,6 +260,10 @@ virtual real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 virtual real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html#aa692373ebfb4f1f94de2abc95659835a">get_wetness</a> () const</td></tr>
 <tr class="memdesc:aa692373ebfb4f1f94de2abc95659835a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the wetness of the soil \( \frac{V_{H_2O}}{V_{pores}} \). <br /></td></tr>
 <tr class="separator:aa692373ebfb4f1f94de2abc95659835a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc4ae437d7a2f33ee85fe811fc8b6d0f"><td class="memItemLeft" align="right" valign="top"><a id="adc4ae437d7a2f33ee85fe811fc8b6d0f"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_water_storage.html#adc4ae437d7a2f33ee85fe811fc8b6d0f">is_connected</a> (const <a class="el" href="classcmf_1_1math_1_1_state_variable.html">cmf::math::StateVariable</a> &amp;other) const</td></tr>
+<tr class="memdesc:adc4ae437d7a2f33ee85fe811fc8b6d0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns True if this waterstorage is effected by another state. <br /></td></tr>
+<tr class="separator:adc4ae437d7a2f33ee85fe811fc8b6d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace09b97c37ded843368a00c04e89b55f"><td class="memItemLeft" align="right" valign="top"><a id="ace09b97c37ded843368a00c04e89b55f"></a>
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_water_storage.html#ace09b97c37ded843368a00c04e89b55f">is_storage</a> () const</td></tr>
 <tr class="memdesc:ace09b97c37ded843368a00c04e89b55f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true, since this is a storage. <br /></td></tr>
@@ -273,6 +282,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html#a6dacff6b3dfe19051e9495a8b8782b5d">set_potential</a> (real waterhead)</td></tr>
 <tr class="memdesc:a6dacff6b3dfe19051e9495a8b8782b5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the potential of this soil water storage. <br /></td></tr>
 <tr class="separator:a6dacff6b3dfe19051e9495a8b8782b5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a953f04742e7a75736a47ec64ac39cb05"><td class="memItemLeft" align="right" valign="top"><a id="a953f04742e7a75736a47ec64ac39cb05"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html#a953f04742e7a75736a47ec64ac39cb05">set_root_uptake_stress_function</a> (const <a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stress_function.html">cmf::upslope::ET::RootUptakeStressFunction</a> &amp;stressfunction)</td></tr>
+<tr class="memdesc:a953f04742e7a75736a47ec64ac39cb05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the root uptake stress function. <br /></td></tr>
+<tr class="separator:a953f04742e7a75736a47ec64ac39cb05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a652e6997fe0ab85c45edea45cbb1684c"><td class="memItemLeft" align="right" valign="top"><a id="a652e6997fe0ab85c45edea45cbb1684c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html#a652e6997fe0ab85c45edea45cbb1684c">set_rootfraction</a> (real rootfraction)</td></tr>
 <tr class="memdesc:a652e6997fe0ab85c45edea45cbb1684c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the root fraction in this layer explicitly. <br /></td></tr>
@@ -348,6 +361,10 @@ Protected Attributes</h2></td></tr>
 std::unique_ptr&lt; <a class="el" href="classcmf_1_1upslope_1_1_retention_curve.html">cmf::upslope::RetentionCurve</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html#a95712d52a9c5dcc9517aadae70f16f0c">m_retentioncurve</a></td></tr>
 <tr class="memdesc:a95712d52a9c5dcc9517aadae70f16f0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The retention curve of the soil layer. <br /></td></tr>
 <tr class="separator:a95712d52a9c5dcc9517aadae70f16f0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5842f24490f7418573b14084886c2eb0"><td class="memItemLeft" align="right" valign="top"><a id="a5842f24490f7418573b14084886c2eb0"></a>
+std::unique_ptr&lt; <a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stress_function.html">cmf::upslope::ET::RootUptakeStressFunction</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html#a5842f24490f7418573b14084886c2eb0">m_uptakefunction</a></td></tr>
+<tr class="memdesc:a5842f24490f7418573b14084886c2eb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The uptake stress function of the soil layer. <br /></td></tr>
+<tr class="separator:a5842f24490f7418573b14084886c2eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a51f9631247f8af683e55240e94b74e57"></a>
@@ -408,6 +425,27 @@ std::unique_ptr&lt; <a class="el" href="classcmf_1_1upslope_1_1_retention_curve.
 \[ \Psi_G=h \]
 </p>
  
+</div>
+</div>
+<a id="aa7ad76afe33bd5393581a12b7ea8b747"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7ad76afe33bd5393581a12b7ea8b747">&#9670;&nbsp;</a></span>get_Tact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double get_Tact </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>Tpot</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a factor to indicate the draught stress to be multiplied with ETpot. </p>
+<p>1 = no stress, 0 = no uptake possible </p>
+
 </div>
 </div>
 <a id="ad4e4534513b31d5a3596b072ad4cd42f"></a>
@@ -518,7 +556,7 @@ std::unique_ptr&lt; <a class="el" href="classcmf_1_1upslope_1_1_retention_curve.
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:30</td>
+<td>Generated: Fri Apr 26 2019 12:43:46</td>
 </tr></table>
 </small></address>
 </body>

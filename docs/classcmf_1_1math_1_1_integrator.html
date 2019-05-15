@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">2.0.0b2</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -112,14 +112,19 @@ $(document).ready(function(){initNavTree('classcmf_1_1math_1_1_integrator.html',
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classcmf_1_1math_1_1_integrator__inherit__graph.png" border="0" usemap="#_integrator_inherit__map" alt="Inheritance graph"/></div>
 <map name="_integrator_inherit__map" id="_integrator_inherit__map">
-<area shape="rect" id="node2" href="classcmf_1_1math_1_1_b_d_f2.html" title="An order 2 BDF&#45;Method with fixed&#45;point iteration and variable step size. " alt="" coords="176,5,231,32"/>
-<area shape="rect" id="node3" href="classcmf_1_1math_1_1_c_vode_integrator.html" title="A wrapper class for the CVODE integrator from the SUNDIALS library. " alt="" coords="146,56,261,83"/>
-<area shape="rect" id="node4" href="classcmf_1_1math_1_1_explicit_euler__fixed.html" title="An explicit Euler integrator, with a fixed time step. " alt="" coords="139,107,268,133"/>
-<area shape="rect" id="node5" href="classcmf_1_1math_1_1_heun_integrator.html" title="A simple predictor &#45; corrector solver. " alt="" coords="150,157,257,184"/>
-<area shape="rect" id="node6" href="classcmf_1_1math_1_1_implicit_euler.html" title="An implicit (backward) Euler integrator using fixpoint iteration. " alt="" coords="157,208,250,235"/>
-<area shape="rect" id="node7" href="classcmf_1_1math_1_1_multi_integrator.html" title="The MultiIntegrator is a wrapper for a bunch integrators. The states of the integrators should not ha..." alt="" coords="151,259,255,285"/>
-<area shape="rect" id="node8" href="classcmf_1_1math_1_1_r_k_f_integrator.html" title="Integrates a vector of cmf::math::StateVariable with the Runge&#45;Kutta&#45;Fehlberg (RKF54) method..." alt="" coords="152,309,255,336"/>
-<area shape="rect" id="node9" href="classcmf_1_1math_1_1_solute_water_integrator.html" title="A SoluteWaterIntegrator implements the cmf::math::Integrator interface, but consists of two independe..." alt="" coords="129,360,277,387"/>
+<area shape="rect" id="node2" href="classcmf_1_1math_1_1_b_d_f2.html" title="An order 2 BDF&#45;Method with fixed&#45;point iteration and variable step size. " alt="" coords="176,56,231,83"/>
+<area shape="rect" id="node3" href="classcmf_1_1math_1_1_c_vode_base.html" title="Abstract base class for different modes of the CVode solver. " alt="" coords="158,107,249,133"/>
+<area shape="rect" id="node9" href="classcmf_1_1math_1_1_explicit_euler__fixed.html" title="An explicit Euler integrator, with a fixed time step. " alt="" coords="139,157,268,184"/>
+<area shape="rect" id="node10" href="classcmf_1_1math_1_1_heun_integrator.html" title="A simple predictor &#45; corrector solver. " alt="" coords="150,208,257,235"/>
+<area shape="rect" id="node11" href="classcmf_1_1math_1_1_implicit_euler.html" title="An implicit (backward) Euler integrator using fixpoint iteration. " alt="" coords="157,259,250,285"/>
+<area shape="rect" id="node12" href="classcmf_1_1math_1_1_multi_integrator.html" title="The MultiIntegrator is a wrapper for a bunch integrators. The states of the integrators should not ha..." alt="" coords="151,309,255,336"/>
+<area shape="rect" id="node13" href="classcmf_1_1math_1_1_r_k_f_integrator.html" title="Integrates a vector of cmf::math::StateVariable with the Runge&#45;Kutta&#45;Fehlberg (RKF54) method..." alt="" coords="152,360,255,387"/>
+<area shape="rect" id="node14" href="classcmf_1_1math_1_1_solute_water_integrator.html" title="A SoluteWaterIntegrator implements the cmf::math::Integrator interface, but consists of two independe..." alt="" coords="129,411,277,437"/>
+<area shape="rect" id="node4" href="classcmf_1_1math_1_1_c_vode_adams.html" title="Explizit multistep solver using CVode. " alt="" coords="327,5,429,32"/>
+<area shape="rect" id="node5" href="classcmf_1_1math_1_1_c_vode_banded.html" title="implicit BDF CVode solver with a banded Jacobian approximation " alt="" coords="325,56,431,83"/>
+<area shape="rect" id="node6" href="classcmf_1_1math_1_1_c_vode_dense.html" title="implicit BDF CVode solver with full Jacobian approximation " alt="" coords="329,107,427,133"/>
+<area shape="rect" id="node7" href="classcmf_1_1math_1_1_c_vode_diag.html" title="implicit BDF CVode solver with a one line diagonal Jacobian approximation " alt="" coords="335,157,421,184"/>
+<area shape="rect" id="node8" href="classcmf_1_1math_1_1_c_vode_krylov.html" title="implicit BDF CVode solver with a Krylov preconditioner " alt="" coords="330,208,426,235"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -142,55 +147,17 @@ $(document).ready(function(){initNavTree('classcmf_1_1math_1_1_integrator.html',
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:add4b10bf0ae6d94113cb8b4e8e630023"><td class="memItemLeft" align="right" valign="top"><a id="add4b10bf0ae6d94113cb8b4e8e630023"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#add4b10bf0ae6d94113cb8b4e8e630023">add_single_state</a> (cmf::math::StateVariable::ptr state)</td></tr>
-<tr class="memdesc:add4b10bf0ae6d94113cb8b4e8e630023"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a single state variable to the integrator. <br /></td></tr>
-<tr class="separator:add4b10bf0ae6d94113cb8b4e8e630023"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27d1246f02ebb3bf502d9b9eb38e698f"><td class="memItemLeft" align="right" valign="top"><a id="a27d1246f02ebb3bf502d9b9eb38e698f"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a27d1246f02ebb3bf502d9b9eb38e698f">add_states</a> (<a class="el" href="classcmf_1_1math_1_1_state_variable_owner.html">cmf::math::StateVariableOwner</a> &amp;stateOwner)</td></tr>
-<tr class="memdesc:a27d1246f02ebb3bf502d9b9eb38e698f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add state variables from a <a class="el" href="classcmf_1_1math_1_1_state_variable_owner.html" title="An abstract class, that owns one or more state variables, that can add them to a vector of state vari...">StateVariableOwner</a>. <br /></td></tr>
-<tr class="separator:a27d1246f02ebb3bf502d9b9eb38e698f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac86fac0fd23efe759cffeac4417454f"><td class="memItemLeft" align="right" valign="top"><a id="aac86fac0fd23efe759cffeac4417454f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#aac86fac0fd23efe759cffeac4417454f">add_values_to_states</a> (const <a class="el" href="classcmf_1_1math_1_1num__array.html">num_array</a> &amp;operands)</td></tr>
-<tr class="memdesc:aac86fac0fd23efe759cffeac4417454f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the values in operands to the current states. <br /></td></tr>
-<tr class="separator:aac86fac0fd23efe759cffeac4417454f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e6b928fdb1fd0e5b4f37cd6cf21b0ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a6e6b928fdb1fd0e5b4f37cd6cf21b0ac">copy_dxdt</a> (<a class="el" href="classcmf_1_1math_1_1_time.html">Time</a> time, <a class="el" href="classcmf_1_1math_1_1num__array.html">num_array</a> &amp;destination, real factor=1) const</td></tr>
-<tr class="memdesc:a6e6b928fdb1fd0e5b4f37cd6cf21b0ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies the derivatives at time step "time" to a numeric vector using use_OpenMP.  <a href="#a6e6b928fdb1fd0e5b4f37cd6cf21b0ac">More...</a><br /></td></tr>
-<tr class="separator:a6e6b928fdb1fd0e5b4f37cd6cf21b0ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a051c7ae98bbb24b8659d6b9f8deb52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a3a051c7ae98bbb24b8659d6b9f8deb52">copy_dxdt</a> (<a class="el" href="classcmf_1_1math_1_1_time.html">Time</a> time, real *destination, real factor=1) const</td></tr>
-<tr class="memdesc:a3a051c7ae98bbb24b8659d6b9f8deb52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies the derivatives at time step "time" to an preallocated c array.  <a href="#a3a051c7ae98bbb24b8659d6b9f8deb52">More...</a><br /></td></tr>
-<tr class="separator:a3a051c7ae98bbb24b8659d6b9f8deb52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67c85b4e7809b0fe84457ade9275d5c4"><td class="memItemLeft" align="right" valign="top"><a id="a67c85b4e7809b0fe84457ade9275d5c4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a67c85b4e7809b0fe84457ade9275d5c4">copy_states</a> (<a class="el" href="classcmf_1_1math_1_1num__array.html">num_array</a> &amp;destination) const</td></tr>
-<tr class="memdesc:a67c85b4e7809b0fe84457ade9275d5c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies the states to a numeric vector using use_OpenMP. <br /></td></tr>
-<tr class="separator:a67c85b4e7809b0fe84457ade9275d5c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b065bb3435e9f9e39c358601f1d8dd9"><td class="memItemLeft" align="right" valign="top"><a id="a4b065bb3435e9f9e39c358601f1d8dd9"></a>
-real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a4b065bb3435e9f9e39c358601f1d8dd9">get_state</a> (ptrdiff_t position) const</td></tr>
-<tr class="memdesc:a4b065bb3435e9f9e39c358601f1d8dd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the statevariable at position Simplifies the assessment of state variables. <br /></td></tr>
-<tr class="separator:a4b065bb3435e9f9e39c358601f1d8dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a604090e9adb3ee9a44fa9bddc1132d0f"><td class="memItemLeft" align="right" valign="top"><a id="a604090e9adb3ee9a44fa9bddc1132d0f"></a>
-StateVariableList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a604090e9adb3ee9a44fa9bddc1132d0f">get_states</a> ()</td></tr>
-<tr class="memdesc:a604090e9adb3ee9a44fa9bddc1132d0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets the state variables of the integrator <br /></td></tr>
-<tr class="separator:a604090e9adb3ee9a44fa9bddc1132d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a976988a79f9412a6aebd72de9f9c1d21"><td class="memItemLeft" align="right" valign="top"><a id="a976988a79f9412a6aebd72de9f9c1d21"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a976988a79f9412a6aebd72de9f9c1d21">set_state</a> (ptrdiff_t position, real newState)</td></tr>
-<tr class="memdesc:a976988a79f9412a6aebd72de9f9c1d21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simplifies the assessment of state variables. <br /></td></tr>
-<tr class="separator:a976988a79f9412a6aebd72de9f9c1d21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1027f294d9f88e969db2fa1fd4e72fcc"><td class="memItemLeft" align="right" valign="top"><a id="a1027f294d9f88e969db2fa1fd4e72fcc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a1027f294d9f88e969db2fa1fd4e72fcc">set_states</a> (const <a class="el" href="classcmf_1_1math_1_1num__array.html">num_array</a> &amp;newStates)</td></tr>
-<tr class="memdesc:a1027f294d9f88e969db2fa1fd4e72fcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies the new states to the actual states. <br /></td></tr>
-<tr class="separator:a1027f294d9f88e969db2fa1fd4e72fcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a259cb5a711406a8c3e5d937eb9350cca"><td class="memItemLeft" align="right" valign="top"><a id="a259cb5a711406a8c3e5d937eb9350cca"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a259cb5a711406a8c3e5d937eb9350cca">size</a> () const</td></tr>
-<tr class="memdesc:a259cb5a711406a8c3e5d937eb9350cca"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of state variables <br /></td></tr>
-<tr class="separator:a259cb5a711406a8c3e5d937eb9350cca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a630c29d66f94446c4292172285d61492"><td class="memItemLeft" align="right" valign="top"><a id="a630c29d66f94446c4292172285d61492"></a>
+virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a630c29d66f94446c4292172285d61492">to_string</a> () const =0</td></tr>
+<tr class="memdesc:a630c29d66f94446c4292172285d61492"><td class="mdescLeft">&#160;</td><td class="mdescRight">Desrcibes the iterator. <br /></td></tr>
+<tr class="separator:a630c29d66f94446c4292172285d61492"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Constructors and Destructors</div></td></tr>
 <tr class="memitem:a251bfda857b86b560cfc0246bc92f9d6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a251bfda857b86b560cfc0246bc92f9d6">Integrator</a> (real epsilon=1e-9)</td></tr>
 <tr class="memdesc:a251bfda857b86b560cfc0246bc92f9d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator. ">Integrator</a> with a new own state vector.  <a href="#a251bfda857b86b560cfc0246bc92f9d6">More...</a><br /></td></tr>
 <tr class="separator:a251bfda857b86b560cfc0246bc92f9d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab86e41e0cd4f225f8e31e89ddc1e3864"><td class="memItemLeft" align="right" valign="top"><a id="ab86e41e0cd4f225f8e31e89ddc1e3864"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Integrator</b> (<a class="el" href="classcmf_1_1math_1_1_state_variable_owner.html">cmf::math::StateVariableOwner</a> &amp;states, real epsilon=1e-9)</td></tr>
-<tr class="separator:ab86e41e0cd4f225f8e31e89ddc1e3864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae560d9dbc66d9fbd3e0ec4141dd70424"><td class="memItemLeft" align="right" valign="top"><a id="ae560d9dbc66d9fbd3e0ec4141dd70424"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Integrator</b> (const state_list &amp;states, real epsilon=1e-9)</td></tr>
+<tr class="separator:ae560d9dbc66d9fbd3e0ec4141dd70424"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45bd515b3224c2d23af6a6067703fee4"><td class="memItemLeft" align="right" valign="top"><a id="a45bd515b3224c2d23af6a6067703fee4"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Integrator</b> (const <a class="el" href="classcmf_1_1math_1_1_integrator.html">cmf::math::Integrator</a> &amp;other)</td></tr>
 <tr class="separator:a45bd515b3224c2d23af6a6067703fee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -213,19 +180,15 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:a8226a814fb8ffcfdc8c8275adf3f9e63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Public access to integratables. <br /></td></tr>
 <tr class="separator:a8226a814fb8ffcfdc8c8275adf3f9e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ab8efb4a7e6f347412e300bc9e2d3ea"><td class="memItemLeft" align="right" valign="top"><a id="a7ab8efb4a7e6f347412e300bc9e2d3ea"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a7ab8efb4a7e6f347412e300bc9e2d3ea">reset_integratables</a></td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a7ab8efb4a7e6f347412e300bc9e2d3ea">reset_integratables</a> =false</td></tr>
 <tr class="memdesc:a7ab8efb4a7e6f347412e300bc9e2d3ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, the integratables of this solver are reset. <br /></td></tr>
 <tr class="separator:a7ab8efb4a7e6f347412e300bc9e2d3ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5417b852edf86debe82aef638cd344ce"><td class="memItemLeft" align="right" valign="top"><a id="a5417b852edf86debe82aef638cd344ce"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a5417b852edf86debe82aef638cd344ce">use_OpenMP</a></td></tr>
-<tr class="memdesc:a5417b852edf86debe82aef638cd344ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">if true (default), OpenMP is used calculate the right hand side function f(y,t) in parallel <br /></td></tr>
-<tr class="separator:a5417b852edf86debe82aef638cd344ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Accuracy parameters</div></td></tr>
 <tr class="memitem:a36eb0b53d4ca676a0015a9eac169de72"><td class="memItemLeft" align="right" valign="top"><a id="a36eb0b53d4ca676a0015a9eac169de72"></a>
-const real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a36eb0b53d4ca676a0015a9eac169de72">Epsilon</a></td></tr>
+const real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a36eb0b53d4ca676a0015a9eac169de72">Epsilon</a> =1e-9</td></tr>
 <tr class="memdesc:a36eb0b53d4ca676a0015a9eac169de72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tolerable error. <br /></td></tr>
 <tr class="separator:a36eb0b53d4ca676a0015a9eac169de72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -240,7 +203,7 @@ model time</h2></td></tr>
 <tr class="memdesc:a2555e45d78dda4746f757a85d788c521"><td class="mdescLeft">&#160;</td><td class="mdescRight">last time step of the solver <br /></td></tr>
 <tr class="separator:a2555e45d78dda4746f757a85d788c521"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58987ad20b2498e87154857253594308"><td class="memItemLeft" align="right" valign="top"><a id="a58987ad20b2498e87154857253594308"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>m_Iterations</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>m_Iterations</b> =0</td></tr>
 <tr class="separator:a58987ad20b2498e87154857253594308"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e6d80d4b9053268f7321b1568921c28"><td class="memItemLeft" align="right" valign="top"><a id="a7e6d80d4b9053268f7321b1568921c28"></a>
 <a class="el" href="classcmf_1_1math_1_1_time.html">cmf::math::Time</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a7e6d80d4b9053268f7321b1568921c28">get_t</a> () const</td></tr>
@@ -258,10 +221,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a7b0e029102ad38f4b814c6523aedb53d">reset</a> ()</td></tr>
 <tr class="memdesc:a7b0e029102ad38f4b814c6523aedb53d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets any saved history (for multistep methods) <br /></td></tr>
 <tr class="separator:a7b0e029102ad38f4b814c6523aedb53d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2899ca6a072ada4929af78ac92e058b"><td class="memItemLeft" align="right" valign="top"><a id="ae2899ca6a072ada4929af78ac92e058b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#ae2899ca6a072ada4929af78ac92e058b">AdjustTimestep</a> (<a class="el" href="classcmf_1_1math_1_1_time.html">cmf::math::Time</a> &amp;TimeStep, <a class="el" href="classcmf_1_1math_1_1_time.html">cmf::math::Time</a> MaxTime)</td></tr>
-<tr class="memdesc:ae2899ca6a072ada4929af78ac92e058b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Protected function to adjust the step width for stability reasons. <br /></td></tr>
-<tr class="separator:ae2899ca6a072ada4929af78ac92e058b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a251bfda857b86b560cfc0246bc92f9d6"></a>
@@ -269,6 +228,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classcmf_1_1math_1_1_integrator.html">Integrator</a> </td>
@@ -278,6 +240,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Constructs a new <a class="el" href="classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator. ">Integrator</a> with a new own state vector. </p>
@@ -291,94 +258,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a6e6b928fdb1fd0e5b4f37cd6cf21b0ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e6b928fdb1fd0e5b4f37cd6cf21b0ac">&#9670;&nbsp;</a></span>copy_dxdt() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void copy_dxdt </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classcmf_1_1math_1_1_time.html">Time</a>&#160;</td>
-          <td class="paramname"><em>time</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classcmf_1_1math_1_1num__array.html">num_array</a> &amp;&#160;</td>
-          <td class="paramname"><em>destination</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">real&#160;</td>
-          <td class="paramname"><em>factor</em> = <code>1</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Copies the derivatives at time step "time" to a numeric vector using use_OpenMP. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">time</td><td><a class="el" href="classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times. ">Time</a> at which the derivatives should be calculated </td></tr>
-    <tr><td class="paramname">destination</td><td>Vector to be overwritten by the results </td></tr>
-    <tr><td class="paramname">factor</td><td>A factor that is multiplied to the derivate (e.g. unit conversion or integration length) </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a3a051c7ae98bbb24b8659d6b9f8deb52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a051c7ae98bbb24b8659d6b9f8deb52">&#9670;&nbsp;</a></span>copy_dxdt() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void copy_dxdt </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classcmf_1_1math_1_1_time.html">Time</a>&#160;</td>
-          <td class="paramname"><em>time</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">real *&#160;</td>
-          <td class="paramname"><em>destination</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">real&#160;</td>
-          <td class="paramname"><em>factor</em> = <code>1</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Copies the derivatives at time step "time" to an preallocated c array. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">time</td><td><a class="el" href="classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times. ">Time</a> at which the derivatives should be calculated </td></tr>
-    <tr><td class="paramname">destination</td><td>Allocated c array </td></tr>
-    <tr><td class="paramname">factor</td><td>A factor that is multiplied to the derivate (e.g. unit conversion or integration length) </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="ab7082dc91769b656e3c36c8889d3cf7e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab7082dc91769b656e3c36c8889d3cf7e">&#9670;&nbsp;</a></span>integrate()</h2>
 
@@ -422,7 +301,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classcmf_1_1math_1_1_b_d_f2.html#a7054d3d8526f1c619d93c58b8f95c6fe">BDF2</a>, <a class="el" href="classcmf_1_1math_1_1_heun_integrator.html#a7054d3d8526f1c619d93c58b8f95c6fe">HeunIntegrator</a>, <a class="el" href="classcmf_1_1math_1_1_implicit_euler.html#a7054d3d8526f1c619d93c58b8f95c6fe">ImplicitEuler</a>, <a class="el" href="classcmf_1_1math_1_1_r_k_f_integrator.html#a7054d3d8526f1c619d93c58b8f95c6fe">RKFIntegrator</a>, <a class="el" href="classcmf_1_1math_1_1_c_vode_integrator.html#a8ba7a0eb814d5de6e422ea85f3771415">CVodeIntegrator</a>, <a class="el" href="classcmf_1_1math_1_1_explicit_euler__fixed.html#a7054d3d8526f1c619d93c58b8f95c6fe">ExplicitEuler_fixed</a>, <a class="el" href="classcmf_1_1math_1_1_solute_water_integrator.html#a38d561458f263540c1087ce9caf31731">SoluteWaterIntegrator</a>, and <a class="el" href="classcmf_1_1math_1_1_multi_integrator.html#a38d561458f263540c1087ce9caf31731">MultiIntegrator</a>.</p>
+<p>Implemented in <a class="el" href="classcmf_1_1math_1_1_b_d_f2.html#a393de4aabb74e20b5fd62ab609e40092">BDF2</a>, <a class="el" href="classcmf_1_1math_1_1_c_vode_base.html#a8ba7a0eb814d5de6e422ea85f3771415">CVodeBase</a>, <a class="el" href="classcmf_1_1math_1_1_heun_integrator.html#a7054d3d8526f1c619d93c58b8f95c6fe">HeunIntegrator</a>, <a class="el" href="classcmf_1_1math_1_1_r_k_f_integrator.html#a7054d3d8526f1c619d93c58b8f95c6fe">RKFIntegrator</a>, <a class="el" href="classcmf_1_1math_1_1_implicit_euler.html#a7054d3d8526f1c619d93c58b8f95c6fe">ImplicitEuler</a>, <a class="el" href="classcmf_1_1math_1_1_explicit_euler__fixed.html#a7054d3d8526f1c619d93c58b8f95c6fe">ExplicitEuler_fixed</a>, <a class="el" href="classcmf_1_1math_1_1_solute_water_integrator.html#a38d561458f263540c1087ce9caf31731">SoluteWaterIntegrator</a>, and <a class="el" href="classcmf_1_1math_1_1_multi_integrator.html#a38d561458f263540c1087ce9caf31731">MultiIntegrator</a>.</p>
 
 </div>
 </div>
@@ -478,7 +357,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:29</td>
+<td>Generated: Fri Apr 26 2019 12:43:42</td>
 </tr></table>
 </small></address>
 </body>

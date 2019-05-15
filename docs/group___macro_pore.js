@@ -90,6 +90,7 @@ var group___macro_pore =
       [ "type", "classcmf_1_1upslope_1_1connections_1_1_m_a_c_r_olike_macro_micro_exchange.html#ab42edbb29efb41e4c3e0de59be4e4cf7", null ]
     ] ],
     [ "MacroPore", "classcmf_1_1upslope_1_1_macro_pore.html", [
+      [ "list", "classcmf_1_1upslope_1_1_macro_pore.html#a65038c02ffb04ca17a7479ad20b0b63c", null ],
       [ "conc", "classcmf_1_1upslope_1_1_macro_pore.html#ababf4d22a9d3952540e2204915dbc15b", null ],
       [ "conc", "classcmf_1_1upslope_1_1_macro_pore.html#ad7aa4277a82890dc86f7bca2b828d75f", null ],
       [ "conc", "classcmf_1_1upslope_1_1_macro_pore.html#a09c41a9b1f92c291ae72ffad3e3ff44d", null ],
@@ -109,8 +110,8 @@ var group___macro_pore =
       [ "get_potential", "classcmf_1_1upslope_1_1_macro_pore.html#aea058cbf85a0c1da0df71668c014d29a", null ],
       [ "get_project", "classcmf_1_1upslope_1_1_macro_pore.html#ae4c3731109c42d8e7f70eb646fb573ec", null ],
       [ "get_state_variable_content", "classcmf_1_1upslope_1_1_macro_pore.html#afac22fccd2df2d35c22acfcb75239427", null ],
-      [ "get_states", "classcmf_1_1upslope_1_1_macro_pore.html#a630ff0c86cdfcab272faf1aefb76ab9a", null ],
       [ "get_volume", "classcmf_1_1upslope_1_1_macro_pore.html#a66b668d3856b9bd2e1f84f296556570f", null ],
+      [ "is_connected", "classcmf_1_1upslope_1_1_macro_pore.html#adc4ae437d7a2f33ee85fe811fc8b6d0f", null ],
       [ "is_empty", "classcmf_1_1upslope_1_1_macro_pore.html#ab3f02f11f233972d7c26cf26a9090613", null ],
       [ "is_storage", "classcmf_1_1upslope_1_1_macro_pore.html#ace09b97c37ded843368a00c04e89b55f", null ],
       [ "MarkStateChangeHandled", "classcmf_1_1upslope_1_1_macro_pore.html#ae45a5bd291cb989067417aba8e565d0c", null ],

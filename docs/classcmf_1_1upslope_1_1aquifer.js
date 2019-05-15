@@ -1,5 +1,6 @@
 var classcmf_1_1upslope_1_1aquifer =
 [
+    [ "list", "classcmf_1_1upslope_1_1aquifer.html#a65038c02ffb04ca17a7479ad20b0b63c", null ],
     [ "aquifer", "classcmf_1_1upslope_1_1aquifer.html#aa224992f699d18d5a9786419a6d91f77", null ],
     [ "aquifer", "classcmf_1_1upslope_1_1aquifer.html#a7d7712b43a7083d9b10ed23cd9ef1394", null ],
     [ "conc", "classcmf_1_1upslope_1_1aquifer.html#ababf4d22a9d3952540e2204915dbc15b", null ],
@@ -14,9 +15,9 @@ var classcmf_1_1upslope_1_1aquifer =
     [ "get_potential", "classcmf_1_1upslope_1_1aquifer.html#a923af9ca71ce3a008d07d88216f1a351", null ],
     [ "get_project", "classcmf_1_1upslope_1_1aquifer.html#ae4c3731109c42d8e7f70eb646fb573ec", null ],
     [ "get_state_variable_content", "classcmf_1_1upslope_1_1aquifer.html#afac22fccd2df2d35c22acfcb75239427", null ],
-    [ "get_states", "classcmf_1_1upslope_1_1aquifer.html#a630ff0c86cdfcab272faf1aefb76ab9a", null ],
     [ "get_top_height", "classcmf_1_1upslope_1_1aquifer.html#af38c0208da6197bc334bad3ea7d644e2", null ],
     [ "get_volume", "classcmf_1_1upslope_1_1aquifer.html#a56a03fc6fead8765d35e9b54a5b6ad08", null ],
+    [ "is_connected", "classcmf_1_1upslope_1_1aquifer.html#adc4ae437d7a2f33ee85fe811fc8b6d0f", null ],
     [ "is_empty", "classcmf_1_1upslope_1_1aquifer.html#ab3f02f11f233972d7c26cf26a9090613", null ],
     [ "is_storage", "classcmf_1_1upslope_1_1aquifer.html#ace09b97c37ded843368a00c04e89b55f", null ],
     [ "MarkStateChangeHandled", "classcmf_1_1upslope_1_1aquifer.html#ae45a5bd291cb989067417aba8e565d0c", null ],

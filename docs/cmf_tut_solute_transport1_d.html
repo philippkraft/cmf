@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">2.0.0b2</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -110,11 +110,11 @@ $(document).ready(function(){initNavTree('cmf_tut_solute_transport1_d.html','');
 <p>1. Solving the whole system as one including the water storages and the solute storages as state variables 1. Use one solver for the water transport and one solver for each tracer.</p>
 <h3>1. One solver</h3>
 <p>Since our system is stiff (see <a class="el" href="cmf_tut_solver.html">here</a> and <a class="el" href="cmf_tut1d.html">last</a>tutorial") the best choice is the CVode solver. The setup is simple:</p>
-<div class="fragment"><div class="line">solver = cmf.CVodeIntegrator(p, 1e-9)</div><div class="line">print(solver.size())</div></div><!-- fragment --><p>The print command shows, that the system to be solved is for a single soil column quite big (<code>(50 soillayers + 1 surface water storage)\*(1 water storage + 3 solute storages) = 204 storages</code>). A second problem with this approach is, that closely related storages (soillayers) are not directly beneath each other in the list of storages. This makes the numerical solution of the system much more computational demanding. However, the error checking capabilities of the solver is used for the whole system, thus the result is numerically reliable.</p>
+<div class="fragment"><div class="line">solver = cmf.CVodeKrylov(p, 1e-9)</div><div class="line">print(solver.size())</div></div><!-- fragment --><p>The print command shows, that the system to be solved is for a single soil column quite big (<code>(50 soillayers + 1 surface water storage)\*(1 water storage + 3 solute storages) = 204 storages</code>). A second problem with this approach is, that closely related storages (soillayers) are not directly beneath each other in the list of storages. This makes the numerical solution of the system much more computational demanding. However, the error checking capabilities of the solver is used for the whole system, thus the result is numerically reliable.</p>
 <h3>2. Seperated solvers for water and tracers</h3>
 <p>The setup for seperated solvers is only a bit more complicated, if one uses the <a class="el" href="classcmf_1_1math_1_1_solute_water_integrator.html">SoluteWaterIntegrator</a> (SWI for further use). The SWI implements the interface of cmf integrators, but uses in our case for solvers internally, one for the water transport, and 3 for the 3 tracers. The SWI is created using a template for the water solver and one template for the solute solvers. When the SWI should integrate over a given timespan (eg. one hour), the water integrator is run first for a single timestep, that might be shorter than one hour for convergence reasons. Then the solute sovers are run after that for the same timestep. Since the boundary conditions of the solute system change at each time step by the water transport, multistep methods, like CVode or <a class="el" href="classcmf_1_1math_1_1_b_d_f2.html">BDF2</a> need to be reset at each internal timestep. Hence, single step methods, like <a class="el" href="classcmf_1_1math_1_1_implicit_euler.html">ImplicitEuler</a> are a good choice for the solute transport. However, you encouraged to do your own tests with different solvers.</p>
 <p>Be aware, when doing such an operator split, the error tolerance given for each solver is not globally valid, the numerical error for the whole system will be larger. In general, the numerical dispersion of tracers seem to increase a bit by using a SWI instead of a single solver for the whole system.</p>
-<div class="fragment"><div class="line"><span class="comment"># Template for the water solver</span></div><div class="line">wsolver = cmf.CVodeIntegrator(p,1e-9)</div><div class="line"><span class="comment"># Template for the solute solver</span></div><div class="line">ssolver = cmf.ImplicitEuler(p,1e-9)</div><div class="line"><span class="comment"># Creating the SWI, the storage objects of the project are internally assigned to the correct solver</span></div><div class="line">solver = cmf.SoluteWaterIntegrator(p.solutes, wsolver,ssolver,p)</div></div><!-- fragment --><h2>Run the model</h2>
+<div class="fragment"><div class="line"><span class="comment"># Template for the water solver</span></div><div class="line">wsolver = cmf.CVodeKrylov(p,1e-9)</div><div class="line"><span class="comment"># Template for the solute solver</span></div><div class="line">ssolver = cmf.ImplicitEuler(p,1e-9)</div><div class="line"><span class="comment"># Creating the SWI, the storage objects of the project are internally assigned to the correct solver</span></div><div class="line">solver = cmf.SoluteWaterIntegrator(p.solutes, wsolver,ssolver,p)</div></div><!-- fragment --><h2>Run the model</h2>
 <h3>Inital conditions</h3>
 <p>As initial conditions, we use the hydrostatic equilibrium for 1.5 m groundwater level, and a solute concentration of 1 g/m3 for X in the first layer, 1 g/m3 for Y in the 10th layer, 1g/m3 for Z in the 20th layer</p>
 <div class="fragment"><div class="line">c.saturated_depth = 1.5</div><div class="line">c.layers[0].conc(X,1.) c.layers[10].conc(Y,1.)</div><div class="line">c.layers[20].conc(Z,1.)</div></div><!-- fragment --><h3>Run the model</h3>
@@ -129,7 +129,7 @@ $(document).ready(function(){initNavTree('cmf_tut_solute_transport1_d.html','');
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:26</td>
+<td>Generated: Fri Apr 26 2019 12:43:39</td>
 </tr></table>
 </small></address>
 </body>

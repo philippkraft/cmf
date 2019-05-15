@@ -47,8 +47,6 @@ namespace cmf {
 			class RootUptakeStressFunction;
 		}
 		typedef void (*connectorfunction)(cmf::upslope::Cell&,cmf::upslope::Cell&,ptrdiff_t);
-		typedef void (*internal_connector)(cmf::upslope::Cell&);
-		typedef std::shared_ptr<SoilLayer> layer_ptr;
 		class SurfaceWater;
 		typedef std::shared_ptr<SurfaceWater> surfacewater_ptr;
 

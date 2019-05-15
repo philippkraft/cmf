@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">2.0.0b2</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -118,7 +118,7 @@ $(document).ready(function(){initNavTree('cmf_tut2d.html','');});
 <div class="fragment"><div class="line"><span class="keywordflow">for</span> c <span class="keywordflow">in</span> p:</div><div class="line">    c.set_rainfall(10.)</div></div><!-- fragment --><p>Boundary condition 4 (outlet) is applied by using a <a class="el" href="classcmf_1_1water_1_1_dirichlet_boundary.html">DirichletBoundary</a>, using the <code>NewOutlet</code> method of the project. The outlet is connected with the <a class="el" href="classcmf_1_1upslope_1_1connections_1_1_darcy.html">Darcy</a> connection to each soil layer. The surface water of the lowest cell <code>p\[\[-1\]</code>|is connected to the outlet with <a class="el" href="classcmf_1_1upslope_1_1connections_1_1_kinematic_surface_runoff.html">KinematicSurfaceRunoff</a></p>
 <div class="fragment"><div class="line">outlet = p.NewOutlet(<span class="stringliteral">&#39;outlet&#39;</span>,200,0,0)</div><div class="line"><span class="keywordflow">for</span> l <span class="keywordflow">in</span> p[-1].layers:</div><div class="line">    <span class="comment"># create a Darcy connection with 10m flow width between each soil layer</span></div><div class="line">    <span class="comment"># and the outlet</span></div><div class="line">    cmf.Darcy(l,outlet,FlowWidth=10.)</div><div class="line">cmf.KinematicSurfaceRunoff(p[-1].surfacewater,outlet,10.)</div></div><!-- fragment --><h3>Solver</h3>
 <p>The last thing needed for the complete setup code is the solver. With Richards and Darcy equation, we have again a stiff system and thus use the CVODE solver:</p>
-<div class="fragment"><div class="line">solver = cmf.CVodeIntegrator(p,1e-9)</div><div class="line">solver.t = datetime.datetime(2012,1,1)</div></div><!-- fragment --><h2>Visualization and runtime loop</h2>
+<div class="fragment"><div class="line">solver = cmf.CVodeKrylov(p,1e-9)</div><div class="line">solver.t = datetime.datetime(2012,1,1)</div></div><!-- fragment --><h2>Visualization and runtime loop</h2>
 <p>In the runtime code, you need to define which data should be collected during runtime and handle the data accordingly. In [wiki:CmfTut1d] we have used two different approaches - save data to a file during runtime and collect the data in a list for later visualization. You can of course apply both techniques here also. However, if you want to observe the state changes in a 2D hillslope and not only the runoff, an image with time on the one axis and depth on the other is not sufficient. Hence we are going to present the results live during the model run in an animation.</p>
 <p>First we need a kind of drawing, that shows all states. As always in cmf, you can design the output as you like. One possibility, drawing everey layer as a sheared rectangle colored by a state variable and arrows indicating the flux between the layers is already bundled with cmf in the <code>cmf.draw</code> module - the <code>hill_plot</code> class. This class is not very well documented, but you can have a look to the source code.</p>
 <p>This creates a <code>hill_plot</code> of our hillslope:</p>
@@ -138,7 +138,7 @@ $(document).ready(function(){initNavTree('cmf_tut2d.html','');});
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:26</td>
+<td>Generated: Fri Apr 26 2019 12:43:38</td>
 </tr></table>
 </small></address>
 </body>

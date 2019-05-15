@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">2.0.0b2</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -132,9 +132,9 @@ $(document).ready(function(){initNavTree('classcmf_1_1math_1_1_implicit_euler.ht
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a22b188f288aa8313f80c8e5ac895b73d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_implicit_euler.html#a22b188f288aa8313f80c8e5ac895b73d">ImplicitEuler</a> (<a class="el" href="classcmf_1_1math_1_1_state_variable_owner.html">StateVariableOwner</a> &amp;states, real epsilon=1e-9, cmf::math::Time tStepMin=cmf::math::timespan(10))</td></tr>
-<tr class="memdesc:a22b188f288aa8313f80c8e5ac895b73d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new FixPointImplicitEuler from a pointer to a vector of state variables.  <a href="#a22b188f288aa8313f80c8e5ac895b73d">More...</a><br /></td></tr>
-<tr class="separator:a22b188f288aa8313f80c8e5ac895b73d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88889f61ac91af114c2d1e3123c0438a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_implicit_euler.html#a88889f61ac91af114c2d1e3123c0438a">ImplicitEuler</a> (const cmf::math::state_list &amp;states, real epsilon=1e-9, cmf::math::Time tStepMin=cmf::math::timespan(10))</td></tr>
+<tr class="memdesc:a88889f61ac91af114c2d1e3123c0438a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new FixPointImplicitEuler from a pointer to a vector of state variables.  <a href="#a88889f61ac91af114c2d1e3123c0438a">More...</a><br /></td></tr>
+<tr class="separator:a88889f61ac91af114c2d1e3123c0438a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a840de5a9a9c2d003fcc51f301f597004"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_implicit_euler.html#a840de5a9a9c2d003fcc51f301f597004">ImplicitEuler</a> (real epsilon=1e-9, cmf::math::Time tStepMin=cmf::math::timespan(10))</td></tr>
 <tr class="memdesc:a840de5a9a9c2d003fcc51f301f597004"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new FixPointImplicitEuler.  <a href="#a840de5a9a9c2d003fcc51f301f597004">More...</a><br /></td></tr>
 <tr class="separator:a840de5a9a9c2d003fcc51f301f597004"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,57 +142,23 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_implicit_euler.html#aad12503f932f3bd168f3dde15b0c444d">ImplicitEuler</a> (const <a class="el" href="classcmf_1_1math_1_1_integrator.html">Integrator</a> &amp;)</td></tr>
 <tr class="memdesc:aad12503f932f3bd168f3dde15b0c444d"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy constructor <br /></td></tr>
 <tr class="separator:aad12503f932f3bd168f3dde15b0c444d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add4b10bf0ae6d94113cb8b4e8e630023"><td class="memItemLeft" align="right" valign="top"><a id="add4b10bf0ae6d94113cb8b4e8e630023"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#add4b10bf0ae6d94113cb8b4e8e630023">add_single_state</a> (cmf::math::StateVariable::ptr state)</td></tr>
-<tr class="memdesc:add4b10bf0ae6d94113cb8b4e8e630023"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a single state variable to the integrator. <br /></td></tr>
-<tr class="separator:add4b10bf0ae6d94113cb8b4e8e630023"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae0f12d53511c59abe2e30a91333fbd8"><td class="memItemLeft" align="right" valign="top"><a id="aae0f12d53511c59abe2e30a91333fbd8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_implicit_euler.html#aae0f12d53511c59abe2e30a91333fbd8">add_states</a> (<a class="el" href="classcmf_1_1math_1_1_state_variable_owner.html">cmf::math::StateVariableOwner</a> &amp;stateOwner)</td></tr>
-<tr class="memdesc:aae0f12d53511c59abe2e30a91333fbd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add state variables from a <a class="el" href="classcmf_1_1math_1_1_state_variable_owner.html" title="An abstract class, that owns one or more state variables, that can add them to a vector of state vari...">StateVariableOwner</a>. <br /></td></tr>
-<tr class="separator:aae0f12d53511c59abe2e30a91333fbd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac86fac0fd23efe759cffeac4417454f"><td class="memItemLeft" align="right" valign="top"><a id="aac86fac0fd23efe759cffeac4417454f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#aac86fac0fd23efe759cffeac4417454f">add_values_to_states</a> (const <a class="el" href="classcmf_1_1math_1_1num__array.html">num_array</a> &amp;operands)</td></tr>
-<tr class="memdesc:aac86fac0fd23efe759cffeac4417454f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the values in operands to the current states. <br /></td></tr>
-<tr class="separator:aac86fac0fd23efe759cffeac4417454f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c5aae0d613e54d4150b04f5930d05e5"><td class="memItemLeft" align="right" valign="top"><a id="a1c5aae0d613e54d4150b04f5930d05e5"></a>
 virtual <a class="el" href="classcmf_1_1math_1_1_integrator.html">Integrator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_implicit_euler.html#a1c5aae0d613e54d4150b04f5930d05e5">copy</a> () const</td></tr>
 <tr class="memdesc:a1c5aae0d613e54d4150b04f5930d05e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polymorphic copy constructor. <br /></td></tr>
 <tr class="separator:a1c5aae0d613e54d4150b04f5930d05e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e6b928fdb1fd0e5b4f37cd6cf21b0ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a6e6b928fdb1fd0e5b4f37cd6cf21b0ac">copy_dxdt</a> (<a class="el" href="classcmf_1_1math_1_1_time.html">Time</a> time, <a class="el" href="classcmf_1_1math_1_1num__array.html">num_array</a> &amp;destination, real factor=1) const</td></tr>
-<tr class="memdesc:a6e6b928fdb1fd0e5b4f37cd6cf21b0ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies the derivatives at time step "time" to a numeric vector using use_OpenMP.  <a href="#a6e6b928fdb1fd0e5b4f37cd6cf21b0ac">More...</a><br /></td></tr>
-<tr class="separator:a6e6b928fdb1fd0e5b4f37cd6cf21b0ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a051c7ae98bbb24b8659d6b9f8deb52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a3a051c7ae98bbb24b8659d6b9f8deb52">copy_dxdt</a> (<a class="el" href="classcmf_1_1math_1_1_time.html">Time</a> time, real *destination, real factor=1) const</td></tr>
-<tr class="memdesc:a3a051c7ae98bbb24b8659d6b9f8deb52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies the derivatives at time step "time" to an preallocated c array.  <a href="#a3a051c7ae98bbb24b8659d6b9f8deb52">More...</a><br /></td></tr>
-<tr class="separator:a3a051c7ae98bbb24b8659d6b9f8deb52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67c85b4e7809b0fe84457ade9275d5c4"><td class="memItemLeft" align="right" valign="top"><a id="a67c85b4e7809b0fe84457ade9275d5c4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a67c85b4e7809b0fe84457ade9275d5c4">copy_states</a> (<a class="el" href="classcmf_1_1math_1_1num__array.html">num_array</a> &amp;destination) const</td></tr>
-<tr class="memdesc:a67c85b4e7809b0fe84457ade9275d5c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies the states to a numeric vector using use_OpenMP. <br /></td></tr>
-<tr class="separator:a67c85b4e7809b0fe84457ade9275d5c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b065bb3435e9f9e39c358601f1d8dd9"><td class="memItemLeft" align="right" valign="top"><a id="a4b065bb3435e9f9e39c358601f1d8dd9"></a>
-real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a4b065bb3435e9f9e39c358601f1d8dd9">get_state</a> (ptrdiff_t position) const</td></tr>
-<tr class="memdesc:a4b065bb3435e9f9e39c358601f1d8dd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the statevariable at position Simplifies the assessment of state variables. <br /></td></tr>
-<tr class="separator:a4b065bb3435e9f9e39c358601f1d8dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a604090e9adb3ee9a44fa9bddc1132d0f"><td class="memItemLeft" align="right" valign="top"><a id="a604090e9adb3ee9a44fa9bddc1132d0f"></a>
-StateVariableList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a604090e9adb3ee9a44fa9bddc1132d0f">get_states</a> ()</td></tr>
-<tr class="memdesc:a604090e9adb3ee9a44fa9bddc1132d0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets the state variables of the integrator <br /></td></tr>
-<tr class="separator:a604090e9adb3ee9a44fa9bddc1132d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7054d3d8526f1c619d93c58b8f95c6fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_implicit_euler.html#a7054d3d8526f1c619d93c58b8f95c6fe">integrate</a> (<a class="el" href="classcmf_1_1math_1_1_time.html">cmf::math::Time</a> MaxTime, <a class="el" href="classcmf_1_1math_1_1_time.html">cmf::math::Time</a> TimeStep)</td></tr>
 <tr class="memdesc:a7054d3d8526f1c619d93c58b8f95c6fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integrates the vector of state variables.  <a href="#a7054d3d8526f1c619d93c58b8f95c6fe">More...</a><br /></td></tr>
 <tr class="separator:a7054d3d8526f1c619d93c58b8f95c6fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a976988a79f9412a6aebd72de9f9c1d21"><td class="memItemLeft" align="right" valign="top"><a id="a976988a79f9412a6aebd72de9f9c1d21"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a976988a79f9412a6aebd72de9f9c1d21">set_state</a> (ptrdiff_t position, real newState)</td></tr>
-<tr class="memdesc:a976988a79f9412a6aebd72de9f9c1d21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simplifies the assessment of state variables. <br /></td></tr>
-<tr class="separator:a976988a79f9412a6aebd72de9f9c1d21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1027f294d9f88e969db2fa1fd4e72fcc"><td class="memItemLeft" align="right" valign="top"><a id="a1027f294d9f88e969db2fa1fd4e72fcc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a1027f294d9f88e969db2fa1fd4e72fcc">set_states</a> (const <a class="el" href="classcmf_1_1math_1_1num__array.html">num_array</a> &amp;newStates)</td></tr>
-<tr class="memdesc:a1027f294d9f88e969db2fa1fd4e72fcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies the new states to the actual states. <br /></td></tr>
-<tr class="separator:a1027f294d9f88e969db2fa1fd4e72fcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a259cb5a711406a8c3e5d937eb9350cca"><td class="memItemLeft" align="right" valign="top"><a id="a259cb5a711406a8c3e5d937eb9350cca"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a259cb5a711406a8c3e5d937eb9350cca">size</a> () const</td></tr>
-<tr class="memdesc:a259cb5a711406a8c3e5d937eb9350cca"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of state variables <br /></td></tr>
-<tr class="separator:a259cb5a711406a8c3e5d937eb9350cca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebfcdbbd0fe4efbff10b180be50ca6bc"><td class="memItemLeft" align="right" valign="top"><a id="aebfcdbbd0fe4efbff10b180be50ca6bc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_implicit_euler.html#aebfcdbbd0fe4efbff10b180be50ca6bc">reset</a> () override</td></tr>
+<tr class="memdesc:aebfcdbbd0fe4efbff10b180be50ca6bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets any saved history (for multistep methods) <br /></td></tr>
+<tr class="separator:aebfcdbbd0fe4efbff10b180be50ca6bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ecf47ffd83a4d4f542b276c9aba3b28"><td class="memItemLeft" align="right" valign="top"><a id="a6ecf47ffd83a4d4f542b276c9aba3b28"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_implicit_euler.html#a6ecf47ffd83a4d4f542b276c9aba3b28">to_string</a> () const override</td></tr>
+<tr class="memdesc:a6ecf47ffd83a4d4f542b276c9aba3b28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Desrcibes the iterator. <br /></td></tr>
+<tr class="separator:a6ecf47ffd83a4d4f542b276c9aba3b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Integrate</div></td></tr>
-<tr class="memitem:ab3370f291032a47667e76aeb44573875"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#ab3370f291032a47667e76aeb44573875">integrate_until</a> (<a class="el" href="classcmf_1_1math_1_1_time.html">cmf::math::Time</a> t_max, <a class="el" href="classcmf_1_1math_1_1_time.html">cmf::math::Time</a> dt=<a class="el" href="classcmf_1_1math_1_1_time.html">Time</a>(), bool <a class="el" href="classcmf_1_1math_1_1_integrator.html#a7b0e029102ad38f4b814c6523aedb53d">reset</a>=false)</td></tr>
+<tr class="memitem:ab3370f291032a47667e76aeb44573875"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#ab3370f291032a47667e76aeb44573875">integrate_until</a> (<a class="el" href="classcmf_1_1math_1_1_time.html">cmf::math::Time</a> t_max, <a class="el" href="classcmf_1_1math_1_1_time.html">cmf::math::Time</a> dt=<a class="el" href="classcmf_1_1math_1_1_time.html">Time</a>(), bool <a class="el" href="classcmf_1_1math_1_1_implicit_euler.html#aebfcdbbd0fe4efbff10b180be50ca6bc">reset</a>=false)</td></tr>
 <tr class="memdesc:ab3370f291032a47667e76aeb44573875"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integrates the vector of state variables until t_max.  <a href="#ab3370f291032a47667e76aeb44573875">More...</a><br /></td></tr>
 <tr class="separator:ab3370f291032a47667e76aeb44573875"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -207,19 +173,15 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:a8226a814fb8ffcfdc8c8275adf3f9e63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Public access to integratables. <br /></td></tr>
 <tr class="separator:a8226a814fb8ffcfdc8c8275adf3f9e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ab8efb4a7e6f347412e300bc9e2d3ea"><td class="memItemLeft" align="right" valign="top"><a id="a7ab8efb4a7e6f347412e300bc9e2d3ea"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a7ab8efb4a7e6f347412e300bc9e2d3ea">reset_integratables</a></td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a7ab8efb4a7e6f347412e300bc9e2d3ea">reset_integratables</a> =false</td></tr>
 <tr class="memdesc:a7ab8efb4a7e6f347412e300bc9e2d3ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, the integratables of this solver are reset. <br /></td></tr>
 <tr class="separator:a7ab8efb4a7e6f347412e300bc9e2d3ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5417b852edf86debe82aef638cd344ce"><td class="memItemLeft" align="right" valign="top"><a id="a5417b852edf86debe82aef638cd344ce"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a5417b852edf86debe82aef638cd344ce">use_OpenMP</a></td></tr>
-<tr class="memdesc:a5417b852edf86debe82aef638cd344ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">if true (default), OpenMP is used calculate the right hand side function f(y,t) in parallel <br /></td></tr>
-<tr class="separator:a5417b852edf86debe82aef638cd344ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Accuracy parameters</div></td></tr>
 <tr class="memitem:a36eb0b53d4ca676a0015a9eac169de72"><td class="memItemLeft" align="right" valign="top"><a id="a36eb0b53d4ca676a0015a9eac169de72"></a>
-const real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a36eb0b53d4ca676a0015a9eac169de72">Epsilon</a></td></tr>
+const real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a36eb0b53d4ca676a0015a9eac169de72">Epsilon</a> =1e-9</td></tr>
 <tr class="memdesc:a36eb0b53d4ca676a0015a9eac169de72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tolerable error. <br /></td></tr>
 <tr class="separator:a36eb0b53d4ca676a0015a9eac169de72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -237,10 +199,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <a class="el" href="classcmf_1_1math_1_1_time.html">cmf::math::Time</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a72c9cc274dd9fe96b60f2ce8ac1db6cb">get_dt</a> () const</td></tr>
 <tr class="memdesc:a72c9cc274dd9fe96b60f2ce8ac1db6cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last time step. <br /></td></tr>
 <tr class="separator:a72c9cc274dd9fe96b60f2ce8ac1db6cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b0e029102ad38f4b814c6523aedb53d"><td class="memItemLeft" align="right" valign="top"><a id="a7b0e029102ad38f4b814c6523aedb53d"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a7b0e029102ad38f4b814c6523aedb53d">reset</a> ()</td></tr>
-<tr class="memdesc:a7b0e029102ad38f4b814c6523aedb53d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets any saved history (for multistep methods) <br /></td></tr>
-<tr class="separator:a7b0e029102ad38f4b814c6523aedb53d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b8450957199e4ab5e30676dac06be64"><td class="memItemLeft" align="right" valign="top"><a id="a8b8450957199e4ab5e30676dac06be64"></a>
 <a class="el" href="classcmf_1_1math_1_1_time.html">cmf::math::Time</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#a8b8450957199e4ab5e30676dac06be64">m_t</a></td></tr>
 <tr class="memdesc:a8b8450957199e4ab5e30676dac06be64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actual time of the solver. <br /></td></tr>
@@ -250,16 +208,12 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memdesc:a2555e45d78dda4746f757a85d788c521"><td class="mdescLeft">&#160;</td><td class="mdescRight">last time step of the solver <br /></td></tr>
 <tr class="separator:a2555e45d78dda4746f757a85d788c521"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58987ad20b2498e87154857253594308"><td class="memItemLeft" align="right" valign="top"><a id="a58987ad20b2498e87154857253594308"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>m_Iterations</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>m_Iterations</b> =0</td></tr>
 <tr class="separator:a58987ad20b2498e87154857253594308"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2899ca6a072ada4929af78ac92e058b"><td class="memItemLeft" align="right" valign="top"><a id="ae2899ca6a072ada4929af78ac92e058b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_integrator.html#ae2899ca6a072ada4929af78ac92e058b">AdjustTimestep</a> (<a class="el" href="classcmf_1_1math_1_1_time.html">cmf::math::Time</a> &amp;TimeStep, <a class="el" href="classcmf_1_1math_1_1_time.html">cmf::math::Time</a> MaxTime)</td></tr>
-<tr class="memdesc:ae2899ca6a072ada4929af78ac92e058b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Protected function to adjust the step width for stability reasons. <br /></td></tr>
-<tr class="separator:ae2899ca6a072ada4929af78ac92e058b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a22b188f288aa8313f80c8e5ac895b73d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22b188f288aa8313f80c8e5ac895b73d">&#9670;&nbsp;</a></span>ImplicitEuler() <span class="overload">[1/2]</span></h2>
+<a id="a88889f61ac91af114c2d1e3123c0438a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88889f61ac91af114c2d1e3123c0438a">&#9670;&nbsp;</a></span>ImplicitEuler() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -267,7 +221,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         <tr>
           <td class="memname"><a class="el" href="classcmf_1_1math_1_1_implicit_euler.html">ImplicitEuler</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classcmf_1_1math_1_1_state_variable_owner.html">StateVariableOwner</a> &amp;&#160;</td>
+          <td class="paramtype">const cmf::math::state_list &amp;&#160;</td>
           <td class="paramname"><em>states</em>, </td>
         </tr>
         <tr>
@@ -341,110 +295,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a6e6b928fdb1fd0e5b4f37cd6cf21b0ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e6b928fdb1fd0e5b4f37cd6cf21b0ac">&#9670;&nbsp;</a></span>copy_dxdt() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void copy_dxdt </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classcmf_1_1math_1_1_time.html">Time</a>&#160;</td>
-          <td class="paramname"><em>time</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classcmf_1_1math_1_1num__array.html">num_array</a> &amp;&#160;</td>
-          <td class="paramname"><em>destination</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">real&#160;</td>
-          <td class="paramname"><em>factor</em> = <code>1</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Copies the derivatives at time step "time" to a numeric vector using use_OpenMP. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">time</td><td><a class="el" href="classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times. ">Time</a> at which the derivatives should be calculated </td></tr>
-    <tr><td class="paramname">destination</td><td>Vector to be overwritten by the results </td></tr>
-    <tr><td class="paramname">factor</td><td>A factor that is multiplied to the derivate (e.g. unit conversion or integration length) </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a3a051c7ae98bbb24b8659d6b9f8deb52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a051c7ae98bbb24b8659d6b9f8deb52">&#9670;&nbsp;</a></span>copy_dxdt() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void copy_dxdt </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classcmf_1_1math_1_1_time.html">Time</a>&#160;</td>
-          <td class="paramname"><em>time</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">real *&#160;</td>
-          <td class="paramname"><em>destination</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">real&#160;</td>
-          <td class="paramname"><em>factor</em> = <code>1</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Copies the derivatives at time step "time" to an preallocated c array. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">time</td><td><a class="el" href="classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times. ">Time</a> at which the derivatives should be calculated </td></tr>
-    <tr><td class="paramname">destination</td><td>Allocated c array </td></tr>
-    <tr><td class="paramname">factor</td><td>A factor that is multiplied to the derivate (e.g. unit conversion or integration length) </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="a7054d3d8526f1c619d93c58b8f95c6fe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7054d3d8526f1c619d93c58b8f95c6fe">&#9670;&nbsp;</a></span>integrate()</h2>
 
@@ -552,7 +402,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:28</td>
+<td>Generated: Fri Apr 26 2019 12:43:42</td>
 </tr></table>
 </small></address>
 </body>

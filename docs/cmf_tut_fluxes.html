@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">2.0.0b2</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -108,7 +108,7 @@ $(document).ready(function(){initNavTree('cmf_tut_fluxes.html','');});
 <div class="fragment"><div class="line">print(W1.volume)</div><div class="line">print(W1.state)</div></div><!-- fragment --><p>The properties can also be used to change the states of the system, but this is only useful for initial conditions. Changing the state during runtime will of course destroy the water balance. Some of the <a class="el" href="cmf_tut_solver.html">solvers</a> will even ignore the changes if they are not reset. In our <a class="el" href="cmf_tut_first_model.html">simple example</a> we have used this already for the initial condition:</p>
 <div class="fragment"><div class="line">W1.volume = 1.0</div></div><!-- fragment --><h2>Getting fluxes</h2>
 <h3>Fluxes between two nodes</h3>
-<p>Getting fluxes is a little bit more complicated than getting states: Some fluxes depend only on the state of the connected water storages, like <code>kinematic_wave</code>, some on time, like the <a class="el" href="classcmf_1_1water_1_1_neumann_boundary.html">NeumannBoundary</a> and some on both. Since the storages / nodes do not know, what time we have (this is a property of the solver) you need to give the time into the query.</p>
+<p>Getting fluxes is a little bit more complicated than getting states: Some fluxes depend only on the state of the connected water storages, like <code>LinearStorageConnection</code>, some on time, like the <a class="el" href="classcmf_1_1water_1_1_neumann_boundary.html">NeumannBoundary</a> and some on both. Since the storages / nodes do not know, what time we have (this is a property of the solver) you need to give the time into the query.</p>
 <p>Fluxes between two nodes <code>source</code> and <code>target</code> at time <code>t</code> can be queried with the <code>flux_to</code> method:</p>
 <div class="fragment"><div class="line">source.flux_to(target,t)</div></div><!-- fragment --><p>For our toy model you can query all fluxes the following way:</p>
 <div class="fragment"><div class="line"><span class="comment"># get the current time</span></div><div class="line">t = solver.t</div><div class="line"><span class="comment"># Prints the fluxes in the model</span></div><div class="line">print(<span class="stringliteral">&#39;In-&gt;&#39;</span>,In.flux_to(W1,t),<span class="stringliteral">&#39;-&gt;W1-&gt;&#39;</span>,W1.flux_to(W2,t),<span class="stringliteral">&#39;-&gt;W2-&gt;&#39;</span>,W2.flux_to(Out,t))</div></div><!-- fragment --><p>You get the result of the <b>actual</b> flux between source and target in \(m^3/day\). If water is flowing from source to target, the result is positive else negative. If source and target are not connected you will get 0.0, and no error will occur. Since you get the actual flux, summing up the fluxes does not necessarily reflect the true accumulated flux, since in non-linear models, the integrated flux over a timestep does not equal the sum. CMF is very mass conservative, since the water volume is the integrated state variable, but by summing up you might get the impression of numerical errors in the integration.</p>
@@ -126,7 +126,7 @@ $(document).ready(function(){initNavTree('cmf_tut_fluxes.html','');});
 <div class="fragment"><div class="line">wb = sum(flux <span class="keywordflow">for</span> flux,node <span class="keywordflow">in</span> W1.fluxes(solver.t))</div></div><!-- fragment --><p>But you can also let cmf do the sum:</p>
 <div class="fragment"><div class="line">wb = W1.waterbalance(solver.t)</div></div><!-- fragment --><p>or even shorter:</p>
 <div class="fragment"><div class="line">wb = W1(solver.t)</div></div><!-- fragment --><p>This is especially useful for boundary conditions, however this does also only show the <b>actual</b> waterbalance and not the average waterbalance over a given timestep. Hence accumulating the waterbalance over time leads to numerical errors.</p>
-<p>If you need the exact waterbalance, you can create another waterstorage and connect the boundary condition with an <a class="el" href="classcmf_1_1water_1_1waterbalance__connection.html">waterbalance_connection</a></p>
+<p>If you need the exact waterbalance, you can create another waterstorage and connect the boundary condition with an <a class="el" href="classcmf_1_1water_1_1_waterbalance_flux.html">WaterbalanceFlux</a></p>
 <h2>Inspect your hydrological network</h2>
 <p>Sometimes, you might not be sure what storages are exactly connected to each other, or the following tools are just simpler to use, then inspecting your setup code.</p>
 <p>Getting a list of all the connections of one node is done by the <code>connections</code> property of a node (storage, boundary).</p>
@@ -143,7 +143,7 @@ Neumann boundary flux({Boundary at W1}&lt;-&gt;{W1})
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:26</td>
+<td>Generated: Fri Apr 26 2019 12:43:38</td>
 </tr></table>
 </small></address>
 </body>

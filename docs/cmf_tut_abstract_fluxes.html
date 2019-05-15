@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">2.0.0b2</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('cmf_tut_abstract_fluxes.html','');});
 <p>The class names of these connections are not very good and <b>will be changed</b> in CMF 2.0. Starting with cmf 1.4 the new names are already available</p>
 <h2>Balancing water flux at one node</h2>
 <h3>What does it mean?</h3>
-<p>The <a class="el" href="classcmf_1_1water_1_1waterbalance__connection.html">waterbalance_connection</a> (or WaterBalanceFlux for CMF 1.4+) is a connection to route the water balance of a node somewhere else. The connection checks the flux over all other connections of the <em>left</em> node and routes any surplus to the <em>right</em> node, or in case of a negative water balance of the <em>left</em> node, additional water is fetched from the right node. Or as a mathematical expression:</p>
+<p>The <a class="el" href="classcmf_1_1water_1_1_waterbalance_flux.html">WaterbalanceFlux</a> is a connection to route the water balance of a node somewhere else. The connection checks the flux over all other connections of the <em>left</em> node and routes any surplus to the <em>right</em> node, or in case of a negative water balance of the <em>left</em> node, additional water is fetched from the right node. Or as a mathematical expression:</p>
 <p class="formulaDsp">
 \[ q_{N} = -\sum_{i=1}^{N-1} q_{j}(V, V_{j}) \]
 </p>
@@ -129,9 +129,9 @@ $(document).ready(function(){initNavTree('cmf_tut_abstract_fluxes.html','');});
 </li>
 </ul>
 <p>With this automatic construction, the mass balance of the system is ensured - no water can vanish at the surface node, which happens when the water balance of <code>c.surfacewater.waterbalance(t) != 0</code>.</p>
-<p>If you choose to use an infiltration method that limits infiltration by saturation excess or hortonian overflow (e.g. <a class="el" href="simple_infiltration.html">SimpleInfiltration</a>), and the cell surface is still no storage, the local mass balance on the surface is not necessary zero, and the excess gets lost. To route the surface water excess without time lag to a river or the catchment outlet (good approximation for time steps &gt; 1h), you can use the water balance connection again.</p>
+<p>If you choose to use an infiltration method that limits infiltration by saturation excess or hortonian overflow (e.g. <a class="el" href="simple_infiltration.html">ConceptualInfiltration</a>), and the cell surface is still no storage, the local mass balance on the surface is not necessary zero, and the excess gets lost. To route the surface water excess without time lag to a river or the catchment outlet (good approximation for time steps &gt; 1h), you can use the water balance connection again.</p>
 <p>The following code is meant to expand the code snippet from above:</p>
-<div class="fragment"><div class="line">cmf.SimpleInfiltration(l, c.surfacewater)</div><div class="line"><span class="comment"># Create outlet</span></div><div class="line">out = p.NewOutlet(<span class="stringliteral">&#39;outlet&#39;</span>)</div><div class="line"><span class="comment"># moves all infiltration excess to the outlet</span></div><div class="line">cmf.waterbalance_connection(c.surfacewater, out)</div><div class="line">print(<a class="code" href="namespacecmf_1_1describe.html">cmf.describe</a>(c.surfacewater))</div></div><!-- fragment --><p>results in:</p>
+<div class="fragment"><div class="line">cmf.ConceptualInfiltration(l, c.surfacewater)</div><div class="line"><span class="comment"># Create outlet</span></div><div class="line">out = p.NewOutlet(<span class="stringliteral">&#39;outlet&#39;</span>)</div><div class="line"><span class="comment"># moves all infiltration excess to the outlet</span></div><div class="line">cmf.WaterbalanceFlux(c.surfacewater, out)</div><div class="line">print(<a class="code" href="namespacecmf_1_1describe.html">cmf.describe</a>(c.surfacewater))</div></div><!-- fragment --><p>results in:</p>
 <ul>
 <li>{Surface water of cell #0}:<ul>
 <li>waterbalance connection({Surface water of cell #0}&lt;-&gt;{outlet})</li>
@@ -147,9 +147,9 @@ $(document).ready(function(){initNavTree('cmf_tut_abstract_fluxes.html','');});
 <img src="CmfTutAbstractFluxes.png" alt="CmfTutAbstractFluxes.png"/>
 </div>
 <p>For some processes a constant flux from one water storage to another or a boundary condition is needed. These constant (but externally changeable) fluxes can be anthropogenic water fluxes, like the regulation of a dam or a pump rate, or some other process that has a flux limit. Eg. the model HBVlight assumes a constant percolation from the 1st to the 2nd groundwater storage. However, when the source becomes empty, the flux stops. To avoid a hard stop, the fluxes decreases linear to zero, when only volume for <code>decrease time</code> is left in the source storage.</p>
-<p>Currently, this type of connection is called "TechnicalFlux" but will be renamed to <a class="el" href="classcmf_1_1water_1_1_technical_flux.html">ConstantFlux</a> starting with CMF 1.4. The old name will stay in the C++ code and the docs until CMF 2.0.</p>
+<p>Currently, this type of connection is called <a class="el" href="classcmf_1_1water_1_1_constant_flux.html">ConstantFlux</a>.</p>
 <div class="fragment"><div class="line">p = cmf.project()</div><div class="line">w = p.NewStorage(&#39;source&#39;)</div><div class="line">o = p.NewOutlet(&#39;out&#39;)</div><div class="line">import pylab as plt</div><div class="line"># Add a constant flux</div><div class="line">constflux = cmf.ConstantFlux(w, o, 1.0, flux_decrease_time=cmf.day)</div><div class="line">w.volume = 2.0</div><div class="line">solver = cmf.RKFIntegrator(p)</div><div class="line">vol, flux = zip(*[(w.volume, w.flux_to(o, t)) </div><div class="line">                  for t in solver.run(cmf.Time(), cmf.day * 4, cmf.h)])</div><div class="line">plt.subplot(1, 2, 1)</div><div class="line">plt.plot(vol,color=&#39;r&#39;, label=&#39;Volume&#39;)</div><div class="line">plt.plot(flux,color=&#39;b&#39;, label=&#39;flux&#39;)</div><div class="line">plt.yticks([1], [&#39;$q_{max}$&#39;])</div><div class="line">plt.xticks([24, 48, 72],[1, 2, 3])</div><div class="line">plt.xlabel(&#39;days&#39;)</div><div class="line">plt.legend()</div><div class="line">plt.subplot(1, 2, 2)</div><div class="line">plt.plot(vol, flux, &#39;kx&#39;)</div><div class="line">plt.ylabel(&#39;flux $m^3/day$&#39;)</div><div class="line">plt.xlabel(&#39;volume $m^3$&#39;) </div></div><!-- fragment --><h2>Keeping a state constant as long as water is available</h2>
-<p>This connection holds the state of a water storage constant getting or releasing water to the other node of the connection. The flux between the nodes is proportional to the difference between the state of the storage and the defined target state of the storage. This connection will be renamed in CMF 2.0 to <a class="el" href="classcmf_1_1water_1_1statecontrol__connection.html">ConstantState</a> and is in CMF 1.3 and below only available as <code>statecontrol_connection</code>. </p>
+<p>This connection holds the state of a water storage constant getting or releasing water to the other node of the connection. The flux between the nodes is proportional to the difference between the state of the storage and the defined target state of the storage. This connection is called <a class="el" href="classcmf_1_1water_1_1_constant_state_flux.html">ConstantStateFlux</a>. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <hr class="footer"/><address class="footer"><small>
@@ -158,7 +158,7 @@ $(document).ready(function(){initNavTree('cmf_tut_abstract_fluxes.html','');});
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:26</td>
+<td>Generated: Fri Apr 26 2019 12:43:38</td>
 </tr></table>
 </small></address>
 </body>

@@ -6,5 +6,6 @@ var searchData=
   ['leave_5fwetness',['leave_wetness',['../classcmf_1_1upslope_1_1_cell.html#a05a001a79837996b8c7ca8c890738695',1,'cmf::upslope::Cell']]],
   ['left_5fnode',['left_node',['../classcmf_1_1water_1_1flux__connection.html#ae0e9b5abf63f318991ef48c7636ea92e',1,'cmf::water::flux_connection']]],
   ['linear_5fscale',['linear_scale',['../classcmf_1_1water_1_1linear__scale.html#a5a84e6f03c90970250870211ff1f8b29',1,'cmf::water::linear_scale']]],
+  ['lineargradientflux',['LinearGradientFlux',['../classcmf_1_1water_1_1_linear_gradient_flux.html#a1a854c75437d353beab895c5d567b14c',1,'cmf::water::LinearGradientFlux']]],
   ['linearstorageconnection',['LinearStorageConnection',['../classcmf_1_1water_1_1_linear_storage_connection.html#ae6deba565940efa05efffb3103ad4872',1,'cmf::water::LinearStorageConnection']]]
 ];

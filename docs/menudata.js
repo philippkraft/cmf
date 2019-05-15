@@ -25,7 +25,8 @@ var menudata={children:[
 {text:"Main Page",url:"index.html"},
 {text:"Tutorial",url:"tutorial.html",children:[
 {text:"Tutorial",url:"tutorial.html"},
-{text:"Publications",url:"publication_list.html"}]},
+{text:"Publications",url:"publication_list.html"},
+{text:"Original Publication",url:"ems2011.html"}]},
 {text:"API Documentation",url:"usergroup0.html",children:[
 {text:"Modules",url:"modules.html"},
 {text:"Namespace List",url:"namespaces.html",children:[
@@ -34,6 +35,7 @@ var menudata={children:[
 {text:"All",url:"namespacemembers.html",children:[
 {text:"c",url:"namespacemembers.html#index_c"},
 {text:"d",url:"namespacemembers.html#index_d"},
+{text:"e",url:"namespacemembers.html#index_e"},
 {text:"f",url:"namespacemembers.html#index_f"},
 {text:"g",url:"namespacemembers.html#index_g"},
 {text:"h",url:"namespacemembers.html#index_h"},

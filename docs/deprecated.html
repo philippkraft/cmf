@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">2.0.0b2</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -99,30 +99,8 @@ $(document).ready(function(){initNavTree('deprecated.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt><a class="anchor" id="_deprecated000007"></a>Class <a class="el" href="classcmf_1_1water_1_1bidirectional__kinematic__exchange.html">bidirectional_kinematic_exchange</a>  </dt>
-<dd>Behaviour unclear, will be removed <p class="formulaDsp">
-\[ q = q_{spill}^*-q_{suc}^* \\ q_{spill}^* = q_{spill} \left(\frac{V-V_{spill,min}}{V_{spill,min}}\right)^{\beta_{spill}} \\ q_{suc}^* = q_{suc} \left(\frac{V_{suc,max}-V}{V_{suc,max}}\right)^{\beta_{suc}} \]
-</p>
- </dd>
-<dt><a class="anchor" id="_deprecated000008"></a>Class <a class="el" href="classcmf_1_1water_1_1constraint__kinematic__wave.html">constraint_kinematic_wave</a>  </dt>
-<dd>Will be replaced by <a class="el" href="classcmf_1_1water_1_1_constraint_linear_storage_connection.html" title="Calculates flux out of a storage as a linear function of its volume, constraint by the volume stored ...">ConstraintLinearStorageConnection</a>, without beta and gamma. <p class="formulaDsp">
-\[ q = \frac 1 {t_r} {\left(\frac{V_{l} - V_{residual}}{V_0} \right)^\beta} \left(\frac{V_{r,max}-V_{r}}{V_{r,max}}\right)^\gamma\]
-</p>
- where:<ul>
-<li>\(V_l\) The actual volume stored by the left water storage</li>
-<li>\(V_{residual} [m^3]\) The volume of water not flowing out (default = 0)</li>
-<li>\(V_0\) The reference volume to scale the exponent (default = 1m3/day)</li>
-<li>\(\beta\) A parameter to shape the response curve. In case of \(\beta \neq 1\), \(t_r\) is not a residence time, but just a parameter.</li>
-<li>\(t_r [days]\) The residence time of the water in this storage in days</li>
-<li>\(V_{r,max}\) The capacity of the right water storage in m3</li>
-<li>\(V_{r}\) The actual volume of the right water storage</li>
-<li>\(\gamma\) A shape parameter for the target capacity constriction  </li>
-</ul>
-</dd>
 <dt><a class="anchor" id="_deprecated000002"></a>Class <a class="el" href="classcmf_1_1upslope_1_1connections_1_1_gradient_macro_flow.html">GradientMacroFlow</a>  </dt>
 <dd>The <a class="el" href="classcmf_1_1upslope_1_1_macro_pore.html" title="An additional water storage for a soil layer to model matrix water and macro pore water seperately...">MacroPore</a> model is still very experimental and not stable. Only for tryouts! </dd>
-<dt><a class="anchor" id="_deprecated000006"></a>Class <a class="el" href="classcmf_1_1water_1_1kinematic__wave.html">kinematic_wave</a>  </dt>
-<dd><a class="el" href="classcmf_1_1water_1_1kinematic__wave.html" title="Calculates flux out of a storage as a linear function of its volume to a power. ">kinematic_wave</a> is superseeded by <a class="el" href="classcmf_1_1water_1_1_linear_storage_connection.html" title="Calculates flux out of a storage as a linear function of its volume. ">LinearStorageConnection</a> and <a class="el" href="classcmf_1_1water_1_1_power_law_connection.html" title="Calculates flux out of a storage as a linear function of its volume to a power. ">PowerLawConnection</a> </dd>
 <dt><a class="anchor" id="_deprecated000003"></a>Class <a class="el" href="classcmf_1_1upslope_1_1connections_1_1_kinematic_macro_flow.html">KinematicMacroFlow</a>  </dt>
 <dd>The <a class="el" href="classcmf_1_1upslope_1_1_macro_pore.html" title="An additional water storage for a soil layer to model matrix water and macro pore water seperately...">MacroPore</a> model is still very experimental and not stable. Only for tryouts! </dd>
 <dt><a class="anchor" id="_deprecated000004"></a>Class <a class="el" href="classcmf_1_1upslope_1_1connections_1_1_m_a_c_r_olike_macro_micro_exchange.html">MACROlikeMacroMicroExchange</a>  </dt>
@@ -140,7 +118,7 @@ $(document).ready(function(){initNavTree('deprecated.html','');});
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:26</td>
+<td>Generated: Fri Apr 26 2019 12:43:39</td>
 </tr></table>
 </small></address>
 </body>

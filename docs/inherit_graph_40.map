@@ -1,26 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classcmf_1_1upslope_1_1conductable.html" title="An abstract interface for all classes providing a conductivity (e.g. " alt="" coords="211,157,303,184"/>
-<area shape="rect" id="node2" href="$classcmf_1_1upslope_1_1aquifer.html" title="A class to represent large groundwater storages, not bounded to the usual horizontal discretization s..." alt="" coords="422,208,482,235"/>
-<area shape="rect" id="node3" href="$classcmf_1_1upslope_1_1_soil_layer.html" title="A representation of a SoilLayer. " alt="" coords="414,259,490,285"/>
-<area shape="rect" id="node4" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="35,107,113,133"/>
-<area shape="rect" id="node5" href="$classcmf_1_1atmosphere_1_1_rain_source.html" title="An abstract class for different types of rainfall sources. " alt="" coords="212,107,301,133"/>
-<area shape="rect" id="node10" href="$classcmf_1_1water_1_1_dirichlet_boundary.html" title="Dirichlet (constant head) boundary condition. " alt="" coords="195,56,319,83"/>
-<area shape="rect" id="node11" href="$classcmf_1_1water_1_1_neumann_boundary.html" title="A Neumann boundary condition (constant flux boundary condition) " alt="" coords="191,208,323,235"/>
-<area shape="rect" id="node12" href="$classcmf_1_1water_1_1_system_bridge.html" title="A SystemBridge is an advanced feature for tuning of the calculation time. " alt="" coords="205,5,309,32"/>
-<area shape="rect" id="node13" href="$classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water. " alt="" coords="205,309,308,336"/>
-<area shape="rect" id="node6" href="$classcmf_1_1atmosphere_1_1_constant_rain_source.html" title="A simple implementation of RainSource. " alt="" coords="381,107,523,133"/>
-<area shape="rect" id="node7" href="$classcmf_1_1atmosphere_1_1_i_d_w_rainfall.html" title="A RainSource using a spatially interpolated rainfall intensity from all stations. ..." alt="" coords="407,157,497,184"/>
-<area shape="rect" id="node8" href="$classcmf_1_1atmosphere_1_1_rainfall_station_reference.html" title="References a single RainfallStation to provide rainfall intensity data. " alt="" coords="371,5,533,32"/>
-<area shape="rect" id="node9" href="$classcmf_1_1atmosphere_1_1_timeseries_rain_source.html" title="A rainsource with a timeseries. " alt="" coords="376,56,528,83"/>
-<area shape="rect" id="node14" href="$classcmf_1_1river_1_1_open_water_storage.html" title="An open water body. " alt="" coords="385,309,519,336"/>
-<area shape="rect" id="node17" href="$classcmf_1_1upslope_1_1_macro_pore.html" title="An additional water storage for a soil layer to model matrix water and macro pore water seperately..." alt="" coords="409,360,495,387"/>
-<area shape="rect" id="node15" href="$classcmf_1_1river_1_1_reach.html" title="A reach represents the section of a riover and is a specialization of an open water storage..." alt="" coords="603,284,661,311"/>
-<area shape="rect" id="node16" href="$classcmf_1_1upslope_1_1_surface_water.html" title="A child class of OpenWaterStorage to model surface water on a cell. " alt="" coords="581,335,683,361"/>
-<area shape="rect" id="node18" href="$classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable. " alt="" coords="24,284,124,311"/>
-<area shape="rect" id="node19" href="$classcmf_1_1water_1_1_solute_storage.html" title="A class for the storage of any tracer. " alt="" coords="205,259,309,285"/>
-<area shape="rect" id="node20" href="$classcmf_1_1math_1_1_state_variable_owner.html" title="An abstract class, that owns one or more state variables, that can add them to a vector of state vari..." alt="" coords="5,411,143,437"/>
-<area shape="rect" id="node21" href="$classcmf_1_1project.html" title="The study area, holding all cells, outlets and streams. " alt="" coords="226,360,287,387"/>
-<area shape="rect" id="node22" href="$classcmf_1_1upslope_1_1_cell.html" title="This class is the basic landscape object. " alt="" coords="235,411,279,437"/>
-<area shape="rect" id="node23" href="$classcmf_1_1upslope_1_1cell__vector.html" title="A cell vector holds a bunch of cells. " alt="" coords="215,461,298,488"/>
-<area shape="rect" id="node24" href="$classcmf_1_1water_1_1node__list.html" title="A collection of nodes for fast access of the waterbalance. " alt="" coords="219,512,294,539"/>
+<area shape="rect" id="node1" href="$classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stress_function.html" title="An abstract class to calculate the actual transpiration from potential transpiration. " alt="" coords="5,56,184,83"/>
+<area shape="rect" id="node2" href="$classcmf_1_1upslope_1_1_e_t_1_1_content_stress.html" title="A simple water content based stress model based on Feddes (1978) " alt="" coords="232,5,337,32"/>
+<area shape="rect" id="node3" href="$classcmf_1_1upslope_1_1_e_t_1_1_suction_stress.html" title="The classical suction depending transpiration Stress curve after Feddes. " alt="" coords="233,56,337,83"/>
+<area shape="rect" id="node4" href="$classcmf_1_1upslope_1_1_e_t_1_1_volume_stress.html" title="A WaterStressFunction based on the stored water volume of a layer. " alt="" coords="233,107,337,133"/>
 </map>

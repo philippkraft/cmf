@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">2.0.0b2</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -116,8 +116,29 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1cubicspline.html">cubicspline</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interpolates points with a cubic spline interpolation.  <a href="classcmf_1_1math_1_1cubicspline.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_c_vode_integrator.html">CVodeIntegrator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A wrapper class for the CVODE integrator from the SUNDIALS library.  <a href="classcmf_1_1math_1_1_c_vode_integrator.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_c_vode_adams.html">CVodeAdams</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Explizit multistep solver using CVode.  <a href="classcmf_1_1math_1_1_c_vode_adams.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_c_vode_banded.html">CVodeBanded</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">implicit BDF CVode solver with a banded Jacobian approximation  <a href="classcmf_1_1math_1_1_c_vode_banded.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_c_vode_base.html">CVodeBase</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract base class for different modes of the CVode solver.  <a href="classcmf_1_1math_1_1_c_vode_base.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_c_vode_dense.html">CVodeDense</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">implicit BDF CVode solver with full Jacobian approximation  <a href="classcmf_1_1math_1_1_c_vode_dense.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_c_vode_diag.html">CVodeDiag</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">implicit BDF CVode solver with a one line diagonal Jacobian approximation  <a href="classcmf_1_1math_1_1_c_vode_diag.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcmf_1_1math_1_1_c_vode_info.html">CVodeInfo</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reports the current state of a CVode solver.  <a href="structcmf_1_1math_1_1_c_vode_info.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_c_vode_krylov.html">CVodeKrylov</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">implicit BDF CVode solver with a Krylov preconditioner  <a href="classcmf_1_1math_1_1_c_vode_krylov.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcmf_1_1math_1_1_c_vode_options.html">CVodeOptions</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A set of options for all CVode3 solver.  <a href="structcmf_1_1math_1_1_c_vode_options.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcmf_1_1math_1_1_date.html">Date</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An absolute time, not for calculation. <a class="el" href="structcmf_1_1math_1_1_date.html" title="An absolute time, not for calculation. Date and Time are interchangable. ">Date</a> and <a class="el" href="classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times. ">Time</a> are interchangable.  <a href="structcmf_1_1math_1_1_date.html#details">More...</a><br /></td></tr>
@@ -154,9 +175,6 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_state_variable.html">StateVariable</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract class state variable.  <a href="classcmf_1_1math_1_1_state_variable.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_state_variable_owner.html">StateVariableOwner</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An abstract class, that owns one or more state variables, that can add them to a vector of state variables in a certain order.  <a href="classcmf_1_1math_1_1_state_variable_owner.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_time.html">Time</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A time class, used to pass around current modelling times.  <a href="classcmf_1_1math_1_1_time.html#details">More...</a><br /></td></tr>
@@ -266,7 +284,7 @@ const <a class="el" href="classcmf_1_1math_1_1_time.html">Time</a>&#160;</td><td
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:28</td>
+<td>Generated: Fri Apr 26 2019 12:43:41</td>
 </tr></table>
 </small></address>
 </body>

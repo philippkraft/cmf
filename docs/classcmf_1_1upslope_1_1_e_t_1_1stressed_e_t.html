@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">2.0.0b2</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -112,13 +112,14 @@ $(document).ready(function(){initNavTree('classcmf_1_1upslope_1_1_e_t_1_1stresse
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classcmf_1_1upslope_1_1_e_t_1_1stressed_e_t__inherit__graph.png" border="0" usemap="#stressed_e_t_inherit__map" alt="Inheritance graph"/></div>
 <map name="stressed_e_t_inherit__map" id="stressed_e_t_inherit__map">
-<area shape="rect" id="node3" href="classcmf_1_1upslope_1_1_e_t_1_1constant_e_tpot.html" title="A constant evapotranspiration. " alt="" coords="5,155,112,181"/>
-<area shape="rect" id="node4" href="classcmf_1_1upslope_1_1_e_t_1_1_hargreave_e_t.html" title="Calculates the Evapotranspiration using Hargreave&#39;s equation. " alt="" coords="137,155,231,181"/>
-<area shape="rect" id="node5" href="classcmf_1_1upslope_1_1_e_t_1_1_penman_monteith_e_t.html" title="Calculates the potential evapotranspiration according to FAO(1998) " alt="" coords="256,155,392,181"/>
-<area shape="rect" id="node6" href="classcmf_1_1upslope_1_1_e_t_1_1_priestley_taylor_e_t.html" title="Calculates the Evapotranspiration using Priestley&#45;Taylor equation. " alt="" coords="417,155,541,181"/>
-<area shape="rect" id="node7" href="classcmf_1_1upslope_1_1_e_t_1_1timeseries_e_tpot.html" title="A timeseries driven evapotranspiration. " alt="" coords="565,155,681,181"/>
-<area shape="rect" id="node8" href="classcmf_1_1upslope_1_1_e_t_1_1_turc_e_t.html" title="Calculates ETpot after Turc (DVWK). " alt="" coords="705,155,767,181"/>
-<area shape="rect" id="node2" href="classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="345,5,457,32"/>
+<area shape="rect" id="node3" href="classcmf_1_1upslope_1_1_e_t_1_1constant_e_tpot.html" title="A constant evapotranspiration. " alt="" coords="316,5,423,32"/>
+<area shape="rect" id="node4" href="classcmf_1_1upslope_1_1_e_t_1_1_hargreave_e_t.html" title="Calculates the Evapotranspiration using Hargreave&#39;s equation. " alt="" coords="322,56,417,83"/>
+<area shape="rect" id="node5" href="classcmf_1_1upslope_1_1_e_t_1_1_oudin_e_t.html" title="Calculates ETpot after Oudin et al 2005. " alt="" coords="333,107,405,133"/>
+<area shape="rect" id="node6" href="classcmf_1_1upslope_1_1_e_t_1_1_penman_monteith_e_t.html" title="Calculates the potential evapotranspiration according to FAO(1998) " alt="" coords="301,157,437,184"/>
+<area shape="rect" id="node7" href="classcmf_1_1upslope_1_1_e_t_1_1_priestley_taylor_e_t.html" title="Calculates the Evapotranspiration using Priestley&#45;Taylor equation. " alt="" coords="307,208,431,235"/>
+<area shape="rect" id="node8" href="classcmf_1_1upslope_1_1_e_t_1_1timeseries_e_tpot.html" title="A timeseries driven evapotranspiration. " alt="" coords="311,259,427,285"/>
+<area shape="rect" id="node9" href="classcmf_1_1upslope_1_1_e_t_1_1_turc_e_t.html" title="Calculates ETpot after Turc (DVWK). " alt="" coords="338,309,401,336"/>
+<area shape="rect" id="node2" href="classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="5,157,117,184"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -174,10 +175,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 flux_node::ptr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1flux__connection.html#ac62da234b5e528b9783dd4dcd81f5f47">right_node</a> () const</td></tr>
 <tr class="memdesc:ac62da234b5e528b9783dd4dcd81f5f47"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the right node of this connection <br /></td></tr>
 <tr class="separator:ac62da234b5e528b9783dd4dcd81f5f47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6caef9415c11054ab25f0c79e6093a94"><td class="memItemLeft" align="right" valign="top"><a id="a6caef9415c11054ab25f0c79e6093a94"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1stressed_e_t.html#a6caef9415c11054ab25f0c79e6093a94">set_stressfunction</a> (const <a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stess_function.html">RootUptakeStessFunction</a> &amp;stressfunction)</td></tr>
-<tr class="memdesc:a6caef9415c11054ab25f0c79e6093a94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the stress function to limit water uptake. <br /></td></tr>
-<tr class="separator:a6caef9415c11054ab25f0c79e6093a94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5edf702b615e8af8d847ecd63d13eb25"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1flux__connection.html#a5edf702b615e8af8d847ecd63d13eb25">set_tracer_filter</a> (real value)</td></tr>
 <tr class="memdesc:a5edf702b615e8af8d847ecd63d13eb25"><td class="mdescLeft">&#160;</td><td class="mdescRight">A value ranging from 0 to 1 to filter tracers out of the water flux.  <a href="#a5edf702b615e8af8d847ecd63d13eb25">More...</a><br /></td></tr>
 <tr class="separator:a5edf702b615e8af8d847ecd63d13eb25"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -294,7 +291,7 @@ const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="e
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:33</td>
+<td>Generated: Fri Apr 26 2019 12:43:48</td>
 </tr></table>
 </small></address>
 </body>

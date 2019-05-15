@@ -1,6 +1,7 @@
 var namespacecmf_1_1upslope_1_1connections =
 [
     [ "CanopyOverflow", "classcmf_1_1upslope_1_1connections_1_1_canopy_overflow.html", "classcmf_1_1upslope_1_1connections_1_1_canopy_overflow" ],
+    [ "ConceptualInfiltration", "classcmf_1_1upslope_1_1connections_1_1_conceptual_infiltration.html", "classcmf_1_1upslope_1_1connections_1_1_conceptual_infiltration" ],
     [ "Darcy", "classcmf_1_1upslope_1_1connections_1_1_darcy.html", "classcmf_1_1upslope_1_1connections_1_1_darcy" ],
     [ "DarcyKinematic", "classcmf_1_1upslope_1_1connections_1_1_darcy_kinematic.html", "classcmf_1_1upslope_1_1connections_1_1_darcy_kinematic" ],
     [ "DiffusiveMacroMicroExchange", "classcmf_1_1upslope_1_1connections_1_1_diffusive_macro_micro_exchange.html", "classcmf_1_1upslope_1_1connections_1_1_diffusive_macro_micro_exchange" ],
@@ -21,11 +22,9 @@ var namespacecmf_1_1upslope_1_1connections =
     [ "Richards", "classcmf_1_1upslope_1_1connections_1_1_richards.html", "classcmf_1_1upslope_1_1connections_1_1_richards" ],
     [ "Richards_lateral", "classcmf_1_1upslope_1_1connections_1_1_richards__lateral.html", "classcmf_1_1upslope_1_1connections_1_1_richards__lateral" ],
     [ "RutterInterception", "classcmf_1_1upslope_1_1connections_1_1_rutter_interception.html", "classcmf_1_1upslope_1_1connections_1_1_rutter_interception" ],
-    [ "SimpleInfiltration", "classcmf_1_1upslope_1_1connections_1_1_simple_infiltration.html", "classcmf_1_1upslope_1_1connections_1_1_simple_infiltration" ],
-    [ "SimpleTindexSnowMelt", "classcmf_1_1upslope_1_1connections_1_1_simple_tindex_snow_melt.html", "classcmf_1_1upslope_1_1connections_1_1_simple_tindex_snow_melt" ],
-    [ "SimplRichards", "classcmf_1_1upslope_1_1connections_1_1_simpl_richards.html", "classcmf_1_1upslope_1_1connections_1_1_simpl_richards" ],
     [ "Snowfall", "classcmf_1_1upslope_1_1connections_1_1_snowfall.html", "classcmf_1_1upslope_1_1connections_1_1_snowfall" ],
     [ "SWATPercolation", "classcmf_1_1upslope_1_1connections_1_1_s_w_a_t_percolation.html", "classcmf_1_1upslope_1_1connections_1_1_s_w_a_t_percolation" ],
+    [ "TempIndexSnowMelt", "classcmf_1_1upslope_1_1connections_1_1_temp_index_snow_melt.html", "classcmf_1_1upslope_1_1connections_1_1_temp_index_snow_melt" ],
     [ "TOPModelFlow", "classcmf_1_1upslope_1_1connections_1_1_t_o_p_model_flow.html", "classcmf_1_1upslope_1_1connections_1_1_t_o_p_model_flow" ],
     [ "TopographicGradientDarcy", "classcmf_1_1upslope_1_1connections_1_1_topographic_gradient_darcy.html", "classcmf_1_1upslope_1_1connections_1_1_topographic_gradient_darcy" ]
 ];

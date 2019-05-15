@@ -1,6 +1,5 @@
 <map id="project" name="project">
-<area shape="rect" id="node2" href="$classcmf_1_1math_1_1_state_variable_owner.html" title="An abstract class, that owns one or more state variables, that can add them to a vector of state vari..." alt="" coords="5,5,143,32"/>
-<area shape="rect" id="node3" href="$classcmf_1_1water_1_1solute__vector.html" title="Manages the solutes of the model. " alt="" coords="167,5,266,32"/>
-<area shape="rect" id="node4" href="$classcmf_1_1atmosphere_1_1_meteo_station_list.html" title="A list of meteorological stations. " alt="" coords="290,5,410,32"/>
-<area shape="rect" id="node5" href="$classcmf_1_1atmosphere_1_1_rainfall_station_list.html" title="A list of rainfall stations. " alt="" coords="435,5,561,32"/>
+<area shape="rect" id="node2" href="$classcmf_1_1water_1_1solute__vector.html" title="Manages the solutes of the model. " alt="" coords="5,5,104,32"/>
+<area shape="rect" id="node3" href="$classcmf_1_1atmosphere_1_1_meteo_station_list.html" title="A list of meteorological stations. " alt="" coords="128,5,248,32"/>
+<area shape="rect" id="node4" href="$classcmf_1_1atmosphere_1_1_rainfall_station_list.html" title="A list of rainfall stations. " alt="" coords="273,5,399,32"/>
 </map>

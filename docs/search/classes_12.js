@@ -1,11 +1,7 @@
 var searchData=
 [
-  ['shapefile',['Shapefile',['../classcmf_1_1geos__shapereader_1_1_shapefile.html',1,'cmf::geos_shapereader']]],
   ['shapemap',['ShapeMap',['../classcmf_1_1draw_1_1shapemap_1_1_shape_map.html',1,'cmf::draw::shapemap']]],
   ['shuttleworthwallace',['ShuttleworthWallace',['../classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html',1,'cmf::upslope::ET']]],
-  ['simpleinfiltration',['SimpleInfiltration',['../classcmf_1_1upslope_1_1connections_1_1_simple_infiltration.html',1,'cmf::upslope::connections']]],
-  ['simpletindexsnowmelt',['SimpleTindexSnowMelt',['../classcmf_1_1upslope_1_1connections_1_1_simple_tindex_snow_melt.html',1,'cmf::upslope::connections']]],
-  ['simplrichards',['SimplRichards',['../classcmf_1_1upslope_1_1connections_1_1_simpl_richards.html',1,'cmf::upslope::connections']]],
   ['snowfall',['Snowfall',['../classcmf_1_1upslope_1_1connections_1_1_snowfall.html',1,'cmf::upslope::connections']]],
   ['soillayer',['SoilLayer',['../classcmf_1_1upslope_1_1_soil_layer.html',1,'cmf::upslope']]],
   ['solute',['solute',['../structcmf_1_1water_1_1solute.html',1,'cmf::water']]],
@@ -13,10 +9,8 @@ var searchData=
   ['solutestorage',['SoluteStorage',['../classcmf_1_1water_1_1_solute_storage.html',1,'cmf::water']]],
   ['solutetimeseries',['SoluteTimeseries',['../classcmf_1_1water_1_1_solute_timeseries.html',1,'cmf::water']]],
   ['solutewaterintegrator',['SoluteWaterIntegrator',['../classcmf_1_1math_1_1_solute_water_integrator.html',1,'cmf::math']]],
-  ['statecontrol_5fconnection',['statecontrol_connection',['../classcmf_1_1water_1_1statecontrol__connection.html',1,'cmf::water']]],
   ['statevariable',['StateVariable',['../classcmf_1_1math_1_1_state_variable.html',1,'cmf::math']]],
-  ['statevariableowner',['StateVariableOwner',['../classcmf_1_1math_1_1_state_variable_owner.html',1,'cmf::math']]],
-  ['stopwatch',['StopWatch',['../classcmf_1_1stopwatch_1_1_stop_watch.html',1,'cmf::stopwatch']]],
+  ['stopwatch',['StopWatch',['../classcmf_1_1timetools_1_1_stop_watch.html',1,'cmf::timetools']]],
   ['stressedet',['stressedET',['../classcmf_1_1upslope_1_1_e_t_1_1stressed_e_t.html',1,'cmf::upslope::ET']]],
   ['subcatchment',['subcatchment',['../classcmf_1_1upslope_1_1subcatchment.html',1,'cmf::upslope']]],
   ['suctionstress',['SuctionStress',['../classcmf_1_1upslope_1_1_e_t_1_1_suction_stress.html',1,'cmf::upslope::ET']]],

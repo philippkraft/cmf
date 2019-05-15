@@ -13949,12 +13949,12 @@ std::string to_string() const =0 ";
 %feature("docstring") cmf::timetools::StopWatch "
 
 A stopwatch to estimated the total time of a process    Creating a
-StopWatch: >>>stopwatch=StopWatch(start,stop)  Start and end are
+StopWatch: >>>stopwatch=StopWatch(start, stop) Start and end are
 indicators to describe the progress of a process.  Start is the
 indicator value at the beginning of the process. As default they are
-0.0 and 1.0.  Starting the StopWatch again: >>>stopwatch.start()
+0.0 and 1.0.  Starting the StopWatch again: >>>stopwatch.restart()
 Getting the elapsed time, the total time and the remaining time of the
-process in seconds: >>>elapsed,total,remaining = stopwatch(progress)
+process in seconds: >>>elapsed, total, remaining = stopwatch(progress)
 Where progress is a process progress indicator matching start and stop
 Example: stopwatch=StopWatch(0,10) for i in range(10): time.sleep(1)
 print('elapsed = %0.2fs, total= %0.2fs, remaining = %0.2fs' %
@@ -13964,10 +13964,16 @@ stopwatch(i+1)) ";
 __init__(self, start=0.0, stop=1.0) ";
 
 %feature("docstring")  cmf::timetools::StopWatch::__call__ "def
-__call__(self, progress) ";
+__call__(self, progress)
 
-%feature("docstring")  cmf::timetools::StopWatch::start "def
-start(self) ";
+Returns the progress in wall clock time :param progress: The current
+position in the stopwatch :return: A 3-tuple of elapsed, total and
+remaining seconds of the task ";
+
+%feature("docstring")  cmf::timetools::StopWatch::restart "def
+restart(self)
+
+Restarts the stopwatch ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1stressed_e_t.xml
@@ -15687,6 +15693,9 @@ __iter__(self) ";
 
 %feature("docstring")  cmf::timetools::timerange::__len__ "def
 __len__(self) ";
+
+%feature("docstring")  cmf::timetools::timerange::__repr__ "def
+__repr__(self) ";
 
 
 // File: classcmf_1_1math_1_1timeseries.xml

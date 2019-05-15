@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">2.0.0b2</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -96,6 +96,7 @@ $(document).ready(function(){initNavTree('classcmf_1_1upslope_1_1_macro_pore.htm
 <div class="header">
   <div class="summary">
 <a href="classcmf_1_1upslope_1_1_macro_pore-members.html">List of all members</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
@@ -114,10 +115,9 @@ $(document).ready(function(){initNavTree('classcmf_1_1upslope_1_1_macro_pore.htm
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classcmf_1_1upslope_1_1_macro_pore__inherit__graph.png" border="0" usemap="#_macro_pore_inherit__map" alt="Inheritance graph"/></div>
 <map name="_macro_pore_inherit__map" id="_macro_pore_inherit__map">
-<area shape="rect" id="node2" href="classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water. " alt="" coords="147,80,249,107"/>
+<area shape="rect" id="node2" href="classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water. " alt="" coords="60,80,163,107"/>
 <area shape="rect" id="node3" href="classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable. " alt="" coords="5,5,105,32"/>
-<area shape="rect" id="node4" href="classcmf_1_1math_1_1_state_variable_owner.html" title="An abstract class, that owns one or more state variables, that can add them to a vector of state vari..." alt="" coords="129,5,267,32"/>
-<area shape="rect" id="node5" href="classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="291,5,369,32"/>
+<area shape="rect" id="node4" href="classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="130,5,207,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -127,11 +127,10 @@ $(document).ready(function(){initNavTree('classcmf_1_1upslope_1_1_macro_pore.htm
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classcmf_1_1upslope_1_1_macro_pore__coll__graph.png" border="0" usemap="#_macro_pore_coll__map" alt="Collaboration graph"/></div>
 <map name="_macro_pore_coll__map" id="_macro_pore_coll__map">
-<area shape="rect" id="node2" href="classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water. " alt="" coords="147,171,249,197"/>
+<area shape="rect" id="node2" href="classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water. " alt="" coords="40,171,143,197"/>
 <area shape="rect" id="node3" href="classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable. " alt="" coords="5,95,105,121"/>
-<area shape="rect" id="node4" href="classcmf_1_1math_1_1_state_variable_owner.html" title="An abstract class, that owns one or more state variables, that can add them to a vector of state vari..." alt="" coords="129,95,267,121"/>
-<area shape="rect" id="node5" href="classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="291,95,369,121"/>
-<area shape="rect" id="node6" href="classcmf_1_1geometry_1_1point.html" title="2D&#45;Point Class. " alt="" coords="305,5,355,32"/>
+<area shape="rect" id="node4" href="classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="130,95,207,121"/>
+<area shape="rect" id="node5" href="classcmf_1_1geometry_1_1point.html" title="2D&#45;Point Class. " alt="" coords="143,5,194,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -140,6 +139,13 @@ $(document).ready(function(){initNavTree('classcmf_1_1upslope_1_1_macro_pore.htm
 <p>If present, the soil layer water storage holds the matrix water and the <a class="el" href="classcmf_1_1upslope_1_1_macro_pore.html" title="An additional water storage for a soil layer to model matrix water and macro pore water seperately...">MacroPore</a> holds the water in the macro pore. Use cmf::upslope::Macropore::create to create a macropore storage.</p>
 <p>Use <a class="el" href="classcmf_1_1upslope_1_1connections_1_1_gradient_macro_flow.html" title="Gradient based flux from macro pore to macro pore. ">cmf::upslope::connections::GradientMacroFlow</a> or <a class="el" href="classcmf_1_1upslope_1_1connections_1_1_kinematic_macro_flow.html" title="Linear storage based flux from macro pore to macro pore. ">cmf::upslope::connections::KinematicMacroFlow</a> to model water flow between macro pores and a lateral connection (<a class="el" href="group__latflux.html">lateral subsurface fluxes</a>) like <a class="el" href="classcmf_1_1upslope_1_1connections_1_1_richards__lateral.html" title="Calculates the flux using Richard&#39;s equation for adjacent layers  where: ">cmf::upslope::connections::Richards_lateral</a> to connect the macro pore with the matrix.</p>
 <div class="fragment"><div class="line"><span class="keyword">import</span> cmf</div><div class="line">p=<a class="code" href="classcmf_1_1project.html">cmf.project</a>()</div><div class="line">c=p.NewCell(0,0,0,1000,<span class="keyword">True</span>)</div><div class="line"><span class="comment"># Add two layers</span></div><div class="line">c.add_layer(0.1, cmf.VanGenuchtenMualem())</div><div class="line">c.add_layer(0.2, cmf.VanGenuchtenMualem())</div><div class="line"><span class="comment"># Create Macropore storages</span></div><div class="line">macropores = [cmf.MacroPore.create(l,porefraction=0.05,Ksat=10.,density=0.05) <span class="keywordflow">for</span> l <span class="keywordflow">in</span> c.layers]</div><div class="line"><span class="comment"># Macro pore infiltration</span></div><div class="line">cmf.KinematicMacroFlow(c.surfacewater, macropores[0])</div><div class="line"><span class="comment"># Macro pore percolation</span></div><div class="line">cmf.KinematicMacroFlow(macropores[0], macropores[1])</div><div class="line"><span class="comment"># Macro / Micro exchange</span></div><div class="line"><span class="keywordflow">for</span> mp <span class="keywordflow">in</span> macropores:</div><div class="line">    cmf.Richards_lateral(mp.layer, mp, FlowWidth = mp.get_flowwidth(), Distance = mp.density/2)</div></div><!-- fragment --> </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a65038c02ffb04ca17a7479ad20b0b63c"><td class="memItemLeft" align="right" valign="top"><a id="a65038c02ffb04ca17a7479ad20b0b63c"></a>
+typedef std::vector&lt; <a class="el" href="classcmf_1_1math_1_1_state_variable.html#a09457664ddfda50e59692fb90f0fbf30">StateVariable</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1math_1_1_state_variable.html#a65038c02ffb04ca17a7479ad20b0b63c">list</a></td></tr>
+<tr class="memdesc:a65038c02ffb04ca17a7479ad20b0b63c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Not part of the API, used to create sparse structure. <br /></td></tr>
+<tr class="separator:a65038c02ffb04ca17a7479ad20b0b63c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ababf4d22a9d3952540e2204915dbc15b"><td class="memItemLeft" align="right" valign="top"><a id="ababf4d22a9d3952540e2204915dbc15b"></a>
@@ -215,14 +221,14 @@ real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_water_storage.html#afac22fccd2df2d35c22acfcb75239427">get_state_variable_content</a> () const</td></tr>
 <tr class="memdesc:afac22fccd2df2d35c22acfcb75239427"><td class="mdescLeft">&#160;</td><td class="mdescRight">A character indicating the integrated variable (either 'V' for Volume or 'h' for head) <br /></td></tr>
 <tr class="separator:afac22fccd2df2d35c22acfcb75239427"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a630ff0c86cdfcab272faf1aefb76ab9a"><td class="memItemLeft" align="right" valign="top"><a id="a630ff0c86cdfcab272faf1aefb76ab9a"></a>
-cmf::math::StateVariableList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_water_storage.html#a630ff0c86cdfcab272faf1aefb76ab9a">get_states</a> ()</td></tr>
-<tr class="memdesc:a630ff0c86cdfcab272faf1aefb76ab9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the state variables, owned by an object derived from StateVariableOwner, to the given vector. <br /></td></tr>
-<tr class="separator:a630ff0c86cdfcab272faf1aefb76ab9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66b668d3856b9bd2e1f84f296556570f"><td class="memItemLeft" align="right" valign="top"><a id="a66b668d3856b9bd2e1f84f296556570f"></a>
 real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_macro_pore.html#a66b668d3856b9bd2e1f84f296556570f">get_volume</a> () const</td></tr>
 <tr class="memdesc:a66b668d3856b9bd2e1f84f296556570f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the actual stored volume in this macropore in m3. <br /></td></tr>
 <tr class="separator:a66b668d3856b9bd2e1f84f296556570f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc4ae437d7a2f33ee85fe811fc8b6d0f"><td class="memItemLeft" align="right" valign="top"><a id="adc4ae437d7a2f33ee85fe811fc8b6d0f"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_water_storage.html#adc4ae437d7a2f33ee85fe811fc8b6d0f">is_connected</a> (const <a class="el" href="classcmf_1_1math_1_1_state_variable.html">cmf::math::StateVariable</a> &amp;other) const</td></tr>
+<tr class="memdesc:adc4ae437d7a2f33ee85fe811fc8b6d0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns True if this waterstorage is effected by another state. <br /></td></tr>
+<tr class="separator:adc4ae437d7a2f33ee85fe811fc8b6d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace09b97c37ded843368a00c04e89b55f"><td class="memItemLeft" align="right" valign="top"><a id="ace09b97c37ded843368a00c04e89b55f"></a>
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_water_storage.html#ace09b97c37ded843368a00c04e89b55f">is_storage</a> () const</td></tr>
 <tr class="memdesc:ace09b97c37ded843368a00c04e89b55f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true, since this is a storage. <br /></td></tr>
@@ -583,7 +589,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:30</td>
+<td>Generated: Fri Apr 26 2019 12:43:45</td>
 </tr></table>
 </small></address>
 </body>

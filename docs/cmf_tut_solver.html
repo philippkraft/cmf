@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">2.0.0b2</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -135,7 +135,7 @@ $(document).ready(function(){initNavTree('cmf_tut_solver.html','');});
 <h3>Fixpoint iteration</h3>
 <p>The <a href="http://en.wikipedia.org/wiki/Fixpoint">fixpoint iteration</a> is simpler to implement and needs only the right hand side function \(f(\vec u,t)\), however usually more iteration steps are needed. In that case you start with an explicit method, and repeat the left hand side by exchanging \(\vec u\) in \(f(\vec u,t)\) with the newly generated state, until the \(\vec u\) is not changing anymore (comes to a fix point). However, if the first guess is not "near enough" to the fixpoint, the iteration may not converge. In that case the process starts new with a smaller timestep. The implicit Euler method with fixpoint iteration is implemented in cmf as <a class="el" href="classcmf_1_1math_1_1_implicit_euler.html">ImplicitEuler</a>, and a 2nd order Gears method with fixpoint iteration is implemented as <a class="el" href="classcmf_1_1math_1_1_b_d_f2.html">BDF2</a>. Both methods are a good choice for systems not using the Richards equation with solute transport.</p>
 <h3>Newton iteration</h3>
-<p>The other option is to iterate using the <a href="http://en.wikipedia.org/wiki/Newton%27s_method">Newton iteration</a>. To use it, the Jacobian matrix \(\frac{d\vec f}{d\vec u}\) of the system needs to be known. Since it is quite difficult to calculate the exact Jacobian for a flexible system like cmf, only an numerical approximation is feasible to use. A second problem is, that the size of the Jacobian is \(N^2\), where \(N\) is the number of states. On the other hand, only few places of the Jacobian may have values different from zero (the connections). Advanced solvers can make use of the sparse structure to reduce the computational demand. One general purpose solver for ODE's using a simplified Newton iteration and an advanced error control mechanism is the CVODE solver by Hindmarsh et al. (2005). It uses an up to order 5 Gears method, but checks the stability constraint to reduce the order in very stiff cases. The freely available CVODE code is integrated into cmf. The solver is called and managed by the <a class="el" href="classcmf_1_1math_1_1_c_vode_integrator.html">CVodeIntegrator</a> class.</p>
+<p>The other option is to iterate using the <a href="http://en.wikipedia.org/wiki/Newton%27s_method">Newton iteration</a>. To use it, the Jacobian matrix \(\frac{d\vec f}{d\vec u}\) of the system needs to be known. Since it is quite difficult to calculate the exact Jacobian for a flexible system like cmf, only an numerical approximation is feasible to use. A second problem is, that the size of the Jacobian is \(N^2\), where \(N\) is the number of states. On the other hand, only few places of the Jacobian may have values different from zero (the connections). Advanced solvers can make use of the sparse structure to reduce the computational demand. One general purpose solver for ODE's using a simplified Newton iteration and an advanced error control mechanism is the CVODE solver by Hindmarsh et al. (2005). It uses an up to order 5 Gears method, but checks the stability constraint to reduce the order in very stiff cases. The freely available CVODE code is integrated into cmf. The solver is called and managed by the derivations of the <a class="el" href="classcmf_1_1math_1_1_c_vode_base.html">CVodeBase</a> class.</p>
 <p>Due to the high stiffness of models using the Richards equation, the CVODE solver is the choice for all models with physical based transport with variable saturation.</p>
 <h2>References</h2>
 <ul>
@@ -151,7 +151,7 @@ $(document).ready(function(){initNavTree('cmf_tut_solver.html','');});
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:26</td>
+<td>Generated: Fri Apr 26 2019 12:43:38</td>
 </tr></table>
 </small></address>
 </body>

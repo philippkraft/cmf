@@ -14,7 +14,7 @@ var searchData=
   ['flux_5fscale',['flux_scale',['../classcmf_1_1water_1_1_neumann_boundary.html#a5b1e1033bda54eb81ed5d4d57528fecc',1,'cmf::water::NeumannBoundary']]],
   ['flux_5fto',['flux_to',['../classcmf_1_1water_1_1flux__node.html#a66f1b6a9698be9ffce574833de835bd1',1,'cmf::water::flux_node']]],
   ['flux_5fwidth',['flux_width',['../classcmf_1_1upslope_1_1aquifer___darcy.html#a4b441e0521cc9ecfd1ef4f498b882d4e',1,'cmf::upslope::aquifer_Darcy']]],
-  ['fluxdecreasetime',['FluxDecreaseTime',['../classcmf_1_1water_1_1_technical_flux.html#aa78eb2340296a4d113120862324435e2',1,'cmf::water::TechnicalFlux']]],
+  ['fluxdecreasetime',['FluxDecreaseTime',['../classcmf_1_1water_1_1_constant_flux.html#aa78eb2340296a4d113120862324435e2',1,'cmf::water::ConstantFlux']]],
   ['fluxmap',['FluxMap',['../classcmf_1_1draw_1_1cellmap_1_1_flux_map.html',1,'cmf::draw::cellmap']]],
   ['fraction_5fat_5frootdepth',['fraction_at_rootdepth',['../classcmf_1_1upslope_1_1vegetation_1_1_vegetation.html#a9d6f89dfab56bc4e8dada813789e2f5b',1,'cmf::upslope::vegetation::Vegetation']]],
   ['freedrainagepercolation',['FreeDrainagePercolation',['../classcmf_1_1upslope_1_1connections_1_1_free_drainage_percolation.html',1,'cmf::upslope::connections']]],

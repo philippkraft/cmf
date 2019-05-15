@@ -32,7 +32,7 @@ cmf::math::Integrator::Integrator(const cmf::math::state_list &states, real epsi
 }
 
 cmf::math::Integrator::Integrator(const cmf::math::Integrator &other)
-: m_system(other.get_system()), Epsilon(other.Epsilon), m_t(other.m_t), m_dt(other.m_dt)
+: m_system(), Epsilon(other.Epsilon), m_t(other.m_t), m_dt(other.m_dt)
 {
 
 }
