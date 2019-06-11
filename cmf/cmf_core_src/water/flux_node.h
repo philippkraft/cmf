@@ -127,10 +127,10 @@ namespace cmf {
 			/// @brief Returns the water potential of the node in m waterhead
             ///
 			/// The base class water storage always returns the height of the location
-			virtual real get_potential() const
-			{
-				return position.z;
-			}
+			virtual real get_potential(cmf::math::Time=cmf::math::never) const
+            {
+                return position.z;
+            }
             /// @brief Sets the potential of this flux node
 			virtual void set_potential(real new_potential)
 			{

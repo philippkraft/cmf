@@ -105,52 +105,17 @@ namespace cmf {
 			/// @brief Returns the concentration of the given solute
 			real conc(const cmf::water::solute& _Solute) const;
 			/// @brief Returns the current WaterQuality (concentration of all solutes)
-			real conc(cmf::math::Time t,const cmf::water::solute& _Solute) const
-			{
-				return conc(_Solute);
-			}
+			real conc(cmf::math::Time t,const cmf::water::solute& _Solute) const override;
 			/// @brief Sets a new concentration
-			void conc(const cmf::water::solute& _Solute,real NewConcetration)
-			{
-				Solute(_Solute).set_conc(NewConcetration);
-			}
+			void conc(const cmf::water::solute& _Solute,real NewConcetration);
 			/// @brief Returns the volume of water in this storage in m<sup>3</sup>
-			virtual real get_volume() const {
-				if (get_state_variable_content()=='h')
-					return head_to_volume(get_state());
-				else
-					return get_state();
-
-			}
-			virtual real get_potential() const	{
-				if (get_state_variable_content()=='h')
-					return get_state();
-				else
-					return volume_to_head(get_state());
-			}
+			virtual real get_volume() const;
+			real get_potential(cmf::math::Time t = cmf::math::never) const override;
 
 			/// @brief Sets the volume of water in this storage in m<sup>3</sup>
-			virtual void set_volume(real newwatercontent)	{
-				if (get_state_variable_content()=='h')
-					set_state(volume_to_head(newwatercontent));
-				else
-					set_state(newwatercontent);
-			}
-			virtual void set_potential(real newpotential) {
-				if (get_state_variable_content()=='h')
-					set_state(newpotential);
-				else
-					set_state(head_to_volume(newpotential));
-			}
+			virtual void set_volume(real newwatercontent);
+			void set_potential(real newpotential) override;
 			virtual real dxdt(const cmf::math::Time& time);
-			real get_state() const
-			{
-				return cmf::math::StateVariable::get_state();
-			}
-			void set_state(real newState)
-			{
-				cmf::math::StateVariable::set_state(newState);
-			}
 			///@name Overrides of flux_node
 			//@{
 			virtual bool RecalcFluxes(cmf::math::Time t) {

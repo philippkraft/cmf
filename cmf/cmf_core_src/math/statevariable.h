@@ -117,6 +117,7 @@ namespace cmf {
             typedef std::shared_ptr<StateVariable> ptr;
             /// Returns the derivate of the state variable at time @c time
             virtual real dxdt(const cmf::math::Time& time)=0;
+
             /// Returns the current state of the variable
             real get_state() const {return m_State;}
             /// Gives access to the state variable

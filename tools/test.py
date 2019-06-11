@@ -20,6 +20,6 @@ print(start_dir)
 
 suite = loader.discover(start_dir, '*.py')
 
-runner = unittest.TextTestRunner()
+runner = unittest.TextTestRunner(verbosity=5)
 runner.run(suite)
 

@@ -42,8 +42,8 @@ namespace cmf {
 			
 			/// Returns the lower node
 			flux_node::ptr get_lower_node() const {return lower_node;}
-			double get_potential() const {
-				return lower_node->get_potential();
+			double get_potential(cmf::math::Time t) const {
+				return lower_node->get_potential(t);
 			}
 
 			/// Returns the currently integrated flux to the lower node

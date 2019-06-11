@@ -179,3 +179,40 @@ cmf::water::WaterStorage::operator cmf::math::state_list()
 	return q;
 }
 
+void WaterStorage::set_volume(real newwatercontent) {
+    if (get_state_variable_content()=='h')
+        set_state(volume_to_head(newwatercontent));
+    else
+        set_state(newwatercontent);
+}
+
+void WaterStorage::set_potential(real newpotential) {
+    if (get_state_variable_content()=='h')
+        set_state(newpotential);
+    else
+        set_state(head_to_volume(newpotential));
+}
+
+real WaterStorage::get_potential(cmf::math::Time t) const {
+    if (get_state_variable_content()=='h')
+        return get_state();
+    else
+        return volume_to_head(get_state());
+}
+
+real WaterStorage::get_volume() const {
+    if (get_state_variable_content()=='h')
+        return head_to_volume(get_state());
+    else
+        return get_state();
+
+}
+
+void WaterStorage::conc(const cmf::water::solute &_Solute, real NewConcetration) {
+    Solute(_Solute).set_conc(NewConcetration);
+}
+
+real WaterStorage::conc(cmf::math::Time t, const cmf::water::solute &_Solute) const {
+    return conc(_Solute);
+}
+

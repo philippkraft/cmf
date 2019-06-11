@@ -86,7 +86,7 @@ namespace cmf {
 			ptrdiff_t set_potentials(const cmf::math::num_array& potentials);
 			
 			/// @brief Returns the potential of the nodes
-			cmf::math::num_array get_potentials();
+            cmf::math::num_array get_potentials(cmf::math::Time t=cmf::math::never);
             
 
 			/// @brief Returns the sum of the water balances of the nodes

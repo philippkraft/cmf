@@ -120,7 +120,7 @@ real cmf::water::LinearGradientFlux::calc_q( cmf::math::Time t )
 		left = left_node(),
 		right = right_node();
 
-	real gradient = (left->get_potential() - right->get_potential())/d;
+	real gradient = (left->get_potential(t) - right->get_potential(t))/d;
 	real q = K*A*gradient;
 	return prevent_negative_volume(q);
 }

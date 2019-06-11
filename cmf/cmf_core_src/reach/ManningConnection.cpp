@@ -33,7 +33,7 @@ real cmf::river::Manning::calc_q( cmf::math::Time t )
 		d=cast->get_length();
 	real 
 		// Gradient of the reach
-		slope = get_slope(lnode,rnode,d),
+		slope = get_slope(t, lnode, rnode, d),
 		abs_slope=fabs(slope);
 	// No slope, no flux
 	if (abs_slope<=0) return 0.0;
@@ -75,14 +75,16 @@ Manning* create_manning( cmf::river::OpenWaterStorage::ptr left,cmf::water::flux
 }
 
 
-real cmf::river::Manning_Kinematic::get_slope(cmf::water::flux_node::ptr lnode, cmf::water::flux_node::ptr rnode, real d)
+real cmf::river::Manning_Kinematic::get_slope(cmf::math::Time t, cmf::water::flux_node::ptr lnode,
+                                              cmf::water::flux_node::ptr rnode, real d)
 {
 	return  (lnode->position.z - rnode->position.z)/d;	
 }
 
-real cmf::river::Manning_Diffusive::get_slope(cmf::water::flux_node::ptr lnode, cmf::water::flux_node::ptr rnode, real d)
+real cmf::river::Manning_Diffusive::get_slope(cmf::math::Time t, cmf::water::flux_node::ptr lnode,
+                                              cmf::water::flux_node::ptr rnode, real d)
 {
-	real s = (lnode->get_potential()-rnode->get_potential())/d;
+	real s = (lnode->get_potential(t)-rnode->get_potential(t))/d;
 	if (this->linear_slope_width) {
 		real
 			// Only a shortcut for faster writing

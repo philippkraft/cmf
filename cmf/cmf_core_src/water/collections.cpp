@@ -118,13 +118,13 @@ ptrdiff_t cmf::water::node_list::set_potentials( const cmf::math::num_array& pot
 	return ok_count;
 }
 
-cmf::math::num_array cmf::water::node_list::get_potentials()
+cmf::math::num_array cmf::water::node_list::get_potentials(cmf::math::Time t)
 {
 	cmf::math::num_array res(size());
 	#pragma omp parallel for
 	for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
 	{
-		res[i]=m_nodes[i]->get_potential();		
+		res[i]=m_nodes[i]->get_potential(t);
 	}
 	return res;
 }

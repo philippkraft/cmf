@@ -3176,45 +3176,44 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void swig_types[164]
 #define SWIGTYPE_p_iterator swig_types[165]
 #define SWIGTYPE_p_ptr swig_types[166]
-#define SWIGTYPE_p_std__shared_ptrT_SoilLayer_t swig_types[167]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t swig_types[168]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__IDWRainfall_t swig_types[169]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__MeteoStation_t swig_types[170]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainSource_t swig_types[171]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t swig_types[172]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStation_t swig_types[173]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__TimeseriesRainSource_t swig_types[174]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t swig_types[175]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__log_wind_profile_t swig_types[176]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t swig_types[177]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__math__integratable_t swig_types[178]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t swig_types[179]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__river__Reach_t swig_types[180]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t swig_types[181]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__aerodynamic_resistance_t swig_types[182]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__MacroPore_t swig_types[183]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t swig_types[184]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t swig_types[185]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__aquifer_t swig_types[186]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__conductable_t swig_types[187]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__DirichletBoundary_t swig_types[188]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__NeumannBoundary_t swig_types[189]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t swig_types[190]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SystemBridge_t swig_types[191]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t swig_types[192]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_connection_t swig_types[193]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_integrator_t swig_types[194]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t swig_types[195]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__waterbalance_integrator_t swig_types[196]
-#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t swig_types[197]
-#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t swig_types[198]
-#define SWIGTYPE_p_std__string swig_types[199]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__math__StateVariable_t_t swig_types[200]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t swig_types[201]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator swig_types[202]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator swig_types[203]
-static swig_type_info *swig_types[205];
-static swig_module_info swig_module = {swig_types, 204, 0, 0, 0, 0};
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t swig_types[167]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__IDWRainfall_t swig_types[168]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__MeteoStation_t swig_types[169]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainSource_t swig_types[170]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t swig_types[171]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStation_t swig_types[172]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__TimeseriesRainSource_t swig_types[173]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t swig_types[174]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__log_wind_profile_t swig_types[175]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t swig_types[176]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__math__integratable_t swig_types[177]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t swig_types[178]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__river__Reach_t swig_types[179]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t swig_types[180]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__aerodynamic_resistance_t swig_types[181]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__MacroPore_t swig_types[182]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t swig_types[183]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t swig_types[184]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__aquifer_t swig_types[185]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__conductable_t swig_types[186]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__DirichletBoundary_t swig_types[187]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__NeumannBoundary_t swig_types[188]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t swig_types[189]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SystemBridge_t swig_types[190]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t swig_types[191]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_connection_t swig_types[192]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_integrator_t swig_types[193]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t swig_types[194]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__waterbalance_integrator_t swig_types[195]
+#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t swig_types[196]
+#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t swig_types[197]
+#define SWIGTYPE_p_std__string swig_types[198]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__math__StateVariable_t_t swig_types[199]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t swig_types[200]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator swig_types[201]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator swig_types[202]
+static swig_type_info *swig_types[204];
+static swig_module_info swig_module = {swig_types, 203, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -21632,6 +21631,62 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_flux_node_get_potential(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::water::flux_node *arg1 = (cmf::water::flux_node *) 0 ;
+  cmf::math::Time arg2 = (cmf::math::Time) cmf::math::never ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::water::flux_node const > tempshared1 ;
+  std::shared_ptr< cmf::water::flux_node const > *smartarg1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "arg2", NULL 
+  };
+  real result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|O:flux_node_get_potential",kwnames,&obj0,&obj1)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "flux_node_get_potential" "', argument " "1"" of type '" "cmf::water::flux_node const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr< const cmf::water::flux_node > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr< const cmf::water::flux_node > * >(argp1);
+      arg1 = const_cast< cmf::water::flux_node * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr< const cmf::water::flux_node > * >(argp1);
+      arg1 = const_cast< cmf::water::flux_node * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  if (obj1) {
+    {
+      arg2 = convert_datetime_to_cmftime(obj1);
+      if (arg2 == cmf::math::never)  {
+        SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+      }
+    }
+  }
+  {
+    try {
+      result = (real)((cmf::water::flux_node const *)arg1)->get_potential(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_flux_node_is_empty(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::water::flux_node *arg1 = (cmf::water::flux_node *) 0 ;
@@ -30294,6 +30349,52 @@ SWIGINTERN PyObject *_wrap_node_list_remove(PyObject *SWIGUNUSEDPARM(self), PyOb
     
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_node_list_get_potentials(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::water::node_list *arg1 = (cmf::water::node_list *) 0 ;
+  cmf::math::Time arg2 = (cmf::math::Time) cmf::math::never ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "t", NULL 
+  };
+  cmf::math::num_array result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|O:node_list_get_potentials",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__water__node_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "node_list_get_potentials" "', argument " "1"" of type '" "cmf::water::node_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::node_list * >(argp1);
+  if (obj1) {
+    {
+      arg2 = convert_datetime_to_cmftime(obj1);
+      if (arg2 == cmf::math::never)  {
+        SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+      }
+    }
+  }
+  {
+    try {
+      result = (arg1)->get_potentials(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  {
+    resultobj = as_npy_array(result);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -78314,6 +78415,17 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"flux_node_position_set", _wrap_flux_node_position_set, METH_VARARGS, (char *)"flux_node_position_set(flux_node self, point position)"},
 	 { (char *)"flux_node_position_get", (PyCFunction)_wrap_flux_node_position_get, METH_O, (char *)"flux_node_position_get(flux_node self) -> point"},
+	 { (char *)"flux_node_get_potential", (PyCFunction) _wrap_flux_node_get_potential, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"flux_node_get_potential(flux_node self, Time arg3) -> real\n"
+		"\n"
+		"virtual\n"
+		"real get_potential() const\n"
+		"\n"
+		"Returns the water potential of the node in m waterhead.\n"
+		"\n"
+		"The base class water storage always returns the height of the location\n"
+		"\n"
+		""},
 	 { (char *)"flux_node_is_empty", (PyCFunction)_wrap_flux_node_is_empty, METH_O, (char *)"\n"
 		"flux_node_is_empty(flux_node self) -> double\n"
 		"\n"
@@ -79049,6 +79161,13 @@ static PyMethodDef SwigMethods[] = {
 		"remove(flux_node::ptr node)\n"
 		"\n"
 		"Removes a flux node from the list, returns true if successful. \n"
+		""},
+	 { (char *)"node_list_get_potentials", (PyCFunction) _wrap_node_list_get_potentials, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"node_list_get_potentials(node_list self, Time t) -> cmf::math::num_array\n"
+		"\n"
+		"cmf::math::num_array get_potentials()\n"
+		"\n"
+		"Returns the potential of the nodes. \n"
 		""},
 	 { (char *)"node_list_global_water_balance", (PyCFunction) _wrap_node_list_global_water_balance, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"node_list_global_water_balance(node_list self, Time t) -> real\n"
@@ -84523,7 +84642,6 @@ static swig_type_info _swigt__p_double = {"_p_double", "real *|double *", 0, 0, 
 static swig_type_info _swigt__p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void = {"_p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void", "cmf::upslope::connectorfunction|void (*)(cmf::upslope::Cell &,cmf::upslope::Cell &,ptrdiff_t)", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_iterator = {"_p_iterator", "iterator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ptr = {"_p_ptr", "ptr *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__shared_ptrT_SoilLayer_t = {"_p_std__shared_ptrT_SoilLayer_t", "std::shared_ptr< SoilLayer > *|cmf::upslope::layer_ptr *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t = {"_p_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t", "std::shared_ptr< cmf::atmosphere::ConstantRainSource > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__atmosphere__IDWRainfall_t = {"_p_std__shared_ptrT_cmf__atmosphere__IDWRainfall_t", "std::shared_ptr< cmf::atmosphere::IDWRainfall > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__atmosphere__MeteoStation_t = {"_p_std__shared_ptrT_cmf__atmosphere__MeteoStation_t", "std::shared_ptr< cmf::atmosphere::MeteoStation > *", 0, 0, (void*)0, 0};
@@ -84729,7 +84847,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void,
   &_swigt__p_iterator,
   &_swigt__p_ptr,
-  &_swigt__p_std__shared_ptrT_SoilLayer_t,
   &_swigt__p_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t,
   &_swigt__p_std__shared_ptrT_cmf__atmosphere__IDWRainfall_t,
   &_swigt__p_std__shared_ptrT_cmf__atmosphere__MeteoStation_t,
@@ -84935,7 +85052,6 @@ static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0
 static swig_cast_info _swigc__p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void[] = {  {&_swigt__p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_iterator[] = {  {&_swigt__p_iterator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ptr[] = {  {&_swigt__p_ptr, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__shared_ptrT_SoilLayer_t[] = {  {&_swigt__p_std__shared_ptrT_SoilLayer_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__atmosphere__IDWRainfall_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__atmosphere__IDWRainfall_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__atmosphere__MeteoStation_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__atmosphere__MeteoStation_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -85141,7 +85257,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void,
   _swigc__p_iterator,
   _swigc__p_ptr,
-  _swigc__p_std__shared_ptrT_SoilLayer_t,
   _swigc__p_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t,
   _swigc__p_std__shared_ptrT_cmf__atmosphere__IDWRainfall_t,
   _swigc__p_std__shared_ptrT_cmf__atmosphere__MeteoStation_t,

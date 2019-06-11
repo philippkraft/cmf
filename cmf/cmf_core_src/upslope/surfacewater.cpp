@@ -92,7 +92,7 @@ real DiffusiveSurfaceRunoff::calc_q( cmf::math::Time t )
 		dr = sright->get_depth() - sright->get_puddledepth();
 	} else if (oright.get()) { 
 		// For other openwaterstorage: Use depth over surface of left node
-		dr = oright->get_potential() - left->position.z;
+		dr = oright->get_potential(t) - left->position.z;
 	} else {	
 		// For other node: Use left depth
 		dr = dl;
@@ -102,7 +102,7 @@ real DiffusiveSurfaceRunoff::calc_q( cmf::math::Time t )
 	// Use mean of left and right depth as intermediate flow depth
 	real d = mean(dl,dr);
 	//  Get potential difference
-	real dPsi = left->get_potential() - nright->get_potential();
+	real dPsi = left->get_potential(t) - nright->get_potential(t);
 	
 	// Get slope
 	real grad = dPsi/m_distance;

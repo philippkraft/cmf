@@ -125,7 +125,7 @@ namespace cmf {
 			virtual void set_potential(real waterhead);
 			/// Returns the total potential in m
 			/// \f[ \Psi = \Psi_M + \Psi_G \f]
-			virtual real get_potential() const;
+			real get_potential(cmf::math::Time t = cmf::math::never) const override;
 			/// Returns the depth for saturation
 			/// \f[ z_{sat,this} = \left\{z_{cell}-\Psi_{tot} \mbox{ if } W<1 \\ z_{sat,upper layer} \right. \f]
 			virtual real get_saturated_depth() const;

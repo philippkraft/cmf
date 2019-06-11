@@ -27,9 +27,9 @@ real cmf::upslope::connections::MatrixInfiltration::calc_q( cmf::math::Time t )
 	cmf::upslope::Cell& cell=soilwater->cell;
 	real
 		// get_potential of the surface water				
-		Pot_surf = surfacewater->get_potential(),
+		Pot_surf = surfacewater->get_potential(t),
 		// get_potential of the soil water
-		Pot_soil = soilwater->get_potential(),
+		Pot_soil = soilwater->get_potential(t),
 		// Gradient surface->soil
 		gradient = (Pot_surf-Pot_soil)/(0.5*soilwater->get_thickness()),								
 		// Conductivity in m/day

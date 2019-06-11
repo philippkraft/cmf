@@ -42,8 +42,8 @@ real cmf::upslope::connections::Richards::calc_q( cmf::math::Time t )
 
 	real
 		distance = fabs(l1->position.z - right_node()->position.z),
-		Psi_t1=l1->get_potential(),
-		Psi_t2=right_node()->get_potential(),
+		Psi_t1=l1->get_potential(t),
+		Psi_t2=right_node()->get_potential(t),
 		gradient=(Psi_t1-Psi_t2)/distance,
 		K=0.0;
 	point direction =  l1->position - right_node()->position;
@@ -53,7 +53,7 @@ real cmf::upslope::connections::Richards::calc_q( cmf::math::Time t )
 		K = geo_mean(l1->get_K(direction),l2->get_K(direction));
 	else if (C2)
 		K = geo_mean(l1->get_K(direction),C2->get_K(direction));
-	else if (right_node()->is_empty() || right_node()->get_potential() < l1->get_gravitational_potential())
+	else if (right_node()->is_empty() || right_node()->get_potential(t) < l1->get_gravitational_potential())
 		K = l1->get_K(direction);
 	else
 		K = geo_mean(l1->get_K(direction),l1->get_Ksat());

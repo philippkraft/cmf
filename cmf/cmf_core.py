@@ -2879,6 +2879,21 @@ class flux_node(object):
 
     position = _swig_property(_cmf_core.flux_node_position_get, _cmf_core.flux_node_position_set)
 
+    def get_potential(self, *args, **kwargs):
+        """
+        get_potential(flux_node self, Time arg2) -> real
+
+        virtual
+        real get_potential() const
+
+        Returns the water potential of the node in m waterhead.
+
+        The base class water storage always returns the height of the location
+
+        """
+        return _cmf_core.flux_node_get_potential(self, *args, **kwargs)
+
+
     def is_empty(self, *args, **kwargs):
         """
         is_empty(flux_node self) -> double
@@ -2922,6 +2937,7 @@ flux_node.get_3d_flux = new_instancemethod(_cmf_core.flux_node_get_3d_flux, None
 flux_node.waterbalance = new_instancemethod(_cmf_core.flux_node_waterbalance, None, flux_node)
 flux_node.__call__ = new_instancemethod(_cmf_core.flux_node___call__, None, flux_node)
 flux_node.conc = new_instancemethod(_cmf_core.flux_node_conc, None, flux_node)
+flux_node.get_potential = new_instancemethod(_cmf_core.flux_node_get_potential, None, flux_node)
 flux_node.is_empty = new_instancemethod(_cmf_core.flux_node_is_empty, None, flux_node)
 _cmf_core.flux_node_swigregister(flux_node)
 # flux_node end
@@ -4412,6 +4428,17 @@ class node_list(object):
         return _cmf_core.node_list_remove(self, *args, **kwargs)
 
 
+    def get_potentials(self, *args, **kwargs):
+        """
+        get_potentials(node_list self, Time t) -> cmf::math::num_array
+
+        cmf::math::num_array get_potentials()
+
+        Returns the potential of the nodes. 
+        """
+        return _cmf_core.node_list_get_potentials(self, *args, **kwargs)
+
+
     def global_water_balance(self, *args, **kwargs):
         """
         global_water_balance(node_list self, Time t) -> real
@@ -4575,6 +4602,7 @@ node_list.__getslice = new_instancemethod(_cmf_core.node_list___getslice, None, 
 node_list.__cmf_state_list_interface__ = new_instancemethod(_cmf_core.node_list___cmf_state_list_interface__, None, node_list)
 node_list.append = new_instancemethod(_cmf_core.node_list_append, None, node_list)
 node_list.remove = new_instancemethod(_cmf_core.node_list_remove, None, node_list)
+node_list.get_potentials = new_instancemethod(_cmf_core.node_list_get_potentials, None, node_list)
 node_list.global_water_balance = new_instancemethod(_cmf_core.node_list_global_water_balance, None, node_list)
 node_list.water_balance = new_instancemethod(_cmf_core.node_list_water_balance, None, node_list)
 node_list.conc = new_instancemethod(_cmf_core.node_list_conc, None, node_list)
