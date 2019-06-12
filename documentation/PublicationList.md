@@ -18,13 +18,18 @@ If you are refering to cmf in a publication, please cite:
     surface water and habitat interactions in riparian ecosystems [online available](http://geb.uni-giessen.de/geb/volltexte/2018/13746/pdf/MaierNadine_2018_09_21.pdf)
 
 ## Applications in peer reviewed journal articles
+
+  - Kellner, J., Houska, T., Manderscheid, R., Weigel, H., Breuer, L., & Kraft, P. (2019).:
+    Response of maize biomass and soil water fluxes on elevated \f$CO_2\f$ and drought – 
+    from field experiments to process‐based simulations. 
+    Global Change Biology. https://doi.org/10.1111/gcb.14723
   - Jehn, F. U., Breuer, L., Houska, T., Bestian, K., and Kraft, P.: 
     Incremental model breakdown to assess the multi-hypotheses problem, 
     Hydrol. Earth Syst. Sci., 22, 4565-4581, 
     [full text](https://doi.org/10.5194/hess-22-4565-2018), 2018. 
   - Maier, N., Breuer, L., Chamorro A., Kraft, P., Houska, T.: Multi-Source 
     Uncertainty Analysis in Simulating Floodplain Inundation under Climate Change
-    Water 10(6), 809; doi:10.3390/w10060809 (registering DOI), 
+    Water 10(6), 809; doi:10.3390/w1006080, 
     [full text](https://www.mdpi.com/2073-4441/10/6/809) 2018 
   - Maier, N., Breuer, L., Kraft, P.: Prediction and uncertainty
     analysis of a parsimonious floodplain surface water - groundwater
