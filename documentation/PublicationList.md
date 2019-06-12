@@ -19,6 +19,11 @@ If you are refering to cmf in a publication, please cite:
 
 ## Applications in peer reviewed journal articles
 
+
+  - Kellner, J., Houska, T., Manderscheid, R., Weigel, H., Breuer, L., & Kraft, P. (2019).:
+    Response of maize biomass and soil water fluxes on elevated \f$CO_2\f$ and drought – 
+    from field experiments to process‐based simulations. 
+    Global Change Biology. https://doi.org/10.1111/gcb.14723
   - Jehn, F. U., Breuer, L., Houska, T., Bestian, K., and Kraft, P.: 
     Incremental model breakdown to assess the multi-hypotheses problem, 
     Hydrol. Earth Syst. Sci., 22, 4565-4581, 
