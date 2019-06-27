@@ -283,15 +283,6 @@ static bool check_time(PyObject* dt) {
         for i in range(self.size()):
             yield self.get_i(i)
 
-    def interpolate(self,begin,end,step):
-        """ Returns a generator returning the interpolated values at the timesteps """
-        if step>self.step():
-            ts=self.reduce_avg(begin,step)
-        else:
-            ts=self
-        for t in timerange(step,end,step):
-            yield ts[t]
-
     def __radd__(self,other):
         return self + other
 
@@ -352,7 +343,7 @@ static bool check_time(PyObject* dt) {
         import pandas as pd
         import numpy as np
 
-        return pd.Series(data=self.as_array(),index=(t.AsPython() for t in self.iter_time()))
+        return pd.Series(data=self.as_array(),index=(t.as_datetime() for t in self.iter_time()))
         
     @classmethod
     def from_sequence(cls, begin, step, sequence, interpolation_mode=1):
