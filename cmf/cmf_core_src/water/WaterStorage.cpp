@@ -216,3 +216,5 @@ real WaterStorage::conc(cmf::math::Time t, const cmf::water::solute &_Solute) co
     return conc(_Solute);
 }
 
+bool WaterStorage::is_storage() const {return true;}
+

@@ -72,7 +72,7 @@ namespace cmf {
 			/// @brief A character indicating the integrated variable (either 'V' for Volume or 'h' for head)
 			void set_state_variable_content(char content);
 			/// @brief Returns true, since this is a storage
-			virtual bool is_storage() const {return true;}
+			bool is_storage() const override;
 			/// @brief Returns True if this waterstorage is effected by another state
 			virtual bool is_connected(const cmf::math::StateVariable& other) const;
 #ifndef SWIG

@@ -1,5 +1,5 @@
 #include "simple_connections.h"
-
+#include <stdexcept>
 
 void cmf::water::set_flux( flux_node::ptr source,flux_node::ptr target,real flux_value)
 {
@@ -7,7 +7,7 @@ void cmf::water::set_flux( flux_node::ptr source,flux_node::ptr target,real flux
 	if (con) {
 		con->flux = (con->left_node() == source ? flux_value  : -flux_value);
 	} else {
-		throw std::runtime_error("No external controlled connection between " 
+		throw std::runtime_error("No external controlled connection between "
 			+ source->to_string() + " and " 
 			+ target->to_string()+". \n You can create one overriding any existing connection (Python):\n>>> cmf.connect(" + source->Name + "," + target->Name + ",flux)");
 	}
@@ -95,14 +95,14 @@ real cmf::water::ConstraintLinearStorageFlux::calc_q(cmf::math::Time t)
 
 cmf::water::ConstantStateFlux::ConstantStateFlux( cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end,
 															 real _target_state, cmf::math::Time _reaction_time ) 
-: flux_connection(controlled_storage,other_end, "State controlling flux"), target_state(_target_state), reaction_time(_reaction_time)
+: flux_connection(controlled_storage, other_end, "State controlling flux"), target_state(_target_state), reaction_time(_reaction_time)
 {
 	NewNodes();
 }
 
 void cmf::water::ConstantStateFlux::NewNodes()
 {
-	source = cmf::water::WaterStorage::cast(left_node());
+    source = cmf::water::WaterStorage::cast(this->left_node());
 }
 
 real cmf::water::ConstantStateFlux::calc_q( cmf::math::Time t )
@@ -119,34 +119,67 @@ real cmf::water::LinearGradientFlux::calc_q( cmf::math::Time t )
 	flux_node::ptr 
 		left = left_node(),
 		right = right_node();
-
-	real gradient = (left->get_potential(t) - right->get_potential(t))/d;
-	real q = K*A*gradient;
+    real
+        lpot = left->get_potential(t),
+        rpot = right->get_potential(t),
+	    q = Q1 * (lpot - rpot) / d;
 	return prevent_negative_volume(q);
 }
 
-cmf::water::LinearGradientFlux::LinearGradientFlux( cmf::water::WaterStorage::ptr left,
-	cmf::water::WaterStorage::ptr right, real _K,real _d/*=1.0*/, real _A/*=1.0*/ )
-	: flux_connection(left,right,"generic gradient connection")
+cmf::water::LinearGradientFlux::LinearGradientFlux( cmf::water::flux_node::ptr left,
+	cmf::water::flux_node::ptr right, real _Q1,real _d/*=1.0*/)
+	: flux_connection(left,right,"linear gradient connection"), Q1(_Q1)
 {
-}
+    /* TODO: Reinclude when #71 is solved
+    if (!left) {
+        use_count = shared_this.use_count();
+        // kill_me();
+        use_count = shared_this.use_count();
+        throw std::runtime_error("left node is null");
+    }
+    if (!right) {
+        use_count = shared_this.use_count();
+        // kill_me();
+        use_count = shared_this.use_count();
+        throw std::runtime_error("right node is null");
+    }
+    if (!(left->is_storage() || right->is_storage())) {
+        use_count = shared_this.use_count();
+        // kill_me();
+        use_count = shared_this.use_count();
+        throw std::runtime_error("both nodes without storage");
+    }
 
+
+    if (d <= 0) {
+        kill_me();
+        throw std::runtime_error("Cannot create a LinearGradientFlux with a distance <= 0 m");
+    }
+    if (Q1 <= 0) {
+        kill_me();
+        throw std::runtime_error("LinearGradientFlux.Q1 <= 0");
+    }
+     */
+    d = _d <= 0 ? left->position.distanceTo(right->position) : _d;
+
+}
 
 cmf::water::WaterbalanceFlux::WaterbalanceFlux(flux_node::ptr source, flux_node::ptr target)
 	: flux_connection(source, target, "waterbalance connection")
 {
+    // Check if this is the first waterbalance connection
 	/*
-	// Check if this is the first waterbalance connection
 	cmf::water::connection_list source_cons = source->get_connections();
-	for (cmf::water::connection_list::const_iterator it = source_cons.begin(); it != source_cons.end(); ++it)
+	for (auto con: source->get_connections())
 	{
-		if ((**it).type == "waterbalance connection") {
-			throw std::runtime_error(source->to_string() + 
+		if (con->type == "waterbalance connection" && con.get() != this) {
+		    kill_me();
+			throw cmf::water::flux_connection_construction_error(shared_this, source->to_string() +
 				" has already a waterbalance connection: " + 
-				(**it).to_string());
+				con->to_string());
 		}
 	}
-	*/
+	 */
 	RecalcAlways = true;
 }
 
