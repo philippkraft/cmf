@@ -17,7 +17,7 @@
 // Get Documentation
 
 %feature("compactdefaultargs");
-%include "docstrings.i"
+// %include "docstrings.i"
 %feature("autodoc","1");
 
 // Usage for automated downcast
@@ -35,9 +35,11 @@
         SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
         SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (...) {
+        SWIG_exception(SWIG_RuntimeError, "unknown error");
     }
-    
 }
+
 %include "attribute.i"
 
 /* #define SWIG_SHARED_PTR_SUBNAMESPACE */

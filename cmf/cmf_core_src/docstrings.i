@@ -189,6 +189,7 @@ Returns the concentration of the given solute. ";
 
 %feature("docstring")  cmf::upslope::aquifer::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute) const
+override
 
 Returns the current WaterQuality (concentration of all solutes) ";
 
@@ -247,8 +248,8 @@ Takes account for anisotropy
 
 ";
 
-%feature("docstring")  cmf::upslope::aquifer::get_potential "virtual
-real get_potential() const
+%feature("docstring")  cmf::upslope::aquifer::get_potential "real
+get_potential(cmf::math::Time t=cmf::math::never) const override
 
 Returns the water potential of the node in m waterhead.
 
@@ -260,7 +261,9 @@ The base class water storage always returns the height of the location
 Returns the project, this node is part of. ";
 
 %feature("docstring")  cmf::upslope::aquifer::get_state "real
-get_state() const ";
+get_state() const
+
+Returns the current state of the variable. ";
 
 %feature("docstring")
 cmf::upslope::aquifer::get_state_variable_content "char
@@ -300,7 +303,9 @@ void set_potential(real new_potential)
 Sets the potential of this flux node. ";
 
 %feature("docstring")  cmf::upslope::aquifer::set_state "void
-set_state(real newState) ";
+set_state(real newState)
+
+Gives access to the state variable. ";
 
 %feature("docstring")
 cmf::upslope::aquifer::set_state_variable_content "void
@@ -2271,7 +2276,7 @@ Returns the actual rainfall intensity in mm/day. ";
 
 %feature("docstring")
 cmf::atmosphere::ConstantRainSource::get_potential "virtual real
-get_potential() const
+get_potential(cmf::math::Time=cmf::math::never) const
 
 Returns the water potential of the node in m waterhead.
 
@@ -4242,7 +4247,7 @@ Returns the sum of all flux vectors. ";
 %feature("docstring")  cmf::water::DirichletBoundary::get_connections
 "cmf::water::connection_list get_connections() const ";
 
-%feature("docstring")  cmf::water::DirichletBoundary::get_potential "real get_potential() const
+%feature("docstring")  cmf::water::DirichletBoundary::get_potential "real get_potential(cmf::math::Time t=cmf::math::never) const override
 
 Returns the water potential of the node in m waterhead.
 
@@ -4280,7 +4285,13 @@ Remove the connection. ";
 %feature("docstring")  cmf::water::DirichletBoundary::set_conc "virtual void set_conc(const cmf::water::solute &_Solute, double value)
 ";
 
-%feature("docstring")  cmf::water::DirichletBoundary::set_potential "void set_potential(real new_potential)
+%feature("docstring")
+cmf::water::DirichletBoundary::set_dynamic_potential "void
+set_dynamic_potential(cmf::math::timeseries ts)
+
+Sets the potential of the boundary condition as a timeseries. ";
+
+%feature("docstring")  cmf::water::DirichletBoundary::set_potential "void set_potential(real new_potential) override
 
 Sets the potential of this flux node. ";
 
@@ -4999,7 +5010,7 @@ Returns the sum of all flux vectors. ";
 %feature("docstring")  cmf::water::flux_node::get_connections "cmf::water::connection_list get_connections() const ";
 
 %feature("docstring")  cmf::water::flux_node::get_potential "virtual
-real get_potential() const
+real get_potential(cmf::math::Time=cmf::math::never) const
 
 Returns the water potential of the node in m waterhead.
 
@@ -6193,7 +6204,7 @@ Returns the sum of all flux vectors. ";
 
 Returns the actual rainfall intensity in mm/day. ";
 
-%feature("docstring")  cmf::atmosphere::IDWRainfall::get_potential "virtual real get_potential() const
+%feature("docstring")  cmf::atmosphere::IDWRainfall::get_potential "virtual real get_potential(cmf::math::Time=cmf::math::never) const
 
 Returns the water potential of the node in m waterhead.
 
@@ -7669,26 +7680,22 @@ needs to be a water storage
 
 .. math::
 
-     q = K A
-    \\\\frac{\\\\Psi_{l}-\\\\Psi_{r}}{d} 
+     q = Q_1 \\\\nabla \\\\Psi 
 
-where:  :math:`q`: the resulting
-flux in :math:`m^3/day`
+where:  :math:`q`: the resulting flux in :math:`m^3/day`
 
-:math:`K`: the conductivity of the connection
+:math:`Q_1`: Flux over the connection for a unity gradient ( :math:`\\\\nabla \\\\Psi = 1`) in :math:`\\\\frac{m^3}{day}`
 
-:math:`A`: the area of the connection cross section
-
-:math:`\\\\Psi`: The hydraulic head of the (l)eft, resp. (r)ight node of the
-connection
+:math:`\\\\nabla \\\\Psi = \\\\frac{\\\\Psi_{l}-\\\\Psi_{r}}{d}`: The
+hydraulic gradient of the (l)eft, resp. (r)ight node of the connection
 
 :math:`d`: The topographic length of the connection in m
 
 C++ includes: simple_connections.h ";
 
 %feature("docstring")
-cmf::water::LinearGradientFlux::LinearGradientFlux "LinearGradientFlux(cmf::water::WaterStorage::ptr left,
-cmf::water::WaterStorage::ptr right, real K, real d=1.0, real A=1.0)
+cmf::water::LinearGradientFlux::LinearGradientFlux "LinearGradientFlux(cmf::water::flux_node::ptr left,
+cmf::water::flux_node::ptr right, real Q1, real d=-1.0)
 
 Creates a generic gradient based flux, if enough water is present in
 the source.
@@ -7700,11 +7707,9 @@ left:  The left node of the connection
 
 right:  The right node of the connection
 
-K:  the conductivity of the connection in m/day
+Q1:  Flux over the connection for a unity gradient ( :math:`\\\\nabla \\\\Psi = 1`) in :math:`\\\\frac{m^3}{day}`
 
-d:  the topographic lenght of the connection in m
-
-A:  the area of the connection cross section in m2 ";
+d:  the topographic lenght of the connection in m ";
 
 %feature("docstring")  cmf::water::LinearGradientFlux::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
@@ -8258,6 +8263,7 @@ Returns the concentration of the given solute. ";
 
 %feature("docstring")  cmf::upslope::MacroPore::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute) const
+override
 
 Returns the current WaterQuality (concentration of all solutes) ";
 
@@ -8393,7 +8399,7 @@ The fraction of the macro pores in m3/m3. This adds to the porosity of
 the layer. ";
 
 %feature("docstring")  cmf::upslope::MacroPore::get_potential "real
-get_potential() const
+get_potential(cmf::math::Time t=cmf::math::never) const
 
 Returns the actual water level in the macropore in m above reference.
 ";
@@ -8403,7 +8409,9 @@ Returns the actual water level in the macropore in m above reference.
 Returns the project, this node is part of. ";
 
 %feature("docstring")  cmf::upslope::MacroPore::get_state "real
-get_state() const ";
+get_state() const
+
+Returns the current state of the variable. ";
 
 %feature("docstring")
 cmf::upslope::MacroPore::get_state_variable_content "char
@@ -8438,7 +8446,9 @@ Sets the water level in the macropore. Be aware of not setting it
 below the lower boundary. ";
 
 %feature("docstring")  cmf::upslope::MacroPore::set_state "void
-set_state(real newState) ";
+set_state(real newState)
+
+Gives access to the state variable. ";
 
 %feature("docstring")
 cmf::upslope::MacroPore::set_state_variable_content "void
@@ -9590,7 +9600,7 @@ Returns the sum of all flux vectors. ";
 
 The timeseries of the boundary flux. ";
 
-%feature("docstring")  cmf::water::NeumannBoundary::get_potential "virtual real get_potential() const
+%feature("docstring")  cmf::water::NeumannBoundary::get_potential "virtual real get_potential(cmf::math::Time=cmf::math::never) const
 
 Returns the water potential of the node in m waterhead.
 
@@ -9919,7 +9929,8 @@ Replaces slow Python code like: ";
 
 Returns the positions of the nodes. ";
 
-%feature("docstring")  cmf::water::node_list::get_potentials "cmf::math::num_array get_potentials()
+%feature("docstring")  cmf::water::node_list::get_potentials "cmf::math::num_array get_potentials(cmf::math::Time
+t=cmf::math::never)
 
 Returns the potential of the nodes. ";
 
@@ -10286,7 +10297,7 @@ IVolumeHeightFunction& get_height_function() const
 
 The functional relation between volume, depth and exposed area. ";
 
-%feature("docstring")  cmf::river::OpenWaterStorage::get_potential "virtual real get_potential() const
+%feature("docstring")  cmf::river::OpenWaterStorage::get_potential "real get_potential(cmf::math::Time t=cmf::math::never) const override
 
 Returns the water potential of the node in m waterhead.
 
@@ -10298,7 +10309,9 @@ The base class water storage always returns the height of the location
 Returns the project, this node is part of. ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::get_state "real
-get_state() const ";
+get_state() const
+
+Returns the current state of the variable. ";
 
 %feature("docstring")
 cmf::river::OpenWaterStorage::get_state_variable_content "char
@@ -10331,12 +10344,14 @@ set_depth(real new_depth) ";
 cmf::river::OpenWaterStorage::set_height_function "virtual void
 set_height_function(const IVolumeHeightFunction &val) ";
 
-%feature("docstring")  cmf::river::OpenWaterStorage::set_potential "virtual void set_potential(real newpotential)
+%feature("docstring")  cmf::river::OpenWaterStorage::set_potential "void set_potential(real newpotential) override
 
 Sets the potential of this flux node. ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::set_state "void
-set_state(real newState) ";
+set_state(real newState)
+
+Gives access to the state variable. ";
 
 %feature("docstring")
 cmf::river::OpenWaterStorage::set_state_variable_content "void
@@ -11835,7 +11850,7 @@ Returns the rainfall intensity in mm/day at time t. ";
 
 %feature("docstring")
 cmf::atmosphere::RainfallStationReference::get_potential "virtual
-real get_potential() const
+real get_potential(cmf::math::Time=cmf::math::never) const
 
 Returns the water potential of the node in m waterhead.
 
@@ -11941,7 +11956,7 @@ Returns the sum of all flux vectors. ";
 
 Returns the actual rainfall intensity in mm/day. ";
 
-%feature("docstring")  cmf::atmosphere::RainSource::get_potential "virtual real get_potential() const
+%feature("docstring")  cmf::atmosphere::RainSource::get_potential "virtual real get_potential(cmf::math::Time=cmf::math::never) const
 
 Returns the water potential of the node in m waterhead.
 
@@ -12123,8 +12138,8 @@ get_length() const
 
 Returns the length of the reach. ";
 
-%feature("docstring")  cmf::river::Reach::get_potential "virtual real
-get_potential() const
+%feature("docstring")  cmf::river::Reach::get_potential "real
+get_potential(cmf::math::Time t=cmf::math::never) const override
 
 Returns the water potential of the node in m waterhead.
 
@@ -12146,7 +12161,9 @@ Returns the channel shape. ";
 Returns the reach most downstream from this reach. ";
 
 %feature("docstring")  cmf::river::Reach::get_state "real get_state()
-const ";
+const
+
+Returns the current state of the variable. ";
 
 %feature("docstring")  cmf::river::Reach::get_state_variable_content "char get_state_variable_content() const
 
@@ -12213,13 +12230,15 @@ set_outlet(cmf::water::flux_node::ptr outlet)
 
 Connects the reach to an outlet, e.g. a boundary condition. ";
 
-%feature("docstring")  cmf::river::Reach::set_potential "virtual void
-set_potential(real newpotential)
+%feature("docstring")  cmf::river::Reach::set_potential "void
+set_potential(real newpotential) override
 
 Sets the potential of this flux node. ";
 
 %feature("docstring")  cmf::river::Reach::set_state "void
-set_state(real newState) ";
+set_state(real newState)
+
+Gives access to the state variable. ";
 
 %feature("docstring")  cmf::river::Reach::set_state_variable_content "void set_state_variable_content(char content)
 
@@ -13333,6 +13352,7 @@ Returns the concentration of the given solute. ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute) const
+override
 
 Returns the current WaterQuality (concentration of all solutes) ";
 
@@ -13444,7 +13464,8 @@ get_porosity() const
 
 Returns the mean porosity in the layer. ";
 
-%feature("docstring")  cmf::upslope::SoilLayer::get_potential "virtual real get_potential() const
+%feature("docstring")  cmf::upslope::SoilLayer::get_potential "real
+get_potential(cmf::math::Time t=cmf::math::never) const override
 
 Returns the total potential in m 
 
@@ -13482,7 +13503,9 @@ cmf::upslope::RetentionCurve& get_soil() const
 Returns the soil properties of the water storage. ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::get_state "real
-get_state() const ";
+get_state() const
+
+Returns the current state of the variable. ";
 
 %feature("docstring")
 cmf::upslope::SoilLayer::get_state_variable_content "char
@@ -13564,7 +13587,9 @@ Sets the root fraction in this layer explicitly. ";
 void set_soil(const cmf::upslope::RetentionCurve &r_curve) ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::set_state "void
-set_state(real newState) ";
+set_state(real newState)
+
+Gives access to the state variable. ";
 
 %feature("docstring")
 cmf::upslope::SoilLayer::set_state_variable_content "void
@@ -14249,7 +14274,7 @@ get Manning roughness (n) of the surface
 
 From Python use this as a property: ";
 
-%feature("docstring")  cmf::upslope::SurfaceWater::get_potential "virtual real get_potential() const
+%feature("docstring")  cmf::upslope::SurfaceWater::get_potential "real get_potential(cmf::math::Time t=cmf::math::never) const override
 
 Returns the water potential of the node in m waterhead.
 
@@ -14267,7 +14292,9 @@ Get water depth at which runoff starts.
 From Python use this as a property: ";
 
 %feature("docstring")  cmf::upslope::SurfaceWater::get_state "real
-get_state() const ";
+get_state() const
+
+Returns the current state of the variable. ";
 
 %feature("docstring")
 cmf::upslope::SurfaceWater::get_state_variable_content "char
@@ -14309,7 +14336,7 @@ set Manning roughness (n) of the surface
 
 From Python use this as a property: ";
 
-%feature("docstring")  cmf::upslope::SurfaceWater::set_potential "virtual void set_potential(real newpotential)
+%feature("docstring")  cmf::upslope::SurfaceWater::set_potential "void set_potential(real newpotential) override
 
 Sets the potential of this flux node. ";
 
@@ -14320,7 +14347,9 @@ Set water depth at which runoff starts.
 From Python use this as a property: ";
 
 %feature("docstring")  cmf::upslope::SurfaceWater::set_state "void
-set_state(real newState) ";
+set_state(real newState)
+
+Gives access to the state variable. ";
 
 %feature("docstring")
 cmf::upslope::SurfaceWater::set_state_variable_content "void
@@ -15245,7 +15274,7 @@ Returns the currently integrated flux to the lower node. ";
 
 Returns the lower node. ";
 
-%feature("docstring")  cmf::water::SystemBridge::get_potential "double get_potential() const
+%feature("docstring")  cmf::water::SystemBridge::get_potential "double get_potential(cmf::math::Time t) const
 
 Returns the water potential of the node in m waterhead.
 
@@ -16046,7 +16075,7 @@ Returns the actual rainfall intensity in mm/day. ";
 
 %feature("docstring")
 cmf::atmosphere::TimeseriesRainSource::get_potential "virtual real
-get_potential() const
+get_potential(cmf::math::Time=cmf::math::never) const
 
 Returns the water potential of the node in m waterhead.
 
@@ -17277,6 +17306,7 @@ Returns the concentration of the given solute. ";
 
 %feature("docstring")  cmf::water::WaterStorage::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute) const
+override
 
 Returns the current WaterQuality (concentration of all solutes) ";
 
@@ -17312,7 +17342,8 @@ Returns the sum of all flux vectors. ";
 
 %feature("docstring")  cmf::water::WaterStorage::get_connections "cmf::water::connection_list get_connections() const ";
 
-%feature("docstring")  cmf::water::WaterStorage::get_potential "virtual real get_potential() const
+%feature("docstring")  cmf::water::WaterStorage::get_potential "real
+get_potential(cmf::math::Time t=cmf::math::never) const override
 
 Returns the water potential of the node in m waterhead.
 
@@ -17324,7 +17355,9 @@ The base class water storage always returns the height of the location
 Returns the project, this node is part of. ";
 
 %feature("docstring")  cmf::water::WaterStorage::get_state "real
-get_state() const ";
+get_state() const
+
+Returns the current state of the variable. ";
 
 %feature("docstring")
 cmf::water::WaterStorage::get_state_variable_content "char
@@ -17351,12 +17384,15 @@ Returns true, since this is a storage. ";
 
 Remove the connection. ";
 
-%feature("docstring")  cmf::water::WaterStorage::set_potential "virtual void set_potential(real newpotential)
+%feature("docstring")  cmf::water::WaterStorage::set_potential "void
+set_potential(real newpotential) override
 
 Sets the potential of this flux node. ";
 
 %feature("docstring")  cmf::water::WaterStorage::set_state "void
-set_state(real newState) ";
+set_state(real newState)
+
+Gives access to the state variable. ";
 
 %feature("docstring")
 cmf::water::WaterStorage::set_state_variable_content "void

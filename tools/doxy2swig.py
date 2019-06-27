@@ -42,13 +42,13 @@ def my_open_read(source):
     if hasattr(source, "read"):
         return source
     else:
-        return open(source)
+        return open(source, encoding='utf-8')
 
 def my_open_write(dest):
     if hasattr(dest, "write"):
         return dest
     else:
-        return open(dest, 'w')
+        return open(dest, 'w', encoding='utf-8')
 
 
 class Doxy2SWIG:    

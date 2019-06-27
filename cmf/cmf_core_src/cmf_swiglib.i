@@ -56,14 +56,14 @@ Included macros:
     //%ignore owner::getter ;
     #if #setter==""
         %extend owner { %pythoncode {
-        name = _swig_property(_cmf_core. ## owner_short ##___## getter)
+        name = property(fget=_cmf_core. ## owner_short ##___## getter)
         }}
     #else
         %rename(__ ## setter) owner::setter;
         //%ignore owner::setter;
         %extend owner { %pythoncode {
-        name = _swig_property(_cmf_core. ## owner_short ##___## getter,
-                              _cmf_core. ## owner_short ##___## setter)
+        name = property(fget=_cmf_core. ## owner_short ##___## getter,
+                        fset=_cmf_core. ## owner_short ##___## setter)
         }}
     #endif
 %enddef

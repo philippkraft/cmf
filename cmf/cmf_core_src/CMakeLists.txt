@@ -175,9 +175,9 @@ if(OpenMP_CXX_FOUND)
 endif()
 
 # Use a lib prefix if MSVC compiler, because suitesparse does it that way
-if(MSVC)
+if(WIN32)  #  Changed from MSVC
     set(SP_LIB_PREFIX "lib")  # Libs are: "libXXX"
-endif(MSVC)
+endif(WIN32)
 
 target_link_libraries(cmf_core PUBLIC
         sundials_cvode sundials_sunlinsolklu
@@ -195,6 +195,11 @@ foreach(filename ${files})
     get_filename_component(target_name ${filename} NAME_WE)
     message(STATUS "Build ${target_name} from ${filename}")
     add_executable(${target_name} ${filename})
+    if(MSVC)
+        target_compile_options(${target_name} PRIVATE /W4)
+    else()
+        target_compile_options(${target_name} PRIVATE -Wall -Wextra)
+    endif()
     target_link_libraries(${target_name} cmf_core)
     install(TARGETS ${target_name} RUNTIME DESTINATION ${CMF_BIN_DIR})
 endforeach()
