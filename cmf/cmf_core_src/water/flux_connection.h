@@ -152,9 +152,6 @@ namespace cmf {
 		
 		/// A self sorting list of connections
 		class connection_list  
-#ifndef SWIG
-			: public cmf::math::precalculatable 
-#endif
 		{
 		private:
 			typedef std::vector<flux_connection::ptr> _list;
@@ -191,45 +188,6 @@ namespace cmf {
 			{
 
 			}
-		};
-
-		/// @brief The flux_integrator is an integratable for precise output of average fluxes over time. 
-        ///
-        /// It can be added to solver (any cmf::math::Integrator), which is then calling the integrate method at each substep.
-		class flux_integrator : public cmf::math::integratable {
-		private:
-			double _sum;
-			cmf::math::Time _start_time;
-			cmf::math::Time _t;
-			std::weak_ptr<flux_connection> _connection;
-			std::string _name;
-
-		public:
-			/// @brief Returns the amount of water along this connection in the integration time in m3
-			double sum() const {
-				return _sum;
-			}
-			/// @brief Returns the duration of the integration
-			cmf::math::Time integration_t() const {
-				return _t-_start_time;
-			}
-			/// @brief Returns the start time of the integration
-			cmf::math::Time t0() const { return _start_time; }
-			/// @brief If invert is true, then integrate over the negetive flux
-			bool invert;
-
-			/// @brief Returns the average flux of the integration time in m3/day
-			double avg() const;
-			/// @brief Initializes the integration
-			void reset(cmf::math::Time t);
-			/// @brief Returns the flux_connection
-			flux_connection::ptr connection() const;
-			/// @brief Integrates the flux a timestep further. Note: until is an absolute time. If until is before t0, the integration is initilized again
-			void integrate(cmf::math::Time until);
-			/// @brief Creates a flux_integrator from an connection
-			flux_integrator(cmf::water::flux_connection& connection);
-			/// @brief Creates a flux_integrator from the endpoints of a connection. Throws if there is no connection between the endpoints
-			flux_integrator(cmf::water::flux_node::ptr left, cmf::water::flux_node::ptr right);
 		};
 
 

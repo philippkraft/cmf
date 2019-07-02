@@ -44,13 +44,6 @@ namespace cmf {
 #endif
 
 		public:
-			/// Public access to integratables
-			integratable_list integratables;
-			/// If true, the integratables of this solver are reset
-			bool reset_integratables=false;
-
-
-			//@}
 
 			virtual ~Integrator() = default;
 

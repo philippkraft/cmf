@@ -152,52 +152,6 @@ namespace cmf {
 		flux_node::ptr get_higher_node(flux_node::ptr node1,flux_node::ptr node2);
 		flux_node::ptr get_lower_node(flux_node::ptr node1,flux_node::ptr node2);
 
-		/// @brief The waterbalance_integrator is an integratable for precise output of the average water balance 
-		/// of a flux_node over time. It can be added to a solver (any cmf::math::Integrator), 
-		/// which is than calling the integrate method at each substep.
-		class waterbalance_integrator : public cmf::math::integratable {
-		private:
-			double _sum;
-			cmf::math::Time _start_time;
-			cmf::math::Time _t;
-			std::weak_ptr<flux_node> _node;
-			std::string _name;
-
-		public:
-			/// Returns the total absolute waterbalance of the node in integration time [m3]
-			double sum() const {
-				return _sum;
-			}
-			/// Returns the duration of the integration
-			cmf::math::Time integration_t() const {
-				return _t-_start_time;
-			}
-			/// Returns the start time of the integration
-			cmf::math::Time t0() const { return _start_time; }
-
-			/// Returns the average flux over the integration time in m3/day
-			double avg() const;
-			/// Initializes the integration
-			void reset(cmf::math::Time t) {
-				_start_time = t;
-				_t=_start_time;
-				_sum=0.0;
-			}
-			/// Returns the node of this integrator
-			flux_node::ptr get_node() const {
-				return _node.lock();
-			}
-			void set_node(cmf::water::flux_node::ptr node) {
-				_sum=0;
-				_start_time=cmf::math::Time();
-				_t=_start_time;
-				_node =  node;
-			}
-			/// Integrates the flux a timestep further. Note: until is an absolut time. If until is before t0, the integration is initilized again
-			void integrate(cmf::math::Time until);
-			waterbalance_integrator(cmf::water::flux_node::ptr node) 
-				:	_node(node), _sum(0.0), _t(cmf::math::year*5000), _name(node->to_string()+ " (Integrator)") {}
-		};
 
 
 	}

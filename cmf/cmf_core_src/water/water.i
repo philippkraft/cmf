@@ -37,7 +37,6 @@
 	#include "water/flux_connection.h"
     #include "water/boundary_condition.h"
     #include "water/simple_connections.h"
-    #include "water/system_bridge.h"
 %}
 // Include Water
 %include "water/adsorption.h"
@@ -96,8 +95,6 @@ namespace cmf{namespace water {class flux_connection;}}
 
 %attribute(cmf::water::flux_node,real,potential,get_potential,set_potential);
 %attributeval(cmf::water::flux_node, cmf::water::connection_list, connections, get_connections);
-%shared_attr(cmf::water::waterbalance_integrator, waterbalance_integrator, node, get_node, set_node);
-// %attribute(cmf::water::flux_connection, real, tracer_filter, get_tracer_filter, set_tracer_filter);
 
 %pythonappend cmf::water::flux_connection::flux_connection{
     self.thisown=0
@@ -192,35 +189,4 @@ namespace cmf{namespace water {class flux_connection;}}
 %include "water/simple_connections.h"
 
 %include "water/collections.i"
-
-// system bridge
-
-%include "water/system_bridge.h"
-
-
-%pythoncode {
-    def integrate_over(item,solver=None):
-        """Returns a suitable cmf.integratable implementation for item, if available.
-        The created integratable is integrated by solver, if given"""
-        try:
-            it = iter(item)
-        except:
-            it=None
-        if it:
-            res = integratable_list()
-            for i in it:
-                integ = integrate_over(i,solver)
-                res.append(integ)
-            return res
-        elif isinstance(item,flux_node):
-            res = waterbalance_integrator(item)
-        elif isinstance(item,flux_connection):
-            res = flux_integrator(item)
-        else:
-            raise TypeError("""Only the waterbalance of flux_nodes and the flux of flux_connections
-                are integratable. Received: """ + str(item))
-        if isinstance(solver,Integrator):
-            solver.integratables.append(res)
-        return res
-}
 

@@ -48,7 +48,6 @@ endforeach()
         # water/simple_connections.cpp
         # water/Solute.cpp
         # water/SoluteStorage.cpp
-        # water/system_bridge.cpp
         # water/WaterStorage.cpp
         # )
 
@@ -129,7 +128,6 @@ add_library(cmf_core STATIC
         water/simple_connections.cpp
         water/Solute.cpp
         water/SoluteStorage.cpp
-        water/system_bridge.cpp
         water/WaterStorage.cpp
         math/integrators/explicit_euler.cpp
         math/integrators/bdf2.cpp
@@ -196,7 +194,7 @@ foreach(filename ${files})
     message(STATUS "Build ${target_name} from ${filename}")
     add_executable(${target_name} ${filename})
     if(MSVC)
-        target_compile_options(${target_name} PRIVATE /W4)
+        target_compile_options(${target_name} PRIVATE /W3)
     else()
         target_compile_options(${target_name} PRIVATE -Wall -Wextra)
     endif()

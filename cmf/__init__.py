@@ -22,8 +22,8 @@ from .describe import describe
 from .timetools import StopWatch, datetime_to_cmf, timerange
 
 
-__version__ = '2.0.0b2.dirichlet_potential_timeseries'
-__compiletime__ = 'Thu Jun 27 11:34:17 2019'
+__version__ = '2.0.0b2.remove_integratable_i72'
+__compiletime__ = 'Tue Jul  2 09:51:01 2019'
 
 from .cmf_core import connect_cells_with_flux as __ccwf
 
