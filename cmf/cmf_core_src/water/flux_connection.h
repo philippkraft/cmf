@@ -31,6 +31,62 @@
 namespace cmf {
 	class project;
 	namespace water {
+	    class connectionid {
+	    private:
+            flux_node* lower_node;
+            flux_node* higher_node;
+
+            connectionid(flux_node* node1, flux_node* node2) {
+
+                if (node1->node_id <= node2->node_id) {
+                    lower_node = node1;
+                    higher_node = node2;
+                } else {
+                    higher_node = node1;
+                    lower_node = node2;
+                }
+            }
+
+            typedef std::map<connectionid, std::unique_ptr<flux_connection> > connection_map;
+            static connection_map connections;
+
+	    public:
+            connectionid(const connectionid& other) = default;
+            connectionid(connectionid&&) = default;
+            connectionid() = delete;
+            bool operator<(const connectionid& other) {
+                return     lower_node->node_id < other.lower_node->node_id
+                        || (lower_node->node_id == other.lower_node->node_id
+                                && higher_node->node_id < other.higher_node->node_id);
+            }
+            bool operator==(const connectionid& other) {
+                return lower_node == other.lower_node && higher_node == other.higher_node;
+            }
+            flux_connection& operator->() {
+                return *connections.at(*this);
+            }
+            bool exists() {
+                return connections.find(*this) != connections.end();
+            }
+            const flux_connection& operator->() const {
+                return *connections.at(*this);
+            }
+            static connectionid create(flux_node* node1, flux_node* node2, flux_connection *connection) {
+                auto self = connectionid(node1, node2);
+                connections[self] = std::unique_ptr<flux_connection>(connection);
+            }
+            static bool remove(flux_node* node1, flux_node* node2) {
+                auto self = connectionid(node1, node2);
+                auto it = connections.find(self);
+                if (it != connections.end()) {
+                    connections.erase(it);
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+	    };
 
 		/// @defgroup connections Flux connections
 		///
@@ -44,10 +100,11 @@ namespace cmf {
 	class flux_connection
 	        /* New ownership concept:
 	         * - std::vector<std::unique_ptr<flux_connection> > as member of project or static member of class
-	         * - std::map<* flux_connection> as member of flux_node
+	         * - std::map<int, * flux_connection> as member of flux_node
 	         * - flux_node * left, * right as member of flux_connection, or weak_ptr
 	         * - private c'tor
 	         * - factory function transfers ownership to project and registers connection with nodes
+	         * - swig %extend directive to mimic c'tor
 	         */
 		{
 		protected:
@@ -76,6 +133,7 @@ namespace cmf {
 				else
 					empty=right_node()->is_empty();
 				return flow * (1 - empty);
+
 			}
 
 
