@@ -41,13 +41,19 @@ namespace cmf {
 
 		/// @ingroup connections
 		/// Represents a connection between flux_nodes, where water fluxes occur. 
-		class flux_connection 
+	class flux_connection
+	        /* New ownership concept:
+	         * - std::vector<std::unique_ptr<flux_connection> > as member of project or static member of class
+	         * - std::map<* flux_connection> as member of flux_node
+	         * - flux_node * left, * right as member of flux_connection, or weak_ptr
+	         * - private c'tor
+	         * - factory function transfers ownership to project and registers connection with nodes
+	         */
 		{
 		protected:
 			typedef std::weak_ptr<flux_node> weak_flux_node_ptr;
 		private:
 			friend class flux_node;
-			friend class flux_integrator;
 			static int nextconnectionid;
 			flux_connection(const flux_connection& copy):connection_id(nextconnectionid) {
 				throw std::runtime_error("Never copy construct a flux_connection");
