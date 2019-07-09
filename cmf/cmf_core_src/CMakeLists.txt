@@ -26,89 +26,6 @@ foreach(dir ${dirs})
 endforeach()
 
 
-# add_library(cmf_math OBJECT
-        # math/num_array.cpp
-        # math/real.cpp
-        # math/root_finding.cpp
-        # math/spline.cpp
-        # math/statevariable.cpp
-        # math/time.cpp
-        # math/timeseries.cpp
-        # math/geometry.cpp
-        # math/odesystem.cpp
-        # math/sparse_struct.cpp
-        # )
-
-# add_library(cmf_water OBJECT
-        # water/adsorption.cpp
-        # water/boundary_condition.cpp
-        # water/collections.cpp
-        # water/flux_connection.cpp
-        # water/flux_node.cpp
-        # water/simple_connections.cpp
-        # water/Solute.cpp
-        # water/SoluteStorage.cpp
-        # water/WaterStorage.cpp
-        # )
-
-# add_library(cmf_integrators OBJECT
-        # math/integrators/explicit_euler.cpp
-        # math/integrators/bdf2.cpp
-        # math/integrators/cvode.cpp
-        # math/integrators/implicit_euler.cpp
-        # math/integrators/Integrator.cpp
-        # math/integrators/RKFintegrator.cpp
-        # math/integrators/multiintegrator.cpp
-        # )
-
-
-# add_library(cmf_atmo OBJECT
-        # atmosphere/meteorology.cpp
-        # atmosphere/precipitation.cpp
-        # atmosphere/Weather.cpp
-# )
-# add_library(cmf_river OBJECT
-        # reach/cross_section_reach.cpp
-        # reach/ManningConnection.cpp
-        # reach/OpenWaterStorage.cpp
-        # reach/Reach.cpp
-        # reach/ReachType.cpp
-# )
-# add_library(cmf_upslope OBJECT
-        # upslope/connections/AtmosphericFluxes.cpp
-        # upslope/connections/infiltration.cpp
-        # upslope/connections/Percolation.cpp
-        # upslope/connections/subsurfacefluxes.cpp
-        # upslope/connections/surfacefluxes.cpp
-        # upslope/Soil/RetentionCurve.cpp
-        # upslope/vegetation/ET.cpp
-        # upslope/vegetation/ShuttleworthWallace.cpp
-        # upslope/vegetation/waterstress.cpp
-        # upslope/algorithm.cpp
-        # upslope/cell.cpp
-        # upslope/cell_vector.cpp
-        # upslope/groundwater.cpp
-        # upslope/layer_list.cpp
-        # upslope/macropore.cpp
-        # upslope/SoilLayer.cpp
-        # upslope/surfacewater.cpp
-        # upslope/Topology.cpp
-# )
-
-
-# add_library(cmf_core STATIC
-        # $<TARGET_OBJECTS:cmf_math>
-        # $<TARGET_OBJECTS:cmf_water>
-        # $<TARGET_OBJECTS:cmf_integrators>
-        # $<TARGET_OBJECTS:cmf_atmo>
-        # $<TARGET_OBJECTS:cmf_river>
-        # $<TARGET_OBJECTS:cmf_upslope>
-        # math/integrators/WaterSoluteIntegrator.cpp
-        # project.cpp
-        # )
-# target_link_libraries(cmf_integrators PUBLIC cmf_math)
-
-
 add_library(cmf_core STATIC
         math/num_array.cpp
         math/real.cpp
@@ -193,11 +110,11 @@ foreach(filename ${files})
     get_filename_component(target_name ${filename} NAME_WE)
     message(STATUS "Build ${target_name} from ${filename}")
     add_executable(${target_name} ${filename})
-    if(MSVC)
-        target_compile_options(${target_name} PRIVATE /W3)
-    else()
-        target_compile_options(${target_name} PRIVATE -Wall -Wextra)
-    endif()
+#    if(MSVC)
+#        target_compile_options(${target_name} PRIVATE /W3)
+#    else()
+#        target_compile_options(${target_name} PRIVATE -Wall -Wextra)
+#    endif()
     target_link_libraries(${target_name} cmf_core)
     install(TARGETS ${target_name} RUNTIME DESTINATION ${CMF_BIN_DIR})
 endforeach()

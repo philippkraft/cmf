@@ -221,8 +221,8 @@ namespace cmf {
 			///
             /// @param source The source of the water
 			/// @param target The target of the water
-			/// @param maximum_flux The requested flux \f$q_{0}\f$
-			/// @param minimal_state Minimal volume of stored water in source
+			/// @param maximum_flux The requested flux \f$q_{0} [\frac{m^3}{day}]\f$
+			/// @param minimal_state Minimal volume of stored water in source in \f$[m^3]\f$
 			/// @param flux_decrease_time (cmf::math::Time)
 			ConstantFlux(cmf::water::WaterStorage::ptr source,cmf::water::flux_node::ptr target,real maximum_flux,real minimal_state=0,cmf::math::Time flux_decrease_time=cmf::math::h)
 				: flux_connection(source,target,"Technical flux"),MaxFlux(maximum_flux),MinState(minimal_state),FluxDecreaseTime(flux_decrease_time) {

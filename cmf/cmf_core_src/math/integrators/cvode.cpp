@@ -58,13 +58,13 @@ public:
 	// Set to false in CVodeAdams
 	bool use_stiff_solver = true;
 	// State vector
-	N_Vector y = 0;
+	N_Vector y = nullptr;
 	// Jacobian matrix
-	SUNMatrix J = 0;
+	SUNMatrix J = nullptr;
 	// Linear solver
-	SUNLinearSolver LS = 0;
+	SUNLinearSolver LS = nullptr;
 	// Nonlinear solver (only used by CVAdams)
-	SUNNonlinearSolver NLS = 0;
+	SUNNonlinearSolver NLS = nullptr;
 	// System size
 	int N = 0;
 	long int dxdt_method_calls = 0;
@@ -72,14 +72,14 @@ public:
 	CVodeBase * _integrator;
 
 	// c'tor of CVode3::Impl, does not initialize solver
-	Impl(CVodeBase * integrator) :
+	explicit Impl(CVodeBase * integrator) :
 		_integrator(integrator)
 	{		}
 
 	static int f(realtype t, N_Vector u, N_Vector udot, void *f_data)
 	{
-		CVodeBase::Impl * integ_impl = static_cast<CVodeBase::Impl*>(f_data);
-		CVodeBase * integ = integ_impl->_integrator;
+		auto * integ_impl = static_cast<CVodeBase::Impl*>(f_data);
+        auto integ = integ_impl->_integrator;
 		// Get the pointers to the data of the vectors u and udot
 		realtype * udata = NV_DATA_S(u);
 		realtype * dudata = NV_DATA_S(udot);
@@ -109,16 +109,16 @@ public:
 		return 0;
 	}
 	
-	void * cvode_mem=0;
+	void * cvode_mem=nullptr;
 	
 	void release()
 	{
 		// If saved vector exists, destroy it
-		if (y != 0) N_VDestroy_Serial(y);
-		if (cvode_mem != 0) CVodeFree(&cvode_mem);
-		if (LS != 0) SUNLinSolFree(LS);
-		if (NLS !=0) SUNNonlinSolFree(NLS);
-		if (J != 0) SUNMatDestroy(J);
+		if (y != nullptr) N_VDestroy_Serial(y);
+		if (cvode_mem != nullptr) CVodeFree(&cvode_mem);
+		if (LS != nullptr) SUNLinSolFree(LS);
+		if (NLS !=nullptr) SUNNonlinSolFree(NLS);
+		if (J != nullptr) SUNMatDestroy(J);
 	}
 	
 	int initialize() {
@@ -281,11 +281,23 @@ void cmf::math::CVodeBase::reset()
 	_implementation->reset();
 }
 
+CVodeBase::CVodeBase(real epsilon) : Integrator(epsilon) {
+    cmf::math::CVodeBase::Impl* p_impl = new cmf::math::CVodeBase::Impl(this);
+    _implementation=std::unique_ptr<cmf::math::CVodeBase::Impl>(p_impl);
+
+}
+
 cmf::math::CVodeBase::CVodeBase(const cmf::math::state_list & states, real epsilon)
 	: Integrator(states, epsilon)
 {
 	cmf::math::CVodeBase::Impl* p_impl = new cmf::math::CVodeBase::Impl(this);
     _implementation=std::unique_ptr<cmf::math::CVodeBase::Impl>(p_impl);
+}
+CVodeBase::CVodeBase(const CVodeBase &other)
+        : Integrator(other), options(other.options) {
+    cmf::math::CVodeBase::Impl* p_impl = new cmf::math::CVodeBase::Impl(this);
+    _implementation=std::unique_ptr<cmf::math::CVodeBase::Impl>(p_impl);
+
 }
 
 void cmf::math::CVodeBase::set_error_msg(std::string error)
@@ -293,10 +305,6 @@ void cmf::math::CVodeBase::set_error_msg(std::string error)
 	_error_msg = error;
 }
 
-CVodeBase * cmf::math::CVodeBase::copy() const
-{
-	return nullptr;
-}
 cmf::math::num_array cmf::math::CVodeBase::_get_jacobian() const
 {
 	throw std::runtime_error(this->to_string() + " has no retreivable Jacobian");
@@ -333,17 +341,21 @@ cmf::math::num_array cmf::math::CVodeBase::get_error() const
 	return _implementation->get_error();
 }
 
+
+
+
 cmf::math::CVodeDense::CVodeDense(const cmf::math::state_list & states, real epsilon)
 	: CVodeBase(states, epsilon)
 {}
 
+CVodeDense::CVodeDense(real epsilon) : CVodeBase(epsilon) {}
 
 
 cmf::math::num_array cmf::math::CVodeDense::_get_jacobian() const
 {
 	CVodeBase::Impl& i = *_implementation;
 	void * cvm = i.cvode_mem;
-	if (cvm == 0 || i.J == 0) {
+	if (cvm == nullptr || i.J == nullptr) {
 		throw std::runtime_error(this->to_string() + ": No access to Jacobian matrix, if the solver is not initialized or the solver has none. Run the solver for any timestep");
 	}
 	cmf::math::num_array res(SM_DATA_D(i.J), SM_DATA_D(i.J) + SM_LDATA_D(i.J));
@@ -353,7 +365,7 @@ cmf::math::num_array cmf::math::CVodeDense::_get_jacobian() const
 void cmf::math::CVodeDense::set_solver()
 {
 	CVodeBase::Impl& i = *_implementation;
-	if (i.cvode_mem == 0) {
+	if (i.cvode_mem == nullptr) {
 		throw std::runtime_error(this->to_string() + ": Tried to create dense solver for uninitialized cvode");
 	}
 	i.J = SUNDenseMatrix(i.N, i.N);
@@ -374,9 +386,14 @@ void cmf::math::CVodeDense::set_solver()
 	*/
 }
 
+cmf::math::CVodeDense *CVodeDense::copy() const {
+    return new CVodeDense(*this);
+}
+
+
 void CVodeAdams::set_solver() {
 	CVodeBase::Impl& i = *_implementation;
-	if (i.cvode_mem == 0) {
+	if (i.cvode_mem == nullptr) {
 		throw std::runtime_error(this->to_string() + ": Tried to create dense solver for uninitialized cvode");
 	}
 	i.NLS = SUNNonlinSol_FixedPoint(i.y, 12);
@@ -386,9 +403,14 @@ void CVodeAdams::set_solver() {
 	}
 }
 
+cmf::math::CVodeAdams *CVodeAdams::copy() const {
+    return new CVodeAdams(*this);
+}
+
 cmf::math::CVodeBanded::CVodeBanded(const cmf::math::state_list & states, real epsilon, int w)
 	: CVodeBase(states, epsilon), bandwidth(w)
 {}
+CVodeBanded::CVodeBanded(real epsilon, int w): CVodeBase(epsilon), bandwidth(w) {}
 
  std::string cmf::math::CVodeBanded::to_string() const {
 	return "CVodeBanded(w=" + std::to_string(bandwidth) + ")";
@@ -398,7 +420,7 @@ cmf::math::CVodeBanded::CVodeBanded(const cmf::math::state_list & states, real e
 void cmf::math::CVodeBanded::set_solver()
 {
 	CVodeBase::Impl& i = *_implementation;
-	if (i.cvode_mem == 0) {
+	if (i.cvode_mem == nullptr) {
 		throw std::runtime_error("Tried to create banded solver for uninitialized cvode");
 	}
 	i.J = SUNBandMatrix(i.N, bandwidth, bandwidth);
@@ -411,6 +433,11 @@ void cmf::math::CVodeBanded::set_solver()
 
 }
 
+cmf::math::CVodeBanded *CVodeBanded::copy() const {
+    return new CVodeBanded(*this);
+}
+
+
 cmf::math::CVodeDiag::CVodeDiag(const cmf::math::state_list & states, real epsilon)
 	: CVodeBase(states, epsilon)
 {}
@@ -418,16 +445,28 @@ cmf::math::CVodeDiag::CVodeDiag(const cmf::math::state_list & states, real epsil
 void cmf::math::CVodeDiag::set_solver()
 {
 	CVodeBase::Impl& i = *_implementation;
-	if (i.cvode_mem == 0) {
+	if (i.cvode_mem == nullptr) {
 		throw std::runtime_error("Tried to create solver for uninitialized cvode");
 	}
 	int flag = CVDiag(i.cvode_mem);
 
 }
 
+CVodeDiag::CVodeDiag(real epsilon) : CVodeBase(epsilon) {
+
+}
+
+cmf::math::CVodeDiag *CVodeDiag::copy() const {
+    return new CVodeDiag(*this);
+}
+
 cmf::math::CVodeKrylov::CVodeKrylov(const cmf::math::state_list & states, real epsilon,
-									int w, char p)
-	: CVodeBase(states, epsilon), bandwidth(w), preconditioner(p)
+                                    int w, char p)
+        : CVodeBase(states, epsilon), bandwidth(w), preconditioner(p)
+{}
+cmf::math::CVodeKrylov::CVodeKrylov(real epsilon,
+                                    int w, char p)
+        : CVodeBase(epsilon), bandwidth(w), preconditioner(p)
 {}
 
  std::string cmf::math::CVodeKrylov::to_string() const {
@@ -437,7 +476,7 @@ cmf::math::CVodeKrylov::CVodeKrylov(const cmf::math::state_list & states, real e
 void cmf::math::CVodeKrylov::set_solver()
 {
 	CVodeBase::Impl& i = *_implementation;
-	if (i.cvode_mem == 0) {
+	if (i.cvode_mem == nullptr) {
 		throw std::runtime_error("Tried to create banded solver for uninitialized cvode");
 	}
 	int prec = PREC_LEFT;
@@ -455,17 +494,21 @@ void cmf::math::CVodeKrylov::set_solver()
 		prec = PREC_NONE;
 		break;
 	}
-	i.LS = 0;
+	i.LS = nullptr;
 	i.LS = SUNSPGMR(i.y, prec, 0);
-	if (i.LS == 0) {
+	if (i.LS == nullptr) {
 		throw std::runtime_error("Linear solver not created");
 	}
-	int flag = CVodeSetLinearSolver(i.cvode_mem, i.LS, NULL);
+	int flag = CVodeSetLinearSolver(i.cvode_mem, i.LS, nullptr);
 	if (flag == CVLS_SUCCESS)
 		flag = CVBandPrecInit(i.cvode_mem, i.N, bandwidth, bandwidth);
 	else {
 		throw std::runtime_error("Setting linear solver failed");
 	}
+}
+
+cmf::math::CVodeKrylov *CVodeKrylov::copy() const {
+    return new CVodeKrylov(*this);
 }
 
 std::string cmf::math::CVodeInfo::to_string() const
@@ -483,6 +526,7 @@ std::string cmf::math::CVodeInfo::to_string() const
 	out << dxdt_method_calls << " calls to any dxdt method of a state" << std::endl;
 	return out.str();
 }
+CVodeAdams::CVodeAdams(real epsilon) : CVodeBase(epsilon) {}
 
 cmf::math::CVodeAdams::CVodeAdams(const cmf::math::state_list & states, real epsilon)
 	:CVodeBase(states, epsilon)
@@ -495,8 +539,12 @@ std::string cmf::math::CVodeAdams::to_string() const
 	return "CVodeAdams()";
 }
 
+cmf::math::CVodeKLU::CVodeKLU(real epsilon)
+        : CVodeBase(epsilon)
+{
+}
 cmf::math::CVodeKLU::CVodeKLU(const cmf::math::state_list & states, real epsilon)
-	: CVodeBase(states, epsilon)
+        : CVodeBase(states, epsilon)
 {
 }
 
@@ -565,7 +613,7 @@ cmf::math::num_array cmf::math::CVodeKLU::_get_jacobian() const
 {
 	CVodeBase::Impl& i = *_implementation;
 	void * cvm = i.cvode_mem;
-	if (cvm == 0 || i.J == 0) {
+	if (cvm == nullptr || i.J == nullptr) {
 		throw std::runtime_error(this->to_string() + ": No access to Jacobian matrix, if the solver is not initialized or the solver has none. Run the solver for any timestep");
 	}
 	return copy_sparse_to_array(i.J);
@@ -765,4 +813,8 @@ void cmf::math::CVodeKLU::set_solver()
 	retval = CVodeSetJacFn(i.cvode_mem, CVodeBase::Impl::sparse_jacobian);
 	if (retval) throw std::runtime_error("CVODE-KLU: Failed to set sparse jacobian function");
 
+}
+
+cmf::math::CVodeKLU *CVodeKLU::copy() const {
+    return new CVodeKLU(*this);
 }

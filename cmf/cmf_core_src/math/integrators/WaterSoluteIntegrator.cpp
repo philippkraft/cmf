@@ -90,7 +90,7 @@ cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator(
 }
 
 cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator( 
-		cmf::water::solute_vector _solutes, 
+		const cmf::water::solute_vector& _solutes, 
 		const cmf::math::Integrator& water_integrator_templ, 
 		const cmf::math::Integrator& solute_integrator_templ, 
 		const cmf::math::state_list& states )

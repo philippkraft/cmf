@@ -7,10 +7,6 @@
 #include <vector>
 #include <memory>
 
-#include <iostream>
-#include <stdexcept>
-#include <vector>
-#include <memory>
 
 struct Node;
 struct Arc {
