@@ -8,10 +8,10 @@ class TestDirichletBoundaries(unittest.TestCase):
     @staticmethod
     def create_project(outlet_potential):
         p = cmf.project()
-        c: cmf.Cell = p.NewCell(0, 0, 0, 1, False)
-        l: cmf.SoilLayer = c.add_layer(1.0)
+        c = p.NewCell(0, 0, 0, 1, False)
+        l = c.add_layer(1.0)
         l.volume = 1.0
-        o: cmf.DirichletBoundary = p.NewOutlet('o', 1, 0, 0)
+        o = p.NewOutlet('o', 1, 0, 0)
         d = cmf.LinearGradientFlux(l, o, 1, 1)
         if type(outlet_potential) is cmf.timeseries:
             o.set_dynamic_potential(outlet_potential)

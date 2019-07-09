@@ -29,61 +29,7 @@
 namespace cmf {
     /// Contains classes for numerical solving of ODE's
   namespace math {
-#ifndef SWIG
-        class precalculatable {
-        public:
-            virtual void do_action(Time t, bool use_OpenMP = true)=0;
-        };
 
-#endif
-
-
-        /// integratable is a functionality for different classes for integrating values over time.
-        ///
-        /// Main usage of an integratable is the calculation of average fluxes over time e.g.
-        /// \f[ \int_{t_0}^{t_{end}}q\left(t,V_i,V_j\right)dt \f]
-        /// 
-        class integratable {
-        public:
-            typedef std::shared_ptr<integratable> ptr;
-            /// Integrates the variable until time t
-            virtual void integrate(Time t)=0;
-            /// Sets the start time of the integral
-            virtual void reset(Time t)=0;
-            /// Get the integral from the last reset until the last call of integrate. 
-            virtual double sum() const =0;
-            /// Returns average of the integrated variable (eg. flux) from the last reset until the last call of integrate
-            virtual double avg() const =0;
-        };
-        /// A list of cmf::math::integratable objects
-        ///
-        /// @todo TODO: Complete collection interface (getitem with slicing etc.)
-        class integratable_list {
-        private:
-            typedef std::vector<integratable::ptr> integ_vector;
-            integ_vector m_items;
-        public:
-            /// Adds an integratable to the list
-            void append(cmf::math::integratable::ptr add);
-            /// Removes an integratable from the list
-            void remove(cmf::math::integratable::ptr rm);
-
-            integratable::ptr operator[](int index) const {
-              return m_items.at(index < 0 ? index+size() : index);
-            }
-
-            /// Number of integratables in the list
-            size_t size() const {return m_items.size();}
-            cmf::math::num_array avg() const;
-            cmf::math::num_array sum() const;
-            void reset(Time t);
-            void integrate(Time t);
-            integratable_list() {}
-            integratable_list(const integratable_list& for_copy)
-            : m_items(for_copy.m_items)
-            {      }
-
-        };
 
         /// Abstract class state variable
         ///        

@@ -487,17 +487,6 @@ class timeseries(object):
         for i in range(self.size()):
             yield self.get_i(i)
 
-    def interpolate(self,begin,end,step):
-        """ Returns a generator returning the interpolated values at the timesteps """
-        if step>self.step():
-            ts=self.reduce_avg(begin,step)
-        else:
-            ts=self
-        t = begin
-        while t < end:
-            yield ts[t]
-            t += step
-
     def __radd__(self,other):
         return self + other
 
@@ -558,7 +547,7 @@ class timeseries(object):
         import pandas as pd
         import numpy as np
 
-        return pd.Series(data=self.as_array(),index=(t.AsPython() for t in self.iter_time()))
+        return pd.Series(data=self.as_array(),index=(t.as_datetime() for t in self.iter_time()))
 
     @classmethod
     def from_sequence(cls, begin, step, sequence, interpolation_mode=1):
@@ -614,64 +603,6 @@ timeseries_from_scalar = _cmf_core.timeseries_from_scalar
 timeseries_from_file = _cmf_core.timeseries_from_file
 
 nash_sutcliffe = _cmf_core.nash_sutcliffe
-class integratable(object):
-    r"""Proxy of C++ cmf::math::integratable class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
-    __repr__ = _swig_repr
-    integrate = _swig_new_instance_method(_cmf_core.integratable_integrate)
-    reset = _swig_new_instance_method(_cmf_core.integratable_reset)
-    sum = _swig_new_instance_method(_cmf_core.integratable_sum)
-    avg = _swig_new_instance_method(_cmf_core.integratable_avg)
-    __swig_destroy__ = _cmf_core.delete_integratable
-
-# Register integratable in _cmf_core:
-_cmf_core.integratable_swigregister(integratable)
-
-class integratable_list(object):
-    r"""Proxy of C++ cmf::math::integratable_list class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    append = _swig_new_instance_method(_cmf_core.integratable_list_append)
-    remove = _swig_new_instance_method(_cmf_core.integratable_list_remove)
-    __getitem = _swig_new_instance_method(_cmf_core.integratable_list___getitem)
-    size = _swig_new_instance_method(_cmf_core.integratable_list_size)
-    avg = _swig_new_instance_method(_cmf_core.integratable_list_avg)
-    sum = _swig_new_instance_method(_cmf_core.integratable_list_sum)
-    reset = _swig_new_instance_method(_cmf_core.integratable_list_reset)
-    integrate = _swig_new_instance_method(_cmf_core.integratable_list_integrate)
-
-    def __init__(self, *args):
-        r"""
-        __init__(integratable_list self) -> integratable_list
-        __init__(integratable_list self, integratable_list for_copy) -> integratable_list
-        """
-        _cmf_core.integratable_list_swiginit(self, _cmf_core.new_integratable_list(*args))
-    __len__ = _swig_new_instance_method(_cmf_core.integratable_list___len__)
-
-    def __iter__(self):
-        for i in range(len(self)):
-            yield self[i]
-
-    def __getitem__(self,index):
-        if isinstance(index,slice):
-            return [self.__getitem(i) for i in range(*index.indices(len(self)))]
-        else:
-            try:
-                it=iter(index)
-                return [self.__getitem(i) for i in it]
-            except:
-                return self.__getitem(index)
-
-    __swig_destroy__ = _cmf_core.delete_integratable_list
-
-# Register integratable_list in _cmf_core:
-_cmf_core.integratable_list_swigregister(integratable_list)
-
 class StateVariable(object):
     r"""Proxy of C++ cmf::math::StateVariable class."""
 
@@ -982,28 +913,6 @@ _cmf_core.flux_node_swigregister(flux_node)
 count_node_references = _cmf_core.count_node_references
 get_higher_node = _cmf_core.get_higher_node
 get_lower_node = _cmf_core.get_lower_node
-class waterbalance_integrator(integratable):
-    r"""Proxy of C++ cmf::water::waterbalance_integrator class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    integration_t = _swig_new_instance_method(_cmf_core.waterbalance_integrator_integration_t)
-    t0 = _swig_new_instance_method(_cmf_core.waterbalance_integrator_t0)
-    __get_node = _swig_new_instance_method(_cmf_core.waterbalance_integrator___get_node)
-    __set_node = _swig_new_instance_method(_cmf_core.waterbalance_integrator___set_node)
-
-    def __init__(self, *args, **kwargs):
-        r"""__init__(waterbalance_integrator self, cmf::water::flux_node::ptr node) -> waterbalance_integrator"""
-        _cmf_core.waterbalance_integrator_swiginit(self, _cmf_core.new_waterbalance_integrator(*args, **kwargs))
-
-    node = property(fget=_cmf_core.waterbalance_integrator___get_node,
-                    fset=_cmf_core.waterbalance_integrator___set_node)
-
-    __swig_destroy__ = _cmf_core.delete_waterbalance_integrator
-
-# Register waterbalance_integrator in _cmf_core:
-_cmf_core.waterbalance_integrator_swigregister(waterbalance_integrator)
-
 class flux_connection(object):
     r"""Proxy of C++ cmf::water::flux_connection class."""
 
@@ -1084,27 +993,6 @@ class connection_list(object):
 
 # Register connection_list in _cmf_core:
 _cmf_core.connection_list_swigregister(connection_list)
-
-class flux_integrator(integratable):
-    r"""Proxy of C++ cmf::water::flux_integrator class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    integration_t = _swig_new_instance_method(_cmf_core.flux_integrator_integration_t)
-    t0 = _swig_new_instance_method(_cmf_core.flux_integrator_t0)
-    invert = property(_cmf_core.flux_integrator_invert_get, _cmf_core.flux_integrator_invert_set, doc=r"""invert : bool""")
-    connection = _swig_new_instance_method(_cmf_core.flux_integrator_connection)
-
-    def __init__(self, *args):
-        r"""
-        __init__(flux_integrator self, flux_connection connection) -> flux_integrator
-        __init__(flux_integrator self, cmf::water::flux_node::ptr left, cmf::water::flux_node::ptr right) -> flux_integrator
-        """
-        _cmf_core.flux_integrator_swiginit(self, _cmf_core.new_flux_integrator(*args))
-    __swig_destroy__ = _cmf_core.delete_flux_integrator
-
-# Register flux_integrator in _cmf_core:
-_cmf_core.flux_integrator_swigregister(flux_integrator)
 
 class linear_scale(object):
     r"""Proxy of C++ cmf::water::linear_scale class."""
@@ -1477,62 +1365,6 @@ class NeumannBoundary_list(object):
 
 # Register NeumannBoundary_list in _cmf_core:
 _cmf_core.NeumannBoundary_list_swigregister(NeumannBoundary_list)
-
-class SystemBridge(flux_node):
-    r"""Proxy of C++ cmf::water::SystemBridge class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined")
-    __repr__ = _swig_repr
-    get_upper_node = _swig_new_instance_method(_cmf_core.SystemBridge_get_upper_node)
-    get_lower_node = _swig_new_instance_method(_cmf_core.SystemBridge_get_lower_node)
-    get_down_flux = _swig_new_instance_method(_cmf_core.SystemBridge_get_down_flux)
-    down_flux_integrator = _swig_new_instance_method(_cmf_core.SystemBridge_down_flux_integrator)
-    __swig_destroy__ = _cmf_core.delete_SystemBridge
-
-# Register SystemBridge in _cmf_core:
-_cmf_core.SystemBridge_swigregister(SystemBridge)
-
-class SystemBridgeConnection(flux_connection):
-    r"""Proxy of C++ cmf::water::SystemBridgeConnection class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined")
-    __repr__ = _swig_repr
-    __swig_destroy__ = _cmf_core.delete_SystemBridgeConnection
-
-# Register SystemBridgeConnection in _cmf_core:
-_cmf_core.SystemBridgeConnection_swigregister(SystemBridgeConnection)
-
-system_bridge = _cmf_core.system_bridge
-
-def integrate_over(item,solver=None):
-    """Returns a suitable cmf.integratable implementation for item, if available.
-    The created integratable is integrated by solver, if given"""
-    try:
-        it = iter(item)
-    except:
-        it=None
-    if it:
-        res = integratable_list()
-        for i in it:
-            integ = integrate_over(i,solver)
-            res.append(integ)
-        return res
-    elif isinstance(item,flux_node):
-        res = waterbalance_integrator(item)
-    elif isinstance(item,flux_connection):
-        res = flux_integrator(item)
-    else:
-        raise TypeError("""Only the waterbalance of flux_nodes and the flux of flux_connections
-            are integratable. Received: """ + str(item))
-    if isinstance(solver,Integrator):
-        solver.integratables.append(res)
-    return res
 
 vapour_pressure = _cmf_core.vapour_pressure
 vpd_from_rH = _cmf_core.vpd_from_rH
@@ -3828,8 +3660,6 @@ class Integrator(object):
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
-    integratables = property(_cmf_core.Integrator_integratables_get, _cmf_core.Integrator_integratables_set, doc=r"""integratables : cmf::math::integratable_list""")
-    reset_integratables = property(_cmf_core.Integrator_reset_integratables_get, _cmf_core.Integrator_reset_integratables_set, doc=r"""reset_integratables : bool""")
     __swig_destroy__ = _cmf_core.delete_Integrator
     set_system = _swig_new_instance_method(_cmf_core.Integrator_set_system)
     size = _swig_new_instance_method(_cmf_core.Integrator_size)

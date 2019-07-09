@@ -21,7 +21,7 @@
 %}
 
 %shared_ptr(cmf::math::StateVariable);
-%shared_ptr(cmf::math::integratable);
+
 
 %attribute(cmf::math::StateVariable,real,state,get_state,set_state);
 
@@ -84,27 +84,6 @@
 %extend__repr__(cmf::math::StateVariable);
 
 %extend_pysequence(cmf::math::state_list);
-
-%extend cmf::math::integratable_list {
-     size_t __len__() const {
-         return $self->size();
-     }
-    %pythoncode {
-    def __iter__(self):
-        for i in range(len(self)):
-            yield self[i]
-
-    def __getitem__(self,index):
-        if isinstance(index,slice):
-            return [self.__getitem(i) for i in range(*index.indices(len(self)))]
-        else:
-            try:
-                it=iter(index)
-                return [self.__getitem(i) for i in it]
-            except:
-                return self.__getitem(index)
-    }
-}    
 
 %rename(__cmf_state_list_interface__) *::operator cmf::math::state_list;
 
