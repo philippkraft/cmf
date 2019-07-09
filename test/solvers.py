@@ -135,5 +135,33 @@ class TestSolver(unittest.TestCase):
                 self.assertEqual(solver.t, cmf.day + 100 * cmf.h)
 
 
+class TestSoluteWaterSolver(unittest.TestCase):
+
+    def test_create(self):
+
+        vol_ref = [0.04978707, 0.1493612, 0.2240418, 0.2240418, 0.1680314,
+                   0.1008188, 0.05040941, 0.02160403, 0.008101512, 0.003802992]
+        smass_ref = [0.9502129, 0.8008517, 0.5768099, 0.3527681, 0.1847368,
+                     0.08391794, 0.03350854, 0.0119045, 0.003802992, 0.001486583]
+
+        p, stores, X = get_project(True)
+        w_solver_template = cmf.CVodeKrylov(1e-9)
+        s_solver_template = cmf.CVodeAdams(1e-9)
+        solver = cmf.SoluteWaterIntegrator(p.solutes, w_solver_template, s_solver_template, p)
+
+        solver.integrate_until(cmf.day * 3, cmf.h)
+
+        vol = [s.volume for s in stores]
+        smass = [s[X].state for s in stores]
+
+        mse_v = sum((vr - v) ** 2 for v, vr in zip(vol, vol_ref)) / len(vol)
+        mse_s = sum((sr - s) ** 2 for s, sr in zip(smass, smass_ref)) / len(smass)
+
+        self.assertAlmostEqual(1 - mse_v, 1, 2,
+                               "RMSE between reference volume and {} too large".format(type(solver).__name__))
+        self.assertAlmostEqual(1 - mse_s, 1, 2,
+                               "RMSE between reference solute and {} too large".format(type(solver).__name__))
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=100)
