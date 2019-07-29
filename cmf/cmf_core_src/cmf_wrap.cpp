@@ -74718,27 +74718,22 @@ SWIGINTERN PyObject *CVodeBase_swigregister(PyObject *SWIGUNUSEDPARM(self), PyOb
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_new_CVodeDense(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_new_CVodeDense__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::math::state_list *arg1 = 0 ;
   real arg2 = (real) 1e-9 ;
   cmf::math::state_list temp_list1 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"states",  (char *)"epsilon",  NULL 
-  };
   cmf::math::CVodeDense *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:new_CVodeDense", kwnames, &obj0, &obj1)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   {
-    if (SWIG_ConvertPtr(obj0, (void **) &arg1, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION) == -1) {
-      int res = PyObject_HasAttrString(obj0, "__cmf_state_list_interface__");
+    if (SWIG_ConvertPtr(swig_obj[0], (void **) &arg1, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION) == -1) {
+      int res = PyObject_HasAttrString(swig_obj[0], "__cmf_state_list_interface__");
       if (res) {
         // Found __cmf_state_list_interface__
-        PyObject* list = PyObject_CallMethod(obj0, "__cmf_state_list_interface__", "");
+        PyObject* list = PyObject_CallMethod(swig_obj[0], "__cmf_state_list_interface__", "");
         if (list==NULL) {
           SWIG_exception_fail(SWIG_TypeError,"state list interface fails");
         }
@@ -74751,7 +74746,7 @@ SWIGINTERN PyObject *_wrap_new_CVodeDense(PyObject *SWIGUNUSEDPARM(self), PyObje
         // Test iterable, no __cmf_state_list_interface__
         int conversion_errors = 0;
         int res = iterable_to_list<cmf::math::StateVariable::ptr, cmf::math::state_list>
-        (obj0,SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list1, &conversion_errors);
+        (swig_obj[0],SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list1, &conversion_errors);
         if (SWIG_IsOK(res)) {
           if (temp_list1.size() > 0 || conversion_errors == 0)
           arg1 = &temp_list1;
@@ -74763,8 +74758,8 @@ SWIGINTERN PyObject *_wrap_new_CVodeDense(PyObject *SWIGUNUSEDPARM(self), PyObje
       }
     }
   }
-  if (obj1) {
-    ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (swig_obj[1]) {
+    ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
     if (!SWIG_IsOK(ecode2)) {
       SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_CVodeDense" "', argument " "2"" of type '" "real""'");
     } 
@@ -74782,6 +74777,175 @@ SWIGINTERN PyObject *_wrap_new_CVodeDense(PyObject *SWIGUNUSEDPARM(self), PyObje
     }
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeDense, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_CVodeDense__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  real arg1 = (real) 1e-9 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  cmf::math::CVodeDense *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 1)) SWIG_fail;
+  if (swig_obj[0]) {
+    ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_CVodeDense" "', argument " "1"" of type '" "real""'");
+    } 
+    arg1 = static_cast< real >(val1);
+  }
+  {
+    try {
+      result = (cmf::math::CVodeDense *)new cmf::math::CVodeDense(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeDense, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_CVodeDense(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_CVodeDense", 0, 2, argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if ((argc >= 0) && (argc <= 1)) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      if (argc > 0) {
+        {
+          {
+            int res = SWIG_AsVal_double(argv[0], NULL);
+            _v = SWIG_CheckState(res);
+          }
+        }
+        if (!_v) goto check_1;
+        _ranki += _v*_pi;
+        _rankm += _pi;
+        _pi *= SWIG_MAXCASTRANK;
+      }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if ((argc >= 1) && (argc <= 2)) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        {
+          // 1. Check if object is wrapped state_list
+          if (SWIG_IsOK(SWIG_ConvertPtr(argv[0], (void **) &_v, SWIGTYPE_p_cmf__math__state_list, 0))) {
+            _v = 1;
+          } // 2. Check if object has __cmf_state_list_interface__
+          else if (SWIG_IsOK(PyObject_HasAttrString(argv[0], "__cmf_state_list_interface__"))) {
+            _v = 2;
+          }
+          else // 3. Check if object is iterable
+          {
+            PyObject* iter = PyObject_GetIter(argv[0]);
+            if (iter != 0) {
+              Py_DECREF(iter);
+              _v = 3;
+            } 
+            else {
+              _v = 0;
+            }
+          }
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (argc > 1) {
+        {
+          {
+            int res = SWIG_AsVal_double(argv[1], NULL);
+            _v = SWIG_CheckState(res);
+          }
+        }
+        if (!_v) goto check_2;
+        _ranki += _v*_pi;
+        _rankm += _pi;
+        _pi *= SWIG_MAXCASTRANK;
+      }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_new_CVodeDense__SWIG_1(self, argc, argv);
+    case 2:
+      return _wrap_new_CVodeDense__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_CVodeDense'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    cmf::math::CVodeDense::CVodeDense(cmf::math::state_list const &,real)\n"
+    "    cmf::math::CVodeDense::CVodeDense(real)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_CVodeDense_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::math::CVodeDense *arg1 = (cmf::math::CVodeDense *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::CVodeDense *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__CVodeDense, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CVodeDense_copy" "', argument " "1"" of type '" "cmf::math::CVodeDense const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::CVodeDense * >(argp1);
+  {
+    try {
+      result = (cmf::math::CVodeDense *)((cmf::math::CVodeDense const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeDense, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -74831,27 +74995,55 @@ SWIGINTERN PyObject *CVodeDense_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObjec
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_CVodeAdams(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_new_CVodeAdams__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  real arg1 = (real) 1e-9 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  cmf::math::CVodeAdams *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 1)) SWIG_fail;
+  if (swig_obj[0]) {
+    ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_CVodeAdams" "', argument " "1"" of type '" "real""'");
+    } 
+    arg1 = static_cast< real >(val1);
+  }
+  {
+    try {
+      result = (cmf::math::CVodeAdams *)new cmf::math::CVodeAdams(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeAdams, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_CVodeAdams__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::math::state_list *arg1 = 0 ;
   real arg2 = (real) 1e-9 ;
   cmf::math::state_list temp_list1 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"states",  (char *)"epsilon",  NULL 
-  };
   cmf::math::CVodeAdams *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:new_CVodeAdams", kwnames, &obj0, &obj1)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   {
-    if (SWIG_ConvertPtr(obj0, (void **) &arg1, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION) == -1) {
-      int res = PyObject_HasAttrString(obj0, "__cmf_state_list_interface__");
+    if (SWIG_ConvertPtr(swig_obj[0], (void **) &arg1, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION) == -1) {
+      int res = PyObject_HasAttrString(swig_obj[0], "__cmf_state_list_interface__");
       if (res) {
         // Found __cmf_state_list_interface__
-        PyObject* list = PyObject_CallMethod(obj0, "__cmf_state_list_interface__", "");
+        PyObject* list = PyObject_CallMethod(swig_obj[0], "__cmf_state_list_interface__", "");
         if (list==NULL) {
           SWIG_exception_fail(SWIG_TypeError,"state list interface fails");
         }
@@ -74864,7 +75056,7 @@ SWIGINTERN PyObject *_wrap_new_CVodeAdams(PyObject *SWIGUNUSEDPARM(self), PyObje
         // Test iterable, no __cmf_state_list_interface__
         int conversion_errors = 0;
         int res = iterable_to_list<cmf::math::StateVariable::ptr, cmf::math::state_list>
-        (obj0,SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list1, &conversion_errors);
+        (swig_obj[0],SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list1, &conversion_errors);
         if (SWIG_IsOK(res)) {
           if (temp_list1.size() > 0 || conversion_errors == 0)
           arg1 = &temp_list1;
@@ -74876,8 +75068,8 @@ SWIGINTERN PyObject *_wrap_new_CVodeAdams(PyObject *SWIGUNUSEDPARM(self), PyObje
       }
     }
   }
-  if (obj1) {
-    ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (swig_obj[1]) {
+    ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
     if (!SWIG_IsOK(ecode2)) {
       SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_CVodeAdams" "', argument " "2"" of type '" "real""'");
     } 
@@ -74895,6 +75087,142 @@ SWIGINTERN PyObject *_wrap_new_CVodeAdams(PyObject *SWIGUNUSEDPARM(self), PyObje
     }
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeAdams, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_CVodeAdams(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_CVodeAdams", 0, 2, argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if ((argc >= 0) && (argc <= 1)) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      if (argc > 0) {
+        {
+          {
+            int res = SWIG_AsVal_double(argv[0], NULL);
+            _v = SWIG_CheckState(res);
+          }
+        }
+        if (!_v) goto check_1;
+        _ranki += _v*_pi;
+        _rankm += _pi;
+        _pi *= SWIG_MAXCASTRANK;
+      }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if ((argc >= 1) && (argc <= 2)) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        {
+          // 1. Check if object is wrapped state_list
+          if (SWIG_IsOK(SWIG_ConvertPtr(argv[0], (void **) &_v, SWIGTYPE_p_cmf__math__state_list, 0))) {
+            _v = 1;
+          } // 2. Check if object has __cmf_state_list_interface__
+          else if (SWIG_IsOK(PyObject_HasAttrString(argv[0], "__cmf_state_list_interface__"))) {
+            _v = 2;
+          }
+          else // 3. Check if object is iterable
+          {
+            PyObject* iter = PyObject_GetIter(argv[0]);
+            if (iter != 0) {
+              Py_DECREF(iter);
+              _v = 3;
+            } 
+            else {
+              _v = 0;
+            }
+          }
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (argc > 1) {
+        {
+          {
+            int res = SWIG_AsVal_double(argv[1], NULL);
+            _v = SWIG_CheckState(res);
+          }
+        }
+        if (!_v) goto check_2;
+        _ranki += _v*_pi;
+        _rankm += _pi;
+        _pi *= SWIG_MAXCASTRANK;
+      }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_new_CVodeAdams__SWIG_0(self, argc, argv);
+    case 2:
+      return _wrap_new_CVodeAdams__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_CVodeAdams'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    cmf::math::CVodeAdams::CVodeAdams(real)\n"
+    "    cmf::math::CVodeAdams::CVodeAdams(cmf::math::state_list const &,real)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_CVodeAdams_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::math::CVodeAdams *arg1 = (cmf::math::CVodeAdams *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::CVodeAdams *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__CVodeAdams, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CVodeAdams_copy" "', argument " "1"" of type '" "cmf::math::CVodeAdams const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::CVodeAdams * >(argp1);
+  {
+    try {
+      result = (cmf::math::CVodeAdams *)((cmf::math::CVodeAdams const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeAdams, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -74996,7 +75324,50 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_CVodeBanded(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_new_CVodeBanded__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  real arg1 = (real) 1e-9 ;
+  int arg2 = (int) 5 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  cmf::math::CVodeBanded *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 2)) SWIG_fail;
+  if (swig_obj[0]) {
+    ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_CVodeBanded" "', argument " "1"" of type '" "real""'");
+    } 
+    arg1 = static_cast< real >(val1);
+  }
+  if (swig_obj[1]) {
+    ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_CVodeBanded" "', argument " "2"" of type '" "int""'");
+    } 
+    arg2 = static_cast< int >(val2);
+  }
+  {
+    try {
+      result = (cmf::math::CVodeBanded *)new cmf::math::CVodeBanded(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeBanded, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_CVodeBanded__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::math::state_list *arg1 = 0 ;
   real arg2 = (real) 1e-9 ;
@@ -75006,21 +75377,15 @@ SWIGINTERN PyObject *_wrap_new_CVodeBanded(PyObject *SWIGUNUSEDPARM(self), PyObj
   int ecode2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  char * kwnames[] = {
-    (char *)"states",  (char *)"epsilon",  (char *)"w",  NULL 
-  };
   cmf::math::CVodeBanded *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:new_CVodeBanded", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 3)) SWIG_fail;
   {
-    if (SWIG_ConvertPtr(obj0, (void **) &arg1, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION) == -1) {
-      int res = PyObject_HasAttrString(obj0, "__cmf_state_list_interface__");
+    if (SWIG_ConvertPtr(swig_obj[0], (void **) &arg1, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION) == -1) {
+      int res = PyObject_HasAttrString(swig_obj[0], "__cmf_state_list_interface__");
       if (res) {
         // Found __cmf_state_list_interface__
-        PyObject* list = PyObject_CallMethod(obj0, "__cmf_state_list_interface__", "");
+        PyObject* list = PyObject_CallMethod(swig_obj[0], "__cmf_state_list_interface__", "");
         if (list==NULL) {
           SWIG_exception_fail(SWIG_TypeError,"state list interface fails");
         }
@@ -75033,7 +75398,7 @@ SWIGINTERN PyObject *_wrap_new_CVodeBanded(PyObject *SWIGUNUSEDPARM(self), PyObj
         // Test iterable, no __cmf_state_list_interface__
         int conversion_errors = 0;
         int res = iterable_to_list<cmf::math::StateVariable::ptr, cmf::math::state_list>
-        (obj0,SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list1, &conversion_errors);
+        (swig_obj[0],SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list1, &conversion_errors);
         if (SWIG_IsOK(res)) {
           if (temp_list1.size() > 0 || conversion_errors == 0)
           arg1 = &temp_list1;
@@ -75045,15 +75410,15 @@ SWIGINTERN PyObject *_wrap_new_CVodeBanded(PyObject *SWIGUNUSEDPARM(self), PyObj
       }
     }
   }
-  if (obj1) {
-    ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (swig_obj[1]) {
+    ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
     if (!SWIG_IsOK(ecode2)) {
       SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_CVodeBanded" "', argument " "2"" of type '" "real""'");
     } 
     arg2 = static_cast< real >(val2);
   }
-  if (obj2) {
-    ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
     if (!SWIG_IsOK(ecode3)) {
       SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_CVodeBanded" "', argument " "3"" of type '" "int""'");
     } 
@@ -75071,6 +75436,166 @@ SWIGINTERN PyObject *_wrap_new_CVodeBanded(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeBanded, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_CVodeBanded(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_CVodeBanded", 0, 3, argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if ((argc >= 0) && (argc <= 2)) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      if (argc > 0) {
+        {
+          {
+            int res = SWIG_AsVal_double(argv[0], NULL);
+            _v = SWIG_CheckState(res);
+          }
+        }
+        if (!_v) goto check_1;
+        _ranki += _v*_pi;
+        _rankm += _pi;
+        _pi *= SWIG_MAXCASTRANK;
+        if (argc > 1) {
+          {
+            {
+              int res = SWIG_AsVal_int(argv[1], NULL);
+              _v = SWIG_CheckState(res);
+            }
+          }
+          if (!_v) goto check_1;
+          _ranki += _v*_pi;
+          _rankm += _pi;
+          _pi *= SWIG_MAXCASTRANK;
+        }
+      }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if ((argc >= 1) && (argc <= 3)) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        {
+          // 1. Check if object is wrapped state_list
+          if (SWIG_IsOK(SWIG_ConvertPtr(argv[0], (void **) &_v, SWIGTYPE_p_cmf__math__state_list, 0))) {
+            _v = 1;
+          } // 2. Check if object has __cmf_state_list_interface__
+          else if (SWIG_IsOK(PyObject_HasAttrString(argv[0], "__cmf_state_list_interface__"))) {
+            _v = 2;
+          }
+          else // 3. Check if object is iterable
+          {
+            PyObject* iter = PyObject_GetIter(argv[0]);
+            if (iter != 0) {
+              Py_DECREF(iter);
+              _v = 3;
+            } 
+            else {
+              _v = 0;
+            }
+          }
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (argc > 1) {
+        {
+          {
+            int res = SWIG_AsVal_double(argv[1], NULL);
+            _v = SWIG_CheckState(res);
+          }
+        }
+        if (!_v) goto check_2;
+        _ranki += _v*_pi;
+        _rankm += _pi;
+        _pi *= SWIG_MAXCASTRANK;
+        if (argc > 2) {
+          {
+            {
+              int res = SWIG_AsVal_int(argv[2], NULL);
+              _v = SWIG_CheckState(res);
+            }
+          }
+          if (!_v) goto check_2;
+          _ranki += _v*_pi;
+          _rankm += _pi;
+          _pi *= SWIG_MAXCASTRANK;
+        }
+      }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_new_CVodeBanded__SWIG_0(self, argc, argv);
+    case 2:
+      return _wrap_new_CVodeBanded__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_CVodeBanded'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    cmf::math::CVodeBanded::CVodeBanded(real,int)\n"
+    "    cmf::math::CVodeBanded::CVodeBanded(cmf::math::state_list const &,real,int)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_CVodeBanded_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::math::CVodeBanded *arg1 = (cmf::math::CVodeBanded *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::CVodeBanded *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__CVodeBanded, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CVodeBanded_copy" "', argument " "1"" of type '" "cmf::math::CVodeBanded const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::CVodeBanded * >(argp1);
+  {
+    try {
+      result = (cmf::math::CVodeBanded *)((cmf::math::CVodeBanded const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeBanded, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -75120,27 +75645,22 @@ SWIGINTERN PyObject *CVodeBanded_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObje
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_CVodeDiag(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_new_CVodeDiag__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::math::state_list *arg1 = 0 ;
   real arg2 = (real) 1e-9 ;
   cmf::math::state_list temp_list1 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"states",  (char *)"epsilon",  NULL 
-  };
   cmf::math::CVodeDiag *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:new_CVodeDiag", kwnames, &obj0, &obj1)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   {
-    if (SWIG_ConvertPtr(obj0, (void **) &arg1, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION) == -1) {
-      int res = PyObject_HasAttrString(obj0, "__cmf_state_list_interface__");
+    if (SWIG_ConvertPtr(swig_obj[0], (void **) &arg1, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION) == -1) {
+      int res = PyObject_HasAttrString(swig_obj[0], "__cmf_state_list_interface__");
       if (res) {
         // Found __cmf_state_list_interface__
-        PyObject* list = PyObject_CallMethod(obj0, "__cmf_state_list_interface__", "");
+        PyObject* list = PyObject_CallMethod(swig_obj[0], "__cmf_state_list_interface__", "");
         if (list==NULL) {
           SWIG_exception_fail(SWIG_TypeError,"state list interface fails");
         }
@@ -75153,7 +75673,7 @@ SWIGINTERN PyObject *_wrap_new_CVodeDiag(PyObject *SWIGUNUSEDPARM(self), PyObjec
         // Test iterable, no __cmf_state_list_interface__
         int conversion_errors = 0;
         int res = iterable_to_list<cmf::math::StateVariable::ptr, cmf::math::state_list>
-        (obj0,SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list1, &conversion_errors);
+        (swig_obj[0],SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list1, &conversion_errors);
         if (SWIG_IsOK(res)) {
           if (temp_list1.size() > 0 || conversion_errors == 0)
           arg1 = &temp_list1;
@@ -75165,8 +75685,8 @@ SWIGINTERN PyObject *_wrap_new_CVodeDiag(PyObject *SWIGUNUSEDPARM(self), PyObjec
       }
     }
   }
-  if (obj1) {
-    ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (swig_obj[1]) {
+    ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
     if (!SWIG_IsOK(ecode2)) {
       SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_CVodeDiag" "', argument " "2"" of type '" "real""'");
     } 
@@ -75184,6 +75704,175 @@ SWIGINTERN PyObject *_wrap_new_CVodeDiag(PyObject *SWIGUNUSEDPARM(self), PyObjec
     }
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeDiag, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_CVodeDiag__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  real arg1 = (real) 1e-9 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  cmf::math::CVodeDiag *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 1)) SWIG_fail;
+  if (swig_obj[0]) {
+    ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_CVodeDiag" "', argument " "1"" of type '" "real""'");
+    } 
+    arg1 = static_cast< real >(val1);
+  }
+  {
+    try {
+      result = (cmf::math::CVodeDiag *)new cmf::math::CVodeDiag(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeDiag, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_CVodeDiag(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_CVodeDiag", 0, 2, argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if ((argc >= 0) && (argc <= 1)) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      if (argc > 0) {
+        {
+          {
+            int res = SWIG_AsVal_double(argv[0], NULL);
+            _v = SWIG_CheckState(res);
+          }
+        }
+        if (!_v) goto check_1;
+        _ranki += _v*_pi;
+        _rankm += _pi;
+        _pi *= SWIG_MAXCASTRANK;
+      }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if ((argc >= 1) && (argc <= 2)) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        {
+          // 1. Check if object is wrapped state_list
+          if (SWIG_IsOK(SWIG_ConvertPtr(argv[0], (void **) &_v, SWIGTYPE_p_cmf__math__state_list, 0))) {
+            _v = 1;
+          } // 2. Check if object has __cmf_state_list_interface__
+          else if (SWIG_IsOK(PyObject_HasAttrString(argv[0], "__cmf_state_list_interface__"))) {
+            _v = 2;
+          }
+          else // 3. Check if object is iterable
+          {
+            PyObject* iter = PyObject_GetIter(argv[0]);
+            if (iter != 0) {
+              Py_DECREF(iter);
+              _v = 3;
+            } 
+            else {
+              _v = 0;
+            }
+          }
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (argc > 1) {
+        {
+          {
+            int res = SWIG_AsVal_double(argv[1], NULL);
+            _v = SWIG_CheckState(res);
+          }
+        }
+        if (!_v) goto check_2;
+        _ranki += _v*_pi;
+        _rankm += _pi;
+        _pi *= SWIG_MAXCASTRANK;
+      }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_new_CVodeDiag__SWIG_1(self, argc, argv);
+    case 2:
+      return _wrap_new_CVodeDiag__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_CVodeDiag'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    cmf::math::CVodeDiag::CVodeDiag(cmf::math::state_list const &,real)\n"
+    "    cmf::math::CVodeDiag::CVodeDiag(real)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_CVodeDiag_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::math::CVodeDiag *arg1 = (cmf::math::CVodeDiag *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::CVodeDiag *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__CVodeDiag, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CVodeDiag_copy" "', argument " "1"" of type '" "cmf::math::CVodeDiag const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::CVodeDiag * >(argp1);
+  {
+    try {
+      result = (cmf::math::CVodeDiag *)((cmf::math::CVodeDiag const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeDiag, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -75337,7 +76026,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_CVodeKrylov(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_new_CVodeKrylov__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::math::state_list *arg1 = 0 ;
   real arg2 = (real) 1e-9 ;
@@ -75350,22 +76039,15 @@ SWIGINTERN PyObject *_wrap_new_CVodeKrylov(PyObject *SWIGUNUSEDPARM(self), PyObj
   int ecode3 = 0 ;
   char val4 ;
   int ecode4 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char * kwnames[] = {
-    (char *)"states",  (char *)"epsilon",  (char *)"w",  (char *)"p",  NULL 
-  };
   cmf::math::CVodeKrylov *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OOO:new_CVodeKrylov", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 4)) SWIG_fail;
   {
-    if (SWIG_ConvertPtr(obj0, (void **) &arg1, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION) == -1) {
-      int res = PyObject_HasAttrString(obj0, "__cmf_state_list_interface__");
+    if (SWIG_ConvertPtr(swig_obj[0], (void **) &arg1, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION) == -1) {
+      int res = PyObject_HasAttrString(swig_obj[0], "__cmf_state_list_interface__");
       if (res) {
         // Found __cmf_state_list_interface__
-        PyObject* list = PyObject_CallMethod(obj0, "__cmf_state_list_interface__", "");
+        PyObject* list = PyObject_CallMethod(swig_obj[0], "__cmf_state_list_interface__", "");
         if (list==NULL) {
           SWIG_exception_fail(SWIG_TypeError,"state list interface fails");
         }
@@ -75378,7 +76060,7 @@ SWIGINTERN PyObject *_wrap_new_CVodeKrylov(PyObject *SWIGUNUSEDPARM(self), PyObj
         // Test iterable, no __cmf_state_list_interface__
         int conversion_errors = 0;
         int res = iterable_to_list<cmf::math::StateVariable::ptr, cmf::math::state_list>
-        (obj0,SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list1, &conversion_errors);
+        (swig_obj[0],SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list1, &conversion_errors);
         if (SWIG_IsOK(res)) {
           if (temp_list1.size() > 0 || conversion_errors == 0)
           arg1 = &temp_list1;
@@ -75390,22 +76072,22 @@ SWIGINTERN PyObject *_wrap_new_CVodeKrylov(PyObject *SWIGUNUSEDPARM(self), PyObj
       }
     }
   }
-  if (obj1) {
-    ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (swig_obj[1]) {
+    ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
     if (!SWIG_IsOK(ecode2)) {
       SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_CVodeKrylov" "', argument " "2"" of type '" "real""'");
     } 
     arg2 = static_cast< real >(val2);
   }
-  if (obj2) {
-    ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
     if (!SWIG_IsOK(ecode3)) {
       SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_CVodeKrylov" "', argument " "3"" of type '" "int""'");
     } 
     arg3 = static_cast< int >(val3);
   }
-  if (obj3) {
-    ecode4 = SWIG_AsVal_char(obj3, &val4);
+  if (swig_obj[3]) {
+    ecode4 = SWIG_AsVal_char(swig_obj[3], &val4);
     if (!SWIG_IsOK(ecode4)) {
       SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_CVodeKrylov" "', argument " "4"" of type '" "char""'");
     } 
@@ -75423,6 +76105,243 @@ SWIGINTERN PyObject *_wrap_new_CVodeKrylov(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeKrylov, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_CVodeKrylov__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  real arg1 = (real) 1e-9 ;
+  int arg2 = (int) 5 ;
+  char arg3 = (char) 'L' ;
+  double val1 ;
+  int ecode1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  char val3 ;
+  int ecode3 = 0 ;
+  cmf::math::CVodeKrylov *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 3)) SWIG_fail;
+  if (swig_obj[0]) {
+    ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_CVodeKrylov" "', argument " "1"" of type '" "real""'");
+    } 
+    arg1 = static_cast< real >(val1);
+  }
+  if (swig_obj[1]) {
+    ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_CVodeKrylov" "', argument " "2"" of type '" "int""'");
+    } 
+    arg2 = static_cast< int >(val2);
+  }
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_char(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_CVodeKrylov" "', argument " "3"" of type '" "char""'");
+    } 
+    arg3 = static_cast< char >(val3);
+  }
+  {
+    try {
+      result = (cmf::math::CVodeKrylov *)new cmf::math::CVodeKrylov(arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeKrylov, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_CVodeKrylov(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_CVodeKrylov", 0, 4, argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if ((argc >= 0) && (argc <= 3)) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      if (argc > 0) {
+        {
+          {
+            int res = SWIG_AsVal_double(argv[0], NULL);
+            _v = SWIG_CheckState(res);
+          }
+        }
+        if (!_v) goto check_1;
+        _ranki += _v*_pi;
+        _rankm += _pi;
+        _pi *= SWIG_MAXCASTRANK;
+        if (argc > 1) {
+          {
+            {
+              int res = SWIG_AsVal_int(argv[1], NULL);
+              _v = SWIG_CheckState(res);
+            }
+          }
+          if (!_v) goto check_1;
+          _ranki += _v*_pi;
+          _rankm += _pi;
+          _pi *= SWIG_MAXCASTRANK;
+          if (argc > 2) {
+            {
+              {
+                int res = SWIG_AsVal_char(argv[2], NULL);
+                _v = SWIG_CheckState(res);
+              }
+            }
+            if (!_v) goto check_1;
+            _ranki += _v*_pi;
+            _rankm += _pi;
+            _pi *= SWIG_MAXCASTRANK;
+          }
+        }
+      }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if ((argc >= 1) && (argc <= 4)) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        {
+          // 1. Check if object is wrapped state_list
+          if (SWIG_IsOK(SWIG_ConvertPtr(argv[0], (void **) &_v, SWIGTYPE_p_cmf__math__state_list, 0))) {
+            _v = 1;
+          } // 2. Check if object has __cmf_state_list_interface__
+          else if (SWIG_IsOK(PyObject_HasAttrString(argv[0], "__cmf_state_list_interface__"))) {
+            _v = 2;
+          }
+          else // 3. Check if object is iterable
+          {
+            PyObject* iter = PyObject_GetIter(argv[0]);
+            if (iter != 0) {
+              Py_DECREF(iter);
+              _v = 3;
+            } 
+            else {
+              _v = 0;
+            }
+          }
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (argc > 1) {
+        {
+          {
+            int res = SWIG_AsVal_double(argv[1], NULL);
+            _v = SWIG_CheckState(res);
+          }
+        }
+        if (!_v) goto check_2;
+        _ranki += _v*_pi;
+        _rankm += _pi;
+        _pi *= SWIG_MAXCASTRANK;
+        if (argc > 2) {
+          {
+            {
+              int res = SWIG_AsVal_int(argv[2], NULL);
+              _v = SWIG_CheckState(res);
+            }
+          }
+          if (!_v) goto check_2;
+          _ranki += _v*_pi;
+          _rankm += _pi;
+          _pi *= SWIG_MAXCASTRANK;
+          if (argc > 3) {
+            {
+              {
+                int res = SWIG_AsVal_char(argv[3], NULL);
+                _v = SWIG_CheckState(res);
+              }
+            }
+            if (!_v) goto check_2;
+            _ranki += _v*_pi;
+            _rankm += _pi;
+            _pi *= SWIG_MAXCASTRANK;
+          }
+        }
+      }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_new_CVodeKrylov__SWIG_1(self, argc, argv);
+    case 2:
+      return _wrap_new_CVodeKrylov__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_CVodeKrylov'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    cmf::math::CVodeKrylov::CVodeKrylov(cmf::math::state_list const &,real,int,char)\n"
+    "    cmf::math::CVodeKrylov::CVodeKrylov(real,int,char)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_CVodeKrylov_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::math::CVodeKrylov *arg1 = (cmf::math::CVodeKrylov *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::CVodeKrylov *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__CVodeKrylov, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CVodeKrylov_copy" "', argument " "1"" of type '" "cmf::math::CVodeKrylov const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::CVodeKrylov * >(argp1);
+  {
+    try {
+      result = (cmf::math::CVodeKrylov *)((cmf::math::CVodeKrylov const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeKrylov, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -75472,27 +76391,55 @@ SWIGINTERN PyObject *CVodeKrylov_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObje
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_CVodeKLU(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_new_CVodeKLU__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  real arg1 = (real) 1e-9 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  cmf::math::CVodeKLU *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 1)) SWIG_fail;
+  if (swig_obj[0]) {
+    ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_CVodeKLU" "', argument " "1"" of type '" "real""'");
+    } 
+    arg1 = static_cast< real >(val1);
+  }
+  {
+    try {
+      result = (cmf::math::CVodeKLU *)new cmf::math::CVodeKLU(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeKLU, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_CVodeKLU__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::math::state_list *arg1 = 0 ;
   real arg2 = (real) 1e-9 ;
   cmf::math::state_list temp_list1 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"states",  (char *)"epsilon",  NULL 
-  };
   cmf::math::CVodeKLU *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:new_CVodeKLU", kwnames, &obj0, &obj1)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   {
-    if (SWIG_ConvertPtr(obj0, (void **) &arg1, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION) == -1) {
-      int res = PyObject_HasAttrString(obj0, "__cmf_state_list_interface__");
+    if (SWIG_ConvertPtr(swig_obj[0], (void **) &arg1, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION) == -1) {
+      int res = PyObject_HasAttrString(swig_obj[0], "__cmf_state_list_interface__");
       if (res) {
         // Found __cmf_state_list_interface__
-        PyObject* list = PyObject_CallMethod(obj0, "__cmf_state_list_interface__", "");
+        PyObject* list = PyObject_CallMethod(swig_obj[0], "__cmf_state_list_interface__", "");
         if (list==NULL) {
           SWIG_exception_fail(SWIG_TypeError,"state list interface fails");
         }
@@ -75505,7 +76452,7 @@ SWIGINTERN PyObject *_wrap_new_CVodeKLU(PyObject *SWIGUNUSEDPARM(self), PyObject
         // Test iterable, no __cmf_state_list_interface__
         int conversion_errors = 0;
         int res = iterable_to_list<cmf::math::StateVariable::ptr, cmf::math::state_list>
-        (obj0,SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list1, &conversion_errors);
+        (swig_obj[0],SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list1, &conversion_errors);
         if (SWIG_IsOK(res)) {
           if (temp_list1.size() > 0 || conversion_errors == 0)
           arg1 = &temp_list1;
@@ -75517,8 +76464,8 @@ SWIGINTERN PyObject *_wrap_new_CVodeKLU(PyObject *SWIGUNUSEDPARM(self), PyObject
       }
     }
   }
-  if (obj1) {
-    ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (swig_obj[1]) {
+    ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
     if (!SWIG_IsOK(ecode2)) {
       SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_CVodeKLU" "', argument " "2"" of type '" "real""'");
     } 
@@ -75536,6 +76483,142 @@ SWIGINTERN PyObject *_wrap_new_CVodeKLU(PyObject *SWIGUNUSEDPARM(self), PyObject
     }
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeKLU, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_CVodeKLU(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_CVodeKLU", 0, 2, argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if ((argc >= 0) && (argc <= 1)) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      if (argc > 0) {
+        {
+          {
+            int res = SWIG_AsVal_double(argv[0], NULL);
+            _v = SWIG_CheckState(res);
+          }
+        }
+        if (!_v) goto check_1;
+        _ranki += _v*_pi;
+        _rankm += _pi;
+        _pi *= SWIG_MAXCASTRANK;
+      }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if ((argc >= 1) && (argc <= 2)) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        {
+          // 1. Check if object is wrapped state_list
+          if (SWIG_IsOK(SWIG_ConvertPtr(argv[0], (void **) &_v, SWIGTYPE_p_cmf__math__state_list, 0))) {
+            _v = 1;
+          } // 2. Check if object has __cmf_state_list_interface__
+          else if (SWIG_IsOK(PyObject_HasAttrString(argv[0], "__cmf_state_list_interface__"))) {
+            _v = 2;
+          }
+          else // 3. Check if object is iterable
+          {
+            PyObject* iter = PyObject_GetIter(argv[0]);
+            if (iter != 0) {
+              Py_DECREF(iter);
+              _v = 3;
+            } 
+            else {
+              _v = 0;
+            }
+          }
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (argc > 1) {
+        {
+          {
+            int res = SWIG_AsVal_double(argv[1], NULL);
+            _v = SWIG_CheckState(res);
+          }
+        }
+        if (!_v) goto check_2;
+        _ranki += _v*_pi;
+        _rankm += _pi;
+        _pi *= SWIG_MAXCASTRANK;
+      }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_new_CVodeKLU__SWIG_0(self, argc, argv);
+    case 2:
+      return _wrap_new_CVodeKLU__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_CVodeKLU'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    cmf::math::CVodeKLU::CVodeKLU(real)\n"
+    "    cmf::math::CVodeKLU::CVodeKLU(cmf::math::state_list const &,real)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_CVodeKLU_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::math::CVodeKLU *arg1 = (cmf::math::CVodeKLU *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::CVodeKLU *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__CVodeKLU, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CVodeKLU_copy" "', argument " "1"" of type '" "cmf::math::CVodeKLU const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::CVodeKLU * >(argp1);
+  {
+    try {
+      result = (cmf::math::CVodeKLU *)((cmf::math::CVodeKLU const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeKLU, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -75799,11 +76882,11 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_SoluteWaterIntegrator__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  SwigValueWrapper< cmf::water::solute_vector > arg1 ;
+  cmf::water::solute_vector *arg1 = 0 ;
   cmf::math::Integrator *arg2 = 0 ;
   cmf::math::Integrator *arg3 = 0 ;
   cmf::math::state_list *arg4 = 0 ;
-  void *argp1 ;
+  void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
@@ -75813,19 +76896,14 @@ SWIGINTERN PyObject *_wrap_new_SoluteWaterIntegrator__SWIG_1(PyObject *SWIGUNUSE
   cmf::math::SoluteWaterIntegrator *result = 0 ;
   
   if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  {
-    res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__water__solute_vector,  0  | 0);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SoluteWaterIntegrator" "', argument " "1"" of type '" "cmf::water::solute_vector""'"); 
-    }  
-    if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SoluteWaterIntegrator" "', argument " "1"" of type '" "cmf::water::solute_vector""'");
-    } else {
-      cmf::water::solute_vector * temp = reinterpret_cast< cmf::water::solute_vector * >(argp1);
-      arg1 = *temp;
-      if (SWIG_IsNewObj(res1)) delete temp;
-    }
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__water__solute_vector,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SoluteWaterIntegrator" "', argument " "1"" of type '" "cmf::water::solute_vector const &""'"); 
   }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SoluteWaterIntegrator" "', argument " "1"" of type '" "cmf::water::solute_vector const &""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::solute_vector * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__Integrator,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SoluteWaterIntegrator" "', argument " "2"" of type '" "cmf::math::Integrator const &""'"); 
@@ -75874,7 +76952,7 @@ SWIGINTERN PyObject *_wrap_new_SoluteWaterIntegrator__SWIG_1(PyObject *SWIGUNUSE
   }
   {
     try {
-      result = (cmf::math::SoluteWaterIntegrator *)new cmf::math::SoluteWaterIntegrator(arg1,(cmf::math::Integrator const &)*arg2,(cmf::math::Integrator const &)*arg3,(cmf::math::state_list const &)*arg4);
+      result = (cmf::math::SoluteWaterIntegrator *)new cmf::math::SoluteWaterIntegrator((cmf::water::solute_vector const &)*arg1,(cmf::math::Integrator const &)*arg2,(cmf::math::Integrator const &)*arg3,(cmf::math::state_list const &)*arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -76012,7 +77090,7 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_SoluteWaterIntegrator'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator(cmf::water::solute_vector const &,cmf::math::Integrator const &,cmf::math::Integrator const &)\n"
-    "    cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator(cmf::water::solute_vector,cmf::math::Integrator const &,cmf::math::Integrator const &,cmf::math::state_list const &)\n");
+    "    cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator(cmf::water::solute_vector const &,cmf::math::Integrator const &,cmf::math::Integrator const &,cmf::math::state_list const &)\n");
   return 0;
 }
 
@@ -76065,9 +77143,21 @@ static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "get_parallel_threads", _wrap_get_parallel_threads, METH_NOARGS, "get_parallel_threads() -> int"},
 	 { "set_parallel_threads", (PyCFunction)(void(*)(void))_wrap_set_parallel_threads, METH_VARARGS|METH_KEYWORDS, "set_parallel_threads(int numthreads) -> int"},
-	 { "new_cubicspline", (PyCFunction)(void(*)(void))_wrap_new_cubicspline, METH_VARARGS|METH_KEYWORDS, "new_cubicspline(cmf::math::num_array const & x, cmf::math::num_array const & y) -> cubicspline"},
-	 { "cubicspline_generate", _wrap_cubicspline_generate, METH_O, "cubicspline_generate(cubicspline self)"},
-	 { "cubicspline_size", _wrap_cubicspline_size, METH_O, "cubicspline_size(cubicspline self) -> size_t"},
+	 { "new_cubicspline", (PyCFunction)(void(*)(void))_wrap_new_cubicspline, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_cubicspline(cmf::math::num_array const & x, cmf::math::num_array const & y) -> cubicspline\n"
+		"cubicspline(const cmf::math::num_array &x, const cmf::math::num_array\n"
+		"&y) \n"
+		""},
+	 { "cubicspline_generate", _wrap_cubicspline_generate, METH_O, "\n"
+		"cubicspline_generate(cubicspline self)\n"
+		"void\n"
+		"generate() \n"
+		""},
+	 { "cubicspline_size", _wrap_cubicspline_size, METH_O, "\n"
+		"cubicspline_size(cubicspline self) -> size_t\n"
+		"size_t size()\n"
+		"const \n"
+		""},
 	 { "cubicspline___call__", (PyCFunction)(void(*)(void))_wrap_cubicspline___call__, METH_VARARGS|METH_KEYWORDS, "cubicspline___call__(cubicspline self, real x) -> real"},
 	 { "delete_cubicspline", _wrap_delete_cubicspline, METH_O, "delete_cubicspline(cubicspline self)"},
 	 { "cubicspline_swigregister", cubicspline_swigregister, METH_O, NULL},
@@ -76082,16 +77172,72 @@ static PyMethodDef SwigMethods[] = {
 		"point()\n"
 		"point(point p)\n"
 		"new_point(double x_, double y_, double z_=0.0) -> point\n"
+		"point(double x_,\n"
+		"double y_, double z_=0.0)\n"
+		"\n"
+		"Creates a point from two doubles. \n"
 		""},
-	 { "point_distanceTo", (PyCFunction)(void(*)(void))_wrap_point_distanceTo, METH_VARARGS|METH_KEYWORDS, "point_distanceTo(point self, point p) -> double"},
-	 { "point_z_weight_distance", (PyCFunction)(void(*)(void))_wrap_point_z_weight_distance, METH_VARARGS|METH_KEYWORDS, "point_z_weight_distance(point self, point p, double z_weight) -> double"},
-	 { "point_distance3DTo", (PyCFunction)(void(*)(void))_wrap_point_distance3DTo, METH_VARARGS|METH_KEYWORDS, "point_distance3DTo(point self, point p) -> double"},
+	 { "point_distanceTo", (PyCFunction)(void(*)(void))_wrap_point_distanceTo, METH_VARARGS|METH_KEYWORDS, "\n"
+		"point_distanceTo(point self, point p) -> double\n"
+		"double\n"
+		"distanceTo(point p) const\n"
+		"\n"
+		"Returns the horizontal euclidian distance to another point p.\n"
+		"\n"
+		":math:`\\\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}` \n"
+		""},
+	 { "point_z_weight_distance", (PyCFunction)(void(*)(void))_wrap_point_z_weight_distance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"point_z_weight_distance(point self, point p, double z_weight) -> double\n"
+		"double z_weight_distance(point p, double z_weight) const\n"
+		"\n"
+		"Returns the horizontal euclidian distance plus the absolute of the\n"
+		"height difference times a factor.\n"
+		"\n"
+		":math:`\\\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}\\\\ +\\\\ w_{z}|this.z-p.z|`\n"
+		"\n"
+		""},
+	 { "point_distance3DTo", (PyCFunction)(void(*)(void))_wrap_point_distance3DTo, METH_VARARGS|METH_KEYWORDS, "\n"
+		"point_distance3DTo(point self, point p) -> double\n"
+		"double\n"
+		"distance3DTo(point p) const\n"
+		"\n"
+		"Returns the euclidian distance in space to another point p. \n"
+		""},
 	 { "point_distance", (PyCFunction)(void(*)(void))_wrap_point_distance, METH_VARARGS|METH_KEYWORDS, "point_distance(point p1, point p2) -> double"},
-	 { "point_distance_max", (PyCFunction)(void(*)(void))_wrap_point_distance_max, METH_VARARGS|METH_KEYWORDS, "point_distance_max(point self, point p) -> double"},
-	 { "point_azimuth", (PyCFunction)(void(*)(void))_wrap_point_azimuth, METH_VARARGS|METH_KEYWORDS, "point_azimuth(point self, point p) -> double"},
-	 { "point_angleToXAxis", (PyCFunction)(void(*)(void))_wrap_point_angleToXAxis, METH_VARARGS|METH_KEYWORDS, "point_angleToXAxis(point self, point p) -> double"},
-	 { "point_sum", _wrap_point_sum, METH_O, "point_sum(point self) -> double"},
-	 { "point_length", _wrap_point_length, METH_O, "point_length(point self) -> double"},
+	 { "point_distance_max", (PyCFunction)(void(*)(void))_wrap_point_distance_max, METH_VARARGS|METH_KEYWORDS, "\n"
+		"point_distance_max(point self, point p) -> double\n"
+		"double\n"
+		"distance_max(point p) const\n"
+		"\n"
+		"Returns the distance by the maximum orthogonal offset. \n"
+		""},
+	 { "point_azimuth", (PyCFunction)(void(*)(void))_wrap_point_azimuth, METH_VARARGS|METH_KEYWORDS, "\n"
+		"point_azimuth(point self, point p) -> double\n"
+		"double\n"
+		"azimuth(point p) const\n"
+		"\n"
+		"Returns the azimuth angle of the line :math:`\\\\overline{this,p}` to the\n"
+		"Azimuth in degrees. \n"
+		""},
+	 { "point_angleToXAxis", (PyCFunction)(void(*)(void))_wrap_point_angleToXAxis, METH_VARARGS|METH_KEYWORDS, "\n"
+		"point_angleToXAxis(point self, point p) -> double\n"
+		"double\n"
+		"angleToXAxis(point p) const\n"
+		"\n"
+		"Returns the angle between the line :math:`\\\\overline{this,p}` to the\n"
+		"x-Axis in degrees. \n"
+		""},
+	 { "point_sum", _wrap_point_sum, METH_O, "\n"
+		"point_sum(point self) -> double\n"
+		"double sum() const\n"
+		"\n"
+		"Returns x+y+z. \n"
+		""},
+	 { "point_length", _wrap_point_length, METH_O, "\n"
+		"point_length(point self) -> double\n"
+		"double length()\n"
+		"const \n"
+		""},
 	 { "point___add__", (PyCFunction)(void(*)(void))_wrap_point___add__, METH_VARARGS|METH_KEYWORDS, "point___add__(point self, point p) -> point"},
 	 { "point___iadd__", (PyCFunction)(void(*)(void))_wrap_point___iadd__, METH_VARARGS|METH_KEYWORDS, "point___iadd__(point self, point left) -> point"},
 	 { "point___sub__", (PyCFunction)(void(*)(void))_wrap_point___sub__, METH_VARARGS|METH_KEYWORDS, "point___sub__(point self, point p) -> point"},
@@ -76128,10 +77274,33 @@ static PyMethodDef SwigMethods[] = {
 	 { "point_vector_Y_get", _wrap_point_vector_Y_get, METH_O, "point_vector_Y_get(point_vector self) -> cmf::math::num_array"},
 	 { "point_vector_Z_set", _wrap_point_vector_Z_set, METH_VARARGS, "point_vector_Z_set(point_vector self, cmf::math::num_array Z)"},
 	 { "point_vector_Z_get", _wrap_point_vector_Z_get, METH_O, "point_vector_Z_get(point_vector self) -> cmf::math::num_array"},
-	 { "new_point_vector", (PyCFunction)(void(*)(void))_wrap_new_point_vector, METH_VARARGS|METH_KEYWORDS, "new_point_vector(ptrdiff_t size) -> point_vector"},
-	 { "point_vector_get", (PyCFunction)(void(*)(void))_wrap_point_vector_get, METH_VARARGS|METH_KEYWORDS, "point_vector_get(point_vector self, ptrdiff_t index) -> point"},
-	 { "point_vector_set", (PyCFunction)(void(*)(void))_wrap_point_vector_set, METH_VARARGS|METH_KEYWORDS, "point_vector_set(point_vector self, ptrdiff_t index, point p)"},
-	 { "point_vector_size", _wrap_point_vector_size, METH_O, "point_vector_size(point_vector self) -> size_t"},
+	 { "new_point_vector", (PyCFunction)(void(*)(void))_wrap_new_point_vector, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_point_vector(ptrdiff_t size) -> point_vector\n"
+		"point_vector(ptrdiff_t size)\n"
+		"\n"
+		"Create a point vector of a specific size. \n"
+		""},
+	 { "point_vector_get", (PyCFunction)(void(*)(void))_wrap_point_vector_get, METH_VARARGS|METH_KEYWORDS, "\n"
+		"point_vector_get(point_vector self, ptrdiff_t index) -> point\n"
+		"point\n"
+		"get(ptrdiff_t index) const\n"
+		"\n"
+		"Return a point at index. \n"
+		""},
+	 { "point_vector_set", (PyCFunction)(void(*)(void))_wrap_point_vector_set, METH_VARARGS|METH_KEYWORDS, "\n"
+		"point_vector_set(point_vector self, ptrdiff_t index, point p)\n"
+		"void\n"
+		"set(ptrdiff_t index, cmf::geometry::point p)\n"
+		"\n"
+		"Change the point at index. \n"
+		""},
+	 { "point_vector_size", _wrap_point_vector_size, METH_O, "\n"
+		"point_vector_size(point_vector self) -> size_t\n"
+		"size_t\n"
+		"size() const\n"
+		"\n"
+		"Return the number of points in the point_vector. \n"
+		""},
 	 { "delete_point_vector", _wrap_delete_point_vector, METH_O, "delete_point_vector(point_vector self)"},
 	 { "point_vector_swigregister", point_vector_swigregister, METH_O, NULL},
 	 { "point_vector_swiginit", point_vector_swiginit, METH_VARARGS, NULL},
@@ -76151,16 +77320,62 @@ static PyMethodDef SwigMethods[] = {
 		"Time(Time t)\n"
 		"Time()\n"
 		"new_Time(long long milliseconds) -> Time\n"
+		"Time(long long\n"
+		"milliseconds) \n"
 		""},
-	 { "Time_AsDays", _wrap_Time_AsDays, METH_O, "Time_AsDays(Time self) -> double"},
-	 { "Time_AsHours", _wrap_Time_AsHours, METH_O, "Time_AsHours(Time self) -> double"},
-	 { "Time_AsMinutes", _wrap_Time_AsMinutes, METH_O, "Time_AsMinutes(Time self) -> double"},
-	 { "Time_AsSeconds", _wrap_Time_AsSeconds, METH_O, "Time_AsSeconds(Time self) -> double"},
-	 { "Time_AsMilliseconds", _wrap_Time_AsMilliseconds, METH_O, "Time_AsMilliseconds(Time self) -> long long"},
-	 { "Time_AsDate", _wrap_Time_AsDate, METH_O, "Time_AsDate(Time self) -> Date"},
-	 { "Time_to_string", (PyCFunction)(void(*)(void))_wrap_Time_to_string, METH_VARARGS|METH_KEYWORDS, "Time_to_string(Time self, char seperator=':') -> std::string"},
-	 { "Time_is_not_0", _wrap_Time_is_not_0, METH_O, "Time_is_not_0(Time self) -> bool"},
-	 { "Time_DOY", _wrap_Time_DOY, METH_O, "Time_DOY(Time self) -> double"},
+	 { "Time_AsDays", _wrap_Time_AsDays, METH_O, "\n"
+		"Time_AsDays(Time self) -> double\n"
+		"double AsDays() const\n"
+		"\n"
+		"Time in days. \n"
+		""},
+	 { "Time_AsHours", _wrap_Time_AsHours, METH_O, "\n"
+		"Time_AsHours(Time self) -> double\n"
+		"double AsHours()\n"
+		"const\n"
+		"\n"
+		"Time in hours. \n"
+		""},
+	 { "Time_AsMinutes", _wrap_Time_AsMinutes, METH_O, "\n"
+		"Time_AsMinutes(Time self) -> double\n"
+		"double AsMinutes()\n"
+		"const\n"
+		"\n"
+		"Time in minutes. \n"
+		""},
+	 { "Time_AsSeconds", _wrap_Time_AsSeconds, METH_O, "\n"
+		"Time_AsSeconds(Time self) -> double\n"
+		"double AsSeconds()\n"
+		"const\n"
+		"\n"
+		"Time in seconds. \n"
+		""},
+	 { "Time_AsMilliseconds", _wrap_Time_AsMilliseconds, METH_O, "\n"
+		"Time_AsMilliseconds(Time self) -> long long\n"
+		"long long\n"
+		"AsMilliseconds() const\n"
+		"\n"
+		"Time in milliseconds. \n"
+		""},
+	 { "Time_AsDate", _wrap_Time_AsDate, METH_O, "\n"
+		"Time_AsDate(Time self) -> Date\n"
+		"Date AsDate() const\n"
+		"\n"
+		""},
+	 { "Time_to_string", (PyCFunction)(void(*)(void))_wrap_Time_to_string, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Time_to_string(Time self, char seperator=':') -> std::string\n"
+		"std::string\n"
+		"to_string(char seperator=':') \n"
+		""},
+	 { "Time_is_not_0", _wrap_Time_is_not_0, METH_O, "\n"
+		"Time_is_not_0(Time self) -> bool\n"
+		"bool is_not_0()\n"
+		"const \n"
+		""},
+	 { "Time_DOY", _wrap_Time_DOY, METH_O, "\n"
+		"Time_DOY(Time self) -> double\n"
+		"double DOY() const \n"
+		""},
 	 { "Time___add__", (PyCFunction)(void(*)(void))_wrap_Time___add__, METH_VARARGS|METH_KEYWORDS, "Time___add__(Time self, Time t1) -> Time"},
 	 { "Time___sub__", (PyCFunction)(void(*)(void))_wrap_Time___sub__, METH_VARARGS|METH_KEYWORDS, "Time___sub__(Time self, Time t1) -> Time"},
 	 { "Time___iadd__", (PyCFunction)(void(*)(void))_wrap_Time___iadd__, METH_VARARGS|METH_KEYWORDS, "Time___iadd__(Time self, Time t1) -> Time"},
@@ -76188,7 +77403,13 @@ static PyMethodDef SwigMethods[] = {
 		"Time___truediv__(Time self, int x) -> Time\n"
 		"Time___truediv__(Time self, Time t1) -> double\n"
 		""},
-	 { "Time_times_in", (PyCFunction)(void(*)(void))_wrap_Time_times_in, METH_VARARGS|METH_KEYWORDS, "Time_times_in(Time self, Time t1) -> long long"},
+	 { "Time_times_in", (PyCFunction)(void(*)(void))_wrap_Time_times_in, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Time_times_in(Time self, Time t1) -> long long\n"
+		"long long\n"
+		"times_in(const Time &t1) const\n"
+		"\n"
+		"Returns the number of times this is included in t1. \n"
+		""},
 	 { "Time___lt__", (PyCFunction)(void(*)(void))_wrap_Time___lt__, METH_VARARGS|METH_KEYWORDS, "Time___lt__(Time self, Time t1) -> bool"},
 	 { "Time___gt__", (PyCFunction)(void(*)(void))_wrap_Time___gt__, METH_VARARGS|METH_KEYWORDS, "Time___gt__(Time self, Time t1) -> bool"},
 	 { "Time___le__", (PyCFunction)(void(*)(void))_wrap_Time___le__, METH_VARARGS|METH_KEYWORDS, "Time___le__(Time self, Time t1) -> bool"},
@@ -76215,42 +77436,146 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_Date", _wrap_new_Date, METH_VARARGS, "\n"
 		"Date(int _day, int _month, int _year, int _hour=0, int _minute=0, int _second=0, int _ms=0)\n"
 		"new_Date(Time time) -> Date\n"
+		"Date(const Time &time)\n"
+		"\n"
+		"Creates a new date from time (based on the 31.12.1899, like in\n"
+		"Excel(TM)) \n"
 		""},
-	 { "Date_ToTime", _wrap_Date_ToTime, METH_O, "Date_ToTime(Date self) -> Time"},
-	 { "Date_DOY", _wrap_Date_DOY, METH_O, "Date_DOY(Date self) -> double"},
-	 { "Date_to_string", _wrap_Date_to_string, METH_O, "Date_to_string(Date self) -> std::string"},
+	 { "Date_ToTime", _wrap_Date_ToTime, METH_O, "\n"
+		"Date_ToTime(Date self) -> Time\n"
+		"Time ToTime()\n"
+		"\n"
+		"Converts a date to Time (based on the 31.12.1899, like in Excel(TM) \n"
+		""},
+	 { "Date_DOY", _wrap_Date_DOY, METH_O, "\n"
+		"Date_DOY(Date self) -> double\n"
+		"double DOY()\n"
+		"\n"
+		"Returns the day of year. \n"
+		""},
+	 { "Date_to_string", _wrap_Date_to_string, METH_O, "\n"
+		"Date_to_string(Date self) -> std::string\n"
+		"std::string\n"
+		"to_string()\n"
+		"\n"
+		"Returns a string representing the date. \n"
+		""},
 	 { "delete_Date", _wrap_delete_Date, METH_O, "delete_Date(Date self)"},
 	 { "Date_swigregister", Date_swigregister, METH_O, NULL},
 	 { "Date_swiginit", Date_swiginit, METH_VARARGS, NULL},
-	 { "timeseries_set_begin", (PyCFunction)(void(*)(void))_wrap_timeseries_set_begin, METH_VARARGS|METH_KEYWORDS, "timeseries_set_begin(timeseries self, Time new_begin)"},
-	 { "timeseries_set_step", (PyCFunction)(void(*)(void))_wrap_timeseries_set_step, METH_VARARGS|METH_KEYWORDS, "timeseries_set_step(timeseries self, Time new_step)"},
-	 { "timeseries_interpolationpower", _wrap_timeseries_interpolationpower, METH_O, "timeseries_interpolationpower(timeseries self) -> int"},
-	 { "timeseries_set_interpolationpower", (PyCFunction)(void(*)(void))_wrap_timeseries_set_interpolationpower, METH_VARARGS|METH_KEYWORDS, "timeseries_set_interpolationpower(timeseries self, int new_ip)"},
-	 { "timeseries_add", (PyCFunction)(void(*)(void))_wrap_timeseries_add, METH_VARARGS|METH_KEYWORDS, "timeseries_add(timeseries self, double Value)"},
-	 { "timeseries_is_empty", _wrap_timeseries_is_empty, METH_O, "timeseries_is_empty(timeseries self) -> bool"},
-	 { "timeseries_clear", _wrap_timeseries_clear, METH_O, "timeseries_clear(timeseries self)"},
-	 { "timeseries_adress", _wrap_timeseries_adress, METH_O, "timeseries_adress(timeseries self) -> size_t"},
-	 { "timeseries_as_array", _wrap_timeseries_as_array, METH_O, "timeseries_as_array(timeseries self) -> cmf::math::num_array"},
-	 { "timeseries_copy", _wrap_timeseries_copy, METH_O, "timeseries_copy(timeseries self) -> timeseries"},
-	 { "timeseries_size", _wrap_timeseries_size, METH_O, "timeseries_size(timeseries self) -> size_t"},
-	 { "timeseries_count_values", _wrap_timeseries_count_values, METH_O, "timeseries_count_values(timeseries self) -> size_t"},
-	 { "new_timeseries", (PyCFunction)(void(*)(void))_wrap_new_timeseries, METH_VARARGS|METH_KEYWORDS, "new_timeseries(Time begin=cmf::math::Time(), Time step=day, int interpolationmethod=1, size_t count=0) -> timeseries"},
+	 { "timeseries_set_begin", (PyCFunction)(void(*)(void))_wrap_timeseries_set_begin, METH_VARARGS|METH_KEYWORDS, "\n"
+		"timeseries_set_begin(timeseries self, Time new_begin)\n"
+		"void\n"
+		"set_begin(cmf::math::Time new_begin) \n"
+		""},
+	 { "timeseries_set_step", (PyCFunction)(void(*)(void))_wrap_timeseries_set_step, METH_VARARGS|METH_KEYWORDS, "\n"
+		"timeseries_set_step(timeseries self, Time new_step)\n"
+		"void\n"
+		"set_step(cmf::math::Time new_step) \n"
+		""},
+	 { "timeseries_interpolationpower", _wrap_timeseries_interpolationpower, METH_O, "\n"
+		"timeseries_interpolationpower(timeseries self) -> int\n"
+		"int\n"
+		"interpolationpower() const\n"
+		"\n"
+		"Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 -\n"
+		"cubic spline (not implemented yet) \n"
+		""},
+	 { "timeseries_set_interpolationpower", (PyCFunction)(void(*)(void))_wrap_timeseries_set_interpolationpower, METH_VARARGS|METH_KEYWORDS, "\n"
+		"timeseries_set_interpolationpower(timeseries self, int new_ip)\n"
+		"void set_interpolationpower(int new_ip) \n"
+		""},
+	 { "timeseries_add", (PyCFunction)(void(*)(void))_wrap_timeseries_add, METH_VARARGS|METH_KEYWORDS, "\n"
+		"timeseries_add(timeseries self, double Value)\n"
+		"void add(double\n"
+		"Value)\n"
+		"\n"
+		"Appends a measurement. \n"
+		""},
+	 { "timeseries_is_empty", _wrap_timeseries_is_empty, METH_O, "\n"
+		"timeseries_is_empty(timeseries self) -> bool\n"
+		"bool\n"
+		"is_empty() const\n"
+		"\n"
+		"returns true if no values are added to the timeseries \n"
+		""},
+	 { "timeseries_clear", _wrap_timeseries_clear, METH_O, "\n"
+		"timeseries_clear(timeseries self)\n"
+		"void clear() \n"
+		""},
+	 { "timeseries_adress", _wrap_timeseries_adress, METH_O, "\n"
+		"timeseries_adress(timeseries self) -> size_t\n"
+		"size_t adress()\n"
+		"const \n"
+		""},
+	 { "timeseries_as_array", _wrap_timeseries_as_array, METH_O, "\n"
+		"timeseries_as_array(timeseries self) -> cmf::math::num_array\n"
+		"cmf::math::num_array as_array() const \n"
+		""},
+	 { "timeseries_copy", _wrap_timeseries_copy, METH_O, "\n"
+		"timeseries_copy(timeseries self) -> timeseries\n"
+		"timeseries copy()\n"
+		"const \n"
+		""},
+	 { "timeseries_size", _wrap_timeseries_size, METH_O, "\n"
+		"timeseries_size(timeseries self) -> size_t\n"
+		"size_t size()\n"
+		"const\n"
+		"\n"
+		"Number of items in the timeseries. \n"
+		""},
+	 { "timeseries_count_values", _wrap_timeseries_count_values, METH_O, "\n"
+		"timeseries_count_values(timeseries self) -> size_t\n"
+		"size_t\n"
+		"count_values() const\n"
+		"\n"
+		"Number of valid values (=size - # of NaN's) \n"
+		""},
+	 { "new_timeseries", (PyCFunction)(void(*)(void))_wrap_new_timeseries, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_timeseries(Time begin=cmf::math::Time(), Time step=day, int interpolationmethod=1, size_t count=0) -> timeseries\n"
+		"timeseries(const cmf::math::timeseries &ts) \n"
+		""},
 	 { "timeseries_from_array", (PyCFunction)(void(*)(void))_wrap_timeseries_from_array, METH_VARARGS|METH_KEYWORDS, "timeseries_from_array(Time begin, Time step, cmf::math::num_array const & data) -> timeseries"},
 	 { "timeseries_from_scalar", (PyCFunction)(void(*)(void))_wrap_timeseries_from_scalar, METH_VARARGS|METH_KEYWORDS, "timeseries_from_scalar(double scalar) -> timeseries"},
 	 { "timeseries_from_file", (PyCFunction)(void(*)(void))_wrap_timeseries_from_file, METH_VARARGS|METH_KEYWORDS, "timeseries_from_file(std::string filename) -> timeseries"},
-	 { "timeseries_get_t", (PyCFunction)(void(*)(void))_wrap_timeseries_get_t, METH_VARARGS|METH_KEYWORDS, "timeseries_get_t(timeseries self, Time t) -> double"},
-	 { "timeseries_get_i", (PyCFunction)(void(*)(void))_wrap_timeseries_get_i, METH_VARARGS|METH_KEYWORDS, "timeseries_get_i(timeseries self, ptrdiff_t i) -> double"},
-	 { "timeseries_set_t", (PyCFunction)(void(*)(void))_wrap_timeseries_set_t, METH_VARARGS|METH_KEYWORDS, "timeseries_set_t(timeseries self, Time t, double value)"},
-	 { "timeseries_set_i", (PyCFunction)(void(*)(void))_wrap_timeseries_set_i, METH_VARARGS|METH_KEYWORDS, "timeseries_set_i(timeseries self, ptrdiff_t i, double value)"},
+	 { "timeseries_get_t", (PyCFunction)(void(*)(void))_wrap_timeseries_get_t, METH_VARARGS|METH_KEYWORDS, "\n"
+		"timeseries_get_t(timeseries self, Time t) -> double\n"
+		"double\n"
+		"get_t(cmf::math::Time t) const \n"
+		""},
+	 { "timeseries_get_i", (PyCFunction)(void(*)(void))_wrap_timeseries_get_i, METH_VARARGS|METH_KEYWORDS, "\n"
+		"timeseries_get_i(timeseries self, ptrdiff_t i) -> double\n"
+		"double\n"
+		"get_i(ptrdiff_t i) const \n"
+		""},
+	 { "timeseries_set_t", (PyCFunction)(void(*)(void))_wrap_timeseries_set_t, METH_VARARGS|METH_KEYWORDS, "\n"
+		"timeseries_set_t(timeseries self, Time t, double value)\n"
+		"void\n"
+		"set_t(cmf::math::Time t, double value) \n"
+		""},
+	 { "timeseries_set_i", (PyCFunction)(void(*)(void))_wrap_timeseries_set_i, METH_VARARGS|METH_KEYWORDS, "\n"
+		"timeseries_set_i(timeseries self, ptrdiff_t i, double value)\n"
+		"void\n"
+		"set_i(ptrdiff_t i, double value) \n"
+		""},
 	 { "timeseries_get_slice", _wrap_timeseries_get_slice, METH_VARARGS, "\n"
 		"timeseries_get_slice(timeseries self, Time _begin, Time _end, Time _step=cmf::math::Time()) -> timeseries\n"
 		"timeseries_get_slice(timeseries self, ptrdiff_t _begin, ptrdiff_t _end, ptrdiff_t step=1) -> timeseries\n"
+		"cmf::math::timeseries get_slice(ptrdiff_t _begin, ptrdiff_t _end,\n"
+		"ptrdiff_t step=1) \n"
 		""},
 	 { "timeseries_set_slice", _wrap_timeseries_set_slice, METH_VARARGS, "\n"
 		"timeseries_set_slice(timeseries self, Time _begin, Time _end, timeseries values)\n"
 		"timeseries_set_slice(timeseries self, ptrdiff_t _begin, ptrdiff_t _end, timeseries _values)\n"
+		"void\n"
+		"set_slice(ptrdiff_t _begin, ptrdiff_t _end, cmf::math::timeseries\n"
+		"_values) \n"
 		""},
-	 { "timeseries_remove_nodata", (PyCFunction)(void(*)(void))_wrap_timeseries_remove_nodata, METH_VARARGS|METH_KEYWORDS, "timeseries_remove_nodata(timeseries self, double nodata_value)"},
+	 { "timeseries_remove_nodata", (PyCFunction)(void(*)(void))_wrap_timeseries_remove_nodata, METH_VARARGS|METH_KEYWORDS, "\n"
+		"timeseries_remove_nodata(timeseries self, double nodata_value)\n"
+		"void\n"
+		"remove_nodata(double nodata_value) \n"
+		""},
 	 { "timeseries___iadd__", _wrap_timeseries___iadd__, METH_VARARGS, "\n"
 		"timeseries___iadd__(timeseries self, timeseries arg2) -> timeseries\n"
 		"timeseries___iadd__(timeseries self, double arg2) -> timeseries\n"
@@ -76284,47 +77609,164 @@ static PyMethodDef SwigMethods[] = {
 		"timeseries___truediv__(timeseries self, double arg2) -> timeseries\n"
 		""},
 	 { "timeseries___neg__", _wrap_timeseries___neg__, METH_O, "timeseries___neg__(timeseries self) -> timeseries"},
-	 { "timeseries_inv", _wrap_timeseries_inv, METH_O, "timeseries_inv(timeseries self) -> timeseries"},
-	 { "timeseries_reduce_min", (PyCFunction)(void(*)(void))_wrap_timeseries_reduce_min, METH_VARARGS|METH_KEYWORDS, "timeseries_reduce_min(timeseries self, Time begin, Time step) -> timeseries"},
-	 { "timeseries_reduce_max", (PyCFunction)(void(*)(void))_wrap_timeseries_reduce_max, METH_VARARGS|METH_KEYWORDS, "timeseries_reduce_max(timeseries self, Time begin, Time step) -> timeseries"},
-	 { "timeseries_reduce_sum", (PyCFunction)(void(*)(void))_wrap_timeseries_reduce_sum, METH_VARARGS|METH_KEYWORDS, "timeseries_reduce_sum(timeseries self, Time begin, Time step) -> timeseries"},
-	 { "timeseries_reduce_avg", (PyCFunction)(void(*)(void))_wrap_timeseries_reduce_avg, METH_VARARGS|METH_KEYWORDS, "timeseries_reduce_avg(timeseries self, Time begin, Time step) -> timeseries"},
+	 { "timeseries_inv", _wrap_timeseries_inv, METH_O, "\n"
+		"timeseries_inv(timeseries self) -> timeseries\n"
+		"timeseries inv()\n"
+		"const \n"
+		""},
+	 { "timeseries_reduce_min", (PyCFunction)(void(*)(void))_wrap_timeseries_reduce_min, METH_VARARGS|METH_KEYWORDS, "\n"
+		"timeseries_reduce_min(timeseries self, Time begin, Time step) -> timeseries\n"
+		"timeseries\n"
+		"reduce_min(cmf::math::Time begin, cmf::math::Time step) const\n"
+		"\n"
+		"Creates a timeseries with a bigger timestep, containing the minimum.\n"
+		"\n"
+		""},
+	 { "timeseries_reduce_max", (PyCFunction)(void(*)(void))_wrap_timeseries_reduce_max, METH_VARARGS|METH_KEYWORDS, "\n"
+		"timeseries_reduce_max(timeseries self, Time begin, Time step) -> timeseries\n"
+		"timeseries\n"
+		"reduce_max(cmf::math::Time begin, cmf::math::Time step) const\n"
+		"\n"
+		"Creates a timeseries with a bigger timestep, containing the maximum.\n"
+		"\n"
+		""},
+	 { "timeseries_reduce_sum", (PyCFunction)(void(*)(void))_wrap_timeseries_reduce_sum, METH_VARARGS|METH_KEYWORDS, "\n"
+		"timeseries_reduce_sum(timeseries self, Time begin, Time step) -> timeseries\n"
+		"timeseries\n"
+		"reduce_sum(cmf::math::Time begin, cmf::math::Time step) const\n"
+		"\n"
+		"Creates a timeseries with a bigger timestep, containing the sum. \n"
+		""},
+	 { "timeseries_reduce_avg", (PyCFunction)(void(*)(void))_wrap_timeseries_reduce_avg, METH_VARARGS|METH_KEYWORDS, "\n"
+		"timeseries_reduce_avg(timeseries self, Time begin, Time step) -> timeseries\n"
+		"timeseries\n"
+		"reduce_avg(cmf::math::Time begin, cmf::math::Time step) const\n"
+		"\n"
+		"Creates a timeseries with a bigger timestep, containing the average.\n"
+		"\n"
+		""},
 	 { "timeseries_floating_avg", _wrap_timeseries_floating_avg, METH_VARARGS, "\n"
 		"timeseries_floating_avg(timeseries self, Time window_width) -> timeseries\n"
 		"timeseries_floating_avg(timeseries self, size_t window_size) -> timeseries\n"
+		"timeseries floating_avg(size_t window_size) const \n"
 		""},
-	 { "timeseries_floating_max", (PyCFunction)(void(*)(void))_wrap_timeseries_floating_max, METH_VARARGS|METH_KEYWORDS, "timeseries_floating_max(timeseries self, Time window_width) -> timeseries"},
-	 { "timeseries_floating_min", (PyCFunction)(void(*)(void))_wrap_timeseries_floating_min, METH_VARARGS|METH_KEYWORDS, "timeseries_floating_min(timeseries self, Time window_width) -> timeseries"},
-	 { "timeseries_mean", _wrap_timeseries_mean, METH_O, "timeseries_mean(timeseries self) -> double"},
-	 { "timeseries_min", _wrap_timeseries_min, METH_O, "timeseries_min(timeseries self) -> double"},
-	 { "timeseries_max", _wrap_timeseries_max, METH_O, "timeseries_max(timeseries self) -> double"},
-	 { "timeseries_log", _wrap_timeseries_log, METH_O, "timeseries_log(timeseries self) -> timeseries"},
-	 { "timeseries_log10", _wrap_timeseries_log10, METH_O, "timeseries_log10(timeseries self) -> timeseries"},
-	 { "timeseries_power", (PyCFunction)(void(*)(void))_wrap_timeseries_power, METH_VARARGS|METH_KEYWORDS, "timeseries_power(timeseries self, double exponent) -> timeseries"},
-	 { "timeseries_exp", _wrap_timeseries_exp, METH_O, "timeseries_exp(timeseries self) -> timeseries"},
-	 { "timeseries_begin_get", _wrap_timeseries_begin_get, METH_O, "timeseries_begin_get(timeseries self) -> Time"},
-	 { "timeseries_step_get", _wrap_timeseries_step_get, METH_O, "timeseries_step_get(timeseries self) -> Time"},
-	 { "timeseries_end_get", _wrap_timeseries_end_get, METH_O, "timeseries_end_get(timeseries self) -> Time"},
+	 { "timeseries_floating_max", (PyCFunction)(void(*)(void))_wrap_timeseries_floating_max, METH_VARARGS|METH_KEYWORDS, "\n"
+		"timeseries_floating_max(timeseries self, Time window_width) -> timeseries\n"
+		"timeseries floating_max(cmf::math::Time window_width) const \n"
+		""},
+	 { "timeseries_floating_min", (PyCFunction)(void(*)(void))_wrap_timeseries_floating_min, METH_VARARGS|METH_KEYWORDS, "\n"
+		"timeseries_floating_min(timeseries self, Time window_width) -> timeseries\n"
+		"timeseries floating_min(cmf::math::Time window_width) const \n"
+		""},
+	 { "timeseries_mean", _wrap_timeseries_mean, METH_O, "\n"
+		"timeseries_mean(timeseries self) -> double\n"
+		"double mean()\n"
+		"const \n"
+		""},
+	 { "timeseries_min", _wrap_timeseries_min, METH_O, "\n"
+		"timeseries_min(timeseries self) -> double\n"
+		"double min() const\n"
+		"\n"
+		""},
+	 { "timeseries_max", _wrap_timeseries_max, METH_O, "\n"
+		"timeseries_max(timeseries self) -> double\n"
+		"double max() const\n"
+		"\n"
+		""},
+	 { "timeseries_log", _wrap_timeseries_log, METH_O, "\n"
+		"timeseries_log(timeseries self) -> timeseries\n"
+		"timeseries log()\n"
+		"const \n"
+		""},
+	 { "timeseries_log10", _wrap_timeseries_log10, METH_O, "\n"
+		"timeseries_log10(timeseries self) -> timeseries\n"
+		"timeseries\n"
+		"log10() const \n"
+		""},
+	 { "timeseries_power", (PyCFunction)(void(*)(void))_wrap_timeseries_power, METH_VARARGS|METH_KEYWORDS, "\n"
+		"timeseries_power(timeseries self, double exponent) -> timeseries\n"
+		"timeseries\n"
+		"power(double exponent) const \n"
+		""},
+	 { "timeseries_exp", _wrap_timeseries_exp, METH_O, "\n"
+		"timeseries_exp(timeseries self) -> timeseries\n"
+		"timeseries exp()\n"
+		"const \n"
+		""},
+	 { "timeseries_begin_get", _wrap_timeseries_begin_get, METH_O, "\n"
+		"timeseries_begin_get(timeseries self) -> Time\n"
+		"cmf::math::Time\n"
+		"begin() const\n"
+		"\n"
+		"First date of measurement. \n"
+		""},
+	 { "timeseries_step_get", _wrap_timeseries_step_get, METH_O, "\n"
+		"timeseries_step_get(timeseries self) -> Time\n"
+		"cmf::math::Time\n"
+		"step() const\n"
+		"\n"
+		"Time between the measurements. \n"
+		""},
+	 { "timeseries_end_get", _wrap_timeseries_end_get, METH_O, "\n"
+		"timeseries_end_get(timeseries self) -> Time\n"
+		"cmf::math::Time\n"
+		"end() const\n"
+		"\n"
+		"Last date of measurements. \n"
+		""},
 	 { "timeseries___len__", _wrap_timeseries___len__, METH_O, "timeseries___len__(timeseries self) -> ptrdiff_t"},
 	 { "delete_timeseries", _wrap_delete_timeseries, METH_O, "delete_timeseries(timeseries self)"},
 	 { "timeseries_swigregister", timeseries_swigregister, METH_O, NULL},
 	 { "timeseries_swiginit", timeseries_swiginit, METH_VARARGS, NULL},
 	 { "nash_sutcliffe", (PyCFunction)(void(*)(void))_wrap_nash_sutcliffe, METH_VARARGS|METH_KEYWORDS, "nash_sutcliffe(timeseries model, timeseries observation) -> double"},
-	 { "StateVariable_dxdt", (PyCFunction)(void(*)(void))_wrap_StateVariable_dxdt, METH_VARARGS|METH_KEYWORDS, "StateVariable_dxdt(StateVariable self, Time time) -> real"},
-	 { "StateVariable_get_abs_errtol", (PyCFunction)(void(*)(void))_wrap_StateVariable_get_abs_errtol, METH_VARARGS|METH_KEYWORDS, "StateVariable_get_abs_errtol(StateVariable self, real rel_errtol) -> real"},
-	 { "StateVariable_to_string", _wrap_StateVariable_to_string, METH_O, "StateVariable_to_string(StateVariable self) -> std::string"},
-	 { "delete_StateVariable", _wrap_delete_StateVariable, METH_O, "delete_StateVariable(StateVariable self)"},
-	 { "StateVariable_is_connected", (PyCFunction)(void(*)(void))_wrap_StateVariable_is_connected, METH_VARARGS|METH_KEYWORDS, "StateVariable_is_connected(StateVariable self, StateVariable other) -> bool"},
+	 { "StateVariable_dxdt", (PyCFunction)(void(*)(void))_wrap_StateVariable_dxdt, METH_VARARGS|METH_KEYWORDS, "\n"
+		"StateVariable_dxdt(StateVariable self, Time time) -> real\n"
+		"virtual real\n"
+		"dxdt(const cmf::math::Time &time)=0\n"
+		"\n"
+		"Returns the derivate of the state variable at time time. \n"
+		""},
+	 { "StateVariable_get_abs_errtol", (PyCFunction)(void(*)(void))_wrap_StateVariable_get_abs_errtol, METH_VARARGS|METH_KEYWORDS, "\n"
+		"StateVariable_get_abs_errtol(StateVariable self, real rel_errtol) -> real\n"
+		"virtual real get_abs_errtol(real rel_errtol) const \n"
+		""},
+	 { "StateVariable_to_string", _wrap_StateVariable_to_string, METH_O, "\n"
+		"StateVariable_to_string(StateVariable self) -> std::string\n"
+		"virtual\n"
+		"std::string to_string() const =0 \n"
+		""},
+	 { "delete_StateVariable", _wrap_delete_StateVariable, METH_O, "\n"
+		"delete_StateVariable(StateVariable self)\n"
+		"virtual ~StateVariable() \n"
+		""},
+	 { "StateVariable_is_connected", (PyCFunction)(void(*)(void))_wrap_StateVariable_is_connected, METH_VARARGS|METH_KEYWORDS, "\n"
+		"StateVariable_is_connected(StateVariable self, StateVariable other) -> bool\n"
+		"virtual bool is_connected(const cmf::math::StateVariable &other) const\n"
+		"\n"
+		""},
 	 { "StateVariable_state_set", _wrap_StateVariable_state_set, METH_VARARGS, "StateVariable_state_set(StateVariable self, real state)"},
 	 { "StateVariable_state_get", _wrap_StateVariable_state_get, METH_O, "StateVariable_state_get(StateVariable self) -> real"},
 	 { "StateVariable_swigregister", StateVariable_swigregister, METH_O, NULL},
 	 { "new_state_list", _wrap_new_state_list, METH_VARARGS, "\n"
 		"state_list()\n"
 		"new_state_list(state_list other) -> state_list\n"
+		"state_list(const state_list &other) \n"
 		""},
-	 { "state_list_append", (PyCFunction)(void(*)(void))_wrap_state_list_append, METH_VARARGS|METH_KEYWORDS, "state_list_append(state_list self, cmf::math::StateVariable::ptr sv)"},
-	 { "state_list_extend", (PyCFunction)(void(*)(void))_wrap_state_list_extend, METH_VARARGS|METH_KEYWORDS, "state_list_extend(state_list self, state_list svl) -> state_list"},
-	 { "state_list_size", _wrap_state_list_size, METH_O, "state_list_size(state_list self) -> size_t"},
+	 { "state_list_append", (PyCFunction)(void(*)(void))_wrap_state_list_append, METH_VARARGS|METH_KEYWORDS, "\n"
+		"state_list_append(state_list self, cmf::math::StateVariable::ptr sv)\n"
+		"void\n"
+		"append(StateVariable::ptr sv) \n"
+		""},
+	 { "state_list_extend", (PyCFunction)(void(*)(void))_wrap_state_list_extend, METH_VARARGS|METH_KEYWORDS, "\n"
+		"state_list_extend(state_list self, state_list svl) -> state_list\n"
+		"state_list&\n"
+		"extend(const state_list &svl) \n"
+		""},
+	 { "state_list_size", _wrap_state_list_size, METH_O, "\n"
+		"state_list_size(state_list self) -> size_t\n"
+		"size_t size()\n"
+		"const \n"
+		""},
 	 { "state_list___nonzero__", _wrap_state_list___nonzero__, METH_O, "state_list___nonzero__(state_list self) -> bool"},
 	 { "state_list___iadd__", (PyCFunction)(void(*)(void))_wrap_state_list___iadd__, METH_VARARGS|METH_KEYWORDS, "state_list___iadd__(state_list self, state_list food) -> state_list"},
 	 { "state_list___getitem", (PyCFunction)(void(*)(void))_wrap_state_list___getitem, METH_VARARGS|METH_KEYWORDS, "state_list___getitem(state_list self, ptrdiff_t index) -> cmf::math::StateVariable::ptr"},
@@ -76333,13 +77775,72 @@ static PyMethodDef SwigMethods[] = {
 	 { "state_list_swigregister", state_list_swigregister, METH_O, NULL},
 	 { "state_list_swiginit", state_list_swiginit, METH_VARARGS, NULL},
 	 { "__add__", (PyCFunction)(void(*)(void))_wrap___add__, METH_VARARGS|METH_KEYWORDS, "__add__(state_list left, state_list right) -> state_list"},
-	 { "Adsorption_freesolute", (PyCFunction)(void(*)(void))_wrap_Adsorption_freesolute, METH_VARARGS|METH_KEYWORDS, "Adsorption_freesolute(Adsorption self, real xt, real V) -> real"},
-	 { "Adsorption_totalsolute", (PyCFunction)(void(*)(void))_wrap_Adsorption_totalsolute, METH_VARARGS|METH_KEYWORDS, "Adsorption_totalsolute(Adsorption self, real xf, real V) -> real"},
-	 { "Adsorption_copy", (PyCFunction)(void(*)(void))_wrap_Adsorption_copy, METH_VARARGS|METH_KEYWORDS, "Adsorption_copy(Adsorption self, real m=-1) -> Adsorption"},
-	 { "delete_Adsorption", _wrap_delete_Adsorption, METH_O, "delete_Adsorption(Adsorption self)"},
+	 { "Adsorption_freesolute", (PyCFunction)(void(*)(void))_wrap_Adsorption_freesolute, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Adsorption_freesolute(Adsorption self, real xt, real V) -> real\n"
+		"virtual\n"
+		"real freesolute(real xt, real V) const =0\n"
+		"\n"
+		"Returns the mass of dissolved tracer as a function of the total tracer\n"
+		"mass in the solute storage and the water volume.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"xt:   :math:`x_t` the total tracer mass in the storage\n"
+		"\n"
+		"V:   :math:`V m^3` the water volume in the storage\n"
+		"\n"
+		":math:`x_f` the dissolved mass of the tracer \n"
+		""},
+	 { "Adsorption_totalsolute", (PyCFunction)(void(*)(void))_wrap_Adsorption_totalsolute, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Adsorption_totalsolute(Adsorption self, real xf, real V) -> real\n"
+		"virtual\n"
+		"real totalsolute(real xf, real V) const =0\n"
+		"\n"
+		"Returns the total mass of the tracer from the dissolved concetration\n"
+		"in tracer unit/m3.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"xf:   :math:`x_f` the dissolved tracer mass in the storage\n"
+		"\n"
+		"V:   :math:`V m^3` the water volume in the storage\n"
+		"\n"
+		":math:`x_t` the total mass of the tracer \n"
+		""},
+	 { "Adsorption_copy", (PyCFunction)(void(*)(void))_wrap_Adsorption_copy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Adsorption_copy(Adsorption self, real m=-1) -> Adsorption\n"
+		"virtual\n"
+		"Adsorption* copy(real m=-1) const =0\n"
+		"\n"
+		"returns a copy of the Adsorption object.\n"
+		"\n"
+		"If the adsorption is depending on the sorbent mass, you can give a\n"
+		"positive value for the sorbent mass m. If the value is not given or\n"
+		"negative, m is used from the original object. \n"
+		""},
+	 { "delete_Adsorption", _wrap_delete_Adsorption, METH_O, "\n"
+		"delete_Adsorption(Adsorption self)\n"
+		"virtual\n"
+		"~Adsorption() \n"
+		""},
 	 { "Adsorption_swigregister", Adsorption_swigregister, METH_O, NULL},
-	 { "NullAdsorption_copy", (PyCFunction)(void(*)(void))_wrap_NullAdsorption_copy, METH_VARARGS|METH_KEYWORDS, "NullAdsorption_copy(NullAdsorption self, real m=-1) -> NullAdsorption"},
-	 { "delete_NullAdsorption", _wrap_delete_NullAdsorption, METH_O, "delete_NullAdsorption(NullAdsorption self)"},
+	 { "NullAdsorption_copy", (PyCFunction)(void(*)(void))_wrap_NullAdsorption_copy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"NullAdsorption_copy(NullAdsorption self, real m=-1) -> NullAdsorption\n"
+		"virtual\n"
+		"NullAdsorption* copy(real m=-1) const\n"
+		"\n"
+		"returns a copy of the Adsorption object.\n"
+		"\n"
+		"If the adsorption is depending on the sorbent mass, you can give a\n"
+		"positive value for the sorbent mass m. If the value is not given or\n"
+		"negative, m is used from the original object. \n"
+		""},
+	 { "delete_NullAdsorption", _wrap_delete_NullAdsorption, METH_O, "\n"
+		"delete_NullAdsorption(NullAdsorption self)\n"
+		"virtual ~NullAdsorption() \n"
+		""},
 	 { "new_NullAdsorption", _wrap_new_NullAdsorption, METH_NOARGS, "new_NullAdsorption() -> NullAdsorption"},
 	 { "NullAdsorption_swigregister", NullAdsorption_swigregister, METH_O, NULL},
 	 { "NullAdsorption_swiginit", NullAdsorption_swiginit, METH_VARARGS, NULL},
@@ -76350,9 +77851,22 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_LinearAdsorption", _wrap_new_LinearAdsorption, METH_VARARGS, "\n"
 		"LinearAdsorption(real K, real m)\n"
 		"new_LinearAdsorption(LinearAdsorption other) -> LinearAdsorption\n"
+		"LinearAdsorption(const LinearAdsorption &other) \n"
 		""},
-	 { "LinearAdsorption_copy", (PyCFunction)(void(*)(void))_wrap_LinearAdsorption_copy, METH_VARARGS|METH_KEYWORDS, "LinearAdsorption_copy(LinearAdsorption self, real m=-1) -> LinearAdsorption"},
-	 { "delete_LinearAdsorption", _wrap_delete_LinearAdsorption, METH_O, "delete_LinearAdsorption(LinearAdsorption self)"},
+	 { "LinearAdsorption_copy", (PyCFunction)(void(*)(void))_wrap_LinearAdsorption_copy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"LinearAdsorption_copy(LinearAdsorption self, real m=-1) -> LinearAdsorption\n"
+		"LinearAdsorption* copy(real m=-1) const\n"
+		"\n"
+		"returns a copy of the Adsorption object.\n"
+		"\n"
+		"If the adsorption is depending on the sorbent mass, you can give a\n"
+		"positive value for the sorbent mass m. If the value is not given or\n"
+		"negative, m is used from the original object. \n"
+		""},
+	 { "delete_LinearAdsorption", _wrap_delete_LinearAdsorption, METH_O, "\n"
+		"delete_LinearAdsorption(LinearAdsorption self)\n"
+		"virtual ~LinearAdsorption() \n"
+		""},
 	 { "LinearAdsorption_swigregister", LinearAdsorption_swigregister, METH_O, NULL},
 	 { "LinearAdsorption_swiginit", LinearAdsorption_swiginit, METH_VARARGS, NULL},
 	 { "FreundlichAdsorbtion_K_set", _wrap_FreundlichAdsorbtion_K_set, METH_VARARGS, "FreundlichAdsorbtion_K_set(FreundlichAdsorbtion self, real K)"},
@@ -76368,9 +77882,23 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_FreundlichAdsorbtion", _wrap_new_FreundlichAdsorbtion, METH_VARARGS, "\n"
 		"FreundlichAdsorbtion(real K, real n, real m, real epsilon=1e-12, int maxiter=100)\n"
 		"new_FreundlichAdsorbtion(FreundlichAdsorbtion other) -> FreundlichAdsorbtion\n"
+		"FreundlichAdsorbtion(const FreundlichAdsorbtion &other) \n"
 		""},
-	 { "FreundlichAdsorbtion_copy", (PyCFunction)(void(*)(void))_wrap_FreundlichAdsorbtion_copy, METH_VARARGS|METH_KEYWORDS, "FreundlichAdsorbtion_copy(FreundlichAdsorbtion self, real m=-1) -> FreundlichAdsorbtion"},
-	 { "delete_FreundlichAdsorbtion", _wrap_delete_FreundlichAdsorbtion, METH_O, "delete_FreundlichAdsorbtion(FreundlichAdsorbtion self)"},
+	 { "FreundlichAdsorbtion_copy", (PyCFunction)(void(*)(void))_wrap_FreundlichAdsorbtion_copy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"FreundlichAdsorbtion_copy(FreundlichAdsorbtion self, real m=-1) -> FreundlichAdsorbtion\n"
+		"FreundlichAdsorbtion* copy(real m=-1) const\n"
+		"\n"
+		"returns a copy of the Adsorption object.\n"
+		"\n"
+		"If the adsorption is depending on the sorbent mass, you can give a\n"
+		"positive value for the sorbent mass m. If the value is not given or\n"
+		"negative, m is used from the original object. \n"
+		""},
+	 { "delete_FreundlichAdsorbtion", _wrap_delete_FreundlichAdsorbtion, METH_O, "\n"
+		"delete_FreundlichAdsorbtion(FreundlichAdsorbtion self)\n"
+		"virtual\n"
+		"~FreundlichAdsorbtion() \n"
+		""},
 	 { "FreundlichAdsorbtion_swigregister", FreundlichAdsorbtion_swigregister, METH_O, NULL},
 	 { "FreundlichAdsorbtion_swiginit", FreundlichAdsorbtion_swiginit, METH_VARARGS, NULL},
 	 { "LangmuirAdsorption_K_set", _wrap_LangmuirAdsorption_K_set, METH_VARARGS, "LangmuirAdsorption_K_set(LangmuirAdsorption self, real K)"},
@@ -76380,12 +77908,30 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_LangmuirAdsorption", _wrap_new_LangmuirAdsorption, METH_VARARGS, "\n"
 		"LangmuirAdsorption(real K, real m)\n"
 		"new_LangmuirAdsorption(LangmuirAdsorption other) -> LangmuirAdsorption\n"
+		"LangmuirAdsorption(const LangmuirAdsorption &other) \n"
 		""},
-	 { "LangmuirAdsorption_copy", (PyCFunction)(void(*)(void))_wrap_LangmuirAdsorption_copy, METH_VARARGS|METH_KEYWORDS, "LangmuirAdsorption_copy(LangmuirAdsorption self, real m=-1) -> LangmuirAdsorption"},
-	 { "delete_LangmuirAdsorption", _wrap_delete_LangmuirAdsorption, METH_O, "delete_LangmuirAdsorption(LangmuirAdsorption self)"},
+	 { "LangmuirAdsorption_copy", (PyCFunction)(void(*)(void))_wrap_LangmuirAdsorption_copy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"LangmuirAdsorption_copy(LangmuirAdsorption self, real m=-1) -> LangmuirAdsorption\n"
+		"LangmuirAdsorption* copy(real m=-1) const\n"
+		"\n"
+		"returns a copy of the Adsorption object.\n"
+		"\n"
+		"If the adsorption is depending on the sorbent mass, you can give a\n"
+		"positive value for the sorbent mass m. If the value is not given or\n"
+		"negative, m is used from the original object. \n"
+		""},
+	 { "delete_LangmuirAdsorption", _wrap_delete_LangmuirAdsorption, METH_O, "\n"
+		"delete_LangmuirAdsorption(LangmuirAdsorption self)\n"
+		"virtual\n"
+		"~LangmuirAdsorption() \n"
+		""},
 	 { "LangmuirAdsorption_swigregister", LangmuirAdsorption_swigregister, METH_O, NULL},
 	 { "LangmuirAdsorption_swiginit", LangmuirAdsorption_swiginit, METH_VARARGS, NULL},
-	 { "new_solute", (PyCFunction)(void(*)(void))_wrap_new_solute, METH_VARARGS|METH_KEYWORDS, "new_solute(solute copy) -> solute"},
+	 { "new_solute", (PyCFunction)(void(*)(void))_wrap_new_solute, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_solute(solute copy) -> solute\n"
+		"solute(const\n"
+		"solute &copy) \n"
+		""},
 	 { "solute___eq__", (PyCFunction)(void(*)(void))_wrap_solute___eq__, METH_VARARGS|METH_KEYWORDS, "solute___eq__(solute self, solute cmp) -> bool"},
 	 { "solute___lt__", (PyCFunction)(void(*)(void))_wrap_solute___lt__, METH_VARARGS|METH_KEYWORDS, "solute___lt__(solute self, solute cmp) -> bool"},
 	 { "solute___gt__", (PyCFunction)(void(*)(void))_wrap_solute___gt__, METH_VARARGS|METH_KEYWORDS, "solute___gt__(solute self, solute cmp) -> bool"},
@@ -76403,20 +77949,44 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_solute", _wrap_delete_solute, METH_O, "delete_solute(solute self)"},
 	 { "solute_swigregister", solute_swigregister, METH_O, NULL},
 	 { "solute_swiginit", solute_swiginit, METH_VARARGS, NULL},
-	 { "solute_vector_size", _wrap_solute_vector_size, METH_O, "solute_vector_size(solute_vector self) -> size_t"},
-	 { "new_solute_vector", (PyCFunction)(void(*)(void))_wrap_new_solute_vector, METH_VARARGS|METH_KEYWORDS, "new_solute_vector(std::string str) -> solute_vector"},
-	 { "solute_vector_get_solute", (PyCFunction)(void(*)(void))_wrap_solute_vector_get_solute, METH_VARARGS|METH_KEYWORDS, "solute_vector_get_solute(solute_vector self, int position) -> solute"},
+	 { "solute_vector_size", _wrap_solute_vector_size, METH_O, "\n"
+		"solute_vector_size(solute_vector self) -> size_t\n"
+		"size_t size()\n"
+		"const \n"
+		""},
+	 { "new_solute_vector", (PyCFunction)(void(*)(void))_wrap_new_solute_vector, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_solute_vector(std::string str) -> solute_vector\n"
+		"solute_vector(std::string str)\n"
+		"\n"
+		"Creates a solute vector from solute names, separated by whitespace.\n"
+		"E.g. solutes= solute_vector(\"dO18 dH2\") \n"
+		""},
+	 { "solute_vector_get_solute", (PyCFunction)(void(*)(void))_wrap_solute_vector_get_solute, METH_VARARGS|METH_KEYWORDS, "\n"
+		"solute_vector_get_solute(solute_vector self, int position) -> solute\n"
+		"cmf::water::solute* get_solute(int position) \n"
+		""},
 	 { "solute_vector___getitem__", (PyCFunction)(void(*)(void))_wrap_solute_vector___getitem__, METH_VARARGS|METH_KEYWORDS, "solute_vector___getitem__(solute_vector self, int i) -> solute"},
 	 { "solute_vector___len__", _wrap_solute_vector___len__, METH_O, "solute_vector___len__(solute_vector self) -> size_t"},
 	 { "delete_solute_vector", _wrap_delete_solute_vector, METH_O, "delete_solute_vector(solute_vector self)"},
 	 { "solute_vector_swigregister", solute_vector_swigregister, METH_O, NULL},
 	 { "solute_vector_swiginit", solute_vector_swiginit, METH_VARARGS, NULL},
-	 { "SoluteTimeseries_conc", (PyCFunction)(void(*)(void))_wrap_SoluteTimeseries_conc, METH_VARARGS|METH_KEYWORDS, "SoluteTimeseries_conc(SoluteTimeseries self, Time t, solute _Solute) -> real"},
-	 { "SoluteTimeseries_size", _wrap_SoluteTimeseries_size, METH_O, "SoluteTimeseries_size(SoluteTimeseries self) -> size_t"},
+	 { "SoluteTimeseries_conc", (PyCFunction)(void(*)(void))_wrap_SoluteTimeseries_conc, METH_VARARGS|METH_KEYWORDS, "\n"
+		"SoluteTimeseries_conc(SoluteTimeseries self, Time t, solute _Solute) -> real\n"
+		"real\n"
+		"conc(cmf::math::Time t, const cmf::water::solute &_Solute) const \n"
+		""},
+	 { "SoluteTimeseries_size", _wrap_SoluteTimeseries_size, METH_O, "\n"
+		"SoluteTimeseries_size(SoluteTimeseries self) -> size_t\n"
+		"size_t\n"
+		"size() const\n"
+		"\n"
+		"Returns the number of solutes in the solution. \n"
+		""},
 	 { "new_SoluteTimeseries", _wrap_new_SoluteTimeseries, METH_VARARGS, "\n"
 		"SoluteTimeseries()\n"
 		"SoluteTimeseries(solute_vector solutes, Time begin, Time step)\n"
 		"new_SoluteTimeseries(SoluteTimeseries sts) -> SoluteTimeseries\n"
+		"SoluteTimeseries(const cmf::water::SoluteTimeseries &sts) \n"
 		""},
 	 { "SoluteTimeseries___getitem__", (PyCFunction)(void(*)(void))_wrap_SoluteTimeseries___getitem__, METH_VARARGS|METH_KEYWORDS, "SoluteTimeseries___getitem__(SoluteTimeseries self, solute solute) -> timeseries"},
 	 { "SoluteTimeseries___setitem__", (PyCFunction)(void(*)(void))_wrap_SoluteTimeseries___setitem__, METH_VARARGS|METH_KEYWORDS, "SoluteTimeseries___setitem__(SoluteTimeseries self, solute solute, timeseries concentration)"},
@@ -76424,91 +77994,313 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_SoluteTimeseries", _wrap_delete_SoluteTimeseries, METH_O, "delete_SoluteTimeseries(SoluteTimeseries self)"},
 	 { "SoluteTimeseries_swigregister", SoluteTimeseries_swigregister, METH_O, NULL},
 	 { "SoluteTimeseries_swiginit", SoluteTimeseries_swiginit, METH_VARARGS, NULL},
-	 { "SoluteStorage_set_adsorption", (PyCFunction)(void(*)(void))_wrap_SoluteStorage_set_adsorption, METH_VARARGS|METH_KEYWORDS, "SoluteStorage_set_adsorption(SoluteStorage self, Adsorption newadsorption, real m=-1)"},
+	 { "SoluteStorage_set_adsorption", (PyCFunction)(void(*)(void))_wrap_SoluteStorage_set_adsorption, METH_VARARGS|METH_KEYWORDS, "\n"
+		"SoluteStorage_set_adsorption(SoluteStorage self, Adsorption newadsorption, real m=-1)\n"
+		"void set_adsorption(const Adsorption &newadsorption, real m=-1) \n"
+		""},
 	 { "SoluteStorage_decay_set", _wrap_SoluteStorage_decay_set, METH_VARARGS, "SoluteStorage_decay_set(SoluteStorage self, real decay)"},
 	 { "SoluteStorage_decay_get", _wrap_SoluteStorage_decay_get, METH_O, "SoluteStorage_decay_get(SoluteStorage self) -> real"},
 	 { "SoluteStorage_source_set", _wrap_SoluteStorage_source_set, METH_VARARGS, "SoluteStorage_source_set(SoluteStorage self, real source)"},
 	 { "SoluteStorage_source_get", _wrap_SoluteStorage_source_get, METH_O, "SoluteStorage_source_get(SoluteStorage self) -> real"},
 	 { "SoluteStorage_Solute_get", _wrap_SoluteStorage_Solute_get, METH_O, "SoluteStorage_Solute_get(SoluteStorage self) -> solute"},
-	 { "SoluteStorage_get_water", _wrap_SoluteStorage_get_water, METH_O, "SoluteStorage_get_water(SoluteStorage self) -> WaterStorage"},
-	 { "SoluteStorage_add_connected_states", (PyCFunction)(void(*)(void))_wrap_SoluteStorage_add_connected_states, METH_VARARGS|METH_KEYWORDS, "SoluteStorage_add_connected_states(SoluteStorage self, cmf::math::StateVariable::list & states)"},
+	 { "SoluteStorage_get_water", _wrap_SoluteStorage_get_water, METH_O, "\n"
+		"SoluteStorage_get_water(SoluteStorage self) -> WaterStorage\n"
+		"const\n"
+		"WaterStorage& get_water() const\n"
+		"\n"
+		"get the waterstorge of the solute storage \n"
+		""},
+	 { "SoluteStorage_add_connected_states", (PyCFunction)(void(*)(void))_wrap_SoluteStorage_add_connected_states, METH_VARARGS|METH_KEYWORDS, "\n"
+		"SoluteStorage_add_connected_states(SoluteStorage self, cmf::math::StateVariable::list & states)\n"
+		"virtual void add_connected_states(cmf::math::StateVariable::list\n"
+		"&states) \n"
+		""},
 	 { "SoluteStorage_conc_set", _wrap_SoluteStorage_conc_set, METH_VARARGS, "SoluteStorage_conc_set(SoluteStorage self, real conc)"},
 	 { "SoluteStorage_conc_get", _wrap_SoluteStorage_conc_get, METH_O, "SoluteStorage_conc_get(SoluteStorage self) -> real"},
 	 { "delete_SoluteStorage", _wrap_delete_SoluteStorage, METH_O, "delete_SoluteStorage(SoluteStorage self)"},
 	 { "SoluteStorage_swigregister", SoluteStorage_swigregister, METH_O, NULL},
 	 { "flux_node_node_id_get", _wrap_flux_node_node_id_get, METH_O, "flux_node_node_id_get(flux_node self) -> int const"},
-	 { "flux_node_is_storage", _wrap_flux_node_is_storage, METH_O, "flux_node_is_storage(flux_node self) -> bool"},
+	 { "flux_node_is_storage", _wrap_flux_node_is_storage, METH_O, "\n"
+		"flux_node_is_storage(flux_node self) -> bool\n"
+		"virtual\n"
+		"bool is_storage() const\n"
+		"\n"
+		"true, if this is a waterstorage \n"
+		""},
 	 { "flux_node_Name_set", _wrap_flux_node_Name_set, METH_VARARGS, "flux_node_Name_set(flux_node self, std::string const & Name)"},
 	 { "flux_node_Name_get", _wrap_flux_node_Name_get, METH_O, "flux_node_Name_get(flux_node self) -> std::string const &"},
-	 { "flux_node_to_string", _wrap_flux_node_to_string, METH_O, "flux_node_to_string(flux_node self) -> std::string"},
-	 { "delete_flux_node", _wrap_delete_flux_node, METH_O, "delete_flux_node(flux_node self)"},
+	 { "flux_node_to_string", _wrap_flux_node_to_string, METH_O, "\n"
+		"flux_node_to_string(flux_node self) -> std::string\n"
+		"virtual\n"
+		"std::string to_string() const \n"
+		""},
+	 { "delete_flux_node", _wrap_delete_flux_node, METH_O, "\n"
+		"delete_flux_node(flux_node self)\n"
+		"virtual\n"
+		"~flux_node()\n"
+		"\n"
+		"The destructor deletes all connections. \n"
+		""},
 	 { "flux_node___eq__", (PyCFunction)(void(*)(void))_wrap_flux_node___eq__, METH_VARARGS|METH_KEYWORDS, "flux_node___eq__(flux_node self, flux_node other) -> bool"},
-	 { "flux_node_RecalcFluxes", (PyCFunction)(void(*)(void))_wrap_flux_node_RecalcFluxes, METH_VARARGS|METH_KEYWORDS, "flux_node_RecalcFluxes(flux_node self, Time t) -> bool"},
-	 { "flux_node_connection_to", (PyCFunction)(void(*)(void))_wrap_flux_node_connection_to, METH_VARARGS|METH_KEYWORDS, "flux_node_connection_to(flux_node self, flux_node target) -> flux_connection"},
-	 { "flux_node_remove_connection", (PyCFunction)(void(*)(void))_wrap_flux_node_remove_connection, METH_VARARGS|METH_KEYWORDS, "flux_node_remove_connection(flux_node self, cmf::water::flux_node::ptr To) -> bool"},
-	 { "flux_node_flux_to", (PyCFunction)(void(*)(void))_wrap_flux_node_flux_to, METH_VARARGS|METH_KEYWORDS, "flux_node_flux_to(flux_node self, flux_node target, Time t) -> real"},
-	 { "flux_node_flux3d_to", (PyCFunction)(void(*)(void))_wrap_flux_node_flux3d_to, METH_VARARGS|METH_KEYWORDS, "flux_node_flux3d_to(flux_node self, flux_node target, Time t) -> point"},
-	 { "flux_node_get_3d_flux", (PyCFunction)(void(*)(void))_wrap_flux_node_get_3d_flux, METH_VARARGS|METH_KEYWORDS, "flux_node_get_3d_flux(flux_node self, Time t) -> point"},
-	 { "flux_node_waterbalance", (PyCFunction)(void(*)(void))_wrap_flux_node_waterbalance, METH_VARARGS|METH_KEYWORDS, "flux_node_waterbalance(flux_node self, Time t, flux_connection Without=None) -> real"},
+	 { "flux_node_RecalcFluxes", (PyCFunction)(void(*)(void))_wrap_flux_node_RecalcFluxes, METH_VARARGS|METH_KEYWORDS, "\n"
+		"flux_node_RecalcFluxes(flux_node self, Time t) -> bool\n"
+		"virtual\n"
+		"bool RecalcFluxes(cmf::math::Time t)\n"
+		"\n"
+		"Pure flux_nodes do not influence fluxes, therefore no recalculation of\n"
+		"fluxes is required by flux_node.\n"
+		"\n"
+		"WaterStorage overrides this, since state changes require an update of\n"
+		"the fluxes \n"
+		""},
+	 { "flux_node_connection_to", (PyCFunction)(void(*)(void))_wrap_flux_node_connection_to, METH_VARARGS|METH_KEYWORDS, "\n"
+		"flux_node_connection_to(flux_node self, flux_node target) -> flux_connection\n"
+		"cmf::water::flux_connection* connection_to(const cmf::water::flux_node\n"
+		"&target)\n"
+		"\n"
+		"Returns the connection between this and target. \n"
+		""},
+	 { "flux_node_remove_connection", (PyCFunction)(void(*)(void))_wrap_flux_node_remove_connection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"flux_node_remove_connection(flux_node self, cmf::water::flux_node::ptr To) -> bool\n"
+		"bool\n"
+		"remove_connection(cmf::water::flux_node::ptr To)\n"
+		"\n"
+		"Remove the connection. \n"
+		""},
+	 { "flux_node_flux_to", (PyCFunction)(void(*)(void))_wrap_flux_node_flux_to, METH_VARARGS|METH_KEYWORDS, "\n"
+		"flux_node_flux_to(flux_node self, flux_node target, Time t) -> real\n"
+		"real\n"
+		"flux_to(const cmf::water::flux_node &target, cmf::math::Time t)\n"
+		"\n"
+		"Returns the actual flux between this and target (positive sign means\n"
+		"\"from this into target\") \n"
+		""},
+	 { "flux_node_flux3d_to", (PyCFunction)(void(*)(void))_wrap_flux_node_flux3d_to, METH_VARARGS|METH_KEYWORDS, "\n"
+		"flux_node_flux3d_to(flux_node self, flux_node target, Time t) -> point\n"
+		"cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,\n"
+		"cmf::math::Time t) \n"
+		""},
+	 { "flux_node_get_3d_flux", (PyCFunction)(void(*)(void))_wrap_flux_node_get_3d_flux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"flux_node_get_3d_flux(flux_node self, Time t) -> point\n"
+		"cmf::geometry::point get_3d_flux(cmf::math::Time t)\n"
+		"\n"
+		"Returns the sum of all flux vectors. \n"
+		""},
+	 { "flux_node_waterbalance", (PyCFunction)(void(*)(void))_wrap_flux_node_waterbalance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"flux_node_waterbalance(flux_node self, Time t, flux_connection Without=None) -> real\n"
+		"real\n"
+		"waterbalance(cmf::math::Time t, const flux_connection *Without=0)\n"
+		"const\n"
+		"\n"
+		"Returns the sum of all fluxes (positive and negative) at time t.\n"
+		"\n"
+		"Single fluxes can be excluded from the calculation\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"t:  Time of the query\n"
+		"\n"
+		"Without:  A flux_connection that is excluded from the waterbalance\n"
+		"(e.g. to prevent closed circuits) \n"
+		""},
 	 { "flux_node___call__", (PyCFunction)(void(*)(void))_wrap_flux_node___call__, METH_VARARGS|METH_KEYWORDS, "flux_node___call__(flux_node self, Time t) -> real"},
-	 { "flux_node_conc", (PyCFunction)(void(*)(void))_wrap_flux_node_conc, METH_VARARGS|METH_KEYWORDS, "flux_node_conc(flux_node self, Time t, solute Solute) -> real"},
+	 { "flux_node_conc", (PyCFunction)(void(*)(void))_wrap_flux_node_conc, METH_VARARGS|METH_KEYWORDS, "\n"
+		"flux_node_conc(flux_node self, Time t, solute Solute) -> real\n"
+		"virtual real\n"
+		"conc(cmf::math::Time t, const cmf::water::solute &Solute) const\n"
+		"\n"
+		"Returns the water quality of the flux_node, if it is not overridden\n"
+		"this is the mix of the incoming fluxes. \n"
+		""},
 	 { "flux_node_position_set", _wrap_flux_node_position_set, METH_VARARGS, "flux_node_position_set(flux_node self, point position)"},
 	 { "flux_node_position_get", _wrap_flux_node_position_get, METH_O, "flux_node_position_get(flux_node self) -> point"},
-	 { "flux_node_get_potential", (PyCFunction)(void(*)(void))_wrap_flux_node_get_potential, METH_VARARGS|METH_KEYWORDS, "flux_node_get_potential(flux_node self, Time arg2=never) -> real"},
-	 { "flux_node_is_empty", _wrap_flux_node_is_empty, METH_O, "flux_node_is_empty(flux_node self) -> double"},
-	 { "new_flux_node", (PyCFunction)(void(*)(void))_wrap_new_flux_node, METH_VARARGS|METH_KEYWORDS, "new_flux_node(project _project, point location=cmf::geometry::point()) -> flux_node"},
+	 { "flux_node_get_potential", (PyCFunction)(void(*)(void))_wrap_flux_node_get_potential, METH_VARARGS|METH_KEYWORDS, "\n"
+		"flux_node_get_potential(flux_node self, Time arg2=never) -> real\n"
+		"virtual\n"
+		"real get_potential(cmf::math::Time=cmf::math::never) const\n"
+		"\n"
+		"Returns the water potential of the node in m waterhead.\n"
+		"\n"
+		"The base class water storage always returns the height of the location\n"
+		"\n"
+		""},
+	 { "flux_node_is_empty", _wrap_flux_node_is_empty, METH_O, "\n"
+		"flux_node_is_empty(flux_node self) -> double\n"
+		"virtual\n"
+		"double is_empty() const\n"
+		"\n"
+		"Returns true if the node has no water. \n"
+		""},
+	 { "new_flux_node", (PyCFunction)(void(*)(void))_wrap_new_flux_node, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_flux_node(project _project, point location=cmf::geometry::point()) -> flux_node\n"
+		"flux_node(cmf::project &_project, cmf::geometry::point\n"
+		"location=cmf::geometry::point()) \n"
+		""},
 	 { "flux_node_project_get", _wrap_flux_node_project_get, METH_O, "flux_node_project_get(flux_node self) -> project"},
 	 { "flux_node_potential_set", _wrap_flux_node_potential_set, METH_VARARGS, "flux_node_potential_set(flux_node self, real potential)"},
 	 { "flux_node_potential_get", _wrap_flux_node_potential_get, METH_O, "flux_node_potential_get(flux_node self) -> real"},
 	 { "flux_node_connections_get", _wrap_flux_node_connections_get, METH_O, "flux_node_connections_get(flux_node self) -> connection_list"},
 	 { "flux_node_swigregister", flux_node_swigregister, METH_O, NULL},
 	 { "flux_node_swiginit", flux_node_swiginit, METH_VARARGS, NULL},
-	 { "count_node_references", (PyCFunction)(void(*)(void))_wrap_count_node_references, METH_VARARGS|METH_KEYWORDS, "count_node_references(cmf::water::flux_node::ptr node) -> int"},
-	 { "get_higher_node", (PyCFunction)(void(*)(void))_wrap_get_higher_node, METH_VARARGS|METH_KEYWORDS, "get_higher_node(cmf::water::flux_node::ptr node1, cmf::water::flux_node::ptr node2) -> cmf::water::flux_node::ptr"},
-	 { "get_lower_node", (PyCFunction)(void(*)(void))_wrap_get_lower_node, METH_VARARGS|METH_KEYWORDS, "get_lower_node(cmf::water::flux_node::ptr node1, cmf::water::flux_node::ptr node2) -> cmf::water::flux_node::ptr"},
-	 { "flux_connection_left_node", _wrap_flux_connection_left_node, METH_O, "flux_connection_left_node(flux_connection self) -> cmf::water::flux_node::ptr"},
-	 { "flux_connection_right_node", _wrap_flux_connection_right_node, METH_O, "flux_connection_right_node(flux_connection self) -> cmf::water::flux_node::ptr"},
-	 { "flux_connection_kill_me", _wrap_flux_connection_kill_me, METH_O, "flux_connection_kill_me(flux_connection self) -> bool"},
-	 { "flux_connection_refresh", (PyCFunction)(void(*)(void))_wrap_flux_connection_refresh, METH_VARARGS|METH_KEYWORDS, "flux_connection_refresh(flux_connection self, Time t)"},
+	 { "count_node_references", (PyCFunction)(void(*)(void))_wrap_count_node_references, METH_VARARGS|METH_KEYWORDS, "\n"
+		"count_node_references(cmf::water::flux_node::ptr node) -> int\n"
+		"int\n"
+		"cmf::water::count_node_references(flux_node::ptr node) \n"
+		""},
+	 { "get_higher_node", (PyCFunction)(void(*)(void))_wrap_get_higher_node, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_higher_node(cmf::water::flux_node::ptr node1, cmf::water::flux_node::ptr node2) -> cmf::water::flux_node::ptr\n"
+		"flux_node::ptr\n"
+		"cmf::water::get_higher_node(flux_node::ptr node1, flux_node::ptr\n"
+		"node2) \n"
+		""},
+	 { "get_lower_node", (PyCFunction)(void(*)(void))_wrap_get_lower_node, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_lower_node(cmf::water::flux_node::ptr node1, cmf::water::flux_node::ptr node2) -> cmf::water::flux_node::ptr\n"
+		"flux_node::ptr\n"
+		"cmf::water::get_lower_node(flux_node::ptr node1, flux_node::ptr node2)\n"
+		"\n"
+		""},
+	 { "flux_connection_left_node", _wrap_flux_connection_left_node, METH_O, "\n"
+		"flux_connection_left_node(flux_connection self) -> cmf::water::flux_node::ptr\n"
+		"flux_node::ptr left_node() const\n"
+		"\n"
+		"Returns the left node of this connection. \n"
+		""},
+	 { "flux_connection_right_node", _wrap_flux_connection_right_node, METH_O, "\n"
+		"flux_connection_right_node(flux_connection self) -> cmf::water::flux_node::ptr\n"
+		"flux_node::ptr right_node() const\n"
+		"\n"
+		"returns the right node of this connection \n"
+		""},
+	 { "flux_connection_kill_me", _wrap_flux_connection_kill_me, METH_O, "\n"
+		"flux_connection_kill_me(flux_connection self) -> bool\n"
+		"bool\n"
+		"kill_me()\n"
+		"\n"
+		"Deregisters this connection from its nodes. Returns true if only one\n"
+		"reference is left. \n"
+		""},
+	 { "flux_connection_refresh", (PyCFunction)(void(*)(void))_wrap_flux_connection_refresh, METH_VARARGS|METH_KEYWORDS, "\n"
+		"flux_connection_refresh(flux_connection self, Time t)\n"
+		"void\n"
+		"refresh(cmf::math::Time t)\n"
+		"\n"
+		"Performes a new calculation of the flux. \n"
+		""},
 	 { "flux_connection_connection_id_get", _wrap_flux_connection_connection_id_get, METH_O, "flux_connection_connection_id_get(flux_connection self) -> int const"},
 	 { "flux_connection___eq__", (PyCFunction)(void(*)(void))_wrap_flux_connection___eq__, METH_VARARGS|METH_KEYWORDS, "flux_connection___eq__(flux_connection self, flux_connection other) -> bool"},
 	 { "flux_connection_get_target", _wrap_flux_connection_get_target, METH_VARARGS, "\n"
 		"flux_connection_get_target(flux_connection self, flux_node inquirer) -> cmf::water::flux_node::ptr\n"
 		"flux_connection_get_target(flux_connection self, int index) -> cmf::water::flux_node::ptr\n"
+		"flux_node::ptr get_target(int index) const\n"
+		"\n"
+		"With index 0, the left node is returned, with index 1 the right node\n"
+		"of the connection. \n"
 		""},
-	 { "flux_connection_exchange_target", (PyCFunction)(void(*)(void))_wrap_flux_connection_exchange_target, METH_VARARGS|METH_KEYWORDS, "flux_connection_exchange_target(flux_connection self, cmf::water::flux_node::ptr oldtarget, cmf::water::flux_node::ptr newTarget)"},
-	 { "flux_connection_q", (PyCFunction)(void(*)(void))_wrap_flux_connection_q, METH_VARARGS|METH_KEYWORDS, "flux_connection_q(flux_connection self, flux_node inquirer, Time t) -> real"},
-	 { "flux_connection_conc", (PyCFunction)(void(*)(void))_wrap_flux_connection_conc, METH_VARARGS|METH_KEYWORDS, "flux_connection_conc(flux_connection self, Time t, solute _Solute) -> real"},
+	 { "flux_connection_exchange_target", (PyCFunction)(void(*)(void))_wrap_flux_connection_exchange_target, METH_VARARGS|METH_KEYWORDS, "\n"
+		"flux_connection_exchange_target(flux_connection self, cmf::water::flux_node::ptr oldtarget, cmf::water::flux_node::ptr newTarget)\n"
+		"void exchange_target(flux_node::ptr oldtarget, flux_node::ptr\n"
+		"newTarget) \n"
+		""},
+	 { "flux_connection_q", (PyCFunction)(void(*)(void))_wrap_flux_connection_q, METH_VARARGS|METH_KEYWORDS, "\n"
+		"flux_connection_q(flux_connection self, flux_node inquirer, Time t) -> real\n"
+		"real q(const\n"
+		"flux_node &inquirer, cmf::math::Time t)\n"
+		"\n"
+		"Returns the current flux through a connection. Negative signs mean out\n"
+		"of the inquirer, positive are inflows to the inquirer. \n"
+		""},
+	 { "flux_connection_conc", (PyCFunction)(void(*)(void))_wrap_flux_connection_conc, METH_VARARGS|METH_KEYWORDS, "\n"
+		"flux_connection_conc(flux_connection self, Time t, solute _Solute) -> real\n"
+		"real\n"
+		"conc(cmf::math::Time t, const cmf::water::solute &_Solute)\n"
+		"\n"
+		"Returns the concentration of the flux.\n"
+		"\n"
+		"If not overridden, it returns the concentration of the source of the\n"
+		"flux (direction depending) \n"
+		""},
 	 { "flux_connection_type_get", _wrap_flux_connection_type_get, METH_O, "flux_connection_type_get(flux_connection self) -> std::string const &"},
 	 { "flux_connection_get_tracer_filter", _wrap_flux_connection_get_tracer_filter, METH_VARARGS, "\n"
 		"flux_connection_get_tracer_filter(flux_connection self) -> real\n"
 		"flux_connection_get_tracer_filter(flux_connection self, solute S) -> real\n"
+		"real get_tracer_filter(solute S)\n"
+		"\n"
+		"A value ranging from 0 to 1 to filter tracers out of the water flux.\n"
+		"\n"
 		""},
 	 { "flux_connection_set_tracer_filter", _wrap_flux_connection_set_tracer_filter, METH_VARARGS, "\n"
 		"flux_connection_set_tracer_filter(flux_connection self, real value)\n"
 		"flux_connection_set_tracer_filter(flux_connection self, solute S, real value)\n"
+		"void set_tracer_filter(solute S, real value) \n"
 		""},
-	 { "flux_connection_to_string", _wrap_flux_connection_to_string, METH_O, "flux_connection_to_string(flux_connection self) -> std::string"},
-	 { "flux_connection_short_string", _wrap_flux_connection_short_string, METH_O, "flux_connection_short_string(flux_connection self) -> std::string"},
-	 { "delete_flux_connection", _wrap_delete_flux_connection, METH_O, "delete_flux_connection(flux_connection self)"},
+	 { "flux_connection_to_string", _wrap_flux_connection_to_string, METH_O, "\n"
+		"flux_connection_to_string(flux_connection self) -> std::string\n"
+		"virtual std::string to_string() const \n"
+		""},
+	 { "flux_connection_short_string", _wrap_flux_connection_short_string, METH_O, "\n"
+		"flux_connection_short_string(flux_connection self) -> std::string\n"
+		"virtual std::string short_string() const \n"
+		""},
+	 { "delete_flux_connection", _wrap_delete_flux_connection, METH_O, "\n"
+		"delete_flux_connection(flux_connection self)\n"
+		"virtual ~flux_connection() \n"
+		""},
 	 { "flux_connection_swigregister", flux_connection_swigregister, METH_O, NULL},
-	 { "replace_node", (PyCFunction)(void(*)(void))_wrap_replace_node, METH_VARARGS|METH_KEYWORDS, "replace_node(cmf::water::flux_node::ptr oldnode, cmf::water::flux_node::ptr newnode) -> int"},
-	 { "connection_list_append", (PyCFunction)(void(*)(void))_wrap_connection_list_append, METH_VARARGS|METH_KEYWORDS, "connection_list_append(connection_list self, cmf::water::flux_connection::ptr connection) -> bool"},
-	 { "connection_list_extend", (PyCFunction)(void(*)(void))_wrap_connection_list_extend, METH_VARARGS|METH_KEYWORDS, "connection_list_extend(connection_list self, connection_list connections)"},
-	 { "connection_list_contains", (PyCFunction)(void(*)(void))_wrap_connection_list_contains, METH_VARARGS|METH_KEYWORDS, "connection_list_contains(connection_list self, cmf::water::flux_connection::ptr connection) -> bool"},
-	 { "connection_list_remove", (PyCFunction)(void(*)(void))_wrap_connection_list_remove, METH_VARARGS|METH_KEYWORDS, "connection_list_remove(connection_list self, cmf::water::flux_connection::ptr connection) -> bool"},
-	 { "connection_list_do_action", (PyCFunction)(void(*)(void))_wrap_connection_list_do_action, METH_VARARGS|METH_KEYWORDS, "connection_list_do_action(connection_list self, Time t, bool use_OpenMP=True)"},
-	 { "connection_list_size", _wrap_connection_list_size, METH_O, "connection_list_size(connection_list self) -> size_t"},
-	 { "connection_list_at", (PyCFunction)(void(*)(void))_wrap_connection_list_at, METH_VARARGS|METH_KEYWORDS, "connection_list_at(connection_list self, size_t pos) -> cmf::water::flux_connection::ptr"},
+	 { "replace_node", (PyCFunction)(void(*)(void))_wrap_replace_node, METH_VARARGS|METH_KEYWORDS, "\n"
+		"replace_node(cmf::water::flux_node::ptr oldnode, cmf::water::flux_node::ptr newnode) -> int\n"
+		"int\n"
+		"cmf::water::replace_node(cmf::water::flux_node::ptr oldnode,\n"
+		"cmf::water::flux_node::ptr newnode) \n"
+		""},
+	 { "connection_list_append", (PyCFunction)(void(*)(void))_wrap_connection_list_append, METH_VARARGS|METH_KEYWORDS, "\n"
+		"connection_list_append(connection_list self, cmf::water::flux_connection::ptr connection) -> bool\n"
+		"bool\n"
+		"append(cmf::water::flux_connection::ptr connection) \n"
+		""},
+	 { "connection_list_extend", (PyCFunction)(void(*)(void))_wrap_connection_list_extend, METH_VARARGS|METH_KEYWORDS, "\n"
+		"connection_list_extend(connection_list self, connection_list connections)\n"
+		"void\n"
+		"extend(const connection_list &connections) \n"
+		""},
+	 { "connection_list_contains", (PyCFunction)(void(*)(void))_wrap_connection_list_contains, METH_VARARGS|METH_KEYWORDS, "\n"
+		"connection_list_contains(connection_list self, cmf::water::flux_connection::ptr connection) -> bool\n"
+		"bool\n"
+		"contains(cmf::water::flux_connection::ptr connection) const \n"
+		""},
+	 { "connection_list_remove", (PyCFunction)(void(*)(void))_wrap_connection_list_remove, METH_VARARGS|METH_KEYWORDS, "\n"
+		"connection_list_remove(connection_list self, cmf::water::flux_connection::ptr connection) -> bool\n"
+		"bool\n"
+		"remove(cmf::water::flux_connection::ptr connection) \n"
+		""},
+	 { "connection_list_do_action", (PyCFunction)(void(*)(void))_wrap_connection_list_do_action, METH_VARARGS|METH_KEYWORDS, "\n"
+		"connection_list_do_action(connection_list self, Time t, bool use_OpenMP=True)\n"
+		"void\n"
+		"do_action(cmf::math::Time t, bool use_OpenMP=true) \n"
+		""},
+	 { "connection_list_size", _wrap_connection_list_size, METH_O, "\n"
+		"connection_list_size(connection_list self) -> size_t\n"
+		"size_t\n"
+		"size() const \n"
+		""},
+	 { "connection_list_at", (PyCFunction)(void(*)(void))_wrap_connection_list_at, METH_VARARGS|METH_KEYWORDS, "\n"
+		"connection_list_at(connection_list self, size_t pos) -> cmf::water::flux_connection::ptr\n"
+		"cmf::water::flux_connection::ptr at(size_t pos) const \n"
+		""},
 	 { "connection_list_begin", _wrap_connection_list_begin, METH_VARARGS, "\n"
 		"connection_list_begin(connection_list self) -> cmf::water::connection_list::iterator\n"
 		"connection_list_begin(connection_list self) -> cmf::water::connection_list::const_iterator\n"
+		"const_iterator begin() const \n"
 		""},
 	 { "connection_list_end", _wrap_connection_list_end, METH_VARARGS, "\n"
 		"connection_list_end(connection_list self) -> cmf::water::connection_list::iterator\n"
 		"connection_list_end(connection_list self) -> cmf::water::connection_list::const_iterator\n"
+		"const_iterator end() const \n"
 		""},
-	 { "delete_connection_list", _wrap_delete_connection_list, METH_O, "delete_connection_list(connection_list self)"},
+	 { "delete_connection_list", _wrap_delete_connection_list, METH_O, "\n"
+		"delete_connection_list(connection_list self)\n"
+		"virtual ~connection_list() \n"
+		""},
 	 { "connection_list___len__", _wrap_connection_list___len__, METH_O, "connection_list___len__(connection_list self) -> size_t"},
 	 { "connection_list___contains__", (PyCFunction)(void(*)(void))_wrap_connection_list___contains__, METH_VARARGS|METH_KEYWORDS, "connection_list___contains__(connection_list self, cmf::water::flux_connection::ptr const & con) -> bool"},
 	 { "new_connection_list", _wrap_new_connection_list, METH_NOARGS, "new_connection_list() -> connection_list"},
@@ -76519,52 +78311,123 @@ static PyMethodDef SwigMethods[] = {
 	 { "linear_scale_slope_set", _wrap_linear_scale_slope_set, METH_VARARGS, "linear_scale_slope_set(linear_scale self, real slope)"},
 	 { "linear_scale_slope_get", _wrap_linear_scale_slope_get, METH_O, "linear_scale_slope_get(linear_scale self) -> real"},
 	 { "linear_scale___call__", (PyCFunction)(void(*)(void))_wrap_linear_scale___call__, METH_VARARGS|METH_KEYWORDS, "linear_scale___call__(linear_scale self, real value) -> real"},
-	 { "new_linear_scale", (PyCFunction)(void(*)(void))_wrap_new_linear_scale, METH_VARARGS|METH_KEYWORDS, "new_linear_scale(real _slope=1, real _displacement=0) -> linear_scale"},
+	 { "new_linear_scale", (PyCFunction)(void(*)(void))_wrap_new_linear_scale, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_linear_scale(real _slope=1, real _displacement=0) -> linear_scale\n"
+		"linear_scale(real _slope=1, real _displacement=0)\n"
+		"\n"
+		"Creates a linear scale (by default it is a unity scale, :math:`a=1; b=0`) \n"
+		""},
 	 { "delete_linear_scale", _wrap_delete_linear_scale, METH_O, "delete_linear_scale(linear_scale self)"},
 	 { "linear_scale_swigregister", linear_scale_swigregister, METH_O, NULL},
 	 { "linear_scale_swiginit", linear_scale_swiginit, METH_VARARGS, NULL},
-	 { "DirichletBoundary_set_dynamic_potential", (PyCFunction)(void(*)(void))_wrap_DirichletBoundary_set_dynamic_potential, METH_VARARGS|METH_KEYWORDS, "DirichletBoundary_set_dynamic_potential(DirichletBoundary self, timeseries ts)"},
-	 { "DirichletBoundary_set_conc", (PyCFunction)(void(*)(void))_wrap_DirichletBoundary_set_conc, METH_VARARGS|METH_KEYWORDS, "DirichletBoundary_set_conc(DirichletBoundary self, solute _Solute, double value)"},
+	 { "DirichletBoundary_set_dynamic_potential", (PyCFunction)(void(*)(void))_wrap_DirichletBoundary_set_dynamic_potential, METH_VARARGS|METH_KEYWORDS, "\n"
+		"DirichletBoundary_set_dynamic_potential(DirichletBoundary self, timeseries ts)\n"
+		"void\n"
+		"set_dynamic_potential(cmf::math::timeseries ts)\n"
+		"\n"
+		"Sets the potential of the boundary condition as a timeseries. \n"
+		""},
+	 { "DirichletBoundary_set_conc", (PyCFunction)(void(*)(void))_wrap_DirichletBoundary_set_conc, METH_VARARGS|METH_KEYWORDS, "\n"
+		"DirichletBoundary_set_conc(DirichletBoundary self, solute _Solute, double value)\n"
+		"virtual void set_conc(const cmf::water::solute &_Solute, double value)\n"
+		"\n"
+		""},
 	 { "DirichletBoundary_is_source_set", _wrap_DirichletBoundary_is_source_set, METH_VARARGS, "DirichletBoundary_is_source_set(DirichletBoundary self, bool is_source)"},
 	 { "DirichletBoundary_is_source_get", _wrap_DirichletBoundary_is_source_get, METH_O, "DirichletBoundary_is_source_get(DirichletBoundary self) -> bool"},
-	 { "DirichletBoundary_RecalcFluxes", (PyCFunction)(void(*)(void))_wrap_DirichletBoundary_RecalcFluxes, METH_VARARGS|METH_KEYWORDS, "DirichletBoundary_RecalcFluxes(DirichletBoundary self, Time t) -> bool"},
-	 { "new_DirichletBoundary", (PyCFunction)(void(*)(void))_wrap_new_DirichletBoundary, METH_VARARGS|METH_KEYWORDS, "new_DirichletBoundary(project _p, real potential, point Location=cmf::geometry::point()) -> DirichletBoundary"},
+	 { "DirichletBoundary_RecalcFluxes", (PyCFunction)(void(*)(void))_wrap_DirichletBoundary_RecalcFluxes, METH_VARARGS|METH_KEYWORDS, "\n"
+		"DirichletBoundary_RecalcFluxes(DirichletBoundary self, Time t) -> bool\n"
+		"virtual bool RecalcFluxes(cmf::math::Time t)\n"
+		"\n"
+		"Pure flux_nodes do not influence fluxes, therefore no recalculation of\n"
+		"fluxes is required by flux_node.\n"
+		"\n"
+		"WaterStorage overrides this, since state changes require an update of\n"
+		"the fluxes \n"
+		""},
+	 { "new_DirichletBoundary", (PyCFunction)(void(*)(void))_wrap_new_DirichletBoundary, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_DirichletBoundary(project _p, real potential, point Location=cmf::geometry::point()) -> DirichletBoundary\n"
+		"DirichletBoundary(cmf::project &_p, real potential,\n"
+		"cmf::geometry::point Location=cmf::geometry::point()) \n"
+		""},
 	 { "delete_DirichletBoundary", _wrap_delete_DirichletBoundary, METH_O, "delete_DirichletBoundary(DirichletBoundary self)"},
 	 { "DirichletBoundary_swigregister", DirichletBoundary_swigregister, METH_O, NULL},
 	 { "DirichletBoundary_swiginit", DirichletBoundary_swiginit, METH_VARARGS, NULL},
-	 { "NeumannBoundary_get_flux", _wrap_NeumannBoundary_get_flux, METH_O, "NeumannBoundary_get_flux(NeumannBoundary self) -> timeseries"},
+	 { "NeumannBoundary_get_flux", _wrap_NeumannBoundary_get_flux, METH_O, "\n"
+		"NeumannBoundary_get_flux(NeumannBoundary self) -> timeseries\n"
+		"cmf::math::timeseries get_flux()\n"
+		"\n"
+		"The timeseries of the boundary flux. \n"
+		""},
 	 { "NeumannBoundary_set_flux", _wrap_NeumannBoundary_set_flux, METH_VARARGS, "\n"
 		"NeumannBoundary_set_flux(NeumannBoundary self, timeseries new_flux)\n"
 		"NeumannBoundary_set_flux(NeumannBoundary self, double new_flux)\n"
+		"void\n"
+		"set_flux(double new_flux)\n"
+		"\n"
+		"Set a constant as the boundary flux. \n"
 		""},
 	 { "NeumannBoundary_flux_scale_set", _wrap_NeumannBoundary_flux_scale_set, METH_VARARGS, "NeumannBoundary_flux_scale_set(NeumannBoundary self, linear_scale flux_scale)"},
 	 { "NeumannBoundary_flux_scale_get", _wrap_NeumannBoundary_flux_scale_get, METH_O, "NeumannBoundary_flux_scale_get(NeumannBoundary self) -> linear_scale"},
 	 { "NeumannBoundary_concentration_set", _wrap_NeumannBoundary_concentration_set, METH_VARARGS, "NeumannBoundary_concentration_set(NeumannBoundary self, SoluteTimeseries concentration)"},
 	 { "NeumannBoundary_concentration_get", _wrap_NeumannBoundary_concentration_get, METH_O, "NeumannBoundary_concentration_get(NeumannBoundary self) -> SoluteTimeseries"},
 	 { "NeumannBoundary___call__", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary___call__, METH_VARARGS|METH_KEYWORDS, "NeumannBoundary___call__(NeumannBoundary self, Time t) -> real"},
-	 { "NeumannBoundary_connect_to", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_connect_to, METH_VARARGS|METH_KEYWORDS, "NeumannBoundary_connect_to(NeumannBoundary self, cmf::water::flux_node::ptr target)"},
+	 { "NeumannBoundary_connect_to", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_connect_to, METH_VARARGS|METH_KEYWORDS, "\n"
+		"NeumannBoundary_connect_to(NeumannBoundary self, cmf::water::flux_node::ptr target)\n"
+		"void\n"
+		"connect_to(cmf::water::flux_node::ptr target) \n"
+		""},
 	 { "new_NeumannBoundary", _wrap_new_NeumannBoundary, METH_VARARGS, "\n"
 		"NeumannBoundary(project _project, timeseries _flux, SoluteTimeseries _concentration=cmf::water::SoluteTimeseries(), point loc=cmf::geometry::point())\n"
 		"new_NeumannBoundary(project _project, point loc=cmf::geometry::point()) -> NeumannBoundary\n"
+		"NeumannBoundary(cmf::project &_project, cmf::geometry::point\n"
+		"loc=cmf::geometry::point()) \n"
 		""},
 	 { "NeumannBoundary_create", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_create, METH_VARARGS|METH_KEYWORDS, "NeumannBoundary_create(cmf::water::flux_node::ptr target) -> cmf::water::NeumannBoundary::ptr"},
 	 { "delete_NeumannBoundary", _wrap_delete_NeumannBoundary, METH_O, "delete_NeumannBoundary(NeumannBoundary self)"},
 	 { "NeumannBoundary_swigregister", NeumannBoundary_swigregister, METH_O, NULL},
 	 { "NeumannBoundary_swiginit", NeumannBoundary_swiginit, METH_VARARGS, NULL},
-	 { "new_NeumannFlux", (PyCFunction)(void(*)(void))_wrap_new_NeumannFlux, METH_VARARGS|METH_KEYWORDS, "new_NeumannFlux(std::shared_ptr< cmf::water::NeumannBoundary > left, cmf::water::flux_node::ptr right) -> NeumannFlux"},
+	 { "new_NeumannFlux", (PyCFunction)(void(*)(void))_wrap_new_NeumannFlux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_NeumannFlux(std::shared_ptr< cmf::water::NeumannBoundary > left, cmf::water::flux_node::ptr right) -> NeumannFlux\n"
+		"NeumannFlux(std::shared_ptr< NeumannBoundary > left,\n"
+		"cmf::water::flux_node::ptr right) \n"
+		""},
 	 { "delete_NeumannFlux", _wrap_delete_NeumannFlux, METH_O, "delete_NeumannFlux(NeumannFlux self)"},
 	 { "NeumannFlux_swigregister", NeumannFlux_swigregister, METH_O, NULL},
 	 { "NeumannFlux_swiginit", NeumannFlux_swiginit, METH_VARARGS, NULL},
-	 { "new_WaterStorage", (PyCFunction)(void(*)(void))_wrap_new_WaterStorage, METH_VARARGS|METH_KEYWORDS, "new_WaterStorage(project project, std::string const & Name=\"\", double InitialState=0, double scale=1) -> WaterStorage"},
+	 { "new_WaterStorage", (PyCFunction)(void(*)(void))_wrap_new_WaterStorage, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_WaterStorage(project project, std::string const & Name=\"\", double InitialState=0, double scale=1) -> WaterStorage\n"
+		"WaterStorage(cmf::project &project, const std::string &Name=\"\",\n"
+		"double InitialState=0, double scale=1)\n"
+		"\n"
+		"creates a water storage (abstract class)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"project:  The project the waterstorage belongs to\n"
+		"\n"
+		"Name:  Name of the water storage\n"
+		"\n"
+		"InitialState:  Initial water content in m3\n"
+		"\n"
+		"scale:  A kind of \"standard size\" in m3 of the water storage to\n"
+		"scale tolerances, default 1m3 \n"
+		""},
 	 { "WaterStorage_from_node", (PyCFunction)(void(*)(void))_wrap_WaterStorage_from_node, METH_VARARGS|METH_KEYWORDS, "WaterStorage_from_node(cmf::water::flux_node::ptr node) -> std::shared_ptr< cmf::water::WaterStorage >"},
 	 { "WaterStorage_Solute", _wrap_WaterStorage_Solute, METH_VARARGS, "\n"
 		"WaterStorage_Solute(WaterStorage self, solute _Solute) -> SoluteStorage\n"
 		"WaterStorage_Solute(WaterStorage self, solute _Solute) -> SoluteStorage\n"
+		"const\n"
+		"SoluteStorage& Solute(const cmf::water::solute _Solute) const \n"
 		""},
 	 { "WaterStorage_conc", _wrap_WaterStorage_conc, METH_VARARGS, "\n"
 		"WaterStorage_conc(WaterStorage self, solute _Solute) -> real\n"
 		"WaterStorage_conc(WaterStorage self, Time t, solute _Solute) -> real\n"
 		"WaterStorage_conc(WaterStorage self, solute _Solute, real NewConcetration)\n"
+		"void\n"
+		"conc(const cmf::water::solute &_Solute, real NewConcetration)\n"
+		"\n"
+		"Sets a new concentration. \n"
 		""},
 	 { "WaterStorage_cast", (PyCFunction)(void(*)(void))_wrap_WaterStorage_cast, METH_VARARGS|METH_KEYWORDS, "WaterStorage_cast(std::shared_ptr< cmf::water::flux_node > node) -> std::shared_ptr< cmf::water::WaterStorage >"},
 	 { "WaterStorage_create", (PyCFunction)(void(*)(void))_wrap_WaterStorage_create, METH_VARARGS|METH_KEYWORDS, "WaterStorage_create(project _project, real initial_state=0.0, real scale=1.0) -> std::shared_ptr< cmf::water::WaterStorage >"},
@@ -76576,23 +78439,74 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_WaterStorage", _wrap_delete_WaterStorage, METH_O, "delete_WaterStorage(WaterStorage self)"},
 	 { "WaterStorage_swigregister", WaterStorage_swigregister, METH_O, NULL},
 	 { "WaterStorage_swiginit", WaterStorage_swiginit, METH_VARARGS, NULL},
-	 { "new_WaterbalanceFlux", (PyCFunction)(void(*)(void))_wrap_new_WaterbalanceFlux, METH_VARARGS|METH_KEYWORDS, "new_WaterbalanceFlux(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target) -> WaterbalanceFlux"},
+	 { "new_WaterbalanceFlux", (PyCFunction)(void(*)(void))_wrap_new_WaterbalanceFlux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_WaterbalanceFlux(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target) -> WaterbalanceFlux\n"
+		"WaterbalanceFlux(flux_node::ptr source, flux_node::ptr target) \n"
+		""},
 	 { "delete_WaterbalanceFlux", _wrap_delete_WaterbalanceFlux, METH_O, "delete_WaterbalanceFlux(WaterbalanceFlux self)"},
 	 { "WaterbalanceFlux_swigregister", WaterbalanceFlux_swigregister, METH_O, NULL},
 	 { "WaterbalanceFlux_swiginit", WaterbalanceFlux_swiginit, METH_VARARGS, NULL},
 	 { "ExternallyControlledFlux_flux_set", _wrap_ExternallyControlledFlux_flux_set, METH_VARARGS, "ExternallyControlledFlux_flux_set(ExternallyControlledFlux self, real flux)"},
 	 { "ExternallyControlledFlux_flux_get", _wrap_ExternallyControlledFlux_flux_get, METH_O, "ExternallyControlledFlux_flux_get(ExternallyControlledFlux self) -> real"},
-	 { "new_ExternallyControlledFlux", (PyCFunction)(void(*)(void))_wrap_new_ExternallyControlledFlux, METH_VARARGS|METH_KEYWORDS, "new_ExternallyControlledFlux(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target, real flux_value=0) -> ExternallyControlledFlux"},
+	 { "new_ExternallyControlledFlux", (PyCFunction)(void(*)(void))_wrap_new_ExternallyControlledFlux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ExternallyControlledFlux(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target, real flux_value=0) -> ExternallyControlledFlux\n"
+		"ExternallyControlledFlux(flux_node::ptr source, flux_node::ptr target,\n"
+		"real flux_value=0) \n"
+		""},
 	 { "delete_ExternallyControlledFlux", _wrap_delete_ExternallyControlledFlux, METH_O, "delete_ExternallyControlledFlux(ExternallyControlledFlux self)"},
 	 { "ExternallyControlledFlux_swigregister", ExternallyControlledFlux_swigregister, METH_O, NULL},
 	 { "ExternallyControlledFlux_swiginit", ExternallyControlledFlux_swiginit, METH_VARARGS, NULL},
-	 { "set_flux", (PyCFunction)(void(*)(void))_wrap_set_flux, METH_VARARGS|METH_KEYWORDS, "set_flux(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target, real flux_value)"},
-	 { "can_set_flux", (PyCFunction)(void(*)(void))_wrap_can_set_flux, METH_VARARGS|METH_KEYWORDS, "can_set_flux(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target) -> bool"},
+	 { "set_flux", (PyCFunction)(void(*)(void))_wrap_set_flux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_flux(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target, real flux_value)\n"
+		"void\n"
+		"cmf::water::set_flux(flux_node::ptr source, flux_node::ptr target,\n"
+		"real flux_value)\n"
+		"\n"
+		"Sets a constant flux between two nodes, if an\n"
+		"external_control_connection exists. \n"
+		""},
+	 { "can_set_flux", (PyCFunction)(void(*)(void))_wrap_can_set_flux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"can_set_flux(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target) -> bool\n"
+		"bool\n"
+		"cmf::water::can_set_flux(flux_node::ptr source, flux_node::ptr target)\n"
+		"\n"
+		"Checks if a constant flux between two nodes can be set.\n"
+		"\n"
+		"Returns true if the nodes are connected by an\n"
+		"external_control_connection \n"
+		""},
 	 { "LinearStorageConnection_residencetime_set", _wrap_LinearStorageConnection_residencetime_set, METH_VARARGS, "LinearStorageConnection_residencetime_set(LinearStorageConnection self, real residencetime)"},
 	 { "LinearStorageConnection_residencetime_get", _wrap_LinearStorageConnection_residencetime_get, METH_O, "LinearStorageConnection_residencetime_get(LinearStorageConnection self) -> real"},
 	 { "LinearStorageConnection_residual_set", _wrap_LinearStorageConnection_residual_set, METH_VARARGS, "LinearStorageConnection_residual_set(LinearStorageConnection self, real residual)"},
 	 { "LinearStorageConnection_residual_get", _wrap_LinearStorageConnection_residual_get, METH_O, "LinearStorageConnection_residual_get(LinearStorageConnection self) -> real"},
-	 { "new_LinearStorageConnection", (PyCFunction)(void(*)(void))_wrap_new_LinearStorageConnection, METH_VARARGS|METH_KEYWORDS, "new_LinearStorageConnection(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real residencetime, real residual=0.0) -> LinearStorageConnection"},
+	 { "new_LinearStorageConnection", (PyCFunction)(void(*)(void))_wrap_new_LinearStorageConnection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_LinearStorageConnection(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real residencetime, real residual=0.0) -> LinearStorageConnection\n"
+		"LinearStorageConnection(WaterStorage::ptr source, flux_node::ptr\n"
+		"target, real residencetime, real residual=0.0)\n"
+		"\n"
+		"Creates a linear storage connection or Nash-box.\n"
+		"\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     q = \\\\frac{V - V_{residual}}{t_r}} \n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"source:  Water storage from which the water flows out. Flux is a\n"
+		"function of source.volume\n"
+		"\n"
+		"target:  Target node (boundary condition or storage). Does not\n"
+		"influence the strength of the flow\n"
+		"\n"
+		"residencetime:   :math:`t_r [days]` The residence time of the water in this\n"
+		"storage\n"
+		"\n"
+		"residual:   :math:`V_{residual} [m^3]` The volume of water not flowing out\n"
+		"(default = 0) \n"
+		""},
 	 { "delete_LinearStorageConnection", _wrap_delete_LinearStorageConnection, METH_O, "delete_LinearStorageConnection(LinearStorageConnection self)"},
 	 { "LinearStorageConnection_swigregister", LinearStorageConnection_swigregister, METH_O, NULL},
 	 { "LinearStorageConnection_swiginit", LinearStorageConnection_swiginit, METH_VARARGS, NULL},
@@ -76604,7 +78518,33 @@ static PyMethodDef SwigMethods[] = {
 	 { "PowerLawConnection_residual_get", _wrap_PowerLawConnection_residual_get, METH_O, "PowerLawConnection_residual_get(PowerLawConnection self) -> real"},
 	 { "PowerLawConnection_V0_set", _wrap_PowerLawConnection_V0_set, METH_VARARGS, "PowerLawConnection_V0_set(PowerLawConnection self, real V0)"},
 	 { "PowerLawConnection_V0_get", _wrap_PowerLawConnection_V0_get, METH_O, "PowerLawConnection_V0_get(PowerLawConnection self) -> real"},
-	 { "new_PowerLawConnection", (PyCFunction)(void(*)(void))_wrap_new_PowerLawConnection, METH_VARARGS|METH_KEYWORDS, "new_PowerLawConnection(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Q0, real V0, real beta=1.0, real residual=0.0) -> PowerLawConnection"},
+	 { "new_PowerLawConnection", (PyCFunction)(void(*)(void))_wrap_new_PowerLawConnection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_PowerLawConnection(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Q0, real V0, real beta=1.0, real residual=0.0) -> PowerLawConnection\n"
+		"PowerLawConnection(WaterStorage::ptr source, flux_node::ptr target,\n"
+		"real Q0, real V0, real beta=1.0, real residual=0.0)\n"
+		"\n"
+		"Creates a power law connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"source:  Water storage from which the water flows out. Flux is a\n"
+		"function of source.volume\n"
+		"\n"
+		"target:  Target node (boundary condition or storage). Does not\n"
+		"influence the strength of the flow\n"
+		"\n"
+		"Q0:  Reference flow :math:`Q_0 = q(V_0)` Outflow when the source storage\n"
+		"equals the reference volume\n"
+		"\n"
+		"V0:  Reference volume :math:`V_0` The reference volume to scale the exponent\n"
+		"\n"
+		"beta:   :math:`\\\\beta [-]` An empirical exponent to shape the flux\n"
+		"function (default = 1 (linear function))\n"
+		"\n"
+		"residual:   :math:`V_{residual} [m^3]` The volume of water not flowing out\n"
+		"(default = 0) \n"
+		""},
 	 { "delete_PowerLawConnection", _wrap_delete_PowerLawConnection, METH_O, "delete_PowerLawConnection(PowerLawConnection self)"},
 	 { "PowerLawConnection_swigregister", PowerLawConnection_swigregister, METH_O, NULL},
 	 { "PowerLawConnection_swiginit", PowerLawConnection_swiginit, METH_VARARGS, NULL},
@@ -76614,7 +78554,13 @@ static PyMethodDef SwigMethods[] = {
 	 { "ExponentialDeclineConnection_m_get", _wrap_ExponentialDeclineConnection_m_get, METH_O, "ExponentialDeclineConnection_m_get(ExponentialDeclineConnection self) -> real"},
 	 { "ExponentialDeclineConnection_V0_set", _wrap_ExponentialDeclineConnection_V0_set, METH_VARARGS, "ExponentialDeclineConnection_V0_set(ExponentialDeclineConnection self, real V0)"},
 	 { "ExponentialDeclineConnection_V0_get", _wrap_ExponentialDeclineConnection_V0_get, METH_O, "ExponentialDeclineConnection_V0_get(ExponentialDeclineConnection self) -> real"},
-	 { "new_ExponentialDeclineConnection", (PyCFunction)(void(*)(void))_wrap_new_ExponentialDeclineConnection, METH_VARARGS|METH_KEYWORDS, "new_ExponentialDeclineConnection(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Q0, real V0, real m) -> ExponentialDeclineConnection"},
+	 { "new_ExponentialDeclineConnection", (PyCFunction)(void(*)(void))_wrap_new_ExponentialDeclineConnection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ExponentialDeclineConnection(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Q0, real V0, real m) -> ExponentialDeclineConnection\n"
+		"ExponentialDeclineConnection(WaterStorage::ptr source,\n"
+		"flux_node::ptr target, real Q0, real V0, real m)\n"
+		"\n"
+		"creates the exponential decline connection \n"
+		""},
 	 { "delete_ExponentialDeclineConnection", _wrap_delete_ExponentialDeclineConnection, METH_O, "delete_ExponentialDeclineConnection(ExponentialDeclineConnection self)"},
 	 { "ExponentialDeclineConnection_swigregister", ExponentialDeclineConnection_swigregister, METH_O, NULL},
 	 { "ExponentialDeclineConnection_swiginit", ExponentialDeclineConnection_swiginit, METH_VARARGS, NULL},
@@ -76624,7 +78570,39 @@ static PyMethodDef SwigMethods[] = {
 	 { "ConstraintLinearStorageFlux_Vlmin_get", _wrap_ConstraintLinearStorageFlux_Vlmin_get, METH_O, "ConstraintLinearStorageFlux_Vlmin_get(ConstraintLinearStorageFlux self) -> real"},
 	 { "ConstraintLinearStorageFlux_Vrmax_set", _wrap_ConstraintLinearStorageFlux_Vrmax_set, METH_VARARGS, "ConstraintLinearStorageFlux_Vrmax_set(ConstraintLinearStorageFlux self, real Vrmax)"},
 	 { "ConstraintLinearStorageFlux_Vrmax_get", _wrap_ConstraintLinearStorageFlux_Vrmax_get, METH_O, "ConstraintLinearStorageFlux_Vrmax_get(ConstraintLinearStorageFlux self) -> real"},
-	 { "new_ConstraintLinearStorageFlux", (PyCFunction)(void(*)(void))_wrap_new_ConstraintLinearStorageFlux, METH_VARARGS|METH_KEYWORDS, "new_ConstraintLinearStorageFlux(cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real Vrmax=1.0) -> ConstraintLinearStorageFlux"},
+	 { "new_ConstraintLinearStorageFlux", (PyCFunction)(void(*)(void))_wrap_new_ConstraintLinearStorageFlux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ConstraintLinearStorageFlux(cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real Vrmax=1.0) -> ConstraintLinearStorageFlux\n"
+		"ConstraintLinearStorageFlux(WaterStorage::ptr source,\n"
+		"WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real\n"
+		"Vrmax=1.0)\n"
+		"\n"
+		"Creates a linear storage connection, constrained by the fill level of\n"
+		"the source \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V -\n"
+		"    V_{residual}}{V_0} \\\\right)^\\\\beta} \n"
+		"\n"
+		".\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"source:  Water storage from which the water flows out. Flux is a\n"
+		"function of source.volume\n"
+		"\n"
+		"target:  Target node (boundary condition or storage). Does not\n"
+		"influence the strength of the flow\n"
+		"\n"
+		"residencetime:   :math:`t_r [days]` The residence time of the water in this\n"
+		"storage\n"
+		"\n"
+		"Vlmin:   :math:`V_{l,min} [m^3]` The volume of water not flowing out\n"
+		"(default = 0)\n"
+		"\n"
+		"Vrmax:   :math:`V_{r,max}` Capacity of the target water storage in m3 \n"
+		""},
 	 { "delete_ConstraintLinearStorageFlux", _wrap_delete_ConstraintLinearStorageFlux, METH_O, "delete_ConstraintLinearStorageFlux(ConstraintLinearStorageFlux self)"},
 	 { "ConstraintLinearStorageFlux_swigregister", ConstraintLinearStorageFlux_swigregister, METH_O, NULL},
 	 { "ConstraintLinearStorageFlux_swiginit", ConstraintLinearStorageFlux_swiginit, METH_VARARGS, NULL},
@@ -76634,7 +78612,28 @@ static PyMethodDef SwigMethods[] = {
 	 { "ConstantFlux_MinState_get", _wrap_ConstantFlux_MinState_get, METH_O, "ConstantFlux_MinState_get(ConstantFlux self) -> real"},
 	 { "ConstantFlux_FluxDecreaseTime_set", _wrap_ConstantFlux_FluxDecreaseTime_set, METH_VARARGS, "ConstantFlux_FluxDecreaseTime_set(ConstantFlux self, Time FluxDecreaseTime)"},
 	 { "ConstantFlux_FluxDecreaseTime_get", _wrap_ConstantFlux_FluxDecreaseTime_get, METH_O, "ConstantFlux_FluxDecreaseTime_get(ConstantFlux self) -> Time"},
-	 { "new_ConstantFlux", (PyCFunction)(void(*)(void))_wrap_new_ConstantFlux, METH_VARARGS|METH_KEYWORDS, "new_ConstantFlux(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real maximum_flux, real minimal_state=0, Time flux_decrease_time=h) -> ConstantFlux"},
+	 { "new_ConstantFlux", (PyCFunction)(void(*)(void))_wrap_new_ConstantFlux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ConstantFlux(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real maximum_flux, real minimal_state=0, Time flux_decrease_time=h) -> ConstantFlux\n"
+		"ConstantFlux(cmf::water::WaterStorage::ptr source,\n"
+		"cmf::water::flux_node::ptr target, real maximum_flux, real\n"
+		"minimal_state=0, cmf::math::Time flux_decrease_time=cmf::math::h)\n"
+		"\n"
+		"Produces a constant but changeable flux from a source to a target, if\n"
+		"enough water is present in the source.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"source:  The source of the water\n"
+		"\n"
+		"target:  The target of the water\n"
+		"\n"
+		"maximum_flux:  The requested flux :math:`q_{0}`\n"
+		"\n"
+		"minimal_state:  Minimal volume of stored water in source\n"
+		"\n"
+		"flux_decrease_time:  ( cmf::math::Time) \n"
+		""},
 	 { "delete_ConstantFlux", _wrap_delete_ConstantFlux, METH_O, "delete_ConstantFlux(ConstantFlux self)"},
 	 { "ConstantFlux_swigregister", ConstantFlux_swigregister, METH_O, NULL},
 	 { "ConstantFlux_swiginit", ConstantFlux_swiginit, METH_VARARGS, NULL},
@@ -76642,7 +78641,25 @@ static PyMethodDef SwigMethods[] = {
 	 { "LinearGradientFlux_Q1_get", _wrap_LinearGradientFlux_Q1_get, METH_O, "LinearGradientFlux_Q1_get(LinearGradientFlux self) -> real"},
 	 { "LinearGradientFlux_d_set", _wrap_LinearGradientFlux_d_set, METH_VARARGS, "LinearGradientFlux_d_set(LinearGradientFlux self, real d)"},
 	 { "LinearGradientFlux_d_get", _wrap_LinearGradientFlux_d_get, METH_O, "LinearGradientFlux_d_get(LinearGradientFlux self) -> real"},
-	 { "new_LinearGradientFlux", (PyCFunction)(void(*)(void))_wrap_new_LinearGradientFlux, METH_VARARGS|METH_KEYWORDS, "new_LinearGradientFlux(cmf::water::flux_node::ptr left, cmf::water::flux_node::ptr right, real Q1, real d=-1.0) -> LinearGradientFlux"},
+	 { "new_LinearGradientFlux", (PyCFunction)(void(*)(void))_wrap_new_LinearGradientFlux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_LinearGradientFlux(cmf::water::flux_node::ptr left, cmf::water::flux_node::ptr right, real Q1, real d=-1.0) -> LinearGradientFlux\n"
+		"LinearGradientFlux(cmf::water::flux_node::ptr left,\n"
+		"cmf::water::flux_node::ptr right, real Q1, real d=-1.0)\n"
+		"\n"
+		"Creates a generic gradient based flux, if enough water is present in\n"
+		"the source.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  The left node of the connection\n"
+		"\n"
+		"right:  The right node of the connection\n"
+		"\n"
+		"Q1:  Flux over the connection for a unity gradient ( :math:`\\\\nabla \\\\Psi = 1`) in :math:`\\\\frac{m^3}{day}`\n"
+		"\n"
+		"d:  the topographic lenght of the connection in m \n"
+		""},
 	 { "delete_LinearGradientFlux", _wrap_delete_LinearGradientFlux, METH_O, "delete_LinearGradientFlux(LinearGradientFlux self)"},
 	 { "LinearGradientFlux_swigregister", LinearGradientFlux_swigregister, METH_O, NULL},
 	 { "LinearGradientFlux_swiginit", LinearGradientFlux_swiginit, METH_VARARGS, NULL},
@@ -76650,61 +78667,439 @@ static PyMethodDef SwigMethods[] = {
 	 { "ConstantStateFlux_reaction_time_get", _wrap_ConstantStateFlux_reaction_time_get, METH_O, "ConstantStateFlux_reaction_time_get(ConstantStateFlux self) -> Time"},
 	 { "ConstantStateFlux_target_state_set", _wrap_ConstantStateFlux_target_state_set, METH_VARARGS, "ConstantStateFlux_target_state_set(ConstantStateFlux self, real target_state)"},
 	 { "ConstantStateFlux_target_state_get", _wrap_ConstantStateFlux_target_state_get, METH_O, "ConstantStateFlux_target_state_get(ConstantStateFlux self) -> real"},
-	 { "new_ConstantStateFlux", (PyCFunction)(void(*)(void))_wrap_new_ConstantStateFlux, METH_VARARGS|METH_KEYWORDS, "new_ConstantStateFlux(cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, real target_state, Time reaction_time) -> ConstantStateFlux"},
+	 { "new_ConstantStateFlux", (PyCFunction)(void(*)(void))_wrap_new_ConstantStateFlux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ConstantStateFlux(cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, real target_state, Time reaction_time) -> ConstantStateFlux\n"
+		"ConstantStateFlux(cmf::water::WaterStorage::ptr controlled_storage,\n"
+		"cmf::water::flux_node::ptr other_end, real target_state,\n"
+		"cmf::math::Time reaction_time)\n"
+		"\n"
+		"Creates a flux connection to control the state of a storage.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"controlled_storage:  Water storage, to be controlled\n"
+		"\n"
+		"other_end:  source of missing water or target of excessive water\n"
+		"\n"
+		"target_state:  State the controlled storage should hold (\n"
+		":math:`h_{target}`)\n"
+		"\n"
+		"reaction_time:  Time to reach state ( :math:`t_c`) \n"
+		""},
 	 { "delete_ConstantStateFlux", _wrap_delete_ConstantStateFlux, METH_O, "delete_ConstantStateFlux(ConstantStateFlux self)"},
 	 { "ConstantStateFlux_swigregister", ConstantStateFlux_swigregister, METH_O, NULL},
 	 { "ConstantStateFlux_swiginit", ConstantStateFlux_swiginit, METH_VARARGS, NULL},
-	 { "node_list_size", _wrap_node_list_size, METH_O, "node_list_size(node_list self) -> size_t"},
+	 { "node_list_size", _wrap_node_list_size, METH_O, "\n"
+		"node_list_size(node_list self) -> size_t\n"
+		"size_t size()\n"
+		"const\n"
+		"\n"
+		"The number of nodes. \n"
+		""},
 	 { "new_node_list", _wrap_new_node_list, METH_VARARGS, "\n"
 		"node_list()\n"
 		"new_node_list(node_list forcopy) -> node_list\n"
+		"node_list(const cmf::water::node_list &forcopy)\n"
+		"\n"
+		"Copy the node_list. \n"
 		""},
 	 { "node_list___iadd__", (PyCFunction)(void(*)(void))_wrap_node_list___iadd__, METH_VARARGS|METH_KEYWORDS, "node_list___iadd__(node_list self, node_list right) -> node_list"},
 	 { "node_list___add__", (PyCFunction)(void(*)(void))_wrap_node_list___add__, METH_VARARGS|METH_KEYWORDS, "node_list___add__(node_list self, node_list right) -> node_list"},
-	 { "node_list___get", (PyCFunction)(void(*)(void))_wrap_node_list___get, METH_VARARGS|METH_KEYWORDS, "node_list___get(node_list self, ptrdiff_t index) -> cmf::water::flux_node::ptr"},
-	 { "node_list___getslice", (PyCFunction)(void(*)(void))_wrap_node_list___getslice, METH_VARARGS|METH_KEYWORDS, "node_list___getslice(node_list self, ptrdiff_t begin, ptrdiff_t end, ptrdiff_t step=1) -> node_list"},
+	 { "node_list___get", (PyCFunction)(void(*)(void))_wrap_node_list___get, METH_VARARGS|METH_KEYWORDS, "\n"
+		"node_list___get(node_list self, ptrdiff_t index) -> cmf::water::flux_node::ptr\n"
+		"flux_node::ptr\n"
+		"get(ptrdiff_t index) const\n"
+		"\n"
+		"Returns a node in the node_list. \n"
+		""},
+	 { "node_list___getslice", (PyCFunction)(void(*)(void))_wrap_node_list___getslice, METH_VARARGS|METH_KEYWORDS, "\n"
+		"node_list___getslice(node_list self, ptrdiff_t begin, ptrdiff_t end, ptrdiff_t step=1) -> node_list\n"
+		"node_list\n"
+		"getslice(ptrdiff_t begin, ptrdiff_t end, ptrdiff_t step=1) const\n"
+		"\n"
+		"Returns a slice of the node_list. \n"
+		""},
 	 { "node_list___cmf_state_list_interface__", _wrap_node_list___cmf_state_list_interface__, METH_O, "node_list___cmf_state_list_interface__(node_list self) -> state_list"},
-	 { "node_list_append", (PyCFunction)(void(*)(void))_wrap_node_list_append, METH_VARARGS|METH_KEYWORDS, "node_list_append(node_list self, cmf::water::flux_node::ptr node)"},
-	 { "node_list_remove", (PyCFunction)(void(*)(void))_wrap_node_list_remove, METH_VARARGS|METH_KEYWORDS, "node_list_remove(node_list self, cmf::water::flux_node::ptr node) -> bool"},
-	 { "node_list_get_potentials", (PyCFunction)(void(*)(void))_wrap_node_list_get_potentials, METH_VARARGS|METH_KEYWORDS, "node_list_get_potentials(node_list self, Time t=never) -> cmf::math::num_array"},
-	 { "node_list_global_water_balance", (PyCFunction)(void(*)(void))_wrap_node_list_global_water_balance, METH_VARARGS|METH_KEYWORDS, "node_list_global_water_balance(node_list self, Time t) -> real"},
-	 { "node_list_water_balance", (PyCFunction)(void(*)(void))_wrap_node_list_water_balance, METH_VARARGS|METH_KEYWORDS, "node_list_water_balance(node_list self, Time t) -> cmf::math::num_array"},
-	 { "node_list_conc", (PyCFunction)(void(*)(void))_wrap_node_list_conc, METH_VARARGS|METH_KEYWORDS, "node_list_conc(node_list self, Time t, solute _Solute) -> cmf::math::num_array"},
-	 { "node_list_set_solute_source", (PyCFunction)(void(*)(void))_wrap_node_list_set_solute_source, METH_VARARGS|METH_KEYWORDS, "node_list_set_solute_source(node_list self, solute _Solute, cmf::math::num_array source_fluxes) -> ptrdiff_t"},
-	 { "node_list_get_fluxes_to", (PyCFunction)(void(*)(void))_wrap_node_list_get_fluxes_to, METH_VARARGS|METH_KEYWORDS, "node_list_get_fluxes_to(node_list self, node_list targets, Time t) -> cmf::math::num_array"},
-	 { "node_list_get_fluxes3d_to", (PyCFunction)(void(*)(void))_wrap_node_list_get_fluxes3d_to, METH_VARARGS|METH_KEYWORDS, "node_list_get_fluxes3d_to(node_list self, node_list targets, Time t) -> point_vector"},
-	 { "node_list_get_fluxes3d", (PyCFunction)(void(*)(void))_wrap_node_list_get_fluxes3d, METH_VARARGS|METH_KEYWORDS, "node_list_get_fluxes3d(node_list self, Time t) -> point_vector"},
-	 { "node_list_get_positions", _wrap_node_list_get_positions, METH_O, "node_list_get_positions(node_list self) -> point_vector"},
-	 { "delete_node_list", _wrap_delete_node_list, METH_O, "delete_node_list(node_list self)"},
+	 { "node_list_append", (PyCFunction)(void(*)(void))_wrap_node_list_append, METH_VARARGS|METH_KEYWORDS, "\n"
+		"node_list_append(node_list self, cmf::water::flux_node::ptr node)\n"
+		"void\n"
+		"append(flux_node::ptr node)\n"
+		"\n"
+		"Adds a flux node to the list. \n"
+		""},
+	 { "node_list_remove", (PyCFunction)(void(*)(void))_wrap_node_list_remove, METH_VARARGS|METH_KEYWORDS, "\n"
+		"node_list_remove(node_list self, cmf::water::flux_node::ptr node) -> bool\n"
+		"bool\n"
+		"remove(flux_node::ptr node)\n"
+		"\n"
+		"Removes a flux node from the list, returns true if successful. \n"
+		""},
+	 { "node_list_get_potentials", (PyCFunction)(void(*)(void))_wrap_node_list_get_potentials, METH_VARARGS|METH_KEYWORDS, "\n"
+		"node_list_get_potentials(node_list self, Time t=never) -> cmf::math::num_array\n"
+		"cmf::math::num_array get_potentials(cmf::math::Time\n"
+		"t=cmf::math::never)\n"
+		"\n"
+		"Returns the potential of the nodes. \n"
+		""},
+	 { "node_list_global_water_balance", (PyCFunction)(void(*)(void))_wrap_node_list_global_water_balance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"node_list_global_water_balance(node_list self, Time t) -> real\n"
+		"real global_water_balance(cmf::math::Time t) const\n"
+		"\n"
+		"Returns the sum of the water balances of the nodes.\n"
+		"\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"    \\\\sigma_{global} =\n"
+		"    \\\\sum_{i=0}^N{\\\\sum_{j=0}^{C_i}{q_{ij}(t)}} \n"
+		"\n"
+		"Replaces slow Python code like: \n"
+		""},
+	 { "node_list_water_balance", (PyCFunction)(void(*)(void))_wrap_node_list_water_balance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"node_list_water_balance(node_list self, Time t) -> cmf::math::num_array\n"
+		"cmf::math::num_array water_balance(cmf::math::Time t) const\n"
+		"\n"
+		"Returns the water balance of each vector as a vector.\n"
+		"\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     \\\\sigma_i = \\\\sum_{j=0}^{C_i}{q_{ij}(t)} \n"
+		"\n"
+		"Replaces slow Python code like: \n"
+		""},
+	 { "node_list_conc", (PyCFunction)(void(*)(void))_wrap_node_list_conc, METH_VARARGS|METH_KEYWORDS, "\n"
+		"node_list_conc(node_list self, Time t, solute _Solute) -> cmf::math::num_array\n"
+		"cmf::math::num_array conc(cmf::math::Time t, const cmf::water::solute\n"
+		"&_Solute) const\n"
+		"\n"
+		"Returns an array holding the concentration of all the flux nodes for\n"
+		"the given solute. \n"
+		""},
+	 { "node_list_set_solute_source", (PyCFunction)(void(*)(void))_wrap_node_list_set_solute_source, METH_VARARGS|METH_KEYWORDS, "\n"
+		"node_list_set_solute_source(node_list self, solute _Solute, cmf::math::num_array source_fluxes) -> ptrdiff_t\n"
+		"ptrdiff_t set_solute_source(const cmf::water::solute &_Solute,\n"
+		"cmf::math::num_array source_fluxes)\n"
+		"\n"
+		"Sets the source flux of a solute storage associated with a node (node\n"
+		"has to be a water storage) \n"
+		""},
+	 { "node_list_get_fluxes_to", (PyCFunction)(void(*)(void))_wrap_node_list_get_fluxes_to, METH_VARARGS|METH_KEYWORDS, "\n"
+		"node_list_get_fluxes_to(node_list self, node_list targets, Time t) -> cmf::math::num_array\n"
+		"cmf::math::num_array get_fluxes_to(const cmf::water::node_list\n"
+		"&targets, cmf::math::Time t) const\n"
+		"\n"
+		"A fast method to perform flux queries as a batch.\n"
+		"\n"
+		"The node lists left and right should have the same length.\n"
+		"\n"
+		"The vector containing the flux from left to right at the same position\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"targets:  A node_list containing the source nodes\n"
+		"\n"
+		"t:  The time for the fluxes\n"
+		"\n"
+		"Replaces slow Python code like: \n"
+		""},
+	 { "node_list_get_fluxes3d_to", (PyCFunction)(void(*)(void))_wrap_node_list_get_fluxes3d_to, METH_VARARGS|METH_KEYWORDS, "\n"
+		"node_list_get_fluxes3d_to(node_list self, node_list targets, Time t) -> point_vector\n"
+		"cmf::geometry::point_vector get_fluxes3d_to(const\n"
+		"cmf::water::node_list &targets, cmf::math::Time t) const\n"
+		"\n"
+		"Returns the flux vectors to the nodes of a given target node_list. \n"
+		""},
+	 { "node_list_get_fluxes3d", (PyCFunction)(void(*)(void))_wrap_node_list_get_fluxes3d, METH_VARARGS|METH_KEYWORDS, "\n"
+		"node_list_get_fluxes3d(node_list self, Time t) -> point_vector\n"
+		"cmf::geometry::point_vector get_fluxes3d(cmf::math::Time t) const\n"
+		"\n"
+		"Returns the current flow vector for each node. \n"
+		""},
+	 { "node_list_get_positions", _wrap_node_list_get_positions, METH_O, "\n"
+		"node_list_get_positions(node_list self) -> point_vector\n"
+		"cmf::geometry::point_vector get_positions() const\n"
+		"\n"
+		"Returns the positions of the nodes. \n"
+		""},
+	 { "delete_node_list", _wrap_delete_node_list, METH_O, "\n"
+		"delete_node_list(node_list self)\n"
+		"virtual\n"
+		"~node_list() \n"
+		""},
 	 { "node_list_potentials_set", _wrap_node_list_potentials_set, METH_VARARGS, "node_list_potentials_set(node_list self, cmf::math::num_array potentials)"},
 	 { "node_list_potentials_get", _wrap_node_list_potentials_get, METH_O, "node_list_potentials_get(node_list self) -> cmf::math::num_array"},
 	 { "node_list_swigregister", node_list_swigregister, METH_O, NULL},
 	 { "node_list_swiginit", node_list_swiginit, METH_VARARGS, NULL},
-	 { "NeumannBoundary_list_get", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_get, METH_VARARGS|METH_KEYWORDS, "NeumannBoundary_list_get(NeumannBoundary_list self, ptrdiff_t index) -> cmf::water::NeumannBoundary::ptr"},
-	 { "NeumannBoundary_list_get_fluxes", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_get_fluxes, METH_VARARGS|METH_KEYWORDS, "NeumannBoundary_list_get_fluxes(NeumannBoundary_list self, Time t=cmf::math::Time()) -> cmf::math::num_array"},
-	 { "NeumannBoundary_list_append", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_append, METH_VARARGS|METH_KEYWORDS, "NeumannBoundary_list_append(NeumannBoundary_list self, cmf::water::NeumannBoundary::ptr nbc)"},
-	 { "NeumannBoundary_list_size", _wrap_NeumannBoundary_list_size, METH_O, "NeumannBoundary_list_size(NeumannBoundary_list self) -> size_t"},
+	 { "NeumannBoundary_list_get", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_get, METH_VARARGS|METH_KEYWORDS, "\n"
+		"NeumannBoundary_list_get(NeumannBoundary_list self, ptrdiff_t index) -> cmf::water::NeumannBoundary::ptr\n"
+		"NeumannBoundary::ptr get(ptrdiff_t index) const\n"
+		"\n"
+		"Returns the Neumann boundary condition at position index.\n"
+		"\n"
+		"From Python you can use [] \n"
+		""},
+	 { "NeumannBoundary_list_get_fluxes", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_get_fluxes, METH_VARARGS|METH_KEYWORDS, "\n"
+		"NeumannBoundary_list_get_fluxes(NeumannBoundary_list self, Time t=cmf::math::Time()) -> cmf::math::num_array\n"
+		"cmf::math::num_array get_fluxes(cmf::math::Time t=cmf::math::Time())\n"
+		"const\n"
+		"\n"
+		"Returns the fluxes of the items as an array.\n"
+		"\n"
+		"get_fluxes and set_fluxes are wrapped with the Python property fluxes\n"
+		"\n"
+		""},
+	 { "NeumannBoundary_list_append", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_append, METH_VARARGS|METH_KEYWORDS, "\n"
+		"NeumannBoundary_list_append(NeumannBoundary_list self, cmf::water::NeumannBoundary::ptr nbc)\n"
+		"void\n"
+		"append(NeumannBoundary::ptr nbc)\n"
+		"\n"
+		"Appends a neumann boundary to this list. \n"
+		""},
+	 { "NeumannBoundary_list_size", _wrap_NeumannBoundary_list_size, METH_O, "\n"
+		"NeumannBoundary_list_size(NeumannBoundary_list self) -> size_t\n"
+		"size_t\n"
+		"size() const\n"
+		"\n"
+		"returns the number of stored boundary conditions \n"
+		""},
 	 { "new_NeumannBoundary_list", _wrap_new_NeumannBoundary_list, METH_VARARGS, "\n"
 		"NeumannBoundary_list()\n"
 		"NeumannBoundary_list(node_list copy)\n"
 		"new_NeumannBoundary_list(NeumannBoundary_list copy) -> NeumannBoundary_list\n"
+		"NeumannBoundary_list(const NeumannBoundary_list &copy) \n"
 		""},
-	 { "NeumannBoundary_list_to_node_list", _wrap_NeumannBoundary_list_to_node_list, METH_O, "NeumannBoundary_list_to_node_list(NeumannBoundary_list self) -> node_list"},
-	 { "NeumannBoundary_list_global_water_balance", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_global_water_balance, METH_VARARGS|METH_KEYWORDS, "NeumannBoundary_list_global_water_balance(NeumannBoundary_list self, Time t) -> real"},
-	 { "NeumannBoundary_list_water_balance", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_water_balance, METH_VARARGS|METH_KEYWORDS, "NeumannBoundary_list_water_balance(NeumannBoundary_list self, Time t) -> cmf::math::num_array"},
+	 { "NeumannBoundary_list_to_node_list", _wrap_NeumannBoundary_list_to_node_list, METH_O, "\n"
+		"NeumannBoundary_list_to_node_list(NeumannBoundary_list self) -> node_list\n"
+		"cmf::water::node_list to_node_list() const\n"
+		"\n"
+		"Creates a node_list from this NeumannBoundary_list. \n"
+		""},
+	 { "NeumannBoundary_list_global_water_balance", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_global_water_balance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"NeumannBoundary_list_global_water_balance(NeumannBoundary_list self, Time t) -> real\n"
+		"real\n"
+		"global_water_balance(cmf::math::Time t) const\n"
+		"\n"
+		"Returns the sum of the water balances of the nodes\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"    \\\\sigma_{global} =\n"
+		"    \\\\sum_{i=0}^N{\\\\sum_{j=0}^{C_i}{q_{ij}(t)}} \n"
+		"\n"
+		".\n"
+		"\n"
+		"Replaces slow Python code like: \n"
+		""},
+	 { "NeumannBoundary_list_water_balance", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_water_balance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"NeumannBoundary_list_water_balance(NeumannBoundary_list self, Time t) -> cmf::math::num_array\n"
+		"cmf::math::num_array water_balance(cmf::math::Time t) const\n"
+		"\n"
+		"Returns the water balance of each vector as a vector \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     \\\\sigma_i\n"
+		"    = \\\\sum_{j=0}^{C_i}{q_{ij}(t)} \n"
+		"\n"
+		".\n"
+		"\n"
+		"Replaces slow Python code like: \n"
+		""},
 	 { "NeumannBoundary_list_fluxes_set", _wrap_NeumannBoundary_list_fluxes_set, METH_VARARGS, "NeumannBoundary_list_fluxes_set(NeumannBoundary_list self, cmf::math::num_array fluxes)"},
 	 { "NeumannBoundary_list_fluxes_get", _wrap_NeumannBoundary_list_fluxes_get, METH_O, "NeumannBoundary_list_fluxes_get(NeumannBoundary_list self) -> cmf::math::num_array"},
 	 { "delete_NeumannBoundary_list", _wrap_delete_NeumannBoundary_list, METH_O, "delete_NeumannBoundary_list(NeumannBoundary_list self)"},
 	 { "NeumannBoundary_list_swigregister", NeumannBoundary_list_swigregister, METH_O, NULL},
 	 { "NeumannBoundary_list_swiginit", NeumannBoundary_list_swiginit, METH_VARARGS, NULL},
-	 { "vapour_pressure", (PyCFunction)(void(*)(void))_wrap_vapour_pressure, METH_VARARGS|METH_KEYWORDS, "vapour_pressure(double T) -> double"},
-	 { "vpd_from_rH", (PyCFunction)(void(*)(void))_wrap_vpd_from_rH, METH_VARARGS|METH_KEYWORDS, "vpd_from_rH(double T, double rH) -> double"},
-	 { "rH_from_vpd", (PyCFunction)(void(*)(void))_wrap_rH_from_vpd, METH_VARARGS|METH_KEYWORDS, "rH_from_vpd(double T, double vpd) -> double"},
-	 { "watts_to_MJ", (PyCFunction)(void(*)(void))_wrap_watts_to_MJ, METH_VARARGS|METH_KEYWORDS, "watts_to_MJ(double Watts) -> double"},
-	 { "MJ_to_watts", (PyCFunction)(void(*)(void))_wrap_MJ_to_watts, METH_VARARGS|METH_KEYWORDS, "MJ_to_watts(double MJ) -> double"},
-	 { "extraterrestrial_radiation", (PyCFunction)(void(*)(void))_wrap_extraterrestrial_radiation, METH_VARARGS|METH_KEYWORDS, "extraterrestrial_radiation(Time t, double longitude=8, double latitude=51, double time_zone=1, bool daily=False) -> double"},
-	 { "global_radiation", (PyCFunction)(void(*)(void))_wrap_global_radiation, METH_VARARGS|METH_KEYWORDS, "global_radiation(double Ra, double height, double sunshine_fraction) -> double"},
-	 { "Pressure", (PyCFunction)(void(*)(void))_wrap_Pressure, METH_VARARGS|METH_KEYWORDS, "Pressure(double height) -> double"},
+	 { "vapour_pressure", (PyCFunction)(void(*)(void))_wrap_vapour_pressure, METH_VARARGS|METH_KEYWORDS, "\n"
+		"vapour_pressure(double T) -> double\n"
+		"double\n"
+		"cmf::atmosphere::vapour_pressure(double T)\n"
+		"\n"
+		"Returns the saturated vapor pressure in Pa for temperature T [degC].\n"
+		"\n"
+		"The saturated vapor pressure :math:`e_s` is calculated follwing the\n"
+		"following formula \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"    e_s = 0.6108 \\\\exp{\\\\frac{17.27\n"
+		"    T}{T+237.3}}\n"
+		"\n"
+		"The definition is\n"
+		"fromhttp://www.fao.org/docrep/X0490E/x0490e07.htm#concepts \n"
+		""},
+	 { "vpd_from_rH", (PyCFunction)(void(*)(void))_wrap_vpd_from_rH, METH_VARARGS|METH_KEYWORDS, "\n"
+		"vpd_from_rH(double T, double rH) -> double\n"
+		"double\n"
+		"cmf::atmosphere::vpd_from_rH(double T, double rH)\n"
+		"\n"
+		"Returns the vapor pressure deficit in Pa for temperature T [degC] and\n"
+		"rel.\n"
+		"\n"
+		"humidity rH [%]\n"
+		"\n"
+		"The vapor pressure deficit :math:`e_s - e_a` is calculated from rel.\n"
+		"humidity as: \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"    e_s - e_a = (1-rH/100) * e_s(T)\n"
+		"\n"
+		"The definition\n"
+		"is fromhttp://www.fao.org/docrep/X0490E/x0490e07.htm#concepts\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"T:  Air temperature in degC\n"
+		"\n"
+		"rH:  Rel. humidity in %\n"
+		"\n"
+		":math:`e_s(T)` is calculated using cmf::atmosphere::vapor_pressure(double)\n"
+		"\n"
+		""},
+	 { "rH_from_vpd", (PyCFunction)(void(*)(void))_wrap_rH_from_vpd, METH_VARARGS|METH_KEYWORDS, "\n"
+		"rH_from_vpd(double T, double vpd) -> double\n"
+		"double\n"
+		"cmf::atmosphere::rH_from_vpd(double T, double vpd)\n"
+		"\n"
+		"Returns the rel.\n"
+		"\n"
+		"humidity in % for temperature T [degC] and vapor pressure deficit vpd\n"
+		"[Pa]\n"
+		"\n"
+		"the rel. humidity is calculated from the vapor pressure deficit :math:`vpd = e_s - e_a` as: \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"    rH = 100 * \\\\frac{e_a}{e_s(T)}, e_a = e_s(T) -\n"
+		"    vpd\n"
+		"\n"
+		"The definition is\n"
+		"fromhttp://www.fao.org/docrep/X0490E/x0490e07.htm#concepts\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"T:  Air temperature in degC\n"
+		"\n"
+		"vpd:  Vapor pressure deficit in Pa\n"
+		"\n"
+		":math:`e_s(T)` is calculated using cmf::atmosphere::vapor_pressure(double)\n"
+		"\n"
+		""},
+	 { "watts_to_MJ", (PyCFunction)(void(*)(void))_wrap_watts_to_MJ, METH_VARARGS|METH_KEYWORDS, "\n"
+		"watts_to_MJ(double Watts) -> double\n"
+		"double\n"
+		"cmf::atmosphere::watts_to_MJ(double Watts)\n"
+		"\n"
+		"Transforms an energy flux from W to MJ/day. \n"
+		""},
+	 { "MJ_to_watts", (PyCFunction)(void(*)(void))_wrap_MJ_to_watts, METH_VARARGS|METH_KEYWORDS, "\n"
+		"MJ_to_watts(double MJ) -> double\n"
+		"double\n"
+		"cmf::atmosphere::MJ_to_watts(double MJ)\n"
+		"\n"
+		"Transforms an energy flux from MJ/day to W. \n"
+		""},
+	 { "extraterrestrial_radiation", (PyCFunction)(void(*)(void))_wrap_extraterrestrial_radiation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"extraterrestrial_radiation(Time t, double longitude=8, double latitude=51, double time_zone=1, bool daily=False) -> double\n"
+		"double cmf::atmosphere::extraterrestrial_radiation(cmf::math::Time t,\n"
+		"double longitude=8, double latitude=51, double time_zone=1, bool\n"
+		"daily=false)\n"
+		"\n"
+		"Calculates the global radiation in MJ/(m2 day) from the sun position\n"
+		"and the sunshine fraction.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"t:  actual time step\n"
+		"\n"
+		"longitude:  latitude:  Geographical position in degree. Latitude is\n"
+		"only taken into acount for subdaily calculation\n"
+		"\n"
+		"time_zone:  Offset by timezone from GMT, eg. central Europe=1 US west\n"
+		"coast = -8\n"
+		"\n"
+		"daily:  If true, the average radiation for the whole day is given\n"
+		"(therefore latitude and time zone ignored), otherwise the average of\n"
+		"the current hour is returned\n"
+		"\n"
+		"The calculation of the global radiation\n"
+		"followshttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation.\n"
+		"\n"
+		"The following formula is used:  :math:`\\\\phi` Latitude in :math:`rad`\n"
+		"\n"
+		":math:`\\\\delta = 0.409 \\\\sin\\\\left(\\\\frac{2\\\\pi}{365}DOY - 1.39\\\\right)` Declination, DOY is day of year\n"
+		"\n"
+		":math:`\\\\omega_s = \\\\arccos(-\\\\tan\\\\phi\\\\tan\\\\delta)` Sunset\n"
+		"angle\n"
+		"\n"
+		":math:`G_{sc} = 0.0802 \\\\frac{MJ}{m^2min}` Solar constant\n"
+		"\n"
+		":math:`d_r = 1+0.033 \\\\cos\\\\left(\\\\frac{2\\\\pi}{365}DOY\\\\right)`\n"
+		"Inverse relative distance Earth-Sun\n"
+		"\n"
+		":math:`b = \\\\frac{2\\\\pi(DOY-81)}{364}`\n"
+		"\n"
+		":math:`S_c = 0.1645\\\\sin(2b)-0.1255\\\\cos(b)-0.025\\\\sin(b)` Seasonal\n"
+		"correction for solar time\n"
+		"\n"
+		":math:`\\\\omega = \\\\frac{\\\\pi}{12} \\\\left(t_h+\\\\frac{(\\\\mbox{geogr. Longitude})^\\\\circ}{15^\\\\circ}-\\\\mbox{Timezone}+S_c-12\\\\right)` solar time in :math:`rad`\n"
+		"\n"
+		"If daily: :math:`R_a = \\\\frac{24\\\\ 60}{\\\\pi}G_{sc}\\\\ d_r \\\\left(\\\\omega_s \\\\sin\\\\phi \\\\sin\\\\delta + \\\\cos\\\\phi \\\\cos\\\\delta \\\\sin\\\\omega_s\\\\right)`\n"
+		"\n"
+		"If sub daily: :math:`R_a = \\\\frac{12\\\\ 24\\\\ 60}{\\\\pi}G_{sc}\\\\ d_r \\\\left(\\\\left(\\\\omega^+ -\\\\omega^-\\\\right) \\\\sin\\\\phi \\\\sin\\\\delta + \\\\cos\\\\phi \\\\cos\\\\delta \\\\left(\\\\sin\\\\omega^+ - \\\\sin\\\\omega^-\\\\right)\\\\right)`\n"
+		"\n"
+		":math:`\\\\omega^+,\\\\omega^- = \\\\omega \\\\pm\\\\frac{\\\\pi}{24}` \n"
+		""},
+	 { "global_radiation", (PyCFunction)(void(*)(void))_wrap_global_radiation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"global_radiation(double Ra, double height, double sunshine_fraction) -> double\n"
+		"double\n"
+		"cmf::atmosphere::global_radiation(double Ra, double height, double\n"
+		"sunshine_fraction)\n"
+		"\n"
+		"Calculates the global radiation in MJ/(m2 day) from the sun position\n"
+		"and the sunshine fraction.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"Ra:  extra terrestrial radiation\n"
+		"\n"
+		"height:  Height above sea level\n"
+		"\n"
+		"sunshine_fraction:  Fraction of sunshine hours per potential sunshine\n"
+		"duration in h/h\n"
+		"\n"
+		"The calculation of the global radiation\n"
+		"followshttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation.\n"
+		"\n"
+		"The following formula is used:  :math:`R_a(t, \\\\phi, \\\\lambda)`\n"
+		"Extraterrestrial radiation (\n"
+		"cmf::atmosphere::extraterrestrial_radiation) :math:`\\\\frac{MJ}{m^2 day}`\n"
+		"\n"
+		":math:`\\\\frac n N` Fractional sunshine duration\n"
+		"\n"
+		":math:`R_s = \\\\left(0.25+\\\\left(0.5+2\\\\ 10^{-5}z\\\\right)\\\\frac{n}{N}\\\\right)R_a` Global radiation in\n"
+		":math:`\\\\frac{MJ}{m^2 day}`\n"
+		"\n"
+		":math:`z`: Height a.s.l. in m \n"
+		""},
+	 { "Pressure", (PyCFunction)(void(*)(void))_wrap_Pressure, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Pressure(double height) -> double\n"
+		"double\n"
+		"cmf::atmosphere::Pressure(double height)\n"
+		"\n"
+		"Returns the average air pressure for a height (m a.s.l.) \n"
+		""},
 	 { "Weather_T_set", _wrap_Weather_T_set, METH_VARARGS, "Weather_T_set(Weather self, double T)"},
 	 { "Weather_T_get", _wrap_Weather_T_get, METH_O, "Weather_T_get(Weather self) -> double"},
 	 { "Weather_Tmax_set", _wrap_Weather_Tmax_set, METH_VARARGS, "Weather_Tmax_set(Weather self, double Tmax)"},
@@ -76729,9 +79124,77 @@ static PyMethodDef SwigMethods[] = {
 	 { "Weather_daylength_get", _wrap_Weather_daylength_get, METH_O, "Weather_daylength_get(Weather self) -> double"},
 	 { "Weather_instrument_height_set", _wrap_Weather_instrument_height_set, METH_VARARGS, "Weather_instrument_height_set(Weather self, double instrument_height)"},
 	 { "Weather_instrument_height_get", _wrap_Weather_instrument_height_get, METH_O, "Weather_instrument_height_get(Weather self) -> double"},
-	 { "Weather_Rn", (PyCFunction)(void(*)(void))_wrap_Weather_Rn, METH_VARARGS|METH_KEYWORDS, "Weather_Rn(Weather self, double albedo, bool daily=False) -> double"},
-	 { "new_Weather", (PyCFunction)(void(*)(void))_wrap_new_Weather, METH_VARARGS|METH_KEYWORDS, "new_Weather(double T=15.0, double Tmax=17.0, double Tmin=13.0, double rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double Ra=30, double daylength=12) -> Weather"},
-	 { "Weather_to_string", _wrap_Weather_to_string, METH_O, "Weather_to_string(Weather self) -> std::string"},
+	 { "Weather_Rn", (PyCFunction)(void(*)(void))_wrap_Weather_Rn, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Weather_Rn(Weather self, double albedo, bool daily=False) -> double\n"
+		"double Rn(double\n"
+		"albedo, bool daily=false) const\n"
+		"\n"
+		"Calculates the net radiation flux :math:`R_n \\\\left[\\\\frac{MJ}{m^2 day}\\\\right]`.\n"
+		"\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     R_{n} = R_{ns} - R_{nl} \\\\\\\\ \\\\mbox{ Net\n"
+		"    short wave radiation: }R_{ns} = (1-\\\\alpha) R_s \\\\\\\\ \\\\mbox{\n"
+		"    Net long wave radiation: }R_{nl} = R_{black}\\\\ \\\\beta_{v}\\\\\n"
+		"    \\\\beta_{c} \\\\\\\\ \\\\mbox{Black body radiation: } R_{black} =\n"
+		"    \\\\left\\\\{\\\\begin{array}{cl} \\\\sigma T^4 & \\\\mbox{for less\n"
+		"    than daily time steps} \\\\\\\\ \\\\sigma \\\\frac {T_{max}^4 +\n"
+		"    T_{min}^4} 2 & \\\\mbox{for daily time steps} \\\\end{array}\n"
+		"    \\\\right. \\\\\\\\ T = \\\\mbox{Temperature }[K] \\\\\\\\ \\\\sigma =\n"
+		"    4.903\\\\ 10^{-9} \\\\frac{MJ}{K^4 m^2 day} \\\\mbox{ Stefan-Boltzmann\n"
+		"    constant } \\\\\\\\ \\\\mbox{Long wave reflectance: } \\\\\\\\\n"
+		"    \\\\mbox{by water vapor: }\\\\beta_{v} = 0.34 - 0.14 \\\\sqrt{e_a}\n"
+		"    \\\\\\\\ \\\\mbox{ by clouds: }\\\\beta_{c} = 0.1 + 0.9 \\\\frac n N\n"
+		"\n"
+		"\n"
+		"\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"albedo:  the albedo :math:`\\\\alpha` of the surface\n"
+		"\n"
+		"daily:  If true, the net radiation for daily averages will be\n"
+		"calculated \n"
+		""},
+	 { "new_Weather", (PyCFunction)(void(*)(void))_wrap_new_Weather, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Weather(double T=15.0, double Tmax=17.0, double Tmin=13.0, double rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double Ra=30, double daylength=12) -> Weather\n"
+		"Weather(double T=15.0, double Tmax=17.0, double Tmin=13.0, double\n"
+		"rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double\n"
+		"Ra=30, double daylength=12)\n"
+		"\n"
+		"Creates a \"weather\" from given data.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"T:  actual Temperature in deg C\n"
+		"\n"
+		"Tmax:  daily maximum Temperature in deg C\n"
+		"\n"
+		"Tmin:  daily minimum Temperature in deg C\n"
+		"\n"
+		"rH:  actual relative humidity in % [0..100]\n"
+		"\n"
+		"wind:  actual wind speed in m/s\n"
+		"\n"
+		"sunshine:  actual fraction of sunshine duration per potential sunshine\n"
+		"duration in h/h\n"
+		"\n"
+		"Rs:  actual incoming shortwave global radiation in MJ/(m2 day)\n"
+		"\n"
+		"Ra:  actual extraterrestrial shortwave global radiation in MJ/(m2 day)\n"
+		"\n"
+		"daylength:  length of the day in h \n"
+		""},
+	 { "Weather_to_string", _wrap_Weather_to_string, METH_O, "\n"
+		"Weather_to_string(Weather self) -> std::string\n"
+		"std::string to_string() const\n"
+		"\n"
+		"Returns a string representation. \n"
+		""},
 	 { "Weather_set_snow_threshold", (PyCFunction)(void(*)(void))_wrap_Weather_set_snow_threshold, METH_VARARGS|METH_KEYWORDS, "Weather_set_snow_threshold(double new_threshold)"},
 	 { "Weather_get_snow_threshold", _wrap_Weather_get_snow_threshold, METH_NOARGS, "Weather_get_snow_threshold() -> double"},
 	 { "Weather___iadd__", (PyCFunction)(void(*)(void))_wrap_Weather___iadd__, METH_VARARGS|METH_KEYWORDS, "Weather___iadd__(Weather self, Weather w) -> Weather"},
@@ -76742,10 +79205,33 @@ static PyMethodDef SwigMethods[] = {
 	 { "Weather_swigregister", Weather_swigregister, METH_O, NULL},
 	 { "Weather_swiginit", Weather_swiginit, METH_VARARGS, NULL},
 	 { "Meteorology___call__", (PyCFunction)(void(*)(void))_wrap_Meteorology___call__, METH_VARARGS|METH_KEYWORDS, "Meteorology___call__(Meteorology self, Time t) -> Weather"},
-	 { "Meteorology_get_weather", (PyCFunction)(void(*)(void))_wrap_Meteorology_get_weather, METH_VARARGS|METH_KEYWORDS, "Meteorology_get_weather(Meteorology self, Time t) -> Weather"},
-	 { "Meteorology_copy", _wrap_Meteorology_copy, METH_O, "Meteorology_copy(Meteorology self) -> Meteorology"},
-	 { "Meteorology_get_instrument_height", _wrap_Meteorology_get_instrument_height, METH_O, "Meteorology_get_instrument_height(Meteorology self) -> real"},
-	 { "delete_Meteorology", _wrap_delete_Meteorology, METH_O, "delete_Meteorology(Meteorology self)"},
+	 { "Meteorology_get_weather", (PyCFunction)(void(*)(void))_wrap_Meteorology_get_weather, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Meteorology_get_weather(Meteorology self, Time t) -> Weather\n"
+		"virtual cmf::atmosphere::Weather get_weather(cmf::math::Time t) const\n"
+		"=0\n"
+		"\n"
+		"Returns the Weather at time t. Pure virtual function. Must get\n"
+		"implemented by child functions. \n"
+		""},
+	 { "Meteorology_copy", _wrap_Meteorology_copy, METH_O, "\n"
+		"Meteorology_copy(Meteorology self) -> Meteorology\n"
+		"virtual\n"
+		"Meteorology* copy() const =0\n"
+		"\n"
+		"Returns a copy of the meteorology object. Pure virtual function, needs\n"
+		"to be implemented. \n"
+		""},
+	 { "Meteorology_get_instrument_height", _wrap_Meteorology_get_instrument_height, METH_O, "\n"
+		"Meteorology_get_instrument_height(Meteorology self) -> real\n"
+		"virtual real\n"
+		"get_instrument_height() const =0\n"
+		"\n"
+		"Returns the height of the instruments above canopy. \n"
+		""},
+	 { "delete_Meteorology", _wrap_delete_Meteorology, METH_O, "\n"
+		"delete_Meteorology(Meteorology self)\n"
+		"virtual ~Meteorology() \n"
+		""},
 	 { "Meteorology_swigregister", Meteorology_swigregister, METH_O, NULL},
 	 { "ConstantMeteorology_weather_set", _wrap_ConstantMeteorology_weather_set, METH_VARARGS, "ConstantMeteorology_weather_set(ConstantMeteorology self, Weather weather)"},
 	 { "ConstantMeteorology_weather_get", _wrap_ConstantMeteorology_weather_get, METH_O, "ConstantMeteorology_weather_get(ConstantMeteorology self) -> Weather"},
@@ -76753,8 +79239,17 @@ static PyMethodDef SwigMethods[] = {
 		"ConstantMeteorology()\n"
 		"ConstantMeteorology(Weather w)\n"
 		"new_ConstantMeteorology(ConstantMeteorology other) -> ConstantMeteorology\n"
+		"ConstantMeteorology(const cmf::atmosphere::ConstantMeteorology &other)\n"
+		"\n"
+		"Copy constructor. \n"
 		""},
-	 { "ConstantMeteorology_copy", _wrap_ConstantMeteorology_copy, METH_O, "ConstantMeteorology_copy(ConstantMeteorology self) -> ConstantMeteorology"},
+	 { "ConstantMeteorology_copy", _wrap_ConstantMeteorology_copy, METH_O, "\n"
+		"ConstantMeteorology_copy(ConstantMeteorology self) -> ConstantMeteorology\n"
+		"ConstantMeteorology* copy() const\n"
+		"\n"
+		"Creates a new instannce of the ConstantMeteorology with the same\n"
+		"weather. \n"
+		""},
 	 { "delete_ConstantMeteorology", _wrap_delete_ConstantMeteorology, METH_O, "delete_ConstantMeteorology(ConstantMeteorology self)"},
 	 { "ConstantMeteorology_swigregister", ConstantMeteorology_swigregister, METH_O, NULL},
 	 { "ConstantMeteorology_swiginit", ConstantMeteorology_swiginit, METH_VARARGS, NULL},
@@ -76772,15 +79267,58 @@ static PyMethodDef SwigMethods[] = {
 	 { "MeteoStation_z_get", _wrap_MeteoStation_z_get, METH_O, "MeteoStation_z_get(MeteoStation self) -> double"},
 	 { "MeteoStation_Name_set", _wrap_MeteoStation_Name_set, METH_VARARGS, "MeteoStation_Name_set(MeteoStation self, std::string const & Name)"},
 	 { "MeteoStation_Name_get", _wrap_MeteoStation_Name_get, METH_O, "MeteoStation_Name_get(MeteoStation self) -> std::string const &"},
-	 { "MeteoStation_get_position", _wrap_MeteoStation_get_position, METH_O, "MeteoStation_get_position(MeteoStation self) -> point"},
+	 { "MeteoStation_get_position", _wrap_MeteoStation_get_position, METH_O, "\n"
+		"MeteoStation_get_position(MeteoStation self) -> point\n"
+		"cmf::geometry::point get_position() const \n"
+		""},
 	 { "MeteoStation_daily_set", _wrap_MeteoStation_daily_set, METH_VARARGS, "MeteoStation_daily_set(MeteoStation self, bool daily)"},
 	 { "MeteoStation_daily_get", _wrap_MeteoStation_daily_get, METH_O, "MeteoStation_daily_get(MeteoStation self) -> bool"},
 	 { "MeteoStation_InstrumentHeight_set", _wrap_MeteoStation_InstrumentHeight_set, METH_VARARGS, "MeteoStation_InstrumentHeight_set(MeteoStation self, real InstrumentHeight)"},
 	 { "MeteoStation_InstrumentHeight_get", _wrap_MeteoStation_InstrumentHeight_get, METH_O, "MeteoStation_InstrumentHeight_get(MeteoStation self) -> real"},
-	 { "new_MeteoStation", (PyCFunction)(void(*)(void))_wrap_new_MeteoStation, METH_VARARGS|METH_KEYWORDS, "new_MeteoStation(MeteoStation other) -> MeteoStation"},
-	 { "MeteoStation_get_data", (PyCFunction)(void(*)(void))_wrap_MeteoStation_get_data, METH_VARARGS|METH_KEYWORDS, "MeteoStation_get_data(MeteoStation self, Time t, double height) -> Weather"},
-	 { "MeteoStation_use_for_cell", (PyCFunction)(void(*)(void))_wrap_MeteoStation_use_for_cell, METH_VARARGS|METH_KEYWORDS, "MeteoStation_use_for_cell(MeteoStation self, Cell c)"},
-	 { "MeteoStation_SetSunshineFraction", (PyCFunction)(void(*)(void))_wrap_MeteoStation_SetSunshineFraction, METH_VARARGS|METH_KEYWORDS, "MeteoStation_SetSunshineFraction(MeteoStation self, timeseries sunshine_duration)"},
+	 { "new_MeteoStation", (PyCFunction)(void(*)(void))_wrap_new_MeteoStation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_MeteoStation(MeteoStation other) -> MeteoStation\n"
+		"MeteoStation(const cmf::atmosphere::MeteoStation &other)\n"
+		"\n"
+		"Copy c'tor. \n"
+		""},
+	 { "MeteoStation_get_data", (PyCFunction)(void(*)(void))_wrap_MeteoStation_get_data, METH_VARARGS|METH_KEYWORDS, "\n"
+		"MeteoStation_get_data(MeteoStation self, Time t, double height) -> Weather\n"
+		"cmf::atmosphere::Weather get_data(cmf::math::Time t, double height)\n"
+		"const\n"
+		"\n"
+		"Returns the current Atmosphere state. Uses default values for missing\n"
+		"timeseries. \n"
+		""},
+	 { "MeteoStation_use_for_cell", (PyCFunction)(void(*)(void))_wrap_MeteoStation_use_for_cell, METH_VARARGS|METH_KEYWORDS, "\n"
+		"MeteoStation_use_for_cell(MeteoStation self, Cell c)\n"
+		"void use_for_cell(cmf::upslope::Cell &c)\n"
+		"\n"
+		"Connects this meteostation as a meteo data provider with the cell. \n"
+		""},
+	 { "MeteoStation_SetSunshineFraction", (PyCFunction)(void(*)(void))_wrap_MeteoStation_SetSunshineFraction, METH_VARARGS|METH_KEYWORDS, "\n"
+		"MeteoStation_SetSunshineFraction(MeteoStation self, timeseries sunshine_duration)\n"
+		"void\n"
+		"SetSunshineFraction(cmf::math::timeseries sunshine_duration)\n"
+		"\n"
+		"Calculates a timeseries of the sunshine fraction (to put into\n"
+		"Sunshine) from a timeseries of absolute sunshine duration\n"
+		"\n"
+		"seehttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     \\\\phi &=& \\\\frac{(\\\\mbox{geogr.\n"
+		"    Latitude})^\\\\circ \\\\pi}{180^\\\\circ} \\\\mbox{ Latitude in }rad\n"
+		"    \\\\\\\\ \\\\delta &=& 0.409 \\\\sin\\\\left(\\\\frac{2\\\\pi}{365}DOY\n"
+		"    - 1.39\\\\right) \\\\mbox{ Declination, DOY is day of year}\\\\\\\\\n"
+		"    \\\\omega_s &=& \\\\arccos(-\\\\tan\\\\phi\\\\tan\\\\delta) \\\\mbox{\n"
+		"    Sunset angle in }rad \\\\\\\\ N &=& \\\\frac{24}{\\\\pi}\\\\omega_s\n"
+		"    \\\\mbox{ potential duration of sunshine in }h \\\\\\\\ \\\\frac n N\n"
+		"    &=& n\\\\mbox{ absolute sunshine duration in }h \n"
+		"\n"
+		"\n"
+		""},
 	 { "MeteoStation_T_set", _wrap_MeteoStation_T_set, METH_VARARGS, "MeteoStation_T_set(MeteoStation self, timeseries T)"},
 	 { "MeteoStation_T_get", _wrap_MeteoStation_T_get, METH_O, "MeteoStation_T_get(MeteoStation self) -> timeseries"},
 	 { "MeteoStation_Tmax_set", _wrap_MeteoStation_Tmax_set, METH_VARARGS, "MeteoStation_Tmax_set(MeteoStation self, timeseries Tmax)"},
@@ -76808,51 +79346,187 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_MeteoStation", _wrap_delete_MeteoStation, METH_O, "delete_MeteoStation(MeteoStation self)"},
 	 { "MeteoStation_swigregister", MeteoStation_swigregister, METH_O, NULL},
 	 { "MeteoStation_swiginit", MeteoStation_swiginit, METH_VARARGS, NULL},
-	 { "MeteoStationReference_get_station", _wrap_MeteoStationReference_get_station, METH_O, "MeteoStationReference_get_station(MeteoStationReference self) -> cmf::atmosphere::MeteoStation::ptr"},
-	 { "MeteoStationReference_get_position", _wrap_MeteoStationReference_get_position, METH_O, "MeteoStationReference_get_position(MeteoStationReference self) -> point"},
+	 { "MeteoStationReference_get_station", _wrap_MeteoStationReference_get_station, METH_O, "\n"
+		"MeteoStationReference_get_station(MeteoStationReference self) -> cmf::atmosphere::MeteoStation::ptr\n"
+		"MeteoStation::ptr get_station() const\n"
+		"\n"
+		"Returns the station referenced. \n"
+		""},
+	 { "MeteoStationReference_get_position", _wrap_MeteoStationReference_get_position, METH_O, "\n"
+		"MeteoStationReference_get_position(MeteoStationReference self) -> point\n"
+		"cmf::geometry::point get_position() const\n"
+		"\n"
+		"Returns the position of the reference. \n"
+		""},
 	 { "new_MeteoStationReference", _wrap_new_MeteoStationReference, METH_VARARGS, "\n"
 		"MeteoStationReference(cmf::atmosphere::MeteoStation::ptr station, point location)\n"
 		"new_MeteoStationReference(MeteoStationReference copy) -> MeteoStationReference\n"
+		"MeteoStationReference(const MeteoStationReference &copy) \n"
 		""},
-	 { "MeteoStationReference_copy", _wrap_MeteoStationReference_copy, METH_O, "MeteoStationReference_copy(MeteoStationReference self) -> MeteoStationReference"},
+	 { "MeteoStationReference_copy", _wrap_MeteoStationReference_copy, METH_O, "\n"
+		"MeteoStationReference_copy(MeteoStationReference self) -> MeteoStationReference\n"
+		"MeteoStationReference* copy() const\n"
+		"\n"
+		"Returns a copy of the meteorology object. Pure virtual function, needs\n"
+		"to be implemented. \n"
+		""},
 	 { "delete_MeteoStationReference", _wrap_delete_MeteoStationReference, METH_O, "delete_MeteoStationReference(MeteoStationReference self)"},
 	 { "MeteoStationReference_swigregister", MeteoStationReference_swigregister, METH_O, NULL},
 	 { "MeteoStationReference_swiginit", MeteoStationReference_swiginit, METH_VARARGS, NULL},
-	 { "MeteoStationList___len__", _wrap_MeteoStationList___len__, METH_O, "MeteoStationList___len__(MeteoStationList self) -> size_t"},
+	 { "MeteoStationList___len__", _wrap_MeteoStationList___len__, METH_O, "\n"
+		"MeteoStationList___len__(MeteoStationList self) -> size_t\n"
+		"size_t size() const\n"
+		"\n"
+		"Returns the number of stations. \n"
+		""},
 	 { "MeteoStationList___getitem__", _wrap_MeteoStationList___getitem__, METH_VARARGS, "\n"
 		"MeteoStationList___getitem__(MeteoStationList self, ptrdiff_t index) -> cmf::atmosphere::MeteoStation::ptr\n"
 		"MeteoStationList___getitem__(MeteoStationList self, std::string const & Name) -> cmf::atmosphere::MeteoStation::ptr\n"
 		""},
-	 { "MeteoStationList_calculate_Temp_lapse", (PyCFunction)(void(*)(void))_wrap_MeteoStationList_calculate_Temp_lapse, METH_VARARGS|METH_KEYWORDS, "MeteoStationList_calculate_Temp_lapse(MeteoStationList self, Time begin, Time step, Time end) -> double"},
-	 { "MeteoStationList_add_station", (PyCFunction)(void(*)(void))_wrap_MeteoStationList_add_station, METH_VARARGS|METH_KEYWORDS, "MeteoStationList_add_station(MeteoStationList self, std::string name, point position, double latitude=51.0, double longitude=8.0, double tz=1.0, Time startTime=cmf::math::Time(1,1,2001), Time timestep=day) -> cmf::atmosphere::MeteoStation::ptr"},
-	 { "MeteoStationList_remove_station", (PyCFunction)(void(*)(void))_wrap_MeteoStationList_remove_station, METH_VARARGS|METH_KEYWORDS, "MeteoStationList_remove_station(MeteoStationList self, ptrdiff_t index) -> ptrdiff_t"},
+	 { "MeteoStationList_calculate_Temp_lapse", (PyCFunction)(void(*)(void))_wrap_MeteoStationList_calculate_Temp_lapse, METH_VARARGS|METH_KEYWORDS, "\n"
+		"MeteoStationList_calculate_Temp_lapse(MeteoStationList self, Time begin, Time step, Time end) -> double\n"
+		"double\n"
+		"calculate_Temp_lapse(cmf::math::Time begin, cmf::math::Time step,\n"
+		"cmf::math::Time end)\n"
+		"\n"
+		"Calculates the temperature lapse from all stations in the list and\n"
+		"sets the T_lapse attribute of each station.\n"
+		"\n"
+		"Returns the average lapse over the whole period. \n"
+		""},
+	 { "MeteoStationList_add_station", (PyCFunction)(void(*)(void))_wrap_MeteoStationList_add_station, METH_VARARGS|METH_KEYWORDS, "\n"
+		"MeteoStationList_add_station(MeteoStationList self, std::string name, point position, double latitude=51.0, double longitude=8.0, double tz=1.0, Time startTime=cmf::math::Time(1,1,2001), Time timestep=day) -> cmf::atmosphere::MeteoStation::ptr\n"
+		"MeteoStation::ptr add_station(std::string name, cmf::geometry::point\n"
+		"position, double latitude=51.0, double longitude=8.0, double tz=1.0,\n"
+		"cmf::math::Time startTime=cmf::math::Time(1, 1, 2001), cmf::math::Time\n"
+		"timestep=cmf::math::day)\n"
+		"\n"
+		"Creates a meteorological station at a certain position and adds it to\n"
+		"the list.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"name:  Name of the station\n"
+		"\n"
+		"position:  The location of the station in map coordinates\n"
+		"\n"
+		"latitude:  Latitude of the study area (for solar radiation)\n"
+		"\n"
+		"longitude:  Longitude of the study area (for solar time)\n"
+		"\n"
+		"tz:  Time zone of the study area (e.g Germany +1,U.S. Pacific time -8\n"
+		"\n"
+		"startTime:  Date of the beginning of the climatic data (may be changed\n"
+		"for each time series later)\n"
+		"\n"
+		"timestep:  Frequency of climatic data (may be changed for each time\n"
+		"series later) \n"
+		""},
+	 { "MeteoStationList_remove_station", (PyCFunction)(void(*)(void))_wrap_MeteoStationList_remove_station, METH_VARARGS|METH_KEYWORDS, "\n"
+		"MeteoStationList_remove_station(MeteoStationList self, ptrdiff_t index) -> ptrdiff_t\n"
+		"ptrdiff_t\n"
+		"remove_station(ptrdiff_t index)\n"
+		"\n"
+		"Removes a station and returns the number of remaining references to\n"
+		"the removed station. If the station is deleted, 0 is returned. \n"
+		""},
 	 { "new_MeteoStationList", _wrap_new_MeteoStationList, METH_VARARGS, "\n"
 		"MeteoStationList()\n"
 		"new_MeteoStationList(MeteoStationList copy) -> MeteoStationList\n"
+		"MeteoStationList(const MeteoStationList &copy)\n"
+		"\n"
+		"Copy c'tor. \n"
 		""},
-	 { "MeteoStationList_reference_to_nearest", (PyCFunction)(void(*)(void))_wrap_MeteoStationList_reference_to_nearest, METH_VARARGS|METH_KEYWORDS, "MeteoStationList_reference_to_nearest(MeteoStationList self, point position, double z_weight=0) -> MeteoStationReference"},
+	 { "MeteoStationList_reference_to_nearest", (PyCFunction)(void(*)(void))_wrap_MeteoStationList_reference_to_nearest, METH_VARARGS|METH_KEYWORDS, "\n"
+		"MeteoStationList_reference_to_nearest(MeteoStationList self, point position, double z_weight=0) -> MeteoStationReference\n"
+		"MeteoStationReference reference_to_nearest(const cmf::geometry::point\n"
+		"&position, double z_weight=0) const\n"
+		"\n"
+		"Creates a MeteoStationReference from the nearest station to position\n"
+		"at position.\n"
+		"\n"
+		"The distance is calculated as :math:`d=\\\\sqrt{(x_{s} - x_{l})^2 + (y_{s} - y_{l})^2} + \\\\lambda_z\\\\|z_{s} - z_{l}\\\\|` Where :math:`s` is the\n"
+		"station and :math:`l` is the locatable A Meteorology using the data of the\n"
+		"nearest station to position\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"position:  The position (any locatable, like e.g. Cell possible) to\n"
+		"look for the station. The reference should be owned by the locatable\n"
+		"\n"
+		"z_weight:  The weight of the height difference :math:`\\\\lambda_z` \n"
+		""},
 	 { "delete_MeteoStationList", _wrap_delete_MeteoStationList, METH_O, "delete_MeteoStationList(MeteoStationList self)"},
 	 { "MeteoStationList_swigregister", MeteoStationList_swigregister, METH_O, NULL},
 	 { "MeteoStationList_swiginit", MeteoStationList_swiginit, METH_VARARGS, NULL},
 	 { "new_IDW_Meteorology", _wrap_new_IDW_Meteorology, METH_VARARGS, "\n"
 		"IDW_Meteorology(point position, MeteoStationList stations, double z_weight, double power)\n"
 		"new_IDW_Meteorology(IDW_Meteorology copy) -> IDW_Meteorology\n"
+		"IDW_Meteorology(const IDW_Meteorology &copy)\n"
+		"\n"
+		"Copy c'tor. \n"
 		""},
-	 { "IDW_Meteorology_copy", _wrap_IDW_Meteorology_copy, METH_O, "IDW_Meteorology_copy(IDW_Meteorology self) -> IDW_Meteorology"},
+	 { "IDW_Meteorology_copy", _wrap_IDW_Meteorology_copy, METH_O, "\n"
+		"IDW_Meteorology_copy(IDW_Meteorology self) -> IDW_Meteorology\n"
+		"virtual IDW_Meteorology* copy() const\n"
+		"\n"
+		"Returns a copy of the meteorology object. Pure virtual function, needs\n"
+		"to be implemented. \n"
+		""},
 	 { "delete_IDW_Meteorology", _wrap_delete_IDW_Meteorology, METH_O, "delete_IDW_Meteorology(IDW_Meteorology self)"},
 	 { "IDW_Meteorology_swigregister", IDW_Meteorology_swigregister, METH_O, NULL},
 	 { "IDW_Meteorology_swiginit", IDW_Meteorology_swiginit, METH_VARARGS, NULL},
-	 { "aerodynamic_resistance_get_aerodynamic_resistance", (PyCFunction)(void(*)(void))_wrap_aerodynamic_resistance_get_aerodynamic_resistance, METH_VARARGS|METH_KEYWORDS, "aerodynamic_resistance_get_aerodynamic_resistance(aerodynamic_resistance self, double & r_ag, double & r_ac, Time t)"},
-	 { "delete_aerodynamic_resistance", _wrap_delete_aerodynamic_resistance, METH_O, "delete_aerodynamic_resistance(aerodynamic_resistance self)"},
+	 { "aerodynamic_resistance_get_aerodynamic_resistance", (PyCFunction)(void(*)(void))_wrap_aerodynamic_resistance_get_aerodynamic_resistance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"aerodynamic_resistance_get_aerodynamic_resistance(aerodynamic_resistance self, double & r_ag, double & r_ac, Time t)\n"
+		"virtual void get_aerodynamic_resistance(double &r_ag, double &r_ac,\n"
+		"cmf::math::Time t) const =0\n"
+		"\n"
+		"aerodynamic resistance from ground to atmosphere (r_ag) and from\n"
+		"canopy to atmosphere (r_ac) \n"
+		""},
+	 { "delete_aerodynamic_resistance", _wrap_delete_aerodynamic_resistance, METH_O, "\n"
+		"delete_aerodynamic_resistance(aerodynamic_resistance self)\n"
+		"virtual ~aerodynamic_resistance() \n"
+		""},
 	 { "aerodynamic_resistance_swigregister", aerodynamic_resistance_swigregister, METH_O, NULL},
 	 { "RainSource___call__", (PyCFunction)(void(*)(void))_wrap_RainSource___call__, METH_VARARGS|METH_KEYWORDS, "RainSource___call__(RainSource self, Time t) -> real"},
-	 { "RainSource_get_intensity", (PyCFunction)(void(*)(void))_wrap_RainSource_get_intensity, METH_VARARGS|METH_KEYWORDS, "RainSource_get_intensity(RainSource self, Time t) -> real"},
+	 { "RainSource_get_intensity", (PyCFunction)(void(*)(void))_wrap_RainSource_get_intensity, METH_VARARGS|METH_KEYWORDS, "\n"
+		"RainSource_get_intensity(RainSource self, Time t) -> real\n"
+		"virtual real get_intensity(cmf::math::Time t) const =0\n"
+		"\n"
+		"Returns the actual rainfall intensity in mm/day. \n"
+		""},
 	 { "delete_RainSource", _wrap_delete_RainSource, METH_O, "delete_RainSource(RainSource self)"},
 	 { "RainSource_swigregister", RainSource_swigregister, METH_O, NULL},
 	 { "ConstantRainSource_intensity_set", _wrap_ConstantRainSource_intensity_set, METH_VARARGS, "ConstantRainSource_intensity_set(ConstantRainSource self, real intensity)"},
 	 { "ConstantRainSource_intensity_get", _wrap_ConstantRainSource_intensity_get, METH_O, "ConstantRainSource_intensity_get(ConstantRainSource self) -> real"},
-	 { "new_ConstantRainSource", (PyCFunction)(void(*)(void))_wrap_new_ConstantRainSource, METH_VARARGS|METH_KEYWORDS, "new_ConstantRainSource(project _project, point location, real _intensity) -> ConstantRainSource"},
-	 { "ConstantRainSource_set_conc", (PyCFunction)(void(*)(void))_wrap_ConstantRainSource_set_conc, METH_VARARGS|METH_KEYWORDS, "ConstantRainSource_set_conc(ConstantRainSource self, solute Solute, real value)"},
+	 { "new_ConstantRainSource", (PyCFunction)(void(*)(void))_wrap_new_ConstantRainSource, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ConstantRainSource(project _project, point location, real _intensity) -> ConstantRainSource\n"
+		"ConstantRainSource(cmf::project &_project, cmf::geometry::point\n"
+		"location, real _intensity)\n"
+		"\n"
+		"Creates a new ConstantRainSource.\n"
+		"\n"
+		"Consider using Cell::set_rainfall for internal creation of a constant\n"
+		"rain source, instead of direct use\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"_project:  The project the rain source is belonging to.\n"
+		"\n"
+		"location:  The location of the rain source\n"
+		"\n"
+		"_intensity:  The constant rainfall intensity in mm/day \n"
+		""},
+	 { "ConstantRainSource_set_conc", (PyCFunction)(void(*)(void))_wrap_ConstantRainSource_set_conc, METH_VARARGS|METH_KEYWORDS, "\n"
+		"ConstantRainSource_set_conc(ConstantRainSource self, solute Solute, real value)\n"
+		"void set_conc(const cmf::water::solute &Solute, real value)\n"
+		"\n"
+		"Sets the concentration of a solute in the rainfall. \n"
+		""},
 	 { "delete_ConstantRainSource", _wrap_delete_ConstantRainSource, METH_O, "delete_ConstantRainSource(ConstantRainSource self)"},
 	 { "ConstantRainSource_swigregister", ConstantRainSource_swigregister, METH_O, NULL},
 	 { "ConstantRainSource_swiginit", ConstantRainSource_swiginit, METH_VARARGS, NULL},
@@ -76869,22 +79543,65 @@ static PyMethodDef SwigMethods[] = {
 	 { "RainfallStation_name_get", _wrap_RainfallStation_name_get, METH_O, "RainfallStation_name_get(RainfallStation self) -> std::string const &"},
 	 { "RainfallStation_data_set", _wrap_RainfallStation_data_set, METH_VARARGS, "RainfallStation_data_set(RainfallStation self, timeseries data)"},
 	 { "RainfallStation_data_get", _wrap_RainfallStation_data_get, METH_O, "RainfallStation_data_get(RainfallStation self) -> timeseries"},
-	 { "RainfallStation___repr__", _wrap_RainfallStation___repr__, METH_O, "RainfallStation___repr__(RainfallStation self) -> std::string"},
+	 { "RainfallStation___repr__", _wrap_RainfallStation___repr__, METH_O, "\n"
+		"RainfallStation___repr__(RainfallStation self) -> std::string\n"
+		"std::string tostring() const\n"
+		"\n"
+		"Returns the name and the mean yearly rainfall. \n"
+		""},
 	 { "RainfallStation_concentration_set", _wrap_RainfallStation_concentration_set, METH_VARARGS, "RainfallStation_concentration_set(RainfallStation self, SoluteTimeseries concentration)"},
 	 { "RainfallStation_concentration_get", _wrap_RainfallStation_concentration_get, METH_O, "RainfallStation_concentration_get(RainfallStation self) -> SoluteTimeseries"},
-	 { "RainfallStation_use_for_cell", (PyCFunction)(void(*)(void))_wrap_RainfallStation_use_for_cell, METH_VARARGS|METH_KEYWORDS, "RainfallStation_use_for_cell(RainfallStation self, Cell c)"},
-	 { "new_RainfallStation", (PyCFunction)(void(*)(void))_wrap_new_RainfallStation, METH_VARARGS|METH_KEYWORDS, "new_RainfallStation(RainfallStation copy) -> RainfallStation"},
+	 { "RainfallStation_use_for_cell", (PyCFunction)(void(*)(void))_wrap_RainfallStation_use_for_cell, METH_VARARGS|METH_KEYWORDS, "\n"
+		"RainfallStation_use_for_cell(RainfallStation self, Cell c)\n"
+		"void use_for_cell(cmf::upslope::Cell &c)\n"
+		"\n"
+		"Connects a cell with this rainfall station. \n"
+		""},
+	 { "new_RainfallStation", (PyCFunction)(void(*)(void))_wrap_new_RainfallStation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_RainfallStation(RainfallStation copy) -> RainfallStation\n"
+		"RainfallStation(const RainfallStation &copy)\n"
+		"\n"
+		"copy c'tor \n"
+		""},
 	 { "RainfallStation___call__", (PyCFunction)(void(*)(void))_wrap_RainfallStation___call__, METH_VARARGS|METH_KEYWORDS, "RainfallStation___call__(RainfallStation self, Time t) -> double"},
 	 { "delete_RainfallStation", _wrap_delete_RainfallStation, METH_O, "delete_RainfallStation(RainfallStation self)"},
 	 { "RainfallStation_swigregister", RainfallStation_swigregister, METH_O, NULL},
 	 { "RainfallStation_swiginit", RainfallStation_swiginit, METH_VARARGS, NULL},
-	 { "RainfallStationList___len__", _wrap_RainfallStationList___len__, METH_O, "RainfallStationList___len__(RainfallStationList self) -> size_t"},
+	 { "RainfallStationList___len__", _wrap_RainfallStationList___len__, METH_O, "\n"
+		"RainfallStationList___len__(RainfallStationList self) -> size_t\n"
+		"size_t size() const\n"
+		"\n"
+		"Returns the number of rainfall stations. \n"
+		""},
 	 { "RainfallStationList___getitem__", _wrap_RainfallStationList___getitem__, METH_VARARGS, "\n"
 		"RainfallStationList___getitem__(RainfallStationList self, ptrdiff_t index) -> cmf::atmosphere::RainfallStation::ptr\n"
 		"RainfallStationList___getitem__(RainfallStationList self, ptrdiff_t index) -> cmf::atmosphere::RainfallStation::ptr const\n"
 		""},
-	 { "RainfallStationList_add", (PyCFunction)(void(*)(void))_wrap_RainfallStationList_add, METH_VARARGS|METH_KEYWORDS, "RainfallStationList_add(RainfallStationList self, std::string Name, timeseries Data, point Position) -> cmf::atmosphere::RainfallStation::ptr"},
-	 { "RainfallStationList_remove", (PyCFunction)(void(*)(void))_wrap_RainfallStationList_remove, METH_VARARGS|METH_KEYWORDS, "RainfallStationList_remove(RainfallStationList self, ptrdiff_t index)"},
+	 { "RainfallStationList_add", (PyCFunction)(void(*)(void))_wrap_RainfallStationList_add, METH_VARARGS|METH_KEYWORDS, "\n"
+		"RainfallStationList_add(RainfallStationList self, std::string Name, timeseries Data, point Position) -> cmf::atmosphere::RainfallStation::ptr\n"
+		"RainfallStation::ptr add(std::string Name, cmf::math::timeseries Data,\n"
+		"cmf::geometry::point Position)\n"
+		"\n"
+		"Creates a new RainfallStation and adds it to the list.\n"
+		"\n"
+		"Usage: The position of the rainfall station will be used as identifier\n"
+		"A new rainfall station\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"Name:  Name of the station\n"
+		"\n"
+		"Data:  Rainfall timeseries\n"
+		"\n"
+		"Position:  Spatial position of the new station \n"
+		""},
+	 { "RainfallStationList_remove", (PyCFunction)(void(*)(void))_wrap_RainfallStationList_remove, METH_VARARGS|METH_KEYWORDS, "\n"
+		"RainfallStationList_remove(RainfallStationList self, ptrdiff_t index)\n"
+		"void remove(ptrdiff_t index)\n"
+		"\n"
+		"Removes the station at index from this list. \n"
+		""},
 	 { "new_RainfallStationList", _wrap_new_RainfallStationList, METH_NOARGS, "new_RainfallStationList() -> RainfallStationList"},
 	 { "delete_RainfallStationList", _wrap_delete_RainfallStationList, METH_O, "delete_RainfallStationList(RainfallStationList self)"},
 	 { "RainfallStationList_swigregister", RainfallStationList_swigregister, METH_O, NULL},
@@ -76920,19 +79637,42 @@ static PyMethodDef SwigMethods[] = {
 	 { "Vegetation_CanopyPARExtinction_get", _wrap_Vegetation_CanopyPARExtinction_get, METH_O, "Vegetation_CanopyPARExtinction_get(Vegetation self) -> double"},
 	 { "Vegetation_LeafWidth_set", _wrap_Vegetation_LeafWidth_set, METH_VARARGS, "Vegetation_LeafWidth_set(Vegetation self, double LeafWidth)"},
 	 { "Vegetation_LeafWidth_get", _wrap_Vegetation_LeafWidth_get, METH_O, "Vegetation_LeafWidth_get(Vegetation self) -> double"},
-	 { "Vegetation_RootLength", _wrap_Vegetation_RootLength, METH_O, "Vegetation_RootLength(Vegetation self) -> double"},
+	 { "Vegetation_RootLength", _wrap_Vegetation_RootLength, METH_O, "\n"
+		"Vegetation_RootLength(Vegetation self) -> double\n"
+		"double RootLength()\n"
+		"const\n"
+		"\n"
+		"Returns the average root length in m/m2. \n"
+		""},
 	 { "Vegetation_RootFraction", _wrap_Vegetation_RootFraction, METH_VARARGS, "\n"
 		"Vegetation_RootFraction(Vegetation self, double upperBoundary, double lowerBoundary) -> double\n"
 		"Vegetation_RootFraction(Vegetation self, cmf::math::num_array const & thickness) -> cmf::math::num_array\n"
+		"cmf::math::num_array RootFraction(const cmf::math::num_array\n"
+		"&thickness) const \n"
 		""},
-	 { "new_Vegetation", (PyCFunction)(void(*)(void))_wrap_new_Vegetation, METH_VARARGS|METH_KEYWORDS, "new_Vegetation(double _LAI=2.88, double _Height=0.12, double _RootDepth=0.25, double _StomatalResistance=100, double _albedo=0.23, double _CanopyClosure=1, double _CanopyCapacityPerLAI=0.1, double _fraction_at_rootdepth=1.0) -> Vegetation"},
+	 { "new_Vegetation", (PyCFunction)(void(*)(void))_wrap_new_Vegetation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Vegetation(double _LAI=2.88, double _Height=0.12, double _RootDepth=0.25, double _StomatalResistance=100, double _albedo=0.23, double _CanopyClosure=1, double _CanopyCapacityPerLAI=0.1, double _fraction_at_rootdepth=1.0) -> Vegetation\n"
+		"Vegetation(double\n"
+		"_LAI=2.88, double _Height=0.12, double _RootDepth=0.25, double\n"
+		"_StomatalResistance=100, double _albedo=0.23, double _CanopyClosure=1,\n"
+		"double _CanopyCapacityPerLAI=0.1, double _fraction_at_rootdepth=1.0)\n"
+		"\n"
+		""},
 	 { "Vegetation___repr__", _wrap_Vegetation___repr__, METH_O, "Vegetation___repr__(Vegetation self) -> std::string"},
 	 { "delete_Vegetation", _wrap_delete_Vegetation, METH_O, "delete_Vegetation(Vegetation self)"},
 	 { "Vegetation_swigregister", Vegetation_swigregister, METH_O, NULL},
 	 { "Vegetation_swiginit", Vegetation_swiginit, METH_VARARGS, NULL},
-	 { "new_CellConnector", (PyCFunction)(void(*)(void))_wrap_new_CellConnector, METH_VARARGS|METH_KEYWORDS, "new_CellConnector(cmf::upslope::connectorfunction connector) -> CellConnector"},
+	 { "new_CellConnector", (PyCFunction)(void(*)(void))_wrap_new_CellConnector, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_CellConnector(cmf::upslope::connectorfunction connector) -> CellConnector\n"
+		"CellConnector(connectorfunction connector) \n"
+		""},
 	 { "CellConnector___call__", (PyCFunction)(void(*)(void))_wrap_CellConnector___call__, METH_VARARGS|METH_KEYWORDS, "CellConnector___call__(CellConnector self, Cell cell1, Cell cell2, ptrdiff_t start_at_layer=0)"},
-	 { "CellConnector_connect", (PyCFunction)(void(*)(void))_wrap_CellConnector_connect, METH_VARARGS|METH_KEYWORDS, "CellConnector_connect(CellConnector self, Cell cell1, Cell cell2, ptrdiff_t start_at_layer=0)"},
+	 { "CellConnector_connect", (PyCFunction)(void(*)(void))_wrap_CellConnector_connect, METH_VARARGS|METH_KEYWORDS, "\n"
+		"CellConnector_connect(CellConnector self, Cell cell1, Cell cell2, ptrdiff_t start_at_layer=0)\n"
+		"void\n"
+		"connect(cmf::upslope::Cell &cell1, cmf::upslope::Cell &cell2,\n"
+		"ptrdiff_t start_at_layer=0) const \n"
+		""},
 	 { "delete_CellConnector", _wrap_delete_CellConnector, METH_O, "delete_CellConnector(CellConnector self)"},
 	 { "CellConnector_swigregister", CellConnector_swigregister, METH_O, NULL},
 	 { "CellConnector_swiginit", CellConnector_swiginit, METH_VARARGS, NULL},
@@ -76942,55 +79682,270 @@ static PyMethodDef SwigMethods[] = {
 	 { "Cell_y_get", _wrap_Cell_y_get, METH_O, "Cell_y_get(Cell self) -> double"},
 	 { "Cell_z_set", _wrap_Cell_z_set, METH_VARARGS, "Cell_z_set(Cell self, double z)"},
 	 { "Cell_z_get", _wrap_Cell_z_get, METH_O, "Cell_z_get(Cell self) -> double"},
-	 { "Cell_get_position", _wrap_Cell_get_position, METH_O, "Cell_get_position(Cell self) -> point"},
-	 { "Cell_m3_to_mm", (PyCFunction)(void(*)(void))_wrap_Cell_m3_to_mm, METH_VARARGS|METH_KEYWORDS, "Cell_m3_to_mm(Cell self, double volume) -> double"},
-	 { "Cell_mm_to_m3", (PyCFunction)(void(*)(void))_wrap_Cell_mm_to_m3, METH_VARARGS|METH_KEYWORDS, "Cell_mm_to_m3(Cell self, double depth) -> double"},
-	 { "Cell_InvalidateSatDepth", _wrap_Cell_InvalidateSatDepth, METH_O, "Cell_InvalidateSatDepth(Cell self)"},
+	 { "Cell_get_position", _wrap_Cell_get_position, METH_O, "\n"
+		"Cell_get_position(Cell self) -> point\n"
+		"cmf::geometry::point get_position() const\n"
+		"\n"
+		"Returns the location of the cell. \n"
+		""},
+	 { "Cell_m3_to_mm", (PyCFunction)(void(*)(void))_wrap_Cell_m3_to_mm, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Cell_m3_to_mm(Cell self, double volume) -> double\n"
+		"double\n"
+		"m3_to_mm(double volume) const\n"
+		"\n"
+		"Converts a volume in m3 in mm for the cell area. \n"
+		""},
+	 { "Cell_mm_to_m3", (PyCFunction)(void(*)(void))_wrap_Cell_mm_to_m3, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Cell_mm_to_m3(Cell self, double depth) -> double\n"
+		"double\n"
+		"mm_to_m3(double depth) const \n"
+		""},
+	 { "Cell_InvalidateSatDepth", _wrap_Cell_InvalidateSatDepth, METH_O, "\n"
+		"Cell_InvalidateSatDepth(Cell self)\n"
+		"void\n"
+		"InvalidateSatDepth() const\n"
+		"\n"
+		"Marks the saturated depth as unvalid. This is done automatically, when\n"
+		"the state of a layer changes. \n"
+		""},
 	 { "Cell_vegetation_set", _wrap_Cell_vegetation_set, METH_VARARGS, "Cell_vegetation_set(Cell self, Vegetation vegetation)"},
 	 { "Cell_vegetation_get", _wrap_Cell_vegetation_get, METH_O, "Cell_vegetation_get(Cell self) -> Vegetation"},
-	 { "Cell_set_aerodynamic_resistance", (PyCFunction)(void(*)(void))_wrap_Cell_set_aerodynamic_resistance, METH_VARARGS|METH_KEYWORDS, "Cell_set_aerodynamic_resistance(Cell self, cmf::atmosphere::aerodynamic_resistance::ptr Ra)"},
-	 { "Cell_set_weather", (PyCFunction)(void(*)(void))_wrap_Cell_set_weather, METH_VARARGS|METH_KEYWORDS, "Cell_set_weather(Cell self, Weather weather)"},
-	 { "Cell_set_rainfall", (PyCFunction)(void(*)(void))_wrap_Cell_set_rainfall, METH_VARARGS|METH_KEYWORDS, "Cell_set_rainfall(Cell self, double rainfall)"},
-	 { "Cell_get_rainfall", (PyCFunction)(void(*)(void))_wrap_Cell_get_rainfall, METH_VARARGS|METH_KEYWORDS, "Cell_get_rainfall(Cell self, Time t) -> double"},
-	 { "Cell___set_rain_source", (PyCFunction)(void(*)(void))_wrap_Cell___set_rain_source, METH_VARARGS|METH_KEYWORDS, "Cell___set_rain_source(Cell self, cmf::atmosphere::RainSource::ptr new_source)"},
-	 { "Cell___get_rain_source", _wrap_Cell___get_rain_source, METH_O, "Cell___get_rain_source(Cell self) -> cmf::atmosphere::RainSource::ptr"},
-	 { "Cell_set_uptakestress", (PyCFunction)(void(*)(void))_wrap_Cell_set_uptakestress, METH_VARARGS|METH_KEYWORDS, "Cell_set_uptakestress(Cell self, RootUptakeStressFunction stressfunction)"},
-	 { "Cell___get_evaporation", _wrap_Cell___get_evaporation, METH_O, "Cell___get_evaporation(Cell self) -> cmf::water::flux_node::ptr"},
-	 { "Cell___get_transpiration", _wrap_Cell___get_transpiration, METH_O, "Cell___get_transpiration(Cell self) -> cmf::water::flux_node::ptr"},
-	 { "Cell_get_surfacewater", _wrap_Cell_get_surfacewater, METH_O, "Cell_get_surfacewater(Cell self) -> cmf::water::flux_node::ptr"},
-	 { "Cell_surfacewater_as_storage", _wrap_Cell_surfacewater_as_storage, METH_O, "Cell_surfacewater_as_storage(Cell self) -> cmf::upslope::surfacewater_ptr"},
+	 { "Cell_set_aerodynamic_resistance", (PyCFunction)(void(*)(void))_wrap_Cell_set_aerodynamic_resistance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Cell_set_aerodynamic_resistance(Cell self, cmf::atmosphere::aerodynamic_resistance::ptr Ra)\n"
+		"void\n"
+		"set_aerodynamic_resistance(cmf::atmosphere::aerodynamic_resistance::ptr\n"
+		"Ra)\n"
+		"\n"
+		"Sets the method to calculate aerodynamic resistance against turbulent\n"
+		"sensible heat fluxes. \n"
+		""},
+	 { "Cell_set_weather", (PyCFunction)(void(*)(void))_wrap_Cell_set_weather, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Cell_set_weather(Cell self, Weather weather)\n"
+		"void\n"
+		"set_weather(const cmf::atmosphere::Weather &weather)\n"
+		"\n"
+		"Sets the weather for this cell. Connectivity to a meteorological\n"
+		"station is lost. \n"
+		""},
+	 { "Cell_set_rainfall", (PyCFunction)(void(*)(void))_wrap_Cell_set_rainfall, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Cell_set_rainfall(Cell self, double rainfall)\n"
+		"void\n"
+		"set_rainfall(double rainfall)\n"
+		"\n"
+		"Exchanges a timeseries of rainfall with a constant flux. \n"
+		""},
+	 { "Cell_get_rainfall", (PyCFunction)(void(*)(void))_wrap_Cell_get_rainfall, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Cell_get_rainfall(Cell self, Time t) -> double\n"
+		"double\n"
+		"get_rainfall(cmf::math::Time t) const\n"
+		"\n"
+		"Returns the current rainfall flux in m3/day. \n"
+		""},
+	 { "Cell___set_rain_source", (PyCFunction)(void(*)(void))_wrap_Cell___set_rain_source, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Cell___set_rain_source(Cell self, cmf::atmosphere::RainSource::ptr new_source)\n"
+		"void\n"
+		"set_rain_source(cmf::atmosphere::RainSource::ptr new_source)\n"
+		"\n"
+		"Changes the current source of rainfall. \n"
+		""},
+	 { "Cell___get_rain_source", _wrap_Cell___get_rain_source, METH_O, "\n"
+		"Cell___get_rain_source(Cell self) -> cmf::atmosphere::RainSource::ptr\n"
+		"cmf::atmosphere::RainSource::ptr get_rain_source()\n"
+		"\n"
+		"Returns the current source for rainfall. \n"
+		""},
+	 { "Cell_set_uptakestress", (PyCFunction)(void(*)(void))_wrap_Cell_set_uptakestress, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Cell_set_uptakestress(Cell self, RootUptakeStressFunction stressfunction)\n"
+		"void\n"
+		"set_uptakestress(const cmf::upslope::ET::RootUptakeStressFunction\n"
+		"&stressfunction)\n"
+		"\n"
+		"Uses the given WaterStressFunction for all stressedET like connections\n"
+		"to the transpiration target. \n"
+		""},
+	 { "Cell___get_evaporation", _wrap_Cell___get_evaporation, METH_O, "\n"
+		"Cell___get_evaporation(Cell self) -> cmf::water::flux_node::ptr\n"
+		"cmf::water::flux_node::ptr get_evaporation()\n"
+		"\n"
+		"Returns the end point of all evaporation of this cell (a\n"
+		"cmf::water::flux_node) \n"
+		""},
+	 { "Cell___get_transpiration", _wrap_Cell___get_transpiration, METH_O, "\n"
+		"Cell___get_transpiration(Cell self) -> cmf::water::flux_node::ptr\n"
+		"cmf::water::flux_node::ptr get_transpiration()\n"
+		"\n"
+		"Returns the end point of all transpiration of this cell (a\n"
+		"cmf::water::flux_node) \n"
+		""},
+	 { "Cell_get_surfacewater", _wrap_Cell_get_surfacewater, METH_O, "\n"
+		"Cell_get_surfacewater(Cell self) -> cmf::water::flux_node::ptr\n"
+		"cmf::water::flux_node::ptr get_surfacewater()\n"
+		"\n"
+		"returns the surface water of this cell. This is either a flux node or\n"
+		"a cmf::upslope::SurfaceWater \n"
+		""},
+	 { "Cell_surfacewater_as_storage", _wrap_Cell_surfacewater_as_storage, METH_O, "\n"
+		"Cell_surfacewater_as_storage(Cell self) -> cmf::upslope::surfacewater_ptr\n"
+		"surfacewater_ptr surfacewater_as_storage()\n"
+		"\n"
+		"Makes the surfacewater of this cell a cmf::upslope::SurfaceWater\n"
+		"storage. \n"
+		""},
 	 { "Cell_add_storage", _wrap_Cell_add_storage, METH_VARARGS, "\n"
 		"Cell_add_storage(Cell self, std::string Name, char storage_role='N', bool isopenwater=False) -> cmf::water::WaterStorage::ptr\n"
 		"Cell_add_storage(Cell self, cmf::water::WaterStorage::ptr storage) -> ptrdiff_t\n"
+		"ptrdiff_t\n"
+		"add_storage(cmf::water::WaterStorage::ptr storage)\n"
+		"\n"
+		"Bounds an existing storage to the cell. \n"
 		""},
-	 { "Cell_remove_storage", (PyCFunction)(void(*)(void))_wrap_Cell_remove_storage, METH_VARARGS|METH_KEYWORDS, "Cell_remove_storage(Cell self, cmf::water::WaterStorage::ptr storage)"},
-	 { "Cell_storage_count", _wrap_Cell_storage_count, METH_O, "Cell_storage_count(Cell self) -> size_t"},
-	 { "Cell_get_storage", (PyCFunction)(void(*)(void))_wrap_Cell_get_storage, METH_VARARGS|METH_KEYWORDS, "Cell_get_storage(Cell self, ptrdiff_t index) -> cmf::water::WaterStorage::ptr"},
-	 { "Cell_get_canopy", _wrap_Cell_get_canopy, METH_O, "Cell_get_canopy(Cell self) -> cmf::water::WaterStorage::ptr"},
-	 { "Cell_get_snow", _wrap_Cell_get_snow, METH_O, "Cell_get_snow(Cell self) -> cmf::water::WaterStorage::ptr"},
-	 { "Cell_snow_coverage", _wrap_Cell_snow_coverage, METH_O, "Cell_snow_coverage(Cell self) -> real"},
-	 { "Cell_albedo", _wrap_Cell_albedo, METH_O, "Cell_albedo(Cell self) -> real"},
-	 { "Cell_surface_water_coverage", _wrap_Cell_surface_water_coverage, METH_O, "Cell_surface_water_coverage(Cell self) -> real"},
-	 { "Cell_heat_flux", (PyCFunction)(void(*)(void))_wrap_Cell_heat_flux, METH_VARARGS|METH_KEYWORDS, "Cell_heat_flux(Cell self, Time t) -> real"},
+	 { "Cell_remove_storage", (PyCFunction)(void(*)(void))_wrap_Cell_remove_storage, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Cell_remove_storage(Cell self, cmf::water::WaterStorage::ptr storage)\n"
+		"void\n"
+		"remove_storage(cmf::water::WaterStorage::ptr storage) \n"
+		""},
+	 { "Cell_storage_count", _wrap_Cell_storage_count, METH_O, "\n"
+		"Cell_storage_count(Cell self) -> size_t\n"
+		"size_t\n"
+		"storage_count() const \n"
+		""},
+	 { "Cell_get_storage", (PyCFunction)(void(*)(void))_wrap_Cell_get_storage, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Cell_get_storage(Cell self, ptrdiff_t index) -> cmf::water::WaterStorage::ptr\n"
+		"cmf::water::WaterStorage::ptr get_storage(ptrdiff_t index) const \n"
+		""},
+	 { "Cell_get_canopy", _wrap_Cell_get_canopy, METH_O, "\n"
+		"Cell_get_canopy(Cell self) -> cmf::water::WaterStorage::ptr\n"
+		"cmf::water::WaterStorage::ptr get_canopy() const \n"
+		""},
+	 { "Cell_get_snow", _wrap_Cell_get_snow, METH_O, "\n"
+		"Cell_get_snow(Cell self) -> cmf::water::WaterStorage::ptr\n"
+		"cmf::water::WaterStorage::ptr get_snow() const \n"
+		""},
+	 { "Cell_snow_coverage", _wrap_Cell_snow_coverage, METH_O, "\n"
+		"Cell_snow_coverage(Cell self) -> real\n"
+		"real\n"
+		"snow_coverage() const \n"
+		""},
+	 { "Cell_albedo", _wrap_Cell_albedo, METH_O, "\n"
+		"Cell_albedo(Cell self) -> real\n"
+		"real albedo()\n"
+		"const \n"
+		""},
+	 { "Cell_surface_water_coverage", _wrap_Cell_surface_water_coverage, METH_O, "\n"
+		"Cell_surface_water_coverage(Cell self) -> real\n"
+		"real surface_water_coverage() const\n"
+		"\n"
+		"Returns the coverage of the surface water.\n"
+		"\n"
+		"The covered fraction (0..1) is simply modelled as a piecewise linear\n"
+		"function of the surface water depth. If the depth is above the\n"
+		"aggregate height, the coverage is 1, below it is given as \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     c =\n"
+		"    \\\\frac{h_{water}}{\\\\Delta h_{surface}}\n"
+		"\n"
+		"with c the coverage,\n"
+		":math:`h_{water}` the depth of the surface water and :math:`\\\\Delta h_{surface}`\n"
+		"the amplitude of the surface roughness \n"
+		""},
+	 { "Cell_heat_flux", (PyCFunction)(void(*)(void))_wrap_Cell_heat_flux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Cell_heat_flux(Cell self, Time t) -> real\n"
+		"real\n"
+		"heat_flux(cmf::math::Time t) const\n"
+		"\n"
+		"Calculates the surface heat balance.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"t:  Time step \n"
+		""},
 	 { "Cell_Tground_set", _wrap_Cell_Tground_set, METH_VARARGS, "Cell_Tground_set(Cell self, real Tground)"},
 	 { "Cell_Tground_get", _wrap_Cell_Tground_get, METH_O, "Cell_Tground_get(Cell self) -> real"},
-	 { "Cell_leave_wetness", _wrap_Cell_leave_wetness, METH_O, "Cell_leave_wetness(Cell self) -> real"},
+	 { "Cell_leave_wetness", _wrap_Cell_leave_wetness, METH_O, "\n"
+		"Cell_leave_wetness(Cell self) -> real\n"
+		"real\n"
+		"leave_wetness() const\n"
+		"\n"
+		"Return the fraction of wet leaves in the canopy if a canopy water\n"
+		"storage exists.\n"
+		"\n"
+		"If no canopy storage is present, it returns 0.0 (=empty). The fraction\n"
+		"of wet leaves are calculated as the linear filling of the canopy\n"
+		"storage. \n"
+		""},
 	 { "Cell_Id_set", _wrap_Cell_Id_set, METH_VARARGS, "Cell_Id_set(Cell self, ptrdiff_t Id)"},
 	 { "Cell_Id_get", _wrap_Cell_Id_get, METH_O, "Cell_Id_get(Cell self) -> ptrdiff_t"},
-	 { "Cell_get_WKB", _wrap_Cell_get_WKB, METH_O, "Cell_get_WKB(Cell self) -> cmf::bytestring"},
-	 { "Cell_set_WKB", (PyCFunction)(void(*)(void))_wrap_Cell_set_WKB, METH_VARARGS|METH_KEYWORDS, "Cell_set_WKB(Cell self, cmf::bytestring wkb)"},
-	 { "Cell_get_weather", (PyCFunction)(void(*)(void))_wrap_Cell_get_weather, METH_VARARGS|METH_KEYWORDS, "Cell_get_weather(Cell self, Time t) -> Weather"},
-	 { "Cell_layer_count", _wrap_Cell_layer_count, METH_O, "Cell_layer_count(Cell self) -> size_t"},
-	 { "Cell_get_layer", (PyCFunction)(void(*)(void))_wrap_Cell_get_layer, METH_VARARGS|METH_KEYWORDS, "Cell_get_layer(Cell self, ptrdiff_t ndx) -> cmf::upslope::SoilLayer::ptr"},
+	 { "Cell_get_WKB", _wrap_Cell_get_WKB, METH_O, "\n"
+		"Cell_get_WKB(Cell self) -> cmf::bytestring\n"
+		"cmf::bytestring\n"
+		"get_WKB() const \n"
+		""},
+	 { "Cell_set_WKB", (PyCFunction)(void(*)(void))_wrap_Cell_set_WKB, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Cell_set_WKB(Cell self, cmf::bytestring wkb)\n"
+		"void\n"
+		"set_WKB(cmf::bytestring wkb) \n"
+		""},
+	 { "Cell_get_weather", (PyCFunction)(void(*)(void))_wrap_Cell_get_weather, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Cell_get_weather(Cell self, Time t) -> Weather\n"
+		"cmf::atmosphere::Weather get_weather(cmf::math::Time t) const\n"
+		"\n"
+		"Returns the current meteorological conditions of the cell at time t.\n"
+		"\n"
+		""},
+	 { "Cell_layer_count", _wrap_Cell_layer_count, METH_O, "\n"
+		"Cell_layer_count(Cell self) -> size_t\n"
+		"size_t\n"
+		"layer_count() const\n"
+		"\n"
+		"Returns the number of layers of the cell. \n"
+		""},
+	 { "Cell_get_layer", (PyCFunction)(void(*)(void))_wrap_Cell_get_layer, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Cell_get_layer(Cell self, ptrdiff_t ndx) -> cmf::upslope::SoilLayer::ptr\n"
+		"cmf::upslope::SoilLayer::ptr get_layer(ptrdiff_t ndx) const\n"
+		"\n"
+		"Returns the layer at position ndx.\n"
+		"\n"
+		"From python this function is masked as a sequence: \n"
+		""},
 	 { "Cell_add_layer", _wrap_Cell_add_layer, METH_VARARGS, "\n"
 		"Cell_add_layer(Cell self, real lowerboundary, RetentionCurve r_curve, real saturateddepth=10) -> cmf::upslope::SoilLayer::ptr\n"
 		"Cell_add_layer(Cell self, real lowerboundary) -> cmf::upslope::SoilLayer::ptr\n"
+		"cmf::upslope::SoilLayer::ptr add_layer(real lowerboundary)\n"
+		"\n"
+		"Adds a rather conceptual layer to the cell. Use this version for\n"
+		"conceptual models. The retention curve resambles an empty bucket. \n"
 		""},
-	 { "Cell_remove_last_layer", _wrap_Cell_remove_last_layer, METH_O, "Cell_remove_last_layer(Cell self)"},
-	 { "Cell_remove_layers", _wrap_Cell_remove_layers, METH_O, "Cell_remove_layers(Cell self)"},
-	 { "delete_Cell", _wrap_delete_Cell, METH_O, "delete_Cell(Cell self)"},
-	 { "new_Cell", (PyCFunction)(void(*)(void))_wrap_new_Cell, METH_VARARGS|METH_KEYWORDS, "new_Cell(double x, double y, double z, double area, project _project) -> Cell"},
-	 { "Cell_to_string", _wrap_Cell_to_string, METH_O, "Cell_to_string(Cell self) -> std::string"},
+	 { "Cell_remove_last_layer", _wrap_Cell_remove_last_layer, METH_O, "\n"
+		"Cell_remove_last_layer(Cell self)\n"
+		"void\n"
+		"remove_last_layer()\n"
+		"\n"
+		"Remove the lowest layer from this cell. \n"
+		""},
+	 { "Cell_remove_layers", _wrap_Cell_remove_layers, METH_O, "\n"
+		"Cell_remove_layers(Cell self)\n"
+		"void\n"
+		"remove_layers()\n"
+		"\n"
+		"Removes all layers from this cell. \n"
+		""},
+	 { "delete_Cell", _wrap_delete_Cell, METH_O, "\n"
+		"delete_Cell(Cell self)\n"
+		"virtual ~Cell() \n"
+		""},
+	 { "new_Cell", (PyCFunction)(void(*)(void))_wrap_new_Cell, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Cell(double x, double y, double z, double area, project _project) -> Cell\n"
+		"Cell(double x,\n"
+		"double y, double z, double area, cmf::project &_project) \n"
+		""},
+	 { "Cell_to_string", _wrap_Cell_to_string, METH_O, "\n"
+		"Cell_to_string(Cell self) -> std::string\n"
+		"std::string\n"
+		"to_string() const \n"
+		""},
 	 { "Cell___cmf_state_list_interface__", _wrap_Cell___cmf_state_list_interface__, METH_O, "Cell___cmf_state_list_interface__(Cell self) -> state_list"},
 	 { "Cell_topology_get", _wrap_Cell_topology_get, METH_O, "Cell_topology_get(Cell self) -> Topology"},
 	 { "Cell_meteorology_set", _wrap_Cell_meteorology_set, METH_VARARGS, "Cell_meteorology_set(Cell self, Meteorology meteorology)"},
@@ -77010,28 +79965,79 @@ static PyMethodDef SwigMethods[] = {
 	 { "Topology_y_get", _wrap_Topology_y_get, METH_O, "Topology_y_get(Topology self) -> double &"},
 	 { "Topology_z_set", _wrap_Topology_z_set, METH_VARARGS, "Topology_z_set(Topology self, double & z)"},
 	 { "Topology_z_get", _wrap_Topology_z_get, METH_O, "Topology_z_get(Topology self) -> double &"},
-	 { "Topology_get_position", _wrap_Topology_get_position, METH_O, "Topology_get_position(Topology self) -> point"},
+	 { "Topology_get_position", _wrap_Topology_get_position, METH_O, "\n"
+		"Topology_get_position(Topology self) -> point\n"
+		"cmf::geometry::point get_position() const\n"
+		"\n"
+		"Returns the center of the cell. \n"
+		""},
 	 { "Topology_flowwidth", _wrap_Topology_flowwidth, METH_VARARGS, "\n"
 		"Topology_flowwidth(Topology self, Cell target) -> double\n"
 		"Topology_flowwidth(Topology self, Topology target) -> double\n"
+		"double\n"
+		"flowwidth(Topology &target) \n"
 		""},
 	 { "Topology_AddNeighbor", _wrap_Topology_AddNeighbor, METH_VARARGS, "\n"
 		"Topology_AddNeighbor(Topology self, Cell target, double flowwidth)\n"
 		"Topology_AddNeighbor(Topology self, Topology target, double flowwidth)\n"
+		"void\n"
+		"AddNeighbor(Topology &target, double flowwidth) \n"
 		""},
-	 { "Topology_RemoveNeighbor", (PyCFunction)(void(*)(void))_wrap_Topology_RemoveNeighbor, METH_VARARGS|METH_KEYWORDS, "Topology_RemoveNeighbor(Topology self, Topology target)"},
-	 { "Topology_neighbor_count", _wrap_Topology_neighbor_count, METH_O, "Topology_neighbor_count(Topology self) -> size_t"},
-	 { "Topology_MainOutlet", (PyCFunction)(void(*)(void))_wrap_Topology_MainOutlet, METH_VARARGS|METH_KEYWORDS, "Topology_MainOutlet(Topology self, bool forceRecalc=False) -> Cell"},
-	 { "Topology_ContributingArea", _wrap_Topology_ContributingArea, METH_O, "Topology_ContributingArea(Topology self) -> double"},
+	 { "Topology_RemoveNeighbor", (PyCFunction)(void(*)(void))_wrap_Topology_RemoveNeighbor, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Topology_RemoveNeighbor(Topology self, Topology target)\n"
+		"void\n"
+		"RemoveNeighbor(Topology &target)\n"
+		"\n"
+		"Removes the topological relation to the given cell. \n"
+		""},
+	 { "Topology_neighbor_count", _wrap_Topology_neighbor_count, METH_O, "\n"
+		"Topology_neighbor_count(Topology self) -> size_t\n"
+		"size_t\n"
+		"neighbor_count() const\n"
+		"\n"
+		"Returns the number of neighbors. \n"
+		""},
+	 { "Topology_MainOutlet", (PyCFunction)(void(*)(void))_wrap_Topology_MainOutlet, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Topology_MainOutlet(Topology self, bool forceRecalc=False) -> Cell\n"
+		"Cell*\n"
+		"MainOutlet(bool forceRecalc=false)\n"
+		"\n"
+		"Returns the mainoutlet (steepest lower neighbor) \n"
+		""},
+	 { "Topology_ContributingArea", _wrap_Topology_ContributingArea, METH_O, "\n"
+		"Topology_ContributingArea(Topology self) -> double\n"
+		"double ContributingArea() const\n"
+		"\n"
+		"Get the contributing area (steepest path upwards) \n"
+		""},
 	 { "Topology_calculate_contributing_area", (PyCFunction)(void(*)(void))_wrap_Topology_calculate_contributing_area, METH_VARARGS|METH_KEYWORDS, "Topology_calculate_contributing_area(cell_vector arg1)"},
 	 { "Topology___eq__", (PyCFunction)(void(*)(void))_wrap_Topology___eq__, METH_VARARGS|METH_KEYWORDS, "Topology___eq__(Topology self, Topology cmp) -> bool"},
 	 { "delete_Topology", _wrap_delete_Topology, METH_O, "delete_Topology(Topology self)"},
 	 { "Topology_swigregister", Topology_swigregister, METH_O, NULL},
-	 { "new_neighbor_iterator", (PyCFunction)(void(*)(void))_wrap_new_neighbor_iterator, METH_VARARGS|METH_KEYWORDS, "new_neighbor_iterator(Cell cell) -> neighbor_iterator"},
-	 { "neighbor_iterator_cell", _wrap_neighbor_iterator_cell, METH_O, "neighbor_iterator_cell(neighbor_iterator self) -> Cell"},
-	 { "neighbor_iterator_flowwidth", _wrap_neighbor_iterator_flowwidth, METH_O, "neighbor_iterator_flowwidth(neighbor_iterator self) -> double"},
-	 { "neighbor_iterator_valid", _wrap_neighbor_iterator_valid, METH_O, "neighbor_iterator_valid(neighbor_iterator self) -> bool"},
-	 { "neighbor_iterator_next_neighbor", _wrap_neighbor_iterator_next_neighbor, METH_O, "neighbor_iterator_next_neighbor(neighbor_iterator self) -> neighbor_iterator"},
+	 { "new_neighbor_iterator", (PyCFunction)(void(*)(void))_wrap_new_neighbor_iterator, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_neighbor_iterator(Cell cell) -> neighbor_iterator\n"
+		"neighbor_iterator(cmf::upslope::Cell *cell) \n"
+		""},
+	 { "neighbor_iterator_cell", _wrap_neighbor_iterator_cell, METH_O, "\n"
+		"neighbor_iterator_cell(neighbor_iterator self) -> Cell\n"
+		"Cell&\n"
+		"cell() \n"
+		""},
+	 { "neighbor_iterator_flowwidth", _wrap_neighbor_iterator_flowwidth, METH_O, "\n"
+		"neighbor_iterator_flowwidth(neighbor_iterator self) -> double\n"
+		"double flowwidth() \n"
+		""},
+	 { "neighbor_iterator_valid", _wrap_neighbor_iterator_valid, METH_O, "\n"
+		"neighbor_iterator_valid(neighbor_iterator self) -> bool\n"
+		"bool\n"
+		"valid() const \n"
+		""},
+	 { "neighbor_iterator_next_neighbor", _wrap_neighbor_iterator_next_neighbor, METH_O, "\n"
+		"neighbor_iterator_next_neighbor(neighbor_iterator self) -> neighbor_iterator\n"
+		"neighbor_iterator& next_neighbor()\n"
+		"\n"
+		"Points the iterator to the next neighbor. \n"
+		""},
 	 { "neighbor_iterator___eq__", (PyCFunction)(void(*)(void))_wrap_neighbor_iterator___eq__, METH_VARARGS|METH_KEYWORDS, "neighbor_iterator___eq__(neighbor_iterator self, neighbor_iterator cmp) -> bool"},
 	 { "neighbor_iterator___neq__", (PyCFunction)(void(*)(void))_wrap_neighbor_iterator___neq__, METH_VARARGS|METH_KEYWORDS, "neighbor_iterator___neq__(neighbor_iterator self, neighbor_iterator cmp) -> bool"},
 	 { "delete_neighbor_iterator", _wrap_delete_neighbor_iterator, METH_O, "delete_neighbor_iterator(neighbor_iterator self)"},
@@ -77040,22 +80046,55 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_cell_vector", _wrap_new_cell_vector, METH_VARARGS, "\n"
 		"cell_vector()\n"
 		"new_cell_vector(cell_vector copy) -> cell_vector\n"
+		"cell_vector(cell_const_iterator first, cell_const_iterator last) \n"
 		""},
 	 { "cell_vector___getitem__", _wrap_cell_vector___getitem__, METH_VARARGS, "\n"
 		"cell_vector___getitem__(cell_vector self, ptrdiff_t index) -> Cell\n"
 		"cell_vector___getitem__(cell_vector self, ptrdiff_t index) -> Cell\n"
 		""},
-	 { "cell_vector_append", (PyCFunction)(void(*)(void))_wrap_cell_vector_append, METH_VARARGS|METH_KEYWORDS, "cell_vector_append(cell_vector self, Cell cell)"},
+	 { "cell_vector_append", (PyCFunction)(void(*)(void))_wrap_cell_vector_append, METH_VARARGS|METH_KEYWORDS, "\n"
+		"cell_vector_append(cell_vector self, Cell cell)\n"
+		"void\n"
+		"append(cmf::upslope::Cell &cell) \n"
+		""},
 	 { "cell_vector_remove", _wrap_cell_vector_remove, METH_VARARGS, "\n"
 		"cell_vector_remove(cell_vector self, ptrdiff_t index)\n"
 		"cell_vector_remove(cell_vector self, Cell cell)\n"
+		"void\n"
+		"remove(const cmf::upslope::Cell &cell) \n"
 		""},
-	 { "cell_vector_pop", _wrap_cell_vector_pop, METH_O, "cell_vector_pop(cell_vector self) -> Cell"},
-	 { "cell_vector___len__", _wrap_cell_vector___len__, METH_O, "cell_vector___len__(cell_vector self) -> size_t"},
-	 { "cell_vector___getslice__", (PyCFunction)(void(*)(void))_wrap_cell_vector___getslice__, METH_VARARGS|METH_KEYWORDS, "cell_vector___getslice__(cell_vector self, ptrdiff_t start, ptrdiff_t end, ptrdiff_t step=1) -> cell_vector"},
-	 { "cell_vector_get_area", _wrap_cell_vector_get_area, METH_O, "cell_vector_get_area(cell_vector self) -> double"},
-	 { "cell_vector___contains__", (PyCFunction)(void(*)(void))_wrap_cell_vector___contains__, METH_VARARGS|METH_KEYWORDS, "cell_vector___contains__(cell_vector self, Cell cell) -> bool"},
-	 { "delete_cell_vector", _wrap_delete_cell_vector, METH_O, "delete_cell_vector(cell_vector self)"},
+	 { "cell_vector_pop", _wrap_cell_vector_pop, METH_O, "\n"
+		"cell_vector_pop(cell_vector self) -> Cell\n"
+		"Cell& pop()\n"
+		"\n"
+		"Returns and removes the last cell. \n"
+		""},
+	 { "cell_vector___len__", _wrap_cell_vector___len__, METH_O, "\n"
+		"cell_vector___len__(cell_vector self) -> size_t\n"
+		"size_t size()\n"
+		"const \n"
+		""},
+	 { "cell_vector___getslice__", (PyCFunction)(void(*)(void))_wrap_cell_vector___getslice__, METH_VARARGS|METH_KEYWORDS, "\n"
+		"cell_vector___getslice__(cell_vector self, ptrdiff_t start, ptrdiff_t end, ptrdiff_t step=1) -> cell_vector\n"
+		"cell_vector get_slice(ptrdiff_t start, ptrdiff_t end, ptrdiff_t\n"
+		"step=1) \n"
+		""},
+	 { "cell_vector_get_area", _wrap_cell_vector_get_area, METH_O, "\n"
+		"cell_vector_get_area(cell_vector self) -> double\n"
+		"double\n"
+		"get_area() const\n"
+		"\n"
+		"Returns sum of the area of the cells. \n"
+		""},
+	 { "cell_vector___contains__", (PyCFunction)(void(*)(void))_wrap_cell_vector___contains__, METH_VARARGS|METH_KEYWORDS, "\n"
+		"cell_vector___contains__(cell_vector self, Cell cell) -> bool\n"
+		"bool\n"
+		"contains(const cmf::upslope::Cell &cell) const \n"
+		""},
+	 { "delete_cell_vector", _wrap_delete_cell_vector, METH_O, "\n"
+		"delete_cell_vector(cell_vector self)\n"
+		"virtual ~cell_vector() \n"
+		""},
 	 { "cell_vector_lowest_get", _wrap_cell_vector_lowest_get, METH_O, "cell_vector_lowest_get(cell_vector self) -> Cell"},
 	 { "cell_vector_highest_get", _wrap_cell_vector_highest_get, METH_O, "cell_vector_highest_get(cell_vector self) -> Cell"},
 	 { "cell_vector_swigregister", cell_vector_swigregister, METH_O, NULL},
@@ -77076,7 +80115,22 @@ static PyMethodDef SwigMethods[] = {
 	 { "subcatchment_inflowcells_get", _wrap_subcatchment_inflowcells_get, METH_O, "subcatchment_inflowcells_get(subcatchment self) -> cell_vector"},
 	 { "subcatchment_cells_set", _wrap_subcatchment_cells_set, METH_VARARGS, "subcatchment_cells_set(subcatchment self, cell_vector cells)"},
 	 { "subcatchment_cells_get", _wrap_subcatchment_cells_get, METH_O, "subcatchment_cells_get(subcatchment self) -> cell_vector"},
-	 { "new_subcatchment", (PyCFunction)(void(*)(void))_wrap_new_subcatchment, METH_VARARGS|METH_KEYWORDS, "new_subcatchment(Cell pourpoint, double area_threshold=1e308) -> subcatchment"},
+	 { "new_subcatchment", (PyCFunction)(void(*)(void))_wrap_new_subcatchment, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_subcatchment(Cell pourpoint, double area_threshold=1e308) -> subcatchment\n"
+		"subcatchment(cmf::upslope::Cell &pourpoint, double\n"
+		"area_threshold=1e308)\n"
+		"\n"
+		"Creates a subcatchment from a pourpoint cell.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"pourpoint:  The pourpoint (outlet of the subcatchment)\n"
+		"\n"
+		"area_threshold:  Minimum contributing area size to form a\n"
+		"subcatchment. When area_threshold > area(cells), all upslope cells of\n"
+		"pourpoint are used. \n"
+		""},
 	 { "delete_subcatchment", _wrap_delete_subcatchment, METH_O, "delete_subcatchment(subcatchment self)"},
 	 { "subcatchment_swigregister", subcatchment_swigregister, METH_O, NULL},
 	 { "subcatchment_swiginit", subcatchment_swiginit, METH_VARARGS, NULL},
@@ -77087,52 +80141,144 @@ static PyMethodDef SwigMethods[] = {
 	 { "RetentionCurve_K", _wrap_RetentionCurve_K, METH_VARARGS, "\n"
 		"RetentionCurve_K(RetentionCurve self, real wetness) -> real\n"
 		"RetentionCurve_K(RetentionCurve self, cmf::math::num_array const & wetness) -> cmf::math::num_array\n"
+		"cmf::math::num_array K(const cmf::math::num_array &wetness) const \n"
 		""},
-	 { "RetentionCurve_Wetness_eff", (PyCFunction)(void(*)(void))_wrap_RetentionCurve_Wetness_eff, METH_VARARGS|METH_KEYWORDS, "RetentionCurve_Wetness_eff(RetentionCurve self, real wetness, real pF_r=4.2) -> real"},
-	 { "RetentionCurve_Porosity", (PyCFunction)(void(*)(void))_wrap_RetentionCurve_Porosity, METH_VARARGS|METH_KEYWORDS, "RetentionCurve_Porosity(RetentionCurve self, real depth=0.0) -> real"},
-	 { "RetentionCurve_VoidVolume", (PyCFunction)(void(*)(void))_wrap_RetentionCurve_VoidVolume, METH_VARARGS|METH_KEYWORDS, "RetentionCurve_VoidVolume(RetentionCurve self, real upperDepth, real lowerDepth, real Area) -> real"},
-	 { "RetentionCurve_FillHeight", (PyCFunction)(void(*)(void))_wrap_RetentionCurve_FillHeight, METH_VARARGS|METH_KEYWORDS, "RetentionCurve_FillHeight(RetentionCurve self, real lowerDepth, real Area, real Volume) -> real"},
+	 { "RetentionCurve_Wetness_eff", (PyCFunction)(void(*)(void))_wrap_RetentionCurve_Wetness_eff, METH_VARARGS|METH_KEYWORDS, "\n"
+		"RetentionCurve_Wetness_eff(RetentionCurve self, real wetness, real pF_r=4.2) -> real\n"
+		"virtual real Wetness_eff(real wetness, real pF_r=4.2) const\n"
+		"\n"
+		"Returns the effective wetness, using a residual pF value \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"    w_{eff}\n"
+		"    =\n"
+		"    \\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}\n"
+		"\n"
+		".\n"
+		"\n"
+		""},
+	 { "RetentionCurve_Porosity", (PyCFunction)(void(*)(void))_wrap_RetentionCurve_Porosity, METH_VARARGS|METH_KEYWORDS, "\n"
+		"RetentionCurve_Porosity(RetentionCurve self, real depth=0.0) -> real\n"
+		"virtual real Porosity(real depth=0.0) const =0\n"
+		"\n"
+		"Returns the porosity at a certain depth. \n"
+		""},
+	 { "RetentionCurve_VoidVolume", (PyCFunction)(void(*)(void))_wrap_RetentionCurve_VoidVolume, METH_VARARGS|METH_KEYWORDS, "\n"
+		"RetentionCurve_VoidVolume(RetentionCurve self, real upperDepth, real lowerDepth, real Area) -> real\n"
+		"virtual real VoidVolume(real upperDepth, real lowerDepth, real Area)\n"
+		"const\n"
+		"\n"
+		"Returns the void volume of a soil column. \n"
+		""},
+	 { "RetentionCurve_FillHeight", (PyCFunction)(void(*)(void))_wrap_RetentionCurve_FillHeight, METH_VARARGS|METH_KEYWORDS, "\n"
+		"RetentionCurve_FillHeight(RetentionCurve self, real lowerDepth, real Area, real Volume) -> real\n"
+		"virtual real FillHeight(real lowerDepth, real Area, real Volume) const\n"
+		"\n"
+		"Returns the thickness of a soil column with a certain pore volume. \n"
+		""},
 	 { "RetentionCurve_Diffusivity", _wrap_RetentionCurve_Diffusivity, METH_VARARGS, "\n"
 		"RetentionCurve_Diffusivity(RetentionCurve self, real wetness) -> real\n"
 		"RetentionCurve_Diffusivity(RetentionCurve self, cmf::math::num_array & wetness) -> cmf::math::num_array\n"
+		"cmf::math::num_array Diffusivity(cmf::math::num_array &wetness) \n"
 		""},
 	 { "RetentionCurve_Wetness", _wrap_RetentionCurve_Wetness, METH_VARARGS, "\n"
 		"RetentionCurve_Wetness(RetentionCurve self, real suction) -> real\n"
 		"RetentionCurve_Wetness(RetentionCurve self, cmf::math::num_array const & suction) -> cmf::math::num_array\n"
+		"cmf::math::num_array Wetness(const cmf::math::num_array &suction)\n"
+		"const \n"
 		""},
 	 { "RetentionCurve_theta", _wrap_RetentionCurve_theta, METH_VARARGS, "\n"
 		"RetentionCurve_theta(RetentionCurve self, real wetness) -> real\n"
 		"RetentionCurve_theta(RetentionCurve self, cmf::math::num_array const & wetness) -> cmf::math::num_array\n"
+		"cmf::math::num_array theta(const cmf::math::num_array &wetness) const\n"
+		"\n"
 		""},
 	 { "RetentionCurve_dPsiM_dW", _wrap_RetentionCurve_dPsiM_dW, METH_VARARGS, "\n"
 		"RetentionCurve_dPsiM_dW(RetentionCurve self, real wetness) -> real\n"
 		"RetentionCurve_dPsiM_dW(RetentionCurve self, cmf::math::num_array const & wetness) -> cmf::math::num_array\n"
+		"cmf::math::num_array dPsiM_dW(const cmf::math::num_array &wetness)\n"
+		"const \n"
 		""},
 	 { "RetentionCurve_Wetness_pF", _wrap_RetentionCurve_Wetness_pF, METH_VARARGS, "\n"
 		"RetentionCurve_Wetness_pF(RetentionCurve self, real pF) -> real\n"
 		"RetentionCurve_Wetness_pF(RetentionCurve self, cmf::math::num_array const & pF) -> cmf::math::num_array\n"
+		"cmf::math::num_array Wetness_pF(const cmf::math::num_array &pF) const\n"
+		"\n"
 		""},
 	 { "RetentionCurve_MatricPotential", _wrap_RetentionCurve_MatricPotential, METH_VARARGS, "\n"
 		"RetentionCurve_MatricPotential(RetentionCurve self, real wetness) -> real\n"
 		"RetentionCurve_MatricPotential(RetentionCurve self, cmf::math::num_array const & wetness) -> cmf::math::num_array\n"
+		"cmf::math::num_array MatricPotential(const cmf::math::num_array\n"
+		"&wetness) const \n"
 		""},
-	 { "RetentionCurve_copy", _wrap_RetentionCurve_copy, METH_O, "RetentionCurve_copy(RetentionCurve self) -> RetentionCurve"},
-	 { "delete_RetentionCurve", _wrap_delete_RetentionCurve, METH_O, "delete_RetentionCurve(RetentionCurve self)"},
+	 { "RetentionCurve_copy", _wrap_RetentionCurve_copy, METH_O, "\n"
+		"RetentionCurve_copy(RetentionCurve self) -> RetentionCurve\n"
+		"virtual\n"
+		"RetentionCurve* copy() const =0 \n"
+		""},
+	 { "delete_RetentionCurve", _wrap_delete_RetentionCurve, METH_O, "\n"
+		"delete_RetentionCurve(RetentionCurve self)\n"
+		"virtual ~RetentionCurve() \n"
+		""},
 	 { "RetentionCurve_swigregister", RetentionCurve_swigregister, METH_O, NULL},
 	 { "BrooksCoreyRetentionCurve_Ksat_set", _wrap_BrooksCoreyRetentionCurve_Ksat_set, METH_VARARGS, "BrooksCoreyRetentionCurve_Ksat_set(BrooksCoreyRetentionCurve self, real Ksat)"},
 	 { "BrooksCoreyRetentionCurve_Ksat_get", _wrap_BrooksCoreyRetentionCurve_Ksat_get, METH_O, "BrooksCoreyRetentionCurve_Ksat_get(BrooksCoreyRetentionCurve self) -> real"},
-	 { "BrooksCoreyRetentionCurve_SetPorosity", (PyCFunction)(void(*)(void))_wrap_BrooksCoreyRetentionCurve_SetPorosity, METH_VARARGS|METH_KEYWORDS, "BrooksCoreyRetentionCurve_SetPorosity(BrooksCoreyRetentionCurve self, real porosity, real porosity_decay=0)"},
-	 { "BrooksCoreyRetentionCurve_Transmissivity", (PyCFunction)(void(*)(void))_wrap_BrooksCoreyRetentionCurve_Transmissivity, METH_VARARGS|METH_KEYWORDS, "BrooksCoreyRetentionCurve_Transmissivity(BrooksCoreyRetentionCurve self, real upperDepth, real lowerDepth, real theta) -> real"},
+	 { "BrooksCoreyRetentionCurve_SetPorosity", (PyCFunction)(void(*)(void))_wrap_BrooksCoreyRetentionCurve_SetPorosity, METH_VARARGS|METH_KEYWORDS, "\n"
+		"BrooksCoreyRetentionCurve_SetPorosity(BrooksCoreyRetentionCurve self, real porosity, real porosity_decay=0)\n"
+		"void\n"
+		"SetPorosity(real porosity, real porosity_decay=0)\n"
+		"\n"
+		"Sets the porosity (Volume of pores per volume of soil) and the\n"
+		"exponential porosity decline with depth. \n"
+		""},
+	 { "BrooksCoreyRetentionCurve_Transmissivity", (PyCFunction)(void(*)(void))_wrap_BrooksCoreyRetentionCurve_Transmissivity, METH_VARARGS|METH_KEYWORDS, "\n"
+		"BrooksCoreyRetentionCurve_Transmissivity(BrooksCoreyRetentionCurve self, real upperDepth, real lowerDepth, real theta) -> real\n"
+		"real\n"
+		"Transmissivity(real upperDepth, real lowerDepth, real theta) const \n"
+		""},
 	 { "BrooksCoreyRetentionCurve_wetness_X_set", _wrap_BrooksCoreyRetentionCurve_wetness_X_set, METH_VARARGS, "BrooksCoreyRetentionCurve_wetness_X_set(BrooksCoreyRetentionCurve self, real wetness_X)"},
 	 { "BrooksCoreyRetentionCurve_wetness_X_get", _wrap_BrooksCoreyRetentionCurve_wetness_X_get, METH_O, "BrooksCoreyRetentionCurve_wetness_X_get(BrooksCoreyRetentionCurve self) -> real"},
 	 { "BrooksCoreyRetentionCurve_Psi_X_set", _wrap_BrooksCoreyRetentionCurve_Psi_X_set, METH_VARARGS, "BrooksCoreyRetentionCurve_Psi_X_set(BrooksCoreyRetentionCurve self, real Psi_X)"},
 	 { "BrooksCoreyRetentionCurve_Psi_X_get", _wrap_BrooksCoreyRetentionCurve_Psi_X_get, METH_O, "BrooksCoreyRetentionCurve_Psi_X_get(BrooksCoreyRetentionCurve self) -> real"},
 	 { "BrooksCoreyRetentionCurve_residual_theta_set", _wrap_BrooksCoreyRetentionCurve_residual_theta_set, METH_VARARGS, "BrooksCoreyRetentionCurve_residual_theta_set(BrooksCoreyRetentionCurve self, real residual_theta)"},
 	 { "BrooksCoreyRetentionCurve_residual_theta_get", _wrap_BrooksCoreyRetentionCurve_residual_theta_get, METH_O, "BrooksCoreyRetentionCurve_residual_theta_get(BrooksCoreyRetentionCurve self) -> real"},
-	 { "new_BrooksCoreyRetentionCurve", (PyCFunction)(void(*)(void))_wrap_new_BrooksCoreyRetentionCurve, METH_VARARGS|METH_KEYWORDS, "new_BrooksCoreyRetentionCurve(real ksat=15, real porosity=0.5, real _b=5, real theta_x=0.2, real psi_x=cmf::upslope::pF_to_waterhead(2.5), real porosity_decay=0) -> BrooksCoreyRetentionCurve"},
+	 { "new_BrooksCoreyRetentionCurve", (PyCFunction)(void(*)(void))_wrap_new_BrooksCoreyRetentionCurve, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_BrooksCoreyRetentionCurve(real ksat=15, real porosity=0.5, real _b=5, real theta_x=0.2, real psi_x=cmf::upslope::pF_to_waterhead(2.5), real porosity_decay=0) -> BrooksCoreyRetentionCurve\n"
+		"BrooksCoreyRetentionCurve(real ksat=15, real porosity=0.5, real _b=5,\n"
+		"real theta_x=0.2, real psi_x=pF_to_waterhead(2.5), real\n"
+		"porosity_decay=0)\n"
+		"\n"
+		"Creates a brooks corey retention curve.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"ksat:  Saturated conductivity :math:`\\\\frac{m}{day}`\n"
+		"\n"
+		"porosity:   :math:`\\\\frac{m^3 Pores}{m^3 Soil}`\n"
+		"\n"
+		"_b:  Shape of the retention curve (if you do not know how to\n"
+		"parameterize this, take a look at the other constructor)\n"
+		"\n"
+		"theta_x:   :math:`\\\\theta_X` Water content at a specific suction pressure\n"
+		"\n"
+		"psi_x:  Suction pressure for :math:`\\\\theta_X` in m water column, use the\n"
+		"conversion functions pF_to_waterhead, pressure_to_waterhead to convert\n"
+		"pressure in to waterhead height (default pF=2.5)\n"
+		"\n"
+		"porosity_decay:  Relative decay of porosity with depth, e.g. 0.1 means\n"
+		"conductivity gets 10% smaller per meter \n"
+		""},
 	 { "BrooksCoreyRetentionCurve_CreateFrom2Points", (PyCFunction)(void(*)(void))_wrap_BrooksCoreyRetentionCurve_CreateFrom2Points, METH_VARARGS|METH_KEYWORDS, "BrooksCoreyRetentionCurve_CreateFrom2Points(real ksat, real porosity, real theta1, real theta2, real psi_1=cmf::upslope::pF_to_waterhead(2.5), real psi_2=cmf::upslope::pF_to_waterhead(4.2)) -> BrooksCoreyRetentionCurve"},
-	 { "BrooksCoreyRetentionCurve_copy", _wrap_BrooksCoreyRetentionCurve_copy, METH_O, "BrooksCoreyRetentionCurve_copy(BrooksCoreyRetentionCurve self) -> BrooksCoreyRetentionCurve"},
-	 { "delete_BrooksCoreyRetentionCurve", _wrap_delete_BrooksCoreyRetentionCurve, METH_O, "delete_BrooksCoreyRetentionCurve(BrooksCoreyRetentionCurve self)"},
+	 { "BrooksCoreyRetentionCurve_copy", _wrap_BrooksCoreyRetentionCurve_copy, METH_O, "\n"
+		"BrooksCoreyRetentionCurve_copy(BrooksCoreyRetentionCurve self) -> BrooksCoreyRetentionCurve\n"
+		"virtual BrooksCoreyRetentionCurve* copy() const \n"
+		""},
+	 { "delete_BrooksCoreyRetentionCurve", _wrap_delete_BrooksCoreyRetentionCurve, METH_O, "\n"
+		"delete_BrooksCoreyRetentionCurve(BrooksCoreyRetentionCurve self)\n"
+		"virtual ~BrooksCoreyRetentionCurve() \n"
+		""},
 	 { "BrooksCoreyRetentionCurve_b_set", _wrap_BrooksCoreyRetentionCurve_b_set, METH_VARARGS, "BrooksCoreyRetentionCurve_b_set(BrooksCoreyRetentionCurve self, real b)"},
 	 { "BrooksCoreyRetentionCurve_b_get", _wrap_BrooksCoreyRetentionCurve_b_get, METH_O, "BrooksCoreyRetentionCurve_b_get(BrooksCoreyRetentionCurve self) -> real"},
 	 { "BrooksCoreyRetentionCurve_swigregister", BrooksCoreyRetentionCurve_swigregister, METH_O, NULL},
@@ -77153,11 +80299,63 @@ static PyMethodDef SwigMethods[] = {
 	 { "VanGenuchtenMualem_theta_r_get", _wrap_VanGenuchtenMualem_theta_r_get, METH_O, "VanGenuchtenMualem_theta_r_get(VanGenuchtenMualem self) -> real"},
 	 { "VanGenuchtenMualem_w0_set", _wrap_VanGenuchtenMualem_w0_set, METH_VARARGS, "VanGenuchtenMualem_w0_set(VanGenuchtenMualem self, real w0)"},
 	 { "VanGenuchtenMualem_w0_get", _wrap_VanGenuchtenMualem_w0_get, METH_O, "VanGenuchtenMualem_w0_get(VanGenuchtenMualem self) -> real"},
-	 { "VanGenuchtenMualem_Transmissivity", (PyCFunction)(void(*)(void))_wrap_VanGenuchtenMualem_Transmissivity, METH_VARARGS|METH_KEYWORDS, "VanGenuchtenMualem_Transmissivity(VanGenuchtenMualem self, real upperDepth, real lowerDepth, real wetness) -> real"},
-	 { "VanGenuchtenMualem_fit_w0", (PyCFunction)(void(*)(void))_wrap_VanGenuchtenMualem_fit_w0, METH_VARARGS|METH_KEYWORDS, "VanGenuchtenMualem_fit_w0(VanGenuchtenMualem self, real w1=1.01, real Psi_p=1.0, real tolerance=0.05) -> real"},
-	 { "VanGenuchtenMualem_copy", _wrap_VanGenuchtenMualem_copy, METH_O, "VanGenuchtenMualem_copy(VanGenuchtenMualem self) -> VanGenuchtenMualem"},
-	 { "new_VanGenuchtenMualem", (PyCFunction)(void(*)(void))_wrap_new_VanGenuchtenMualem, METH_VARARGS|METH_KEYWORDS, "new_VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real n=1.211, real m=-1, real theta_r=0.0, real w0=0.99) -> VanGenuchtenMualem"},
-	 { "delete_VanGenuchtenMualem", _wrap_delete_VanGenuchtenMualem, METH_O, "delete_VanGenuchtenMualem(VanGenuchtenMualem self)"},
+	 { "VanGenuchtenMualem_Transmissivity", (PyCFunction)(void(*)(void))_wrap_VanGenuchtenMualem_Transmissivity, METH_VARARGS|METH_KEYWORDS, "\n"
+		"VanGenuchtenMualem_Transmissivity(VanGenuchtenMualem self, real upperDepth, real lowerDepth, real wetness) -> real\n"
+		"virtual real\n"
+		"Transmissivity(real upperDepth, real lowerDepth, real wetness) const\n"
+		"\n"
+		""},
+	 { "VanGenuchtenMualem_fit_w0", (PyCFunction)(void(*)(void))_wrap_VanGenuchtenMualem_fit_w0, METH_VARARGS|METH_KEYWORDS, "\n"
+		"VanGenuchtenMualem_fit_w0(VanGenuchtenMualem self, real w1=1.01, real Psi_p=1.0, real tolerance=0.05) -> real\n"
+		"real\n"
+		"fit_w0(real w1=1.01, real Psi_p=1.0, real tolerance=0.05)\n"
+		"\n"
+		"Fits the break point wetness w0, to ensure a specific oversaturation\n"
+		"at a given hydrostatic potential.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"w1:  The oversaturation wetness to archieve (>1), default = 1.01\n"
+		"\n"
+		"Psi_p:  the hydrostatic potential for w1, default = +1.0 m\n"
+		"\n"
+		"tolerance:  \n"
+		""},
+	 { "VanGenuchtenMualem_copy", _wrap_VanGenuchtenMualem_copy, METH_O, "\n"
+		"VanGenuchtenMualem_copy(VanGenuchtenMualem self) -> VanGenuchtenMualem\n"
+		"VanGenuchtenMualem* copy() const \n"
+		""},
+	 { "new_VanGenuchtenMualem", (PyCFunction)(void(*)(void))_wrap_new_VanGenuchtenMualem, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real n=1.211, real m=-1, real theta_r=0.0, real w0=0.99) -> VanGenuchtenMualem\n"
+		"VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real\n"
+		"n=1.211, real m=-1, real theta_r=0.0, real w0=0.99)\n"
+		"\n"
+		"Creates a van Genuchten-Mualem retention curve.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"Ksat:  Saturated conductivity in :math:`\\\\frac m{day}`\n"
+		"\n"
+		"phi:  Porosity in :math:`\\\\frac{m^3 Pores}{m^3 Soil}`\n"
+		"\n"
+		"alpha:  Van Genuchten :math:`\\\\alpha` in :math:`\\\\frac 1{cm}`\n"
+		"\n"
+		"n:  Van Genuchten n\n"
+		"\n"
+		"m:  Van Genuchten m parameter, if negative m is calculated as :math:`1-\\\\frac 1 n`\n"
+		"\n"
+		"theta_r:  Water content for :math:`\\\\lim\\\\limits_{\\\\Psi_M \\\\rightarrow -\\\\infty}{\\\\theta(\\\\Psi_M)}`\n"
+		"\n"
+		"w0:  Wetness above the parabolic extrapolation is used instead of the\n"
+		"Van Genuchten curve (usually calculated with fit_w0) \n"
+		""},
+	 { "delete_VanGenuchtenMualem", _wrap_delete_VanGenuchtenMualem, METH_O, "\n"
+		"delete_VanGenuchtenMualem(VanGenuchtenMualem self)\n"
+		"virtual\n"
+		"~VanGenuchtenMualem() \n"
+		""},
 	 { "VanGenuchtenMualem_swigregister", VanGenuchtenMualem_swigregister, METH_O, NULL},
 	 { "VanGenuchtenMualem_swiginit", VanGenuchtenMualem_swiginit, METH_VARARGS, NULL},
 	 { "LinearRetention_Ksat_set", _wrap_LinearRetention_Ksat_set, METH_VARARGS, "LinearRetention_Ksat_set(LinearRetention self, real Ksat)"},
@@ -77172,29 +80370,120 @@ static PyMethodDef SwigMethods[] = {
 	 { "LinearRetention_porosity_decay_get", _wrap_LinearRetention_porosity_decay_get, METH_O, "LinearRetention_porosity_decay_get(LinearRetention self) -> real"},
 	 { "LinearRetention_beta_set", _wrap_LinearRetention_beta_set, METH_VARARGS, "LinearRetention_beta_set(LinearRetention self, real beta)"},
 	 { "LinearRetention_beta_get", _wrap_LinearRetention_beta_get, METH_O, "LinearRetention_beta_get(LinearRetention self) -> real"},
-	 { "LinearRetention_Transmissivity", (PyCFunction)(void(*)(void))_wrap_LinearRetention_Transmissivity, METH_VARARGS|METH_KEYWORDS, "LinearRetention_Transmissivity(LinearRetention self, real upperDepth, real lowerDepth, real wetness) -> real"},
-	 { "LinearRetention_copy", _wrap_LinearRetention_copy, METH_O, "LinearRetention_copy(LinearRetention self) -> LinearRetention"},
-	 { "new_LinearRetention", (PyCFunction)(void(*)(void))_wrap_new_LinearRetention, METH_VARARGS|METH_KEYWORDS, "new_LinearRetention(real ksat, real phi, real thickness, real residual_wetness=0.1) -> LinearRetention"},
-	 { "delete_LinearRetention", _wrap_delete_LinearRetention, METH_O, "delete_LinearRetention(LinearRetention self)"},
+	 { "LinearRetention_Transmissivity", (PyCFunction)(void(*)(void))_wrap_LinearRetention_Transmissivity, METH_VARARGS|METH_KEYWORDS, "\n"
+		"LinearRetention_Transmissivity(LinearRetention self, real upperDepth, real lowerDepth, real wetness) -> real\n"
+		"virtual real Transmissivity(real upperDepth, real lowerDepth, real\n"
+		"wetness) const \n"
+		""},
+	 { "LinearRetention_copy", _wrap_LinearRetention_copy, METH_O, "\n"
+		"LinearRetention_copy(LinearRetention self) -> LinearRetention\n"
+		"LinearRetention* copy() const \n"
+		""},
+	 { "new_LinearRetention", (PyCFunction)(void(*)(void))_wrap_new_LinearRetention, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_LinearRetention(real ksat, real phi, real thickness, real residual_wetness=0.1) -> LinearRetention\n"
+		"LinearRetention(real ksat, real phi, real thickness, real\n"
+		"residual_wetness=0.1) \n"
+		""},
+	 { "delete_LinearRetention", _wrap_delete_LinearRetention, METH_O, "\n"
+		"delete_LinearRetention(LinearRetention self)\n"
+		"virtual ~LinearRetention() \n"
+		""},
 	 { "LinearRetention_swigregister", LinearRetention_swigregister, METH_O, NULL},
 	 { "LinearRetention_swiginit", LinearRetention_swiginit, METH_VARARGS, NULL},
-	 { "conductable_get_K", (PyCFunction)(void(*)(void))_wrap_conductable_get_K, METH_VARARGS|METH_KEYWORDS, "conductable_get_K(conductable self, point direction) -> real"},
+	 { "conductable_get_K", (PyCFunction)(void(*)(void))_wrap_conductable_get_K, METH_VARARGS|METH_KEYWORDS, "\n"
+		"conductable_get_K(conductable self, point direction) -> real\n"
+		"virtual real\n"
+		"get_K(cmf::geometry::point direction) const =0 \n"
+		""},
 	 { "conductable_cast", (PyCFunction)(void(*)(void))_wrap_conductable_cast, METH_VARARGS|METH_KEYWORDS, "conductable_cast(cmf::water::flux_node::ptr node) -> cmf::upslope::conductable::ptr"},
 	 { "delete_conductable", _wrap_delete_conductable, METH_O, "delete_conductable(conductable self)"},
 	 { "conductable_swigregister", conductable_swigregister, METH_O, NULL},
 	 { "SoilLayer_Position_get", _wrap_SoilLayer_Position_get, METH_O, "SoilLayer_Position_get(SoilLayer self) -> ptrdiff_t const"},
 	 { "SoilLayer_cell_get", _wrap_SoilLayer_cell_get, METH_O, "SoilLayer_cell_get(SoilLayer self) -> Cell"},
-	 { "SoilLayer___get_upper", _wrap_SoilLayer___get_upper, METH_O, "SoilLayer___get_upper(SoilLayer self) -> cmf::upslope::SoilLayer::ptr"},
-	 { "SoilLayer___get_lower", _wrap_SoilLayer___get_lower, METH_O, "SoilLayer___get_lower(SoilLayer self) -> cmf::upslope::SoilLayer::ptr"},
-	 { "SoilLayer_get_soil", _wrap_SoilLayer_get_soil, METH_O, "SoilLayer_get_soil(SoilLayer self) -> RetentionCurve"},
-	 { "SoilLayer_set_soil", (PyCFunction)(void(*)(void))_wrap_SoilLayer_set_soil, METH_VARARGS|METH_KEYWORDS, "SoilLayer_set_soil(SoilLayer self, RetentionCurve r_curve)"},
+	 { "SoilLayer___get_upper", _wrap_SoilLayer___get_upper, METH_O, "\n"
+		"SoilLayer___get_upper(SoilLayer self) -> cmf::upslope::SoilLayer::ptr\n"
+		"ptr\n"
+		"get_upper() const \n"
+		""},
+	 { "SoilLayer___get_lower", _wrap_SoilLayer___get_lower, METH_O, "\n"
+		"SoilLayer___get_lower(SoilLayer self) -> cmf::upslope::SoilLayer::ptr\n"
+		"ptr\n"
+		"get_lower() const \n"
+		""},
+	 { "SoilLayer_get_soil", _wrap_SoilLayer_get_soil, METH_O, "\n"
+		"SoilLayer_get_soil(SoilLayer self) -> RetentionCurve\n"
+		"virtual\n"
+		"cmf::upslope::RetentionCurve& get_soil() const\n"
+		"\n"
+		"Returns the soil properties of the water storage. \n"
+		""},
+	 { "SoilLayer_set_soil", (PyCFunction)(void(*)(void))_wrap_SoilLayer_set_soil, METH_VARARGS|METH_KEYWORDS, "\n"
+		"SoilLayer_set_soil(SoilLayer self, RetentionCurve r_curve)\n"
+		"virtual\n"
+		"void set_soil(const cmf::upslope::RetentionCurve &r_curve) \n"
+		""},
 	 { "SoilLayer_anisotropic_kf_set", _wrap_SoilLayer_anisotropic_kf_set, METH_VARARGS, "SoilLayer_anisotropic_kf_set(SoilLayer self, point anisotropic_kf)"},
 	 { "SoilLayer_anisotropic_kf_get", _wrap_SoilLayer_anisotropic_kf_get, METH_O, "SoilLayer_anisotropic_kf_get(SoilLayer self) -> point"},
-	 { "SoilLayer_get_capacity", _wrap_SoilLayer_get_capacity, METH_O, "SoilLayer_get_capacity(SoilLayer self) -> real"},
-	 { "SoilLayer_get_saturated_depth", _wrap_SoilLayer_get_saturated_depth, METH_O, "SoilLayer_get_saturated_depth(SoilLayer self) -> real"},
-	 { "SoilLayer_set_root_uptake_stress_function", (PyCFunction)(void(*)(void))_wrap_SoilLayer_set_root_uptake_stress_function, METH_VARARGS|METH_KEYWORDS, "SoilLayer_set_root_uptake_stress_function(SoilLayer self, RootUptakeStressFunction stressfunction)"},
-	 { "SoilLayer_get_Tact", (PyCFunction)(void(*)(void))_wrap_SoilLayer_get_Tact, METH_VARARGS|METH_KEYWORDS, "SoilLayer_get_Tact(SoilLayer self, double Tpot) -> double"},
-	 { "SoilLayer_get_flow_crosssection", (PyCFunction)(void(*)(void))_wrap_SoilLayer_get_flow_crosssection, METH_VARARGS|METH_KEYWORDS, "SoilLayer_get_flow_crosssection(SoilLayer self, SoilLayer target, bool HorizontalLayers=False) -> real"},
+	 { "SoilLayer_get_capacity", _wrap_SoilLayer_get_capacity, METH_O, "\n"
+		"SoilLayer_get_capacity(SoilLayer self) -> real\n"
+		"virtual\n"
+		"real get_capacity() const\n"
+		"\n"
+		"Returns the capacity of the water storage in m3. \n"
+		""},
+	 { "SoilLayer_get_saturated_depth", _wrap_SoilLayer_get_saturated_depth, METH_O, "\n"
+		"SoilLayer_get_saturated_depth(SoilLayer self) -> real\n"
+		"virtual real get_saturated_depth() const\n"
+		"\n"
+		"Returns the depth for saturation \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     z_{sat,this} =\n"
+		"    \\\\left\\\\{z_{cell}-\\\\Psi_{tot} \\\\mbox{ if } W<1 \\\\\\\\\n"
+		"    z_{sat,upper layer} \\\\right. \n"
+		"\n"
+		". \n"
+		""},
+	 { "SoilLayer_set_root_uptake_stress_function", (PyCFunction)(void(*)(void))_wrap_SoilLayer_set_root_uptake_stress_function, METH_VARARGS|METH_KEYWORDS, "\n"
+		"SoilLayer_set_root_uptake_stress_function(SoilLayer self, RootUptakeStressFunction stressfunction)\n"
+		"void\n"
+		"set_root_uptake_stress_function(const\n"
+		"cmf::upslope::ET::RootUptakeStressFunction &stressfunction)\n"
+		"\n"
+		"Sets the root uptake stress function. \n"
+		""},
+	 { "SoilLayer_get_Tact", (PyCFunction)(void(*)(void))_wrap_SoilLayer_get_Tact, METH_VARARGS|METH_KEYWORDS, "\n"
+		"SoilLayer_get_Tact(SoilLayer self, double Tpot) -> double\n"
+		"double\n"
+		"get_Tact(double Tpot)\n"
+		"\n"
+		"Returns a factor to indicate the draught stress to be multiplied with\n"
+		"ETpot.\n"
+		"\n"
+		"1 = no stress, 0 = no uptake possible \n"
+		""},
+	 { "SoilLayer_get_flow_crosssection", (PyCFunction)(void(*)(void))_wrap_SoilLayer_get_flow_crosssection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"SoilLayer_get_flow_crosssection(SoilLayer self, SoilLayer target, bool HorizontalLayers=False) -> real\n"
+		"real get_flow_crosssection(const cmf::upslope::SoilLayer &target,\n"
+		"bool HorizontalLayers=false) const\n"
+		"\n"
+		"Calculates the shared crosssectional area of this and another soil\n"
+		"water storage.\n"
+		"\n"
+		"If both layers belong to the same cell, the area of the cell is\n"
+		"returned, if they belong to different cells the area of the vertical\n"
+		"shared boundary is returned get_area in m2\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"target:  The other soil water storage\n"
+		"\n"
+		"HorizontalLayers:  If true, the layers are assumed to be parallel to\n"
+		"the gravitational potential, otherwise they are assumed to be parallel\n"
+		"to the ground topography \n"
+		""},
 	 { "SoilLayer_cast", (PyCFunction)(void(*)(void))_wrap_SoilLayer_cast, METH_VARARGS|METH_KEYWORDS, "SoilLayer_cast(cmf::water::flux_node::ptr node) -> cmf::upslope::SoilLayer::ptr"},
 	 { "SoilLayer_gravitational_potential_get", _wrap_SoilLayer_gravitational_potential_get, METH_O, "SoilLayer_gravitational_potential_get(SoilLayer self) -> real"},
 	 { "SoilLayer_matrix_potential_get", _wrap_SoilLayer_matrix_potential_get, METH_O, "SoilLayer_matrix_potential_get(SoilLayer self) -> real"},
@@ -77218,23 +80507,99 @@ static PyMethodDef SwigMethods[] = {
 		"layer_list(layer_list for_copy)\n"
 		"layer_list()\n"
 		"new_layer_list(node_list for_copy) -> layer_list\n"
+		"layer_list(const cmf::water::node_list &for_copy)\n"
+		"\n"
+		"Creates a list of all soil layers from a node_list. \n"
 		""},
-	 { "layer_list_pop", _wrap_layer_list_pop, METH_O, "layer_list_pop(layer_list self) -> cmf::upslope::SoilLayer::ptr"},
-	 { "layer_list_append", (PyCFunction)(void(*)(void))_wrap_layer_list_append, METH_VARARGS|METH_KEYWORDS, "layer_list_append(layer_list self, cmf::upslope::SoilLayer::ptr l) -> layer_list"},
+	 { "layer_list_pop", _wrap_layer_list_pop, METH_O, "\n"
+		"layer_list_pop(layer_list self) -> cmf::upslope::SoilLayer::ptr\n"
+		"SoilLayer::ptr\n"
+		"pop()\n"
+		"\n"
+		"Deletes the last layer from the list and returns it. \n"
+		""},
+	 { "layer_list_append", (PyCFunction)(void(*)(void))_wrap_layer_list_append, METH_VARARGS|METH_KEYWORDS, "\n"
+		"layer_list_append(layer_list self, cmf::upslope::SoilLayer::ptr l) -> layer_list\n"
+		"layer_list&\n"
+		"append(SoilLayer::ptr l)\n"
+		"\n"
+		"Appends a soil layer to the list. \n"
+		""},
 	 { "layer_list_extend", _wrap_layer_list_extend, METH_VARARGS, "\n"
 		"layer_list_extend(layer_list self, layer_list ll) -> layer_list\n"
 		"layer_list_extend(layer_list self, node_list nl) -> layer_list\n"
+		"layer_list&\n"
+		"extend(const cmf::water::node_list &nl)\n"
+		"\n"
+		"Appends all soil layers from a node_list to this. \n"
 		""},
-	 { "layer_list_get_slice", (PyCFunction)(void(*)(void))_wrap_layer_list_get_slice, METH_VARARGS|METH_KEYWORDS, "layer_list_get_slice(layer_list self, size_t first=0, size_t last=1000000, size_t step=1) -> layer_list"},
-	 { "layer_list_clear", _wrap_layer_list_clear, METH_O, "layer_list_clear(layer_list self)"},
-	 { "layer_list_size", _wrap_layer_list_size, METH_O, "layer_list_size(layer_list self) -> size_t"},
-	 { "layer_list_set_wetness", (PyCFunction)(void(*)(void))_wrap_layer_list_set_wetness, METH_VARARGS|METH_KEYWORDS, "layer_list_set_wetness(layer_list self, cmf::math::num_array const & Value, size_t offset=0)"},
-	 { "layer_list_set_potential", (PyCFunction)(void(*)(void))_wrap_layer_list_set_potential, METH_VARARGS|METH_KEYWORDS, "layer_list_set_potential(layer_list self, cmf::math::num_array const & Value, size_t offset=0)"},
-	 { "layer_list_set_volume", (PyCFunction)(void(*)(void))_wrap_layer_list_set_volume, METH_VARARGS|METH_KEYWORDS, "layer_list_set_volume(layer_list self, cmf::math::num_array const & Value, size_t offset=0)"},
-	 { "layer_list_get_percolation", (PyCFunction)(void(*)(void))_wrap_layer_list_get_percolation, METH_VARARGS|METH_KEYWORDS, "layer_list_get_percolation(layer_list self, Time t) -> cmf::math::num_array"},
-	 { "layer_list_set_theta", (PyCFunction)(void(*)(void))_wrap_layer_list_set_theta, METH_VARARGS|METH_KEYWORDS, "layer_list_set_theta(layer_list self, cmf::math::num_array const & Value, size_t offset=0)"},
-	 { "layer_list_set_ice_fraction", (PyCFunction)(void(*)(void))_wrap_layer_list_set_ice_fraction, METH_VARARGS|METH_KEYWORDS, "layer_list_set_ice_fraction(layer_list self, cmf::math::num_array const & Value, size_t offset=0)"},
-	 { "layer_list_set_rootfraction", (PyCFunction)(void(*)(void))_wrap_layer_list_set_rootfraction, METH_VARARGS|METH_KEYWORDS, "layer_list_set_rootfraction(layer_list self, cmf::math::num_array const & Value, size_t offset=0)"},
+	 { "layer_list_get_slice", (PyCFunction)(void(*)(void))_wrap_layer_list_get_slice, METH_VARARGS|METH_KEYWORDS, "\n"
+		"layer_list_get_slice(layer_list self, size_t first=0, size_t last=1000000, size_t step=1) -> layer_list\n"
+		"layer_list get_slice(size_t first=0, size_t last=1000000, size_t\n"
+		"step=1) \n"
+		""},
+	 { "layer_list_clear", _wrap_layer_list_clear, METH_O, "\n"
+		"layer_list_clear(layer_list self)\n"
+		"void clear()\n"
+		"\n"
+		"Clears the list. \n"
+		""},
+	 { "layer_list_size", _wrap_layer_list_size, METH_O, "\n"
+		"layer_list_size(layer_list self) -> size_t\n"
+		"size_t size()\n"
+		"const\n"
+		"\n"
+		"Number of layers in the list. \n"
+		""},
+	 { "layer_list_set_wetness", (PyCFunction)(void(*)(void))_wrap_layer_list_set_wetness, METH_VARARGS|METH_KEYWORDS, "\n"
+		"layer_list_set_wetness(layer_list self, cmf::math::num_array const & Value, size_t offset=0)\n"
+		"void\n"
+		"set_wetness(const cmf::math::num_array &Value, size_t offset=0)\n"
+		"\n"
+		"Sets the wetness in m3/m3 of layers [offset : arraysize]. \n"
+		""},
+	 { "layer_list_set_potential", (PyCFunction)(void(*)(void))_wrap_layer_list_set_potential, METH_VARARGS|METH_KEYWORDS, "\n"
+		"layer_list_set_potential(layer_list self, cmf::math::num_array const & Value, size_t offset=0)\n"
+		"void\n"
+		"set_potential(const cmf::math::num_array &Value, size_t offset=0)\n"
+		"\n"
+		"Sets the potential (head) in m of layers [offset : arraysize]. \n"
+		""},
+	 { "layer_list_set_volume", (PyCFunction)(void(*)(void))_wrap_layer_list_set_volume, METH_VARARGS|METH_KEYWORDS, "\n"
+		"layer_list_set_volume(layer_list self, cmf::math::num_array const & Value, size_t offset=0)\n"
+		"void\n"
+		"set_volume(const cmf::math::num_array &Value, size_t offset=0)\n"
+		"\n"
+		"Sets the Volume in m3 of layers [offset : arraysize]. \n"
+		""},
+	 { "layer_list_get_percolation", (PyCFunction)(void(*)(void))_wrap_layer_list_get_percolation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"layer_list_get_percolation(layer_list self, Time t) -> cmf::math::num_array\n"
+		"cmf::math::num_array get_percolation(cmf::math::Time t) const\n"
+		"\n"
+		"Returns the flux to each layer from the upper layer, or, in case of\n"
+		"the first layer from the surface water. \n"
+		""},
+	 { "layer_list_set_theta", (PyCFunction)(void(*)(void))_wrap_layer_list_set_theta, METH_VARARGS|METH_KEYWORDS, "\n"
+		"layer_list_set_theta(layer_list self, cmf::math::num_array const & Value, size_t offset=0)\n"
+		"void\n"
+		"set_theta(const cmf::math::num_array &Value, size_t offset=0)\n"
+		"\n"
+		"Sets the volumetric water content of the soil. \n"
+		""},
+	 { "layer_list_set_ice_fraction", (PyCFunction)(void(*)(void))_wrap_layer_list_set_ice_fraction, METH_VARARGS|METH_KEYWORDS, "\n"
+		"layer_list_set_ice_fraction(layer_list self, cmf::math::num_array const & Value, size_t offset=0)\n"
+		"void set_ice_fraction(const cmf::math::num_array &Value, size_t\n"
+		"offset=0)\n"
+		"\n"
+		"Sets the fraction of the ice content of the soil water. \n"
+		""},
+	 { "layer_list_set_rootfraction", (PyCFunction)(void(*)(void))_wrap_layer_list_set_rootfraction, METH_VARARGS|METH_KEYWORDS, "\n"
+		"layer_list_set_rootfraction(layer_list self, cmf::math::num_array const & Value, size_t offset=0)\n"
+		"void set_rootfraction(const cmf::math::num_array &Value, size_t\n"
+		"offset=0)\n"
+		"\n"
+		"Sets the fraction of roots in each layer. \n"
+		""},
 	 { "layer_list_gravitational_potential_get", _wrap_layer_list_gravitational_potential_get, METH_O, "layer_list_gravitational_potential_get(layer_list self) -> cmf::math::num_array"},
 	 { "layer_list_matrix_potential_get", _wrap_layer_list_matrix_potential_get, METH_O, "layer_list_matrix_potential_get(layer_list self) -> cmf::math::num_array"},
 	 { "layer_list_wetness_get", _wrap_layer_list_wetness_get, METH_O, "layer_list_wetness_get(layer_list self) -> cmf::math::num_array"},
@@ -77257,17 +80622,89 @@ static PyMethodDef SwigMethods[] = {
 	 { "MacroPore_porefraction_min_get", _wrap_MacroPore_porefraction_min_get, METH_O, "MacroPore_porefraction_min_get(MacroPore self) -> real"},
 	 { "MacroPore_porefraction_max_set", _wrap_MacroPore_porefraction_max_set, METH_VARARGS, "MacroPore_porefraction_max_set(MacroPore self, real porefraction_max)"},
 	 { "MacroPore_porefraction_max_get", _wrap_MacroPore_porefraction_max_get, METH_O, "MacroPore_porefraction_max_get(MacroPore self) -> real"},
-	 { "MacroPore___get_layer", _wrap_MacroPore___get_layer, METH_O, "MacroPore___get_layer(MacroPore self) -> cmf::upslope::SoilLayer::ptr"},
-	 { "MacroPore_get_porefraction", _wrap_MacroPore_get_porefraction, METH_O, "MacroPore_get_porefraction(MacroPore self) -> real"},
+	 { "MacroPore___get_layer", _wrap_MacroPore___get_layer, METH_O, "\n"
+		"MacroPore___get_layer(MacroPore self) -> cmf::upslope::SoilLayer::ptr\n"
+		"SoilLayer::ptr get_layer() const\n"
+		"\n"
+		"Gets the soil layer (matrix water storage) for this macropore storage.\n"
+		"\n"
+		""},
+	 { "MacroPore_get_porefraction", _wrap_MacroPore_get_porefraction, METH_O, "\n"
+		"MacroPore_get_porefraction(MacroPore self) -> real\n"
+		"real get_porefraction() const\n"
+		"\n"
+		"The fraction of the macro pores in m3/m3. This adds to the porosity of\n"
+		"the layer. \n"
+		""},
 	 { "MacroPore_density_set", _wrap_MacroPore_density_set, METH_VARARGS, "MacroPore_density_set(MacroPore self, real density)"},
 	 { "MacroPore_density_get", _wrap_MacroPore_density_get, METH_O, "MacroPore_density_get(MacroPore self) -> real"},
 	 { "MacroPore_Ksat_set", _wrap_MacroPore_Ksat_set, METH_VARARGS, "MacroPore_Ksat_set(MacroPore self, real Ksat)"},
 	 { "MacroPore_Ksat_get", _wrap_MacroPore_Ksat_get, METH_O, "MacroPore_Ksat_get(MacroPore self) -> real"},
 	 { "MacroPore_crack_wetness_set", _wrap_MacroPore_crack_wetness_set, METH_VARARGS, "MacroPore_crack_wetness_set(MacroPore self, real crack_wetness)"},
 	 { "MacroPore_crack_wetness_get", _wrap_MacroPore_crack_wetness_get, METH_O, "MacroPore_crack_wetness_get(MacroPore self) -> real"},
-	 { "MacroPore_get_K", (PyCFunction)(void(*)(void))_wrap_MacroPore_get_K, METH_VARARGS|METH_KEYWORDS, "MacroPore_get_K(MacroPore self, point direction) -> real"},
-	 { "MacroPore_get_crackwidth", _wrap_MacroPore_get_crackwidth, METH_O, "MacroPore_get_crackwidth(MacroPore self) -> real"},
-	 { "MacroPore_get_flowwidth", _wrap_MacroPore_get_flowwidth, METH_O, "MacroPore_get_flowwidth(MacroPore self) -> real"},
+	 { "MacroPore_get_K", (PyCFunction)(void(*)(void))_wrap_MacroPore_get_K, METH_VARARGS|METH_KEYWORDS, "\n"
+		"MacroPore_get_K(MacroPore self, point direction) -> real\n"
+		"virtual real\n"
+		"get_K(cmf::geometry::point direction) const\n"
+		"\n"
+		"Returns the actual anisotropic conductivity along a direction :math:`K = (k_f \\\\cdot d) K`. \n"
+		""},
+	 { "MacroPore_get_crackwidth", _wrap_MacroPore_get_crackwidth, METH_O, "\n"
+		"MacroPore_get_crackwidth(MacroPore self) -> real\n"
+		"virtual real get_crackwidth() const\n"
+		"\n"
+		"Returns the crack width for a prismatic crackstructure.\n"
+		"\n"
+		"For a prismatic crack structure, the porefraction in m3/m3 equals the\n"
+		"vertical crack area in m2/m2. The length of equally spaced cracks is\n"
+		"in one direction the inverse of the density and twice the length for\n"
+		"two directions. \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     l_{crack} [m/m^2]= 2 \\\\frac {1}{d[m]}\n"
+		"\n"
+		"If\n"
+		"we again ignore the fact that the spacing of the cracking crossings is\n"
+		"counted double, the crack width is: \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     w_{crack}[m] =\n"
+		"    \\\\frac{A_{crack}[m^2/m^2]}{l_{crack}[m/m^2]} \n"
+		"\n"
+		"Combining both\n"
+		"eq. above: \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     w_{crack}[m] = A_{crack}[m^2/m^2]\\\\frac{d[m]}{2}\n"
+		"\n"
+		"\n"
+		"\n"
+		""},
+	 { "MacroPore_get_flowwidth", _wrap_MacroPore_get_flowwidth, METH_O, "\n"
+		"MacroPore_get_flowwidth(MacroPore self) -> real\n"
+		"real\n"
+		"get_flowwidth() const\n"
+		"\n"
+		"The approximate length of the aggregate boundaries.\n"
+		"\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"    l = \\\\frac{2}{d_{macro}} A\n"
+		"\n"
+		"where:  :math:`l` is the length of\n"
+		"the aggregate boundaries (in m)\n"
+		"\n"
+		":math:`2` is the number of directions\n"
+		"\n"
+		":math:`d_{macro}` is the mean distance between macropores (density) in m\n"
+		"\n"
+		":math:`A` is the area of the cell \n"
+		""},
 	 { "MacroPore_K_shape_set", _wrap_MacroPore_K_shape_set, METH_VARARGS, "MacroPore_K_shape_set(MacroPore self, real K_shape)"},
 	 { "MacroPore_K_shape_get", _wrap_MacroPore_K_shape_get, METH_O, "MacroPore_K_shape_get(MacroPore self) -> real"},
 	 { "MacroPore_create", (PyCFunction)(void(*)(void))_wrap_MacroPore_create, METH_VARARGS|METH_KEYWORDS, "MacroPore_create(cmf::upslope::SoilLayer::ptr layer, real porefraction=0.05, real Ksat=10, real density=0.05, real porefraction_wilt=-1., real K_shape=0.0) -> cmf::upslope::MacroPore::ptr"},
@@ -77280,11 +80717,32 @@ static PyMethodDef SwigMethods[] = {
 	 { "MacroPore_swigregister", MacroPore_swigregister, METH_O, NULL},
 	 { "delete_BaseMacroFlow", _wrap_delete_BaseMacroFlow, METH_O, "delete_BaseMacroFlow(BaseMacroFlow self)"},
 	 { "BaseMacroFlow_swigregister", BaseMacroFlow_swigregister, METH_O, NULL},
-	 { "new_GradientMacroFlow", (PyCFunction)(void(*)(void))_wrap_new_GradientMacroFlow, METH_VARARGS|METH_KEYWORDS, "new_GradientMacroFlow(cmf::upslope::MacroPore::ptr left, cmf::water::flux_node::ptr right) -> GradientMacroFlow"},
+	 { "new_GradientMacroFlow", (PyCFunction)(void(*)(void))_wrap_new_GradientMacroFlow, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_GradientMacroFlow(cmf::upslope::MacroPore::ptr left, cmf::water::flux_node::ptr right) -> GradientMacroFlow\n"
+		"GradientMacroFlow(cmf::upslope::MacroPore::ptr left,\n"
+		"cmf::water::flux_node::ptr right) \n"
+		""},
 	 { "delete_GradientMacroFlow", _wrap_delete_GradientMacroFlow, METH_O, "delete_GradientMacroFlow(GradientMacroFlow self)"},
 	 { "GradientMacroFlow_swigregister", GradientMacroFlow_swigregister, METH_O, NULL},
 	 { "GradientMacroFlow_swiginit", GradientMacroFlow_swiginit, METH_VARARGS, NULL},
-	 { "new_KinematicMacroFlow", (PyCFunction)(void(*)(void))_wrap_new_KinematicMacroFlow, METH_VARARGS|METH_KEYWORDS, "new_KinematicMacroFlow(cmf::water::WaterStorage::ptr left, cmf::water::flux_node::ptr right, real beta=1.) -> KinematicMacroFlow"},
+	 { "new_KinematicMacroFlow", (PyCFunction)(void(*)(void))_wrap_new_KinematicMacroFlow, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_KinematicMacroFlow(cmf::water::WaterStorage::ptr left, cmf::water::flux_node::ptr right, real beta=1.) -> KinematicMacroFlow\n"
+		"KinematicMacroFlow(cmf::water::WaterStorage::ptr left,\n"
+		"cmf::water::flux_node::ptr right, real beta=1.)\n"
+		"\n"
+		"Creates the connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  right:  the nodes between the connection should be created.\n"
+		"\n"
+		"beta:  a conceptional curve shape parameter for the relation between\n"
+		"storage and outflow\n"
+		"\n"
+		"Either left or right needs to be a MacroPore, left needs to be a water\n"
+		"storage \n"
+		""},
 	 { "delete_KinematicMacroFlow", _wrap_delete_KinematicMacroFlow, METH_O, "delete_KinematicMacroFlow(KinematicMacroFlow self)"},
 	 { "KinematicMacroFlow_swigregister", KinematicMacroFlow_swigregister, METH_O, NULL},
 	 { "KinematicMacroFlow_swiginit", KinematicMacroFlow_swiginit, METH_VARARGS, NULL},
@@ -77292,11 +80750,32 @@ static PyMethodDef SwigMethods[] = {
 	 { "JarvisMacroFlow_beta_get", _wrap_JarvisMacroFlow_beta_get, METH_O, "JarvisMacroFlow_beta_get(JarvisMacroFlow self) -> real"},
 	 { "JarvisMacroFlow_porefraction_r_set", _wrap_JarvisMacroFlow_porefraction_r_set, METH_VARARGS, "JarvisMacroFlow_porefraction_r_set(JarvisMacroFlow self, real porefraction_r)"},
 	 { "JarvisMacroFlow_porefraction_r_get", _wrap_JarvisMacroFlow_porefraction_r_get, METH_O, "JarvisMacroFlow_porefraction_r_get(JarvisMacroFlow self) -> real"},
-	 { "new_JarvisMacroFlow", (PyCFunction)(void(*)(void))_wrap_new_JarvisMacroFlow, METH_VARARGS|METH_KEYWORDS, "new_JarvisMacroFlow(cmf::water::WaterStorage::ptr left, cmf::water::flux_node::ptr right, real beta=1., real porefraction_r=0.0) -> JarvisMacroFlow"},
+	 { "new_JarvisMacroFlow", (PyCFunction)(void(*)(void))_wrap_new_JarvisMacroFlow, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_JarvisMacroFlow(cmf::water::WaterStorage::ptr left, cmf::water::flux_node::ptr right, real beta=1., real porefraction_r=0.0) -> JarvisMacroFlow\n"
+		"JarvisMacroFlow(cmf::water::WaterStorage::ptr left,\n"
+		"cmf::water::flux_node::ptr right, real beta=1., real\n"
+		"porefraction_r=0.0)\n"
+		"\n"
+		"Constructs the connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  right:  the connected macropores\n"
+		"\n"
+		"beta:  User defined parameter for the swelling reaction\n"
+		"\n"
+		"porefraction_r:  Porefraction at which flow starts. For swelling soils\n"
+		"that are closing completely th \n"
+		""},
 	 { "delete_JarvisMacroFlow", _wrap_delete_JarvisMacroFlow, METH_O, "delete_JarvisMacroFlow(JarvisMacroFlow self)"},
 	 { "JarvisMacroFlow_swigregister", JarvisMacroFlow_swigregister, METH_O, NULL},
 	 { "JarvisMacroFlow_swiginit", JarvisMacroFlow_swiginit, METH_VARARGS, NULL},
-	 { "new_GradientMacroMicroExchange", (PyCFunction)(void(*)(void))_wrap_new_GradientMacroMicroExchange, METH_VARARGS|METH_KEYWORDS, "new_GradientMacroMicroExchange(cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right) -> GradientMacroMicroExchange"},
+	 { "new_GradientMacroMicroExchange", (PyCFunction)(void(*)(void))_wrap_new_GradientMacroMicroExchange, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_GradientMacroMicroExchange(cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right) -> GradientMacroMicroExchange\n"
+		"GradientMacroMicroExchange(cmf::upslope::SoilLayer::ptr left,\n"
+		"cmf::upslope::MacroPore::ptr right) \n"
+		""},
 	 { "delete_GradientMacroMicroExchange", _wrap_delete_GradientMacroMicroExchange, METH_O, "delete_GradientMacroMicroExchange(GradientMacroMicroExchange self)"},
 	 { "GradientMacroMicroExchange_swigregister", GradientMacroMicroExchange_swigregister, METH_O, NULL},
 	 { "GradientMacroMicroExchange_swiginit", GradientMacroMicroExchange_swiginit, METH_VARARGS, NULL},
@@ -77304,7 +80783,11 @@ static PyMethodDef SwigMethods[] = {
 	 { "DiffusiveMacroMicroExchange_omega_get", _wrap_DiffusiveMacroMicroExchange_omega_get, METH_O, "DiffusiveMacroMicroExchange_omega_get(DiffusiveMacroMicroExchange self) -> real"},
 	 { "DiffusiveMacroMicroExchange_pFrmi_set", _wrap_DiffusiveMacroMicroExchange_pFrmi_set, METH_VARARGS, "DiffusiveMacroMicroExchange_pFrmi_set(DiffusiveMacroMicroExchange self, real pFrmi)"},
 	 { "DiffusiveMacroMicroExchange_pFrmi_get", _wrap_DiffusiveMacroMicroExchange_pFrmi_get, METH_O, "DiffusiveMacroMicroExchange_pFrmi_get(DiffusiveMacroMicroExchange self) -> real"},
-	 { "new_DiffusiveMacroMicroExchange", (PyCFunction)(void(*)(void))_wrap_new_DiffusiveMacroMicroExchange, METH_VARARGS|METH_KEYWORDS, "new_DiffusiveMacroMicroExchange(cmf::upslope::MacroPore::ptr left, cmf::upslope::SoilLayer::ptr right, real omega, real pFrmi=4.2) -> DiffusiveMacroMicroExchange"},
+	 { "new_DiffusiveMacroMicroExchange", (PyCFunction)(void(*)(void))_wrap_new_DiffusiveMacroMicroExchange, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_DiffusiveMacroMicroExchange(cmf::upslope::MacroPore::ptr left, cmf::upslope::SoilLayer::ptr right, real omega, real pFrmi=4.2) -> DiffusiveMacroMicroExchange\n"
+		"DiffusiveMacroMicroExchange(cmf::upslope::MacroPore::ptr left,\n"
+		"cmf::upslope::SoilLayer::ptr right, real omega, real pFrmi=4.2) \n"
+		""},
 	 { "delete_DiffusiveMacroMicroExchange", _wrap_delete_DiffusiveMacroMicroExchange, METH_O, "delete_DiffusiveMacroMicroExchange(DiffusiveMacroMicroExchange self)"},
 	 { "DiffusiveMacroMicroExchange_swigregister", DiffusiveMacroMicroExchange_swigregister, METH_O, NULL},
 	 { "DiffusiveMacroMicroExchange_swiginit", DiffusiveMacroMicroExchange_swiginit, METH_VARARGS, NULL},
@@ -77312,45 +80795,193 @@ static PyMethodDef SwigMethods[] = {
 	 { "MACROlikeMacroMicroExchange_Gf_get", _wrap_MACROlikeMacroMicroExchange_Gf_get, METH_O, "MACROlikeMacroMicroExchange_Gf_get(MACROlikeMacroMicroExchange self) -> real"},
 	 { "MACROlikeMacroMicroExchange_gamma_w_set", _wrap_MACROlikeMacroMicroExchange_gamma_w_set, METH_VARARGS, "MACROlikeMacroMicroExchange_gamma_w_set(MACROlikeMacroMicroExchange self, real gamma_w)"},
 	 { "MACROlikeMacroMicroExchange_gamma_w_get", _wrap_MACROlikeMacroMicroExchange_gamma_w_get, METH_O, "MACROlikeMacroMicroExchange_gamma_w_get(MACROlikeMacroMicroExchange self) -> real"},
-	 { "new_MACROlikeMacroMicroExchange", (PyCFunction)(void(*)(void))_wrap_new_MACROlikeMacroMicroExchange, METH_VARARGS|METH_KEYWORDS, "new_MACROlikeMacroMicroExchange(cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right, real _gamma_w=0.4, real _Gf=3) -> MACROlikeMacroMicroExchange"},
+	 { "new_MACROlikeMacroMicroExchange", (PyCFunction)(void(*)(void))_wrap_new_MACROlikeMacroMicroExchange, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_MACROlikeMacroMicroExchange(cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right, real _gamma_w=0.4, real _Gf=3) -> MACROlikeMacroMicroExchange\n"
+		"MACROlikeMacroMicroExchange(cmf::upslope::SoilLayer::ptr left,\n"
+		"cmf::upslope::MacroPore::ptr right, real _gamma_w=0.4, real _Gf=3) \n"
+		""},
 	 { "delete_MACROlikeMacroMicroExchange", _wrap_delete_MACROlikeMacroMicroExchange, METH_O, "delete_MACROlikeMacroMicroExchange(MACROlikeMacroMicroExchange self)"},
 	 { "MACROlikeMacroMicroExchange_swigregister", MACROlikeMacroMicroExchange_swigregister, METH_O, NULL},
 	 { "MACROlikeMacroMicroExchange_swiginit", MACROlikeMacroMicroExchange_swiginit, METH_VARARGS, NULL},
-	 { "IVolumeHeightFunction_h", (PyCFunction)(void(*)(void))_wrap_IVolumeHeightFunction_h, METH_VARARGS|METH_KEYWORDS, "IVolumeHeightFunction_h(IVolumeHeightFunction self, double V) -> double"},
-	 { "IVolumeHeightFunction_A", (PyCFunction)(void(*)(void))_wrap_IVolumeHeightFunction_A, METH_VARARGS|METH_KEYWORDS, "IVolumeHeightFunction_A(IVolumeHeightFunction self, double V) -> double"},
-	 { "IVolumeHeightFunction_V", (PyCFunction)(void(*)(void))_wrap_IVolumeHeightFunction_V, METH_VARARGS|METH_KEYWORDS, "IVolumeHeightFunction_V(IVolumeHeightFunction self, double h) -> double"},
-	 { "IVolumeHeightFunction_copy", _wrap_IVolumeHeightFunction_copy, METH_O, "IVolumeHeightFunction_copy(IVolumeHeightFunction self) -> IVolumeHeightFunction"},
-	 { "IVolumeHeightFunction_q", (PyCFunction)(void(*)(void))_wrap_IVolumeHeightFunction_q, METH_VARARGS|METH_KEYWORDS, "IVolumeHeightFunction_q(IVolumeHeightFunction self, double h, double slope) -> double"},
-	 { "delete_IVolumeHeightFunction", _wrap_delete_IVolumeHeightFunction, METH_O, "delete_IVolumeHeightFunction(IVolumeHeightFunction self)"},
+	 { "IVolumeHeightFunction_h", (PyCFunction)(void(*)(void))_wrap_IVolumeHeightFunction_h, METH_VARARGS|METH_KEYWORDS, "\n"
+		"IVolumeHeightFunction_h(IVolumeHeightFunction self, double V) -> double\n"
+		"virtual\n"
+		"double h(double V) const =0\n"
+		"\n"
+		"Returns the depth of a given volume. \n"
+		""},
+	 { "IVolumeHeightFunction_A", (PyCFunction)(void(*)(void))_wrap_IVolumeHeightFunction_A, METH_VARARGS|METH_KEYWORDS, "\n"
+		"IVolumeHeightFunction_A(IVolumeHeightFunction self, double V) -> double\n"
+		"virtual\n"
+		"double A(double V) const =0\n"
+		"\n"
+		"Returns the area of the surface for a given volume. \n"
+		""},
+	 { "IVolumeHeightFunction_V", (PyCFunction)(void(*)(void))_wrap_IVolumeHeightFunction_V, METH_VARARGS|METH_KEYWORDS, "\n"
+		"IVolumeHeightFunction_V(IVolumeHeightFunction self, double h) -> double\n"
+		"virtual\n"
+		"double V(double h) const =0 \n"
+		""},
+	 { "IVolumeHeightFunction_copy", _wrap_IVolumeHeightFunction_copy, METH_O, "\n"
+		"IVolumeHeightFunction_copy(IVolumeHeightFunction self) -> IVolumeHeightFunction\n"
+		"virtual IVolumeHeightFunction* copy() const =0 \n"
+		""},
+	 { "IVolumeHeightFunction_q", (PyCFunction)(void(*)(void))_wrap_IVolumeHeightFunction_q, METH_VARARGS|METH_KEYWORDS, "\n"
+		"IVolumeHeightFunction_q(IVolumeHeightFunction self, double h, double slope) -> double\n"
+		"virtual\n"
+		"double q(double h, double slope) const \n"
+		""},
+	 { "delete_IVolumeHeightFunction", _wrap_delete_IVolumeHeightFunction, METH_O, "\n"
+		"delete_IVolumeHeightFunction(IVolumeHeightFunction self)\n"
+		"virtual\n"
+		"~IVolumeHeightFunction() \n"
+		""},
 	 { "IVolumeHeightFunction_swigregister", IVolumeHeightFunction_swigregister, METH_O, NULL},
 	 { "Prism_Area_set", _wrap_Prism_Area_set, METH_VARARGS, "Prism_Area_set(Prism self, double Area)"},
 	 { "Prism_Area_get", _wrap_Prism_Area_get, METH_O, "Prism_Area_get(Prism self) -> double"},
 	 { "Prism_RoughThickness_set", _wrap_Prism_RoughThickness_set, METH_VARARGS, "Prism_RoughThickness_set(Prism self, double RoughThickness)"},
 	 { "Prism_RoughThickness_get", _wrap_Prism_RoughThickness_get, METH_O, "Prism_RoughThickness_get(Prism self) -> double"},
-	 { "new_Prism", (PyCFunction)(void(*)(void))_wrap_new_Prism, METH_VARARGS|METH_KEYWORDS, "new_Prism(double base_area, double thickness_of_rough_ground=0.01) -> Prism"},
-	 { "Prism_copy", _wrap_Prism_copy, METH_O, "Prism_copy(Prism self) -> Prism"},
-	 { "delete_Prism", _wrap_delete_Prism, METH_O, "delete_Prism(Prism self)"},
+	 { "new_Prism", (PyCFunction)(void(*)(void))_wrap_new_Prism, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Prism(double base_area, double thickness_of_rough_ground=0.01) -> Prism\n"
+		"Prism(double\n"
+		"base_area, double thickness_of_rough_ground=0.01) \n"
+		""},
+	 { "Prism_copy", _wrap_Prism_copy, METH_O, "\n"
+		"Prism_copy(Prism self) -> Prism\n"
+		"Prism* copy() const\n"
+		"\n"
+		""},
+	 { "delete_Prism", _wrap_delete_Prism, METH_O, "\n"
+		"delete_Prism(Prism self)\n"
+		"~Prism() \n"
+		""},
 	 { "Prism_swigregister", Prism_swigregister, METH_O, NULL},
 	 { "Prism_swiginit", Prism_swiginit, METH_VARARGS, NULL},
 	 { "new_volume_height_function", _wrap_new_volume_height_function, METH_VARARGS, "\n"
 		"volume_height_function(volume_height_function for_copy)\n"
 		"new_volume_height_function(IVolumeHeightFunction for_copy) -> volume_height_function\n"
+		"volume_height_function(const IVolumeHeightFunction &for_copy)\n"
+		"\n"
+		"Wrapper for any IVolumeHeightFunction. \n"
 		""},
-	 { "volume_height_function_copy", _wrap_volume_height_function_copy, METH_O, "volume_height_function_copy(volume_height_function self) -> volume_height_function"},
-	 { "delete_volume_height_function", _wrap_delete_volume_height_function, METH_O, "delete_volume_height_function(volume_height_function self)"},
+	 { "volume_height_function_copy", _wrap_volume_height_function_copy, METH_O, "\n"
+		"volume_height_function_copy(volume_height_function self) -> volume_height_function\n"
+		"volume_height_function* copy() const \n"
+		""},
+	 { "delete_volume_height_function", _wrap_delete_volume_height_function, METH_O, "\n"
+		"delete_volume_height_function(volume_height_function self)\n"
+		"virtual\n"
+		"~volume_height_function() \n"
+		""},
 	 { "volume_height_function_swigregister", volume_height_function_swigregister, METH_O, NULL},
 	 { "volume_height_function_swiginit", volume_height_function_swiginit, METH_VARARGS, NULL},
-	 { "IChannel_get_nManning", _wrap_IChannel_get_nManning, METH_O, "IChannel_get_nManning(IChannel self) -> double"},
-	 { "IChannel_set_nManning", (PyCFunction)(void(*)(void))_wrap_IChannel_set_nManning, METH_VARARGS|METH_KEYWORDS, "IChannel_set_nManning(IChannel self, double val)"},
-	 { "IChannel_get_length", _wrap_IChannel_get_length, METH_O, "IChannel_get_length(IChannel self) -> double"},
-	 { "IChannel_typecode", _wrap_IChannel_typecode, METH_O, "IChannel_typecode(IChannel self) -> char"},
-	 { "IChannel_get_channel_width", (PyCFunction)(void(*)(void))_wrap_IChannel_get_channel_width, METH_VARARGS|METH_KEYWORDS, "IChannel_get_channel_width(IChannel self, double depth) -> double"},
-	 { "IChannel_get_wetted_perimeter", (PyCFunction)(void(*)(void))_wrap_IChannel_get_wetted_perimeter, METH_VARARGS|METH_KEYWORDS, "IChannel_get_wetted_perimeter(IChannel self, double depth) -> double"},
-	 { "IChannel_get_depth", (PyCFunction)(void(*)(void))_wrap_IChannel_get_depth, METH_VARARGS|METH_KEYWORDS, "IChannel_get_depth(IChannel self, double area) -> double"},
-	 { "IChannel_get_flux_crossection", (PyCFunction)(void(*)(void))_wrap_IChannel_get_flux_crossection, METH_VARARGS|METH_KEYWORDS, "IChannel_get_flux_crossection(IChannel self, double depth) -> double"},
-	 { "IChannel_copy", _wrap_IChannel_copy, METH_O, "IChannel_copy(IChannel self) -> IChannel"},
-	 { "IChannel_qManning", (PyCFunction)(void(*)(void))_wrap_IChannel_qManning, METH_VARARGS|METH_KEYWORDS, "IChannel_qManning(IChannel self, double A, double slope) -> double"},
-	 { "delete_IChannel", _wrap_delete_IChannel, METH_O, "delete_IChannel(IChannel self)"},
+	 { "IChannel_get_nManning", _wrap_IChannel_get_nManning, METH_O, "\n"
+		"IChannel_get_nManning(IChannel self) -> double\n"
+		"virtual\n"
+		"double get_nManning() const =0 \n"
+		""},
+	 { "IChannel_set_nManning", (PyCFunction)(void(*)(void))_wrap_IChannel_set_nManning, METH_VARARGS|METH_KEYWORDS, "\n"
+		"IChannel_set_nManning(IChannel self, double val)\n"
+		"virtual\n"
+		"void set_nManning(double val)=0 \n"
+		""},
+	 { "IChannel_get_length", _wrap_IChannel_get_length, METH_O, "\n"
+		"IChannel_get_length(IChannel self) -> double\n"
+		"virtual\n"
+		"double get_length() const =0\n"
+		"\n"
+		"Length of the reach. \n"
+		""},
+	 { "IChannel_typecode", _wrap_IChannel_typecode, METH_O, "\n"
+		"IChannel_typecode(IChannel self) -> char\n"
+		"virtual char\n"
+		"typecode() const =0 \n"
+		""},
+	 { "IChannel_get_channel_width", (PyCFunction)(void(*)(void))_wrap_IChannel_get_channel_width, METH_VARARGS|METH_KEYWORDS, "\n"
+		"IChannel_get_channel_width(IChannel self, double depth) -> double\n"
+		"virtual double get_channel_width(double depth) const =0\n"
+		"\n"
+		"Calculates the flow width from a given actual depth [m] using the\n"
+		"actual IChannel geometry. \n"
+		""},
+	 { "IChannel_get_wetted_perimeter", (PyCFunction)(void(*)(void))_wrap_IChannel_get_wetted_perimeter, METH_VARARGS|METH_KEYWORDS, "\n"
+		"IChannel_get_wetted_perimeter(IChannel self, double depth) -> double\n"
+		"virtual double get_wetted_perimeter(double depth) const =0\n"
+		"\n"
+		"Calculates the wetted perimeter from a given actual depth [m] using\n"
+		"the actual IChannel geometry. \n"
+		""},
+	 { "IChannel_get_depth", (PyCFunction)(void(*)(void))_wrap_IChannel_get_depth, METH_VARARGS|METH_KEYWORDS, "\n"
+		"IChannel_get_depth(IChannel self, double area) -> double\n"
+		"virtual\n"
+		"double get_depth(double area) const =0\n"
+		"\n"
+		"Calculates the actual depth of the reach using the IChannel geometry.\n"
+		"\n"
+		"get_depth of the reach [m]\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"area:  Wetted area of a river cross section [m2], can be obtained by\n"
+		"V/l, where V is the stored volume and l is the reach length \n"
+		""},
+	 { "IChannel_get_flux_crossection", (PyCFunction)(void(*)(void))_wrap_IChannel_get_flux_crossection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"IChannel_get_flux_crossection(IChannel self, double depth) -> double\n"
+		"virtual double get_flux_crossection(double depth) const =0\n"
+		"\n"
+		"Calculates the wetted area from a given depth using the IChannel\n"
+		"geometry.\n"
+		"\n"
+		"In most cases use get_flux_crossection=V/l, where V is the stored\n"
+		"volume and l is the reach length Wetted area of a river cross section\n"
+		"[m2]\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"depth:  depth of the reach [m] \n"
+		""},
+	 { "IChannel_copy", _wrap_IChannel_copy, METH_O, "\n"
+		"IChannel_copy(IChannel self) -> IChannel\n"
+		"virtual IChannel*\n"
+		"copy() const =0 \n"
+		""},
+	 { "IChannel_qManning", (PyCFunction)(void(*)(void))_wrap_IChannel_qManning, METH_VARARGS|METH_KEYWORDS, "\n"
+		"IChannel_qManning(IChannel self, double A, double slope) -> double\n"
+		"virtual double\n"
+		"qManning(double A, double slope) const\n"
+		"\n"
+		"Calculates the flow rate from a given water volume in the reach\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     q_{Manning}&=& A R^{\\\\frac 2 3}\n"
+		"    \\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l\n"
+		"    \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per\n"
+		"    length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{\n"
+		"    the perimeter of the wetted crosssection, a function of reach depth}\n"
+		"    \\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the\n"
+		"    volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}\n"
+		"    \\\\mbox{ Slope of the reach} \n"
+		"\n"
+		".\n"
+		"\n"
+		"Flow rate [m3/s]\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"A:  The area of the cross section [m2]\n"
+		"\n"
+		"slope:  The slope of the reach [m/m] \n"
+		""},
+	 { "delete_IChannel", _wrap_delete_IChannel, METH_O, "\n"
+		"delete_IChannel(IChannel self)\n"
+		"virtual\n"
+		"~IChannel() \n"
+		""},
 	 { "IChannel_swigregister", IChannel_swigregister, METH_O, NULL},
 	 { "SWATReachType_BottomWidth_set", _wrap_SWATReachType_BottomWidth_set, METH_VARARGS, "SWATReachType_BottomWidth_set(SWATReachType self, double BottomWidth)"},
 	 { "SWATReachType_BottomWidth_get", _wrap_SWATReachType_BottomWidth_get, METH_O, "SWATReachType_BottomWidth_get(SWATReachType self) -> double"},
@@ -77364,9 +80995,27 @@ static PyMethodDef SwigMethods[] = {
 		"SWATReachType(SWATReachType copy)\n"
 		"SWATReachType(double l)\n"
 		"new_SWATReachType(double l, double BankWidth, double Depth) -> SWATReachType\n"
+		"SWATReachType(double l, double BankWidth, double Depth)\n"
+		"\n"
+		"Creates a new reach structure from a give width and depth.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"l:  length of the channel [m]\n"
+		"\n"
+		"BankWidth:  get_channel_width of the reach from bank to bank [m]\n"
+		"\n"
+		"Depth:  Depth of the reach [m] \n"
 		""},
-	 { "SWATReachType_copy", _wrap_SWATReachType_copy, METH_O, "SWATReachType_copy(SWATReachType self) -> SWATReachType"},
-	 { "delete_SWATReachType", _wrap_delete_SWATReachType, METH_O, "delete_SWATReachType(SWATReachType self)"},
+	 { "SWATReachType_copy", _wrap_SWATReachType_copy, METH_O, "\n"
+		"SWATReachType_copy(SWATReachType self) -> SWATReachType\n"
+		"SWATReachType* copy() const \n"
+		""},
+	 { "delete_SWATReachType", _wrap_delete_SWATReachType, METH_O, "\n"
+		"delete_SWATReachType(SWATReachType self)\n"
+		"virtual ~SWATReachType() \n"
+		""},
 	 { "SWATReachType_swigregister", SWATReachType_swigregister, METH_O, NULL},
 	 { "SWATReachType_swiginit", SWATReachType_swiginit, METH_VARARGS, NULL},
 	 { "TriangularReach_BankSlope_set", _wrap_TriangularReach_BankSlope_set, METH_VARARGS, "TriangularReach_BankSlope_set(TriangularReach self, double BankSlope)"},
@@ -77374,17 +81023,31 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_TriangularReach", _wrap_new_TriangularReach, METH_VARARGS, "\n"
 		"TriangularReach(double l, double bankSlope=2)\n"
 		"new_TriangularReach(TriangularReach copy) -> TriangularReach\n"
+		"TriangularReach(const TriangularReach &copy) \n"
 		""},
-	 { "TriangularReach_copy", _wrap_TriangularReach_copy, METH_O, "TriangularReach_copy(TriangularReach self) -> TriangularReach"},
-	 { "delete_TriangularReach", _wrap_delete_TriangularReach, METH_O, "delete_TriangularReach(TriangularReach self)"},
+	 { "TriangularReach_copy", _wrap_TriangularReach_copy, METH_O, "\n"
+		"TriangularReach_copy(TriangularReach self) -> TriangularReach\n"
+		"TriangularReach* copy() const \n"
+		""},
+	 { "delete_TriangularReach", _wrap_delete_TriangularReach, METH_O, "\n"
+		"delete_TriangularReach(TriangularReach self)\n"
+		"virtual ~TriangularReach() \n"
+		""},
 	 { "TriangularReach_swigregister", TriangularReach_swigregister, METH_O, NULL},
 	 { "TriangularReach_swiginit", TriangularReach_swiginit, METH_VARARGS, NULL},
 	 { "new_RectangularReach", _wrap_new_RectangularReach, METH_VARARGS, "\n"
 		"RectangularReach(double l, double width)\n"
 		"new_RectangularReach(RectangularReach copy) -> RectangularReach\n"
+		"RectangularReach(const RectangularReach &copy) \n"
 		""},
-	 { "RectangularReach_copy", _wrap_RectangularReach_copy, METH_O, "RectangularReach_copy(RectangularReach self) -> RectangularReach"},
-	 { "delete_RectangularReach", _wrap_delete_RectangularReach, METH_O, "delete_RectangularReach(RectangularReach self)"},
+	 { "RectangularReach_copy", _wrap_RectangularReach_copy, METH_O, "\n"
+		"RectangularReach_copy(RectangularReach self) -> RectangularReach\n"
+		"RectangularReach* copy() const \n"
+		""},
+	 { "delete_RectangularReach", _wrap_delete_RectangularReach, METH_O, "\n"
+		"delete_RectangularReach(RectangularReach self)\n"
+		"virtual ~RectangularReach() \n"
+		""},
 	 { "RectangularReach_swigregister", RectangularReach_swigregister, METH_O, NULL},
 	 { "RectangularReach_swiginit", RectangularReach_swiginit, METH_VARARGS, NULL},
 	 { "PipeReach_radius_set", _wrap_PipeReach_radius_set, METH_VARARGS, "PipeReach_radius_set(PipeReach self, double radius)"},
@@ -77392,9 +81055,18 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_PipeReach", _wrap_new_PipeReach, METH_VARARGS, "\n"
 		"PipeReach(double l, double diameter)\n"
 		"new_PipeReach(PipeReach copy) -> PipeReach\n"
+		"PipeReach(const PipeReach &copy) \n"
 		""},
-	 { "PipeReach_copy", _wrap_PipeReach_copy, METH_O, "PipeReach_copy(PipeReach self) -> PipeReach"},
-	 { "delete_PipeReach", _wrap_delete_PipeReach, METH_O, "delete_PipeReach(PipeReach self)"},
+	 { "PipeReach_copy", _wrap_PipeReach_copy, METH_O, "\n"
+		"PipeReach_copy(PipeReach self) -> PipeReach\n"
+		"PipeReach* copy()\n"
+		"const \n"
+		""},
+	 { "delete_PipeReach", _wrap_delete_PipeReach, METH_O, "\n"
+		"delete_PipeReach(PipeReach self)\n"
+		"virtual\n"
+		"~PipeReach() \n"
+		""},
 	 { "PipeReach_swigregister", PipeReach_swigregister, METH_O, NULL},
 	 { "PipeReach_swiginit", PipeReach_swiginit, METH_VARARGS, NULL},
 	 { "new_Channel", _wrap_new_Channel, METH_VARARGS, "\n"
@@ -77404,17 +81076,60 @@ static PyMethodDef SwigMethods[] = {
 		"Channel(IVolumeHeightFunction for_casting)\n"
 		"Channel(Channel for_copy)\n"
 		"new_Channel(char typecode, double length, double width=1., double depth=0.25) -> Channel\n"
+		"Channel(char\n"
+		"typecode, double length, double width=1., double depth=0.25)\n"
+		"\n"
+		"Creates a reachtype using a short cut character.\n"
+		"\n"
+		"Acceptes one of the following characters: 'T' TriangularReach, width\n"
+		"and depth are ignored.\n"
+		"\n"
+		"'R' RectangularReach, depth is ignored\n"
+		"\n"
+		"'P' PipeReach, depth is ignored, width is the diameter of the pipe\n"
+		"\n"
+		"'S' SWATReachType, a trapezoid flow cross section, as used in the SWAT\n"
+		"model, width (bank width) and depth are used the reach type\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"typecode:  Describes the geometry of the reach cross section.\n"
+		"\n"
+		"length:  The length of the channel in m\n"
+		"\n"
+		"width:  width of the reach cross section in m (ignored for typecode\n"
+		"'T')\n"
+		"\n"
+		"depth:  depth of the reach (ignored for typecode 'T','R','P','S') \n"
 		""},
-	 { "Channel_copy", _wrap_Channel_copy, METH_O, "Channel_copy(Channel self) -> Channel"},
-	 { "delete_Channel", _wrap_delete_Channel, METH_O, "delete_Channel(Channel self)"},
+	 { "Channel_copy", _wrap_Channel_copy, METH_O, "\n"
+		"Channel_copy(Channel self) -> Channel\n"
+		"Channel* copy()\n"
+		"const \n"
+		""},
+	 { "delete_Channel", _wrap_delete_Channel, METH_O, "\n"
+		"delete_Channel(Channel self)\n"
+		"virtual\n"
+		"~Channel() \n"
+		""},
 	 { "Channel_swigregister", Channel_swigregister, METH_O, NULL},
 	 { "Channel_swiginit", Channel_swiginit, METH_VARARGS, NULL},
 	 { "new_MeanChannel", _wrap_new_MeanChannel, METH_VARARGS, "\n"
 		"MeanChannel(IChannel channel1, IChannel channel2)\n"
 		"new_MeanChannel(MeanChannel meanChannel) -> MeanChannel\n"
+		"MeanChannel(const MeanChannel &meanChannel) \n"
 		""},
-	 { "MeanChannel_copy", _wrap_MeanChannel_copy, METH_O, "MeanChannel_copy(MeanChannel self) -> MeanChannel"},
-	 { "delete_MeanChannel", _wrap_delete_MeanChannel, METH_O, "delete_MeanChannel(MeanChannel self)"},
+	 { "MeanChannel_copy", _wrap_MeanChannel_copy, METH_O, "\n"
+		"MeanChannel_copy(MeanChannel self) -> MeanChannel\n"
+		"MeanChannel*\n"
+		"copy() const \n"
+		""},
+	 { "delete_MeanChannel", _wrap_delete_MeanChannel, METH_O, "\n"
+		"delete_MeanChannel(MeanChannel self)\n"
+		"virtual\n"
+		"~MeanChannel() \n"
+		""},
 	 { "MeanChannel_swigregister", MeanChannel_swigregister, METH_O, NULL},
 	 { "MeanChannel_swiginit", MeanChannel_swiginit, METH_VARARGS, NULL},
 	 { "CrossSectionReach_depth_set", _wrap_CrossSectionReach_depth_set, METH_VARARGS, "CrossSectionReach_depth_set(CrossSectionReach self, cmf::math::num_array depth)"},
@@ -77424,15 +81139,42 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_CrossSectionReach", _wrap_new_CrossSectionReach, METH_VARARGS, "\n"
 		"CrossSectionReach(double l, cmf::math::num_array x, cmf::math::num_array depth)\n"
 		"new_CrossSectionReach(CrossSectionReach copy) -> CrossSectionReach\n"
+		"CrossSectionReach(const CrossSectionReach &copy) \n"
 		""},
-	 { "CrossSectionReach_copy", _wrap_CrossSectionReach_copy, METH_O, "CrossSectionReach_copy(CrossSectionReach self) -> CrossSectionReach"},
-	 { "delete_CrossSectionReach", _wrap_delete_CrossSectionReach, METH_O, "delete_CrossSectionReach(CrossSectionReach self)"},
-	 { "CrossSectionReach_check_iterator", (PyCFunction)(void(*)(void))_wrap_CrossSectionReach_check_iterator, METH_VARARGS|METH_KEYWORDS, "CrossSectionReach_check_iterator(CrossSectionReach self, double h)"},
+	 { "CrossSectionReach_copy", _wrap_CrossSectionReach_copy, METH_O, "\n"
+		"CrossSectionReach_copy(CrossSectionReach self) -> CrossSectionReach\n"
+		"CrossSectionReach* copy() const \n"
+		""},
+	 { "delete_CrossSectionReach", _wrap_delete_CrossSectionReach, METH_O, "\n"
+		"delete_CrossSectionReach(CrossSectionReach self)\n"
+		"virtual\n"
+		"~CrossSectionReach() \n"
+		""},
+	 { "CrossSectionReach_check_iterator", (PyCFunction)(void(*)(void))_wrap_CrossSectionReach_check_iterator, METH_VARARGS|METH_KEYWORDS, "\n"
+		"CrossSectionReach_check_iterator(CrossSectionReach self, double h)\n"
+		"void check_iterator(double h) const \n"
+		""},
 	 { "CrossSectionReach_swigregister", CrossSectionReach_swigregister, METH_O, NULL},
 	 { "CrossSectionReach_swiginit", CrossSectionReach_swiginit, METH_VARARGS, NULL},
-	 { "OpenWaterStorage_get_height_function", _wrap_OpenWaterStorage_get_height_function, METH_O, "OpenWaterStorage_get_height_function(OpenWaterStorage self) -> IVolumeHeightFunction"},
-	 { "OpenWaterStorage_set_height_function", (PyCFunction)(void(*)(void))_wrap_OpenWaterStorage_set_height_function, METH_VARARGS|METH_KEYWORDS, "OpenWaterStorage_set_height_function(OpenWaterStorage self, IVolumeHeightFunction val)"},
-	 { "OpenWaterStorage_wet_area", _wrap_OpenWaterStorage_wet_area, METH_O, "OpenWaterStorage_wet_area(OpenWaterStorage self) -> real"},
+	 { "OpenWaterStorage_get_height_function", _wrap_OpenWaterStorage_get_height_function, METH_O, "\n"
+		"OpenWaterStorage_get_height_function(OpenWaterStorage self) -> IVolumeHeightFunction\n"
+		"virtual const\n"
+		"IVolumeHeightFunction& get_height_function() const\n"
+		"\n"
+		"The functional relation between volume, depth and exposed area. \n"
+		""},
+	 { "OpenWaterStorage_set_height_function", (PyCFunction)(void(*)(void))_wrap_OpenWaterStorage_set_height_function, METH_VARARGS|METH_KEYWORDS, "\n"
+		"OpenWaterStorage_set_height_function(OpenWaterStorage self, IVolumeHeightFunction val)\n"
+		"virtual void\n"
+		"set_height_function(const IVolumeHeightFunction &val) \n"
+		""},
+	 { "OpenWaterStorage_wet_area", _wrap_OpenWaterStorage_wet_area, METH_O, "\n"
+		"OpenWaterStorage_wet_area(OpenWaterStorage self) -> real\n"
+		"real\n"
+		"wet_area() const\n"
+		"\n"
+		"Returns the exposed surface area in m2. \n"
+		""},
 	 { "OpenWaterStorage_create", _wrap_OpenWaterStorage_create, METH_VARARGS, "\n"
 		"OpenWaterStorage_create(project _project, real Area) -> cmf::river::OpenWaterStorage::ptr\n"
 		"OpenWaterStorage_create(project _project, IVolumeHeightFunction base_geo) -> cmf::river::OpenWaterStorage::ptr\n"
@@ -77442,37 +81184,174 @@ static PyMethodDef SwigMethods[] = {
 	 { "OpenWaterStorage_depth_get", _wrap_OpenWaterStorage_depth_get, METH_O, "OpenWaterStorage_depth_get(OpenWaterStorage self) -> real"},
 	 { "delete_OpenWaterStorage", _wrap_delete_OpenWaterStorage, METH_O, "delete_OpenWaterStorage(OpenWaterStorage self)"},
 	 { "OpenWaterStorage_swigregister", OpenWaterStorage_swigregister, METH_O, NULL},
-	 { "Reach_get_reachtype", _wrap_Reach_get_reachtype, METH_O, "Reach_get_reachtype(Reach self) -> Channel"},
-	 { "Reach_set_height_function", (PyCFunction)(void(*)(void))_wrap_Reach_set_height_function, METH_VARARGS|METH_KEYWORDS, "Reach_set_height_function(Reach self, IChannel val)"},
-	 { "Reach_set_outlet", (PyCFunction)(void(*)(void))_wrap_Reach_set_outlet, METH_VARARGS|METH_KEYWORDS, "Reach_set_outlet(Reach self, cmf::water::flux_node::ptr outlet)"},
-	 { "Reach_set_dead_end", _wrap_Reach_set_dead_end, METH_O, "Reach_set_dead_end(Reach self)"},
-	 { "Reach_set_downstream", (PyCFunction)(void(*)(void))_wrap_Reach_set_downstream, METH_VARARGS|METH_KEYWORDS, "Reach_set_downstream(Reach self, cmf::river::Reach::ptr new_downstream, bool use_meanchannel=False)"},
-	 { "Reach___get_downstream", _wrap_Reach___get_downstream, METH_O, "Reach___get_downstream(Reach self) -> cmf::water::flux_node::ptr"},
-	 { "Reach_get_upstream", (PyCFunction)(void(*)(void))_wrap_Reach_get_upstream, METH_VARARGS|METH_KEYWORDS, "Reach_get_upstream(Reach self, int index) -> cmf::river::Reach::ptr"},
-	 { "Reach_connect_to_surfacewater", (PyCFunction)(void(*)(void))_wrap_Reach_connect_to_surfacewater, METH_VARARGS|METH_KEYWORDS, "Reach_connect_to_surfacewater(Reach self, Cell cell, real width, bool diffusive)"},
-	 { "Reach_distance_to_cell", (PyCFunction)(void(*)(void))_wrap_Reach_distance_to_cell, METH_VARARGS|METH_KEYWORDS, "Reach_distance_to_cell(Reach self, Cell cell) -> double"},
-	 { "Reach___get_root", _wrap_Reach___get_root, METH_O, "Reach___get_root(Reach self) -> cmf::river::Reach::ptr"},
-	 { "delete_Reach", _wrap_delete_Reach, METH_O, "delete_Reach(Reach self)"},
+	 { "Reach_get_reachtype", _wrap_Reach_get_reachtype, METH_O, "\n"
+		"Reach_get_reachtype(Reach self) -> Channel\n"
+		"Channel\n"
+		"get_reachtype() const\n"
+		"\n"
+		"Returns the channel shape. \n"
+		""},
+	 { "Reach_set_height_function", (PyCFunction)(void(*)(void))_wrap_Reach_set_height_function, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Reach_set_height_function(Reach self, IChannel val)\n"
+		"void\n"
+		"set_height_function(const IChannel &val)\n"
+		"\n"
+		"Sets the channel shape. \n"
+		""},
+	 { "Reach_set_outlet", (PyCFunction)(void(*)(void))_wrap_Reach_set_outlet, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Reach_set_outlet(Reach self, cmf::water::flux_node::ptr outlet)\n"
+		"void\n"
+		"set_outlet(cmf::water::flux_node::ptr outlet)\n"
+		"\n"
+		"Connects the reach to an outlet, e.g. a boundary condition. \n"
+		""},
+	 { "Reach_set_dead_end", _wrap_Reach_set_dead_end, METH_O, "\n"
+		"Reach_set_dead_end(Reach self)\n"
+		"void\n"
+		"set_dead_end()\n"
+		"\n"
+		"Deletes any downstream connection. \n"
+		""},
+	 { "Reach_set_downstream", (PyCFunction)(void(*)(void))_wrap_Reach_set_downstream, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Reach_set_downstream(Reach self, cmf::river::Reach::ptr new_downstream, bool use_meanchannel=False)\n"
+		"void\n"
+		"set_downstream(ptr new_downstream, bool use_meanchannel=false)\n"
+		"\n"
+		"Connects the reach to another one downstream. \n"
+		""},
+	 { "Reach___get_downstream", _wrap_Reach___get_downstream, METH_O, "\n"
+		"Reach___get_downstream(Reach self) -> cmf::water::flux_node::ptr\n"
+		"cmf::water::flux_node::ptr get_downstream() const\n"
+		"\n"
+		"Returns the reach downstream of this (or null if there is no reach\n"
+		"downstream) \n"
+		""},
+	 { "Reach_get_upstream", (PyCFunction)(void(*)(void))_wrap_Reach_get_upstream, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Reach_get_upstream(Reach self, int index) -> cmf::river::Reach::ptr\n"
+		"ptr\n"
+		"get_upstream(int index) const\n"
+		"\n"
+		"Returns a reach upstream of this. \n"
+		""},
+	 { "Reach_connect_to_surfacewater", (PyCFunction)(void(*)(void))_wrap_Reach_connect_to_surfacewater, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Reach_connect_to_surfacewater(Reach self, Cell cell, real width, bool diffusive)\n"
+		"void connect_to_surfacewater(cmf::upslope::Cell *cell, real width,\n"
+		"bool diffusive)\n"
+		"\n"
+		"Connects the surfacewater of a cell with this reach.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"cell:  The cell with the surface water to be connected with this reach\n"
+		"\n"
+		"width:  The flow width from cell to this reach\n"
+		"\n"
+		"diffusive:  If diffusive is false, a ManningKinematic connection is\n"
+		"used, else a ManningDiffusive connection \n"
+		""},
+	 { "Reach_distance_to_cell", (PyCFunction)(void(*)(void))_wrap_Reach_distance_to_cell, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Reach_distance_to_cell(Reach self, Cell cell) -> double\n"
+		"double\n"
+		"distance_to_cell(cmf::upslope::Cell *cell) const\n"
+		"\n"
+		"Returns the distance (d) for connections between this reach and a\n"
+		"cell.\n"
+		"\n"
+		"If the effective inner cell distance (defined as :math:`R_{Cell} = 0.5\\\\frac{\\\\sqrt{A}}{\\\\pi}`) is smaller than the distance\n"
+		"between the center points, the cell radius is returned \n"
+		""},
+	 { "Reach___get_root", _wrap_Reach___get_root, METH_O, "\n"
+		"Reach___get_root(Reach self) -> cmf::river::Reach::ptr\n"
+		"ptr get_root()\n"
+		"\n"
+		"Returns the reach most downstream from this reach. \n"
+		""},
+	 { "delete_Reach", _wrap_delete_Reach, METH_O, "\n"
+		"delete_Reach(Reach self)\n"
+		"virtual ~Reach() \n"
+		""},
 	 { "Reach_create", (PyCFunction)(void(*)(void))_wrap_Reach_create, METH_VARARGS|METH_KEYWORDS, "Reach_create(project project, IChannel shape, bool diffusive=False) -> cmf::river::Reach::ptr"},
 	 { "Reach_length_get", _wrap_Reach_length_get, METH_O, "Reach_length_get(Reach self) -> real"},
 	 { "Reach_width_get", _wrap_Reach_width_get, METH_O, "Reach_width_get(Reach self) -> real"},
 	 { "Reach_channel_get", _wrap_Reach_channel_get, METH_O, "Reach_channel_get(Reach self) -> IChannel"},
-	 { "Reach_upstream_count_get", _wrap_Reach_upstream_count_get, METH_O, "Reach_upstream_count_get(Reach self) -> int"},
+	 { "Reach_upstream_count_get", _wrap_Reach_upstream_count_get, METH_O, "\n"
+		"Reach_upstream_count_get(Reach self) -> int\n"
+		"int\n"
+		"upstream_count() const\n"
+		"\n"
+		"Returns the number of reaches upstream of this. \n"
+		""},
 	 { "Reach_diffusive_set", _wrap_Reach_diffusive_set, METH_VARARGS, "Reach_diffusive_set(Reach self, bool diffusive)"},
 	 { "Reach_diffusive_get", _wrap_Reach_diffusive_get, METH_O, "Reach_diffusive_get(Reach self) -> bool"},
 	 { "Reach_swigregister", Reach_swigregister, METH_O, NULL},
-	 { "ReachIterator_next", _wrap_ReachIterator_next, METH_O, "ReachIterator_next(ReachIterator self) -> cmf::river::Reach::ptr"},
-	 { "ReachIterator_valid", _wrap_ReachIterator_valid, METH_O, "ReachIterator_valid(ReachIterator self) -> bool"},
-	 { "new_ReachIterator", (PyCFunction)(void(*)(void))_wrap_new_ReachIterator, METH_VARARGS|METH_KEYWORDS, "new_ReachIterator(cmf::river::Reach::ptr first) -> ReachIterator"},
-	 { "ReachIterator___reach", _wrap_ReachIterator___reach, METH_O, "ReachIterator___reach(ReachIterator self) -> cmf::river::Reach::ptr"},
-	 { "ReachIterator_position_get", _wrap_ReachIterator_position_get, METH_O, "ReachIterator_position_get(ReachIterator self) -> double"},
+	 { "ReachIterator_next", _wrap_ReachIterator_next, METH_O, "\n"
+		"ReachIterator_next(ReachIterator self) -> cmf::river::Reach::ptr\n"
+		"Reach::ptr\n"
+		"next()\n"
+		"\n"
+		"Returns the next reach in the upstream queue. \n"
+		""},
+	 { "ReachIterator_valid", _wrap_ReachIterator_valid, METH_O, "\n"
+		"ReachIterator_valid(ReachIterator self) -> bool\n"
+		"bool valid()\n"
+		"const\n"
+		"\n"
+		"Returns true, if reaches are left to iterate over. \n"
+		""},
+	 { "new_ReachIterator", (PyCFunction)(void(*)(void))_wrap_new_ReachIterator, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ReachIterator(cmf::river::Reach::ptr first) -> ReachIterator\n"
+		"ReachIterator(Reach::ptr first)\n"
+		"\n"
+		"Creates a ReachIterator from a first reach. \n"
+		""},
+	 { "ReachIterator___reach", _wrap_ReachIterator___reach, METH_O, "\n"
+		"ReachIterator___reach(ReachIterator self) -> cmf::river::Reach::ptr\n"
+		"Reach::ptr\n"
+		"reach() const\n"
+		"\n"
+		"Returns the current reach. \n"
+		""},
+	 { "ReachIterator_position_get", _wrap_ReachIterator_position_get, METH_O, "\n"
+		"ReachIterator_position_get(ReachIterator self) -> double\n"
+		"double\n"
+		"position() const\n"
+		"\n"
+		"Returns the distance to the root reach. \n"
+		""},
 	 { "delete_ReachIterator", _wrap_delete_ReachIterator, METH_O, "delete_ReachIterator(ReachIterator self)"},
 	 { "ReachIterator_swigregister", ReachIterator_swigregister, METH_O, NULL},
 	 { "ReachIterator_swiginit", ReachIterator_swiginit, METH_VARARGS, NULL},
-	 { "make_river_gap", (PyCFunction)(void(*)(void))_wrap_make_river_gap, METH_VARARGS|METH_KEYWORDS, "make_river_gap(cmf::river::Reach::ptr root_reach) -> double"},
-	 { "SurfaceWater_get_height_function", _wrap_SurfaceWater_get_height_function, METH_O, "SurfaceWater_get_height_function(SurfaceWater self) -> Prism"},
-	 { "SurfaceWater_get_coverage", _wrap_SurfaceWater_get_coverage, METH_O, "SurfaceWater_get_coverage(SurfaceWater self) -> double"},
-	 { "SurfaceWater_get_cell", _wrap_SurfaceWater_get_cell, METH_O, "SurfaceWater_get_cell(SurfaceWater self) -> Cell"},
+	 { "make_river_gap", (PyCFunction)(void(*)(void))_wrap_make_river_gap, METH_VARARGS|METH_KEYWORDS, "\n"
+		"make_river_gap(cmf::river::Reach::ptr root_reach) -> double\n"
+		"double\n"
+		"cmf::river::make_river_gap(Reach::ptr root_reach)\n"
+		"\n"
+		"Ensures that rivers have a monotone downward flow direction.\n"
+		"\n"
+		"Reaches with a bottom higher than any upstream reach are lowered to\n"
+		"the minimum height of any (possibly distant) upstream reach. \n"
+		""},
+	 { "SurfaceWater_get_height_function", _wrap_SurfaceWater_get_height_function, METH_O, "\n"
+		"SurfaceWater_get_height_function(SurfaceWater self) -> Prism\n"
+		"virtual const cmf::river::Prism& get_height_function() const\n"
+		"\n"
+		"Gets the height function (a cmf::river::Prism) for further reference.\n"
+		"\n"
+		""},
+	 { "SurfaceWater_get_coverage", _wrap_SurfaceWater_get_coverage, METH_O, "\n"
+		"SurfaceWater_get_coverage(SurfaceWater self) -> double\n"
+		"double get_coverage() const\n"
+		"\n"
+		"Get surface coverage as a function of the actual volume. \n"
+		""},
+	 { "SurfaceWater_get_cell", _wrap_SurfaceWater_get_cell, METH_O, "\n"
+		"SurfaceWater_get_cell(SurfaceWater self) -> Cell\n"
+		"Cell&\n"
+		"get_cell() const\n"
+		"\n"
+		"Get the cell of the surface. \n"
+		""},
 	 { "SurfaceWater_cast", (PyCFunction)(void(*)(void))_wrap_SurfaceWater_cast, METH_VARARGS|METH_KEYWORDS, "SurfaceWater_cast(cmf::water::flux_node::ptr node) -> cmf::upslope::SurfaceWater::ptr"},
 	 { "SurfaceWater_puddledepth_set", _wrap_SurfaceWater_puddledepth_set, METH_VARARGS, "SurfaceWater_puddledepth_set(SurfaceWater self, real puddledepth)"},
 	 { "SurfaceWater_puddledepth_get", _wrap_SurfaceWater_puddledepth_get, METH_O, "SurfaceWater_puddledepth_get(SurfaceWater self) -> real"},
@@ -77480,13 +81359,37 @@ static PyMethodDef SwigMethods[] = {
 	 { "SurfaceWater_nManning_get", _wrap_SurfaceWater_nManning_get, METH_O, "SurfaceWater_nManning_get(SurfaceWater self) -> real"},
 	 { "delete_SurfaceWater", _wrap_delete_SurfaceWater, METH_O, "delete_SurfaceWater(SurfaceWater self)"},
 	 { "SurfaceWater_swigregister", SurfaceWater_swigregister, METH_O, NULL},
-	 { "new_KinematicSurfaceRunoff", (PyCFunction)(void(*)(void))_wrap_new_KinematicSurfaceRunoff, METH_VARARGS|METH_KEYWORDS, "new_KinematicSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left, cmf::water::flux_node::ptr right, real flowwidth, real distance=-1) -> KinematicSurfaceRunoff"},
+	 { "new_KinematicSurfaceRunoff", (PyCFunction)(void(*)(void))_wrap_new_KinematicSurfaceRunoff, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_KinematicSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left, cmf::water::flux_node::ptr right, real flowwidth, real distance=-1) -> KinematicSurfaceRunoff\n"
+		"KinematicSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left,\n"
+		"cmf::water::flux_node::ptr right, real flowwidth, real distance=-1)\n"
+		"\n"
+		"Creates a KinematicSurfaceRunoff between a SurfaceWater (left) with\n"
+		"another (right) node.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  A surfacewater storage\n"
+		"\n"
+		"right:  The target node\n"
+		"\n"
+		"flowwidth:  the length of the shared boundary between left and right\n"
+		"in m\n"
+		"\n"
+		"distance:  the distance between left and right in m. If d<=0m, the\n"
+		"distance is calculated according to the position of left and right \n"
+		""},
 	 { "delete_KinematicSurfaceRunoff", _wrap_delete_KinematicSurfaceRunoff, METH_O, "delete_KinematicSurfaceRunoff(KinematicSurfaceRunoff self)"},
 	 { "KinematicSurfaceRunoff_swigregister", KinematicSurfaceRunoff_swigregister, METH_O, NULL},
 	 { "KinematicSurfaceRunoff_swiginit", KinematicSurfaceRunoff_swiginit, METH_VARARGS, NULL},
 	 { "DiffusiveSurfaceRunoff_set_linear_slope", (PyCFunction)(void(*)(void))_wrap_DiffusiveSurfaceRunoff_set_linear_slope, METH_VARARGS|METH_KEYWORDS, "DiffusiveSurfaceRunoff_set_linear_slope(real width)"},
 	 { "DiffusiveSurfaceRunoff_get_linear_slope", _wrap_DiffusiveSurfaceRunoff_get_linear_slope, METH_NOARGS, "DiffusiveSurfaceRunoff_get_linear_slope() -> real"},
-	 { "new_DiffusiveSurfaceRunoff", (PyCFunction)(void(*)(void))_wrap_new_DiffusiveSurfaceRunoff, METH_VARARGS|METH_KEYWORDS, "new_DiffusiveSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left, cmf::water::flux_node::ptr right, real flowwidth, real distance=-1) -> DiffusiveSurfaceRunoff"},
+	 { "new_DiffusiveSurfaceRunoff", (PyCFunction)(void(*)(void))_wrap_new_DiffusiveSurfaceRunoff, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_DiffusiveSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left, cmf::water::flux_node::ptr right, real flowwidth, real distance=-1) -> DiffusiveSurfaceRunoff\n"
+		"DiffusiveSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left,\n"
+		"cmf::water::flux_node::ptr right, real flowwidth, real distance=-1) \n"
+		""},
 	 { "delete_DiffusiveSurfaceRunoff", _wrap_delete_DiffusiveSurfaceRunoff, METH_O, "delete_DiffusiveSurfaceRunoff(DiffusiveSurfaceRunoff self)"},
 	 { "DiffusiveSurfaceRunoff_swigregister", DiffusiveSurfaceRunoff_swigregister, METH_O, NULL},
 	 { "DiffusiveSurfaceRunoff_swiginit", DiffusiveSurfaceRunoff_swiginit, METH_VARARGS, NULL},
@@ -77498,10 +81401,32 @@ static PyMethodDef SwigMethods[] = {
 	 { "aquifer_porosity_get", _wrap_aquifer_porosity_get, METH_O, "aquifer_porosity_get(aquifer self) -> real"},
 	 { "aquifer_K_set", _wrap_aquifer_K_set, METH_VARARGS, "aquifer_K_set(aquifer self, point K)"},
 	 { "aquifer_K_get", _wrap_aquifer_K_get, METH_O, "aquifer_K_get(aquifer self) -> point"},
-	 { "aquifer_get_abs_errtol", (PyCFunction)(void(*)(void))_wrap_aquifer_get_abs_errtol, METH_VARARGS|METH_KEYWORDS, "aquifer_get_abs_errtol(aquifer self, real rel_errtol) -> real"},
+	 { "aquifer_get_abs_errtol", (PyCFunction)(void(*)(void))_wrap_aquifer_get_abs_errtol, METH_VARARGS|METH_KEYWORDS, "\n"
+		"aquifer_get_abs_errtol(aquifer self, real rel_errtol) -> real\n"
+		"virtual\n"
+		"real get_abs_errtol(real rel_errtol) const \n"
+		""},
 	 { "new_aquifer", _wrap_new_aquifer, METH_VARARGS, "\n"
 		"aquifer(project p, point position, real area, real thickness, real porosity, real K=1e-4)\n"
 		"new_aquifer(cell_vector cells, real thickness, real porosity, real K=1e-4) -> aquifer\n"
+		"aquifer(cmf::upslope::cell_vector &cells, real thickness, real\n"
+		"porosity, real K=1e-4)\n"
+		"\n"
+		"Creates an aquifer below a collection of cells.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"cells:  The cells above the aquifer. The area of the aquifer equals\n"
+		"the area of the cells, and the upper boundary equals the soildepth of\n"
+		"the lowest cell\n"
+		"\n"
+		"thickness:  The thickness of the aquifer in m\n"
+		"\n"
+		"porosity:  Porosity of the aquifer\n"
+		"\n"
+		"K:  Conductivity of the aquifer in m/day. If the conductivity should\n"
+		"be anisotropic, change the x,y and z values of the member K \n"
 		""},
 	 { "aquifer_cast", (PyCFunction)(void(*)(void))_wrap_aquifer_cast, METH_VARARGS|METH_KEYWORDS, "aquifer_cast(cmf::water::flux_node::ptr for_cast) -> cmf::upslope::aquifer::ptr"},
 	 { "aquifer_base_height_get", _wrap_aquifer_base_height_get, METH_O, "aquifer_base_height_get(aquifer self) -> double"},
@@ -77511,21 +81436,80 @@ static PyMethodDef SwigMethods[] = {
 	 { "aquifer_swiginit", aquifer_swiginit, METH_VARARGS, NULL},
 	 { "aquifer_Darcy_flux_width_set", _wrap_aquifer_Darcy_flux_width_set, METH_VARARGS, "aquifer_Darcy_flux_width_set(aquifer_Darcy self, real flux_width)"},
 	 { "aquifer_Darcy_flux_width_get", _wrap_aquifer_Darcy_flux_width_get, METH_O, "aquifer_Darcy_flux_width_get(aquifer_Darcy self) -> real"},
-	 { "new_aquifer_Darcy", (PyCFunction)(void(*)(void))_wrap_new_aquifer_Darcy, METH_VARARGS|METH_KEYWORDS, "new_aquifer_Darcy(cmf::upslope::aquifer::ptr left, cmf::water::flux_node::ptr right, real width) -> aquifer_Darcy"},
+	 { "new_aquifer_Darcy", (PyCFunction)(void(*)(void))_wrap_new_aquifer_Darcy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_aquifer_Darcy(cmf::upslope::aquifer::ptr left, cmf::water::flux_node::ptr right, real width) -> aquifer_Darcy\n"
+		"aquifer_Darcy(aquifer::ptr left, cmf::water::flux_node::ptr right,\n"
+		"real width)\n"
+		"\n"
+		"Creates a new Darcy flow connection between two aquifers, or an\n"
+		"aquifer and another node acting as Dirichlet boundary condition.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  One aquifer\n"
+		"\n"
+		"right:  Another aquifer, or a flux node that can be interpreted as an\n"
+		"Dirichlet boundary\n"
+		"\n"
+		"width:  Width of the connection \n"
+		""},
 	 { "delete_aquifer_Darcy", _wrap_delete_aquifer_Darcy, METH_O, "delete_aquifer_Darcy(aquifer_Darcy self)"},
 	 { "aquifer_Darcy_swigregister", aquifer_Darcy_swigregister, METH_O, NULL},
 	 { "aquifer_Darcy_swiginit", aquifer_Darcy_swiginit, METH_VARARGS, NULL},
 	 { "delete_lateral_sub_surface_flux", _wrap_delete_lateral_sub_surface_flux, METH_O, "delete_lateral_sub_surface_flux(lateral_sub_surface_flux self)"},
 	 { "lateral_sub_surface_flux_swigregister", lateral_sub_surface_flux_swigregister, METH_O, NULL},
-	 { "new_Darcy", (PyCFunction)(void(*)(void))_wrap_new_Darcy, METH_VARARGS|METH_KEYWORDS, "new_Darcy(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) -> Darcy"},
+	 { "new_Darcy", (PyCFunction)(void(*)(void))_wrap_new_Darcy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Darcy(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) -> Darcy\n"
+		"Darcy(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr\n"
+		"right, real FlowWidth, real Distance=0) \n"
+		""},
 	 { "delete_Darcy", _wrap_delete_Darcy, METH_O, "delete_Darcy(Darcy self)"},
 	 { "Darcy_swigregister", Darcy_swigregister, METH_O, NULL},
 	 { "Darcy_swiginit", Darcy_swiginit, METH_VARARGS, NULL},
-	 { "new_TopographicGradientDarcy", (PyCFunction)(void(*)(void))_wrap_new_TopographicGradientDarcy, METH_VARARGS|METH_KEYWORDS, "new_TopographicGradientDarcy(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) -> TopographicGradientDarcy"},
+	 { "new_TopographicGradientDarcy", (PyCFunction)(void(*)(void))_wrap_new_TopographicGradientDarcy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_TopographicGradientDarcy(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) -> TopographicGradientDarcy\n"
+		"TopographicGradientDarcy(cmf::upslope::SoilLayer::ptr left,\n"
+		"cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0)\n"
+		"\n"
+		"Creates the connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  Left node of the connection (needs to be soil water storage)\n"
+		"\n"
+		"right:  Right node of the connection (can be any node)\n"
+		"\n"
+		"FlowWidth:  the width of the connection - is multiplied by layer\n"
+		"thickness to get the interface area\n"
+		"\n"
+		"Distance:  the length of the connection. If 0, the distance is\n"
+		"calculated from the position of the nodes \n"
+		""},
 	 { "delete_TopographicGradientDarcy", _wrap_delete_TopographicGradientDarcy, METH_O, "delete_TopographicGradientDarcy(TopographicGradientDarcy self)"},
 	 { "TopographicGradientDarcy_swigregister", TopographicGradientDarcy_swigregister, METH_O, NULL},
 	 { "TopographicGradientDarcy_swiginit", TopographicGradientDarcy_swiginit, METH_VARARGS, NULL},
-	 { "new_DarcyKinematic", (PyCFunction)(void(*)(void))_wrap_new_DarcyKinematic, METH_VARARGS|METH_KEYWORDS, "new_DarcyKinematic(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) -> DarcyKinematic"},
+	 { "new_DarcyKinematic", (PyCFunction)(void(*)(void))_wrap_new_DarcyKinematic, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_DarcyKinematic(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) -> DarcyKinematic\n"
+		"DarcyKinematic(cmf::upslope::SoilLayer::ptr left,\n"
+		"cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0)\n"
+		"\n"
+		"Creates the connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  Left node of the connection (needs to be soil water storage)\n"
+		"\n"
+		"right:  Right node of the connection (can be any node)\n"
+		"\n"
+		"FlowWidth:  the width of the connection - is multiplied by layer\n"
+		"thickness to get the interface area\n"
+		"\n"
+		"Distance:  the length of the connection. If 0, the distance is\n"
+		"calculated from the position of the nodes \n"
+		""},
 	 { "delete_DarcyKinematic", _wrap_delete_DarcyKinematic, METH_O, "delete_DarcyKinematic(DarcyKinematic self)"},
 	 { "DarcyKinematic_swigregister", DarcyKinematic_swigregister, METH_O, NULL},
 	 { "DarcyKinematic_swiginit", DarcyKinematic_swiginit, METH_VARARGS, NULL},
@@ -77533,7 +81517,26 @@ static PyMethodDef SwigMethods[] = {
 	 { "Richards_lateral_flow_thickness_get", _wrap_Richards_lateral_flow_thickness_get, METH_O, "Richards_lateral_flow_thickness_get(Richards_lateral self) -> real"},
 	 { "Richards_lateral_wet_right_node_set", _wrap_Richards_lateral_wet_right_node_set, METH_VARARGS, "Richards_lateral_wet_right_node_set(Richards_lateral self, bool wet_right_node)"},
 	 { "Richards_lateral_wet_right_node_get", _wrap_Richards_lateral_wet_right_node_get, METH_O, "Richards_lateral_wet_right_node_get(Richards_lateral self) -> bool"},
-	 { "new_Richards_lateral", (PyCFunction)(void(*)(void))_wrap_new_Richards_lateral, METH_VARARGS|METH_KEYWORDS, "new_Richards_lateral(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth=0, real Distance=0) -> Richards_lateral"},
+	 { "new_Richards_lateral", (PyCFunction)(void(*)(void))_wrap_new_Richards_lateral, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Richards_lateral(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth=0, real Distance=0) -> Richards_lateral\n"
+		"Richards_lateral(cmf::upslope::SoilLayer::ptr left,\n"
+		"cmf::water::flux_node::ptr right, real FlowWidth=0, real Distance=0)\n"
+		"\n"
+		"Creates the connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  Left node of the connection (needs to be soil water storage)\n"
+		"\n"
+		"right:  Right node of the connection (can be any node)\n"
+		"\n"
+		"FlowWidth:  the width of the connection - is multiplied by layer\n"
+		"thickness to get the interface area\n"
+		"\n"
+		"Distance:  the length of the connection. If 0, the distance is\n"
+		"calculated from the position of the nodes \n"
+		""},
 	 { "Richards_lateral_usebaseflow", (PyCFunction)(void(*)(void))_wrap_Richards_lateral_usebaseflow, METH_VARARGS|METH_KEYWORDS, "Richards_lateral_usebaseflow(bool use)"},
 	 { "delete_Richards_lateral", _wrap_delete_Richards_lateral, METH_O, "delete_Richards_lateral(Richards_lateral self)"},
 	 { "Richards_lateral_swigregister", Richards_lateral_swigregister, METH_O, NULL},
@@ -77546,7 +81549,12 @@ static PyMethodDef SwigMethods[] = {
 	 { "TOPModelFlow_T0_get", _wrap_TOPModelFlow_T0_get, METH_O, "TOPModelFlow_T0_get(TOPModelFlow self) -> real"},
 	 { "TOPModelFlow_m_set", _wrap_TOPModelFlow_m_set, METH_VARARGS, "TOPModelFlow_m_set(TOPModelFlow self, real m)"},
 	 { "TOPModelFlow_m_get", _wrap_TOPModelFlow_m_get, METH_O, "TOPModelFlow_m_get(TOPModelFlow self) -> real"},
-	 { "new_TOPModelFlow", (PyCFunction)(void(*)(void))_wrap_new_TOPModelFlow, METH_VARARGS|METH_KEYWORDS, "new_TOPModelFlow(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real T0, real m, real flowwidth, real distance=0) -> TOPModelFlow"},
+	 { "new_TOPModelFlow", (PyCFunction)(void(*)(void))_wrap_new_TOPModelFlow, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_TOPModelFlow(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real T0, real m, real flowwidth, real distance=0) -> TOPModelFlow\n"
+		"TOPModelFlow(cmf::upslope::SoilLayer::ptr left,\n"
+		"cmf::water::flux_node::ptr right, real T0, real m, real flowwidth,\n"
+		"real distance=0) \n"
+		""},
 	 { "delete_TOPModelFlow", _wrap_delete_TOPModelFlow, METH_O, "delete_TOPModelFlow(TOPModelFlow self)"},
 	 { "TOPModelFlow_swigregister", TOPModelFlow_swigregister, METH_O, NULL},
 	 { "TOPModelFlow_swiginit", TOPModelFlow_swiginit, METH_VARARGS, NULL},
@@ -77558,77 +81566,195 @@ static PyMethodDef SwigMethods[] = {
 	 { "Manning_swigregister", Manning_swigregister, METH_O, NULL},
 	 { "Manning_Diffusive_linear_slope_width_set", _wrap_Manning_Diffusive_linear_slope_width_set, METH_VARARGS, "Manning_Diffusive_linear_slope_width_set(Manning_Diffusive self, real linear_slope_width)"},
 	 { "Manning_Diffusive_linear_slope_width_get", _wrap_Manning_Diffusive_linear_slope_width_get, METH_O, "Manning_Diffusive_linear_slope_width_get(Manning_Diffusive self) -> real"},
-	 { "new_Manning_Diffusive", (PyCFunction)(void(*)(void))_wrap_new_Manning_Diffusive, METH_VARARGS|METH_KEYWORDS, "new_Manning_Diffusive(cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype) -> Manning_Diffusive"},
+	 { "new_Manning_Diffusive", (PyCFunction)(void(*)(void))_wrap_new_Manning_Diffusive, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Manning_Diffusive(cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype) -> Manning_Diffusive\n"
+		"Manning_Diffusive(cmf::river::OpenWaterStorage::ptr left,\n"
+		"cmf::water::flux_node::ptr right, const cmf::river::IChannel\n"
+		"&reachtype)\n"
+		"\n"
+		"Creates a diffusive wave connection between to open water storages.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  right:  The nodes to be connected by the diffusive wave. Left\n"
+		"needs to be an open water storage\n"
+		"\n"
+		"reachtype:  The channel geometry \n"
+		""},
 	 { "delete_Manning_Diffusive", _wrap_delete_Manning_Diffusive, METH_O, "delete_Manning_Diffusive(Manning_Diffusive self)"},
 	 { "Manning_Diffusive_swigregister", Manning_Diffusive_swigregister, METH_O, NULL},
 	 { "Manning_Diffusive_swiginit", Manning_Diffusive_swiginit, METH_VARARGS, NULL},
-	 { "new_Manning_Kinematic", (PyCFunction)(void(*)(void))_wrap_new_Manning_Kinematic, METH_VARARGS|METH_KEYWORDS, "new_Manning_Kinematic(cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype) -> Manning_Kinematic"},
+	 { "new_Manning_Kinematic", (PyCFunction)(void(*)(void))_wrap_new_Manning_Kinematic, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Manning_Kinematic(cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype) -> Manning_Kinematic\n"
+		"Manning_Kinematic(cmf::river::OpenWaterStorage::ptr left,\n"
+		"cmf::water::flux_node::ptr right, const cmf::river::IChannel\n"
+		"&reachtype)\n"
+		"\n"
+		"Creates a kinematic wave connection between to open water storages.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  right:  The nodes to be connected by the kinematic wave. Left\n"
+		"needs to be an open water storage\n"
+		"\n"
+		"reachtype:  The channel geometry \n"
+		""},
 	 { "delete_Manning_Kinematic", _wrap_delete_Manning_Kinematic, METH_O, "delete_Manning_Kinematic(Manning_Kinematic self)"},
 	 { "Manning_Kinematic_swigregister", Manning_Kinematic_swigregister, METH_O, NULL},
 	 { "Manning_Kinematic_swiginit", Manning_Kinematic_swiginit, METH_VARARGS, NULL},
-	 { "new_CanopyOverflow", (PyCFunction)(void(*)(void))_wrap_new_CanopyOverflow, METH_VARARGS|METH_KEYWORDS, "new_CanopyOverflow(cmf::water::WaterStorage::ptr Canopy, cmf::water::flux_node::ptr target, Cell cell) -> CanopyOverflow"},
+	 { "new_CanopyOverflow", (PyCFunction)(void(*)(void))_wrap_new_CanopyOverflow, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_CanopyOverflow(cmf::water::WaterStorage::ptr Canopy, cmf::water::flux_node::ptr target, Cell cell) -> CanopyOverflow\n"
+		"CanopyOverflow(cmf::water::WaterStorage::ptr Canopy,\n"
+		"cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell) \n"
+		""},
 	 { "CanopyOverflow_use_for_cell", (PyCFunction)(void(*)(void))_wrap_CanopyOverflow_use_for_cell, METH_VARARGS|METH_KEYWORDS, "CanopyOverflow_use_for_cell(Cell cell) -> CanopyOverflow"},
 	 { "delete_CanopyOverflow", _wrap_delete_CanopyOverflow, METH_O, "delete_CanopyOverflow(CanopyOverflow self)"},
 	 { "CanopyOverflow_swigregister", CanopyOverflow_swigregister, METH_O, NULL},
 	 { "CanopyOverflow_swiginit", CanopyOverflow_swiginit, METH_VARARGS, NULL},
-	 { "new_RutterInterception", (PyCFunction)(void(*)(void))_wrap_new_RutterInterception, METH_VARARGS|METH_KEYWORDS, "new_RutterInterception(cmf::water::WaterStorage::ptr Canopy, cmf::water::flux_node::ptr target, Cell cell) -> RutterInterception"},
+	 { "new_RutterInterception", (PyCFunction)(void(*)(void))_wrap_new_RutterInterception, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_RutterInterception(cmf::water::WaterStorage::ptr Canopy, cmf::water::flux_node::ptr target, Cell cell) -> RutterInterception\n"
+		"RutterInterception(cmf::water::WaterStorage::ptr Canopy,\n"
+		"cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell) \n"
+		""},
 	 { "RutterInterception_use_for_cell", (PyCFunction)(void(*)(void))_wrap_RutterInterception_use_for_cell, METH_VARARGS|METH_KEYWORDS, "RutterInterception_use_for_cell(Cell cell) -> RutterInterception"},
 	 { "delete_RutterInterception", _wrap_delete_RutterInterception, METH_O, "delete_RutterInterception(RutterInterception self)"},
 	 { "RutterInterception_swigregister", RutterInterception_swigregister, METH_O, NULL},
 	 { "RutterInterception_swiginit", RutterInterception_swiginit, METH_VARARGS, NULL},
 	 { "TempIndexSnowMelt_SnowMeltRate_set", _wrap_TempIndexSnowMelt_SnowMeltRate_set, METH_VARARGS, "TempIndexSnowMelt_SnowMeltRate_set(TempIndexSnowMelt self, real SnowMeltRate)"},
 	 { "TempIndexSnowMelt_SnowMeltRate_get", _wrap_TempIndexSnowMelt_SnowMeltRate_get, METH_O, "TempIndexSnowMelt_SnowMeltRate_get(TempIndexSnowMelt self) -> real"},
-	 { "new_TempIndexSnowMelt", (PyCFunction)(void(*)(void))_wrap_new_TempIndexSnowMelt, METH_VARARGS|METH_KEYWORDS, "new_TempIndexSnowMelt(cmf::water::WaterStorage::ptr snow, cmf::water::flux_node::ptr surface_water, Cell cell, real rate=7.0) -> TempIndexSnowMelt"},
+	 { "new_TempIndexSnowMelt", (PyCFunction)(void(*)(void))_wrap_new_TempIndexSnowMelt, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_TempIndexSnowMelt(cmf::water::WaterStorage::ptr snow, cmf::water::flux_node::ptr surface_water, Cell cell, real rate=7.0) -> TempIndexSnowMelt\n"
+		"TempIndexSnowMelt(cmf::water::WaterStorage::ptr snow,\n"
+		"cmf::water::flux_node::ptr surface_water, cmf::upslope::Cell &cell,\n"
+		"real rate=7.0)\n"
+		"\n"
+		"Creates a new snow melt connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"snow:  Snow storage, usually cel.snow\n"
+		"\n"
+		"surface_water:  target of the melted water (usually cell.surfacewater)\n"
+		"\n"
+		"cell:  The cell, needed to get weather and area\n"
+		"\n"
+		"rate:  The rate of snow melt, given in mm/(degC day), default = 7.0 \n"
+		""},
 	 { "TempIndexSnowMelt_use_for_cell", (PyCFunction)(void(*)(void))_wrap_TempIndexSnowMelt_use_for_cell, METH_VARARGS|METH_KEYWORDS, "TempIndexSnowMelt_use_for_cell(Cell cell)"},
 	 { "delete_TempIndexSnowMelt", _wrap_delete_TempIndexSnowMelt, METH_O, "delete_TempIndexSnowMelt(TempIndexSnowMelt self)"},
 	 { "TempIndexSnowMelt_swigregister", TempIndexSnowMelt_swigregister, METH_O, NULL},
 	 { "TempIndexSnowMelt_swiginit", TempIndexSnowMelt_swiginit, METH_VARARGS, NULL},
-	 { "new_EnergyBudgetSnowMelt", (PyCFunction)(void(*)(void))_wrap_new_EnergyBudgetSnowMelt, METH_VARARGS|METH_KEYWORDS, "new_EnergyBudgetSnowMelt(cmf::water::WaterStorage::ptr snow, cmf::water::flux_node::ptr surface_water, Cell cell) -> EnergyBudgetSnowMelt"},
+	 { "new_EnergyBudgetSnowMelt", (PyCFunction)(void(*)(void))_wrap_new_EnergyBudgetSnowMelt, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_EnergyBudgetSnowMelt(cmf::water::WaterStorage::ptr snow, cmf::water::flux_node::ptr surface_water, Cell cell) -> EnergyBudgetSnowMelt\n"
+		"EnergyBudgetSnowMelt(cmf::water::WaterStorage::ptr snow,\n"
+		"cmf::water::flux_node::ptr surface_water, cmf::upslope::Cell &cell) \n"
+		""},
 	 { "EnergyBudgetSnowMelt_use_for_cell", (PyCFunction)(void(*)(void))_wrap_EnergyBudgetSnowMelt_use_for_cell, METH_VARARGS|METH_KEYWORDS, "EnergyBudgetSnowMelt_use_for_cell(Cell cell)"},
 	 { "delete_EnergyBudgetSnowMelt", _wrap_delete_EnergyBudgetSnowMelt, METH_O, "delete_EnergyBudgetSnowMelt(EnergyBudgetSnowMelt self)"},
 	 { "EnergyBudgetSnowMelt_swigregister", EnergyBudgetSnowMelt_swigregister, METH_O, NULL},
 	 { "EnergyBudgetSnowMelt_swiginit", EnergyBudgetSnowMelt_swiginit, METH_VARARGS, NULL},
-	 { "snowfraction", (PyCFunction)(void(*)(void))_wrap_snowfraction, METH_VARARGS|METH_KEYWORDS, "snowfraction(real T) -> real"},
+	 { "snowfraction", (PyCFunction)(void(*)(void))_wrap_snowfraction, METH_VARARGS|METH_KEYWORDS, "\n"
+		"snowfraction(real T) -> real\n"
+		"real\n"
+		"cmf::upslope::connections::snowfraction(real T)\n"
+		"\n"
+		"A function to calculate the snow fraction of the precipitation\n"
+		"according to the air temperature.\n"
+		"\n"
+		"Returns 0.0 for T>+1 degC, 1.0 for T<-1degC and interpolates linear\n"
+		"between. Values between 0 and 1 can be interpreted as sleet \n"
+		""},
 	 { "Rainfall_Throughfall_set", _wrap_Rainfall_Throughfall_set, METH_VARARGS, "Rainfall_Throughfall_set(Rainfall self, bool Throughfall)"},
 	 { "Rainfall_Throughfall_get", _wrap_Rainfall_Throughfall_get, METH_O, "Rainfall_Throughfall_get(Rainfall self) -> bool"},
 	 { "Rainfall_InterceptedRainfall_set", _wrap_Rainfall_InterceptedRainfall_set, METH_VARARGS, "Rainfall_InterceptedRainfall_set(Rainfall self, bool InterceptedRainfall)"},
 	 { "Rainfall_InterceptedRainfall_get", _wrap_Rainfall_InterceptedRainfall_get, METH_O, "Rainfall_InterceptedRainfall_get(Rainfall self) -> bool"},
-	 { "new_Rainfall", (PyCFunction)(void(*)(void))_wrap_new_Rainfall, METH_VARARGS|METH_KEYWORDS, "new_Rainfall(cmf::water::flux_node::ptr target, Cell cell, bool getthroughfall=True, bool getintercepted=True) -> Rainfall"},
+	 { "new_Rainfall", (PyCFunction)(void(*)(void))_wrap_new_Rainfall, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Rainfall(cmf::water::flux_node::ptr target, Cell cell, bool getthroughfall=True, bool getintercepted=True) -> Rainfall\n"
+		"Rainfall(cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell,\n"
+		"bool getthroughfall=true, bool getintercepted=true)\n"
+		"\n"
+		"Creates a new Rainfall connection. \n"
+		""},
 	 { "delete_Rainfall", _wrap_delete_Rainfall, METH_O, "delete_Rainfall(Rainfall self)"},
 	 { "Rainfall_swigregister", Rainfall_swigregister, METH_O, NULL},
 	 { "Rainfall_swiginit", Rainfall_swiginit, METH_VARARGS, NULL},
-	 { "new_Snowfall", (PyCFunction)(void(*)(void))_wrap_new_Snowfall, METH_VARARGS|METH_KEYWORDS, "new_Snowfall(cmf::water::flux_node::ptr target, Cell cell) -> Snowfall"},
+	 { "new_Snowfall", (PyCFunction)(void(*)(void))_wrap_new_Snowfall, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Snowfall(cmf::water::flux_node::ptr target, Cell cell) -> Snowfall\n"
+		"Snowfall(cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell)\n"
+		"\n"
+		""},
 	 { "delete_Snowfall", _wrap_delete_Snowfall, METH_O, "delete_Snowfall(Snowfall self)"},
 	 { "Snowfall_swigregister", Snowfall_swigregister, METH_O, NULL},
 	 { "Snowfall_swiginit", Snowfall_swiginit, METH_VARARGS, NULL},
-	 { "new_MatrixInfiltration", (PyCFunction)(void(*)(void))_wrap_new_MatrixInfiltration, METH_VARARGS|METH_KEYWORDS, "new_MatrixInfiltration(cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater) -> MatrixInfiltration"},
+	 { "new_MatrixInfiltration", (PyCFunction)(void(*)(void))_wrap_new_MatrixInfiltration, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_MatrixInfiltration(cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater) -> MatrixInfiltration\n"
+		"MatrixInfiltration(cmf::upslope::SoilLayer::ptr soilwater,\n"
+		"cmf::water::flux_node::ptr surfacewater) \n"
+		""},
 	 { "MatrixInfiltration_use_for_cell", (PyCFunction)(void(*)(void))_wrap_MatrixInfiltration_use_for_cell, METH_VARARGS|METH_KEYWORDS, "MatrixInfiltration_use_for_cell(Cell c)"},
 	 { "delete_MatrixInfiltration", _wrap_delete_MatrixInfiltration, METH_O, "delete_MatrixInfiltration(MatrixInfiltration self)"},
 	 { "MatrixInfiltration_swigregister", MatrixInfiltration_swigregister, METH_O, NULL},
 	 { "MatrixInfiltration_swiginit", MatrixInfiltration_swiginit, METH_VARARGS, NULL},
-	 { "new_GreenAmptInfiltration", (PyCFunction)(void(*)(void))_wrap_new_GreenAmptInfiltration, METH_VARARGS|METH_KEYWORDS, "new_GreenAmptInfiltration(cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater) -> GreenAmptInfiltration"},
+	 { "new_GreenAmptInfiltration", (PyCFunction)(void(*)(void))_wrap_new_GreenAmptInfiltration, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_GreenAmptInfiltration(cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater) -> GreenAmptInfiltration\n"
+		"GreenAmptInfiltration(cmf::upslope::SoilLayer::ptr soilwater,\n"
+		"cmf::water::flux_node::ptr surfacewater) \n"
+		""},
 	 { "GreenAmptInfiltration_use_for_cell", (PyCFunction)(void(*)(void))_wrap_GreenAmptInfiltration_use_for_cell, METH_VARARGS|METH_KEYWORDS, "GreenAmptInfiltration_use_for_cell(Cell c)"},
 	 { "delete_GreenAmptInfiltration", _wrap_delete_GreenAmptInfiltration, METH_O, "delete_GreenAmptInfiltration(GreenAmptInfiltration self)"},
 	 { "GreenAmptInfiltration_swigregister", GreenAmptInfiltration_swigregister, METH_O, NULL},
 	 { "GreenAmptInfiltration_swiginit", GreenAmptInfiltration_swiginit, METH_VARARGS, NULL},
 	 { "ConceptualInfiltration_W0_set", _wrap_ConceptualInfiltration_W0_set, METH_VARARGS, "ConceptualInfiltration_W0_set(ConceptualInfiltration self, real W0)"},
 	 { "ConceptualInfiltration_W0_get", _wrap_ConceptualInfiltration_W0_get, METH_O, "ConceptualInfiltration_W0_get(ConceptualInfiltration self) -> real"},
-	 { "new_ConceptualInfiltration", (PyCFunction)(void(*)(void))_wrap_new_ConceptualInfiltration, METH_VARARGS|METH_KEYWORDS, "new_ConceptualInfiltration(cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater, real W0=0.9) -> ConceptualInfiltration"},
+	 { "new_ConceptualInfiltration", (PyCFunction)(void(*)(void))_wrap_new_ConceptualInfiltration, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ConceptualInfiltration(cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater, real W0=0.9) -> ConceptualInfiltration\n"
+		"ConceptualInfiltration(cmf::upslope::SoilLayer::ptr soilwater,\n"
+		"cmf::water::flux_node::ptr surfacewater, real W0=0.9)\n"
+		"\n"
+		"Creates the connection between surfacewater and first soil layer.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"soilwater:  the infiltration target\n"
+		"\n"
+		"surfacewater:  the infiltration source\n"
+		"\n"
+		"W0:  the 50% saturation value \n"
+		""},
 	 { "ConceptualInfiltration_use_for_cell", (PyCFunction)(void(*)(void))_wrap_ConceptualInfiltration_use_for_cell, METH_VARARGS|METH_KEYWORDS, "ConceptualInfiltration_use_for_cell(Cell c)"},
 	 { "delete_ConceptualInfiltration", _wrap_delete_ConceptualInfiltration, METH_O, "delete_ConceptualInfiltration(ConceptualInfiltration self)"},
 	 { "ConceptualInfiltration_swigregister", ConceptualInfiltration_swigregister, METH_O, NULL},
 	 { "ConceptualInfiltration_swiginit", ConceptualInfiltration_swiginit, METH_VARARGS, NULL},
 	 { "SWATPercolation_use_for_cell", (PyCFunction)(void(*)(void))_wrap_SWATPercolation_use_for_cell, METH_VARARGS|METH_KEYWORDS, "SWATPercolation_use_for_cell(Cell cell, bool no_override=True)"},
-	 { "new_SWATPercolation", (PyCFunction)(void(*)(void))_wrap_new_SWATPercolation, METH_VARARGS|METH_KEYWORDS, "new_SWATPercolation(cmf::upslope::SoilLayer::ptr upperLayer, cmf::upslope::SoilLayer::ptr lowerLayer) -> SWATPercolation"},
+	 { "new_SWATPercolation", (PyCFunction)(void(*)(void))_wrap_new_SWATPercolation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SWATPercolation(cmf::upslope::SoilLayer::ptr upperLayer, cmf::upslope::SoilLayer::ptr lowerLayer) -> SWATPercolation\n"
+		"SWATPercolation(cmf::upslope::SoilLayer::ptr upperLayer,\n"
+		"cmf::upslope::SoilLayer::ptr lowerLayer) \n"
+		""},
 	 { "delete_SWATPercolation", _wrap_delete_SWATPercolation, METH_O, "delete_SWATPercolation(SWATPercolation self)"},
 	 { "SWATPercolation_swigregister", SWATPercolation_swigregister, METH_O, NULL},
 	 { "SWATPercolation_swiginit", SWATPercolation_swiginit, METH_VARARGS, NULL},
-	 { "new_Richards", (PyCFunction)(void(*)(void))_wrap_new_Richards, METH_VARARGS|METH_KEYWORDS, "new_Richards(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> Richards"},
+	 { "new_Richards", (PyCFunction)(void(*)(void))_wrap_new_Richards, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Richards(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> Richards\n"
+		"Richards(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr\n"
+		"right)\n"
+		"\n"
+		"Creates a Richards equation connection between two soil layers (left\n"
+		"and right, rather top and bottom) of the same cell. \n"
+		""},
 	 { "Richards_use_for_cell", (PyCFunction)(void(*)(void))_wrap_Richards_use_for_cell, METH_VARARGS|METH_KEYWORDS, "Richards_use_for_cell(Cell cell, bool no_override=True)"},
 	 { "delete_Richards", _wrap_delete_Richards, METH_O, "delete_Richards(Richards self)"},
 	 { "Richards_swigregister", Richards_swigregister, METH_O, NULL},
 	 { "Richards_swiginit", Richards_swiginit, METH_VARARGS, NULL},
-	 { "new_FreeDrainagePercolation", (PyCFunction)(void(*)(void))_wrap_new_FreeDrainagePercolation, METH_VARARGS|METH_KEYWORDS, "new_FreeDrainagePercolation(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> FreeDrainagePercolation"},
+	 { "new_FreeDrainagePercolation", (PyCFunction)(void(*)(void))_wrap_new_FreeDrainagePercolation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_FreeDrainagePercolation(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> FreeDrainagePercolation\n"
+		"FreeDrainagePercolation(cmf::upslope::SoilLayer::ptr left,\n"
+		"cmf::water::flux_node::ptr right) \n"
+		""},
 	 { "delete_FreeDrainagePercolation", _wrap_delete_FreeDrainagePercolation, METH_O, "delete_FreeDrainagePercolation(FreeDrainagePercolation self)"},
 	 { "FreeDrainagePercolation_swigregister", FreeDrainagePercolation_swigregister, METH_O, NULL},
 	 { "FreeDrainagePercolation_swiginit", FreeDrainagePercolation_swiginit, METH_VARARGS, NULL},
@@ -77638,15 +81764,75 @@ static PyMethodDef SwigMethods[] = {
 	 { "LayerBypass_w0_get", _wrap_LayerBypass_w0_get, METH_O, "LayerBypass_w0_get(LayerBypass self) -> real"},
 	 { "LayerBypass_beta_set", _wrap_LayerBypass_beta_set, METH_VARARGS, "LayerBypass_beta_set(LayerBypass self, real beta)"},
 	 { "LayerBypass_beta_get", _wrap_LayerBypass_beta_get, METH_O, "LayerBypass_beta_get(LayerBypass self) -> real"},
-	 { "LayerBypass_K", (PyCFunction)(void(*)(void))_wrap_LayerBypass_K, METH_VARARGS|METH_KEYWORDS, "LayerBypass_K(LayerBypass self, real w) -> real"},
-	 { "new_LayerBypass", (PyCFunction)(void(*)(void))_wrap_new_LayerBypass, METH_VARARGS|METH_KEYWORDS, "new_LayerBypass(cmf::water::flux_node::ptr left, cmf::upslope::SoilLayer::ptr right, real Kmax=100., real w0=0.0, real beta=1.0) -> LayerBypass"},
+	 { "LayerBypass_K", (PyCFunction)(void(*)(void))_wrap_LayerBypass_K, METH_VARARGS|METH_KEYWORDS, "\n"
+		"LayerBypass_K(LayerBypass self, real w) -> real\n"
+		"real K(real w)\n"
+		"\n"
+		"the actual crack conductivity\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"w:  the wetness of the target layer \n"
+		""},
+	 { "new_LayerBypass", (PyCFunction)(void(*)(void))_wrap_new_LayerBypass, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_LayerBypass(cmf::water::flux_node::ptr left, cmf::upslope::SoilLayer::ptr right, real Kmax=100., real w0=0.0, real beta=1.0) -> LayerBypass\n"
+		"LayerBypass(cmf::water::flux_node::ptr left,\n"
+		"cmf::upslope::SoilLayer::ptr right, real Kmax=100., real w0=0.0, real\n"
+		"beta=1.0)\n"
+		"\n"
+		"Creates a layer bypass connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  The source of the flux, usually the surfacewater of the cell\n"
+		"\n"
+		"right:  The target soil layer\n"
+		"\n"
+		"Kmax:  maximum conductivity of the cracks in m/day\n"
+		"\n"
+		"w0:  is the actual wetness of the target layer\n"
+		"\n"
+		"beta:  is an empirical shape parameter of the crack size/wetness\n"
+		"relation \n"
+		""},
 	 { "delete_LayerBypass", _wrap_delete_LayerBypass, METH_O, "delete_LayerBypass(LayerBypass self)"},
 	 { "LayerBypass_swigregister", LayerBypass_swigregister, METH_O, NULL},
 	 { "LayerBypass_swiginit", LayerBypass_swiginit, METH_VARARGS, NULL},
-	 { "RootUptakeStressFunction_Tact", (PyCFunction)(void(*)(void))_wrap_RootUptakeStressFunction_Tact, METH_VARARGS|METH_KEYWORDS, "RootUptakeStressFunction_Tact(RootUptakeStressFunction self, SoilLayer soillayer, real Tpot) -> real"},
-	 { "RootUptakeStressFunction_copy", _wrap_RootUptakeStressFunction_copy, METH_O, "RootUptakeStressFunction_copy(RootUptakeStressFunction self) -> RootUptakeStressFunction"},
-	 { "RootUptakeStressFunction_to_string", _wrap_RootUptakeStressFunction_to_string, METH_O, "RootUptakeStressFunction_to_string(RootUptakeStressFunction self) -> std::string"},
-	 { "delete_RootUptakeStressFunction", _wrap_delete_RootUptakeStressFunction, METH_O, "delete_RootUptakeStressFunction(RootUptakeStressFunction self)"},
+	 { "RootUptakeStressFunction_Tact", (PyCFunction)(void(*)(void))_wrap_RootUptakeStressFunction_Tact, METH_VARARGS|METH_KEYWORDS, "\n"
+		"RootUptakeStressFunction_Tact(RootUptakeStressFunction self, SoilLayer soillayer, real Tpot) -> real\n"
+		"virtual real\n"
+		"Tact(const cmf::upslope::SoilLayer *soillayer, real Tpot) const =0\n"
+		"\n"
+		"Calculates the water stress for a layer.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"soillayer:  The cmf::upslope::SoilLayer this stress function belongs\n"
+		"to\n"
+		"\n"
+		"Tpot:  Potential Transpiration in mm/day (for the full profile)\n"
+		"\n"
+		"Actual flux from layer in m3/day \n"
+		""},
+	 { "RootUptakeStressFunction_copy", _wrap_RootUptakeStressFunction_copy, METH_O, "\n"
+		"RootUptakeStressFunction_copy(RootUptakeStressFunction self) -> RootUptakeStressFunction\n"
+		"virtual\n"
+		"cmf::upslope::ET::RootUptakeStressFunction* copy() const =0\n"
+		"\n"
+		"Creates a new copy of this wetness. \n"
+		""},
+	 { "RootUptakeStressFunction_to_string", _wrap_RootUptakeStressFunction_to_string, METH_O, "\n"
+		"RootUptakeStressFunction_to_string(RootUptakeStressFunction self) -> std::string\n"
+		"virtual\n"
+		"std::string to_string() const =0 \n"
+		""},
+	 { "delete_RootUptakeStressFunction", _wrap_delete_RootUptakeStressFunction, METH_O, "\n"
+		"delete_RootUptakeStressFunction(RootUptakeStressFunction self)\n"
+		"virtual ~RootUptakeStressFunction() \n"
+		""},
 	 { "RootUptakeStressFunction_swigregister", RootUptakeStressFunction_swigregister, METH_O, NULL},
 	 { "SuctionStress_P0_set", _wrap_SuctionStress_P0_set, METH_VARARGS, "SuctionStress_P0_set(SuctionStress self, real P0)"},
 	 { "SuctionStress_P0_get", _wrap_SuctionStress_P0_get, METH_O, "SuctionStress_P0_get(SuctionStress self) -> real"},
@@ -77659,18 +81845,41 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_SuctionStress", _wrap_new_SuctionStress, METH_VARARGS, "\n"
 		"SuctionStress(real P0=1e308, real P1=1e307, real P2=-5, real P3=-160)\n"
 		"new_SuctionStress(SuctionStress other) -> SuctionStress\n"
+		"SuctionStress(const SuctionStress &other) \n"
 		""},
-	 { "SuctionStress_copy", _wrap_SuctionStress_copy, METH_O, "SuctionStress_copy(SuctionStress self) -> SuctionStress"},
-	 { "delete_SuctionStress", _wrap_delete_SuctionStress, METH_O, "delete_SuctionStress(SuctionStress self)"},
+	 { "SuctionStress_copy", _wrap_SuctionStress_copy, METH_O, "\n"
+		"SuctionStress_copy(SuctionStress self) -> SuctionStress\n"
+		"cmf::upslope::ET::SuctionStress* copy() const\n"
+		"\n"
+		"Creates a new copy of this wetness. \n"
+		""},
+	 { "delete_SuctionStress", _wrap_delete_SuctionStress, METH_O, "\n"
+		"delete_SuctionStress(SuctionStress self)\n"
+		"virtual ~SuctionStress() \n"
+		""},
 	 { "SuctionStress_swigregister", SuctionStress_swigregister, METH_O, NULL},
 	 { "SuctionStress_swiginit", SuctionStress_swiginit, METH_VARARGS, NULL},
 	 { "ContentStress_theta_d_set", _wrap_ContentStress_theta_d_set, METH_VARARGS, "ContentStress_theta_d_set(ContentStress self, real theta_d)"},
 	 { "ContentStress_theta_d_get", _wrap_ContentStress_theta_d_get, METH_O, "ContentStress_theta_d_get(ContentStress self) -> real"},
 	 { "ContentStress_theta_w_set", _wrap_ContentStress_theta_w_set, METH_VARARGS, "ContentStress_theta_w_set(ContentStress self, real theta_w)"},
 	 { "ContentStress_theta_w_get", _wrap_ContentStress_theta_w_get, METH_O, "ContentStress_theta_w_get(ContentStress self) -> real"},
-	 { "ContentStress_copy", _wrap_ContentStress_copy, METH_O, "ContentStress_copy(ContentStress self) -> ContentStress"},
-	 { "new_ContentStress", (PyCFunction)(void(*)(void))_wrap_new_ContentStress, METH_VARARGS|METH_KEYWORDS, "new_ContentStress(real theta_d=-1, real theta_w=-1) -> ContentStress"},
-	 { "delete_ContentStress", _wrap_delete_ContentStress, METH_O, "delete_ContentStress(ContentStress self)"},
+	 { "ContentStress_copy", _wrap_ContentStress_copy, METH_O, "\n"
+		"ContentStress_copy(ContentStress self) -> ContentStress\n"
+		"cmf::upslope::ET::ContentStress* copy() const\n"
+		"\n"
+		"Creates a new copy of this wetness. \n"
+		""},
+	 { "new_ContentStress", (PyCFunction)(void(*)(void))_wrap_new_ContentStress, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ContentStress(real theta_d=-1, real theta_w=-1) -> ContentStress\n"
+		"ContentStress(real theta_d=-1, real theta_w=-1)\n"
+		"\n"
+		"Creates a new ContentStress for critical water content theta_d in vol\n"
+		"Water/vol Soil and wilting point theta_w. \n"
+		""},
+	 { "delete_ContentStress", _wrap_delete_ContentStress, METH_O, "\n"
+		"delete_ContentStress(ContentStress self)\n"
+		"virtual ~ContentStress() \n"
+		""},
 	 { "ContentStress_swigregister", ContentStress_swigregister, METH_O, NULL},
 	 { "ContentStress_swiginit", ContentStress_swiginit, METH_VARARGS, NULL},
 	 { "VolumeStress_V1_set", _wrap_VolumeStress_V1_set, METH_VARARGS, "VolumeStress_V1_set(VolumeStress self, real V1)"},
@@ -77680,39 +81889,95 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_VolumeStress", _wrap_new_VolumeStress, METH_VARARGS, "\n"
 		"VolumeStress(real V1, real V0)\n"
 		"new_VolumeStress(VolumeStress other) -> VolumeStress\n"
+		"VolumeStress(const VolumeStress &other) \n"
 		""},
-	 { "VolumeStress_copy", _wrap_VolumeStress_copy, METH_O, "VolumeStress_copy(VolumeStress self) -> VolumeStress"},
-	 { "delete_VolumeStress", _wrap_delete_VolumeStress, METH_O, "delete_VolumeStress(VolumeStress self)"},
+	 { "VolumeStress_copy", _wrap_VolumeStress_copy, METH_O, "\n"
+		"VolumeStress_copy(VolumeStress self) -> VolumeStress\n"
+		"cmf::upslope::ET::VolumeStress* copy() const\n"
+		"\n"
+		"Creates a new copy of this wetness. \n"
+		""},
+	 { "delete_VolumeStress", _wrap_delete_VolumeStress, METH_O, "\n"
+		"delete_VolumeStress(VolumeStress self)\n"
+		"virtual ~VolumeStress() \n"
+		""},
 	 { "VolumeStress_swigregister", VolumeStress_swigregister, METH_O, NULL},
 	 { "VolumeStress_swiginit", VolumeStress_swiginit, METH_VARARGS, NULL},
-	 { "new_log_wind_profile", (PyCFunction)(void(*)(void))_wrap_new_log_wind_profile, METH_VARARGS|METH_KEYWORDS, "new_log_wind_profile(Cell _cell) -> log_wind_profile"},
-	 { "delete_log_wind_profile", _wrap_delete_log_wind_profile, METH_O, "delete_log_wind_profile(log_wind_profile self)"},
+	 { "new_log_wind_profile", (PyCFunction)(void(*)(void))_wrap_new_log_wind_profile, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_log_wind_profile(Cell _cell) -> log_wind_profile\n"
+		"log_wind_profile(cmf::upslope::Cell &_cell) \n"
+		""},
+	 { "delete_log_wind_profile", _wrap_delete_log_wind_profile, METH_O, "\n"
+		"delete_log_wind_profile(log_wind_profile self)\n"
+		"virtual\n"
+		"~log_wind_profile() \n"
+		""},
 	 { "log_wind_profile_swigregister", log_wind_profile_swigregister, METH_O, NULL},
 	 { "log_wind_profile_swiginit", log_wind_profile_swiginit, METH_VARARGS, NULL},
 	 { "PenmanMonteith", _wrap_PenmanMonteith, METH_VARARGS, "\n"
 		"PenmanMonteith(real Rn, real ra, real rs, real T, real vap_press_deficit) -> real\n"
 		"PenmanMonteith(Weather A, Vegetation veg, double h) -> real\n"
+		"real\n"
+		"cmf::upslope::ET::PenmanMonteith(cmf::atmosphere::Weather A, const\n"
+		"cmf::upslope::vegetation::Vegetation &veg, double h)\n"
+		"\n"
+		"Returns the potential ET after Penman-Monteith using some\n"
+		"simplifications for a weather and a vegetation object.\n"
+		"\n"
+		"aerodynamic and surface resistances, and a vapor pressure deficit\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"A:  Current weather\n"
+		"\n"
+		"veg:  Vegetation data\n"
+		"\n"
+		"h:  Height above sea level in m (for air pressure estimation) \n"
 		""},
-	 { "stressedET_get_layer", _wrap_stressedET_get_layer, METH_O, "stressedET_get_layer(stressedET self) -> cmf::upslope::SoilLayer::ptr"},
-	 { "stressedET_ETpot", (PyCFunction)(void(*)(void))_wrap_stressedET_ETpot, METH_VARARGS|METH_KEYWORDS, "stressedET_ETpot(stressedET self, Time t) -> real"},
+	 { "stressedET_get_layer", _wrap_stressedET_get_layer, METH_O, "\n"
+		"stressedET_get_layer(stressedET self) -> cmf::upslope::SoilLayer::ptr\n"
+		"SoilLayer::ptr get_layer() const \n"
+		""},
+	 { "stressedET_ETpot", (PyCFunction)(void(*)(void))_wrap_stressedET_ETpot, METH_VARARGS|METH_KEYWORDS, "\n"
+		"stressedET_ETpot(stressedET self, Time t) -> real\n"
+		"virtual\n"
+		"real ETpot(cmf::math::Time t) const \n"
+		""},
 	 { "delete_stressedET", _wrap_delete_stressedET, METH_O, "delete_stressedET(stressedET self)"},
 	 { "stressedET_swigregister", stressedET_swigregister, METH_O, NULL},
 	 { "constantETpot_ETpot_value_set", _wrap_constantETpot_ETpot_value_set, METH_VARARGS, "constantETpot_ETpot_value_set(constantETpot self, real ETpot_value)"},
 	 { "constantETpot_ETpot_value_get", _wrap_constantETpot_ETpot_value_get, METH_O, "constantETpot_ETpot_value_get(constantETpot self) -> real"},
-	 { "constantETpot_GetETpot", (PyCFunction)(void(*)(void))_wrap_constantETpot_GetETpot, METH_VARARGS|METH_KEYWORDS, "constantETpot_GetETpot(constantETpot self, Time t) -> real"},
-	 { "new_constantETpot", (PyCFunction)(void(*)(void))_wrap_new_constantETpot, METH_VARARGS|METH_KEYWORDS, "new_constantETpot(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, double constantETpot_value) -> constantETpot"},
+	 { "constantETpot_GetETpot", (PyCFunction)(void(*)(void))_wrap_constantETpot_GetETpot, METH_VARARGS|METH_KEYWORDS, "\n"
+		"constantETpot_GetETpot(constantETpot self, Time t) -> real\n"
+		"real GetETpot(cmf::math::Time t) const \n"
+		""},
+	 { "new_constantETpot", (PyCFunction)(void(*)(void))_wrap_new_constantETpot, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_constantETpot(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, double constantETpot_value) -> constantETpot\n"
+		"constantETpot(cmf::upslope::SoilLayer::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, double constantETpot_value) \n"
+		""},
 	 { "delete_constantETpot", _wrap_delete_constantETpot, METH_O, "delete_constantETpot(constantETpot self)"},
 	 { "constantETpot_swigregister", constantETpot_swigregister, METH_O, NULL},
 	 { "constantETpot_swiginit", constantETpot_swiginit, METH_VARARGS, NULL},
 	 { "timeseriesETpot_ETpot_data_set", _wrap_timeseriesETpot_ETpot_data_set, METH_VARARGS, "timeseriesETpot_ETpot_data_set(timeseriesETpot self, timeseries ETpot_data)"},
 	 { "timeseriesETpot_ETpot_data_get", _wrap_timeseriesETpot_ETpot_data_get, METH_O, "timeseriesETpot_ETpot_data_get(timeseriesETpot self) -> timeseries"},
-	 { "new_timeseriesETpot", (PyCFunction)(void(*)(void))_wrap_new_timeseriesETpot, METH_VARARGS|METH_KEYWORDS, "new_timeseriesETpot(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, timeseries ETpot_values) -> timeseriesETpot"},
+	 { "new_timeseriesETpot", (PyCFunction)(void(*)(void))_wrap_new_timeseriesETpot, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_timeseriesETpot(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, timeseries ETpot_values) -> timeseriesETpot\n"
+		"timeseriesETpot(cmf::upslope::SoilLayer::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, cmf::math::timeseries\n"
+		"ETpot_values) \n"
+		""},
 	 { "delete_timeseriesETpot", _wrap_delete_timeseriesETpot, METH_O, "delete_timeseriesETpot(timeseriesETpot self)"},
 	 { "timeseriesETpot_swigregister", timeseriesETpot_swigregister, METH_O, NULL},
 	 { "timeseriesETpot_swiginit", timeseriesETpot_swiginit, METH_VARARGS, NULL},
 	 { "PenmanMonteithET_daily_set", _wrap_PenmanMonteithET_daily_set, METH_VARARGS, "PenmanMonteithET_daily_set(PenmanMonteithET self, bool daily)"},
 	 { "PenmanMonteithET_daily_get", _wrap_PenmanMonteithET_daily_get, METH_O, "PenmanMonteithET_daily_get(PenmanMonteithET self) -> bool"},
-	 { "new_PenmanMonteithET", (PyCFunction)(void(*)(void))_wrap_new_PenmanMonteithET, METH_VARARGS|METH_KEYWORDS, "new_PenmanMonteithET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> PenmanMonteithET"},
+	 { "new_PenmanMonteithET", (PyCFunction)(void(*)(void))_wrap_new_PenmanMonteithET, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_PenmanMonteithET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> PenmanMonteithET\n"
+		"PenmanMonteithET(cmf::upslope::SoilLayer::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target) \n"
+		""},
 	 { "PenmanMonteithET_r_s", (PyCFunction)(void(*)(void))_wrap_PenmanMonteithET_r_s, METH_VARARGS|METH_KEYWORDS, "PenmanMonteithET_r_s(Vegetation veg) -> real"},
 	 { "PenmanMonteithET_r_a", (PyCFunction)(void(*)(void))_wrap_PenmanMonteithET_r_a, METH_VARARGS|METH_KEYWORDS, "PenmanMonteithET_r_a(Weather A, real veg_height) -> real"},
 	 { "PenmanMonteithET_use_for_cell", (PyCFunction)(void(*)(void))_wrap_PenmanMonteithET_use_for_cell, METH_VARARGS|METH_KEYWORDS, "PenmanMonteithET_use_for_cell(Cell cell)"},
@@ -77723,17 +81988,29 @@ static PyMethodDef SwigMethods[] = {
 	 { "PriestleyTaylorET_daily_get", _wrap_PriestleyTaylorET_daily_get, METH_O, "PriestleyTaylorET_daily_get(PriestleyTaylorET self) -> bool"},
 	 { "PriestleyTaylorET_alpha_set", _wrap_PriestleyTaylorET_alpha_set, METH_VARARGS, "PriestleyTaylorET_alpha_set(PriestleyTaylorET self, real alpha)"},
 	 { "PriestleyTaylorET_alpha_get", _wrap_PriestleyTaylorET_alpha_get, METH_O, "PriestleyTaylorET_alpha_get(PriestleyTaylorET self) -> real"},
-	 { "new_PriestleyTaylorET", (PyCFunction)(void(*)(void))_wrap_new_PriestleyTaylorET, METH_VARARGS|METH_KEYWORDS, "new_PriestleyTaylorET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, real alpha=1.26) -> PriestleyTaylorET"},
+	 { "new_PriestleyTaylorET", (PyCFunction)(void(*)(void))_wrap_new_PriestleyTaylorET, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_PriestleyTaylorET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, real alpha=1.26) -> PriestleyTaylorET\n"
+		"PriestleyTaylorET(cmf::upslope::SoilLayer::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, real alpha=1.26) \n"
+		""},
 	 { "PriestleyTaylorET_use_for_cell", (PyCFunction)(void(*)(void))_wrap_PriestleyTaylorET_use_for_cell, METH_VARARGS|METH_KEYWORDS, "PriestleyTaylorET_use_for_cell(Cell cell)"},
 	 { "delete_PriestleyTaylorET", _wrap_delete_PriestleyTaylorET, METH_O, "delete_PriestleyTaylorET(PriestleyTaylorET self)"},
 	 { "PriestleyTaylorET_swigregister", PriestleyTaylorET_swigregister, METH_O, NULL},
 	 { "PriestleyTaylorET_swiginit", PriestleyTaylorET_swiginit, METH_VARARGS, NULL},
-	 { "new_HargreaveET", (PyCFunction)(void(*)(void))_wrap_new_HargreaveET, METH_VARARGS|METH_KEYWORDS, "new_HargreaveET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> HargreaveET"},
+	 { "new_HargreaveET", (PyCFunction)(void(*)(void))_wrap_new_HargreaveET, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_HargreaveET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> HargreaveET\n"
+		"HargreaveET(cmf::upslope::SoilLayer::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target) \n"
+		""},
 	 { "HargreaveET_use_for_cell", (PyCFunction)(void(*)(void))_wrap_HargreaveET_use_for_cell, METH_VARARGS|METH_KEYWORDS, "HargreaveET_use_for_cell(Cell cell)"},
 	 { "delete_HargreaveET", _wrap_delete_HargreaveET, METH_O, "delete_HargreaveET(HargreaveET self)"},
 	 { "HargreaveET_swigregister", HargreaveET_swigregister, METH_O, NULL},
 	 { "HargreaveET_swiginit", HargreaveET_swiginit, METH_VARARGS, NULL},
-	 { "new_OudinET", (PyCFunction)(void(*)(void))_wrap_new_OudinET, METH_VARARGS|METH_KEYWORDS, "new_OudinET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, double K1=100, double K2=5) -> OudinET"},
+	 { "new_OudinET", (PyCFunction)(void(*)(void))_wrap_new_OudinET, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_OudinET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, double K1=100, double K2=5) -> OudinET\n"
+		"OudinET(cmf::upslope::SoilLayer::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, double K1=100, double K2=5) \n"
+		""},
 	 { "OudinET_JensenHaise1963", (PyCFunction)(void(*)(void))_wrap_OudinET_JensenHaise1963, METH_VARARGS|METH_KEYWORDS, "OudinET_JensenHaise1963(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> OudinET"},
 	 { "OudinET_McGuinessBordne1972", (PyCFunction)(void(*)(void))_wrap_OudinET_McGuinessBordne1972, METH_VARARGS|METH_KEYWORDS, "OudinET_McGuinessBordne1972(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> OudinET"},
 	 { "OudinET_K1_set", _wrap_OudinET_K1_set, METH_VARARGS, "OudinET_K1_set(OudinET self, double K1)"},
@@ -77744,16 +82021,29 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_OudinET", _wrap_delete_OudinET, METH_O, "delete_OudinET(OudinET self)"},
 	 { "OudinET_swigregister", OudinET_swigregister, METH_O, NULL},
 	 { "OudinET_swiginit", OudinET_swiginit, METH_VARARGS, NULL},
-	 { "new_TurcET", (PyCFunction)(void(*)(void))_wrap_new_TurcET, METH_VARARGS|METH_KEYWORDS, "new_TurcET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> TurcET"},
+	 { "new_TurcET", (PyCFunction)(void(*)(void))_wrap_new_TurcET, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_TurcET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> TurcET\n"
+		"TurcET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr\n"
+		"ET_target) \n"
+		""},
 	 { "TurcET_use_for_cell", (PyCFunction)(void(*)(void))_wrap_TurcET_use_for_cell, METH_VARARGS|METH_KEYWORDS, "TurcET_use_for_cell(Cell cell)"},
 	 { "delete_TurcET", _wrap_delete_TurcET, METH_O, "delete_TurcET(TurcET self)"},
 	 { "TurcET_swigregister", TurcET_swigregister, METH_O, NULL},
 	 { "TurcET_swiginit", TurcET_swiginit, METH_VARARGS, NULL},
-	 { "new_CanopyStorageEvaporation", (PyCFunction)(void(*)(void))_wrap_new_CanopyStorageEvaporation, METH_VARARGS|METH_KEYWORDS, "new_CanopyStorageEvaporation(cmf::water::WaterStorage::ptr CanopyStorage, cmf::water::flux_node::ptr ET_target, Cell cell) -> CanopyStorageEvaporation"},
+	 { "new_CanopyStorageEvaporation", (PyCFunction)(void(*)(void))_wrap_new_CanopyStorageEvaporation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_CanopyStorageEvaporation(cmf::water::WaterStorage::ptr CanopyStorage, cmf::water::flux_node::ptr ET_target, Cell cell) -> CanopyStorageEvaporation\n"
+		"CanopyStorageEvaporation(cmf::water::WaterStorage::ptr CanopyStorage,\n"
+		"cmf::water::flux_node::ptr ET_target, cmf::upslope::Cell &cell) \n"
+		""},
 	 { "delete_CanopyStorageEvaporation", _wrap_delete_CanopyStorageEvaporation, METH_O, "delete_CanopyStorageEvaporation(CanopyStorageEvaporation self)"},
 	 { "CanopyStorageEvaporation_swigregister", CanopyStorageEvaporation_swigregister, METH_O, NULL},
 	 { "CanopyStorageEvaporation_swiginit", CanopyStorageEvaporation_swiginit, METH_VARARGS, NULL},
-	 { "new_PenmanEvaporation", (PyCFunction)(void(*)(void))_wrap_new_PenmanEvaporation, METH_VARARGS|METH_KEYWORDS, "new_PenmanEvaporation(cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr Evap_target, Meteorology meteo) -> PenmanEvaporation"},
+	 { "new_PenmanEvaporation", (PyCFunction)(void(*)(void))_wrap_new_PenmanEvaporation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_PenmanEvaporation(cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr Evap_target, Meteorology meteo) -> PenmanEvaporation\n"
+		"PenmanEvaporation(cmf::river::OpenWaterStorage::ptr source,\n"
+		"cmf::water::flux_node::ptr Evap_target, const\n"
+		"cmf::atmosphere::Meteorology &meteo) \n"
+		""},
 	 { "delete_PenmanEvaporation", _wrap_delete_PenmanEvaporation, METH_O, "delete_PenmanEvaporation(PenmanEvaporation self)"},
 	 { "PenmanEvaporation_swigregister", PenmanEvaporation_swigregister, METH_O, NULL},
 	 { "PenmanEvaporation_swiginit", PenmanEvaporation_swiginit, METH_VARARGS, NULL},
@@ -77772,6 +82062,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "ShuttleworthWallace_refresh", _wrap_ShuttleworthWallace_refresh, METH_VARARGS, "\n"
 		"ShuttleworthWallace_refresh(ShuttleworthWallace self, Time t)\n"
 		"ShuttleworthWallace_refresh(ShuttleworthWallace self)\n"
+		"void refresh() \n"
 		""},
 	 { "ShuttleworthWallace_PTR_set", _wrap_ShuttleworthWallace_PTR_set, METH_VARARGS, "ShuttleworthWallace_PTR_set(ShuttleworthWallace self, double PTR)"},
 	 { "ShuttleworthWallace_PTR_get", _wrap_ShuttleworthWallace_PTR_get, METH_O, "ShuttleworthWallace_PTR_get(ShuttleworthWallace self) -> double"},
@@ -77793,88 +82084,574 @@ static PyMethodDef SwigMethods[] = {
 	 { "ShuttleworthWallace_KSNVP_get", _wrap_ShuttleworthWallace_KSNVP_get, METH_O, "ShuttleworthWallace_KSNVP_get(ShuttleworthWallace self) -> double"},
 	 { "ShuttleworthWallace_allow_dew_set", _wrap_ShuttleworthWallace_allow_dew_set, METH_VARARGS, "ShuttleworthWallace_allow_dew_set(ShuttleworthWallace self, bool allow_dew)"},
 	 { "ShuttleworthWallace_allow_dew_get", _wrap_ShuttleworthWallace_allow_dew_get, METH_O, "ShuttleworthWallace_allow_dew_get(ShuttleworthWallace self) -> bool"},
-	 { "ShuttleworthWallace_transp_from_layer", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_transp_from_layer, METH_VARARGS|METH_KEYWORDS, "ShuttleworthWallace_transp_from_layer(ShuttleworthWallace self, cmf::upslope::SoilLayer::ptr sl, Time t) -> double"},
-	 { "ShuttleworthWallace_evap_from_layer", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_evap_from_layer, METH_VARARGS|METH_KEYWORDS, "ShuttleworthWallace_evap_from_layer(ShuttleworthWallace self, cmf::upslope::SoilLayer::ptr sl, Time t) -> double"},
-	 { "ShuttleworthWallace_evap_from_surfacewater", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_evap_from_surfacewater, METH_VARARGS|METH_KEYWORDS, "ShuttleworthWallace_evap_from_surfacewater(ShuttleworthWallace self, cmf::river::OpenWaterStorage::ptr ows, Time t) -> double"},
-	 { "ShuttleworthWallace_evap_from_canopy", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_evap_from_canopy, METH_VARARGS|METH_KEYWORDS, "ShuttleworthWallace_evap_from_canopy(ShuttleworthWallace self, cmf::water::WaterStorage::ptr canopy, Time t) -> double"},
-	 { "ShuttleworthWallace_evap_from_snow", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_evap_from_snow, METH_VARARGS|METH_KEYWORDS, "ShuttleworthWallace_evap_from_snow(ShuttleworthWallace self, cmf::water::WaterStorage::ptr snow, Time t) -> double"},
+	 { "ShuttleworthWallace_transp_from_layer", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_transp_from_layer, METH_VARARGS|METH_KEYWORDS, "\n"
+		"ShuttleworthWallace_transp_from_layer(ShuttleworthWallace self, cmf::upslope::SoilLayer::ptr sl, Time t) -> double\n"
+		"double\n"
+		"transp_from_layer(cmf::upslope::SoilLayer::ptr sl, cmf::math::Time t)\n"
+		"\n"
+		""},
+	 { "ShuttleworthWallace_evap_from_layer", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_evap_from_layer, METH_VARARGS|METH_KEYWORDS, "\n"
+		"ShuttleworthWallace_evap_from_layer(ShuttleworthWallace self, cmf::upslope::SoilLayer::ptr sl, Time t) -> double\n"
+		"double\n"
+		"evap_from_layer(cmf::upslope::SoilLayer::ptr sl, cmf::math::Time t) \n"
+		""},
+	 { "ShuttleworthWallace_evap_from_surfacewater", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_evap_from_surfacewater, METH_VARARGS|METH_KEYWORDS, "\n"
+		"ShuttleworthWallace_evap_from_surfacewater(ShuttleworthWallace self, cmf::river::OpenWaterStorage::ptr ows, Time t) -> double\n"
+		"double\n"
+		"evap_from_surfacewater(cmf::river::OpenWaterStorage::ptr ows,\n"
+		"cmf::math::Time t) \n"
+		""},
+	 { "ShuttleworthWallace_evap_from_canopy", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_evap_from_canopy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"ShuttleworthWallace_evap_from_canopy(ShuttleworthWallace self, cmf::water::WaterStorage::ptr canopy, Time t) -> double\n"
+		"double\n"
+		"evap_from_canopy(cmf::water::WaterStorage::ptr canopy, cmf::math::Time\n"
+		"t) \n"
+		""},
+	 { "ShuttleworthWallace_evap_from_snow", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_evap_from_snow, METH_VARARGS|METH_KEYWORDS, "\n"
+		"ShuttleworthWallace_evap_from_snow(ShuttleworthWallace self, cmf::water::WaterStorage::ptr snow, Time t) -> double\n"
+		"double\n"
+		"evap_from_snow(cmf::water::WaterStorage::ptr snow, cmf::math::Time t)\n"
+		"\n"
+		""},
 	 { "ShuttleworthWallace_set_RSS_parameters", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_set_RSS_parameters, METH_VARARGS|METH_KEYWORDS, "ShuttleworthWallace_set_RSS_parameters(double _RSSa=500., double _RSSb=1.0, double _RSSa_pot=-3.22)"},
-	 { "new_ShuttleworthWallace", (PyCFunction)(void(*)(void))_wrap_new_ShuttleworthWallace, METH_VARARGS|METH_KEYWORDS, "new_ShuttleworthWallace(Cell cell, bool allow_dew=True) -> ShuttleworthWallace"},
+	 { "new_ShuttleworthWallace", (PyCFunction)(void(*)(void))_wrap_new_ShuttleworthWallace, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ShuttleworthWallace(Cell cell, bool allow_dew=True) -> ShuttleworthWallace\n"
+		"ShuttleworthWallace(cmf::upslope::Cell &cell, bool allow_dew=true)\n"
+		"\n"
+		"Calculates the transpiration and the soil evaporation from dry\n"
+		"surfaces. \n"
+		""},
 	 { "ShuttleworthWallace_use_for_cell", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_use_for_cell, METH_VARARGS|METH_KEYWORDS, "ShuttleworthWallace_use_for_cell(Cell cell) -> cmf::upslope::ET::ShuttleworthWallace::ptr"},
-	 { "delete_ShuttleworthWallace", _wrap_delete_ShuttleworthWallace, METH_O, "delete_ShuttleworthWallace(ShuttleworthWallace self)"},
+	 { "delete_ShuttleworthWallace", _wrap_delete_ShuttleworthWallace, METH_O, "\n"
+		"delete_ShuttleworthWallace(ShuttleworthWallace self)\n"
+		"~ShuttleworthWallace() \n"
+		""},
 	 { "ShuttleworthWallace_swigregister", ShuttleworthWallace_swigregister, METH_O, NULL},
 	 { "ShuttleworthWallace_swiginit", ShuttleworthWallace_swiginit, METH_VARARGS, NULL},
-	 { "new_SW_transpiration", (PyCFunction)(void(*)(void))_wrap_new_SW_transpiration, METH_VARARGS|METH_KEYWORDS, "new_SW_transpiration(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_transpiration"},
+	 { "new_SW_transpiration", (PyCFunction)(void(*)(void))_wrap_new_SW_transpiration, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SW_transpiration(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_transpiration\n"
+		"SW_transpiration(cmf::upslope::SoilLayer::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)\n"
+		"\n"
+		""},
 	 { "delete_SW_transpiration", _wrap_delete_SW_transpiration, METH_O, "delete_SW_transpiration(SW_transpiration self)"},
 	 { "SW_transpiration_swigregister", SW_transpiration_swigregister, METH_O, NULL},
 	 { "SW_transpiration_swiginit", SW_transpiration_swiginit, METH_VARARGS, NULL},
-	 { "new_SW_evap_from_layer", (PyCFunction)(void(*)(void))_wrap_new_SW_evap_from_layer, METH_VARARGS|METH_KEYWORDS, "new_SW_evap_from_layer(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_layer"},
+	 { "new_SW_evap_from_layer", (PyCFunction)(void(*)(void))_wrap_new_SW_evap_from_layer, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SW_evap_from_layer(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_layer\n"
+		"SW_evap_from_layer(cmf::upslope::SoilLayer::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)\n"
+		"\n"
+		""},
 	 { "delete_SW_evap_from_layer", _wrap_delete_SW_evap_from_layer, METH_O, "delete_SW_evap_from_layer(SW_evap_from_layer self)"},
 	 { "SW_evap_from_layer_swigregister", SW_evap_from_layer_swigregister, METH_O, NULL},
 	 { "SW_evap_from_layer_swiginit", SW_evap_from_layer_swiginit, METH_VARARGS, NULL},
-	 { "new_SW_evap_from_canopy", (PyCFunction)(void(*)(void))_wrap_new_SW_evap_from_canopy, METH_VARARGS|METH_KEYWORDS, "new_SW_evap_from_canopy(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_canopy"},
+	 { "new_SW_evap_from_canopy", (PyCFunction)(void(*)(void))_wrap_new_SW_evap_from_canopy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SW_evap_from_canopy(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_canopy\n"
+		"SW_evap_from_canopy(cmf::water::WaterStorage::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)\n"
+		"\n"
+		""},
 	 { "delete_SW_evap_from_canopy", _wrap_delete_SW_evap_from_canopy, METH_O, "delete_SW_evap_from_canopy(SW_evap_from_canopy self)"},
 	 { "SW_evap_from_canopy_swigregister", SW_evap_from_canopy_swigregister, METH_O, NULL},
 	 { "SW_evap_from_canopy_swiginit", SW_evap_from_canopy_swiginit, METH_VARARGS, NULL},
-	 { "new_SW_evap_from_snow", (PyCFunction)(void(*)(void))_wrap_new_SW_evap_from_snow, METH_VARARGS|METH_KEYWORDS, "new_SW_evap_from_snow(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_snow"},
+	 { "new_SW_evap_from_snow", (PyCFunction)(void(*)(void))_wrap_new_SW_evap_from_snow, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SW_evap_from_snow(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_snow\n"
+		"SW_evap_from_snow(cmf::water::WaterStorage::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)\n"
+		"\n"
+		""},
 	 { "delete_SW_evap_from_snow", _wrap_delete_SW_evap_from_snow, METH_O, "delete_SW_evap_from_snow(SW_evap_from_snow self)"},
 	 { "SW_evap_from_snow_swigregister", SW_evap_from_snow_swigregister, METH_O, NULL},
 	 { "SW_evap_from_snow_swiginit", SW_evap_from_snow_swiginit, METH_VARARGS, NULL},
-	 { "new_SW_evap_from_surfacewater", (PyCFunction)(void(*)(void))_wrap_new_SW_evap_from_surfacewater, METH_VARARGS|METH_KEYWORDS, "new_SW_evap_from_surfacewater(cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_surfacewater"},
+	 { "new_SW_evap_from_surfacewater", (PyCFunction)(void(*)(void))_wrap_new_SW_evap_from_surfacewater, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SW_evap_from_surfacewater(cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_surfacewater\n"
+		"SW_evap_from_surfacewater(cmf::river::OpenWaterStorage::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)\n"
+		"\n"
+		""},
 	 { "delete_SW_evap_from_surfacewater", _wrap_delete_SW_evap_from_surfacewater, METH_O, "delete_SW_evap_from_surfacewater(SW_evap_from_surfacewater self)"},
 	 { "SW_evap_from_surfacewater_swigregister", SW_evap_from_surfacewater_swigregister, METH_O, NULL},
 	 { "SW_evap_from_surfacewater_swiginit", SW_evap_from_surfacewater_swiginit, METH_VARARGS, NULL},
-	 { "project_remove_node", (PyCFunction)(void(*)(void))_wrap_project_remove_node, METH_VARARGS|METH_KEYWORDS, "project_remove_node(project self, cmf::water::flux_node::ptr node) -> size_t"},
+	 { "project_remove_node", (PyCFunction)(void(*)(void))_wrap_project_remove_node, METH_VARARGS|METH_KEYWORDS, "\n"
+		"project_remove_node(project self, cmf::water::flux_node::ptr node) -> size_t\n"
+		"size_t\n"
+		"remove_node(cmf::water::flux_node::ptr node)\n"
+		"\n"
+		"Removes a node from the repository.\n"
+		"\n"
+		"Removes a node (boundary condition or water storage) from the node\n"
+		"repository of the project. NOTE: If you have other references to this\n"
+		"node, the node is not deleted. If you are creating a new solver, the\n"
+		"node will not be part of the solver. \n"
+		""},
 	 { "project_solutes_get", _wrap_project_solutes_get, METH_O, "project_solutes_get(project self) -> solute_vector"},
 	 { "project_meteo_stations_set", _wrap_project_meteo_stations_set, METH_VARARGS, "project_meteo_stations_set(project self, MeteoStationList meteo_stations)"},
 	 { "project_meteo_stations_get", _wrap_project_meteo_stations_get, METH_O, "project_meteo_stations_get(project self) -> MeteoStationList"},
 	 { "project_rainfall_stations_set", _wrap_project_rainfall_stations_set, METH_VARARGS, "project_rainfall_stations_set(project self, RainfallStationList rainfall_stations)"},
 	 { "project_rainfall_stations_get", _wrap_project_rainfall_stations_get, METH_O, "project_rainfall_stations_get(project self) -> RainfallStationList"},
-	 { "project_use_IDW_meteo", (PyCFunction)(void(*)(void))_wrap_project_use_IDW_meteo, METH_VARARGS|METH_KEYWORDS, "project_use_IDW_meteo(project self, double z_weight=0, double power=2)"},
-	 { "project_use_nearest_meteo", (PyCFunction)(void(*)(void))_wrap_project_use_nearest_meteo, METH_VARARGS|METH_KEYWORDS, "project_use_nearest_meteo(project self, double z_weight=0)"},
-	 { "project_use_IDW_rainfall", (PyCFunction)(void(*)(void))_wrap_project_use_IDW_rainfall, METH_VARARGS|METH_KEYWORDS, "project_use_IDW_rainfall(project self, double z_weight=0, double power=2)"},
-	 { "project_use_nearest_rainfall", (PyCFunction)(void(*)(void))_wrap_project_use_nearest_rainfall, METH_VARARGS|METH_KEYWORDS, "project_use_nearest_rainfall(project self, double z_weight=0)"},
-	 { "project_get_cell", (PyCFunction)(void(*)(void))_wrap_project_get_cell, METH_VARARGS|METH_KEYWORDS, "project_get_cell(project self, ptrdiff_t index) -> Cell"},
-	 { "project_size", _wrap_project_size, METH_O, "project_size(project self) -> size_t"},
-	 { "new_project", (PyCFunction)(void(*)(void))_wrap_new_project, METH_VARARGS|METH_KEYWORDS, "new_project(std::string solute_names=\"\") -> project"},
-	 { "delete_project", _wrap_delete_project, METH_O, "delete_project(project self)"},
-	 { "project_NewCell", (PyCFunction)(void(*)(void))_wrap_project_NewCell, METH_VARARGS|METH_KEYWORDS, "project_NewCell(project self, double x, double y, double z, double area, bool with_surfacewater=False) -> Cell"},
-	 { "project_NewOutlet", (PyCFunction)(void(*)(void))_wrap_project_NewOutlet, METH_VARARGS|METH_KEYWORDS, "project_NewOutlet(project self, std::string name, double x=0, double y=0, double z=0) -> cmf::water::DirichletBoundary::ptr"},
-	 { "project_NewStorage", (PyCFunction)(void(*)(void))_wrap_project_NewStorage, METH_VARARGS|METH_KEYWORDS, "project_NewStorage(project self, std::string name, double x=0, double y=0, double z=0) -> cmf::water::WaterStorage::ptr"},
-	 { "project_NewOpenStorage", (PyCFunction)(void(*)(void))_wrap_project_NewOpenStorage, METH_VARARGS|METH_KEYWORDS, "project_NewOpenStorage(project self, std::string name, double x, double y, double z, double area) -> cmf::river::OpenWaterStorage::ptr"},
-	 { "project_NewNeumannBoundary", (PyCFunction)(void(*)(void))_wrap_project_NewNeumannBoundary, METH_VARARGS|METH_KEYWORDS, "project_NewNeumannBoundary(project self, std::string name, cmf::water::WaterStorage::ptr target) -> cmf::water::NeumannBoundary::ptr"},
-	 { "project_NewReach", (PyCFunction)(void(*)(void))_wrap_project_NewReach, METH_VARARGS|METH_KEYWORDS, "project_NewReach(project self, double x, double y, double z, IChannel shape, bool diffusive=False) -> cmf::river::Reach::ptr"},
-	 { "project_get_reach", (PyCFunction)(void(*)(void))_wrap_project_get_reach, METH_VARARGS|METH_KEYWORDS, "project_get_reach(project self, ptrdiff_t index) -> cmf::river::Reach::ptr"},
-	 { "project_reach_count", _wrap_project_reach_count, METH_O, "project_reach_count(project self) -> size_t"},
-	 { "project_get_node", (PyCFunction)(void(*)(void))_wrap_project_get_node, METH_VARARGS|METH_KEYWORDS, "project_get_node(project self, ptrdiff_t index) -> cmf::water::flux_node::ptr"},
-	 { "project_node_count", _wrap_project_node_count, METH_O, "project_node_count(project self) -> size_t"},
-	 { "project_get_storages", _wrap_project_get_storages, METH_O, "project_get_storages(project self) -> node_list"},
+	 { "project_use_IDW_meteo", (PyCFunction)(void(*)(void))_wrap_project_use_IDW_meteo, METH_VARARGS|METH_KEYWORDS, "\n"
+		"project_use_IDW_meteo(project self, double z_weight=0, double power=2)\n"
+		"void\n"
+		"use_IDW_meteo(double z_weight=0, double power=2)\n"
+		"\n"
+		"Uses IDW interpolation to generate meterological data for each cell of\n"
+		"project.\n"
+		"\n"
+		"Creates a meteo-data source for each cell, using spatial interpolated\n"
+		"data from all meteorological stations of the project using Inverse\n"
+		"Distance Weighted (IDW) interpolation. The meteorolgical value f is\n"
+		"calculated with IDW for position x,y,z and time t as follows:\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     f(x,y,z,t) &=& \\\\sum^N_{i=1}{f_i(t) w_i(x,y,z)}\n"
+		"    \\\\\\\\ w_i(x,y,z) &=&\n"
+		"    \\\\frac{d_i(x,y,z)^{-p}}{\\\\sum^N_{j=0}{d_j(x,y,z)^{-p}}} \\\\\\\\\n"
+		"    d_i(x,y,z) &=& w_z \\\\left|z-z_i\\\\right| +\n"
+		"    \\\\sqrt{\\\\left(x-x_i\\\\right)^2 + \\\\left(y-y_i\\\\right)^2}\n"
+		"\n"
+		"\n"
+		"  :math:`N` is the number of stations\n"
+		"\n"
+		":math:`f_i(t)` the meteorological value at time t, eg. Temperature, Humidity\n"
+		"\n"
+		":math:`w_i` is the weight of station i\n"
+		"\n"
+		":math:`d_i` is the distance from x,y,z to station i\n"
+		"\n"
+		":math:`p` the power of the weighting function, usually 2.\n"
+		"\n"
+		":math:`x_i,y_i,z_i` is the position of station i in space\n"
+		"\n"
+		":math:`w_z` is a factor to weight the vertical distance between stations and\n"
+		"the cell. 0 results in a pure horizontal interpolation (normal IDW).\n"
+		"If :math:`w_z=1`, height difference is as important as horizontal distance,\n"
+		"and with :math:`w_z>1` the height difference is weighted more important than\n"
+		"horizontal distance See:  IDW_Meteorology\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"z_weight:   :math:`w_z` the weight of height difference between cell and\n"
+		"station\n"
+		"\n"
+		"power:  the power of the distance weight \n"
+		""},
+	 { "project_use_nearest_meteo", (PyCFunction)(void(*)(void))_wrap_project_use_nearest_meteo, METH_VARARGS|METH_KEYWORDS, "\n"
+		"project_use_nearest_meteo(project self, double z_weight=0)\n"
+		"void\n"
+		"use_nearest_meteo(double z_weight=0)\n"
+		"\n"
+		"Connects all cells of the project with its nearest meteorological\n"
+		"station.\n"
+		"\n"
+		"Distance is calculated as follows: \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"    d_i(x,y,z) = w_z\n"
+		"    \\\\left|z-z_i\\\\right| + \\\\sqrt{\\\\left(x-x_i\\\\right)^2 +\n"
+		"    \\\\left(y-y_i\\\\right)^2} \n"
+		"\n"
+		":math:`d_i` is the distance from x,y,z to\n"
+		"station i\n"
+		"\n"
+		":math:`p` the power of the weighting function, usually 2.\n"
+		"\n"
+		":math:`x_i,y_i,z_i` is the position of station i in space\n"
+		"\n"
+		":math:`w_z` is a factor to weight the vertical distance between stations and\n"
+		"the cell. 0 results in a pure horizontal interpolation (normal IDW).\n"
+		"If :math:`w_z=1`, height difference is as important as horizontal distance,\n"
+		"and with :math:`w_z>1` the height difference is weighted more important than\n"
+		"horizontal distance\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"z_weight:   :math:`w_z` the weight of height difference between cell and\n"
+		"station \n"
+		""},
+	 { "project_use_IDW_rainfall", (PyCFunction)(void(*)(void))_wrap_project_use_IDW_rainfall, METH_VARARGS|METH_KEYWORDS, "\n"
+		"project_use_IDW_rainfall(project self, double z_weight=0, double power=2)\n"
+		"void\n"
+		"use_IDW_rainfall(double z_weight=0, double power=2)\n"
+		"\n"
+		"Uses IDW interpolation to generate rainfall data for each cell of\n"
+		"project.\n"
+		"\n"
+		"Creates a rainfall-data source for each cell, using spatial\n"
+		"interpolated data from all meteorological stations of the project\n"
+		"using Inverse Distance Weighted (IDW) interpolation. The rainfall\n"
+		"intensity P is calculated with IDW for position x,y,z and time t as\n"
+		"follows: \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     P(x,y,z,t) &=& \\\\sum^N_{i=1}{P_i(t)\n"
+		"    w_i(x,y,z)} \\\\\\\\ w_i(x,y,z) &=&\n"
+		"    \\\\frac{d_i(x,y,z)^{-p}}{\\\\sum^N_{j=0}{d_j(x,y,z)^{-p}}} \\\\\\\\\n"
+		"    d_i(x,y,z) &=& w_z \\\\left|z-z_i\\\\right| +\n"
+		"    \\\\sqrt{\\\\left(x-x_i\\\\right)^2 + \\\\left(y-y_i\\\\right)^2}\n"
+		"\n"
+		"\n"
+		"  :math:`N` is the number of stations\n"
+		"\n"
+		":math:`P_i(t)` the meteorological value at time t, eg. Temperature, Humidity\n"
+		"\n"
+		":math:`w_i` is the weight of station i\n"
+		"\n"
+		":math:`d_i` is the distance from x,y,z to station i\n"
+		"\n"
+		":math:`p` the power of the weighting function, usually 2.\n"
+		"\n"
+		":math:`x_i,y_i,z_i` is the position of station i in space\n"
+		"\n"
+		":math:`w_z` is a factor to weight the vertical distance between stations and\n"
+		"the cell. 0 results in a pure horizontal interpolation (normal IDW).\n"
+		"If :math:`w_z=1`, height difference is as important as horizontal distance,\n"
+		"and with :math:`w_z>1` the height difference is weighted more important than\n"
+		"horizontal distance See:  IDW_Meteorology\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"z_weight:   :math:`w_z` the weight of height difference between cell and\n"
+		"station\n"
+		"\n"
+		"power:  the power of the distance weight \n"
+		""},
+	 { "project_use_nearest_rainfall", (PyCFunction)(void(*)(void))_wrap_project_use_nearest_rainfall, METH_VARARGS|METH_KEYWORDS, "\n"
+		"project_use_nearest_rainfall(project self, double z_weight=0)\n"
+		"void\n"
+		"use_nearest_rainfall(double z_weight=0)\n"
+		"\n"
+		"Connects all cells of the project with its nearest rainfall station.\n"
+		"\n"
+		"Distance is calculated as follows: \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"    d_i(x,y,z) = w_z\n"
+		"    \\\\left|z-z_i\\\\right| + \\\\sqrt{\\\\left(x-x_i\\\\right)^2 +\n"
+		"    \\\\left(y-y_i\\\\right)^2} \n"
+		"\n"
+		":math:`d_i` is the distance from x,y,z to\n"
+		"station i\n"
+		"\n"
+		":math:`p` the power of the weighting function, usually 2.\n"
+		"\n"
+		":math:`x_i,y_i,z_i` is the position of station i in space\n"
+		"\n"
+		":math:`w_z` is a factor to weight the vertical distance between stations and\n"
+		"the cell. 0 results in a pure horizontal interpolation (normal IDW).\n"
+		"If :math:`w_z=1`, height difference is as important as horizontal distance,\n"
+		"and with :math:`w_z>1` the height difference is weighted more important than\n"
+		"horizontal distance\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"z_weight:   :math:`w_z` the weight of height difference between cell and\n"
+		"station \n"
+		""},
+	 { "project_get_cell", (PyCFunction)(void(*)(void))_wrap_project_get_cell, METH_VARARGS|METH_KEYWORDS, "\n"
+		"project_get_cell(project self, ptrdiff_t index) -> Cell\n"
+		"upslope::Cell&\n"
+		"get_cell(ptrdiff_t index)\n"
+		"\n"
+		"Returns the reference to the cell at index in the project. \n"
+		""},
+	 { "project_size", _wrap_project_size, METH_O, "\n"
+		"project_size(project self) -> size_t\n"
+		"size_t size() const\n"
+		"\n"
+		"The number of cells in the project. \n"
+		""},
+	 { "new_project", (PyCFunction)(void(*)(void))_wrap_new_project, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_project(std::string solute_names=\"\") -> project\n"
+		"project(std::string\n"
+		"solute_names=\"\")\n"
+		"\n"
+		"Creates a new project.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"solute_names:  A string representing the names of the solutes to be\n"
+		"used in the project. Sepereate solute names with space. \n"
+		""},
+	 { "delete_project", _wrap_delete_project, METH_O, "\n"
+		"delete_project(project self)\n"
+		"~project() \n"
+		""},
+	 { "project_NewCell", (PyCFunction)(void(*)(void))_wrap_project_NewCell, METH_VARARGS|METH_KEYWORDS, "\n"
+		"project_NewCell(project self, double x, double y, double z, double area, bool with_surfacewater=False) -> Cell\n"
+		"cmf::upslope::Cell*\n"
+		"NewCell(double x, double y, double z, double area, bool\n"
+		"with_surfacewater=false)\n"
+		"\n"
+		"Creates a new cell.\n"
+		"\n"
+		"A new cell, owned by the project\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"x:  y:  z:  Position of the cell center in project coordinates (m)\n"
+		"\n"
+		"area:  Area of the cell in m^2\n"
+		"\n"
+		"with_surfacewater:  If true, the cell will own a surfacewater storage\n"
+		"upon creation \n"
+		""},
+	 { "project_NewOutlet", (PyCFunction)(void(*)(void))_wrap_project_NewOutlet, METH_VARARGS|METH_KEYWORDS, "\n"
+		"project_NewOutlet(project self, std::string name, double x=0, double y=0, double z=0) -> cmf::water::DirichletBoundary::ptr\n"
+		"cmf::water::DirichletBoundary::ptr NewOutlet(std::string name, double\n"
+		"x=0, double y=0, double z=0)\n"
+		"\n"
+		"Creates a new Dirichlet boundary condition and adds it to the list of\n"
+		"outlets The potential of the Dirichlet boundary equals z, but can be\n"
+		"changed.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"name:  Name of the boundary condition for output\n"
+		"\n"
+		"x:  y:  z:  Position of the boundary condition in project coordinates\n"
+		"\n"
+		""},
+	 { "project_NewStorage", (PyCFunction)(void(*)(void))_wrap_project_NewStorage, METH_VARARGS|METH_KEYWORDS, "\n"
+		"project_NewStorage(project self, std::string name, double x=0, double y=0, double z=0) -> cmf::water::WaterStorage::ptr\n"
+		"cmf::water::WaterStorage::ptr NewStorage(std::string name, double x=0,\n"
+		"double y=0, double z=0)\n"
+		"\n"
+		"Creates a new generic water storage at position x,y,z.\n"
+		"\n"
+		"The storage is added to the project nodes A new water storage, owned\n"
+		"by the project\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"name:  Name of the generic water storage for output\n"
+		"\n"
+		"x:  y:  z:  Position of the generic water storage condition in project\n"
+		"coordinates \n"
+		""},
+	 { "project_NewOpenStorage", (PyCFunction)(void(*)(void))_wrap_project_NewOpenStorage, METH_VARARGS|METH_KEYWORDS, "\n"
+		"project_NewOpenStorage(project self, std::string name, double x, double y, double z, double area) -> cmf::river::OpenWaterStorage::ptr\n"
+		"cmf::river::OpenWaterStorage::ptr NewOpenStorage(std::string name,\n"
+		"double x, double y, double z, double area)\n"
+		"\n"
+		"Creates a new open water storage with a prism geometry.\n"
+		"\n"
+		"The open water storage is added to the project nodes A new open water\n"
+		"storage, owned by the project\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"name:  Name of the open water storage for output\n"
+		"\n"
+		"x:  y:  z:  Position of the open water storage in project coordinates\n"
+		"\n"
+		"area:  Surface area of the open water storage \n"
+		""},
+	 { "project_NewNeumannBoundary", (PyCFunction)(void(*)(void))_wrap_project_NewNeumannBoundary, METH_VARARGS|METH_KEYWORDS, "\n"
+		"project_NewNeumannBoundary(project self, std::string name, cmf::water::WaterStorage::ptr target) -> cmf::water::NeumannBoundary::ptr\n"
+		"cmf::water::NeumannBoundary::ptr NewNeumannBoundary(std::string name,\n"
+		"cmf::water::WaterStorage::ptr target)\n"
+		"\n"
+		"Creates a new Neumann boundary for a target water storage.\n"
+		"\n"
+		"The boundary is stored with the project A new Neumann boundary\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"name:  The name of the boundary condition\n"
+		"\n"
+		"target:  The water storage to which the Neumann boundary is bound \n"
+		""},
+	 { "project_NewReach", (PyCFunction)(void(*)(void))_wrap_project_NewReach, METH_VARARGS|METH_KEYWORDS, "\n"
+		"project_NewReach(project self, double x, double y, double z, IChannel shape, bool diffusive=False) -> cmf::river::Reach::ptr\n"
+		"cmf::river::Reach::ptr\n"
+		"NewReach(double x, double y, double z, cmf::river::IChannel &shape,\n"
+		"bool diffusive=false)\n"
+		"\n"
+		"Creates a new reach.\n"
+		"\n"
+		"A new reach, owned by the project\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"x:  y:  z:  Position of the reach in project coordinates\n"
+		"\n"
+		"shape:  Crossectional geometry of the river. Any class inheriting from\n"
+		"cmf::water::IChannel\n"
+		"\n"
+		"diffusive:  If true, this reach uses by default a diffusive wave\n"
+		"connection \n"
+		""},
+	 { "project_get_reach", (PyCFunction)(void(*)(void))_wrap_project_get_reach, METH_VARARGS|METH_KEYWORDS, "\n"
+		"project_get_reach(project self, ptrdiff_t index) -> cmf::river::Reach::ptr\n"
+		"cmf::river::Reach::ptr get_reach(ptrdiff_t index)\n"
+		"\n"
+		"Returns the reach at index. \n"
+		""},
+	 { "project_reach_count", _wrap_project_reach_count, METH_O, "\n"
+		"project_reach_count(project self) -> size_t\n"
+		"size_t\n"
+		"reach_count() const\n"
+		"\n"
+		"Returns the number of reaches in this project. \n"
+		""},
+	 { "project_get_node", (PyCFunction)(void(*)(void))_wrap_project_get_node, METH_VARARGS|METH_KEYWORDS, "\n"
+		"project_get_node(project self, ptrdiff_t index) -> cmf::water::flux_node::ptr\n"
+		"cmf::water::flux_node::ptr get_node(ptrdiff_t index)\n"
+		"\n"
+		"Returns the node from the project nodes at index. \n"
+		""},
+	 { "project_node_count", _wrap_project_node_count, METH_O, "\n"
+		"project_node_count(project self) -> size_t\n"
+		"size_t node_count()\n"
+		"const\n"
+		"\n"
+		"Returns the number of nodes saved with this project. \n"
+		""},
+	 { "project_get_storages", _wrap_project_get_storages, METH_O, "\n"
+		"project_get_storages(project self) -> node_list\n"
+		"cmf::water::node_list get_storages()\n"
+		"\n"
+		"Returns a list of all storages of this project. \n"
+		""},
 	 { "project___cmf_state_list_interface__", _wrap_project___cmf_state_list_interface__, METH_O, "project___cmf_state_list_interface__(project self) -> state_list"},
 	 { "project_cells_get", _wrap_project_cells_get, METH_O, "project_cells_get(project self) -> cell_vector"},
 	 { "project_swigregister", project_swigregister, METH_O, NULL},
 	 { "project_swiginit", project_swiginit, METH_VARARGS, NULL},
-	 { "delete_Integrator", _wrap_delete_Integrator, METH_O, "delete_Integrator(Integrator self)"},
-	 { "Integrator_set_system", (PyCFunction)(void(*)(void))_wrap_Integrator_set_system, METH_VARARGS|METH_KEYWORDS, "Integrator_set_system(Integrator self, state_list states)"},
-	 { "Integrator_size", _wrap_Integrator_size, METH_O, "Integrator_size(Integrator self) -> size_t"},
+	 { "delete_Integrator", _wrap_delete_Integrator, METH_O, "\n"
+		"delete_Integrator(Integrator self)\n"
+		"virtual\n"
+		"~Integrator()=default \n"
+		""},
+	 { "Integrator_set_system", (PyCFunction)(void(*)(void))_wrap_Integrator_set_system, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Integrator_set_system(Integrator self, state_list states)\n"
+		"void\n"
+		"set_system(const state_list &states) \n"
+		""},
+	 { "Integrator_size", _wrap_Integrator_size, METH_O, "\n"
+		"Integrator_size(Integrator self) -> size_t\n"
+		"size_t size()\n"
+		"const \n"
+		""},
 	 { "Integrator___getitem", (PyCFunction)(void(*)(void))_wrap_Integrator___getitem, METH_VARARGS|METH_KEYWORDS, "Integrator___getitem(Integrator self, ptrdiff_t index) -> cmf::math::StateVariable::ptr"},
 	 { "Integrator___cmf_state_list_interface__", _wrap_Integrator___cmf_state_list_interface__, METH_O, "Integrator___cmf_state_list_interface__(Integrator self) -> state_list"},
-	 { "Integrator_to_string", _wrap_Integrator_to_string, METH_O, "Integrator_to_string(Integrator self) -> std::string"},
-	 { "Integrator_get_t", _wrap_Integrator_get_t, METH_O, "Integrator_get_t(Integrator self) -> Time"},
-	 { "Integrator_set_t", (PyCFunction)(void(*)(void))_wrap_Integrator_set_t, METH_VARARGS|METH_KEYWORDS, "Integrator_set_t(Integrator self, Time val)"},
-	 { "Integrator_get_dt", _wrap_Integrator_get_dt, METH_O, "Integrator_get_dt(Integrator self) -> Time"},
-	 { "Integrator_reset", _wrap_Integrator_reset, METH_O, "Integrator_reset(Integrator self)"},
-	 { "Integrator_copy", _wrap_Integrator_copy, METH_O, "Integrator_copy(Integrator self) -> Integrator"},
-	 { "Integrator_integrate", (PyCFunction)(void(*)(void))_wrap_Integrator_integrate, METH_VARARGS|METH_KEYWORDS, "Integrator_integrate(Integrator self, Time t_max, Time dt) -> int"},
-	 { "Integrator_integrate_until", (PyCFunction)(void(*)(void))_wrap_Integrator_integrate_until, METH_VARARGS|METH_KEYWORDS, "Integrator_integrate_until(Integrator self, Time t_max, Time dt=cmf::math::Time(), bool reset=False)"},
+	 { "Integrator_to_string", _wrap_Integrator_to_string, METH_O, "\n"
+		"Integrator_to_string(Integrator self) -> std::string\n"
+		"virtual\n"
+		"std::string to_string() const =0\n"
+		"\n"
+		"Desrcibes the iterator. \n"
+		""},
+	 { "Integrator_get_t", _wrap_Integrator_get_t, METH_O, "\n"
+		"Integrator_get_t(Integrator self) -> Time\n"
+		"cmf::math::Time\n"
+		"get_t() const\n"
+		"\n"
+		"Returns the current model time. \n"
+		""},
+	 { "Integrator_set_t", (PyCFunction)(void(*)(void))_wrap_Integrator_set_t, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Integrator_set_t(Integrator self, Time val)\n"
+		"void\n"
+		"set_t(cmf::math::Time val)\n"
+		"\n"
+		"Sets the current model time. \n"
+		""},
+	 { "Integrator_get_dt", _wrap_Integrator_get_dt, METH_O, "\n"
+		"Integrator_get_dt(Integrator self) -> Time\n"
+		"cmf::math::Time\n"
+		"get_dt() const\n"
+		"\n"
+		"Returns the last time step. \n"
+		""},
+	 { "Integrator_reset", _wrap_Integrator_reset, METH_O, "\n"
+		"Integrator_reset(Integrator self)\n"
+		"virtual void\n"
+		"reset()\n"
+		"\n"
+		"Resets any saved history (for multistep methods) \n"
+		""},
+	 { "Integrator_copy", _wrap_Integrator_copy, METH_O, "\n"
+		"Integrator_copy(Integrator self) -> Integrator\n"
+		"virtual\n"
+		"Integrator* copy() const =0\n"
+		"\n"
+		"Polymorphic copy constructor. \n"
+		""},
+	 { "Integrator_integrate", (PyCFunction)(void(*)(void))_wrap_Integrator_integrate, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Integrator_integrate(Integrator self, Time t_max, Time dt) -> int\n"
+		"virtual int\n"
+		"integrate(cmf::math::Time t_max, cmf::math::Time dt)=0\n"
+		"\n"
+		"Integrates the vector of state variables.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"t_max:  To stop the model (if running in a model framework) at time\n"
+		"steps of value exchange e.g. full hours, the next value exchange time\n"
+		"can be given\n"
+		"\n"
+		"dt:  Takes the proposed time step, and changes it into the effectively\n"
+		"used time step according to the local stiffness of the problem and\n"
+		"MaxTime \n"
+		""},
+	 { "Integrator_integrate_until", (PyCFunction)(void(*)(void))_wrap_Integrator_integrate_until, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Integrator_integrate_until(Integrator self, Time t_max, Time dt=cmf::math::Time(), bool reset=False)\n"
+		"void\n"
+		"integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool\n"
+		"reset=false)\n"
+		"\n"
+		"Integrates the vector of state variables until t_max.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"t_max:   Time, the solver should run to\n"
+		"\n"
+		"dt:   Time step (may be omitted)\n"
+		"\n"
+		"reset:  If true, solver is reseted before integration starts \n"
+		""},
 	 { "Integrator___len__", _wrap_Integrator___len__, METH_O, "Integrator___len__(Integrator self) -> size_t"},
 	 { "Integrator_swigregister", Integrator_swigregister, METH_O, NULL},
-	 { "BDF2_get_error_position", _wrap_BDF2_get_error_position, METH_O, "BDF2_get_error_position(BDF2 self) -> ptrdiff_t"},
+	 { "BDF2_get_error_position", _wrap_BDF2_get_error_position, METH_O, "\n"
+		"BDF2_get_error_position(BDF2 self) -> ptrdiff_t\n"
+		"ptrdiff_t\n"
+		"get_error_position() const\n"
+		"\n"
+		"Returns the position of the biggest error. \n"
+		""},
 	 { "BDF2_max_order_set", _wrap_BDF2_max_order_set, METH_VARARGS, "BDF2_max_order_set(BDF2 self, int max_order)"},
 	 { "BDF2_max_order_get", _wrap_BDF2_max_order_get, METH_O, "BDF2_max_order_get(BDF2 self) -> int"},
 	 { "new_BDF2", _wrap_new_BDF2, METH_VARARGS, "\n"
 		"BDF2(real epsilon=1e-9, Time tStepMin=cmf::math::timespan(10))\n"
 		"BDF2(state_list states, real epsilon=1e-9, Time tStepMin=cmf::math::timespan(10))\n"
 		"new_BDF2(Integrator templ) -> BDF2\n"
+		"BDF2(const Integrator\n"
+		"&templ)\n"
+		"\n"
+		"Constructs a new BDF2 integrator.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"templ:  Template to be used to construct a BDF2 method \n"
 		""},
 	 { "delete_BDF2", _wrap_delete_BDF2, METH_O, "delete_BDF2(BDF2 self)"},
 	 { "BDF2_swigregister", BDF2_swigregister, METH_O, NULL},
@@ -77883,8 +82660,15 @@ static PyMethodDef SwigMethods[] = {
 		"ExplicitEuler_fixed(state_list states)\n"
 		"ExplicitEuler_fixed()\n"
 		"new_ExplicitEuler_fixed(Integrator copy) -> ExplicitEuler_fixed\n"
+		"ExplicitEuler_fixed(const Integrator &copy)\n"
+		"\n"
+		"copy constructor \n"
 		""},
-	 { "delete_ExplicitEuler_fixed", _wrap_delete_ExplicitEuler_fixed, METH_O, "delete_ExplicitEuler_fixed(ExplicitEuler_fixed self)"},
+	 { "delete_ExplicitEuler_fixed", _wrap_delete_ExplicitEuler_fixed, METH_O, "\n"
+		"delete_ExplicitEuler_fixed(ExplicitEuler_fixed self)\n"
+		"virtual\n"
+		"~ExplicitEuler_fixed() \n"
+		""},
 	 { "ExplicitEuler_fixed_swigregister", ExplicitEuler_fixed_swigregister, METH_O, NULL},
 	 { "ExplicitEuler_fixed_swiginit", ExplicitEuler_fixed_swiginit, METH_VARARGS, NULL},
 	 { "HeunIntegrator_alpha_set", _wrap_HeunIntegrator_alpha_set, METH_VARARGS, "HeunIntegrator_alpha_set(HeunIntegrator self, real alpha)"},
@@ -77893,8 +82677,14 @@ static PyMethodDef SwigMethods[] = {
 		"HeunIntegrator(state_list states, real Alpha=0.5)\n"
 		"HeunIntegrator(real Alpha=0.5)\n"
 		"new_HeunIntegrator(Integrator copy) -> HeunIntegrator\n"
+		"HeunIntegrator(const Integrator &copy)\n"
+		"\n"
+		"copy constructor \n"
 		""},
-	 { "delete_HeunIntegrator", _wrap_delete_HeunIntegrator, METH_O, "delete_HeunIntegrator(HeunIntegrator self)"},
+	 { "delete_HeunIntegrator", _wrap_delete_HeunIntegrator, METH_O, "\n"
+		"delete_HeunIntegrator(HeunIntegrator self)\n"
+		"virtual ~HeunIntegrator() \n"
+		""},
 	 { "HeunIntegrator_swigregister", HeunIntegrator_swigregister, METH_O, NULL},
 	 { "HeunIntegrator_swiginit", HeunIntegrator_swiginit, METH_VARARGS, NULL},
 	 { "ImplicitEuler_dt_min_set", _wrap_ImplicitEuler_dt_min_set, METH_VARARGS, "ImplicitEuler_dt_min_set(ImplicitEuler self, Time dt_min)"},
@@ -77903,6 +82693,9 @@ static PyMethodDef SwigMethods[] = {
 		"ImplicitEuler(state_list states, real epsilon=1e-9, Time tStepMin=cmf::math::timespan(10))\n"
 		"ImplicitEuler(real epsilon=1e-9, Time tStepMin=cmf::math::timespan(10))\n"
 		"new_ImplicitEuler(Integrator arg1) -> ImplicitEuler\n"
+		"ImplicitEuler(const Integrator &)\n"
+		"\n"
+		"copy constructor \n"
 		""},
 	 { "delete_ImplicitEuler", _wrap_delete_ImplicitEuler, METH_O, "delete_ImplicitEuler(ImplicitEuler self)"},
 	 { "ImplicitEuler_swigregister", ImplicitEuler_swigregister, METH_O, NULL},
@@ -77910,6 +82703,17 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_RKFIntegrator", _wrap_new_RKFIntegrator, METH_VARARGS, "\n"
 		"RKFIntegrator(state_list states, real epsilon=1e-9, Time dt_min=cmf::math::timespan(1000))\n"
 		"new_RKFIntegrator(real epsilon=1e-9, Time dt_min=cmf::math::timespan(1000)) -> RKFIntegrator\n"
+		"RKFIntegrator(real epsilon=1e-9, cmf::math::Time\n"
+		"dt_min=cmf::math::timespan(1000))\n"
+		"\n"
+		"Constructs a new RKFIntegrator.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"epsilon:  relative error tolerance per time step (default=1e-9)\n"
+		"\n"
+		"dt_min:  minimum time step (default=1s) \n"
 		""},
 	 { "delete_RKFIntegrator", _wrap_delete_RKFIntegrator, METH_O, "delete_RKFIntegrator(RKFIntegrator self)"},
 	 { "RKFIntegrator_swigregister", RKFIntegrator_swigregister, METH_O, NULL},
@@ -77926,7 +82730,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "CVodeOptions_max_num_steps_get", _wrap_CVodeOptions_max_num_steps_get, METH_O, "CVodeOptions_max_num_steps_get(CVodeOptions self) -> int"},
 	 { "CVodeOptions_max_hnil_warnings_set", _wrap_CVodeOptions_max_hnil_warnings_set, METH_VARARGS, "CVodeOptions_max_hnil_warnings_set(CVodeOptions self, int max_hnil_warnings)"},
 	 { "CVodeOptions_max_hnil_warnings_get", _wrap_CVodeOptions_max_hnil_warnings_get, METH_O, "CVodeOptions_max_hnil_warnings_get(CVodeOptions self) -> int"},
-	 { "new_CVodeOptions", _wrap_new_CVodeOptions, METH_NOARGS, "new_CVodeOptions() -> CVodeOptions"},
+	 { "new_CVodeOptions", _wrap_new_CVodeOptions, METH_NOARGS, "\n"
+		"new_CVodeOptions() -> CVodeOptions\n"
+		"CVodeOptions() \n"
+		""},
 	 { "delete_CVodeOptions", _wrap_delete_CVodeOptions, METH_O, "delete_CVodeOptions(CVodeOptions self)"},
 	 { "CVodeOptions_swigregister", CVodeOptions_swigregister, METH_O, NULL},
 	 { "CVodeOptions_swiginit", CVodeOptions_swiginit, METH_VARARGS, NULL},
@@ -77958,38 +82765,131 @@ static PyMethodDef SwigMethods[] = {
 	 { "CVodeInfo_dxdt_method_calls_get", _wrap_CVodeInfo_dxdt_method_calls_get, METH_O, "CVodeInfo_dxdt_method_calls_get(CVodeInfo self) -> long"},
 	 { "CVodeInfo_sundials_version_set", _wrap_CVodeInfo_sundials_version_set, METH_VARARGS, "CVodeInfo_sundials_version_set(CVodeInfo self, std::string const & sundials_version)"},
 	 { "CVodeInfo_sundials_version_get", _wrap_CVodeInfo_sundials_version_get, METH_O, "CVodeInfo_sundials_version_get(CVodeInfo self) -> std::string const &"},
-	 { "CVodeInfo_to_string", _wrap_CVodeInfo_to_string, METH_O, "CVodeInfo_to_string(CVodeInfo self) -> std::string"},
+	 { "CVodeInfo_to_string", _wrap_CVodeInfo_to_string, METH_O, "\n"
+		"CVodeInfo_to_string(CVodeInfo self) -> std::string\n"
+		"std::string\n"
+		"to_string() const \n"
+		""},
 	 { "new_CVodeInfo", _wrap_new_CVodeInfo, METH_NOARGS, "new_CVodeInfo() -> CVodeInfo"},
 	 { "delete_CVodeInfo", _wrap_delete_CVodeInfo, METH_O, "delete_CVodeInfo(CVodeInfo self)"},
 	 { "CVodeInfo_swigregister", CVodeInfo_swigregister, METH_O, NULL},
 	 { "CVodeInfo_swiginit", CVodeInfo_swiginit, METH_VARARGS, NULL},
 	 { "CVodeBase_options_set", _wrap_CVodeBase_options_set, METH_VARARGS, "CVodeBase_options_set(CVodeBase self, CVodeOptions options)"},
 	 { "CVodeBase_options_get", _wrap_CVodeBase_options_get, METH_O, "CVodeBase_options_get(CVodeBase self) -> CVodeOptions"},
-	 { "CVodeBase_initialize", _wrap_CVodeBase_initialize, METH_O, "CVodeBase_initialize(CVodeBase self) -> int"},
-	 { "CVodeBase_set_error_msg", (PyCFunction)(void(*)(void))_wrap_CVodeBase_set_error_msg, METH_VARARGS|METH_KEYWORDS, "CVodeBase_set_error_msg(CVodeBase self, std::string error)"},
-	 { "CVodeBase_copy", _wrap_CVodeBase_copy, METH_O, "CVodeBase_copy(CVodeBase self) -> CVodeBase"},
+	 { "CVodeBase_initialize", _wrap_CVodeBase_initialize, METH_O, "\n"
+		"CVodeBase_initialize(CVodeBase self) -> int\n"
+		"int\n"
+		"initialize()\n"
+		"\n"
+		"Initialize the internal memory.\n"
+		"\n"
+		"Automatically called, when one starts to integrate \n"
+		""},
+	 { "CVodeBase_set_error_msg", (PyCFunction)(void(*)(void))_wrap_CVodeBase_set_error_msg, METH_VARARGS|METH_KEYWORDS, "\n"
+		"CVodeBase_set_error_msg(CVodeBase self, std::string error)\n"
+		"void\n"
+		"set_error_msg(std::string error)\n"
+		"\n"
+		"Sets an error message. \n"
+		""},
+	 { "CVodeBase_copy", _wrap_CVodeBase_copy, METH_O, "\n"
+		"CVodeBase_copy(CVodeBase self) -> CVodeBase\n"
+		"CVodeBase* copy()\n"
+		"const\n"
+		"\n"
+		"Returns a copy of the solver. \n"
+		""},
 	 { "CVodeBase_error_msg_set", _wrap_CVodeBase_error_msg_set, METH_VARARGS, "CVodeBase_error_msg_set(CVodeBase self, std::string const & error_msg)"},
 	 { "CVodeBase_error_msg_get", _wrap_CVodeBase_error_msg_get, METH_O, "CVodeBase_error_msg_get(CVodeBase self) -> std::string const &"},
-	 { "CVodeBase_get_info", _wrap_CVodeBase_get_info, METH_O, "CVodeBase_get_info(CVodeBase self) -> CVodeInfo"},
-	 { "CVodeBase_get_error", _wrap_CVodeBase_get_error, METH_O, "CVodeBase_get_error(CVodeBase self) -> cmf::math::num_array"},
-	 { "CVodeBase__get_jacobian", _wrap_CVodeBase__get_jacobian, METH_O, "CVodeBase__get_jacobian(CVodeBase self) -> cmf::math::num_array"},
-	 { "delete_CVodeBase", _wrap_delete_CVodeBase, METH_O, "delete_CVodeBase(CVodeBase self)"},
+	 { "CVodeBase_get_info", _wrap_CVodeBase_get_info, METH_O, "\n"
+		"CVodeBase_get_info(CVodeBase self) -> CVodeInfo\n"
+		"CVodeInfo\n"
+		"get_info() const\n"
+		"\n"
+		"Returns the current solver statistics. \n"
+		""},
+	 { "CVodeBase_get_error", _wrap_CVodeBase_get_error, METH_O, "\n"
+		"CVodeBase_get_error(CVodeBase self) -> cmf::math::num_array\n"
+		"cmf::math::num_array get_error() const\n"
+		"\n"
+		"Error vector of the integrator. \n"
+		""},
+	 { "CVodeBase__get_jacobian", _wrap_CVodeBase__get_jacobian, METH_O, "\n"
+		"CVodeBase__get_jacobian(CVodeBase self) -> cmf::math::num_array\n"
+		"virtual\n"
+		"cmf::math::num_array _get_jacobian() const\n"
+		"\n"
+		"Returns a continuous 1D array representing the Jacobian columns\n"
+		"concatenated.\n"
+		"\n"
+		"In Python, get_jacobian returns the Jacobian as a 2D array \n"
+		""},
+	 { "delete_CVodeBase", _wrap_delete_CVodeBase, METH_O, "\n"
+		"delete_CVodeBase(CVodeBase self)\n"
+		"~CVodeBase()\n"
+		"\n"
+		""},
 	 { "CVodeBase_swigregister", CVodeBase_swigregister, METH_O, NULL},
-	 { "new_CVodeDense", (PyCFunction)(void(*)(void))_wrap_new_CVodeDense, METH_VARARGS|METH_KEYWORDS, "new_CVodeDense(state_list states, real epsilon=1e-9) -> CVodeDense"},
+	 { "new_CVodeDense", _wrap_new_CVodeDense, METH_VARARGS, "\n"
+		"CVodeDense(state_list states, real epsilon=1e-9)\n"
+		"new_CVodeDense(real epsilon=1e-9) -> CVodeDense\n"
+		"CVodeDense(real epsilon=1e-9) \n"
+		""},
+	 { "CVodeDense_copy", _wrap_CVodeDense_copy, METH_O, "\n"
+		"CVodeDense_copy(CVodeDense self) -> CVodeDense\n"
+		"CVodeBase* copy()\n"
+		"const\n"
+		"\n"
+		"Returns a copy of the solver. \n"
+		""},
 	 { "delete_CVodeDense", _wrap_delete_CVodeDense, METH_O, "delete_CVodeDense(CVodeDense self)"},
 	 { "CVodeDense_swigregister", CVodeDense_swigregister, METH_O, NULL},
 	 { "CVodeDense_swiginit", CVodeDense_swiginit, METH_VARARGS, NULL},
-	 { "new_CVodeAdams", (PyCFunction)(void(*)(void))_wrap_new_CVodeAdams, METH_VARARGS|METH_KEYWORDS, "new_CVodeAdams(state_list states, real epsilon=1e-9) -> CVodeAdams"},
+	 { "new_CVodeAdams", _wrap_new_CVodeAdams, METH_VARARGS, "\n"
+		"CVodeAdams(real epsilon=1e-9)\n"
+		"new_CVodeAdams(state_list states, real epsilon=1e-9) -> CVodeAdams\n"
+		"CVodeAdams(const cmf::math::state_list &states, real epsilon=1e-9) \n"
+		""},
+	 { "CVodeAdams_copy", _wrap_CVodeAdams_copy, METH_O, "\n"
+		"CVodeAdams_copy(CVodeAdams self) -> CVodeAdams\n"
+		"CVodeBase* copy()\n"
+		"const\n"
+		"\n"
+		"Returns a copy of the solver. \n"
+		""},
 	 { "delete_CVodeAdams", _wrap_delete_CVodeAdams, METH_O, "delete_CVodeAdams(CVodeAdams self)"},
 	 { "CVodeAdams_swigregister", CVodeAdams_swigregister, METH_O, NULL},
 	 { "CVodeAdams_swiginit", CVodeAdams_swiginit, METH_VARARGS, NULL},
 	 { "CVodeBanded_bandwidth_set", _wrap_CVodeBanded_bandwidth_set, METH_VARARGS, "CVodeBanded_bandwidth_set(CVodeBanded self, int bandwidth)"},
 	 { "CVodeBanded_bandwidth_get", _wrap_CVodeBanded_bandwidth_get, METH_O, "CVodeBanded_bandwidth_get(CVodeBanded self) -> int"},
-	 { "new_CVodeBanded", (PyCFunction)(void(*)(void))_wrap_new_CVodeBanded, METH_VARARGS|METH_KEYWORDS, "new_CVodeBanded(state_list states, real epsilon=1e-9, int w=5) -> CVodeBanded"},
+	 { "new_CVodeBanded", _wrap_new_CVodeBanded, METH_VARARGS, "\n"
+		"CVodeBanded(real epsilon=1e-9, int w=5)\n"
+		"new_CVodeBanded(state_list states, real epsilon=1e-9, int w=5) -> CVodeBanded\n"
+		"CVodeBanded(const cmf::math::state_list &states, real epsilon=1e-9,\n"
+		"int w=5) \n"
+		""},
+	 { "CVodeBanded_copy", _wrap_CVodeBanded_copy, METH_O, "\n"
+		"CVodeBanded_copy(CVodeBanded self) -> CVodeBanded\n"
+		"CVodeBase*\n"
+		"copy() const\n"
+		"\n"
+		"Returns a copy of the solver. \n"
+		""},
 	 { "delete_CVodeBanded", _wrap_delete_CVodeBanded, METH_O, "delete_CVodeBanded(CVodeBanded self)"},
 	 { "CVodeBanded_swigregister", CVodeBanded_swigregister, METH_O, NULL},
 	 { "CVodeBanded_swiginit", CVodeBanded_swiginit, METH_VARARGS, NULL},
-	 { "new_CVodeDiag", (PyCFunction)(void(*)(void))_wrap_new_CVodeDiag, METH_VARARGS|METH_KEYWORDS, "new_CVodeDiag(state_list states, real epsilon=1e-9) -> CVodeDiag"},
+	 { "new_CVodeDiag", _wrap_new_CVodeDiag, METH_VARARGS, "\n"
+		"CVodeDiag(state_list states, real epsilon=1e-9)\n"
+		"new_CVodeDiag(real epsilon=1e-9) -> CVodeDiag\n"
+		"CVodeDiag(real epsilon=1e-9) \n"
+		""},
+	 { "CVodeDiag_copy", _wrap_CVodeDiag_copy, METH_O, "\n"
+		"CVodeDiag_copy(CVodeDiag self) -> CVodeDiag\n"
+		"CVodeBase* copy()\n"
+		"const\n"
+		"\n"
+		"Returns a copy of the solver. \n"
+		""},
 	 { "delete_CVodeDiag", _wrap_delete_CVodeDiag, METH_O, "delete_CVodeDiag(CVodeDiag self)"},
 	 { "CVodeDiag_swigregister", CVodeDiag_swigregister, METH_O, NULL},
 	 { "CVodeDiag_swiginit", CVodeDiag_swiginit, METH_VARARGS, NULL},
@@ -77997,25 +82897,93 @@ static PyMethodDef SwigMethods[] = {
 	 { "CVodeKrylov_bandwidth_get", _wrap_CVodeKrylov_bandwidth_get, METH_O, "CVodeKrylov_bandwidth_get(CVodeKrylov self) -> int"},
 	 { "CVodeKrylov_preconditioner_set", _wrap_CVodeKrylov_preconditioner_set, METH_VARARGS, "CVodeKrylov_preconditioner_set(CVodeKrylov self, char preconditioner)"},
 	 { "CVodeKrylov_preconditioner_get", _wrap_CVodeKrylov_preconditioner_get, METH_O, "CVodeKrylov_preconditioner_get(CVodeKrylov self) -> char"},
-	 { "new_CVodeKrylov", (PyCFunction)(void(*)(void))_wrap_new_CVodeKrylov, METH_VARARGS|METH_KEYWORDS, "new_CVodeKrylov(state_list states, real epsilon=1e-9, int w=5, char p='L') -> CVodeKrylov"},
+	 { "new_CVodeKrylov", _wrap_new_CVodeKrylov, METH_VARARGS, "\n"
+		"CVodeKrylov(state_list states, real epsilon=1e-9, int w=5, char p='L')\n"
+		"new_CVodeKrylov(real epsilon=1e-9, int w=5, char p='L') -> CVodeKrylov\n"
+		"CVodeKrylov(real epsilon=1e-9, int w=5, char p='L') \n"
+		""},
+	 { "CVodeKrylov_copy", _wrap_CVodeKrylov_copy, METH_O, "\n"
+		"CVodeKrylov_copy(CVodeKrylov self) -> CVodeKrylov\n"
+		"CVodeBase*\n"
+		"copy() const\n"
+		"\n"
+		"Returns a copy of the solver. \n"
+		""},
 	 { "delete_CVodeKrylov", _wrap_delete_CVodeKrylov, METH_O, "delete_CVodeKrylov(CVodeKrylov self)"},
 	 { "CVodeKrylov_swigregister", CVodeKrylov_swigregister, METH_O, NULL},
 	 { "CVodeKrylov_swiginit", CVodeKrylov_swiginit, METH_VARARGS, NULL},
-	 { "new_CVodeKLU", (PyCFunction)(void(*)(void))_wrap_new_CVodeKLU, METH_VARARGS|METH_KEYWORDS, "new_CVodeKLU(state_list states, real epsilon=1e-9) -> CVodeKLU"},
+	 { "new_CVodeKLU", _wrap_new_CVodeKLU, METH_VARARGS, "\n"
+		"CVodeKLU(real epsilon=1e-9)\n"
+		"new_CVodeKLU(state_list states, real epsilon=1e-9) -> CVodeKLU\n"
+		"CVodeKLU(const\n"
+		"cmf::math::state_list &states, real epsilon=1e-9) \n"
+		""},
+	 { "CVodeKLU_copy", _wrap_CVodeKLU_copy, METH_O, "\n"
+		"CVodeKLU_copy(CVodeKLU self) -> CVodeKLU\n"
+		"CVodeBase* copy()\n"
+		"const\n"
+		"\n"
+		"Returns a copy of the solver. \n"
+		""},
 	 { "delete_CVodeKLU", _wrap_delete_CVodeKLU, METH_O, "delete_CVodeKLU(CVodeKLU self)"},
 	 { "CVodeKLU_swigregister", CVodeKLU_swigregister, METH_O, NULL},
 	 { "CVodeKLU_swiginit", CVodeKLU_swiginit, METH_VARARGS, NULL},
-	 { "MultiIntegrator_copy", _wrap_MultiIntegrator_copy, METH_O, "MultiIntegrator_copy(MultiIntegrator self) -> MultiIntegrator"},
-	 { "new_MultiIntegrator", (PyCFunction)(void(*)(void))_wrap_new_MultiIntegrator, METH_VARARGS|METH_KEYWORDS, "new_MultiIntegrator(Integrator template_integrator, int count) -> MultiIntegrator"},
+	 { "MultiIntegrator_copy", _wrap_MultiIntegrator_copy, METH_O, "\n"
+		"MultiIntegrator_copy(MultiIntegrator self) -> MultiIntegrator\n"
+		"virtual\n"
+		"cmf::math::MultiIntegrator* copy() const\n"
+		"\n"
+		"Polymorphic copy constructor. \n"
+		""},
+	 { "new_MultiIntegrator", (PyCFunction)(void(*)(void))_wrap_new_MultiIntegrator, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_MultiIntegrator(Integrator template_integrator, int count) -> MultiIntegrator\n"
+		"MultiIntegrator(const cmf::math::Integrator &template_integrator, int\n"
+		"count)\n"
+		"\n"
+		"Creates a new MultiIntegrator.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"template_integrator:  Template for the integrators\n"
+		"\n"
+		"count:  Number of integrators \n"
+		""},
 	 { "delete_MultiIntegrator", _wrap_delete_MultiIntegrator, METH_O, "delete_MultiIntegrator(MultiIntegrator self)"},
 	 { "MultiIntegrator_swigregister", MultiIntegrator_swigregister, METH_O, NULL},
 	 { "MultiIntegrator_swiginit", MultiIntegrator_swiginit, METH_VARARGS, NULL},
-	 { "SoluteWaterIntegrator_copy", _wrap_SoluteWaterIntegrator_copy, METH_O, "SoluteWaterIntegrator_copy(SoluteWaterIntegrator self) -> SoluteWaterIntegrator"},
+	 { "SoluteWaterIntegrator_copy", _wrap_SoluteWaterIntegrator_copy, METH_O, "\n"
+		"SoluteWaterIntegrator_copy(SoluteWaterIntegrator self) -> SoluteWaterIntegrator\n"
+		"virtual cmf::math::SoluteWaterIntegrator* copy() const\n"
+		"\n"
+		"Polymorphic copy constructor. \n"
+		""},
 	 { "new_SoluteWaterIntegrator", _wrap_new_SoluteWaterIntegrator, METH_VARARGS, "\n"
 		"SoluteWaterIntegrator(solute_vector solutes, Integrator water_integrator, Integrator solute_integrator)\n"
 		"new_SoluteWaterIntegrator(solute_vector solutes, Integrator water_integrator, Integrator solute_integrator, state_list states) -> SoluteWaterIntegrator\n"
+		"SoluteWaterIntegrator(const cmf::water::solute_vector &solutes, const\n"
+		"cmf::math::Integrator &water_integrator, const cmf::math::Integrator\n"
+		"&solute_integrator, const cmf::math::state_list &states)\n"
+		"\n"
+		"Creates a new SoluteWaterIntegrator.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"solutes:  Solutes of the project\n"
+		"\n"
+		"water_integrator:  Template for the integrator of WaterStorage state\n"
+		"variables\n"
+		"\n"
+		"solute_integrator:  Template for the integrator of soluteStorage state\n"
+		"variables\n"
+		"\n"
+		"states:  States to be added to the integrators \n"
 		""},
-	 { "delete_SoluteWaterIntegrator", _wrap_delete_SoluteWaterIntegrator, METH_O, "delete_SoluteWaterIntegrator(SoluteWaterIntegrator self)"},
+	 { "delete_SoluteWaterIntegrator", _wrap_delete_SoluteWaterIntegrator, METH_O, "\n"
+		"delete_SoluteWaterIntegrator(SoluteWaterIntegrator self)\n"
+		"~SoluteWaterIntegrator() \n"
+		""},
 	 { "SoluteWaterIntegrator_swigregister", SoluteWaterIntegrator_swigregister, METH_O, NULL},
 	 { "SoluteWaterIntegrator_swiginit", SoluteWaterIntegrator_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -78026,9 +82994,21 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "get_parallel_threads", _wrap_get_parallel_threads, METH_NOARGS, "get_parallel_threads() -> int"},
 	 { "set_parallel_threads", (PyCFunction)(void(*)(void))_wrap_set_parallel_threads, METH_VARARGS|METH_KEYWORDS, "set_parallel_threads(int numthreads) -> int"},
-	 { "new_cubicspline", (PyCFunction)(void(*)(void))_wrap_new_cubicspline, METH_VARARGS|METH_KEYWORDS, "new_cubicspline(cmf::math::num_array const & x, cmf::math::num_array const & y) -> cubicspline"},
-	 { "cubicspline_generate", _wrap_cubicspline_generate, METH_O, "generate(cubicspline self)"},
-	 { "cubicspline_size", _wrap_cubicspline_size, METH_O, "size(cubicspline self) -> size_t"},
+	 { "new_cubicspline", (PyCFunction)(void(*)(void))_wrap_new_cubicspline, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_cubicspline(cmf::math::num_array const & x, cmf::math::num_array const & y) -> cubicspline\n"
+		"cubicspline(const cmf::math::num_array &x, const cmf::math::num_array\n"
+		"&y) \n"
+		""},
+	 { "cubicspline_generate", _wrap_cubicspline_generate, METH_O, "\n"
+		"generate(cubicspline self)\n"
+		"void\n"
+		"generate() \n"
+		""},
+	 { "cubicspline_size", _wrap_cubicspline_size, METH_O, "\n"
+		"size(cubicspline self) -> size_t\n"
+		"size_t size()\n"
+		"const \n"
+		""},
 	 { "cubicspline___call__", (PyCFunction)(void(*)(void))_wrap_cubicspline___call__, METH_VARARGS|METH_KEYWORDS, "__call__(cubicspline self, real x) -> real"},
 	 { "delete_cubicspline", _wrap_delete_cubicspline, METH_O, "delete_cubicspline(cubicspline self)"},
 	 { "cubicspline_swigregister", cubicspline_swigregister, METH_O, NULL},
@@ -78043,16 +83023,72 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"point()\n"
 		"point(point p)\n"
 		"new_point(double x_, double y_, double z_=0.0) -> point\n"
+		"point(double x_,\n"
+		"double y_, double z_=0.0)\n"
+		"\n"
+		"Creates a point from two doubles. \n"
 		""},
-	 { "point_distanceTo", (PyCFunction)(void(*)(void))_wrap_point_distanceTo, METH_VARARGS|METH_KEYWORDS, "distanceTo(point self, point p) -> double"},
-	 { "point_z_weight_distance", (PyCFunction)(void(*)(void))_wrap_point_z_weight_distance, METH_VARARGS|METH_KEYWORDS, "z_weight_distance(point self, point p, double z_weight) -> double"},
-	 { "point_distance3DTo", (PyCFunction)(void(*)(void))_wrap_point_distance3DTo, METH_VARARGS|METH_KEYWORDS, "distance3DTo(point self, point p) -> double"},
+	 { "point_distanceTo", (PyCFunction)(void(*)(void))_wrap_point_distanceTo, METH_VARARGS|METH_KEYWORDS, "\n"
+		"distanceTo(point self, point p) -> double\n"
+		"double\n"
+		"distanceTo(point p) const\n"
+		"\n"
+		"Returns the horizontal euclidian distance to another point p.\n"
+		"\n"
+		":math:`\\\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}` \n"
+		""},
+	 { "point_z_weight_distance", (PyCFunction)(void(*)(void))_wrap_point_z_weight_distance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"z_weight_distance(point self, point p, double z_weight) -> double\n"
+		"double z_weight_distance(point p, double z_weight) const\n"
+		"\n"
+		"Returns the horizontal euclidian distance plus the absolute of the\n"
+		"height difference times a factor.\n"
+		"\n"
+		":math:`\\\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}\\\\ +\\\\ w_{z}|this.z-p.z|`\n"
+		"\n"
+		""},
+	 { "point_distance3DTo", (PyCFunction)(void(*)(void))_wrap_point_distance3DTo, METH_VARARGS|METH_KEYWORDS, "\n"
+		"distance3DTo(point self, point p) -> double\n"
+		"double\n"
+		"distance3DTo(point p) const\n"
+		"\n"
+		"Returns the euclidian distance in space to another point p. \n"
+		""},
 	 { "point_distance", (PyCFunction)(void(*)(void))_wrap_point_distance, METH_VARARGS|METH_KEYWORDS, "distance(point p1, point p2) -> double"},
-	 { "point_distance_max", (PyCFunction)(void(*)(void))_wrap_point_distance_max, METH_VARARGS|METH_KEYWORDS, "distance_max(point self, point p) -> double"},
-	 { "point_azimuth", (PyCFunction)(void(*)(void))_wrap_point_azimuth, METH_VARARGS|METH_KEYWORDS, "azimuth(point self, point p) -> double"},
-	 { "point_angleToXAxis", (PyCFunction)(void(*)(void))_wrap_point_angleToXAxis, METH_VARARGS|METH_KEYWORDS, "angleToXAxis(point self, point p) -> double"},
-	 { "point_sum", _wrap_point_sum, METH_O, "sum(point self) -> double"},
-	 { "point_length", _wrap_point_length, METH_O, "length(point self) -> double"},
+	 { "point_distance_max", (PyCFunction)(void(*)(void))_wrap_point_distance_max, METH_VARARGS|METH_KEYWORDS, "\n"
+		"distance_max(point self, point p) -> double\n"
+		"double\n"
+		"distance_max(point p) const\n"
+		"\n"
+		"Returns the distance by the maximum orthogonal offset. \n"
+		""},
+	 { "point_azimuth", (PyCFunction)(void(*)(void))_wrap_point_azimuth, METH_VARARGS|METH_KEYWORDS, "\n"
+		"azimuth(point self, point p) -> double\n"
+		"double\n"
+		"azimuth(point p) const\n"
+		"\n"
+		"Returns the azimuth angle of the line :math:`\\\\overline{this,p}` to the\n"
+		"Azimuth in degrees. \n"
+		""},
+	 { "point_angleToXAxis", (PyCFunction)(void(*)(void))_wrap_point_angleToXAxis, METH_VARARGS|METH_KEYWORDS, "\n"
+		"angleToXAxis(point self, point p) -> double\n"
+		"double\n"
+		"angleToXAxis(point p) const\n"
+		"\n"
+		"Returns the angle between the line :math:`\\\\overline{this,p}` to the\n"
+		"x-Axis in degrees. \n"
+		""},
+	 { "point_sum", _wrap_point_sum, METH_O, "\n"
+		"sum(point self) -> double\n"
+		"double sum() const\n"
+		"\n"
+		"Returns x+y+z. \n"
+		""},
+	 { "point_length", _wrap_point_length, METH_O, "\n"
+		"length(point self) -> double\n"
+		"double length()\n"
+		"const \n"
+		""},
 	 { "point___add__", (PyCFunction)(void(*)(void))_wrap_point___add__, METH_VARARGS|METH_KEYWORDS, "__add__(point self, point p) -> point"},
 	 { "point___iadd__", (PyCFunction)(void(*)(void))_wrap_point___iadd__, METH_VARARGS|METH_KEYWORDS, "__iadd__(point self, point left) -> point"},
 	 { "point___sub__", (PyCFunction)(void(*)(void))_wrap_point___sub__, METH_VARARGS|METH_KEYWORDS, "__sub__(point self, point p) -> point"},
@@ -78089,10 +83125,33 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "point_vector_Y_get", _wrap_point_vector_Y_get, METH_O, "point_vector_Y_get(point_vector self) -> cmf::math::num_array"},
 	 { "point_vector_Z_set", _wrap_point_vector_Z_set, METH_VARARGS, "point_vector_Z_set(point_vector self, cmf::math::num_array Z)"},
 	 { "point_vector_Z_get", _wrap_point_vector_Z_get, METH_O, "point_vector_Z_get(point_vector self) -> cmf::math::num_array"},
-	 { "new_point_vector", (PyCFunction)(void(*)(void))_wrap_new_point_vector, METH_VARARGS|METH_KEYWORDS, "new_point_vector(ptrdiff_t size) -> point_vector"},
-	 { "point_vector_get", (PyCFunction)(void(*)(void))_wrap_point_vector_get, METH_VARARGS|METH_KEYWORDS, "get(point_vector self, ptrdiff_t index) -> point"},
-	 { "point_vector_set", (PyCFunction)(void(*)(void))_wrap_point_vector_set, METH_VARARGS|METH_KEYWORDS, "set(point_vector self, ptrdiff_t index, point p)"},
-	 { "point_vector_size", _wrap_point_vector_size, METH_O, "size(point_vector self) -> size_t"},
+	 { "new_point_vector", (PyCFunction)(void(*)(void))_wrap_new_point_vector, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_point_vector(ptrdiff_t size) -> point_vector\n"
+		"point_vector(ptrdiff_t size)\n"
+		"\n"
+		"Create a point vector of a specific size. \n"
+		""},
+	 { "point_vector_get", (PyCFunction)(void(*)(void))_wrap_point_vector_get, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get(point_vector self, ptrdiff_t index) -> point\n"
+		"point\n"
+		"get(ptrdiff_t index) const\n"
+		"\n"
+		"Return a point at index. \n"
+		""},
+	 { "point_vector_set", (PyCFunction)(void(*)(void))_wrap_point_vector_set, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set(point_vector self, ptrdiff_t index, point p)\n"
+		"void\n"
+		"set(ptrdiff_t index, cmf::geometry::point p)\n"
+		"\n"
+		"Change the point at index. \n"
+		""},
+	 { "point_vector_size", _wrap_point_vector_size, METH_O, "\n"
+		"size(point_vector self) -> size_t\n"
+		"size_t\n"
+		"size() const\n"
+		"\n"
+		"Return the number of points in the point_vector. \n"
+		""},
 	 { "delete_point_vector", _wrap_delete_point_vector, METH_O, "delete_point_vector(point_vector self)"},
 	 { "point_vector_swigregister", point_vector_swigregister, METH_O, NULL},
 	 { "point_vector_swiginit", point_vector_swiginit, METH_VARARGS, NULL},
@@ -78112,16 +83171,62 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Time(Time t)\n"
 		"Time()\n"
 		"new_Time(long long milliseconds) -> Time\n"
+		"Time(long long\n"
+		"milliseconds) \n"
 		""},
-	 { "Time_AsDays", _wrap_Time_AsDays, METH_O, "AsDays(Time self) -> double"},
-	 { "Time_AsHours", _wrap_Time_AsHours, METH_O, "AsHours(Time self) -> double"},
-	 { "Time_AsMinutes", _wrap_Time_AsMinutes, METH_O, "AsMinutes(Time self) -> double"},
-	 { "Time_AsSeconds", _wrap_Time_AsSeconds, METH_O, "AsSeconds(Time self) -> double"},
-	 { "Time_AsMilliseconds", _wrap_Time_AsMilliseconds, METH_O, "AsMilliseconds(Time self) -> long long"},
-	 { "Time_AsDate", _wrap_Time_AsDate, METH_O, "AsDate(Time self) -> Date"},
-	 { "Time_to_string", (PyCFunction)(void(*)(void))_wrap_Time_to_string, METH_VARARGS|METH_KEYWORDS, "to_string(Time self, char seperator=':') -> std::string"},
-	 { "Time_is_not_0", _wrap_Time_is_not_0, METH_O, "is_not_0(Time self) -> bool"},
-	 { "Time_DOY", _wrap_Time_DOY, METH_O, "DOY(Time self) -> double"},
+	 { "Time_AsDays", _wrap_Time_AsDays, METH_O, "\n"
+		"AsDays(Time self) -> double\n"
+		"double AsDays() const\n"
+		"\n"
+		"Time in days. \n"
+		""},
+	 { "Time_AsHours", _wrap_Time_AsHours, METH_O, "\n"
+		"AsHours(Time self) -> double\n"
+		"double AsHours()\n"
+		"const\n"
+		"\n"
+		"Time in hours. \n"
+		""},
+	 { "Time_AsMinutes", _wrap_Time_AsMinutes, METH_O, "\n"
+		"AsMinutes(Time self) -> double\n"
+		"double AsMinutes()\n"
+		"const\n"
+		"\n"
+		"Time in minutes. \n"
+		""},
+	 { "Time_AsSeconds", _wrap_Time_AsSeconds, METH_O, "\n"
+		"AsSeconds(Time self) -> double\n"
+		"double AsSeconds()\n"
+		"const\n"
+		"\n"
+		"Time in seconds. \n"
+		""},
+	 { "Time_AsMilliseconds", _wrap_Time_AsMilliseconds, METH_O, "\n"
+		"AsMilliseconds(Time self) -> long long\n"
+		"long long\n"
+		"AsMilliseconds() const\n"
+		"\n"
+		"Time in milliseconds. \n"
+		""},
+	 { "Time_AsDate", _wrap_Time_AsDate, METH_O, "\n"
+		"AsDate(Time self) -> Date\n"
+		"Date AsDate() const\n"
+		"\n"
+		""},
+	 { "Time_to_string", (PyCFunction)(void(*)(void))_wrap_Time_to_string, METH_VARARGS|METH_KEYWORDS, "\n"
+		"to_string(Time self, char seperator=':') -> std::string\n"
+		"std::string\n"
+		"to_string(char seperator=':') \n"
+		""},
+	 { "Time_is_not_0", _wrap_Time_is_not_0, METH_O, "\n"
+		"is_not_0(Time self) -> bool\n"
+		"bool is_not_0()\n"
+		"const \n"
+		""},
+	 { "Time_DOY", _wrap_Time_DOY, METH_O, "\n"
+		"DOY(Time self) -> double\n"
+		"double DOY() const \n"
+		""},
 	 { "Time___add__", (PyCFunction)(void(*)(void))_wrap_Time___add__, METH_VARARGS|METH_KEYWORDS, "__add__(Time self, Time t1) -> Time"},
 	 { "Time___sub__", (PyCFunction)(void(*)(void))_wrap_Time___sub__, METH_VARARGS|METH_KEYWORDS, "__sub__(Time self, Time t1) -> Time"},
 	 { "Time___iadd__", (PyCFunction)(void(*)(void))_wrap_Time___iadd__, METH_VARARGS|METH_KEYWORDS, "__iadd__(Time self, Time t1) -> Time"},
@@ -78149,7 +83254,13 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"__truediv__(Time self, int x) -> Time\n"
 		"__truediv__(Time self, Time t1) -> double\n"
 		""},
-	 { "Time_times_in", (PyCFunction)(void(*)(void))_wrap_Time_times_in, METH_VARARGS|METH_KEYWORDS, "times_in(Time self, Time t1) -> long long"},
+	 { "Time_times_in", (PyCFunction)(void(*)(void))_wrap_Time_times_in, METH_VARARGS|METH_KEYWORDS, "\n"
+		"times_in(Time self, Time t1) -> long long\n"
+		"long long\n"
+		"times_in(const Time &t1) const\n"
+		"\n"
+		"Returns the number of times this is included in t1. \n"
+		""},
 	 { "Time___lt__", (PyCFunction)(void(*)(void))_wrap_Time___lt__, METH_VARARGS|METH_KEYWORDS, "__lt__(Time self, Time t1) -> bool"},
 	 { "Time___gt__", (PyCFunction)(void(*)(void))_wrap_Time___gt__, METH_VARARGS|METH_KEYWORDS, "__gt__(Time self, Time t1) -> bool"},
 	 { "Time___le__", (PyCFunction)(void(*)(void))_wrap_Time___le__, METH_VARARGS|METH_KEYWORDS, "__le__(Time self, Time t1) -> bool"},
@@ -78176,42 +83287,146 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "new_Date", _wrap_new_Date, METH_VARARGS, "\n"
 		"Date(int _day, int _month, int _year, int _hour=0, int _minute=0, int _second=0, int _ms=0)\n"
 		"new_Date(Time time) -> Date\n"
+		"Date(const Time &time)\n"
+		"\n"
+		"Creates a new date from time (based on the 31.12.1899, like in\n"
+		"Excel(TM)) \n"
 		""},
-	 { "Date_ToTime", _wrap_Date_ToTime, METH_O, "ToTime(Date self) -> Time"},
-	 { "Date_DOY", _wrap_Date_DOY, METH_O, "DOY(Date self) -> double"},
-	 { "Date_to_string", _wrap_Date_to_string, METH_O, "to_string(Date self) -> std::string"},
+	 { "Date_ToTime", _wrap_Date_ToTime, METH_O, "\n"
+		"ToTime(Date self) -> Time\n"
+		"Time ToTime()\n"
+		"\n"
+		"Converts a date to Time (based on the 31.12.1899, like in Excel(TM) \n"
+		""},
+	 { "Date_DOY", _wrap_Date_DOY, METH_O, "\n"
+		"DOY(Date self) -> double\n"
+		"double DOY()\n"
+		"\n"
+		"Returns the day of year. \n"
+		""},
+	 { "Date_to_string", _wrap_Date_to_string, METH_O, "\n"
+		"to_string(Date self) -> std::string\n"
+		"std::string\n"
+		"to_string()\n"
+		"\n"
+		"Returns a string representing the date. \n"
+		""},
 	 { "delete_Date", _wrap_delete_Date, METH_O, "delete_Date(Date self)"},
 	 { "Date_swigregister", Date_swigregister, METH_O, NULL},
 	 { "Date_swiginit", Date_swiginit, METH_VARARGS, NULL},
-	 { "timeseries_set_begin", (PyCFunction)(void(*)(void))_wrap_timeseries_set_begin, METH_VARARGS|METH_KEYWORDS, "set_begin(timeseries self, Time new_begin)"},
-	 { "timeseries_set_step", (PyCFunction)(void(*)(void))_wrap_timeseries_set_step, METH_VARARGS|METH_KEYWORDS, "set_step(timeseries self, Time new_step)"},
-	 { "timeseries_interpolationpower", _wrap_timeseries_interpolationpower, METH_O, "interpolationpower(timeseries self) -> int"},
-	 { "timeseries_set_interpolationpower", (PyCFunction)(void(*)(void))_wrap_timeseries_set_interpolationpower, METH_VARARGS|METH_KEYWORDS, "set_interpolationpower(timeseries self, int new_ip)"},
-	 { "timeseries_add", (PyCFunction)(void(*)(void))_wrap_timeseries_add, METH_VARARGS|METH_KEYWORDS, "add(timeseries self, double Value)"},
-	 { "timeseries_is_empty", _wrap_timeseries_is_empty, METH_O, "is_empty(timeseries self) -> bool"},
-	 { "timeseries_clear", _wrap_timeseries_clear, METH_O, "clear(timeseries self)"},
-	 { "timeseries_adress", _wrap_timeseries_adress, METH_O, "adress(timeseries self) -> size_t"},
-	 { "timeseries_as_array", _wrap_timeseries_as_array, METH_O, "as_array(timeseries self) -> cmf::math::num_array"},
-	 { "timeseries_copy", _wrap_timeseries_copy, METH_O, "copy(timeseries self) -> timeseries"},
-	 { "timeseries_size", _wrap_timeseries_size, METH_O, "size(timeseries self) -> size_t"},
-	 { "timeseries_count_values", _wrap_timeseries_count_values, METH_O, "count_values(timeseries self) -> size_t"},
-	 { "new_timeseries", (PyCFunction)(void(*)(void))_wrap_new_timeseries, METH_VARARGS|METH_KEYWORDS, "new_timeseries(Time begin=cmf::math::Time(), Time step=day, int interpolationmethod=1, size_t count=0) -> timeseries"},
+	 { "timeseries_set_begin", (PyCFunction)(void(*)(void))_wrap_timeseries_set_begin, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_begin(timeseries self, Time new_begin)\n"
+		"void\n"
+		"set_begin(cmf::math::Time new_begin) \n"
+		""},
+	 { "timeseries_set_step", (PyCFunction)(void(*)(void))_wrap_timeseries_set_step, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_step(timeseries self, Time new_step)\n"
+		"void\n"
+		"set_step(cmf::math::Time new_step) \n"
+		""},
+	 { "timeseries_interpolationpower", _wrap_timeseries_interpolationpower, METH_O, "\n"
+		"interpolationpower(timeseries self) -> int\n"
+		"int\n"
+		"interpolationpower() const\n"
+		"\n"
+		"Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 -\n"
+		"cubic spline (not implemented yet) \n"
+		""},
+	 { "timeseries_set_interpolationpower", (PyCFunction)(void(*)(void))_wrap_timeseries_set_interpolationpower, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_interpolationpower(timeseries self, int new_ip)\n"
+		"void set_interpolationpower(int new_ip) \n"
+		""},
+	 { "timeseries_add", (PyCFunction)(void(*)(void))_wrap_timeseries_add, METH_VARARGS|METH_KEYWORDS, "\n"
+		"add(timeseries self, double Value)\n"
+		"void add(double\n"
+		"Value)\n"
+		"\n"
+		"Appends a measurement. \n"
+		""},
+	 { "timeseries_is_empty", _wrap_timeseries_is_empty, METH_O, "\n"
+		"is_empty(timeseries self) -> bool\n"
+		"bool\n"
+		"is_empty() const\n"
+		"\n"
+		"returns true if no values are added to the timeseries \n"
+		""},
+	 { "timeseries_clear", _wrap_timeseries_clear, METH_O, "\n"
+		"clear(timeseries self)\n"
+		"void clear() \n"
+		""},
+	 { "timeseries_adress", _wrap_timeseries_adress, METH_O, "\n"
+		"adress(timeseries self) -> size_t\n"
+		"size_t adress()\n"
+		"const \n"
+		""},
+	 { "timeseries_as_array", _wrap_timeseries_as_array, METH_O, "\n"
+		"as_array(timeseries self) -> cmf::math::num_array\n"
+		"cmf::math::num_array as_array() const \n"
+		""},
+	 { "timeseries_copy", _wrap_timeseries_copy, METH_O, "\n"
+		"copy(timeseries self) -> timeseries\n"
+		"timeseries copy()\n"
+		"const \n"
+		""},
+	 { "timeseries_size", _wrap_timeseries_size, METH_O, "\n"
+		"size(timeseries self) -> size_t\n"
+		"size_t size()\n"
+		"const\n"
+		"\n"
+		"Number of items in the timeseries. \n"
+		""},
+	 { "timeseries_count_values", _wrap_timeseries_count_values, METH_O, "\n"
+		"count_values(timeseries self) -> size_t\n"
+		"size_t\n"
+		"count_values() const\n"
+		"\n"
+		"Number of valid values (=size - # of NaN's) \n"
+		""},
+	 { "new_timeseries", (PyCFunction)(void(*)(void))_wrap_new_timeseries, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_timeseries(Time begin=cmf::math::Time(), Time step=day, int interpolationmethod=1, size_t count=0) -> timeseries\n"
+		"timeseries(const cmf::math::timeseries &ts) \n"
+		""},
 	 { "timeseries_from_array", (PyCFunction)(void(*)(void))_wrap_timeseries_from_array, METH_VARARGS|METH_KEYWORDS, "from_array(Time begin, Time step, cmf::math::num_array const & data) -> timeseries"},
 	 { "timeseries_from_scalar", (PyCFunction)(void(*)(void))_wrap_timeseries_from_scalar, METH_VARARGS|METH_KEYWORDS, "from_scalar(double scalar) -> timeseries"},
 	 { "timeseries_from_file", (PyCFunction)(void(*)(void))_wrap_timeseries_from_file, METH_VARARGS|METH_KEYWORDS, "from_file(std::string filename) -> timeseries"},
-	 { "timeseries_get_t", (PyCFunction)(void(*)(void))_wrap_timeseries_get_t, METH_VARARGS|METH_KEYWORDS, "get_t(timeseries self, Time t) -> double"},
-	 { "timeseries_get_i", (PyCFunction)(void(*)(void))_wrap_timeseries_get_i, METH_VARARGS|METH_KEYWORDS, "get_i(timeseries self, ptrdiff_t i) -> double"},
-	 { "timeseries_set_t", (PyCFunction)(void(*)(void))_wrap_timeseries_set_t, METH_VARARGS|METH_KEYWORDS, "set_t(timeseries self, Time t, double value)"},
-	 { "timeseries_set_i", (PyCFunction)(void(*)(void))_wrap_timeseries_set_i, METH_VARARGS|METH_KEYWORDS, "set_i(timeseries self, ptrdiff_t i, double value)"},
+	 { "timeseries_get_t", (PyCFunction)(void(*)(void))_wrap_timeseries_get_t, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_t(timeseries self, Time t) -> double\n"
+		"double\n"
+		"get_t(cmf::math::Time t) const \n"
+		""},
+	 { "timeseries_get_i", (PyCFunction)(void(*)(void))_wrap_timeseries_get_i, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_i(timeseries self, ptrdiff_t i) -> double\n"
+		"double\n"
+		"get_i(ptrdiff_t i) const \n"
+		""},
+	 { "timeseries_set_t", (PyCFunction)(void(*)(void))_wrap_timeseries_set_t, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_t(timeseries self, Time t, double value)\n"
+		"void\n"
+		"set_t(cmf::math::Time t, double value) \n"
+		""},
+	 { "timeseries_set_i", (PyCFunction)(void(*)(void))_wrap_timeseries_set_i, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_i(timeseries self, ptrdiff_t i, double value)\n"
+		"void\n"
+		"set_i(ptrdiff_t i, double value) \n"
+		""},
 	 { "timeseries_get_slice", _wrap_timeseries_get_slice, METH_VARARGS, "\n"
 		"get_slice(timeseries self, Time _begin, Time _end, Time _step=cmf::math::Time()) -> timeseries\n"
 		"get_slice(timeseries self, ptrdiff_t _begin, ptrdiff_t _end, ptrdiff_t step=1) -> timeseries\n"
+		"cmf::math::timeseries get_slice(ptrdiff_t _begin, ptrdiff_t _end,\n"
+		"ptrdiff_t step=1) \n"
 		""},
 	 { "timeseries_set_slice", _wrap_timeseries_set_slice, METH_VARARGS, "\n"
 		"set_slice(timeseries self, Time _begin, Time _end, timeseries values)\n"
 		"set_slice(timeseries self, ptrdiff_t _begin, ptrdiff_t _end, timeseries _values)\n"
+		"void\n"
+		"set_slice(ptrdiff_t _begin, ptrdiff_t _end, cmf::math::timeseries\n"
+		"_values) \n"
 		""},
-	 { "timeseries_remove_nodata", (PyCFunction)(void(*)(void))_wrap_timeseries_remove_nodata, METH_VARARGS|METH_KEYWORDS, "remove_nodata(timeseries self, double nodata_value)"},
+	 { "timeseries_remove_nodata", (PyCFunction)(void(*)(void))_wrap_timeseries_remove_nodata, METH_VARARGS|METH_KEYWORDS, "\n"
+		"remove_nodata(timeseries self, double nodata_value)\n"
+		"void\n"
+		"remove_nodata(double nodata_value) \n"
+		""},
 	 { "timeseries___iadd__", _wrap_timeseries___iadd__, METH_VARARGS, "\n"
 		"__iadd__(timeseries self, timeseries arg2) -> timeseries\n"
 		"__iadd__(timeseries self, double arg2) -> timeseries\n"
@@ -78245,47 +83460,164 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"__truediv__(timeseries self, double arg2) -> timeseries\n"
 		""},
 	 { "timeseries___neg__", _wrap_timeseries___neg__, METH_O, "__neg__(timeseries self) -> timeseries"},
-	 { "timeseries_inv", _wrap_timeseries_inv, METH_O, "inv(timeseries self) -> timeseries"},
-	 { "timeseries_reduce_min", (PyCFunction)(void(*)(void))_wrap_timeseries_reduce_min, METH_VARARGS|METH_KEYWORDS, "reduce_min(timeseries self, Time begin, Time step) -> timeseries"},
-	 { "timeseries_reduce_max", (PyCFunction)(void(*)(void))_wrap_timeseries_reduce_max, METH_VARARGS|METH_KEYWORDS, "reduce_max(timeseries self, Time begin, Time step) -> timeseries"},
-	 { "timeseries_reduce_sum", (PyCFunction)(void(*)(void))_wrap_timeseries_reduce_sum, METH_VARARGS|METH_KEYWORDS, "reduce_sum(timeseries self, Time begin, Time step) -> timeseries"},
-	 { "timeseries_reduce_avg", (PyCFunction)(void(*)(void))_wrap_timeseries_reduce_avg, METH_VARARGS|METH_KEYWORDS, "reduce_avg(timeseries self, Time begin, Time step) -> timeseries"},
+	 { "timeseries_inv", _wrap_timeseries_inv, METH_O, "\n"
+		"inv(timeseries self) -> timeseries\n"
+		"timeseries inv()\n"
+		"const \n"
+		""},
+	 { "timeseries_reduce_min", (PyCFunction)(void(*)(void))_wrap_timeseries_reduce_min, METH_VARARGS|METH_KEYWORDS, "\n"
+		"reduce_min(timeseries self, Time begin, Time step) -> timeseries\n"
+		"timeseries\n"
+		"reduce_min(cmf::math::Time begin, cmf::math::Time step) const\n"
+		"\n"
+		"Creates a timeseries with a bigger timestep, containing the minimum.\n"
+		"\n"
+		""},
+	 { "timeseries_reduce_max", (PyCFunction)(void(*)(void))_wrap_timeseries_reduce_max, METH_VARARGS|METH_KEYWORDS, "\n"
+		"reduce_max(timeseries self, Time begin, Time step) -> timeseries\n"
+		"timeseries\n"
+		"reduce_max(cmf::math::Time begin, cmf::math::Time step) const\n"
+		"\n"
+		"Creates a timeseries with a bigger timestep, containing the maximum.\n"
+		"\n"
+		""},
+	 { "timeseries_reduce_sum", (PyCFunction)(void(*)(void))_wrap_timeseries_reduce_sum, METH_VARARGS|METH_KEYWORDS, "\n"
+		"reduce_sum(timeseries self, Time begin, Time step) -> timeseries\n"
+		"timeseries\n"
+		"reduce_sum(cmf::math::Time begin, cmf::math::Time step) const\n"
+		"\n"
+		"Creates a timeseries with a bigger timestep, containing the sum. \n"
+		""},
+	 { "timeseries_reduce_avg", (PyCFunction)(void(*)(void))_wrap_timeseries_reduce_avg, METH_VARARGS|METH_KEYWORDS, "\n"
+		"reduce_avg(timeseries self, Time begin, Time step) -> timeseries\n"
+		"timeseries\n"
+		"reduce_avg(cmf::math::Time begin, cmf::math::Time step) const\n"
+		"\n"
+		"Creates a timeseries with a bigger timestep, containing the average.\n"
+		"\n"
+		""},
 	 { "timeseries_floating_avg", _wrap_timeseries_floating_avg, METH_VARARGS, "\n"
 		"floating_avg(timeseries self, Time window_width) -> timeseries\n"
 		"floating_avg(timeseries self, size_t window_size) -> timeseries\n"
+		"timeseries floating_avg(size_t window_size) const \n"
 		""},
-	 { "timeseries_floating_max", (PyCFunction)(void(*)(void))_wrap_timeseries_floating_max, METH_VARARGS|METH_KEYWORDS, "floating_max(timeseries self, Time window_width) -> timeseries"},
-	 { "timeseries_floating_min", (PyCFunction)(void(*)(void))_wrap_timeseries_floating_min, METH_VARARGS|METH_KEYWORDS, "floating_min(timeseries self, Time window_width) -> timeseries"},
-	 { "timeseries_mean", _wrap_timeseries_mean, METH_O, "mean(timeseries self) -> double"},
-	 { "timeseries_min", _wrap_timeseries_min, METH_O, "min(timeseries self) -> double"},
-	 { "timeseries_max", _wrap_timeseries_max, METH_O, "max(timeseries self) -> double"},
-	 { "timeseries_log", _wrap_timeseries_log, METH_O, "log(timeseries self) -> timeseries"},
-	 { "timeseries_log10", _wrap_timeseries_log10, METH_O, "log10(timeseries self) -> timeseries"},
-	 { "timeseries_power", (PyCFunction)(void(*)(void))_wrap_timeseries_power, METH_VARARGS|METH_KEYWORDS, "power(timeseries self, double exponent) -> timeseries"},
-	 { "timeseries_exp", _wrap_timeseries_exp, METH_O, "exp(timeseries self) -> timeseries"},
-	 { "timeseries_begin_get", _wrap_timeseries_begin_get, METH_O, "timeseries_begin_get(timeseries self) -> Time"},
-	 { "timeseries_step_get", _wrap_timeseries_step_get, METH_O, "timeseries_step_get(timeseries self) -> Time"},
-	 { "timeseries_end_get", _wrap_timeseries_end_get, METH_O, "timeseries_end_get(timeseries self) -> Time"},
+	 { "timeseries_floating_max", (PyCFunction)(void(*)(void))_wrap_timeseries_floating_max, METH_VARARGS|METH_KEYWORDS, "\n"
+		"floating_max(timeseries self, Time window_width) -> timeseries\n"
+		"timeseries floating_max(cmf::math::Time window_width) const \n"
+		""},
+	 { "timeseries_floating_min", (PyCFunction)(void(*)(void))_wrap_timeseries_floating_min, METH_VARARGS|METH_KEYWORDS, "\n"
+		"floating_min(timeseries self, Time window_width) -> timeseries\n"
+		"timeseries floating_min(cmf::math::Time window_width) const \n"
+		""},
+	 { "timeseries_mean", _wrap_timeseries_mean, METH_O, "\n"
+		"mean(timeseries self) -> double\n"
+		"double mean()\n"
+		"const \n"
+		""},
+	 { "timeseries_min", _wrap_timeseries_min, METH_O, "\n"
+		"min(timeseries self) -> double\n"
+		"double min() const\n"
+		"\n"
+		""},
+	 { "timeseries_max", _wrap_timeseries_max, METH_O, "\n"
+		"max(timeseries self) -> double\n"
+		"double max() const\n"
+		"\n"
+		""},
+	 { "timeseries_log", _wrap_timeseries_log, METH_O, "\n"
+		"log(timeseries self) -> timeseries\n"
+		"timeseries log()\n"
+		"const \n"
+		""},
+	 { "timeseries_log10", _wrap_timeseries_log10, METH_O, "\n"
+		"log10(timeseries self) -> timeseries\n"
+		"timeseries\n"
+		"log10() const \n"
+		""},
+	 { "timeseries_power", (PyCFunction)(void(*)(void))_wrap_timeseries_power, METH_VARARGS|METH_KEYWORDS, "\n"
+		"power(timeseries self, double exponent) -> timeseries\n"
+		"timeseries\n"
+		"power(double exponent) const \n"
+		""},
+	 { "timeseries_exp", _wrap_timeseries_exp, METH_O, "\n"
+		"exp(timeseries self) -> timeseries\n"
+		"timeseries exp()\n"
+		"const \n"
+		""},
+	 { "timeseries_begin_get", _wrap_timeseries_begin_get, METH_O, "\n"
+		"timeseries_begin_get(timeseries self) -> Time\n"
+		"cmf::math::Time\n"
+		"begin() const\n"
+		"\n"
+		"First date of measurement. \n"
+		""},
+	 { "timeseries_step_get", _wrap_timeseries_step_get, METH_O, "\n"
+		"timeseries_step_get(timeseries self) -> Time\n"
+		"cmf::math::Time\n"
+		"step() const\n"
+		"\n"
+		"Time between the measurements. \n"
+		""},
+	 { "timeseries_end_get", _wrap_timeseries_end_get, METH_O, "\n"
+		"timeseries_end_get(timeseries self) -> Time\n"
+		"cmf::math::Time\n"
+		"end() const\n"
+		"\n"
+		"Last date of measurements. \n"
+		""},
 	 { "timeseries___len__", _wrap_timeseries___len__, METH_O, "__len__(timeseries self) -> ptrdiff_t"},
 	 { "delete_timeseries", _wrap_delete_timeseries, METH_O, "delete_timeseries(timeseries self)"},
 	 { "timeseries_swigregister", timeseries_swigregister, METH_O, NULL},
 	 { "timeseries_swiginit", timeseries_swiginit, METH_VARARGS, NULL},
 	 { "nash_sutcliffe", (PyCFunction)(void(*)(void))_wrap_nash_sutcliffe, METH_VARARGS|METH_KEYWORDS, "nash_sutcliffe(timeseries model, timeseries observation) -> double"},
-	 { "StateVariable_dxdt", (PyCFunction)(void(*)(void))_wrap_StateVariable_dxdt, METH_VARARGS|METH_KEYWORDS, "dxdt(StateVariable self, Time time) -> real"},
-	 { "StateVariable_get_abs_errtol", (PyCFunction)(void(*)(void))_wrap_StateVariable_get_abs_errtol, METH_VARARGS|METH_KEYWORDS, "get_abs_errtol(StateVariable self, real rel_errtol) -> real"},
-	 { "StateVariable_to_string", _wrap_StateVariable_to_string, METH_O, "to_string(StateVariable self) -> std::string"},
-	 { "delete_StateVariable", _wrap_delete_StateVariable, METH_O, "delete_StateVariable(StateVariable self)"},
-	 { "StateVariable_is_connected", (PyCFunction)(void(*)(void))_wrap_StateVariable_is_connected, METH_VARARGS|METH_KEYWORDS, "is_connected(StateVariable self, StateVariable other) -> bool"},
+	 { "StateVariable_dxdt", (PyCFunction)(void(*)(void))_wrap_StateVariable_dxdt, METH_VARARGS|METH_KEYWORDS, "\n"
+		"dxdt(StateVariable self, Time time) -> real\n"
+		"virtual real\n"
+		"dxdt(const cmf::math::Time &time)=0\n"
+		"\n"
+		"Returns the derivate of the state variable at time time. \n"
+		""},
+	 { "StateVariable_get_abs_errtol", (PyCFunction)(void(*)(void))_wrap_StateVariable_get_abs_errtol, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_abs_errtol(StateVariable self, real rel_errtol) -> real\n"
+		"virtual real get_abs_errtol(real rel_errtol) const \n"
+		""},
+	 { "StateVariable_to_string", _wrap_StateVariable_to_string, METH_O, "\n"
+		"to_string(StateVariable self) -> std::string\n"
+		"virtual\n"
+		"std::string to_string() const =0 \n"
+		""},
+	 { "delete_StateVariable", _wrap_delete_StateVariable, METH_O, "\n"
+		"delete_StateVariable(StateVariable self)\n"
+		"virtual ~StateVariable() \n"
+		""},
+	 { "StateVariable_is_connected", (PyCFunction)(void(*)(void))_wrap_StateVariable_is_connected, METH_VARARGS|METH_KEYWORDS, "\n"
+		"is_connected(StateVariable self, StateVariable other) -> bool\n"
+		"virtual bool is_connected(const cmf::math::StateVariable &other) const\n"
+		"\n"
+		""},
 	 { "StateVariable_state_set", _wrap_StateVariable_state_set, METH_VARARGS, "StateVariable_state_set(StateVariable self, real state)"},
 	 { "StateVariable_state_get", _wrap_StateVariable_state_get, METH_O, "StateVariable_state_get(StateVariable self) -> real"},
 	 { "StateVariable_swigregister", StateVariable_swigregister, METH_O, NULL},
 	 { "new_state_list", _wrap_new_state_list, METH_VARARGS, "\n"
 		"state_list()\n"
 		"new_state_list(state_list other) -> state_list\n"
+		"state_list(const state_list &other) \n"
 		""},
-	 { "state_list_append", (PyCFunction)(void(*)(void))_wrap_state_list_append, METH_VARARGS|METH_KEYWORDS, "append(state_list self, cmf::math::StateVariable::ptr sv)"},
-	 { "state_list_extend", (PyCFunction)(void(*)(void))_wrap_state_list_extend, METH_VARARGS|METH_KEYWORDS, "extend(state_list self, state_list svl) -> state_list"},
-	 { "state_list_size", _wrap_state_list_size, METH_O, "size(state_list self) -> size_t"},
+	 { "state_list_append", (PyCFunction)(void(*)(void))_wrap_state_list_append, METH_VARARGS|METH_KEYWORDS, "\n"
+		"append(state_list self, cmf::math::StateVariable::ptr sv)\n"
+		"void\n"
+		"append(StateVariable::ptr sv) \n"
+		""},
+	 { "state_list_extend", (PyCFunction)(void(*)(void))_wrap_state_list_extend, METH_VARARGS|METH_KEYWORDS, "\n"
+		"extend(state_list self, state_list svl) -> state_list\n"
+		"state_list&\n"
+		"extend(const state_list &svl) \n"
+		""},
+	 { "state_list_size", _wrap_state_list_size, METH_O, "\n"
+		"size(state_list self) -> size_t\n"
+		"size_t size()\n"
+		"const \n"
+		""},
 	 { "state_list___nonzero__", _wrap_state_list___nonzero__, METH_O, "__nonzero__(state_list self) -> bool"},
 	 { "state_list___iadd__", (PyCFunction)(void(*)(void))_wrap_state_list___iadd__, METH_VARARGS|METH_KEYWORDS, "__iadd__(state_list self, state_list food) -> state_list"},
 	 { "state_list___getitem", (PyCFunction)(void(*)(void))_wrap_state_list___getitem, METH_VARARGS|METH_KEYWORDS, "__getitem(state_list self, ptrdiff_t index) -> cmf::math::StateVariable::ptr"},
@@ -78294,13 +83626,72 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "state_list_swigregister", state_list_swigregister, METH_O, NULL},
 	 { "state_list_swiginit", state_list_swiginit, METH_VARARGS, NULL},
 	 { "__add__", (PyCFunction)(void(*)(void))_wrap___add__, METH_VARARGS|METH_KEYWORDS, "__add__(state_list left, state_list right) -> state_list"},
-	 { "Adsorption_freesolute", (PyCFunction)(void(*)(void))_wrap_Adsorption_freesolute, METH_VARARGS|METH_KEYWORDS, "freesolute(Adsorption self, real xt, real V) -> real"},
-	 { "Adsorption_totalsolute", (PyCFunction)(void(*)(void))_wrap_Adsorption_totalsolute, METH_VARARGS|METH_KEYWORDS, "totalsolute(Adsorption self, real xf, real V) -> real"},
-	 { "Adsorption_copy", (PyCFunction)(void(*)(void))_wrap_Adsorption_copy, METH_VARARGS|METH_KEYWORDS, "copy(Adsorption self, real m=-1) -> Adsorption"},
-	 { "delete_Adsorption", _wrap_delete_Adsorption, METH_O, "delete_Adsorption(Adsorption self)"},
+	 { "Adsorption_freesolute", (PyCFunction)(void(*)(void))_wrap_Adsorption_freesolute, METH_VARARGS|METH_KEYWORDS, "\n"
+		"freesolute(Adsorption self, real xt, real V) -> real\n"
+		"virtual\n"
+		"real freesolute(real xt, real V) const =0\n"
+		"\n"
+		"Returns the mass of dissolved tracer as a function of the total tracer\n"
+		"mass in the solute storage and the water volume.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"xt:   :math:`x_t` the total tracer mass in the storage\n"
+		"\n"
+		"V:   :math:`V m^3` the water volume in the storage\n"
+		"\n"
+		":math:`x_f` the dissolved mass of the tracer \n"
+		""},
+	 { "Adsorption_totalsolute", (PyCFunction)(void(*)(void))_wrap_Adsorption_totalsolute, METH_VARARGS|METH_KEYWORDS, "\n"
+		"totalsolute(Adsorption self, real xf, real V) -> real\n"
+		"virtual\n"
+		"real totalsolute(real xf, real V) const =0\n"
+		"\n"
+		"Returns the total mass of the tracer from the dissolved concetration\n"
+		"in tracer unit/m3.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"xf:   :math:`x_f` the dissolved tracer mass in the storage\n"
+		"\n"
+		"V:   :math:`V m^3` the water volume in the storage\n"
+		"\n"
+		":math:`x_t` the total mass of the tracer \n"
+		""},
+	 { "Adsorption_copy", (PyCFunction)(void(*)(void))_wrap_Adsorption_copy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"copy(Adsorption self, real m=-1) -> Adsorption\n"
+		"virtual\n"
+		"Adsorption* copy(real m=-1) const =0\n"
+		"\n"
+		"returns a copy of the Adsorption object.\n"
+		"\n"
+		"If the adsorption is depending on the sorbent mass, you can give a\n"
+		"positive value for the sorbent mass m. If the value is not given or\n"
+		"negative, m is used from the original object. \n"
+		""},
+	 { "delete_Adsorption", _wrap_delete_Adsorption, METH_O, "\n"
+		"delete_Adsorption(Adsorption self)\n"
+		"virtual\n"
+		"~Adsorption() \n"
+		""},
 	 { "Adsorption_swigregister", Adsorption_swigregister, METH_O, NULL},
-	 { "NullAdsorption_copy", (PyCFunction)(void(*)(void))_wrap_NullAdsorption_copy, METH_VARARGS|METH_KEYWORDS, "copy(NullAdsorption self, real m=-1) -> NullAdsorption"},
-	 { "delete_NullAdsorption", _wrap_delete_NullAdsorption, METH_O, "delete_NullAdsorption(NullAdsorption self)"},
+	 { "NullAdsorption_copy", (PyCFunction)(void(*)(void))_wrap_NullAdsorption_copy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"copy(NullAdsorption self, real m=-1) -> NullAdsorption\n"
+		"virtual\n"
+		"NullAdsorption* copy(real m=-1) const\n"
+		"\n"
+		"returns a copy of the Adsorption object.\n"
+		"\n"
+		"If the adsorption is depending on the sorbent mass, you can give a\n"
+		"positive value for the sorbent mass m. If the value is not given or\n"
+		"negative, m is used from the original object. \n"
+		""},
+	 { "delete_NullAdsorption", _wrap_delete_NullAdsorption, METH_O, "\n"
+		"delete_NullAdsorption(NullAdsorption self)\n"
+		"virtual ~NullAdsorption() \n"
+		""},
 	 { "new_NullAdsorption", _wrap_new_NullAdsorption, METH_NOARGS, "new_NullAdsorption() -> NullAdsorption"},
 	 { "NullAdsorption_swigregister", NullAdsorption_swigregister, METH_O, NULL},
 	 { "NullAdsorption_swiginit", NullAdsorption_swiginit, METH_VARARGS, NULL},
@@ -78311,9 +83702,22 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "new_LinearAdsorption", _wrap_new_LinearAdsorption, METH_VARARGS, "\n"
 		"LinearAdsorption(real K, real m)\n"
 		"new_LinearAdsorption(LinearAdsorption other) -> LinearAdsorption\n"
+		"LinearAdsorption(const LinearAdsorption &other) \n"
 		""},
-	 { "LinearAdsorption_copy", (PyCFunction)(void(*)(void))_wrap_LinearAdsorption_copy, METH_VARARGS|METH_KEYWORDS, "copy(LinearAdsorption self, real m=-1) -> LinearAdsorption"},
-	 { "delete_LinearAdsorption", _wrap_delete_LinearAdsorption, METH_O, "delete_LinearAdsorption(LinearAdsorption self)"},
+	 { "LinearAdsorption_copy", (PyCFunction)(void(*)(void))_wrap_LinearAdsorption_copy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"copy(LinearAdsorption self, real m=-1) -> LinearAdsorption\n"
+		"LinearAdsorption* copy(real m=-1) const\n"
+		"\n"
+		"returns a copy of the Adsorption object.\n"
+		"\n"
+		"If the adsorption is depending on the sorbent mass, you can give a\n"
+		"positive value for the sorbent mass m. If the value is not given or\n"
+		"negative, m is used from the original object. \n"
+		""},
+	 { "delete_LinearAdsorption", _wrap_delete_LinearAdsorption, METH_O, "\n"
+		"delete_LinearAdsorption(LinearAdsorption self)\n"
+		"virtual ~LinearAdsorption() \n"
+		""},
 	 { "LinearAdsorption_swigregister", LinearAdsorption_swigregister, METH_O, NULL},
 	 { "LinearAdsorption_swiginit", LinearAdsorption_swiginit, METH_VARARGS, NULL},
 	 { "FreundlichAdsorbtion_K_set", _wrap_FreundlichAdsorbtion_K_set, METH_VARARGS, "FreundlichAdsorbtion_K_set(FreundlichAdsorbtion self, real K)"},
@@ -78329,9 +83733,23 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "new_FreundlichAdsorbtion", _wrap_new_FreundlichAdsorbtion, METH_VARARGS, "\n"
 		"FreundlichAdsorbtion(real K, real n, real m, real epsilon=1e-12, int maxiter=100)\n"
 		"new_FreundlichAdsorbtion(FreundlichAdsorbtion other) -> FreundlichAdsorbtion\n"
+		"FreundlichAdsorbtion(const FreundlichAdsorbtion &other) \n"
 		""},
-	 { "FreundlichAdsorbtion_copy", (PyCFunction)(void(*)(void))_wrap_FreundlichAdsorbtion_copy, METH_VARARGS|METH_KEYWORDS, "copy(FreundlichAdsorbtion self, real m=-1) -> FreundlichAdsorbtion"},
-	 { "delete_FreundlichAdsorbtion", _wrap_delete_FreundlichAdsorbtion, METH_O, "delete_FreundlichAdsorbtion(FreundlichAdsorbtion self)"},
+	 { "FreundlichAdsorbtion_copy", (PyCFunction)(void(*)(void))_wrap_FreundlichAdsorbtion_copy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"copy(FreundlichAdsorbtion self, real m=-1) -> FreundlichAdsorbtion\n"
+		"FreundlichAdsorbtion* copy(real m=-1) const\n"
+		"\n"
+		"returns a copy of the Adsorption object.\n"
+		"\n"
+		"If the adsorption is depending on the sorbent mass, you can give a\n"
+		"positive value for the sorbent mass m. If the value is not given or\n"
+		"negative, m is used from the original object. \n"
+		""},
+	 { "delete_FreundlichAdsorbtion", _wrap_delete_FreundlichAdsorbtion, METH_O, "\n"
+		"delete_FreundlichAdsorbtion(FreundlichAdsorbtion self)\n"
+		"virtual\n"
+		"~FreundlichAdsorbtion() \n"
+		""},
 	 { "FreundlichAdsorbtion_swigregister", FreundlichAdsorbtion_swigregister, METH_O, NULL},
 	 { "FreundlichAdsorbtion_swiginit", FreundlichAdsorbtion_swiginit, METH_VARARGS, NULL},
 	 { "LangmuirAdsorption_K_set", _wrap_LangmuirAdsorption_K_set, METH_VARARGS, "LangmuirAdsorption_K_set(LangmuirAdsorption self, real K)"},
@@ -78341,12 +83759,30 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "new_LangmuirAdsorption", _wrap_new_LangmuirAdsorption, METH_VARARGS, "\n"
 		"LangmuirAdsorption(real K, real m)\n"
 		"new_LangmuirAdsorption(LangmuirAdsorption other) -> LangmuirAdsorption\n"
+		"LangmuirAdsorption(const LangmuirAdsorption &other) \n"
 		""},
-	 { "LangmuirAdsorption_copy", (PyCFunction)(void(*)(void))_wrap_LangmuirAdsorption_copy, METH_VARARGS|METH_KEYWORDS, "copy(LangmuirAdsorption self, real m=-1) -> LangmuirAdsorption"},
-	 { "delete_LangmuirAdsorption", _wrap_delete_LangmuirAdsorption, METH_O, "delete_LangmuirAdsorption(LangmuirAdsorption self)"},
+	 { "LangmuirAdsorption_copy", (PyCFunction)(void(*)(void))_wrap_LangmuirAdsorption_copy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"copy(LangmuirAdsorption self, real m=-1) -> LangmuirAdsorption\n"
+		"LangmuirAdsorption* copy(real m=-1) const\n"
+		"\n"
+		"returns a copy of the Adsorption object.\n"
+		"\n"
+		"If the adsorption is depending on the sorbent mass, you can give a\n"
+		"positive value for the sorbent mass m. If the value is not given or\n"
+		"negative, m is used from the original object. \n"
+		""},
+	 { "delete_LangmuirAdsorption", _wrap_delete_LangmuirAdsorption, METH_O, "\n"
+		"delete_LangmuirAdsorption(LangmuirAdsorption self)\n"
+		"virtual\n"
+		"~LangmuirAdsorption() \n"
+		""},
 	 { "LangmuirAdsorption_swigregister", LangmuirAdsorption_swigregister, METH_O, NULL},
 	 { "LangmuirAdsorption_swiginit", LangmuirAdsorption_swiginit, METH_VARARGS, NULL},
-	 { "new_solute", (PyCFunction)(void(*)(void))_wrap_new_solute, METH_VARARGS|METH_KEYWORDS, "new_solute(solute copy) -> solute"},
+	 { "new_solute", (PyCFunction)(void(*)(void))_wrap_new_solute, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_solute(solute copy) -> solute\n"
+		"solute(const\n"
+		"solute &copy) \n"
+		""},
 	 { "solute___eq__", (PyCFunction)(void(*)(void))_wrap_solute___eq__, METH_VARARGS|METH_KEYWORDS, "__eq__(solute self, solute cmp) -> bool"},
 	 { "solute___lt__", (PyCFunction)(void(*)(void))_wrap_solute___lt__, METH_VARARGS|METH_KEYWORDS, "__lt__(solute self, solute cmp) -> bool"},
 	 { "solute___gt__", (PyCFunction)(void(*)(void))_wrap_solute___gt__, METH_VARARGS|METH_KEYWORDS, "__gt__(solute self, solute cmp) -> bool"},
@@ -78364,20 +83800,44 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_solute", _wrap_delete_solute, METH_O, "delete_solute(solute self)"},
 	 { "solute_swigregister", solute_swigregister, METH_O, NULL},
 	 { "solute_swiginit", solute_swiginit, METH_VARARGS, NULL},
-	 { "solute_vector_size", _wrap_solute_vector_size, METH_O, "size(solute_vector self) -> size_t"},
-	 { "new_solute_vector", (PyCFunction)(void(*)(void))_wrap_new_solute_vector, METH_VARARGS|METH_KEYWORDS, "new_solute_vector(std::string str) -> solute_vector"},
-	 { "solute_vector_get_solute", (PyCFunction)(void(*)(void))_wrap_solute_vector_get_solute, METH_VARARGS|METH_KEYWORDS, "get_solute(solute_vector self, int position) -> solute"},
+	 { "solute_vector_size", _wrap_solute_vector_size, METH_O, "\n"
+		"size(solute_vector self) -> size_t\n"
+		"size_t size()\n"
+		"const \n"
+		""},
+	 { "new_solute_vector", (PyCFunction)(void(*)(void))_wrap_new_solute_vector, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_solute_vector(std::string str) -> solute_vector\n"
+		"solute_vector(std::string str)\n"
+		"\n"
+		"Creates a solute vector from solute names, separated by whitespace.\n"
+		"E.g. solutes= solute_vector(\"dO18 dH2\") \n"
+		""},
+	 { "solute_vector_get_solute", (PyCFunction)(void(*)(void))_wrap_solute_vector_get_solute, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_solute(solute_vector self, int position) -> solute\n"
+		"cmf::water::solute* get_solute(int position) \n"
+		""},
 	 { "solute_vector___getitem__", (PyCFunction)(void(*)(void))_wrap_solute_vector___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(solute_vector self, int i) -> solute"},
 	 { "solute_vector___len__", _wrap_solute_vector___len__, METH_O, "__len__(solute_vector self) -> size_t"},
 	 { "delete_solute_vector", _wrap_delete_solute_vector, METH_O, "delete_solute_vector(solute_vector self)"},
 	 { "solute_vector_swigregister", solute_vector_swigregister, METH_O, NULL},
 	 { "solute_vector_swiginit", solute_vector_swiginit, METH_VARARGS, NULL},
-	 { "SoluteTimeseries_conc", (PyCFunction)(void(*)(void))_wrap_SoluteTimeseries_conc, METH_VARARGS|METH_KEYWORDS, "conc(SoluteTimeseries self, Time t, solute _Solute) -> real"},
-	 { "SoluteTimeseries_size", _wrap_SoluteTimeseries_size, METH_O, "size(SoluteTimeseries self) -> size_t"},
+	 { "SoluteTimeseries_conc", (PyCFunction)(void(*)(void))_wrap_SoluteTimeseries_conc, METH_VARARGS|METH_KEYWORDS, "\n"
+		"conc(SoluteTimeseries self, Time t, solute _Solute) -> real\n"
+		"real\n"
+		"conc(cmf::math::Time t, const cmf::water::solute &_Solute) const \n"
+		""},
+	 { "SoluteTimeseries_size", _wrap_SoluteTimeseries_size, METH_O, "\n"
+		"size(SoluteTimeseries self) -> size_t\n"
+		"size_t\n"
+		"size() const\n"
+		"\n"
+		"Returns the number of solutes in the solution. \n"
+		""},
 	 { "new_SoluteTimeseries", _wrap_new_SoluteTimeseries, METH_VARARGS, "\n"
 		"SoluteTimeseries()\n"
 		"SoluteTimeseries(solute_vector solutes, Time begin, Time step)\n"
 		"new_SoluteTimeseries(SoluteTimeseries sts) -> SoluteTimeseries\n"
+		"SoluteTimeseries(const cmf::water::SoluteTimeseries &sts) \n"
 		""},
 	 { "SoluteTimeseries___getitem__", (PyCFunction)(void(*)(void))_wrap_SoluteTimeseries___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(SoluteTimeseries self, solute solute) -> timeseries"},
 	 { "SoluteTimeseries___setitem__", (PyCFunction)(void(*)(void))_wrap_SoluteTimeseries___setitem__, METH_VARARGS|METH_KEYWORDS, "__setitem__(SoluteTimeseries self, solute solute, timeseries concentration)"},
@@ -78385,91 +83845,313 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_SoluteTimeseries", _wrap_delete_SoluteTimeseries, METH_O, "delete_SoluteTimeseries(SoluteTimeseries self)"},
 	 { "SoluteTimeseries_swigregister", SoluteTimeseries_swigregister, METH_O, NULL},
 	 { "SoluteTimeseries_swiginit", SoluteTimeseries_swiginit, METH_VARARGS, NULL},
-	 { "SoluteStorage_set_adsorption", (PyCFunction)(void(*)(void))_wrap_SoluteStorage_set_adsorption, METH_VARARGS|METH_KEYWORDS, "set_adsorption(SoluteStorage self, Adsorption newadsorption, real m=-1)"},
+	 { "SoluteStorage_set_adsorption", (PyCFunction)(void(*)(void))_wrap_SoluteStorage_set_adsorption, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_adsorption(SoluteStorage self, Adsorption newadsorption, real m=-1)\n"
+		"void set_adsorption(const Adsorption &newadsorption, real m=-1) \n"
+		""},
 	 { "SoluteStorage_decay_set", _wrap_SoluteStorage_decay_set, METH_VARARGS, "SoluteStorage_decay_set(SoluteStorage self, real decay)"},
 	 { "SoluteStorage_decay_get", _wrap_SoluteStorage_decay_get, METH_O, "SoluteStorage_decay_get(SoluteStorage self) -> real"},
 	 { "SoluteStorage_source_set", _wrap_SoluteStorage_source_set, METH_VARARGS, "SoluteStorage_source_set(SoluteStorage self, real source)"},
 	 { "SoluteStorage_source_get", _wrap_SoluteStorage_source_get, METH_O, "SoluteStorage_source_get(SoluteStorage self) -> real"},
 	 { "SoluteStorage_Solute_get", _wrap_SoluteStorage_Solute_get, METH_O, "SoluteStorage_Solute_get(SoluteStorage self) -> solute"},
-	 { "SoluteStorage_get_water", _wrap_SoluteStorage_get_water, METH_O, "get_water(SoluteStorage self) -> WaterStorage"},
-	 { "SoluteStorage_add_connected_states", (PyCFunction)(void(*)(void))_wrap_SoluteStorage_add_connected_states, METH_VARARGS|METH_KEYWORDS, "add_connected_states(SoluteStorage self, cmf::math::StateVariable::list & states)"},
+	 { "SoluteStorage_get_water", _wrap_SoluteStorage_get_water, METH_O, "\n"
+		"get_water(SoluteStorage self) -> WaterStorage\n"
+		"const\n"
+		"WaterStorage& get_water() const\n"
+		"\n"
+		"get the waterstorge of the solute storage \n"
+		""},
+	 { "SoluteStorage_add_connected_states", (PyCFunction)(void(*)(void))_wrap_SoluteStorage_add_connected_states, METH_VARARGS|METH_KEYWORDS, "\n"
+		"add_connected_states(SoluteStorage self, cmf::math::StateVariable::list & states)\n"
+		"virtual void add_connected_states(cmf::math::StateVariable::list\n"
+		"&states) \n"
+		""},
 	 { "SoluteStorage_conc_set", _wrap_SoluteStorage_conc_set, METH_VARARGS, "SoluteStorage_conc_set(SoluteStorage self, real conc)"},
 	 { "SoluteStorage_conc_get", _wrap_SoluteStorage_conc_get, METH_O, "SoluteStorage_conc_get(SoluteStorage self) -> real"},
 	 { "delete_SoluteStorage", _wrap_delete_SoluteStorage, METH_O, "delete_SoluteStorage(SoluteStorage self)"},
 	 { "SoluteStorage_swigregister", SoluteStorage_swigregister, METH_O, NULL},
 	 { "flux_node_node_id_get", _wrap_flux_node_node_id_get, METH_O, "flux_node_node_id_get(flux_node self) -> int const"},
-	 { "flux_node_is_storage", _wrap_flux_node_is_storage, METH_O, "is_storage(flux_node self) -> bool"},
+	 { "flux_node_is_storage", _wrap_flux_node_is_storage, METH_O, "\n"
+		"is_storage(flux_node self) -> bool\n"
+		"virtual\n"
+		"bool is_storage() const\n"
+		"\n"
+		"true, if this is a waterstorage \n"
+		""},
 	 { "flux_node_Name_set", _wrap_flux_node_Name_set, METH_VARARGS, "flux_node_Name_set(flux_node self, std::string const & Name)"},
 	 { "flux_node_Name_get", _wrap_flux_node_Name_get, METH_O, "flux_node_Name_get(flux_node self) -> std::string const &"},
-	 { "flux_node_to_string", _wrap_flux_node_to_string, METH_O, "to_string(flux_node self) -> std::string"},
-	 { "delete_flux_node", _wrap_delete_flux_node, METH_O, "delete_flux_node(flux_node self)"},
+	 { "flux_node_to_string", _wrap_flux_node_to_string, METH_O, "\n"
+		"to_string(flux_node self) -> std::string\n"
+		"virtual\n"
+		"std::string to_string() const \n"
+		""},
+	 { "delete_flux_node", _wrap_delete_flux_node, METH_O, "\n"
+		"delete_flux_node(flux_node self)\n"
+		"virtual\n"
+		"~flux_node()\n"
+		"\n"
+		"The destructor deletes all connections. \n"
+		""},
 	 { "flux_node___eq__", (PyCFunction)(void(*)(void))_wrap_flux_node___eq__, METH_VARARGS|METH_KEYWORDS, "__eq__(flux_node self, flux_node other) -> bool"},
-	 { "flux_node_RecalcFluxes", (PyCFunction)(void(*)(void))_wrap_flux_node_RecalcFluxes, METH_VARARGS|METH_KEYWORDS, "RecalcFluxes(flux_node self, Time t) -> bool"},
-	 { "flux_node_connection_to", (PyCFunction)(void(*)(void))_wrap_flux_node_connection_to, METH_VARARGS|METH_KEYWORDS, "connection_to(flux_node self, flux_node target) -> flux_connection"},
-	 { "flux_node_remove_connection", (PyCFunction)(void(*)(void))_wrap_flux_node_remove_connection, METH_VARARGS|METH_KEYWORDS, "remove_connection(flux_node self, cmf::water::flux_node::ptr To) -> bool"},
-	 { "flux_node_flux_to", (PyCFunction)(void(*)(void))_wrap_flux_node_flux_to, METH_VARARGS|METH_KEYWORDS, "flux_to(flux_node self, flux_node target, Time t) -> real"},
-	 { "flux_node_flux3d_to", (PyCFunction)(void(*)(void))_wrap_flux_node_flux3d_to, METH_VARARGS|METH_KEYWORDS, "flux3d_to(flux_node self, flux_node target, Time t) -> point"},
-	 { "flux_node_get_3d_flux", (PyCFunction)(void(*)(void))_wrap_flux_node_get_3d_flux, METH_VARARGS|METH_KEYWORDS, "get_3d_flux(flux_node self, Time t) -> point"},
-	 { "flux_node_waterbalance", (PyCFunction)(void(*)(void))_wrap_flux_node_waterbalance, METH_VARARGS|METH_KEYWORDS, "waterbalance(flux_node self, Time t, flux_connection Without=None) -> real"},
+	 { "flux_node_RecalcFluxes", (PyCFunction)(void(*)(void))_wrap_flux_node_RecalcFluxes, METH_VARARGS|METH_KEYWORDS, "\n"
+		"RecalcFluxes(flux_node self, Time t) -> bool\n"
+		"virtual\n"
+		"bool RecalcFluxes(cmf::math::Time t)\n"
+		"\n"
+		"Pure flux_nodes do not influence fluxes, therefore no recalculation of\n"
+		"fluxes is required by flux_node.\n"
+		"\n"
+		"WaterStorage overrides this, since state changes require an update of\n"
+		"the fluxes \n"
+		""},
+	 { "flux_node_connection_to", (PyCFunction)(void(*)(void))_wrap_flux_node_connection_to, METH_VARARGS|METH_KEYWORDS, "\n"
+		"connection_to(flux_node self, flux_node target) -> flux_connection\n"
+		"cmf::water::flux_connection* connection_to(const cmf::water::flux_node\n"
+		"&target)\n"
+		"\n"
+		"Returns the connection between this and target. \n"
+		""},
+	 { "flux_node_remove_connection", (PyCFunction)(void(*)(void))_wrap_flux_node_remove_connection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"remove_connection(flux_node self, cmf::water::flux_node::ptr To) -> bool\n"
+		"bool\n"
+		"remove_connection(cmf::water::flux_node::ptr To)\n"
+		"\n"
+		"Remove the connection. \n"
+		""},
+	 { "flux_node_flux_to", (PyCFunction)(void(*)(void))_wrap_flux_node_flux_to, METH_VARARGS|METH_KEYWORDS, "\n"
+		"flux_to(flux_node self, flux_node target, Time t) -> real\n"
+		"real\n"
+		"flux_to(const cmf::water::flux_node &target, cmf::math::Time t)\n"
+		"\n"
+		"Returns the actual flux between this and target (positive sign means\n"
+		"\"from this into target\") \n"
+		""},
+	 { "flux_node_flux3d_to", (PyCFunction)(void(*)(void))_wrap_flux_node_flux3d_to, METH_VARARGS|METH_KEYWORDS, "\n"
+		"flux3d_to(flux_node self, flux_node target, Time t) -> point\n"
+		"cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,\n"
+		"cmf::math::Time t) \n"
+		""},
+	 { "flux_node_get_3d_flux", (PyCFunction)(void(*)(void))_wrap_flux_node_get_3d_flux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_3d_flux(flux_node self, Time t) -> point\n"
+		"cmf::geometry::point get_3d_flux(cmf::math::Time t)\n"
+		"\n"
+		"Returns the sum of all flux vectors. \n"
+		""},
+	 { "flux_node_waterbalance", (PyCFunction)(void(*)(void))_wrap_flux_node_waterbalance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"waterbalance(flux_node self, Time t, flux_connection Without=None) -> real\n"
+		"real\n"
+		"waterbalance(cmf::math::Time t, const flux_connection *Without=0)\n"
+		"const\n"
+		"\n"
+		"Returns the sum of all fluxes (positive and negative) at time t.\n"
+		"\n"
+		"Single fluxes can be excluded from the calculation\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"t:  Time of the query\n"
+		"\n"
+		"Without:  A flux_connection that is excluded from the waterbalance\n"
+		"(e.g. to prevent closed circuits) \n"
+		""},
 	 { "flux_node___call__", (PyCFunction)(void(*)(void))_wrap_flux_node___call__, METH_VARARGS|METH_KEYWORDS, "__call__(flux_node self, Time t) -> real"},
-	 { "flux_node_conc", (PyCFunction)(void(*)(void))_wrap_flux_node_conc, METH_VARARGS|METH_KEYWORDS, "conc(flux_node self, Time t, solute Solute) -> real"},
+	 { "flux_node_conc", (PyCFunction)(void(*)(void))_wrap_flux_node_conc, METH_VARARGS|METH_KEYWORDS, "\n"
+		"conc(flux_node self, Time t, solute Solute) -> real\n"
+		"virtual real\n"
+		"conc(cmf::math::Time t, const cmf::water::solute &Solute) const\n"
+		"\n"
+		"Returns the water quality of the flux_node, if it is not overridden\n"
+		"this is the mix of the incoming fluxes. \n"
+		""},
 	 { "flux_node_position_set", _wrap_flux_node_position_set, METH_VARARGS, "flux_node_position_set(flux_node self, point position)"},
 	 { "flux_node_position_get", _wrap_flux_node_position_get, METH_O, "flux_node_position_get(flux_node self) -> point"},
-	 { "flux_node_get_potential", (PyCFunction)(void(*)(void))_wrap_flux_node_get_potential, METH_VARARGS|METH_KEYWORDS, "get_potential(flux_node self, Time arg2=never) -> real"},
-	 { "flux_node_is_empty", _wrap_flux_node_is_empty, METH_O, "is_empty(flux_node self) -> double"},
-	 { "new_flux_node", (PyCFunction)(void(*)(void))_wrap_new_flux_node, METH_VARARGS|METH_KEYWORDS, "new_flux_node(project _project, point location=cmf::geometry::point()) -> flux_node"},
+	 { "flux_node_get_potential", (PyCFunction)(void(*)(void))_wrap_flux_node_get_potential, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_potential(flux_node self, Time arg2=never) -> real\n"
+		"virtual\n"
+		"real get_potential(cmf::math::Time=cmf::math::never) const\n"
+		"\n"
+		"Returns the water potential of the node in m waterhead.\n"
+		"\n"
+		"The base class water storage always returns the height of the location\n"
+		"\n"
+		""},
+	 { "flux_node_is_empty", _wrap_flux_node_is_empty, METH_O, "\n"
+		"is_empty(flux_node self) -> double\n"
+		"virtual\n"
+		"double is_empty() const\n"
+		"\n"
+		"Returns true if the node has no water. \n"
+		""},
+	 { "new_flux_node", (PyCFunction)(void(*)(void))_wrap_new_flux_node, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_flux_node(project _project, point location=cmf::geometry::point()) -> flux_node\n"
+		"flux_node(cmf::project &_project, cmf::geometry::point\n"
+		"location=cmf::geometry::point()) \n"
+		""},
 	 { "flux_node_project_get", _wrap_flux_node_project_get, METH_O, "flux_node_project_get(flux_node self) -> project"},
 	 { "flux_node_potential_set", _wrap_flux_node_potential_set, METH_VARARGS, "flux_node_potential_set(flux_node self, real potential)"},
 	 { "flux_node_potential_get", _wrap_flux_node_potential_get, METH_O, "flux_node_potential_get(flux_node self) -> real"},
 	 { "flux_node_connections_get", _wrap_flux_node_connections_get, METH_O, "flux_node_connections_get(flux_node self) -> connection_list"},
 	 { "flux_node_swigregister", flux_node_swigregister, METH_O, NULL},
 	 { "flux_node_swiginit", flux_node_swiginit, METH_VARARGS, NULL},
-	 { "count_node_references", (PyCFunction)(void(*)(void))_wrap_count_node_references, METH_VARARGS|METH_KEYWORDS, "count_node_references(cmf::water::flux_node::ptr node) -> int"},
-	 { "get_higher_node", (PyCFunction)(void(*)(void))_wrap_get_higher_node, METH_VARARGS|METH_KEYWORDS, "get_higher_node(cmf::water::flux_node::ptr node1, cmf::water::flux_node::ptr node2) -> cmf::water::flux_node::ptr"},
-	 { "get_lower_node", (PyCFunction)(void(*)(void))_wrap_get_lower_node, METH_VARARGS|METH_KEYWORDS, "get_lower_node(cmf::water::flux_node::ptr node1, cmf::water::flux_node::ptr node2) -> cmf::water::flux_node::ptr"},
-	 { "flux_connection_left_node", _wrap_flux_connection_left_node, METH_O, "left_node(flux_connection self) -> cmf::water::flux_node::ptr"},
-	 { "flux_connection_right_node", _wrap_flux_connection_right_node, METH_O, "right_node(flux_connection self) -> cmf::water::flux_node::ptr"},
-	 { "flux_connection_kill_me", _wrap_flux_connection_kill_me, METH_O, "kill_me(flux_connection self) -> bool"},
-	 { "flux_connection_refresh", (PyCFunction)(void(*)(void))_wrap_flux_connection_refresh, METH_VARARGS|METH_KEYWORDS, "refresh(flux_connection self, Time t)"},
+	 { "count_node_references", (PyCFunction)(void(*)(void))_wrap_count_node_references, METH_VARARGS|METH_KEYWORDS, "\n"
+		"count_node_references(cmf::water::flux_node::ptr node) -> int\n"
+		"int\n"
+		"cmf::water::count_node_references(flux_node::ptr node) \n"
+		""},
+	 { "get_higher_node", (PyCFunction)(void(*)(void))_wrap_get_higher_node, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_higher_node(cmf::water::flux_node::ptr node1, cmf::water::flux_node::ptr node2) -> cmf::water::flux_node::ptr\n"
+		"flux_node::ptr\n"
+		"cmf::water::get_higher_node(flux_node::ptr node1, flux_node::ptr\n"
+		"node2) \n"
+		""},
+	 { "get_lower_node", (PyCFunction)(void(*)(void))_wrap_get_lower_node, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_lower_node(cmf::water::flux_node::ptr node1, cmf::water::flux_node::ptr node2) -> cmf::water::flux_node::ptr\n"
+		"flux_node::ptr\n"
+		"cmf::water::get_lower_node(flux_node::ptr node1, flux_node::ptr node2)\n"
+		"\n"
+		""},
+	 { "flux_connection_left_node", _wrap_flux_connection_left_node, METH_O, "\n"
+		"left_node(flux_connection self) -> cmf::water::flux_node::ptr\n"
+		"flux_node::ptr left_node() const\n"
+		"\n"
+		"Returns the left node of this connection. \n"
+		""},
+	 { "flux_connection_right_node", _wrap_flux_connection_right_node, METH_O, "\n"
+		"right_node(flux_connection self) -> cmf::water::flux_node::ptr\n"
+		"flux_node::ptr right_node() const\n"
+		"\n"
+		"returns the right node of this connection \n"
+		""},
+	 { "flux_connection_kill_me", _wrap_flux_connection_kill_me, METH_O, "\n"
+		"kill_me(flux_connection self) -> bool\n"
+		"bool\n"
+		"kill_me()\n"
+		"\n"
+		"Deregisters this connection from its nodes. Returns true if only one\n"
+		"reference is left. \n"
+		""},
+	 { "flux_connection_refresh", (PyCFunction)(void(*)(void))_wrap_flux_connection_refresh, METH_VARARGS|METH_KEYWORDS, "\n"
+		"refresh(flux_connection self, Time t)\n"
+		"void\n"
+		"refresh(cmf::math::Time t)\n"
+		"\n"
+		"Performes a new calculation of the flux. \n"
+		""},
 	 { "flux_connection_connection_id_get", _wrap_flux_connection_connection_id_get, METH_O, "flux_connection_connection_id_get(flux_connection self) -> int const"},
 	 { "flux_connection___eq__", (PyCFunction)(void(*)(void))_wrap_flux_connection___eq__, METH_VARARGS|METH_KEYWORDS, "__eq__(flux_connection self, flux_connection other) -> bool"},
 	 { "flux_connection_get_target", _wrap_flux_connection_get_target, METH_VARARGS, "\n"
 		"get_target(flux_connection self, flux_node inquirer) -> cmf::water::flux_node::ptr\n"
 		"get_target(flux_connection self, int index) -> cmf::water::flux_node::ptr\n"
+		"flux_node::ptr get_target(int index) const\n"
+		"\n"
+		"With index 0, the left node is returned, with index 1 the right node\n"
+		"of the connection. \n"
 		""},
-	 { "flux_connection_exchange_target", (PyCFunction)(void(*)(void))_wrap_flux_connection_exchange_target, METH_VARARGS|METH_KEYWORDS, "exchange_target(flux_connection self, cmf::water::flux_node::ptr oldtarget, cmf::water::flux_node::ptr newTarget)"},
-	 { "flux_connection_q", (PyCFunction)(void(*)(void))_wrap_flux_connection_q, METH_VARARGS|METH_KEYWORDS, "q(flux_connection self, flux_node inquirer, Time t) -> real"},
-	 { "flux_connection_conc", (PyCFunction)(void(*)(void))_wrap_flux_connection_conc, METH_VARARGS|METH_KEYWORDS, "conc(flux_connection self, Time t, solute _Solute) -> real"},
+	 { "flux_connection_exchange_target", (PyCFunction)(void(*)(void))_wrap_flux_connection_exchange_target, METH_VARARGS|METH_KEYWORDS, "\n"
+		"exchange_target(flux_connection self, cmf::water::flux_node::ptr oldtarget, cmf::water::flux_node::ptr newTarget)\n"
+		"void exchange_target(flux_node::ptr oldtarget, flux_node::ptr\n"
+		"newTarget) \n"
+		""},
+	 { "flux_connection_q", (PyCFunction)(void(*)(void))_wrap_flux_connection_q, METH_VARARGS|METH_KEYWORDS, "\n"
+		"q(flux_connection self, flux_node inquirer, Time t) -> real\n"
+		"real q(const\n"
+		"flux_node &inquirer, cmf::math::Time t)\n"
+		"\n"
+		"Returns the current flux through a connection. Negative signs mean out\n"
+		"of the inquirer, positive are inflows to the inquirer. \n"
+		""},
+	 { "flux_connection_conc", (PyCFunction)(void(*)(void))_wrap_flux_connection_conc, METH_VARARGS|METH_KEYWORDS, "\n"
+		"conc(flux_connection self, Time t, solute _Solute) -> real\n"
+		"real\n"
+		"conc(cmf::math::Time t, const cmf::water::solute &_Solute)\n"
+		"\n"
+		"Returns the concentration of the flux.\n"
+		"\n"
+		"If not overridden, it returns the concentration of the source of the\n"
+		"flux (direction depending) \n"
+		""},
 	 { "flux_connection_type_get", _wrap_flux_connection_type_get, METH_O, "flux_connection_type_get(flux_connection self) -> std::string const &"},
 	 { "flux_connection_get_tracer_filter", _wrap_flux_connection_get_tracer_filter, METH_VARARGS, "\n"
 		"get_tracer_filter(flux_connection self) -> real\n"
 		"get_tracer_filter(flux_connection self, solute S) -> real\n"
+		"real get_tracer_filter(solute S)\n"
+		"\n"
+		"A value ranging from 0 to 1 to filter tracers out of the water flux.\n"
+		"\n"
 		""},
 	 { "flux_connection_set_tracer_filter", _wrap_flux_connection_set_tracer_filter, METH_VARARGS, "\n"
 		"set_tracer_filter(flux_connection self, real value)\n"
 		"set_tracer_filter(flux_connection self, solute S, real value)\n"
+		"void set_tracer_filter(solute S, real value) \n"
 		""},
-	 { "flux_connection_to_string", _wrap_flux_connection_to_string, METH_O, "to_string(flux_connection self) -> std::string"},
-	 { "flux_connection_short_string", _wrap_flux_connection_short_string, METH_O, "short_string(flux_connection self) -> std::string"},
-	 { "delete_flux_connection", _wrap_delete_flux_connection, METH_O, "delete_flux_connection(flux_connection self)"},
+	 { "flux_connection_to_string", _wrap_flux_connection_to_string, METH_O, "\n"
+		"to_string(flux_connection self) -> std::string\n"
+		"virtual std::string to_string() const \n"
+		""},
+	 { "flux_connection_short_string", _wrap_flux_connection_short_string, METH_O, "\n"
+		"short_string(flux_connection self) -> std::string\n"
+		"virtual std::string short_string() const \n"
+		""},
+	 { "delete_flux_connection", _wrap_delete_flux_connection, METH_O, "\n"
+		"delete_flux_connection(flux_connection self)\n"
+		"virtual ~flux_connection() \n"
+		""},
 	 { "flux_connection_swigregister", flux_connection_swigregister, METH_O, NULL},
-	 { "replace_node", (PyCFunction)(void(*)(void))_wrap_replace_node, METH_VARARGS|METH_KEYWORDS, "replace_node(cmf::water::flux_node::ptr oldnode, cmf::water::flux_node::ptr newnode) -> int"},
-	 { "connection_list_append", (PyCFunction)(void(*)(void))_wrap_connection_list_append, METH_VARARGS|METH_KEYWORDS, "append(connection_list self, cmf::water::flux_connection::ptr connection) -> bool"},
-	 { "connection_list_extend", (PyCFunction)(void(*)(void))_wrap_connection_list_extend, METH_VARARGS|METH_KEYWORDS, "extend(connection_list self, connection_list connections)"},
-	 { "connection_list_contains", (PyCFunction)(void(*)(void))_wrap_connection_list_contains, METH_VARARGS|METH_KEYWORDS, "contains(connection_list self, cmf::water::flux_connection::ptr connection) -> bool"},
-	 { "connection_list_remove", (PyCFunction)(void(*)(void))_wrap_connection_list_remove, METH_VARARGS|METH_KEYWORDS, "remove(connection_list self, cmf::water::flux_connection::ptr connection) -> bool"},
-	 { "connection_list_do_action", (PyCFunction)(void(*)(void))_wrap_connection_list_do_action, METH_VARARGS|METH_KEYWORDS, "do_action(connection_list self, Time t, bool use_OpenMP=True)"},
-	 { "connection_list_size", _wrap_connection_list_size, METH_O, "size(connection_list self) -> size_t"},
-	 { "connection_list_at", (PyCFunction)(void(*)(void))_wrap_connection_list_at, METH_VARARGS|METH_KEYWORDS, "at(connection_list self, size_t pos) -> cmf::water::flux_connection::ptr"},
+	 { "replace_node", (PyCFunction)(void(*)(void))_wrap_replace_node, METH_VARARGS|METH_KEYWORDS, "\n"
+		"replace_node(cmf::water::flux_node::ptr oldnode, cmf::water::flux_node::ptr newnode) -> int\n"
+		"int\n"
+		"cmf::water::replace_node(cmf::water::flux_node::ptr oldnode,\n"
+		"cmf::water::flux_node::ptr newnode) \n"
+		""},
+	 { "connection_list_append", (PyCFunction)(void(*)(void))_wrap_connection_list_append, METH_VARARGS|METH_KEYWORDS, "\n"
+		"append(connection_list self, cmf::water::flux_connection::ptr connection) -> bool\n"
+		"bool\n"
+		"append(cmf::water::flux_connection::ptr connection) \n"
+		""},
+	 { "connection_list_extend", (PyCFunction)(void(*)(void))_wrap_connection_list_extend, METH_VARARGS|METH_KEYWORDS, "\n"
+		"extend(connection_list self, connection_list connections)\n"
+		"void\n"
+		"extend(const connection_list &connections) \n"
+		""},
+	 { "connection_list_contains", (PyCFunction)(void(*)(void))_wrap_connection_list_contains, METH_VARARGS|METH_KEYWORDS, "\n"
+		"contains(connection_list self, cmf::water::flux_connection::ptr connection) -> bool\n"
+		"bool\n"
+		"contains(cmf::water::flux_connection::ptr connection) const \n"
+		""},
+	 { "connection_list_remove", (PyCFunction)(void(*)(void))_wrap_connection_list_remove, METH_VARARGS|METH_KEYWORDS, "\n"
+		"remove(connection_list self, cmf::water::flux_connection::ptr connection) -> bool\n"
+		"bool\n"
+		"remove(cmf::water::flux_connection::ptr connection) \n"
+		""},
+	 { "connection_list_do_action", (PyCFunction)(void(*)(void))_wrap_connection_list_do_action, METH_VARARGS|METH_KEYWORDS, "\n"
+		"do_action(connection_list self, Time t, bool use_OpenMP=True)\n"
+		"void\n"
+		"do_action(cmf::math::Time t, bool use_OpenMP=true) \n"
+		""},
+	 { "connection_list_size", _wrap_connection_list_size, METH_O, "\n"
+		"size(connection_list self) -> size_t\n"
+		"size_t\n"
+		"size() const \n"
+		""},
+	 { "connection_list_at", (PyCFunction)(void(*)(void))_wrap_connection_list_at, METH_VARARGS|METH_KEYWORDS, "\n"
+		"at(connection_list self, size_t pos) -> cmf::water::flux_connection::ptr\n"
+		"cmf::water::flux_connection::ptr at(size_t pos) const \n"
+		""},
 	 { "connection_list_begin", _wrap_connection_list_begin, METH_VARARGS, "\n"
 		"begin(connection_list self) -> cmf::water::connection_list::iterator\n"
 		"begin(connection_list self) -> cmf::water::connection_list::const_iterator\n"
+		"const_iterator begin() const \n"
 		""},
 	 { "connection_list_end", _wrap_connection_list_end, METH_VARARGS, "\n"
 		"end(connection_list self) -> cmf::water::connection_list::iterator\n"
 		"end(connection_list self) -> cmf::water::connection_list::const_iterator\n"
+		"const_iterator end() const \n"
 		""},
-	 { "delete_connection_list", _wrap_delete_connection_list, METH_O, "delete_connection_list(connection_list self)"},
+	 { "delete_connection_list", _wrap_delete_connection_list, METH_O, "\n"
+		"delete_connection_list(connection_list self)\n"
+		"virtual ~connection_list() \n"
+		""},
 	 { "connection_list___len__", _wrap_connection_list___len__, METH_O, "__len__(connection_list self) -> size_t"},
 	 { "connection_list___contains__", (PyCFunction)(void(*)(void))_wrap_connection_list___contains__, METH_VARARGS|METH_KEYWORDS, "__contains__(connection_list self, cmf::water::flux_connection::ptr const & con) -> bool"},
 	 { "new_connection_list", _wrap_new_connection_list, METH_NOARGS, "new_connection_list() -> connection_list"},
@@ -78480,52 +84162,123 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "linear_scale_slope_set", _wrap_linear_scale_slope_set, METH_VARARGS, "linear_scale_slope_set(linear_scale self, real slope)"},
 	 { "linear_scale_slope_get", _wrap_linear_scale_slope_get, METH_O, "linear_scale_slope_get(linear_scale self) -> real"},
 	 { "linear_scale___call__", (PyCFunction)(void(*)(void))_wrap_linear_scale___call__, METH_VARARGS|METH_KEYWORDS, "__call__(linear_scale self, real value) -> real"},
-	 { "new_linear_scale", (PyCFunction)(void(*)(void))_wrap_new_linear_scale, METH_VARARGS|METH_KEYWORDS, "new_linear_scale(real _slope=1, real _displacement=0) -> linear_scale"},
+	 { "new_linear_scale", (PyCFunction)(void(*)(void))_wrap_new_linear_scale, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_linear_scale(real _slope=1, real _displacement=0) -> linear_scale\n"
+		"linear_scale(real _slope=1, real _displacement=0)\n"
+		"\n"
+		"Creates a linear scale (by default it is a unity scale, :math:`a=1; b=0`) \n"
+		""},
 	 { "delete_linear_scale", _wrap_delete_linear_scale, METH_O, "delete_linear_scale(linear_scale self)"},
 	 { "linear_scale_swigregister", linear_scale_swigregister, METH_O, NULL},
 	 { "linear_scale_swiginit", linear_scale_swiginit, METH_VARARGS, NULL},
-	 { "DirichletBoundary_set_dynamic_potential", (PyCFunction)(void(*)(void))_wrap_DirichletBoundary_set_dynamic_potential, METH_VARARGS|METH_KEYWORDS, "set_dynamic_potential(DirichletBoundary self, timeseries ts)"},
-	 { "DirichletBoundary_set_conc", (PyCFunction)(void(*)(void))_wrap_DirichletBoundary_set_conc, METH_VARARGS|METH_KEYWORDS, "set_conc(DirichletBoundary self, solute _Solute, double value)"},
+	 { "DirichletBoundary_set_dynamic_potential", (PyCFunction)(void(*)(void))_wrap_DirichletBoundary_set_dynamic_potential, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_dynamic_potential(DirichletBoundary self, timeseries ts)\n"
+		"void\n"
+		"set_dynamic_potential(cmf::math::timeseries ts)\n"
+		"\n"
+		"Sets the potential of the boundary condition as a timeseries. \n"
+		""},
+	 { "DirichletBoundary_set_conc", (PyCFunction)(void(*)(void))_wrap_DirichletBoundary_set_conc, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_conc(DirichletBoundary self, solute _Solute, double value)\n"
+		"virtual void set_conc(const cmf::water::solute &_Solute, double value)\n"
+		"\n"
+		""},
 	 { "DirichletBoundary_is_source_set", _wrap_DirichletBoundary_is_source_set, METH_VARARGS, "DirichletBoundary_is_source_set(DirichletBoundary self, bool is_source)"},
 	 { "DirichletBoundary_is_source_get", _wrap_DirichletBoundary_is_source_get, METH_O, "DirichletBoundary_is_source_get(DirichletBoundary self) -> bool"},
-	 { "DirichletBoundary_RecalcFluxes", (PyCFunction)(void(*)(void))_wrap_DirichletBoundary_RecalcFluxes, METH_VARARGS|METH_KEYWORDS, "RecalcFluxes(DirichletBoundary self, Time t) -> bool"},
-	 { "new_DirichletBoundary", (PyCFunction)(void(*)(void))_wrap_new_DirichletBoundary, METH_VARARGS|METH_KEYWORDS, "new_DirichletBoundary(project _p, real potential, point Location=cmf::geometry::point()) -> DirichletBoundary"},
+	 { "DirichletBoundary_RecalcFluxes", (PyCFunction)(void(*)(void))_wrap_DirichletBoundary_RecalcFluxes, METH_VARARGS|METH_KEYWORDS, "\n"
+		"RecalcFluxes(DirichletBoundary self, Time t) -> bool\n"
+		"virtual bool RecalcFluxes(cmf::math::Time t)\n"
+		"\n"
+		"Pure flux_nodes do not influence fluxes, therefore no recalculation of\n"
+		"fluxes is required by flux_node.\n"
+		"\n"
+		"WaterStorage overrides this, since state changes require an update of\n"
+		"the fluxes \n"
+		""},
+	 { "new_DirichletBoundary", (PyCFunction)(void(*)(void))_wrap_new_DirichletBoundary, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_DirichletBoundary(project _p, real potential, point Location=cmf::geometry::point()) -> DirichletBoundary\n"
+		"DirichletBoundary(cmf::project &_p, real potential,\n"
+		"cmf::geometry::point Location=cmf::geometry::point()) \n"
+		""},
 	 { "delete_DirichletBoundary", _wrap_delete_DirichletBoundary, METH_O, "delete_DirichletBoundary(DirichletBoundary self)"},
 	 { "DirichletBoundary_swigregister", DirichletBoundary_swigregister, METH_O, NULL},
 	 { "DirichletBoundary_swiginit", DirichletBoundary_swiginit, METH_VARARGS, NULL},
-	 { "NeumannBoundary_get_flux", _wrap_NeumannBoundary_get_flux, METH_O, "get_flux(NeumannBoundary self) -> timeseries"},
+	 { "NeumannBoundary_get_flux", _wrap_NeumannBoundary_get_flux, METH_O, "\n"
+		"get_flux(NeumannBoundary self) -> timeseries\n"
+		"cmf::math::timeseries get_flux()\n"
+		"\n"
+		"The timeseries of the boundary flux. \n"
+		""},
 	 { "NeumannBoundary_set_flux", _wrap_NeumannBoundary_set_flux, METH_VARARGS, "\n"
 		"set_flux(NeumannBoundary self, timeseries new_flux)\n"
 		"set_flux(NeumannBoundary self, double new_flux)\n"
+		"void\n"
+		"set_flux(double new_flux)\n"
+		"\n"
+		"Set a constant as the boundary flux. \n"
 		""},
 	 { "NeumannBoundary_flux_scale_set", _wrap_NeumannBoundary_flux_scale_set, METH_VARARGS, "NeumannBoundary_flux_scale_set(NeumannBoundary self, linear_scale flux_scale)"},
 	 { "NeumannBoundary_flux_scale_get", _wrap_NeumannBoundary_flux_scale_get, METH_O, "NeumannBoundary_flux_scale_get(NeumannBoundary self) -> linear_scale"},
 	 { "NeumannBoundary_concentration_set", _wrap_NeumannBoundary_concentration_set, METH_VARARGS, "NeumannBoundary_concentration_set(NeumannBoundary self, SoluteTimeseries concentration)"},
 	 { "NeumannBoundary_concentration_get", _wrap_NeumannBoundary_concentration_get, METH_O, "NeumannBoundary_concentration_get(NeumannBoundary self) -> SoluteTimeseries"},
 	 { "NeumannBoundary___call__", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary___call__, METH_VARARGS|METH_KEYWORDS, "__call__(NeumannBoundary self, Time t) -> real"},
-	 { "NeumannBoundary_connect_to", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_connect_to, METH_VARARGS|METH_KEYWORDS, "connect_to(NeumannBoundary self, cmf::water::flux_node::ptr target)"},
+	 { "NeumannBoundary_connect_to", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_connect_to, METH_VARARGS|METH_KEYWORDS, "\n"
+		"connect_to(NeumannBoundary self, cmf::water::flux_node::ptr target)\n"
+		"void\n"
+		"connect_to(cmf::water::flux_node::ptr target) \n"
+		""},
 	 { "new_NeumannBoundary", _wrap_new_NeumannBoundary, METH_VARARGS, "\n"
 		"NeumannBoundary(project _project, timeseries _flux, SoluteTimeseries _concentration=cmf::water::SoluteTimeseries(), point loc=cmf::geometry::point())\n"
 		"new_NeumannBoundary(project _project, point loc=cmf::geometry::point()) -> NeumannBoundary\n"
+		"NeumannBoundary(cmf::project &_project, cmf::geometry::point\n"
+		"loc=cmf::geometry::point()) \n"
 		""},
 	 { "NeumannBoundary_create", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_create, METH_VARARGS|METH_KEYWORDS, "create(cmf::water::flux_node::ptr target) -> cmf::water::NeumannBoundary::ptr"},
 	 { "delete_NeumannBoundary", _wrap_delete_NeumannBoundary, METH_O, "delete_NeumannBoundary(NeumannBoundary self)"},
 	 { "NeumannBoundary_swigregister", NeumannBoundary_swigregister, METH_O, NULL},
 	 { "NeumannBoundary_swiginit", NeumannBoundary_swiginit, METH_VARARGS, NULL},
-	 { "new_NeumannFlux", (PyCFunction)(void(*)(void))_wrap_new_NeumannFlux, METH_VARARGS|METH_KEYWORDS, "new_NeumannFlux(std::shared_ptr< cmf::water::NeumannBoundary > left, cmf::water::flux_node::ptr right) -> NeumannFlux"},
+	 { "new_NeumannFlux", (PyCFunction)(void(*)(void))_wrap_new_NeumannFlux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_NeumannFlux(std::shared_ptr< cmf::water::NeumannBoundary > left, cmf::water::flux_node::ptr right) -> NeumannFlux\n"
+		"NeumannFlux(std::shared_ptr< NeumannBoundary > left,\n"
+		"cmf::water::flux_node::ptr right) \n"
+		""},
 	 { "delete_NeumannFlux", _wrap_delete_NeumannFlux, METH_O, "delete_NeumannFlux(NeumannFlux self)"},
 	 { "NeumannFlux_swigregister", NeumannFlux_swigregister, METH_O, NULL},
 	 { "NeumannFlux_swiginit", NeumannFlux_swiginit, METH_VARARGS, NULL},
-	 { "new_WaterStorage", (PyCFunction)(void(*)(void))_wrap_new_WaterStorage, METH_VARARGS|METH_KEYWORDS, "new_WaterStorage(project project, std::string const & Name=\"\", double InitialState=0, double scale=1) -> WaterStorage"},
+	 { "new_WaterStorage", (PyCFunction)(void(*)(void))_wrap_new_WaterStorage, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_WaterStorage(project project, std::string const & Name=\"\", double InitialState=0, double scale=1) -> WaterStorage\n"
+		"WaterStorage(cmf::project &project, const std::string &Name=\"\",\n"
+		"double InitialState=0, double scale=1)\n"
+		"\n"
+		"creates a water storage (abstract class)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"project:  The project the waterstorage belongs to\n"
+		"\n"
+		"Name:  Name of the water storage\n"
+		"\n"
+		"InitialState:  Initial water content in m3\n"
+		"\n"
+		"scale:  A kind of \"standard size\" in m3 of the water storage to\n"
+		"scale tolerances, default 1m3 \n"
+		""},
 	 { "WaterStorage_from_node", (PyCFunction)(void(*)(void))_wrap_WaterStorage_from_node, METH_VARARGS|METH_KEYWORDS, "from_node(cmf::water::flux_node::ptr node) -> std::shared_ptr< cmf::water::WaterStorage >"},
 	 { "WaterStorage_Solute", _wrap_WaterStorage_Solute, METH_VARARGS, "\n"
 		"Solute(WaterStorage self, solute _Solute) -> SoluteStorage\n"
 		"Solute(WaterStorage self, solute _Solute) -> SoluteStorage\n"
+		"const\n"
+		"SoluteStorage& Solute(const cmf::water::solute _Solute) const \n"
 		""},
 	 { "WaterStorage_conc", _wrap_WaterStorage_conc, METH_VARARGS, "\n"
 		"conc(WaterStorage self, solute _Solute) -> real\n"
 		"conc(WaterStorage self, Time t, solute _Solute) -> real\n"
 		"conc(WaterStorage self, solute _Solute, real NewConcetration)\n"
+		"void\n"
+		"conc(const cmf::water::solute &_Solute, real NewConcetration)\n"
+		"\n"
+		"Sets a new concentration. \n"
 		""},
 	 { "WaterStorage_cast", (PyCFunction)(void(*)(void))_wrap_WaterStorage_cast, METH_VARARGS|METH_KEYWORDS, "cast(std::shared_ptr< cmf::water::flux_node > node) -> std::shared_ptr< cmf::water::WaterStorage >"},
 	 { "WaterStorage_create", (PyCFunction)(void(*)(void))_wrap_WaterStorage_create, METH_VARARGS|METH_KEYWORDS, "create(project _project, real initial_state=0.0, real scale=1.0) -> std::shared_ptr< cmf::water::WaterStorage >"},
@@ -78537,23 +84290,74 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_WaterStorage", _wrap_delete_WaterStorage, METH_O, "delete_WaterStorage(WaterStorage self)"},
 	 { "WaterStorage_swigregister", WaterStorage_swigregister, METH_O, NULL},
 	 { "WaterStorage_swiginit", WaterStorage_swiginit, METH_VARARGS, NULL},
-	 { "new_WaterbalanceFlux", (PyCFunction)(void(*)(void))_wrap_new_WaterbalanceFlux, METH_VARARGS|METH_KEYWORDS, "new_WaterbalanceFlux(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target) -> WaterbalanceFlux"},
+	 { "new_WaterbalanceFlux", (PyCFunction)(void(*)(void))_wrap_new_WaterbalanceFlux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_WaterbalanceFlux(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target) -> WaterbalanceFlux\n"
+		"WaterbalanceFlux(flux_node::ptr source, flux_node::ptr target) \n"
+		""},
 	 { "delete_WaterbalanceFlux", _wrap_delete_WaterbalanceFlux, METH_O, "delete_WaterbalanceFlux(WaterbalanceFlux self)"},
 	 { "WaterbalanceFlux_swigregister", WaterbalanceFlux_swigregister, METH_O, NULL},
 	 { "WaterbalanceFlux_swiginit", WaterbalanceFlux_swiginit, METH_VARARGS, NULL},
 	 { "ExternallyControlledFlux_flux_set", _wrap_ExternallyControlledFlux_flux_set, METH_VARARGS, "ExternallyControlledFlux_flux_set(ExternallyControlledFlux self, real flux)"},
 	 { "ExternallyControlledFlux_flux_get", _wrap_ExternallyControlledFlux_flux_get, METH_O, "ExternallyControlledFlux_flux_get(ExternallyControlledFlux self) -> real"},
-	 { "new_ExternallyControlledFlux", (PyCFunction)(void(*)(void))_wrap_new_ExternallyControlledFlux, METH_VARARGS|METH_KEYWORDS, "new_ExternallyControlledFlux(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target, real flux_value=0) -> ExternallyControlledFlux"},
+	 { "new_ExternallyControlledFlux", (PyCFunction)(void(*)(void))_wrap_new_ExternallyControlledFlux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ExternallyControlledFlux(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target, real flux_value=0) -> ExternallyControlledFlux\n"
+		"ExternallyControlledFlux(flux_node::ptr source, flux_node::ptr target,\n"
+		"real flux_value=0) \n"
+		""},
 	 { "delete_ExternallyControlledFlux", _wrap_delete_ExternallyControlledFlux, METH_O, "delete_ExternallyControlledFlux(ExternallyControlledFlux self)"},
 	 { "ExternallyControlledFlux_swigregister", ExternallyControlledFlux_swigregister, METH_O, NULL},
 	 { "ExternallyControlledFlux_swiginit", ExternallyControlledFlux_swiginit, METH_VARARGS, NULL},
-	 { "set_flux", (PyCFunction)(void(*)(void))_wrap_set_flux, METH_VARARGS|METH_KEYWORDS, "set_flux(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target, real flux_value)"},
-	 { "can_set_flux", (PyCFunction)(void(*)(void))_wrap_can_set_flux, METH_VARARGS|METH_KEYWORDS, "can_set_flux(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target) -> bool"},
+	 { "set_flux", (PyCFunction)(void(*)(void))_wrap_set_flux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_flux(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target, real flux_value)\n"
+		"void\n"
+		"cmf::water::set_flux(flux_node::ptr source, flux_node::ptr target,\n"
+		"real flux_value)\n"
+		"\n"
+		"Sets a constant flux between two nodes, if an\n"
+		"external_control_connection exists. \n"
+		""},
+	 { "can_set_flux", (PyCFunction)(void(*)(void))_wrap_can_set_flux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"can_set_flux(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target) -> bool\n"
+		"bool\n"
+		"cmf::water::can_set_flux(flux_node::ptr source, flux_node::ptr target)\n"
+		"\n"
+		"Checks if a constant flux between two nodes can be set.\n"
+		"\n"
+		"Returns true if the nodes are connected by an\n"
+		"external_control_connection \n"
+		""},
 	 { "LinearStorageConnection_residencetime_set", _wrap_LinearStorageConnection_residencetime_set, METH_VARARGS, "LinearStorageConnection_residencetime_set(LinearStorageConnection self, real residencetime)"},
 	 { "LinearStorageConnection_residencetime_get", _wrap_LinearStorageConnection_residencetime_get, METH_O, "LinearStorageConnection_residencetime_get(LinearStorageConnection self) -> real"},
 	 { "LinearStorageConnection_residual_set", _wrap_LinearStorageConnection_residual_set, METH_VARARGS, "LinearStorageConnection_residual_set(LinearStorageConnection self, real residual)"},
 	 { "LinearStorageConnection_residual_get", _wrap_LinearStorageConnection_residual_get, METH_O, "LinearStorageConnection_residual_get(LinearStorageConnection self) -> real"},
-	 { "new_LinearStorageConnection", (PyCFunction)(void(*)(void))_wrap_new_LinearStorageConnection, METH_VARARGS|METH_KEYWORDS, "new_LinearStorageConnection(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real residencetime, real residual=0.0) -> LinearStorageConnection"},
+	 { "new_LinearStorageConnection", (PyCFunction)(void(*)(void))_wrap_new_LinearStorageConnection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_LinearStorageConnection(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real residencetime, real residual=0.0) -> LinearStorageConnection\n"
+		"LinearStorageConnection(WaterStorage::ptr source, flux_node::ptr\n"
+		"target, real residencetime, real residual=0.0)\n"
+		"\n"
+		"Creates a linear storage connection or Nash-box.\n"
+		"\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     q = \\\\frac{V - V_{residual}}{t_r}} \n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"source:  Water storage from which the water flows out. Flux is a\n"
+		"function of source.volume\n"
+		"\n"
+		"target:  Target node (boundary condition or storage). Does not\n"
+		"influence the strength of the flow\n"
+		"\n"
+		"residencetime:   :math:`t_r [days]` The residence time of the water in this\n"
+		"storage\n"
+		"\n"
+		"residual:   :math:`V_{residual} [m^3]` The volume of water not flowing out\n"
+		"(default = 0) \n"
+		""},
 	 { "delete_LinearStorageConnection", _wrap_delete_LinearStorageConnection, METH_O, "delete_LinearStorageConnection(LinearStorageConnection self)"},
 	 { "LinearStorageConnection_swigregister", LinearStorageConnection_swigregister, METH_O, NULL},
 	 { "LinearStorageConnection_swiginit", LinearStorageConnection_swiginit, METH_VARARGS, NULL},
@@ -78565,7 +84369,33 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "PowerLawConnection_residual_get", _wrap_PowerLawConnection_residual_get, METH_O, "PowerLawConnection_residual_get(PowerLawConnection self) -> real"},
 	 { "PowerLawConnection_V0_set", _wrap_PowerLawConnection_V0_set, METH_VARARGS, "PowerLawConnection_V0_set(PowerLawConnection self, real V0)"},
 	 { "PowerLawConnection_V0_get", _wrap_PowerLawConnection_V0_get, METH_O, "PowerLawConnection_V0_get(PowerLawConnection self) -> real"},
-	 { "new_PowerLawConnection", (PyCFunction)(void(*)(void))_wrap_new_PowerLawConnection, METH_VARARGS|METH_KEYWORDS, "new_PowerLawConnection(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Q0, real V0, real beta=1.0, real residual=0.0) -> PowerLawConnection"},
+	 { "new_PowerLawConnection", (PyCFunction)(void(*)(void))_wrap_new_PowerLawConnection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_PowerLawConnection(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Q0, real V0, real beta=1.0, real residual=0.0) -> PowerLawConnection\n"
+		"PowerLawConnection(WaterStorage::ptr source, flux_node::ptr target,\n"
+		"real Q0, real V0, real beta=1.0, real residual=0.0)\n"
+		"\n"
+		"Creates a power law connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"source:  Water storage from which the water flows out. Flux is a\n"
+		"function of source.volume\n"
+		"\n"
+		"target:  Target node (boundary condition or storage). Does not\n"
+		"influence the strength of the flow\n"
+		"\n"
+		"Q0:  Reference flow :math:`Q_0 = q(V_0)` Outflow when the source storage\n"
+		"equals the reference volume\n"
+		"\n"
+		"V0:  Reference volume :math:`V_0` The reference volume to scale the exponent\n"
+		"\n"
+		"beta:   :math:`\\\\beta [-]` An empirical exponent to shape the flux\n"
+		"function (default = 1 (linear function))\n"
+		"\n"
+		"residual:   :math:`V_{residual} [m^3]` The volume of water not flowing out\n"
+		"(default = 0) \n"
+		""},
 	 { "delete_PowerLawConnection", _wrap_delete_PowerLawConnection, METH_O, "delete_PowerLawConnection(PowerLawConnection self)"},
 	 { "PowerLawConnection_swigregister", PowerLawConnection_swigregister, METH_O, NULL},
 	 { "PowerLawConnection_swiginit", PowerLawConnection_swiginit, METH_VARARGS, NULL},
@@ -78575,7 +84405,13 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ExponentialDeclineConnection_m_get", _wrap_ExponentialDeclineConnection_m_get, METH_O, "ExponentialDeclineConnection_m_get(ExponentialDeclineConnection self) -> real"},
 	 { "ExponentialDeclineConnection_V0_set", _wrap_ExponentialDeclineConnection_V0_set, METH_VARARGS, "ExponentialDeclineConnection_V0_set(ExponentialDeclineConnection self, real V0)"},
 	 { "ExponentialDeclineConnection_V0_get", _wrap_ExponentialDeclineConnection_V0_get, METH_O, "ExponentialDeclineConnection_V0_get(ExponentialDeclineConnection self) -> real"},
-	 { "new_ExponentialDeclineConnection", (PyCFunction)(void(*)(void))_wrap_new_ExponentialDeclineConnection, METH_VARARGS|METH_KEYWORDS, "new_ExponentialDeclineConnection(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Q0, real V0, real m) -> ExponentialDeclineConnection"},
+	 { "new_ExponentialDeclineConnection", (PyCFunction)(void(*)(void))_wrap_new_ExponentialDeclineConnection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ExponentialDeclineConnection(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Q0, real V0, real m) -> ExponentialDeclineConnection\n"
+		"ExponentialDeclineConnection(WaterStorage::ptr source,\n"
+		"flux_node::ptr target, real Q0, real V0, real m)\n"
+		"\n"
+		"creates the exponential decline connection \n"
+		""},
 	 { "delete_ExponentialDeclineConnection", _wrap_delete_ExponentialDeclineConnection, METH_O, "delete_ExponentialDeclineConnection(ExponentialDeclineConnection self)"},
 	 { "ExponentialDeclineConnection_swigregister", ExponentialDeclineConnection_swigregister, METH_O, NULL},
 	 { "ExponentialDeclineConnection_swiginit", ExponentialDeclineConnection_swiginit, METH_VARARGS, NULL},
@@ -78585,7 +84421,39 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ConstraintLinearStorageFlux_Vlmin_get", _wrap_ConstraintLinearStorageFlux_Vlmin_get, METH_O, "ConstraintLinearStorageFlux_Vlmin_get(ConstraintLinearStorageFlux self) -> real"},
 	 { "ConstraintLinearStorageFlux_Vrmax_set", _wrap_ConstraintLinearStorageFlux_Vrmax_set, METH_VARARGS, "ConstraintLinearStorageFlux_Vrmax_set(ConstraintLinearStorageFlux self, real Vrmax)"},
 	 { "ConstraintLinearStorageFlux_Vrmax_get", _wrap_ConstraintLinearStorageFlux_Vrmax_get, METH_O, "ConstraintLinearStorageFlux_Vrmax_get(ConstraintLinearStorageFlux self) -> real"},
-	 { "new_ConstraintLinearStorageFlux", (PyCFunction)(void(*)(void))_wrap_new_ConstraintLinearStorageFlux, METH_VARARGS|METH_KEYWORDS, "new_ConstraintLinearStorageFlux(cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real Vrmax=1.0) -> ConstraintLinearStorageFlux"},
+	 { "new_ConstraintLinearStorageFlux", (PyCFunction)(void(*)(void))_wrap_new_ConstraintLinearStorageFlux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ConstraintLinearStorageFlux(cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real Vrmax=1.0) -> ConstraintLinearStorageFlux\n"
+		"ConstraintLinearStorageFlux(WaterStorage::ptr source,\n"
+		"WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real\n"
+		"Vrmax=1.0)\n"
+		"\n"
+		"Creates a linear storage connection, constrained by the fill level of\n"
+		"the source \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V -\n"
+		"    V_{residual}}{V_0} \\\\right)^\\\\beta} \n"
+		"\n"
+		".\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"source:  Water storage from which the water flows out. Flux is a\n"
+		"function of source.volume\n"
+		"\n"
+		"target:  Target node (boundary condition or storage). Does not\n"
+		"influence the strength of the flow\n"
+		"\n"
+		"residencetime:   :math:`t_r [days]` The residence time of the water in this\n"
+		"storage\n"
+		"\n"
+		"Vlmin:   :math:`V_{l,min} [m^3]` The volume of water not flowing out\n"
+		"(default = 0)\n"
+		"\n"
+		"Vrmax:   :math:`V_{r,max}` Capacity of the target water storage in m3 \n"
+		""},
 	 { "delete_ConstraintLinearStorageFlux", _wrap_delete_ConstraintLinearStorageFlux, METH_O, "delete_ConstraintLinearStorageFlux(ConstraintLinearStorageFlux self)"},
 	 { "ConstraintLinearStorageFlux_swigregister", ConstraintLinearStorageFlux_swigregister, METH_O, NULL},
 	 { "ConstraintLinearStorageFlux_swiginit", ConstraintLinearStorageFlux_swiginit, METH_VARARGS, NULL},
@@ -78595,7 +84463,28 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ConstantFlux_MinState_get", _wrap_ConstantFlux_MinState_get, METH_O, "ConstantFlux_MinState_get(ConstantFlux self) -> real"},
 	 { "ConstantFlux_FluxDecreaseTime_set", _wrap_ConstantFlux_FluxDecreaseTime_set, METH_VARARGS, "ConstantFlux_FluxDecreaseTime_set(ConstantFlux self, Time FluxDecreaseTime)"},
 	 { "ConstantFlux_FluxDecreaseTime_get", _wrap_ConstantFlux_FluxDecreaseTime_get, METH_O, "ConstantFlux_FluxDecreaseTime_get(ConstantFlux self) -> Time"},
-	 { "new_ConstantFlux", (PyCFunction)(void(*)(void))_wrap_new_ConstantFlux, METH_VARARGS|METH_KEYWORDS, "new_ConstantFlux(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real maximum_flux, real minimal_state=0, Time flux_decrease_time=h) -> ConstantFlux"},
+	 { "new_ConstantFlux", (PyCFunction)(void(*)(void))_wrap_new_ConstantFlux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ConstantFlux(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real maximum_flux, real minimal_state=0, Time flux_decrease_time=h) -> ConstantFlux\n"
+		"ConstantFlux(cmf::water::WaterStorage::ptr source,\n"
+		"cmf::water::flux_node::ptr target, real maximum_flux, real\n"
+		"minimal_state=0, cmf::math::Time flux_decrease_time=cmf::math::h)\n"
+		"\n"
+		"Produces a constant but changeable flux from a source to a target, if\n"
+		"enough water is present in the source.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"source:  The source of the water\n"
+		"\n"
+		"target:  The target of the water\n"
+		"\n"
+		"maximum_flux:  The requested flux :math:`q_{0}`\n"
+		"\n"
+		"minimal_state:  Minimal volume of stored water in source\n"
+		"\n"
+		"flux_decrease_time:  ( cmf::math::Time) \n"
+		""},
 	 { "delete_ConstantFlux", _wrap_delete_ConstantFlux, METH_O, "delete_ConstantFlux(ConstantFlux self)"},
 	 { "ConstantFlux_swigregister", ConstantFlux_swigregister, METH_O, NULL},
 	 { "ConstantFlux_swiginit", ConstantFlux_swiginit, METH_VARARGS, NULL},
@@ -78603,7 +84492,25 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "LinearGradientFlux_Q1_get", _wrap_LinearGradientFlux_Q1_get, METH_O, "LinearGradientFlux_Q1_get(LinearGradientFlux self) -> real"},
 	 { "LinearGradientFlux_d_set", _wrap_LinearGradientFlux_d_set, METH_VARARGS, "LinearGradientFlux_d_set(LinearGradientFlux self, real d)"},
 	 { "LinearGradientFlux_d_get", _wrap_LinearGradientFlux_d_get, METH_O, "LinearGradientFlux_d_get(LinearGradientFlux self) -> real"},
-	 { "new_LinearGradientFlux", (PyCFunction)(void(*)(void))_wrap_new_LinearGradientFlux, METH_VARARGS|METH_KEYWORDS, "new_LinearGradientFlux(cmf::water::flux_node::ptr left, cmf::water::flux_node::ptr right, real Q1, real d=-1.0) -> LinearGradientFlux"},
+	 { "new_LinearGradientFlux", (PyCFunction)(void(*)(void))_wrap_new_LinearGradientFlux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_LinearGradientFlux(cmf::water::flux_node::ptr left, cmf::water::flux_node::ptr right, real Q1, real d=-1.0) -> LinearGradientFlux\n"
+		"LinearGradientFlux(cmf::water::flux_node::ptr left,\n"
+		"cmf::water::flux_node::ptr right, real Q1, real d=-1.0)\n"
+		"\n"
+		"Creates a generic gradient based flux, if enough water is present in\n"
+		"the source.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  The left node of the connection\n"
+		"\n"
+		"right:  The right node of the connection\n"
+		"\n"
+		"Q1:  Flux over the connection for a unity gradient ( :math:`\\\\nabla \\\\Psi = 1`) in :math:`\\\\frac{m^3}{day}`\n"
+		"\n"
+		"d:  the topographic lenght of the connection in m \n"
+		""},
 	 { "delete_LinearGradientFlux", _wrap_delete_LinearGradientFlux, METH_O, "delete_LinearGradientFlux(LinearGradientFlux self)"},
 	 { "LinearGradientFlux_swigregister", LinearGradientFlux_swigregister, METH_O, NULL},
 	 { "LinearGradientFlux_swiginit", LinearGradientFlux_swiginit, METH_VARARGS, NULL},
@@ -78611,61 +84518,439 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ConstantStateFlux_reaction_time_get", _wrap_ConstantStateFlux_reaction_time_get, METH_O, "ConstantStateFlux_reaction_time_get(ConstantStateFlux self) -> Time"},
 	 { "ConstantStateFlux_target_state_set", _wrap_ConstantStateFlux_target_state_set, METH_VARARGS, "ConstantStateFlux_target_state_set(ConstantStateFlux self, real target_state)"},
 	 { "ConstantStateFlux_target_state_get", _wrap_ConstantStateFlux_target_state_get, METH_O, "ConstantStateFlux_target_state_get(ConstantStateFlux self) -> real"},
-	 { "new_ConstantStateFlux", (PyCFunction)(void(*)(void))_wrap_new_ConstantStateFlux, METH_VARARGS|METH_KEYWORDS, "new_ConstantStateFlux(cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, real target_state, Time reaction_time) -> ConstantStateFlux"},
+	 { "new_ConstantStateFlux", (PyCFunction)(void(*)(void))_wrap_new_ConstantStateFlux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ConstantStateFlux(cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, real target_state, Time reaction_time) -> ConstantStateFlux\n"
+		"ConstantStateFlux(cmf::water::WaterStorage::ptr controlled_storage,\n"
+		"cmf::water::flux_node::ptr other_end, real target_state,\n"
+		"cmf::math::Time reaction_time)\n"
+		"\n"
+		"Creates a flux connection to control the state of a storage.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"controlled_storage:  Water storage, to be controlled\n"
+		"\n"
+		"other_end:  source of missing water or target of excessive water\n"
+		"\n"
+		"target_state:  State the controlled storage should hold (\n"
+		":math:`h_{target}`)\n"
+		"\n"
+		"reaction_time:  Time to reach state ( :math:`t_c`) \n"
+		""},
 	 { "delete_ConstantStateFlux", _wrap_delete_ConstantStateFlux, METH_O, "delete_ConstantStateFlux(ConstantStateFlux self)"},
 	 { "ConstantStateFlux_swigregister", ConstantStateFlux_swigregister, METH_O, NULL},
 	 { "ConstantStateFlux_swiginit", ConstantStateFlux_swiginit, METH_VARARGS, NULL},
-	 { "node_list_size", _wrap_node_list_size, METH_O, "size(node_list self) -> size_t"},
+	 { "node_list_size", _wrap_node_list_size, METH_O, "\n"
+		"size(node_list self) -> size_t\n"
+		"size_t size()\n"
+		"const\n"
+		"\n"
+		"The number of nodes. \n"
+		""},
 	 { "new_node_list", _wrap_new_node_list, METH_VARARGS, "\n"
 		"node_list()\n"
 		"new_node_list(node_list forcopy) -> node_list\n"
+		"node_list(const cmf::water::node_list &forcopy)\n"
+		"\n"
+		"Copy the node_list. \n"
 		""},
 	 { "node_list___iadd__", (PyCFunction)(void(*)(void))_wrap_node_list___iadd__, METH_VARARGS|METH_KEYWORDS, "__iadd__(node_list self, node_list right) -> node_list"},
 	 { "node_list___add__", (PyCFunction)(void(*)(void))_wrap_node_list___add__, METH_VARARGS|METH_KEYWORDS, "__add__(node_list self, node_list right) -> node_list"},
-	 { "node_list___get", (PyCFunction)(void(*)(void))_wrap_node_list___get, METH_VARARGS|METH_KEYWORDS, "__get(node_list self, ptrdiff_t index) -> cmf::water::flux_node::ptr"},
-	 { "node_list___getslice", (PyCFunction)(void(*)(void))_wrap_node_list___getslice, METH_VARARGS|METH_KEYWORDS, "__getslice(node_list self, ptrdiff_t begin, ptrdiff_t end, ptrdiff_t step=1) -> node_list"},
+	 { "node_list___get", (PyCFunction)(void(*)(void))_wrap_node_list___get, METH_VARARGS|METH_KEYWORDS, "\n"
+		"__get(node_list self, ptrdiff_t index) -> cmf::water::flux_node::ptr\n"
+		"flux_node::ptr\n"
+		"get(ptrdiff_t index) const\n"
+		"\n"
+		"Returns a node in the node_list. \n"
+		""},
+	 { "node_list___getslice", (PyCFunction)(void(*)(void))_wrap_node_list___getslice, METH_VARARGS|METH_KEYWORDS, "\n"
+		"__getslice(node_list self, ptrdiff_t begin, ptrdiff_t end, ptrdiff_t step=1) -> node_list\n"
+		"node_list\n"
+		"getslice(ptrdiff_t begin, ptrdiff_t end, ptrdiff_t step=1) const\n"
+		"\n"
+		"Returns a slice of the node_list. \n"
+		""},
 	 { "node_list___cmf_state_list_interface__", _wrap_node_list___cmf_state_list_interface__, METH_O, "__cmf_state_list_interface__(node_list self) -> state_list"},
-	 { "node_list_append", (PyCFunction)(void(*)(void))_wrap_node_list_append, METH_VARARGS|METH_KEYWORDS, "append(node_list self, cmf::water::flux_node::ptr node)"},
-	 { "node_list_remove", (PyCFunction)(void(*)(void))_wrap_node_list_remove, METH_VARARGS|METH_KEYWORDS, "remove(node_list self, cmf::water::flux_node::ptr node) -> bool"},
-	 { "node_list_get_potentials", (PyCFunction)(void(*)(void))_wrap_node_list_get_potentials, METH_VARARGS|METH_KEYWORDS, "get_potentials(node_list self, Time t=never) -> cmf::math::num_array"},
-	 { "node_list_global_water_balance", (PyCFunction)(void(*)(void))_wrap_node_list_global_water_balance, METH_VARARGS|METH_KEYWORDS, "global_water_balance(node_list self, Time t) -> real"},
-	 { "node_list_water_balance", (PyCFunction)(void(*)(void))_wrap_node_list_water_balance, METH_VARARGS|METH_KEYWORDS, "water_balance(node_list self, Time t) -> cmf::math::num_array"},
-	 { "node_list_conc", (PyCFunction)(void(*)(void))_wrap_node_list_conc, METH_VARARGS|METH_KEYWORDS, "conc(node_list self, Time t, solute _Solute) -> cmf::math::num_array"},
-	 { "node_list_set_solute_source", (PyCFunction)(void(*)(void))_wrap_node_list_set_solute_source, METH_VARARGS|METH_KEYWORDS, "set_solute_source(node_list self, solute _Solute, cmf::math::num_array source_fluxes) -> ptrdiff_t"},
-	 { "node_list_get_fluxes_to", (PyCFunction)(void(*)(void))_wrap_node_list_get_fluxes_to, METH_VARARGS|METH_KEYWORDS, "get_fluxes_to(node_list self, node_list targets, Time t) -> cmf::math::num_array"},
-	 { "node_list_get_fluxes3d_to", (PyCFunction)(void(*)(void))_wrap_node_list_get_fluxes3d_to, METH_VARARGS|METH_KEYWORDS, "get_fluxes3d_to(node_list self, node_list targets, Time t) -> point_vector"},
-	 { "node_list_get_fluxes3d", (PyCFunction)(void(*)(void))_wrap_node_list_get_fluxes3d, METH_VARARGS|METH_KEYWORDS, "get_fluxes3d(node_list self, Time t) -> point_vector"},
-	 { "node_list_get_positions", _wrap_node_list_get_positions, METH_O, "get_positions(node_list self) -> point_vector"},
-	 { "delete_node_list", _wrap_delete_node_list, METH_O, "delete_node_list(node_list self)"},
+	 { "node_list_append", (PyCFunction)(void(*)(void))_wrap_node_list_append, METH_VARARGS|METH_KEYWORDS, "\n"
+		"append(node_list self, cmf::water::flux_node::ptr node)\n"
+		"void\n"
+		"append(flux_node::ptr node)\n"
+		"\n"
+		"Adds a flux node to the list. \n"
+		""},
+	 { "node_list_remove", (PyCFunction)(void(*)(void))_wrap_node_list_remove, METH_VARARGS|METH_KEYWORDS, "\n"
+		"remove(node_list self, cmf::water::flux_node::ptr node) -> bool\n"
+		"bool\n"
+		"remove(flux_node::ptr node)\n"
+		"\n"
+		"Removes a flux node from the list, returns true if successful. \n"
+		""},
+	 { "node_list_get_potentials", (PyCFunction)(void(*)(void))_wrap_node_list_get_potentials, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_potentials(node_list self, Time t=never) -> cmf::math::num_array\n"
+		"cmf::math::num_array get_potentials(cmf::math::Time\n"
+		"t=cmf::math::never)\n"
+		"\n"
+		"Returns the potential of the nodes. \n"
+		""},
+	 { "node_list_global_water_balance", (PyCFunction)(void(*)(void))_wrap_node_list_global_water_balance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"global_water_balance(node_list self, Time t) -> real\n"
+		"real global_water_balance(cmf::math::Time t) const\n"
+		"\n"
+		"Returns the sum of the water balances of the nodes.\n"
+		"\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"    \\\\sigma_{global} =\n"
+		"    \\\\sum_{i=0}^N{\\\\sum_{j=0}^{C_i}{q_{ij}(t)}} \n"
+		"\n"
+		"Replaces slow Python code like: \n"
+		""},
+	 { "node_list_water_balance", (PyCFunction)(void(*)(void))_wrap_node_list_water_balance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"water_balance(node_list self, Time t) -> cmf::math::num_array\n"
+		"cmf::math::num_array water_balance(cmf::math::Time t) const\n"
+		"\n"
+		"Returns the water balance of each vector as a vector.\n"
+		"\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     \\\\sigma_i = \\\\sum_{j=0}^{C_i}{q_{ij}(t)} \n"
+		"\n"
+		"Replaces slow Python code like: \n"
+		""},
+	 { "node_list_conc", (PyCFunction)(void(*)(void))_wrap_node_list_conc, METH_VARARGS|METH_KEYWORDS, "\n"
+		"conc(node_list self, Time t, solute _Solute) -> cmf::math::num_array\n"
+		"cmf::math::num_array conc(cmf::math::Time t, const cmf::water::solute\n"
+		"&_Solute) const\n"
+		"\n"
+		"Returns an array holding the concentration of all the flux nodes for\n"
+		"the given solute. \n"
+		""},
+	 { "node_list_set_solute_source", (PyCFunction)(void(*)(void))_wrap_node_list_set_solute_source, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_solute_source(node_list self, solute _Solute, cmf::math::num_array source_fluxes) -> ptrdiff_t\n"
+		"ptrdiff_t set_solute_source(const cmf::water::solute &_Solute,\n"
+		"cmf::math::num_array source_fluxes)\n"
+		"\n"
+		"Sets the source flux of a solute storage associated with a node (node\n"
+		"has to be a water storage) \n"
+		""},
+	 { "node_list_get_fluxes_to", (PyCFunction)(void(*)(void))_wrap_node_list_get_fluxes_to, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_fluxes_to(node_list self, node_list targets, Time t) -> cmf::math::num_array\n"
+		"cmf::math::num_array get_fluxes_to(const cmf::water::node_list\n"
+		"&targets, cmf::math::Time t) const\n"
+		"\n"
+		"A fast method to perform flux queries as a batch.\n"
+		"\n"
+		"The node lists left and right should have the same length.\n"
+		"\n"
+		"The vector containing the flux from left to right at the same position\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"targets:  A node_list containing the source nodes\n"
+		"\n"
+		"t:  The time for the fluxes\n"
+		"\n"
+		"Replaces slow Python code like: \n"
+		""},
+	 { "node_list_get_fluxes3d_to", (PyCFunction)(void(*)(void))_wrap_node_list_get_fluxes3d_to, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_fluxes3d_to(node_list self, node_list targets, Time t) -> point_vector\n"
+		"cmf::geometry::point_vector get_fluxes3d_to(const\n"
+		"cmf::water::node_list &targets, cmf::math::Time t) const\n"
+		"\n"
+		"Returns the flux vectors to the nodes of a given target node_list. \n"
+		""},
+	 { "node_list_get_fluxes3d", (PyCFunction)(void(*)(void))_wrap_node_list_get_fluxes3d, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_fluxes3d(node_list self, Time t) -> point_vector\n"
+		"cmf::geometry::point_vector get_fluxes3d(cmf::math::Time t) const\n"
+		"\n"
+		"Returns the current flow vector for each node. \n"
+		""},
+	 { "node_list_get_positions", _wrap_node_list_get_positions, METH_O, "\n"
+		"get_positions(node_list self) -> point_vector\n"
+		"cmf::geometry::point_vector get_positions() const\n"
+		"\n"
+		"Returns the positions of the nodes. \n"
+		""},
+	 { "delete_node_list", _wrap_delete_node_list, METH_O, "\n"
+		"delete_node_list(node_list self)\n"
+		"virtual\n"
+		"~node_list() \n"
+		""},
 	 { "node_list_potentials_set", _wrap_node_list_potentials_set, METH_VARARGS, "node_list_potentials_set(node_list self, cmf::math::num_array potentials)"},
 	 { "node_list_potentials_get", _wrap_node_list_potentials_get, METH_O, "node_list_potentials_get(node_list self) -> cmf::math::num_array"},
 	 { "node_list_swigregister", node_list_swigregister, METH_O, NULL},
 	 { "node_list_swiginit", node_list_swiginit, METH_VARARGS, NULL},
-	 { "NeumannBoundary_list_get", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_get, METH_VARARGS|METH_KEYWORDS, "get(NeumannBoundary_list self, ptrdiff_t index) -> cmf::water::NeumannBoundary::ptr"},
-	 { "NeumannBoundary_list_get_fluxes", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_get_fluxes, METH_VARARGS|METH_KEYWORDS, "get_fluxes(NeumannBoundary_list self, Time t=cmf::math::Time()) -> cmf::math::num_array"},
-	 { "NeumannBoundary_list_append", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_append, METH_VARARGS|METH_KEYWORDS, "append(NeumannBoundary_list self, cmf::water::NeumannBoundary::ptr nbc)"},
-	 { "NeumannBoundary_list_size", _wrap_NeumannBoundary_list_size, METH_O, "size(NeumannBoundary_list self) -> size_t"},
+	 { "NeumannBoundary_list_get", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_get, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get(NeumannBoundary_list self, ptrdiff_t index) -> cmf::water::NeumannBoundary::ptr\n"
+		"NeumannBoundary::ptr get(ptrdiff_t index) const\n"
+		"\n"
+		"Returns the Neumann boundary condition at position index.\n"
+		"\n"
+		"From Python you can use [] \n"
+		""},
+	 { "NeumannBoundary_list_get_fluxes", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_get_fluxes, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_fluxes(NeumannBoundary_list self, Time t=cmf::math::Time()) -> cmf::math::num_array\n"
+		"cmf::math::num_array get_fluxes(cmf::math::Time t=cmf::math::Time())\n"
+		"const\n"
+		"\n"
+		"Returns the fluxes of the items as an array.\n"
+		"\n"
+		"get_fluxes and set_fluxes are wrapped with the Python property fluxes\n"
+		"\n"
+		""},
+	 { "NeumannBoundary_list_append", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_append, METH_VARARGS|METH_KEYWORDS, "\n"
+		"append(NeumannBoundary_list self, cmf::water::NeumannBoundary::ptr nbc)\n"
+		"void\n"
+		"append(NeumannBoundary::ptr nbc)\n"
+		"\n"
+		"Appends a neumann boundary to this list. \n"
+		""},
+	 { "NeumannBoundary_list_size", _wrap_NeumannBoundary_list_size, METH_O, "\n"
+		"size(NeumannBoundary_list self) -> size_t\n"
+		"size_t\n"
+		"size() const\n"
+		"\n"
+		"returns the number of stored boundary conditions \n"
+		""},
 	 { "new_NeumannBoundary_list", _wrap_new_NeumannBoundary_list, METH_VARARGS, "\n"
 		"NeumannBoundary_list()\n"
 		"NeumannBoundary_list(node_list copy)\n"
 		"new_NeumannBoundary_list(NeumannBoundary_list copy) -> NeumannBoundary_list\n"
+		"NeumannBoundary_list(const NeumannBoundary_list &copy) \n"
 		""},
-	 { "NeumannBoundary_list_to_node_list", _wrap_NeumannBoundary_list_to_node_list, METH_O, "to_node_list(NeumannBoundary_list self) -> node_list"},
-	 { "NeumannBoundary_list_global_water_balance", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_global_water_balance, METH_VARARGS|METH_KEYWORDS, "global_water_balance(NeumannBoundary_list self, Time t) -> real"},
-	 { "NeumannBoundary_list_water_balance", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_water_balance, METH_VARARGS|METH_KEYWORDS, "water_balance(NeumannBoundary_list self, Time t) -> cmf::math::num_array"},
+	 { "NeumannBoundary_list_to_node_list", _wrap_NeumannBoundary_list_to_node_list, METH_O, "\n"
+		"to_node_list(NeumannBoundary_list self) -> node_list\n"
+		"cmf::water::node_list to_node_list() const\n"
+		"\n"
+		"Creates a node_list from this NeumannBoundary_list. \n"
+		""},
+	 { "NeumannBoundary_list_global_water_balance", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_global_water_balance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"global_water_balance(NeumannBoundary_list self, Time t) -> real\n"
+		"real\n"
+		"global_water_balance(cmf::math::Time t) const\n"
+		"\n"
+		"Returns the sum of the water balances of the nodes\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"    \\\\sigma_{global} =\n"
+		"    \\\\sum_{i=0}^N{\\\\sum_{j=0}^{C_i}{q_{ij}(t)}} \n"
+		"\n"
+		".\n"
+		"\n"
+		"Replaces slow Python code like: \n"
+		""},
+	 { "NeumannBoundary_list_water_balance", (PyCFunction)(void(*)(void))_wrap_NeumannBoundary_list_water_balance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"water_balance(NeumannBoundary_list self, Time t) -> cmf::math::num_array\n"
+		"cmf::math::num_array water_balance(cmf::math::Time t) const\n"
+		"\n"
+		"Returns the water balance of each vector as a vector \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     \\\\sigma_i\n"
+		"    = \\\\sum_{j=0}^{C_i}{q_{ij}(t)} \n"
+		"\n"
+		".\n"
+		"\n"
+		"Replaces slow Python code like: \n"
+		""},
 	 { "NeumannBoundary_list_fluxes_set", _wrap_NeumannBoundary_list_fluxes_set, METH_VARARGS, "NeumannBoundary_list_fluxes_set(NeumannBoundary_list self, cmf::math::num_array fluxes)"},
 	 { "NeumannBoundary_list_fluxes_get", _wrap_NeumannBoundary_list_fluxes_get, METH_O, "NeumannBoundary_list_fluxes_get(NeumannBoundary_list self) -> cmf::math::num_array"},
 	 { "delete_NeumannBoundary_list", _wrap_delete_NeumannBoundary_list, METH_O, "delete_NeumannBoundary_list(NeumannBoundary_list self)"},
 	 { "NeumannBoundary_list_swigregister", NeumannBoundary_list_swigregister, METH_O, NULL},
 	 { "NeumannBoundary_list_swiginit", NeumannBoundary_list_swiginit, METH_VARARGS, NULL},
-	 { "vapour_pressure", (PyCFunction)(void(*)(void))_wrap_vapour_pressure, METH_VARARGS|METH_KEYWORDS, "vapour_pressure(double T) -> double"},
-	 { "vpd_from_rH", (PyCFunction)(void(*)(void))_wrap_vpd_from_rH, METH_VARARGS|METH_KEYWORDS, "vpd_from_rH(double T, double rH) -> double"},
-	 { "rH_from_vpd", (PyCFunction)(void(*)(void))_wrap_rH_from_vpd, METH_VARARGS|METH_KEYWORDS, "rH_from_vpd(double T, double vpd) -> double"},
-	 { "watts_to_MJ", (PyCFunction)(void(*)(void))_wrap_watts_to_MJ, METH_VARARGS|METH_KEYWORDS, "watts_to_MJ(double Watts) -> double"},
-	 { "MJ_to_watts", (PyCFunction)(void(*)(void))_wrap_MJ_to_watts, METH_VARARGS|METH_KEYWORDS, "MJ_to_watts(double MJ) -> double"},
-	 { "extraterrestrial_radiation", (PyCFunction)(void(*)(void))_wrap_extraterrestrial_radiation, METH_VARARGS|METH_KEYWORDS, "extraterrestrial_radiation(Time t, double longitude=8, double latitude=51, double time_zone=1, bool daily=False) -> double"},
-	 { "global_radiation", (PyCFunction)(void(*)(void))_wrap_global_radiation, METH_VARARGS|METH_KEYWORDS, "global_radiation(double Ra, double height, double sunshine_fraction) -> double"},
-	 { "Pressure", (PyCFunction)(void(*)(void))_wrap_Pressure, METH_VARARGS|METH_KEYWORDS, "Pressure(double height) -> double"},
+	 { "vapour_pressure", (PyCFunction)(void(*)(void))_wrap_vapour_pressure, METH_VARARGS|METH_KEYWORDS, "\n"
+		"vapour_pressure(double T) -> double\n"
+		"double\n"
+		"cmf::atmosphere::vapour_pressure(double T)\n"
+		"\n"
+		"Returns the saturated vapor pressure in Pa for temperature T [degC].\n"
+		"\n"
+		"The saturated vapor pressure :math:`e_s` is calculated follwing the\n"
+		"following formula \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"    e_s = 0.6108 \\\\exp{\\\\frac{17.27\n"
+		"    T}{T+237.3}}\n"
+		"\n"
+		"The definition is\n"
+		"fromhttp://www.fao.org/docrep/X0490E/x0490e07.htm#concepts \n"
+		""},
+	 { "vpd_from_rH", (PyCFunction)(void(*)(void))_wrap_vpd_from_rH, METH_VARARGS|METH_KEYWORDS, "\n"
+		"vpd_from_rH(double T, double rH) -> double\n"
+		"double\n"
+		"cmf::atmosphere::vpd_from_rH(double T, double rH)\n"
+		"\n"
+		"Returns the vapor pressure deficit in Pa for temperature T [degC] and\n"
+		"rel.\n"
+		"\n"
+		"humidity rH [%]\n"
+		"\n"
+		"The vapor pressure deficit :math:`e_s - e_a` is calculated from rel.\n"
+		"humidity as: \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"    e_s - e_a = (1-rH/100) * e_s(T)\n"
+		"\n"
+		"The definition\n"
+		"is fromhttp://www.fao.org/docrep/X0490E/x0490e07.htm#concepts\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"T:  Air temperature in degC\n"
+		"\n"
+		"rH:  Rel. humidity in %\n"
+		"\n"
+		":math:`e_s(T)` is calculated using cmf::atmosphere::vapor_pressure(double)\n"
+		"\n"
+		""},
+	 { "rH_from_vpd", (PyCFunction)(void(*)(void))_wrap_rH_from_vpd, METH_VARARGS|METH_KEYWORDS, "\n"
+		"rH_from_vpd(double T, double vpd) -> double\n"
+		"double\n"
+		"cmf::atmosphere::rH_from_vpd(double T, double vpd)\n"
+		"\n"
+		"Returns the rel.\n"
+		"\n"
+		"humidity in % for temperature T [degC] and vapor pressure deficit vpd\n"
+		"[Pa]\n"
+		"\n"
+		"the rel. humidity is calculated from the vapor pressure deficit :math:`vpd = e_s - e_a` as: \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"    rH = 100 * \\\\frac{e_a}{e_s(T)}, e_a = e_s(T) -\n"
+		"    vpd\n"
+		"\n"
+		"The definition is\n"
+		"fromhttp://www.fao.org/docrep/X0490E/x0490e07.htm#concepts\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"T:  Air temperature in degC\n"
+		"\n"
+		"vpd:  Vapor pressure deficit in Pa\n"
+		"\n"
+		":math:`e_s(T)` is calculated using cmf::atmosphere::vapor_pressure(double)\n"
+		"\n"
+		""},
+	 { "watts_to_MJ", (PyCFunction)(void(*)(void))_wrap_watts_to_MJ, METH_VARARGS|METH_KEYWORDS, "\n"
+		"watts_to_MJ(double Watts) -> double\n"
+		"double\n"
+		"cmf::atmosphere::watts_to_MJ(double Watts)\n"
+		"\n"
+		"Transforms an energy flux from W to MJ/day. \n"
+		""},
+	 { "MJ_to_watts", (PyCFunction)(void(*)(void))_wrap_MJ_to_watts, METH_VARARGS|METH_KEYWORDS, "\n"
+		"MJ_to_watts(double MJ) -> double\n"
+		"double\n"
+		"cmf::atmosphere::MJ_to_watts(double MJ)\n"
+		"\n"
+		"Transforms an energy flux from MJ/day to W. \n"
+		""},
+	 { "extraterrestrial_radiation", (PyCFunction)(void(*)(void))_wrap_extraterrestrial_radiation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"extraterrestrial_radiation(Time t, double longitude=8, double latitude=51, double time_zone=1, bool daily=False) -> double\n"
+		"double cmf::atmosphere::extraterrestrial_radiation(cmf::math::Time t,\n"
+		"double longitude=8, double latitude=51, double time_zone=1, bool\n"
+		"daily=false)\n"
+		"\n"
+		"Calculates the global radiation in MJ/(m2 day) from the sun position\n"
+		"and the sunshine fraction.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"t:  actual time step\n"
+		"\n"
+		"longitude:  latitude:  Geographical position in degree. Latitude is\n"
+		"only taken into acount for subdaily calculation\n"
+		"\n"
+		"time_zone:  Offset by timezone from GMT, eg. central Europe=1 US west\n"
+		"coast = -8\n"
+		"\n"
+		"daily:  If true, the average radiation for the whole day is given\n"
+		"(therefore latitude and time zone ignored), otherwise the average of\n"
+		"the current hour is returned\n"
+		"\n"
+		"The calculation of the global radiation\n"
+		"followshttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation.\n"
+		"\n"
+		"The following formula is used:  :math:`\\\\phi` Latitude in :math:`rad`\n"
+		"\n"
+		":math:`\\\\delta = 0.409 \\\\sin\\\\left(\\\\frac{2\\\\pi}{365}DOY - 1.39\\\\right)` Declination, DOY is day of year\n"
+		"\n"
+		":math:`\\\\omega_s = \\\\arccos(-\\\\tan\\\\phi\\\\tan\\\\delta)` Sunset\n"
+		"angle\n"
+		"\n"
+		":math:`G_{sc} = 0.0802 \\\\frac{MJ}{m^2min}` Solar constant\n"
+		"\n"
+		":math:`d_r = 1+0.033 \\\\cos\\\\left(\\\\frac{2\\\\pi}{365}DOY\\\\right)`\n"
+		"Inverse relative distance Earth-Sun\n"
+		"\n"
+		":math:`b = \\\\frac{2\\\\pi(DOY-81)}{364}`\n"
+		"\n"
+		":math:`S_c = 0.1645\\\\sin(2b)-0.1255\\\\cos(b)-0.025\\\\sin(b)` Seasonal\n"
+		"correction for solar time\n"
+		"\n"
+		":math:`\\\\omega = \\\\frac{\\\\pi}{12} \\\\left(t_h+\\\\frac{(\\\\mbox{geogr. Longitude})^\\\\circ}{15^\\\\circ}-\\\\mbox{Timezone}+S_c-12\\\\right)` solar time in :math:`rad`\n"
+		"\n"
+		"If daily: :math:`R_a = \\\\frac{24\\\\ 60}{\\\\pi}G_{sc}\\\\ d_r \\\\left(\\\\omega_s \\\\sin\\\\phi \\\\sin\\\\delta + \\\\cos\\\\phi \\\\cos\\\\delta \\\\sin\\\\omega_s\\\\right)`\n"
+		"\n"
+		"If sub daily: :math:`R_a = \\\\frac{12\\\\ 24\\\\ 60}{\\\\pi}G_{sc}\\\\ d_r \\\\left(\\\\left(\\\\omega^+ -\\\\omega^-\\\\right) \\\\sin\\\\phi \\\\sin\\\\delta + \\\\cos\\\\phi \\\\cos\\\\delta \\\\left(\\\\sin\\\\omega^+ - \\\\sin\\\\omega^-\\\\right)\\\\right)`\n"
+		"\n"
+		":math:`\\\\omega^+,\\\\omega^- = \\\\omega \\\\pm\\\\frac{\\\\pi}{24}` \n"
+		""},
+	 { "global_radiation", (PyCFunction)(void(*)(void))_wrap_global_radiation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"global_radiation(double Ra, double height, double sunshine_fraction) -> double\n"
+		"double\n"
+		"cmf::atmosphere::global_radiation(double Ra, double height, double\n"
+		"sunshine_fraction)\n"
+		"\n"
+		"Calculates the global radiation in MJ/(m2 day) from the sun position\n"
+		"and the sunshine fraction.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"Ra:  extra terrestrial radiation\n"
+		"\n"
+		"height:  Height above sea level\n"
+		"\n"
+		"sunshine_fraction:  Fraction of sunshine hours per potential sunshine\n"
+		"duration in h/h\n"
+		"\n"
+		"The calculation of the global radiation\n"
+		"followshttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation.\n"
+		"\n"
+		"The following formula is used:  :math:`R_a(t, \\\\phi, \\\\lambda)`\n"
+		"Extraterrestrial radiation (\n"
+		"cmf::atmosphere::extraterrestrial_radiation) :math:`\\\\frac{MJ}{m^2 day}`\n"
+		"\n"
+		":math:`\\\\frac n N` Fractional sunshine duration\n"
+		"\n"
+		":math:`R_s = \\\\left(0.25+\\\\left(0.5+2\\\\ 10^{-5}z\\\\right)\\\\frac{n}{N}\\\\right)R_a` Global radiation in\n"
+		":math:`\\\\frac{MJ}{m^2 day}`\n"
+		"\n"
+		":math:`z`: Height a.s.l. in m \n"
+		""},
+	 { "Pressure", (PyCFunction)(void(*)(void))_wrap_Pressure, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Pressure(double height) -> double\n"
+		"double\n"
+		"cmf::atmosphere::Pressure(double height)\n"
+		"\n"
+		"Returns the average air pressure for a height (m a.s.l.) \n"
+		""},
 	 { "Weather_T_set", _wrap_Weather_T_set, METH_VARARGS, "Weather_T_set(Weather self, double T)"},
 	 { "Weather_T_get", _wrap_Weather_T_get, METH_O, "Weather_T_get(Weather self) -> double"},
 	 { "Weather_Tmax_set", _wrap_Weather_Tmax_set, METH_VARARGS, "Weather_Tmax_set(Weather self, double Tmax)"},
@@ -78690,9 +84975,77 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Weather_daylength_get", _wrap_Weather_daylength_get, METH_O, "Weather_daylength_get(Weather self) -> double"},
 	 { "Weather_instrument_height_set", _wrap_Weather_instrument_height_set, METH_VARARGS, "Weather_instrument_height_set(Weather self, double instrument_height)"},
 	 { "Weather_instrument_height_get", _wrap_Weather_instrument_height_get, METH_O, "Weather_instrument_height_get(Weather self) -> double"},
-	 { "Weather_Rn", (PyCFunction)(void(*)(void))_wrap_Weather_Rn, METH_VARARGS|METH_KEYWORDS, "Rn(Weather self, double albedo, bool daily=False) -> double"},
-	 { "new_Weather", (PyCFunction)(void(*)(void))_wrap_new_Weather, METH_VARARGS|METH_KEYWORDS, "new_Weather(double T=15.0, double Tmax=17.0, double Tmin=13.0, double rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double Ra=30, double daylength=12) -> Weather"},
-	 { "Weather_to_string", _wrap_Weather_to_string, METH_O, "to_string(Weather self) -> std::string"},
+	 { "Weather_Rn", (PyCFunction)(void(*)(void))_wrap_Weather_Rn, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Rn(Weather self, double albedo, bool daily=False) -> double\n"
+		"double Rn(double\n"
+		"albedo, bool daily=false) const\n"
+		"\n"
+		"Calculates the net radiation flux :math:`R_n \\\\left[\\\\frac{MJ}{m^2 day}\\\\right]`.\n"
+		"\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     R_{n} = R_{ns} - R_{nl} \\\\\\\\ \\\\mbox{ Net\n"
+		"    short wave radiation: }R_{ns} = (1-\\\\alpha) R_s \\\\\\\\ \\\\mbox{\n"
+		"    Net long wave radiation: }R_{nl} = R_{black}\\\\ \\\\beta_{v}\\\\\n"
+		"    \\\\beta_{c} \\\\\\\\ \\\\mbox{Black body radiation: } R_{black} =\n"
+		"    \\\\left\\\\{\\\\begin{array}{cl} \\\\sigma T^4 & \\\\mbox{for less\n"
+		"    than daily time steps} \\\\\\\\ \\\\sigma \\\\frac {T_{max}^4 +\n"
+		"    T_{min}^4} 2 & \\\\mbox{for daily time steps} \\\\end{array}\n"
+		"    \\\\right. \\\\\\\\ T = \\\\mbox{Temperature }[K] \\\\\\\\ \\\\sigma =\n"
+		"    4.903\\\\ 10^{-9} \\\\frac{MJ}{K^4 m^2 day} \\\\mbox{ Stefan-Boltzmann\n"
+		"    constant } \\\\\\\\ \\\\mbox{Long wave reflectance: } \\\\\\\\\n"
+		"    \\\\mbox{by water vapor: }\\\\beta_{v} = 0.34 - 0.14 \\\\sqrt{e_a}\n"
+		"    \\\\\\\\ \\\\mbox{ by clouds: }\\\\beta_{c} = 0.1 + 0.9 \\\\frac n N\n"
+		"\n"
+		"\n"
+		"\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"albedo:  the albedo :math:`\\\\alpha` of the surface\n"
+		"\n"
+		"daily:  If true, the net radiation for daily averages will be\n"
+		"calculated \n"
+		""},
+	 { "new_Weather", (PyCFunction)(void(*)(void))_wrap_new_Weather, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Weather(double T=15.0, double Tmax=17.0, double Tmin=13.0, double rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double Ra=30, double daylength=12) -> Weather\n"
+		"Weather(double T=15.0, double Tmax=17.0, double Tmin=13.0, double\n"
+		"rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double\n"
+		"Ra=30, double daylength=12)\n"
+		"\n"
+		"Creates a \"weather\" from given data.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"T:  actual Temperature in deg C\n"
+		"\n"
+		"Tmax:  daily maximum Temperature in deg C\n"
+		"\n"
+		"Tmin:  daily minimum Temperature in deg C\n"
+		"\n"
+		"rH:  actual relative humidity in % [0..100]\n"
+		"\n"
+		"wind:  actual wind speed in m/s\n"
+		"\n"
+		"sunshine:  actual fraction of sunshine duration per potential sunshine\n"
+		"duration in h/h\n"
+		"\n"
+		"Rs:  actual incoming shortwave global radiation in MJ/(m2 day)\n"
+		"\n"
+		"Ra:  actual extraterrestrial shortwave global radiation in MJ/(m2 day)\n"
+		"\n"
+		"daylength:  length of the day in h \n"
+		""},
+	 { "Weather_to_string", _wrap_Weather_to_string, METH_O, "\n"
+		"to_string(Weather self) -> std::string\n"
+		"std::string to_string() const\n"
+		"\n"
+		"Returns a string representation. \n"
+		""},
 	 { "Weather_set_snow_threshold", (PyCFunction)(void(*)(void))_wrap_Weather_set_snow_threshold, METH_VARARGS|METH_KEYWORDS, "set_snow_threshold(double new_threshold)"},
 	 { "Weather_get_snow_threshold", _wrap_Weather_get_snow_threshold, METH_NOARGS, "get_snow_threshold() -> double"},
 	 { "Weather___iadd__", (PyCFunction)(void(*)(void))_wrap_Weather___iadd__, METH_VARARGS|METH_KEYWORDS, "__iadd__(Weather self, Weather w) -> Weather"},
@@ -78703,10 +85056,33 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Weather_swigregister", Weather_swigregister, METH_O, NULL},
 	 { "Weather_swiginit", Weather_swiginit, METH_VARARGS, NULL},
 	 { "Meteorology___call__", (PyCFunction)(void(*)(void))_wrap_Meteorology___call__, METH_VARARGS|METH_KEYWORDS, "__call__(Meteorology self, Time t) -> Weather"},
-	 { "Meteorology_get_weather", (PyCFunction)(void(*)(void))_wrap_Meteorology_get_weather, METH_VARARGS|METH_KEYWORDS, "get_weather(Meteorology self, Time t) -> Weather"},
-	 { "Meteorology_copy", _wrap_Meteorology_copy, METH_O, "copy(Meteorology self) -> Meteorology"},
-	 { "Meteorology_get_instrument_height", _wrap_Meteorology_get_instrument_height, METH_O, "get_instrument_height(Meteorology self) -> real"},
-	 { "delete_Meteorology", _wrap_delete_Meteorology, METH_O, "delete_Meteorology(Meteorology self)"},
+	 { "Meteorology_get_weather", (PyCFunction)(void(*)(void))_wrap_Meteorology_get_weather, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_weather(Meteorology self, Time t) -> Weather\n"
+		"virtual cmf::atmosphere::Weather get_weather(cmf::math::Time t) const\n"
+		"=0\n"
+		"\n"
+		"Returns the Weather at time t. Pure virtual function. Must get\n"
+		"implemented by child functions. \n"
+		""},
+	 { "Meteorology_copy", _wrap_Meteorology_copy, METH_O, "\n"
+		"copy(Meteorology self) -> Meteorology\n"
+		"virtual\n"
+		"Meteorology* copy() const =0\n"
+		"\n"
+		"Returns a copy of the meteorology object. Pure virtual function, needs\n"
+		"to be implemented. \n"
+		""},
+	 { "Meteorology_get_instrument_height", _wrap_Meteorology_get_instrument_height, METH_O, "\n"
+		"get_instrument_height(Meteorology self) -> real\n"
+		"virtual real\n"
+		"get_instrument_height() const =0\n"
+		"\n"
+		"Returns the height of the instruments above canopy. \n"
+		""},
+	 { "delete_Meteorology", _wrap_delete_Meteorology, METH_O, "\n"
+		"delete_Meteorology(Meteorology self)\n"
+		"virtual ~Meteorology() \n"
+		""},
 	 { "Meteorology_swigregister", Meteorology_swigregister, METH_O, NULL},
 	 { "ConstantMeteorology_weather_set", _wrap_ConstantMeteorology_weather_set, METH_VARARGS, "ConstantMeteorology_weather_set(ConstantMeteorology self, Weather weather)"},
 	 { "ConstantMeteorology_weather_get", _wrap_ConstantMeteorology_weather_get, METH_O, "ConstantMeteorology_weather_get(ConstantMeteorology self) -> Weather"},
@@ -78714,8 +85090,17 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"ConstantMeteorology()\n"
 		"ConstantMeteorology(Weather w)\n"
 		"new_ConstantMeteorology(ConstantMeteorology other) -> ConstantMeteorology\n"
+		"ConstantMeteorology(const cmf::atmosphere::ConstantMeteorology &other)\n"
+		"\n"
+		"Copy constructor. \n"
 		""},
-	 { "ConstantMeteorology_copy", _wrap_ConstantMeteorology_copy, METH_O, "copy(ConstantMeteorology self) -> ConstantMeteorology"},
+	 { "ConstantMeteorology_copy", _wrap_ConstantMeteorology_copy, METH_O, "\n"
+		"copy(ConstantMeteorology self) -> ConstantMeteorology\n"
+		"ConstantMeteorology* copy() const\n"
+		"\n"
+		"Creates a new instannce of the ConstantMeteorology with the same\n"
+		"weather. \n"
+		""},
 	 { "delete_ConstantMeteorology", _wrap_delete_ConstantMeteorology, METH_O, "delete_ConstantMeteorology(ConstantMeteorology self)"},
 	 { "ConstantMeteorology_swigregister", ConstantMeteorology_swigregister, METH_O, NULL},
 	 { "ConstantMeteorology_swiginit", ConstantMeteorology_swiginit, METH_VARARGS, NULL},
@@ -78733,15 +85118,58 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "MeteoStation_z_get", _wrap_MeteoStation_z_get, METH_O, "MeteoStation_z_get(MeteoStation self) -> double"},
 	 { "MeteoStation_Name_set", _wrap_MeteoStation_Name_set, METH_VARARGS, "MeteoStation_Name_set(MeteoStation self, std::string const & Name)"},
 	 { "MeteoStation_Name_get", _wrap_MeteoStation_Name_get, METH_O, "MeteoStation_Name_get(MeteoStation self) -> std::string const &"},
-	 { "MeteoStation_get_position", _wrap_MeteoStation_get_position, METH_O, "get_position(MeteoStation self) -> point"},
+	 { "MeteoStation_get_position", _wrap_MeteoStation_get_position, METH_O, "\n"
+		"get_position(MeteoStation self) -> point\n"
+		"cmf::geometry::point get_position() const \n"
+		""},
 	 { "MeteoStation_daily_set", _wrap_MeteoStation_daily_set, METH_VARARGS, "MeteoStation_daily_set(MeteoStation self, bool daily)"},
 	 { "MeteoStation_daily_get", _wrap_MeteoStation_daily_get, METH_O, "MeteoStation_daily_get(MeteoStation self) -> bool"},
 	 { "MeteoStation_InstrumentHeight_set", _wrap_MeteoStation_InstrumentHeight_set, METH_VARARGS, "MeteoStation_InstrumentHeight_set(MeteoStation self, real InstrumentHeight)"},
 	 { "MeteoStation_InstrumentHeight_get", _wrap_MeteoStation_InstrumentHeight_get, METH_O, "MeteoStation_InstrumentHeight_get(MeteoStation self) -> real"},
-	 { "new_MeteoStation", (PyCFunction)(void(*)(void))_wrap_new_MeteoStation, METH_VARARGS|METH_KEYWORDS, "new_MeteoStation(MeteoStation other) -> MeteoStation"},
-	 { "MeteoStation_get_data", (PyCFunction)(void(*)(void))_wrap_MeteoStation_get_data, METH_VARARGS|METH_KEYWORDS, "get_data(MeteoStation self, Time t, double height) -> Weather"},
-	 { "MeteoStation_use_for_cell", (PyCFunction)(void(*)(void))_wrap_MeteoStation_use_for_cell, METH_VARARGS|METH_KEYWORDS, "use_for_cell(MeteoStation self, Cell c)"},
-	 { "MeteoStation_SetSunshineFraction", (PyCFunction)(void(*)(void))_wrap_MeteoStation_SetSunshineFraction, METH_VARARGS|METH_KEYWORDS, "SetSunshineFraction(MeteoStation self, timeseries sunshine_duration)"},
+	 { "new_MeteoStation", (PyCFunction)(void(*)(void))_wrap_new_MeteoStation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_MeteoStation(MeteoStation other) -> MeteoStation\n"
+		"MeteoStation(const cmf::atmosphere::MeteoStation &other)\n"
+		"\n"
+		"Copy c'tor. \n"
+		""},
+	 { "MeteoStation_get_data", (PyCFunction)(void(*)(void))_wrap_MeteoStation_get_data, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_data(MeteoStation self, Time t, double height) -> Weather\n"
+		"cmf::atmosphere::Weather get_data(cmf::math::Time t, double height)\n"
+		"const\n"
+		"\n"
+		"Returns the current Atmosphere state. Uses default values for missing\n"
+		"timeseries. \n"
+		""},
+	 { "MeteoStation_use_for_cell", (PyCFunction)(void(*)(void))_wrap_MeteoStation_use_for_cell, METH_VARARGS|METH_KEYWORDS, "\n"
+		"use_for_cell(MeteoStation self, Cell c)\n"
+		"void use_for_cell(cmf::upslope::Cell &c)\n"
+		"\n"
+		"Connects this meteostation as a meteo data provider with the cell. \n"
+		""},
+	 { "MeteoStation_SetSunshineFraction", (PyCFunction)(void(*)(void))_wrap_MeteoStation_SetSunshineFraction, METH_VARARGS|METH_KEYWORDS, "\n"
+		"SetSunshineFraction(MeteoStation self, timeseries sunshine_duration)\n"
+		"void\n"
+		"SetSunshineFraction(cmf::math::timeseries sunshine_duration)\n"
+		"\n"
+		"Calculates a timeseries of the sunshine fraction (to put into\n"
+		"Sunshine) from a timeseries of absolute sunshine duration\n"
+		"\n"
+		"seehttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     \\\\phi &=& \\\\frac{(\\\\mbox{geogr.\n"
+		"    Latitude})^\\\\circ \\\\pi}{180^\\\\circ} \\\\mbox{ Latitude in }rad\n"
+		"    \\\\\\\\ \\\\delta &=& 0.409 \\\\sin\\\\left(\\\\frac{2\\\\pi}{365}DOY\n"
+		"    - 1.39\\\\right) \\\\mbox{ Declination, DOY is day of year}\\\\\\\\\n"
+		"    \\\\omega_s &=& \\\\arccos(-\\\\tan\\\\phi\\\\tan\\\\delta) \\\\mbox{\n"
+		"    Sunset angle in }rad \\\\\\\\ N &=& \\\\frac{24}{\\\\pi}\\\\omega_s\n"
+		"    \\\\mbox{ potential duration of sunshine in }h \\\\\\\\ \\\\frac n N\n"
+		"    &=& n\\\\mbox{ absolute sunshine duration in }h \n"
+		"\n"
+		"\n"
+		""},
 	 { "MeteoStation_T_set", _wrap_MeteoStation_T_set, METH_VARARGS, "MeteoStation_T_set(MeteoStation self, timeseries T)"},
 	 { "MeteoStation_T_get", _wrap_MeteoStation_T_get, METH_O, "MeteoStation_T_get(MeteoStation self) -> timeseries"},
 	 { "MeteoStation_Tmax_set", _wrap_MeteoStation_Tmax_set, METH_VARARGS, "MeteoStation_Tmax_set(MeteoStation self, timeseries Tmax)"},
@@ -78769,51 +85197,187 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_MeteoStation", _wrap_delete_MeteoStation, METH_O, "delete_MeteoStation(MeteoStation self)"},
 	 { "MeteoStation_swigregister", MeteoStation_swigregister, METH_O, NULL},
 	 { "MeteoStation_swiginit", MeteoStation_swiginit, METH_VARARGS, NULL},
-	 { "MeteoStationReference_get_station", _wrap_MeteoStationReference_get_station, METH_O, "get_station(MeteoStationReference self) -> cmf::atmosphere::MeteoStation::ptr"},
-	 { "MeteoStationReference_get_position", _wrap_MeteoStationReference_get_position, METH_O, "get_position(MeteoStationReference self) -> point"},
+	 { "MeteoStationReference_get_station", _wrap_MeteoStationReference_get_station, METH_O, "\n"
+		"get_station(MeteoStationReference self) -> cmf::atmosphere::MeteoStation::ptr\n"
+		"MeteoStation::ptr get_station() const\n"
+		"\n"
+		"Returns the station referenced. \n"
+		""},
+	 { "MeteoStationReference_get_position", _wrap_MeteoStationReference_get_position, METH_O, "\n"
+		"get_position(MeteoStationReference self) -> point\n"
+		"cmf::geometry::point get_position() const\n"
+		"\n"
+		"Returns the position of the reference. \n"
+		""},
 	 { "new_MeteoStationReference", _wrap_new_MeteoStationReference, METH_VARARGS, "\n"
 		"MeteoStationReference(cmf::atmosphere::MeteoStation::ptr station, point location)\n"
 		"new_MeteoStationReference(MeteoStationReference copy) -> MeteoStationReference\n"
+		"MeteoStationReference(const MeteoStationReference &copy) \n"
 		""},
-	 { "MeteoStationReference_copy", _wrap_MeteoStationReference_copy, METH_O, "copy(MeteoStationReference self) -> MeteoStationReference"},
+	 { "MeteoStationReference_copy", _wrap_MeteoStationReference_copy, METH_O, "\n"
+		"copy(MeteoStationReference self) -> MeteoStationReference\n"
+		"MeteoStationReference* copy() const\n"
+		"\n"
+		"Returns a copy of the meteorology object. Pure virtual function, needs\n"
+		"to be implemented. \n"
+		""},
 	 { "delete_MeteoStationReference", _wrap_delete_MeteoStationReference, METH_O, "delete_MeteoStationReference(MeteoStationReference self)"},
 	 { "MeteoStationReference_swigregister", MeteoStationReference_swigregister, METH_O, NULL},
 	 { "MeteoStationReference_swiginit", MeteoStationReference_swiginit, METH_VARARGS, NULL},
-	 { "MeteoStationList___len__", _wrap_MeteoStationList___len__, METH_O, "__len__(MeteoStationList self) -> size_t"},
+	 { "MeteoStationList___len__", _wrap_MeteoStationList___len__, METH_O, "\n"
+		"__len__(MeteoStationList self) -> size_t\n"
+		"size_t size() const\n"
+		"\n"
+		"Returns the number of stations. \n"
+		""},
 	 { "MeteoStationList___getitem__", _wrap_MeteoStationList___getitem__, METH_VARARGS, "\n"
 		"__getitem__(MeteoStationList self, ptrdiff_t index) -> cmf::atmosphere::MeteoStation::ptr\n"
 		"__getitem__(MeteoStationList self, std::string const & Name) -> cmf::atmosphere::MeteoStation::ptr\n"
 		""},
-	 { "MeteoStationList_calculate_Temp_lapse", (PyCFunction)(void(*)(void))_wrap_MeteoStationList_calculate_Temp_lapse, METH_VARARGS|METH_KEYWORDS, "calculate_Temp_lapse(MeteoStationList self, Time begin, Time step, Time end) -> double"},
-	 { "MeteoStationList_add_station", (PyCFunction)(void(*)(void))_wrap_MeteoStationList_add_station, METH_VARARGS|METH_KEYWORDS, "add_station(MeteoStationList self, std::string name, point position, double latitude=51.0, double longitude=8.0, double tz=1.0, Time startTime=cmf::math::Time(1,1,2001), Time timestep=day) -> cmf::atmosphere::MeteoStation::ptr"},
-	 { "MeteoStationList_remove_station", (PyCFunction)(void(*)(void))_wrap_MeteoStationList_remove_station, METH_VARARGS|METH_KEYWORDS, "remove_station(MeteoStationList self, ptrdiff_t index) -> ptrdiff_t"},
+	 { "MeteoStationList_calculate_Temp_lapse", (PyCFunction)(void(*)(void))_wrap_MeteoStationList_calculate_Temp_lapse, METH_VARARGS|METH_KEYWORDS, "\n"
+		"calculate_Temp_lapse(MeteoStationList self, Time begin, Time step, Time end) -> double\n"
+		"double\n"
+		"calculate_Temp_lapse(cmf::math::Time begin, cmf::math::Time step,\n"
+		"cmf::math::Time end)\n"
+		"\n"
+		"Calculates the temperature lapse from all stations in the list and\n"
+		"sets the T_lapse attribute of each station.\n"
+		"\n"
+		"Returns the average lapse over the whole period. \n"
+		""},
+	 { "MeteoStationList_add_station", (PyCFunction)(void(*)(void))_wrap_MeteoStationList_add_station, METH_VARARGS|METH_KEYWORDS, "\n"
+		"add_station(MeteoStationList self, std::string name, point position, double latitude=51.0, double longitude=8.0, double tz=1.0, Time startTime=cmf::math::Time(1,1,2001), Time timestep=day) -> cmf::atmosphere::MeteoStation::ptr\n"
+		"MeteoStation::ptr add_station(std::string name, cmf::geometry::point\n"
+		"position, double latitude=51.0, double longitude=8.0, double tz=1.0,\n"
+		"cmf::math::Time startTime=cmf::math::Time(1, 1, 2001), cmf::math::Time\n"
+		"timestep=cmf::math::day)\n"
+		"\n"
+		"Creates a meteorological station at a certain position and adds it to\n"
+		"the list.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"name:  Name of the station\n"
+		"\n"
+		"position:  The location of the station in map coordinates\n"
+		"\n"
+		"latitude:  Latitude of the study area (for solar radiation)\n"
+		"\n"
+		"longitude:  Longitude of the study area (for solar time)\n"
+		"\n"
+		"tz:  Time zone of the study area (e.g Germany +1,U.S. Pacific time -8\n"
+		"\n"
+		"startTime:  Date of the beginning of the climatic data (may be changed\n"
+		"for each time series later)\n"
+		"\n"
+		"timestep:  Frequency of climatic data (may be changed for each time\n"
+		"series later) \n"
+		""},
+	 { "MeteoStationList_remove_station", (PyCFunction)(void(*)(void))_wrap_MeteoStationList_remove_station, METH_VARARGS|METH_KEYWORDS, "\n"
+		"remove_station(MeteoStationList self, ptrdiff_t index) -> ptrdiff_t\n"
+		"ptrdiff_t\n"
+		"remove_station(ptrdiff_t index)\n"
+		"\n"
+		"Removes a station and returns the number of remaining references to\n"
+		"the removed station. If the station is deleted, 0 is returned. \n"
+		""},
 	 { "new_MeteoStationList", _wrap_new_MeteoStationList, METH_VARARGS, "\n"
 		"MeteoStationList()\n"
 		"new_MeteoStationList(MeteoStationList copy) -> MeteoStationList\n"
+		"MeteoStationList(const MeteoStationList &copy)\n"
+		"\n"
+		"Copy c'tor. \n"
 		""},
-	 { "MeteoStationList_reference_to_nearest", (PyCFunction)(void(*)(void))_wrap_MeteoStationList_reference_to_nearest, METH_VARARGS|METH_KEYWORDS, "reference_to_nearest(MeteoStationList self, point position, double z_weight=0) -> MeteoStationReference"},
+	 { "MeteoStationList_reference_to_nearest", (PyCFunction)(void(*)(void))_wrap_MeteoStationList_reference_to_nearest, METH_VARARGS|METH_KEYWORDS, "\n"
+		"reference_to_nearest(MeteoStationList self, point position, double z_weight=0) -> MeteoStationReference\n"
+		"MeteoStationReference reference_to_nearest(const cmf::geometry::point\n"
+		"&position, double z_weight=0) const\n"
+		"\n"
+		"Creates a MeteoStationReference from the nearest station to position\n"
+		"at position.\n"
+		"\n"
+		"The distance is calculated as :math:`d=\\\\sqrt{(x_{s} - x_{l})^2 + (y_{s} - y_{l})^2} + \\\\lambda_z\\\\|z_{s} - z_{l}\\\\|` Where :math:`s` is the\n"
+		"station and :math:`l` is the locatable A Meteorology using the data of the\n"
+		"nearest station to position\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"position:  The position (any locatable, like e.g. Cell possible) to\n"
+		"look for the station. The reference should be owned by the locatable\n"
+		"\n"
+		"z_weight:  The weight of the height difference :math:`\\\\lambda_z` \n"
+		""},
 	 { "delete_MeteoStationList", _wrap_delete_MeteoStationList, METH_O, "delete_MeteoStationList(MeteoStationList self)"},
 	 { "MeteoStationList_swigregister", MeteoStationList_swigregister, METH_O, NULL},
 	 { "MeteoStationList_swiginit", MeteoStationList_swiginit, METH_VARARGS, NULL},
 	 { "new_IDW_Meteorology", _wrap_new_IDW_Meteorology, METH_VARARGS, "\n"
 		"IDW_Meteorology(point position, MeteoStationList stations, double z_weight, double power)\n"
 		"new_IDW_Meteorology(IDW_Meteorology copy) -> IDW_Meteorology\n"
+		"IDW_Meteorology(const IDW_Meteorology &copy)\n"
+		"\n"
+		"Copy c'tor. \n"
 		""},
-	 { "IDW_Meteorology_copy", _wrap_IDW_Meteorology_copy, METH_O, "copy(IDW_Meteorology self) -> IDW_Meteorology"},
+	 { "IDW_Meteorology_copy", _wrap_IDW_Meteorology_copy, METH_O, "\n"
+		"copy(IDW_Meteorology self) -> IDW_Meteorology\n"
+		"virtual IDW_Meteorology* copy() const\n"
+		"\n"
+		"Returns a copy of the meteorology object. Pure virtual function, needs\n"
+		"to be implemented. \n"
+		""},
 	 { "delete_IDW_Meteorology", _wrap_delete_IDW_Meteorology, METH_O, "delete_IDW_Meteorology(IDW_Meteorology self)"},
 	 { "IDW_Meteorology_swigregister", IDW_Meteorology_swigregister, METH_O, NULL},
 	 { "IDW_Meteorology_swiginit", IDW_Meteorology_swiginit, METH_VARARGS, NULL},
-	 { "aerodynamic_resistance_get_aerodynamic_resistance", (PyCFunction)(void(*)(void))_wrap_aerodynamic_resistance_get_aerodynamic_resistance, METH_VARARGS|METH_KEYWORDS, "get_aerodynamic_resistance(aerodynamic_resistance self, double & r_ag, double & r_ac, Time t)"},
-	 { "delete_aerodynamic_resistance", _wrap_delete_aerodynamic_resistance, METH_O, "delete_aerodynamic_resistance(aerodynamic_resistance self)"},
+	 { "aerodynamic_resistance_get_aerodynamic_resistance", (PyCFunction)(void(*)(void))_wrap_aerodynamic_resistance_get_aerodynamic_resistance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_aerodynamic_resistance(aerodynamic_resistance self, double & r_ag, double & r_ac, Time t)\n"
+		"virtual void get_aerodynamic_resistance(double &r_ag, double &r_ac,\n"
+		"cmf::math::Time t) const =0\n"
+		"\n"
+		"aerodynamic resistance from ground to atmosphere (r_ag) and from\n"
+		"canopy to atmosphere (r_ac) \n"
+		""},
+	 { "delete_aerodynamic_resistance", _wrap_delete_aerodynamic_resistance, METH_O, "\n"
+		"delete_aerodynamic_resistance(aerodynamic_resistance self)\n"
+		"virtual ~aerodynamic_resistance() \n"
+		""},
 	 { "aerodynamic_resistance_swigregister", aerodynamic_resistance_swigregister, METH_O, NULL},
 	 { "RainSource___call__", (PyCFunction)(void(*)(void))_wrap_RainSource___call__, METH_VARARGS|METH_KEYWORDS, "__call__(RainSource self, Time t) -> real"},
-	 { "RainSource_get_intensity", (PyCFunction)(void(*)(void))_wrap_RainSource_get_intensity, METH_VARARGS|METH_KEYWORDS, "get_intensity(RainSource self, Time t) -> real"},
+	 { "RainSource_get_intensity", (PyCFunction)(void(*)(void))_wrap_RainSource_get_intensity, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_intensity(RainSource self, Time t) -> real\n"
+		"virtual real get_intensity(cmf::math::Time t) const =0\n"
+		"\n"
+		"Returns the actual rainfall intensity in mm/day. \n"
+		""},
 	 { "delete_RainSource", _wrap_delete_RainSource, METH_O, "delete_RainSource(RainSource self)"},
 	 { "RainSource_swigregister", RainSource_swigregister, METH_O, NULL},
 	 { "ConstantRainSource_intensity_set", _wrap_ConstantRainSource_intensity_set, METH_VARARGS, "ConstantRainSource_intensity_set(ConstantRainSource self, real intensity)"},
 	 { "ConstantRainSource_intensity_get", _wrap_ConstantRainSource_intensity_get, METH_O, "ConstantRainSource_intensity_get(ConstantRainSource self) -> real"},
-	 { "new_ConstantRainSource", (PyCFunction)(void(*)(void))_wrap_new_ConstantRainSource, METH_VARARGS|METH_KEYWORDS, "new_ConstantRainSource(project _project, point location, real _intensity) -> ConstantRainSource"},
-	 { "ConstantRainSource_set_conc", (PyCFunction)(void(*)(void))_wrap_ConstantRainSource_set_conc, METH_VARARGS|METH_KEYWORDS, "set_conc(ConstantRainSource self, solute Solute, real value)"},
+	 { "new_ConstantRainSource", (PyCFunction)(void(*)(void))_wrap_new_ConstantRainSource, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ConstantRainSource(project _project, point location, real _intensity) -> ConstantRainSource\n"
+		"ConstantRainSource(cmf::project &_project, cmf::geometry::point\n"
+		"location, real _intensity)\n"
+		"\n"
+		"Creates a new ConstantRainSource.\n"
+		"\n"
+		"Consider using Cell::set_rainfall for internal creation of a constant\n"
+		"rain source, instead of direct use\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"_project:  The project the rain source is belonging to.\n"
+		"\n"
+		"location:  The location of the rain source\n"
+		"\n"
+		"_intensity:  The constant rainfall intensity in mm/day \n"
+		""},
+	 { "ConstantRainSource_set_conc", (PyCFunction)(void(*)(void))_wrap_ConstantRainSource_set_conc, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_conc(ConstantRainSource self, solute Solute, real value)\n"
+		"void set_conc(const cmf::water::solute &Solute, real value)\n"
+		"\n"
+		"Sets the concentration of a solute in the rainfall. \n"
+		""},
 	 { "delete_ConstantRainSource", _wrap_delete_ConstantRainSource, METH_O, "delete_ConstantRainSource(ConstantRainSource self)"},
 	 { "ConstantRainSource_swigregister", ConstantRainSource_swigregister, METH_O, NULL},
 	 { "ConstantRainSource_swiginit", ConstantRainSource_swiginit, METH_VARARGS, NULL},
@@ -78830,22 +85394,65 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "RainfallStation_name_get", _wrap_RainfallStation_name_get, METH_O, "RainfallStation_name_get(RainfallStation self) -> std::string const &"},
 	 { "RainfallStation_data_set", _wrap_RainfallStation_data_set, METH_VARARGS, "RainfallStation_data_set(RainfallStation self, timeseries data)"},
 	 { "RainfallStation_data_get", _wrap_RainfallStation_data_get, METH_O, "RainfallStation_data_get(RainfallStation self) -> timeseries"},
-	 { "RainfallStation___repr__", _wrap_RainfallStation___repr__, METH_O, "__repr__(RainfallStation self) -> std::string"},
+	 { "RainfallStation___repr__", _wrap_RainfallStation___repr__, METH_O, "\n"
+		"__repr__(RainfallStation self) -> std::string\n"
+		"std::string tostring() const\n"
+		"\n"
+		"Returns the name and the mean yearly rainfall. \n"
+		""},
 	 { "RainfallStation_concentration_set", _wrap_RainfallStation_concentration_set, METH_VARARGS, "RainfallStation_concentration_set(RainfallStation self, SoluteTimeseries concentration)"},
 	 { "RainfallStation_concentration_get", _wrap_RainfallStation_concentration_get, METH_O, "RainfallStation_concentration_get(RainfallStation self) -> SoluteTimeseries"},
-	 { "RainfallStation_use_for_cell", (PyCFunction)(void(*)(void))_wrap_RainfallStation_use_for_cell, METH_VARARGS|METH_KEYWORDS, "use_for_cell(RainfallStation self, Cell c)"},
-	 { "new_RainfallStation", (PyCFunction)(void(*)(void))_wrap_new_RainfallStation, METH_VARARGS|METH_KEYWORDS, "new_RainfallStation(RainfallStation copy) -> RainfallStation"},
+	 { "RainfallStation_use_for_cell", (PyCFunction)(void(*)(void))_wrap_RainfallStation_use_for_cell, METH_VARARGS|METH_KEYWORDS, "\n"
+		"use_for_cell(RainfallStation self, Cell c)\n"
+		"void use_for_cell(cmf::upslope::Cell &c)\n"
+		"\n"
+		"Connects a cell with this rainfall station. \n"
+		""},
+	 { "new_RainfallStation", (PyCFunction)(void(*)(void))_wrap_new_RainfallStation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_RainfallStation(RainfallStation copy) -> RainfallStation\n"
+		"RainfallStation(const RainfallStation &copy)\n"
+		"\n"
+		"copy c'tor \n"
+		""},
 	 { "RainfallStation___call__", (PyCFunction)(void(*)(void))_wrap_RainfallStation___call__, METH_VARARGS|METH_KEYWORDS, "__call__(RainfallStation self, Time t) -> double"},
 	 { "delete_RainfallStation", _wrap_delete_RainfallStation, METH_O, "delete_RainfallStation(RainfallStation self)"},
 	 { "RainfallStation_swigregister", RainfallStation_swigregister, METH_O, NULL},
 	 { "RainfallStation_swiginit", RainfallStation_swiginit, METH_VARARGS, NULL},
-	 { "RainfallStationList___len__", _wrap_RainfallStationList___len__, METH_O, "__len__(RainfallStationList self) -> size_t"},
+	 { "RainfallStationList___len__", _wrap_RainfallStationList___len__, METH_O, "\n"
+		"__len__(RainfallStationList self) -> size_t\n"
+		"size_t size() const\n"
+		"\n"
+		"Returns the number of rainfall stations. \n"
+		""},
 	 { "RainfallStationList___getitem__", _wrap_RainfallStationList___getitem__, METH_VARARGS, "\n"
 		"__getitem__(RainfallStationList self, ptrdiff_t index) -> cmf::atmosphere::RainfallStation::ptr\n"
 		"__getitem__(RainfallStationList self, ptrdiff_t index) -> cmf::atmosphere::RainfallStation::ptr const\n"
 		""},
-	 { "RainfallStationList_add", (PyCFunction)(void(*)(void))_wrap_RainfallStationList_add, METH_VARARGS|METH_KEYWORDS, "add(RainfallStationList self, std::string Name, timeseries Data, point Position) -> cmf::atmosphere::RainfallStation::ptr"},
-	 { "RainfallStationList_remove", (PyCFunction)(void(*)(void))_wrap_RainfallStationList_remove, METH_VARARGS|METH_KEYWORDS, "remove(RainfallStationList self, ptrdiff_t index)"},
+	 { "RainfallStationList_add", (PyCFunction)(void(*)(void))_wrap_RainfallStationList_add, METH_VARARGS|METH_KEYWORDS, "\n"
+		"add(RainfallStationList self, std::string Name, timeseries Data, point Position) -> cmf::atmosphere::RainfallStation::ptr\n"
+		"RainfallStation::ptr add(std::string Name, cmf::math::timeseries Data,\n"
+		"cmf::geometry::point Position)\n"
+		"\n"
+		"Creates a new RainfallStation and adds it to the list.\n"
+		"\n"
+		"Usage: The position of the rainfall station will be used as identifier\n"
+		"A new rainfall station\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"Name:  Name of the station\n"
+		"\n"
+		"Data:  Rainfall timeseries\n"
+		"\n"
+		"Position:  Spatial position of the new station \n"
+		""},
+	 { "RainfallStationList_remove", (PyCFunction)(void(*)(void))_wrap_RainfallStationList_remove, METH_VARARGS|METH_KEYWORDS, "\n"
+		"remove(RainfallStationList self, ptrdiff_t index)\n"
+		"void remove(ptrdiff_t index)\n"
+		"\n"
+		"Removes the station at index from this list. \n"
+		""},
 	 { "new_RainfallStationList", _wrap_new_RainfallStationList, METH_NOARGS, "new_RainfallStationList() -> RainfallStationList"},
 	 { "delete_RainfallStationList", _wrap_delete_RainfallStationList, METH_O, "delete_RainfallStationList(RainfallStationList self)"},
 	 { "RainfallStationList_swigregister", RainfallStationList_swigregister, METH_O, NULL},
@@ -78881,19 +85488,42 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Vegetation_CanopyPARExtinction_get", _wrap_Vegetation_CanopyPARExtinction_get, METH_O, "Vegetation_CanopyPARExtinction_get(Vegetation self) -> double"},
 	 { "Vegetation_LeafWidth_set", _wrap_Vegetation_LeafWidth_set, METH_VARARGS, "Vegetation_LeafWidth_set(Vegetation self, double LeafWidth)"},
 	 { "Vegetation_LeafWidth_get", _wrap_Vegetation_LeafWidth_get, METH_O, "Vegetation_LeafWidth_get(Vegetation self) -> double"},
-	 { "Vegetation_RootLength", _wrap_Vegetation_RootLength, METH_O, "RootLength(Vegetation self) -> double"},
+	 { "Vegetation_RootLength", _wrap_Vegetation_RootLength, METH_O, "\n"
+		"RootLength(Vegetation self) -> double\n"
+		"double RootLength()\n"
+		"const\n"
+		"\n"
+		"Returns the average root length in m/m2. \n"
+		""},
 	 { "Vegetation_RootFraction", _wrap_Vegetation_RootFraction, METH_VARARGS, "\n"
 		"RootFraction(Vegetation self, double upperBoundary, double lowerBoundary) -> double\n"
 		"RootFraction(Vegetation self, cmf::math::num_array const & thickness) -> cmf::math::num_array\n"
+		"cmf::math::num_array RootFraction(const cmf::math::num_array\n"
+		"&thickness) const \n"
 		""},
-	 { "new_Vegetation", (PyCFunction)(void(*)(void))_wrap_new_Vegetation, METH_VARARGS|METH_KEYWORDS, "new_Vegetation(double _LAI=2.88, double _Height=0.12, double _RootDepth=0.25, double _StomatalResistance=100, double _albedo=0.23, double _CanopyClosure=1, double _CanopyCapacityPerLAI=0.1, double _fraction_at_rootdepth=1.0) -> Vegetation"},
+	 { "new_Vegetation", (PyCFunction)(void(*)(void))_wrap_new_Vegetation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Vegetation(double _LAI=2.88, double _Height=0.12, double _RootDepth=0.25, double _StomatalResistance=100, double _albedo=0.23, double _CanopyClosure=1, double _CanopyCapacityPerLAI=0.1, double _fraction_at_rootdepth=1.0) -> Vegetation\n"
+		"Vegetation(double\n"
+		"_LAI=2.88, double _Height=0.12, double _RootDepth=0.25, double\n"
+		"_StomatalResistance=100, double _albedo=0.23, double _CanopyClosure=1,\n"
+		"double _CanopyCapacityPerLAI=0.1, double _fraction_at_rootdepth=1.0)\n"
+		"\n"
+		""},
 	 { "Vegetation___repr__", _wrap_Vegetation___repr__, METH_O, "__repr__(Vegetation self) -> std::string"},
 	 { "delete_Vegetation", _wrap_delete_Vegetation, METH_O, "delete_Vegetation(Vegetation self)"},
 	 { "Vegetation_swigregister", Vegetation_swigregister, METH_O, NULL},
 	 { "Vegetation_swiginit", Vegetation_swiginit, METH_VARARGS, NULL},
-	 { "new_CellConnector", (PyCFunction)(void(*)(void))_wrap_new_CellConnector, METH_VARARGS|METH_KEYWORDS, "new_CellConnector(cmf::upslope::connectorfunction connector) -> CellConnector"},
+	 { "new_CellConnector", (PyCFunction)(void(*)(void))_wrap_new_CellConnector, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_CellConnector(cmf::upslope::connectorfunction connector) -> CellConnector\n"
+		"CellConnector(connectorfunction connector) \n"
+		""},
 	 { "CellConnector___call__", (PyCFunction)(void(*)(void))_wrap_CellConnector___call__, METH_VARARGS|METH_KEYWORDS, "__call__(CellConnector self, Cell cell1, Cell cell2, ptrdiff_t start_at_layer=0)"},
-	 { "CellConnector_connect", (PyCFunction)(void(*)(void))_wrap_CellConnector_connect, METH_VARARGS|METH_KEYWORDS, "connect(CellConnector self, Cell cell1, Cell cell2, ptrdiff_t start_at_layer=0)"},
+	 { "CellConnector_connect", (PyCFunction)(void(*)(void))_wrap_CellConnector_connect, METH_VARARGS|METH_KEYWORDS, "\n"
+		"connect(CellConnector self, Cell cell1, Cell cell2, ptrdiff_t start_at_layer=0)\n"
+		"void\n"
+		"connect(cmf::upslope::Cell &cell1, cmf::upslope::Cell &cell2,\n"
+		"ptrdiff_t start_at_layer=0) const \n"
+		""},
 	 { "delete_CellConnector", _wrap_delete_CellConnector, METH_O, "delete_CellConnector(CellConnector self)"},
 	 { "CellConnector_swigregister", CellConnector_swigregister, METH_O, NULL},
 	 { "CellConnector_swiginit", CellConnector_swiginit, METH_VARARGS, NULL},
@@ -78903,55 +85533,270 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Cell_y_get", _wrap_Cell_y_get, METH_O, "Cell_y_get(Cell self) -> double"},
 	 { "Cell_z_set", _wrap_Cell_z_set, METH_VARARGS, "Cell_z_set(Cell self, double z)"},
 	 { "Cell_z_get", _wrap_Cell_z_get, METH_O, "Cell_z_get(Cell self) -> double"},
-	 { "Cell_get_position", _wrap_Cell_get_position, METH_O, "get_position(Cell self) -> point"},
-	 { "Cell_m3_to_mm", (PyCFunction)(void(*)(void))_wrap_Cell_m3_to_mm, METH_VARARGS|METH_KEYWORDS, "m3_to_mm(Cell self, double volume) -> double"},
-	 { "Cell_mm_to_m3", (PyCFunction)(void(*)(void))_wrap_Cell_mm_to_m3, METH_VARARGS|METH_KEYWORDS, "mm_to_m3(Cell self, double depth) -> double"},
-	 { "Cell_InvalidateSatDepth", _wrap_Cell_InvalidateSatDepth, METH_O, "InvalidateSatDepth(Cell self)"},
+	 { "Cell_get_position", _wrap_Cell_get_position, METH_O, "\n"
+		"get_position(Cell self) -> point\n"
+		"cmf::geometry::point get_position() const\n"
+		"\n"
+		"Returns the location of the cell. \n"
+		""},
+	 { "Cell_m3_to_mm", (PyCFunction)(void(*)(void))_wrap_Cell_m3_to_mm, METH_VARARGS|METH_KEYWORDS, "\n"
+		"m3_to_mm(Cell self, double volume) -> double\n"
+		"double\n"
+		"m3_to_mm(double volume) const\n"
+		"\n"
+		"Converts a volume in m3 in mm for the cell area. \n"
+		""},
+	 { "Cell_mm_to_m3", (PyCFunction)(void(*)(void))_wrap_Cell_mm_to_m3, METH_VARARGS|METH_KEYWORDS, "\n"
+		"mm_to_m3(Cell self, double depth) -> double\n"
+		"double\n"
+		"mm_to_m3(double depth) const \n"
+		""},
+	 { "Cell_InvalidateSatDepth", _wrap_Cell_InvalidateSatDepth, METH_O, "\n"
+		"InvalidateSatDepth(Cell self)\n"
+		"void\n"
+		"InvalidateSatDepth() const\n"
+		"\n"
+		"Marks the saturated depth as unvalid. This is done automatically, when\n"
+		"the state of a layer changes. \n"
+		""},
 	 { "Cell_vegetation_set", _wrap_Cell_vegetation_set, METH_VARARGS, "Cell_vegetation_set(Cell self, Vegetation vegetation)"},
 	 { "Cell_vegetation_get", _wrap_Cell_vegetation_get, METH_O, "Cell_vegetation_get(Cell self) -> Vegetation"},
-	 { "Cell_set_aerodynamic_resistance", (PyCFunction)(void(*)(void))_wrap_Cell_set_aerodynamic_resistance, METH_VARARGS|METH_KEYWORDS, "set_aerodynamic_resistance(Cell self, cmf::atmosphere::aerodynamic_resistance::ptr Ra)"},
-	 { "Cell_set_weather", (PyCFunction)(void(*)(void))_wrap_Cell_set_weather, METH_VARARGS|METH_KEYWORDS, "set_weather(Cell self, Weather weather)"},
-	 { "Cell_set_rainfall", (PyCFunction)(void(*)(void))_wrap_Cell_set_rainfall, METH_VARARGS|METH_KEYWORDS, "set_rainfall(Cell self, double rainfall)"},
-	 { "Cell_get_rainfall", (PyCFunction)(void(*)(void))_wrap_Cell_get_rainfall, METH_VARARGS|METH_KEYWORDS, "get_rainfall(Cell self, Time t) -> double"},
-	 { "Cell___set_rain_source", (PyCFunction)(void(*)(void))_wrap_Cell___set_rain_source, METH_VARARGS|METH_KEYWORDS, "__set_rain_source(Cell self, cmf::atmosphere::RainSource::ptr new_source)"},
-	 { "Cell___get_rain_source", _wrap_Cell___get_rain_source, METH_O, "__get_rain_source(Cell self) -> cmf::atmosphere::RainSource::ptr"},
-	 { "Cell_set_uptakestress", (PyCFunction)(void(*)(void))_wrap_Cell_set_uptakestress, METH_VARARGS|METH_KEYWORDS, "set_uptakestress(Cell self, RootUptakeStressFunction stressfunction)"},
-	 { "Cell___get_evaporation", _wrap_Cell___get_evaporation, METH_O, "__get_evaporation(Cell self) -> cmf::water::flux_node::ptr"},
-	 { "Cell___get_transpiration", _wrap_Cell___get_transpiration, METH_O, "__get_transpiration(Cell self) -> cmf::water::flux_node::ptr"},
-	 { "Cell_get_surfacewater", _wrap_Cell_get_surfacewater, METH_O, "get_surfacewater(Cell self) -> cmf::water::flux_node::ptr"},
-	 { "Cell_surfacewater_as_storage", _wrap_Cell_surfacewater_as_storage, METH_O, "surfacewater_as_storage(Cell self) -> cmf::upslope::surfacewater_ptr"},
+	 { "Cell_set_aerodynamic_resistance", (PyCFunction)(void(*)(void))_wrap_Cell_set_aerodynamic_resistance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_aerodynamic_resistance(Cell self, cmf::atmosphere::aerodynamic_resistance::ptr Ra)\n"
+		"void\n"
+		"set_aerodynamic_resistance(cmf::atmosphere::aerodynamic_resistance::ptr\n"
+		"Ra)\n"
+		"\n"
+		"Sets the method to calculate aerodynamic resistance against turbulent\n"
+		"sensible heat fluxes. \n"
+		""},
+	 { "Cell_set_weather", (PyCFunction)(void(*)(void))_wrap_Cell_set_weather, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_weather(Cell self, Weather weather)\n"
+		"void\n"
+		"set_weather(const cmf::atmosphere::Weather &weather)\n"
+		"\n"
+		"Sets the weather for this cell. Connectivity to a meteorological\n"
+		"station is lost. \n"
+		""},
+	 { "Cell_set_rainfall", (PyCFunction)(void(*)(void))_wrap_Cell_set_rainfall, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_rainfall(Cell self, double rainfall)\n"
+		"void\n"
+		"set_rainfall(double rainfall)\n"
+		"\n"
+		"Exchanges a timeseries of rainfall with a constant flux. \n"
+		""},
+	 { "Cell_get_rainfall", (PyCFunction)(void(*)(void))_wrap_Cell_get_rainfall, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_rainfall(Cell self, Time t) -> double\n"
+		"double\n"
+		"get_rainfall(cmf::math::Time t) const\n"
+		"\n"
+		"Returns the current rainfall flux in m3/day. \n"
+		""},
+	 { "Cell___set_rain_source", (PyCFunction)(void(*)(void))_wrap_Cell___set_rain_source, METH_VARARGS|METH_KEYWORDS, "\n"
+		"__set_rain_source(Cell self, cmf::atmosphere::RainSource::ptr new_source)\n"
+		"void\n"
+		"set_rain_source(cmf::atmosphere::RainSource::ptr new_source)\n"
+		"\n"
+		"Changes the current source of rainfall. \n"
+		""},
+	 { "Cell___get_rain_source", _wrap_Cell___get_rain_source, METH_O, "\n"
+		"__get_rain_source(Cell self) -> cmf::atmosphere::RainSource::ptr\n"
+		"cmf::atmosphere::RainSource::ptr get_rain_source()\n"
+		"\n"
+		"Returns the current source for rainfall. \n"
+		""},
+	 { "Cell_set_uptakestress", (PyCFunction)(void(*)(void))_wrap_Cell_set_uptakestress, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_uptakestress(Cell self, RootUptakeStressFunction stressfunction)\n"
+		"void\n"
+		"set_uptakestress(const cmf::upslope::ET::RootUptakeStressFunction\n"
+		"&stressfunction)\n"
+		"\n"
+		"Uses the given WaterStressFunction for all stressedET like connections\n"
+		"to the transpiration target. \n"
+		""},
+	 { "Cell___get_evaporation", _wrap_Cell___get_evaporation, METH_O, "\n"
+		"__get_evaporation(Cell self) -> cmf::water::flux_node::ptr\n"
+		"cmf::water::flux_node::ptr get_evaporation()\n"
+		"\n"
+		"Returns the end point of all evaporation of this cell (a\n"
+		"cmf::water::flux_node) \n"
+		""},
+	 { "Cell___get_transpiration", _wrap_Cell___get_transpiration, METH_O, "\n"
+		"__get_transpiration(Cell self) -> cmf::water::flux_node::ptr\n"
+		"cmf::water::flux_node::ptr get_transpiration()\n"
+		"\n"
+		"Returns the end point of all transpiration of this cell (a\n"
+		"cmf::water::flux_node) \n"
+		""},
+	 { "Cell_get_surfacewater", _wrap_Cell_get_surfacewater, METH_O, "\n"
+		"get_surfacewater(Cell self) -> cmf::water::flux_node::ptr\n"
+		"cmf::water::flux_node::ptr get_surfacewater()\n"
+		"\n"
+		"returns the surface water of this cell. This is either a flux node or\n"
+		"a cmf::upslope::SurfaceWater \n"
+		""},
+	 { "Cell_surfacewater_as_storage", _wrap_Cell_surfacewater_as_storage, METH_O, "\n"
+		"surfacewater_as_storage(Cell self) -> cmf::upslope::surfacewater_ptr\n"
+		"surfacewater_ptr surfacewater_as_storage()\n"
+		"\n"
+		"Makes the surfacewater of this cell a cmf::upslope::SurfaceWater\n"
+		"storage. \n"
+		""},
 	 { "Cell_add_storage", _wrap_Cell_add_storage, METH_VARARGS, "\n"
 		"add_storage(Cell self, std::string Name, char storage_role='N', bool isopenwater=False) -> cmf::water::WaterStorage::ptr\n"
 		"add_storage(Cell self, cmf::water::WaterStorage::ptr storage) -> ptrdiff_t\n"
+		"ptrdiff_t\n"
+		"add_storage(cmf::water::WaterStorage::ptr storage)\n"
+		"\n"
+		"Bounds an existing storage to the cell. \n"
 		""},
-	 { "Cell_remove_storage", (PyCFunction)(void(*)(void))_wrap_Cell_remove_storage, METH_VARARGS|METH_KEYWORDS, "remove_storage(Cell self, cmf::water::WaterStorage::ptr storage)"},
-	 { "Cell_storage_count", _wrap_Cell_storage_count, METH_O, "storage_count(Cell self) -> size_t"},
-	 { "Cell_get_storage", (PyCFunction)(void(*)(void))_wrap_Cell_get_storage, METH_VARARGS|METH_KEYWORDS, "get_storage(Cell self, ptrdiff_t index) -> cmf::water::WaterStorage::ptr"},
-	 { "Cell_get_canopy", _wrap_Cell_get_canopy, METH_O, "get_canopy(Cell self) -> cmf::water::WaterStorage::ptr"},
-	 { "Cell_get_snow", _wrap_Cell_get_snow, METH_O, "get_snow(Cell self) -> cmf::water::WaterStorage::ptr"},
-	 { "Cell_snow_coverage", _wrap_Cell_snow_coverage, METH_O, "snow_coverage(Cell self) -> real"},
-	 { "Cell_albedo", _wrap_Cell_albedo, METH_O, "albedo(Cell self) -> real"},
-	 { "Cell_surface_water_coverage", _wrap_Cell_surface_water_coverage, METH_O, "surface_water_coverage(Cell self) -> real"},
-	 { "Cell_heat_flux", (PyCFunction)(void(*)(void))_wrap_Cell_heat_flux, METH_VARARGS|METH_KEYWORDS, "heat_flux(Cell self, Time t) -> real"},
+	 { "Cell_remove_storage", (PyCFunction)(void(*)(void))_wrap_Cell_remove_storage, METH_VARARGS|METH_KEYWORDS, "\n"
+		"remove_storage(Cell self, cmf::water::WaterStorage::ptr storage)\n"
+		"void\n"
+		"remove_storage(cmf::water::WaterStorage::ptr storage) \n"
+		""},
+	 { "Cell_storage_count", _wrap_Cell_storage_count, METH_O, "\n"
+		"storage_count(Cell self) -> size_t\n"
+		"size_t\n"
+		"storage_count() const \n"
+		""},
+	 { "Cell_get_storage", (PyCFunction)(void(*)(void))_wrap_Cell_get_storage, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_storage(Cell self, ptrdiff_t index) -> cmf::water::WaterStorage::ptr\n"
+		"cmf::water::WaterStorage::ptr get_storage(ptrdiff_t index) const \n"
+		""},
+	 { "Cell_get_canopy", _wrap_Cell_get_canopy, METH_O, "\n"
+		"get_canopy(Cell self) -> cmf::water::WaterStorage::ptr\n"
+		"cmf::water::WaterStorage::ptr get_canopy() const \n"
+		""},
+	 { "Cell_get_snow", _wrap_Cell_get_snow, METH_O, "\n"
+		"get_snow(Cell self) -> cmf::water::WaterStorage::ptr\n"
+		"cmf::water::WaterStorage::ptr get_snow() const \n"
+		""},
+	 { "Cell_snow_coverage", _wrap_Cell_snow_coverage, METH_O, "\n"
+		"snow_coverage(Cell self) -> real\n"
+		"real\n"
+		"snow_coverage() const \n"
+		""},
+	 { "Cell_albedo", _wrap_Cell_albedo, METH_O, "\n"
+		"albedo(Cell self) -> real\n"
+		"real albedo()\n"
+		"const \n"
+		""},
+	 { "Cell_surface_water_coverage", _wrap_Cell_surface_water_coverage, METH_O, "\n"
+		"surface_water_coverage(Cell self) -> real\n"
+		"real surface_water_coverage() const\n"
+		"\n"
+		"Returns the coverage of the surface water.\n"
+		"\n"
+		"The covered fraction (0..1) is simply modelled as a piecewise linear\n"
+		"function of the surface water depth. If the depth is above the\n"
+		"aggregate height, the coverage is 1, below it is given as \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     c =\n"
+		"    \\\\frac{h_{water}}{\\\\Delta h_{surface}}\n"
+		"\n"
+		"with c the coverage,\n"
+		":math:`h_{water}` the depth of the surface water and :math:`\\\\Delta h_{surface}`\n"
+		"the amplitude of the surface roughness \n"
+		""},
+	 { "Cell_heat_flux", (PyCFunction)(void(*)(void))_wrap_Cell_heat_flux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"heat_flux(Cell self, Time t) -> real\n"
+		"real\n"
+		"heat_flux(cmf::math::Time t) const\n"
+		"\n"
+		"Calculates the surface heat balance.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"t:  Time step \n"
+		""},
 	 { "Cell_Tground_set", _wrap_Cell_Tground_set, METH_VARARGS, "Cell_Tground_set(Cell self, real Tground)"},
 	 { "Cell_Tground_get", _wrap_Cell_Tground_get, METH_O, "Cell_Tground_get(Cell self) -> real"},
-	 { "Cell_leave_wetness", _wrap_Cell_leave_wetness, METH_O, "leave_wetness(Cell self) -> real"},
+	 { "Cell_leave_wetness", _wrap_Cell_leave_wetness, METH_O, "\n"
+		"leave_wetness(Cell self) -> real\n"
+		"real\n"
+		"leave_wetness() const\n"
+		"\n"
+		"Return the fraction of wet leaves in the canopy if a canopy water\n"
+		"storage exists.\n"
+		"\n"
+		"If no canopy storage is present, it returns 0.0 (=empty). The fraction\n"
+		"of wet leaves are calculated as the linear filling of the canopy\n"
+		"storage. \n"
+		""},
 	 { "Cell_Id_set", _wrap_Cell_Id_set, METH_VARARGS, "Cell_Id_set(Cell self, ptrdiff_t Id)"},
 	 { "Cell_Id_get", _wrap_Cell_Id_get, METH_O, "Cell_Id_get(Cell self) -> ptrdiff_t"},
-	 { "Cell_get_WKB", _wrap_Cell_get_WKB, METH_O, "get_WKB(Cell self) -> cmf::bytestring"},
-	 { "Cell_set_WKB", (PyCFunction)(void(*)(void))_wrap_Cell_set_WKB, METH_VARARGS|METH_KEYWORDS, "set_WKB(Cell self, cmf::bytestring wkb)"},
-	 { "Cell_get_weather", (PyCFunction)(void(*)(void))_wrap_Cell_get_weather, METH_VARARGS|METH_KEYWORDS, "get_weather(Cell self, Time t) -> Weather"},
-	 { "Cell_layer_count", _wrap_Cell_layer_count, METH_O, "layer_count(Cell self) -> size_t"},
-	 { "Cell_get_layer", (PyCFunction)(void(*)(void))_wrap_Cell_get_layer, METH_VARARGS|METH_KEYWORDS, "get_layer(Cell self, ptrdiff_t ndx) -> cmf::upslope::SoilLayer::ptr"},
+	 { "Cell_get_WKB", _wrap_Cell_get_WKB, METH_O, "\n"
+		"get_WKB(Cell self) -> cmf::bytestring\n"
+		"cmf::bytestring\n"
+		"get_WKB() const \n"
+		""},
+	 { "Cell_set_WKB", (PyCFunction)(void(*)(void))_wrap_Cell_set_WKB, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_WKB(Cell self, cmf::bytestring wkb)\n"
+		"void\n"
+		"set_WKB(cmf::bytestring wkb) \n"
+		""},
+	 { "Cell_get_weather", (PyCFunction)(void(*)(void))_wrap_Cell_get_weather, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_weather(Cell self, Time t) -> Weather\n"
+		"cmf::atmosphere::Weather get_weather(cmf::math::Time t) const\n"
+		"\n"
+		"Returns the current meteorological conditions of the cell at time t.\n"
+		"\n"
+		""},
+	 { "Cell_layer_count", _wrap_Cell_layer_count, METH_O, "\n"
+		"layer_count(Cell self) -> size_t\n"
+		"size_t\n"
+		"layer_count() const\n"
+		"\n"
+		"Returns the number of layers of the cell. \n"
+		""},
+	 { "Cell_get_layer", (PyCFunction)(void(*)(void))_wrap_Cell_get_layer, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_layer(Cell self, ptrdiff_t ndx) -> cmf::upslope::SoilLayer::ptr\n"
+		"cmf::upslope::SoilLayer::ptr get_layer(ptrdiff_t ndx) const\n"
+		"\n"
+		"Returns the layer at position ndx.\n"
+		"\n"
+		"From python this function is masked as a sequence: \n"
+		""},
 	 { "Cell_add_layer", _wrap_Cell_add_layer, METH_VARARGS, "\n"
 		"add_layer(Cell self, real lowerboundary, RetentionCurve r_curve, real saturateddepth=10) -> cmf::upslope::SoilLayer::ptr\n"
 		"add_layer(Cell self, real lowerboundary) -> cmf::upslope::SoilLayer::ptr\n"
+		"cmf::upslope::SoilLayer::ptr add_layer(real lowerboundary)\n"
+		"\n"
+		"Adds a rather conceptual layer to the cell. Use this version for\n"
+		"conceptual models. The retention curve resambles an empty bucket. \n"
 		""},
-	 { "Cell_remove_last_layer", _wrap_Cell_remove_last_layer, METH_O, "remove_last_layer(Cell self)"},
-	 { "Cell_remove_layers", _wrap_Cell_remove_layers, METH_O, "remove_layers(Cell self)"},
-	 { "delete_Cell", _wrap_delete_Cell, METH_O, "delete_Cell(Cell self)"},
-	 { "new_Cell", (PyCFunction)(void(*)(void))_wrap_new_Cell, METH_VARARGS|METH_KEYWORDS, "new_Cell(double x, double y, double z, double area, project _project) -> Cell"},
-	 { "Cell_to_string", _wrap_Cell_to_string, METH_O, "to_string(Cell self) -> std::string"},
+	 { "Cell_remove_last_layer", _wrap_Cell_remove_last_layer, METH_O, "\n"
+		"remove_last_layer(Cell self)\n"
+		"void\n"
+		"remove_last_layer()\n"
+		"\n"
+		"Remove the lowest layer from this cell. \n"
+		""},
+	 { "Cell_remove_layers", _wrap_Cell_remove_layers, METH_O, "\n"
+		"remove_layers(Cell self)\n"
+		"void\n"
+		"remove_layers()\n"
+		"\n"
+		"Removes all layers from this cell. \n"
+		""},
+	 { "delete_Cell", _wrap_delete_Cell, METH_O, "\n"
+		"delete_Cell(Cell self)\n"
+		"virtual ~Cell() \n"
+		""},
+	 { "new_Cell", (PyCFunction)(void(*)(void))_wrap_new_Cell, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Cell(double x, double y, double z, double area, project _project) -> Cell\n"
+		"Cell(double x,\n"
+		"double y, double z, double area, cmf::project &_project) \n"
+		""},
+	 { "Cell_to_string", _wrap_Cell_to_string, METH_O, "\n"
+		"to_string(Cell self) -> std::string\n"
+		"std::string\n"
+		"to_string() const \n"
+		""},
 	 { "Cell___cmf_state_list_interface__", _wrap_Cell___cmf_state_list_interface__, METH_O, "__cmf_state_list_interface__(Cell self) -> state_list"},
 	 { "Cell_topology_get", _wrap_Cell_topology_get, METH_O, "Cell_topology_get(Cell self) -> Topology"},
 	 { "Cell_meteorology_set", _wrap_Cell_meteorology_set, METH_VARARGS, "Cell_meteorology_set(Cell self, Meteorology meteorology)"},
@@ -78971,28 +85816,79 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Topology_y_get", _wrap_Topology_y_get, METH_O, "Topology_y_get(Topology self) -> double &"},
 	 { "Topology_z_set", _wrap_Topology_z_set, METH_VARARGS, "Topology_z_set(Topology self, double & z)"},
 	 { "Topology_z_get", _wrap_Topology_z_get, METH_O, "Topology_z_get(Topology self) -> double &"},
-	 { "Topology_get_position", _wrap_Topology_get_position, METH_O, "get_position(Topology self) -> point"},
+	 { "Topology_get_position", _wrap_Topology_get_position, METH_O, "\n"
+		"get_position(Topology self) -> point\n"
+		"cmf::geometry::point get_position() const\n"
+		"\n"
+		"Returns the center of the cell. \n"
+		""},
 	 { "Topology_flowwidth", _wrap_Topology_flowwidth, METH_VARARGS, "\n"
 		"flowwidth(Topology self, Cell target) -> double\n"
 		"flowwidth(Topology self, Topology target) -> double\n"
+		"double\n"
+		"flowwidth(Topology &target) \n"
 		""},
 	 { "Topology_AddNeighbor", _wrap_Topology_AddNeighbor, METH_VARARGS, "\n"
 		"AddNeighbor(Topology self, Cell target, double flowwidth)\n"
 		"AddNeighbor(Topology self, Topology target, double flowwidth)\n"
+		"void\n"
+		"AddNeighbor(Topology &target, double flowwidth) \n"
 		""},
-	 { "Topology_RemoveNeighbor", (PyCFunction)(void(*)(void))_wrap_Topology_RemoveNeighbor, METH_VARARGS|METH_KEYWORDS, "RemoveNeighbor(Topology self, Topology target)"},
-	 { "Topology_neighbor_count", _wrap_Topology_neighbor_count, METH_O, "neighbor_count(Topology self) -> size_t"},
-	 { "Topology_MainOutlet", (PyCFunction)(void(*)(void))_wrap_Topology_MainOutlet, METH_VARARGS|METH_KEYWORDS, "MainOutlet(Topology self, bool forceRecalc=False) -> Cell"},
-	 { "Topology_ContributingArea", _wrap_Topology_ContributingArea, METH_O, "ContributingArea(Topology self) -> double"},
+	 { "Topology_RemoveNeighbor", (PyCFunction)(void(*)(void))_wrap_Topology_RemoveNeighbor, METH_VARARGS|METH_KEYWORDS, "\n"
+		"RemoveNeighbor(Topology self, Topology target)\n"
+		"void\n"
+		"RemoveNeighbor(Topology &target)\n"
+		"\n"
+		"Removes the topological relation to the given cell. \n"
+		""},
+	 { "Topology_neighbor_count", _wrap_Topology_neighbor_count, METH_O, "\n"
+		"neighbor_count(Topology self) -> size_t\n"
+		"size_t\n"
+		"neighbor_count() const\n"
+		"\n"
+		"Returns the number of neighbors. \n"
+		""},
+	 { "Topology_MainOutlet", (PyCFunction)(void(*)(void))_wrap_Topology_MainOutlet, METH_VARARGS|METH_KEYWORDS, "\n"
+		"MainOutlet(Topology self, bool forceRecalc=False) -> Cell\n"
+		"Cell*\n"
+		"MainOutlet(bool forceRecalc=false)\n"
+		"\n"
+		"Returns the mainoutlet (steepest lower neighbor) \n"
+		""},
+	 { "Topology_ContributingArea", _wrap_Topology_ContributingArea, METH_O, "\n"
+		"ContributingArea(Topology self) -> double\n"
+		"double ContributingArea() const\n"
+		"\n"
+		"Get the contributing area (steepest path upwards) \n"
+		""},
 	 { "Topology_calculate_contributing_area", (PyCFunction)(void(*)(void))_wrap_Topology_calculate_contributing_area, METH_VARARGS|METH_KEYWORDS, "calculate_contributing_area(cell_vector arg1)"},
 	 { "Topology___eq__", (PyCFunction)(void(*)(void))_wrap_Topology___eq__, METH_VARARGS|METH_KEYWORDS, "__eq__(Topology self, Topology cmp) -> bool"},
 	 { "delete_Topology", _wrap_delete_Topology, METH_O, "delete_Topology(Topology self)"},
 	 { "Topology_swigregister", Topology_swigregister, METH_O, NULL},
-	 { "new_neighbor_iterator", (PyCFunction)(void(*)(void))_wrap_new_neighbor_iterator, METH_VARARGS|METH_KEYWORDS, "new_neighbor_iterator(Cell cell) -> neighbor_iterator"},
-	 { "neighbor_iterator_cell", _wrap_neighbor_iterator_cell, METH_O, "cell(neighbor_iterator self) -> Cell"},
-	 { "neighbor_iterator_flowwidth", _wrap_neighbor_iterator_flowwidth, METH_O, "flowwidth(neighbor_iterator self) -> double"},
-	 { "neighbor_iterator_valid", _wrap_neighbor_iterator_valid, METH_O, "valid(neighbor_iterator self) -> bool"},
-	 { "neighbor_iterator_next_neighbor", _wrap_neighbor_iterator_next_neighbor, METH_O, "next_neighbor(neighbor_iterator self) -> neighbor_iterator"},
+	 { "new_neighbor_iterator", (PyCFunction)(void(*)(void))_wrap_new_neighbor_iterator, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_neighbor_iterator(Cell cell) -> neighbor_iterator\n"
+		"neighbor_iterator(cmf::upslope::Cell *cell) \n"
+		""},
+	 { "neighbor_iterator_cell", _wrap_neighbor_iterator_cell, METH_O, "\n"
+		"cell(neighbor_iterator self) -> Cell\n"
+		"Cell&\n"
+		"cell() \n"
+		""},
+	 { "neighbor_iterator_flowwidth", _wrap_neighbor_iterator_flowwidth, METH_O, "\n"
+		"flowwidth(neighbor_iterator self) -> double\n"
+		"double flowwidth() \n"
+		""},
+	 { "neighbor_iterator_valid", _wrap_neighbor_iterator_valid, METH_O, "\n"
+		"valid(neighbor_iterator self) -> bool\n"
+		"bool\n"
+		"valid() const \n"
+		""},
+	 { "neighbor_iterator_next_neighbor", _wrap_neighbor_iterator_next_neighbor, METH_O, "\n"
+		"next_neighbor(neighbor_iterator self) -> neighbor_iterator\n"
+		"neighbor_iterator& next_neighbor()\n"
+		"\n"
+		"Points the iterator to the next neighbor. \n"
+		""},
 	 { "neighbor_iterator___eq__", (PyCFunction)(void(*)(void))_wrap_neighbor_iterator___eq__, METH_VARARGS|METH_KEYWORDS, "__eq__(neighbor_iterator self, neighbor_iterator cmp) -> bool"},
 	 { "neighbor_iterator___neq__", (PyCFunction)(void(*)(void))_wrap_neighbor_iterator___neq__, METH_VARARGS|METH_KEYWORDS, "__neq__(neighbor_iterator self, neighbor_iterator cmp) -> bool"},
 	 { "delete_neighbor_iterator", _wrap_delete_neighbor_iterator, METH_O, "delete_neighbor_iterator(neighbor_iterator self)"},
@@ -79001,22 +85897,55 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "new_cell_vector", _wrap_new_cell_vector, METH_VARARGS, "\n"
 		"cell_vector()\n"
 		"new_cell_vector(cell_vector copy) -> cell_vector\n"
+		"cell_vector(cell_const_iterator first, cell_const_iterator last) \n"
 		""},
 	 { "cell_vector___getitem__", _wrap_cell_vector___getitem__, METH_VARARGS, "\n"
 		"__getitem__(cell_vector self, ptrdiff_t index) -> Cell\n"
 		"__getitem__(cell_vector self, ptrdiff_t index) -> Cell\n"
 		""},
-	 { "cell_vector_append", (PyCFunction)(void(*)(void))_wrap_cell_vector_append, METH_VARARGS|METH_KEYWORDS, "append(cell_vector self, Cell cell)"},
+	 { "cell_vector_append", (PyCFunction)(void(*)(void))_wrap_cell_vector_append, METH_VARARGS|METH_KEYWORDS, "\n"
+		"append(cell_vector self, Cell cell)\n"
+		"void\n"
+		"append(cmf::upslope::Cell &cell) \n"
+		""},
 	 { "cell_vector_remove", _wrap_cell_vector_remove, METH_VARARGS, "\n"
 		"remove(cell_vector self, ptrdiff_t index)\n"
 		"remove(cell_vector self, Cell cell)\n"
+		"void\n"
+		"remove(const cmf::upslope::Cell &cell) \n"
 		""},
-	 { "cell_vector_pop", _wrap_cell_vector_pop, METH_O, "pop(cell_vector self) -> Cell"},
-	 { "cell_vector___len__", _wrap_cell_vector___len__, METH_O, "__len__(cell_vector self) -> size_t"},
-	 { "cell_vector___getslice__", (PyCFunction)(void(*)(void))_wrap_cell_vector___getslice__, METH_VARARGS|METH_KEYWORDS, "__getslice__(cell_vector self, ptrdiff_t start, ptrdiff_t end, ptrdiff_t step=1) -> cell_vector"},
-	 { "cell_vector_get_area", _wrap_cell_vector_get_area, METH_O, "get_area(cell_vector self) -> double"},
-	 { "cell_vector___contains__", (PyCFunction)(void(*)(void))_wrap_cell_vector___contains__, METH_VARARGS|METH_KEYWORDS, "__contains__(cell_vector self, Cell cell) -> bool"},
-	 { "delete_cell_vector", _wrap_delete_cell_vector, METH_O, "delete_cell_vector(cell_vector self)"},
+	 { "cell_vector_pop", _wrap_cell_vector_pop, METH_O, "\n"
+		"pop(cell_vector self) -> Cell\n"
+		"Cell& pop()\n"
+		"\n"
+		"Returns and removes the last cell. \n"
+		""},
+	 { "cell_vector___len__", _wrap_cell_vector___len__, METH_O, "\n"
+		"__len__(cell_vector self) -> size_t\n"
+		"size_t size()\n"
+		"const \n"
+		""},
+	 { "cell_vector___getslice__", (PyCFunction)(void(*)(void))_wrap_cell_vector___getslice__, METH_VARARGS|METH_KEYWORDS, "\n"
+		"__getslice__(cell_vector self, ptrdiff_t start, ptrdiff_t end, ptrdiff_t step=1) -> cell_vector\n"
+		"cell_vector get_slice(ptrdiff_t start, ptrdiff_t end, ptrdiff_t\n"
+		"step=1) \n"
+		""},
+	 { "cell_vector_get_area", _wrap_cell_vector_get_area, METH_O, "\n"
+		"get_area(cell_vector self) -> double\n"
+		"double\n"
+		"get_area() const\n"
+		"\n"
+		"Returns sum of the area of the cells. \n"
+		""},
+	 { "cell_vector___contains__", (PyCFunction)(void(*)(void))_wrap_cell_vector___contains__, METH_VARARGS|METH_KEYWORDS, "\n"
+		"__contains__(cell_vector self, Cell cell) -> bool\n"
+		"bool\n"
+		"contains(const cmf::upslope::Cell &cell) const \n"
+		""},
+	 { "delete_cell_vector", _wrap_delete_cell_vector, METH_O, "\n"
+		"delete_cell_vector(cell_vector self)\n"
+		"virtual ~cell_vector() \n"
+		""},
 	 { "cell_vector_lowest_get", _wrap_cell_vector_lowest_get, METH_O, "cell_vector_lowest_get(cell_vector self) -> Cell"},
 	 { "cell_vector_highest_get", _wrap_cell_vector_highest_get, METH_O, "cell_vector_highest_get(cell_vector self) -> Cell"},
 	 { "cell_vector_swigregister", cell_vector_swigregister, METH_O, NULL},
@@ -79037,7 +85966,22 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "subcatchment_inflowcells_get", _wrap_subcatchment_inflowcells_get, METH_O, "subcatchment_inflowcells_get(subcatchment self) -> cell_vector"},
 	 { "subcatchment_cells_set", _wrap_subcatchment_cells_set, METH_VARARGS, "subcatchment_cells_set(subcatchment self, cell_vector cells)"},
 	 { "subcatchment_cells_get", _wrap_subcatchment_cells_get, METH_O, "subcatchment_cells_get(subcatchment self) -> cell_vector"},
-	 { "new_subcatchment", (PyCFunction)(void(*)(void))_wrap_new_subcatchment, METH_VARARGS|METH_KEYWORDS, "new_subcatchment(Cell pourpoint, double area_threshold=1e308) -> subcatchment"},
+	 { "new_subcatchment", (PyCFunction)(void(*)(void))_wrap_new_subcatchment, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_subcatchment(Cell pourpoint, double area_threshold=1e308) -> subcatchment\n"
+		"subcatchment(cmf::upslope::Cell &pourpoint, double\n"
+		"area_threshold=1e308)\n"
+		"\n"
+		"Creates a subcatchment from a pourpoint cell.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"pourpoint:  The pourpoint (outlet of the subcatchment)\n"
+		"\n"
+		"area_threshold:  Minimum contributing area size to form a\n"
+		"subcatchment. When area_threshold > area(cells), all upslope cells of\n"
+		"pourpoint are used. \n"
+		""},
 	 { "delete_subcatchment", _wrap_delete_subcatchment, METH_O, "delete_subcatchment(subcatchment self)"},
 	 { "subcatchment_swigregister", subcatchment_swigregister, METH_O, NULL},
 	 { "subcatchment_swiginit", subcatchment_swiginit, METH_VARARGS, NULL},
@@ -79048,52 +85992,144 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "RetentionCurve_K", _wrap_RetentionCurve_K, METH_VARARGS, "\n"
 		"K(RetentionCurve self, real wetness) -> real\n"
 		"K(RetentionCurve self, cmf::math::num_array const & wetness) -> cmf::math::num_array\n"
+		"cmf::math::num_array K(const cmf::math::num_array &wetness) const \n"
 		""},
-	 { "RetentionCurve_Wetness_eff", (PyCFunction)(void(*)(void))_wrap_RetentionCurve_Wetness_eff, METH_VARARGS|METH_KEYWORDS, "Wetness_eff(RetentionCurve self, real wetness, real pF_r=4.2) -> real"},
-	 { "RetentionCurve_Porosity", (PyCFunction)(void(*)(void))_wrap_RetentionCurve_Porosity, METH_VARARGS|METH_KEYWORDS, "Porosity(RetentionCurve self, real depth=0.0) -> real"},
-	 { "RetentionCurve_VoidVolume", (PyCFunction)(void(*)(void))_wrap_RetentionCurve_VoidVolume, METH_VARARGS|METH_KEYWORDS, "VoidVolume(RetentionCurve self, real upperDepth, real lowerDepth, real Area) -> real"},
-	 { "RetentionCurve_FillHeight", (PyCFunction)(void(*)(void))_wrap_RetentionCurve_FillHeight, METH_VARARGS|METH_KEYWORDS, "FillHeight(RetentionCurve self, real lowerDepth, real Area, real Volume) -> real"},
+	 { "RetentionCurve_Wetness_eff", (PyCFunction)(void(*)(void))_wrap_RetentionCurve_Wetness_eff, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Wetness_eff(RetentionCurve self, real wetness, real pF_r=4.2) -> real\n"
+		"virtual real Wetness_eff(real wetness, real pF_r=4.2) const\n"
+		"\n"
+		"Returns the effective wetness, using a residual pF value \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"    w_{eff}\n"
+		"    =\n"
+		"    \\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}\n"
+		"\n"
+		".\n"
+		"\n"
+		""},
+	 { "RetentionCurve_Porosity", (PyCFunction)(void(*)(void))_wrap_RetentionCurve_Porosity, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Porosity(RetentionCurve self, real depth=0.0) -> real\n"
+		"virtual real Porosity(real depth=0.0) const =0\n"
+		"\n"
+		"Returns the porosity at a certain depth. \n"
+		""},
+	 { "RetentionCurve_VoidVolume", (PyCFunction)(void(*)(void))_wrap_RetentionCurve_VoidVolume, METH_VARARGS|METH_KEYWORDS, "\n"
+		"VoidVolume(RetentionCurve self, real upperDepth, real lowerDepth, real Area) -> real\n"
+		"virtual real VoidVolume(real upperDepth, real lowerDepth, real Area)\n"
+		"const\n"
+		"\n"
+		"Returns the void volume of a soil column. \n"
+		""},
+	 { "RetentionCurve_FillHeight", (PyCFunction)(void(*)(void))_wrap_RetentionCurve_FillHeight, METH_VARARGS|METH_KEYWORDS, "\n"
+		"FillHeight(RetentionCurve self, real lowerDepth, real Area, real Volume) -> real\n"
+		"virtual real FillHeight(real lowerDepth, real Area, real Volume) const\n"
+		"\n"
+		"Returns the thickness of a soil column with a certain pore volume. \n"
+		""},
 	 { "RetentionCurve_Diffusivity", _wrap_RetentionCurve_Diffusivity, METH_VARARGS, "\n"
 		"Diffusivity(RetentionCurve self, real wetness) -> real\n"
 		"Diffusivity(RetentionCurve self, cmf::math::num_array & wetness) -> cmf::math::num_array\n"
+		"cmf::math::num_array Diffusivity(cmf::math::num_array &wetness) \n"
 		""},
 	 { "RetentionCurve_Wetness", _wrap_RetentionCurve_Wetness, METH_VARARGS, "\n"
 		"Wetness(RetentionCurve self, real suction) -> real\n"
 		"Wetness(RetentionCurve self, cmf::math::num_array const & suction) -> cmf::math::num_array\n"
+		"cmf::math::num_array Wetness(const cmf::math::num_array &suction)\n"
+		"const \n"
 		""},
 	 { "RetentionCurve_theta", _wrap_RetentionCurve_theta, METH_VARARGS, "\n"
 		"theta(RetentionCurve self, real wetness) -> real\n"
 		"theta(RetentionCurve self, cmf::math::num_array const & wetness) -> cmf::math::num_array\n"
+		"cmf::math::num_array theta(const cmf::math::num_array &wetness) const\n"
+		"\n"
 		""},
 	 { "RetentionCurve_dPsiM_dW", _wrap_RetentionCurve_dPsiM_dW, METH_VARARGS, "\n"
 		"dPsiM_dW(RetentionCurve self, real wetness) -> real\n"
 		"dPsiM_dW(RetentionCurve self, cmf::math::num_array const & wetness) -> cmf::math::num_array\n"
+		"cmf::math::num_array dPsiM_dW(const cmf::math::num_array &wetness)\n"
+		"const \n"
 		""},
 	 { "RetentionCurve_Wetness_pF", _wrap_RetentionCurve_Wetness_pF, METH_VARARGS, "\n"
 		"Wetness_pF(RetentionCurve self, real pF) -> real\n"
 		"Wetness_pF(RetentionCurve self, cmf::math::num_array const & pF) -> cmf::math::num_array\n"
+		"cmf::math::num_array Wetness_pF(const cmf::math::num_array &pF) const\n"
+		"\n"
 		""},
 	 { "RetentionCurve_MatricPotential", _wrap_RetentionCurve_MatricPotential, METH_VARARGS, "\n"
 		"MatricPotential(RetentionCurve self, real wetness) -> real\n"
 		"MatricPotential(RetentionCurve self, cmf::math::num_array const & wetness) -> cmf::math::num_array\n"
+		"cmf::math::num_array MatricPotential(const cmf::math::num_array\n"
+		"&wetness) const \n"
 		""},
-	 { "RetentionCurve_copy", _wrap_RetentionCurve_copy, METH_O, "copy(RetentionCurve self) -> RetentionCurve"},
-	 { "delete_RetentionCurve", _wrap_delete_RetentionCurve, METH_O, "delete_RetentionCurve(RetentionCurve self)"},
+	 { "RetentionCurve_copy", _wrap_RetentionCurve_copy, METH_O, "\n"
+		"copy(RetentionCurve self) -> RetentionCurve\n"
+		"virtual\n"
+		"RetentionCurve* copy() const =0 \n"
+		""},
+	 { "delete_RetentionCurve", _wrap_delete_RetentionCurve, METH_O, "\n"
+		"delete_RetentionCurve(RetentionCurve self)\n"
+		"virtual ~RetentionCurve() \n"
+		""},
 	 { "RetentionCurve_swigregister", RetentionCurve_swigregister, METH_O, NULL},
 	 { "BrooksCoreyRetentionCurve_Ksat_set", _wrap_BrooksCoreyRetentionCurve_Ksat_set, METH_VARARGS, "BrooksCoreyRetentionCurve_Ksat_set(BrooksCoreyRetentionCurve self, real Ksat)"},
 	 { "BrooksCoreyRetentionCurve_Ksat_get", _wrap_BrooksCoreyRetentionCurve_Ksat_get, METH_O, "BrooksCoreyRetentionCurve_Ksat_get(BrooksCoreyRetentionCurve self) -> real"},
-	 { "BrooksCoreyRetentionCurve_SetPorosity", (PyCFunction)(void(*)(void))_wrap_BrooksCoreyRetentionCurve_SetPorosity, METH_VARARGS|METH_KEYWORDS, "SetPorosity(BrooksCoreyRetentionCurve self, real porosity, real porosity_decay=0)"},
-	 { "BrooksCoreyRetentionCurve_Transmissivity", (PyCFunction)(void(*)(void))_wrap_BrooksCoreyRetentionCurve_Transmissivity, METH_VARARGS|METH_KEYWORDS, "Transmissivity(BrooksCoreyRetentionCurve self, real upperDepth, real lowerDepth, real theta) -> real"},
+	 { "BrooksCoreyRetentionCurve_SetPorosity", (PyCFunction)(void(*)(void))_wrap_BrooksCoreyRetentionCurve_SetPorosity, METH_VARARGS|METH_KEYWORDS, "\n"
+		"SetPorosity(BrooksCoreyRetentionCurve self, real porosity, real porosity_decay=0)\n"
+		"void\n"
+		"SetPorosity(real porosity, real porosity_decay=0)\n"
+		"\n"
+		"Sets the porosity (Volume of pores per volume of soil) and the\n"
+		"exponential porosity decline with depth. \n"
+		""},
+	 { "BrooksCoreyRetentionCurve_Transmissivity", (PyCFunction)(void(*)(void))_wrap_BrooksCoreyRetentionCurve_Transmissivity, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Transmissivity(BrooksCoreyRetentionCurve self, real upperDepth, real lowerDepth, real theta) -> real\n"
+		"real\n"
+		"Transmissivity(real upperDepth, real lowerDepth, real theta) const \n"
+		""},
 	 { "BrooksCoreyRetentionCurve_wetness_X_set", _wrap_BrooksCoreyRetentionCurve_wetness_X_set, METH_VARARGS, "BrooksCoreyRetentionCurve_wetness_X_set(BrooksCoreyRetentionCurve self, real wetness_X)"},
 	 { "BrooksCoreyRetentionCurve_wetness_X_get", _wrap_BrooksCoreyRetentionCurve_wetness_X_get, METH_O, "BrooksCoreyRetentionCurve_wetness_X_get(BrooksCoreyRetentionCurve self) -> real"},
 	 { "BrooksCoreyRetentionCurve_Psi_X_set", _wrap_BrooksCoreyRetentionCurve_Psi_X_set, METH_VARARGS, "BrooksCoreyRetentionCurve_Psi_X_set(BrooksCoreyRetentionCurve self, real Psi_X)"},
 	 { "BrooksCoreyRetentionCurve_Psi_X_get", _wrap_BrooksCoreyRetentionCurve_Psi_X_get, METH_O, "BrooksCoreyRetentionCurve_Psi_X_get(BrooksCoreyRetentionCurve self) -> real"},
 	 { "BrooksCoreyRetentionCurve_residual_theta_set", _wrap_BrooksCoreyRetentionCurve_residual_theta_set, METH_VARARGS, "BrooksCoreyRetentionCurve_residual_theta_set(BrooksCoreyRetentionCurve self, real residual_theta)"},
 	 { "BrooksCoreyRetentionCurve_residual_theta_get", _wrap_BrooksCoreyRetentionCurve_residual_theta_get, METH_O, "BrooksCoreyRetentionCurve_residual_theta_get(BrooksCoreyRetentionCurve self) -> real"},
-	 { "new_BrooksCoreyRetentionCurve", (PyCFunction)(void(*)(void))_wrap_new_BrooksCoreyRetentionCurve, METH_VARARGS|METH_KEYWORDS, "new_BrooksCoreyRetentionCurve(real ksat=15, real porosity=0.5, real _b=5, real theta_x=0.2, real psi_x=cmf::upslope::pF_to_waterhead(2.5), real porosity_decay=0) -> BrooksCoreyRetentionCurve"},
+	 { "new_BrooksCoreyRetentionCurve", (PyCFunction)(void(*)(void))_wrap_new_BrooksCoreyRetentionCurve, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_BrooksCoreyRetentionCurve(real ksat=15, real porosity=0.5, real _b=5, real theta_x=0.2, real psi_x=cmf::upslope::pF_to_waterhead(2.5), real porosity_decay=0) -> BrooksCoreyRetentionCurve\n"
+		"BrooksCoreyRetentionCurve(real ksat=15, real porosity=0.5, real _b=5,\n"
+		"real theta_x=0.2, real psi_x=pF_to_waterhead(2.5), real\n"
+		"porosity_decay=0)\n"
+		"\n"
+		"Creates a brooks corey retention curve.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"ksat:  Saturated conductivity :math:`\\\\frac{m}{day}`\n"
+		"\n"
+		"porosity:   :math:`\\\\frac{m^3 Pores}{m^3 Soil}`\n"
+		"\n"
+		"_b:  Shape of the retention curve (if you do not know how to\n"
+		"parameterize this, take a look at the other constructor)\n"
+		"\n"
+		"theta_x:   :math:`\\\\theta_X` Water content at a specific suction pressure\n"
+		"\n"
+		"psi_x:  Suction pressure for :math:`\\\\theta_X` in m water column, use the\n"
+		"conversion functions pF_to_waterhead, pressure_to_waterhead to convert\n"
+		"pressure in to waterhead height (default pF=2.5)\n"
+		"\n"
+		"porosity_decay:  Relative decay of porosity with depth, e.g. 0.1 means\n"
+		"conductivity gets 10% smaller per meter \n"
+		""},
 	 { "BrooksCoreyRetentionCurve_CreateFrom2Points", (PyCFunction)(void(*)(void))_wrap_BrooksCoreyRetentionCurve_CreateFrom2Points, METH_VARARGS|METH_KEYWORDS, "CreateFrom2Points(real ksat, real porosity, real theta1, real theta2, real psi_1=cmf::upslope::pF_to_waterhead(2.5), real psi_2=cmf::upslope::pF_to_waterhead(4.2)) -> BrooksCoreyRetentionCurve"},
-	 { "BrooksCoreyRetentionCurve_copy", _wrap_BrooksCoreyRetentionCurve_copy, METH_O, "copy(BrooksCoreyRetentionCurve self) -> BrooksCoreyRetentionCurve"},
-	 { "delete_BrooksCoreyRetentionCurve", _wrap_delete_BrooksCoreyRetentionCurve, METH_O, "delete_BrooksCoreyRetentionCurve(BrooksCoreyRetentionCurve self)"},
+	 { "BrooksCoreyRetentionCurve_copy", _wrap_BrooksCoreyRetentionCurve_copy, METH_O, "\n"
+		"copy(BrooksCoreyRetentionCurve self) -> BrooksCoreyRetentionCurve\n"
+		"virtual BrooksCoreyRetentionCurve* copy() const \n"
+		""},
+	 { "delete_BrooksCoreyRetentionCurve", _wrap_delete_BrooksCoreyRetentionCurve, METH_O, "\n"
+		"delete_BrooksCoreyRetentionCurve(BrooksCoreyRetentionCurve self)\n"
+		"virtual ~BrooksCoreyRetentionCurve() \n"
+		""},
 	 { "BrooksCoreyRetentionCurve_b_set", _wrap_BrooksCoreyRetentionCurve_b_set, METH_VARARGS, "BrooksCoreyRetentionCurve_b_set(BrooksCoreyRetentionCurve self, real b)"},
 	 { "BrooksCoreyRetentionCurve_b_get", _wrap_BrooksCoreyRetentionCurve_b_get, METH_O, "BrooksCoreyRetentionCurve_b_get(BrooksCoreyRetentionCurve self) -> real"},
 	 { "BrooksCoreyRetentionCurve_swigregister", BrooksCoreyRetentionCurve_swigregister, METH_O, NULL},
@@ -79114,11 +86150,63 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "VanGenuchtenMualem_theta_r_get", _wrap_VanGenuchtenMualem_theta_r_get, METH_O, "VanGenuchtenMualem_theta_r_get(VanGenuchtenMualem self) -> real"},
 	 { "VanGenuchtenMualem_w0_set", _wrap_VanGenuchtenMualem_w0_set, METH_VARARGS, "VanGenuchtenMualem_w0_set(VanGenuchtenMualem self, real w0)"},
 	 { "VanGenuchtenMualem_w0_get", _wrap_VanGenuchtenMualem_w0_get, METH_O, "VanGenuchtenMualem_w0_get(VanGenuchtenMualem self) -> real"},
-	 { "VanGenuchtenMualem_Transmissivity", (PyCFunction)(void(*)(void))_wrap_VanGenuchtenMualem_Transmissivity, METH_VARARGS|METH_KEYWORDS, "Transmissivity(VanGenuchtenMualem self, real upperDepth, real lowerDepth, real wetness) -> real"},
-	 { "VanGenuchtenMualem_fit_w0", (PyCFunction)(void(*)(void))_wrap_VanGenuchtenMualem_fit_w0, METH_VARARGS|METH_KEYWORDS, "fit_w0(VanGenuchtenMualem self, real w1=1.01, real Psi_p=1.0, real tolerance=0.05) -> real"},
-	 { "VanGenuchtenMualem_copy", _wrap_VanGenuchtenMualem_copy, METH_O, "copy(VanGenuchtenMualem self) -> VanGenuchtenMualem"},
-	 { "new_VanGenuchtenMualem", (PyCFunction)(void(*)(void))_wrap_new_VanGenuchtenMualem, METH_VARARGS|METH_KEYWORDS, "new_VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real n=1.211, real m=-1, real theta_r=0.0, real w0=0.99) -> VanGenuchtenMualem"},
-	 { "delete_VanGenuchtenMualem", _wrap_delete_VanGenuchtenMualem, METH_O, "delete_VanGenuchtenMualem(VanGenuchtenMualem self)"},
+	 { "VanGenuchtenMualem_Transmissivity", (PyCFunction)(void(*)(void))_wrap_VanGenuchtenMualem_Transmissivity, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Transmissivity(VanGenuchtenMualem self, real upperDepth, real lowerDepth, real wetness) -> real\n"
+		"virtual real\n"
+		"Transmissivity(real upperDepth, real lowerDepth, real wetness) const\n"
+		"\n"
+		""},
+	 { "VanGenuchtenMualem_fit_w0", (PyCFunction)(void(*)(void))_wrap_VanGenuchtenMualem_fit_w0, METH_VARARGS|METH_KEYWORDS, "\n"
+		"fit_w0(VanGenuchtenMualem self, real w1=1.01, real Psi_p=1.0, real tolerance=0.05) -> real\n"
+		"real\n"
+		"fit_w0(real w1=1.01, real Psi_p=1.0, real tolerance=0.05)\n"
+		"\n"
+		"Fits the break point wetness w0, to ensure a specific oversaturation\n"
+		"at a given hydrostatic potential.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"w1:  The oversaturation wetness to archieve (>1), default = 1.01\n"
+		"\n"
+		"Psi_p:  the hydrostatic potential for w1, default = +1.0 m\n"
+		"\n"
+		"tolerance:  \n"
+		""},
+	 { "VanGenuchtenMualem_copy", _wrap_VanGenuchtenMualem_copy, METH_O, "\n"
+		"copy(VanGenuchtenMualem self) -> VanGenuchtenMualem\n"
+		"VanGenuchtenMualem* copy() const \n"
+		""},
+	 { "new_VanGenuchtenMualem", (PyCFunction)(void(*)(void))_wrap_new_VanGenuchtenMualem, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real n=1.211, real m=-1, real theta_r=0.0, real w0=0.99) -> VanGenuchtenMualem\n"
+		"VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real\n"
+		"n=1.211, real m=-1, real theta_r=0.0, real w0=0.99)\n"
+		"\n"
+		"Creates a van Genuchten-Mualem retention curve.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"Ksat:  Saturated conductivity in :math:`\\\\frac m{day}`\n"
+		"\n"
+		"phi:  Porosity in :math:`\\\\frac{m^3 Pores}{m^3 Soil}`\n"
+		"\n"
+		"alpha:  Van Genuchten :math:`\\\\alpha` in :math:`\\\\frac 1{cm}`\n"
+		"\n"
+		"n:  Van Genuchten n\n"
+		"\n"
+		"m:  Van Genuchten m parameter, if negative m is calculated as :math:`1-\\\\frac 1 n`\n"
+		"\n"
+		"theta_r:  Water content for :math:`\\\\lim\\\\limits_{\\\\Psi_M \\\\rightarrow -\\\\infty}{\\\\theta(\\\\Psi_M)}`\n"
+		"\n"
+		"w0:  Wetness above the parabolic extrapolation is used instead of the\n"
+		"Van Genuchten curve (usually calculated with fit_w0) \n"
+		""},
+	 { "delete_VanGenuchtenMualem", _wrap_delete_VanGenuchtenMualem, METH_O, "\n"
+		"delete_VanGenuchtenMualem(VanGenuchtenMualem self)\n"
+		"virtual\n"
+		"~VanGenuchtenMualem() \n"
+		""},
 	 { "VanGenuchtenMualem_swigregister", VanGenuchtenMualem_swigregister, METH_O, NULL},
 	 { "VanGenuchtenMualem_swiginit", VanGenuchtenMualem_swiginit, METH_VARARGS, NULL},
 	 { "LinearRetention_Ksat_set", _wrap_LinearRetention_Ksat_set, METH_VARARGS, "LinearRetention_Ksat_set(LinearRetention self, real Ksat)"},
@@ -79133,29 +86221,120 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "LinearRetention_porosity_decay_get", _wrap_LinearRetention_porosity_decay_get, METH_O, "LinearRetention_porosity_decay_get(LinearRetention self) -> real"},
 	 { "LinearRetention_beta_set", _wrap_LinearRetention_beta_set, METH_VARARGS, "LinearRetention_beta_set(LinearRetention self, real beta)"},
 	 { "LinearRetention_beta_get", _wrap_LinearRetention_beta_get, METH_O, "LinearRetention_beta_get(LinearRetention self) -> real"},
-	 { "LinearRetention_Transmissivity", (PyCFunction)(void(*)(void))_wrap_LinearRetention_Transmissivity, METH_VARARGS|METH_KEYWORDS, "Transmissivity(LinearRetention self, real upperDepth, real lowerDepth, real wetness) -> real"},
-	 { "LinearRetention_copy", _wrap_LinearRetention_copy, METH_O, "copy(LinearRetention self) -> LinearRetention"},
-	 { "new_LinearRetention", (PyCFunction)(void(*)(void))_wrap_new_LinearRetention, METH_VARARGS|METH_KEYWORDS, "new_LinearRetention(real ksat, real phi, real thickness, real residual_wetness=0.1) -> LinearRetention"},
-	 { "delete_LinearRetention", _wrap_delete_LinearRetention, METH_O, "delete_LinearRetention(LinearRetention self)"},
+	 { "LinearRetention_Transmissivity", (PyCFunction)(void(*)(void))_wrap_LinearRetention_Transmissivity, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Transmissivity(LinearRetention self, real upperDepth, real lowerDepth, real wetness) -> real\n"
+		"virtual real Transmissivity(real upperDepth, real lowerDepth, real\n"
+		"wetness) const \n"
+		""},
+	 { "LinearRetention_copy", _wrap_LinearRetention_copy, METH_O, "\n"
+		"copy(LinearRetention self) -> LinearRetention\n"
+		"LinearRetention* copy() const \n"
+		""},
+	 { "new_LinearRetention", (PyCFunction)(void(*)(void))_wrap_new_LinearRetention, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_LinearRetention(real ksat, real phi, real thickness, real residual_wetness=0.1) -> LinearRetention\n"
+		"LinearRetention(real ksat, real phi, real thickness, real\n"
+		"residual_wetness=0.1) \n"
+		""},
+	 { "delete_LinearRetention", _wrap_delete_LinearRetention, METH_O, "\n"
+		"delete_LinearRetention(LinearRetention self)\n"
+		"virtual ~LinearRetention() \n"
+		""},
 	 { "LinearRetention_swigregister", LinearRetention_swigregister, METH_O, NULL},
 	 { "LinearRetention_swiginit", LinearRetention_swiginit, METH_VARARGS, NULL},
-	 { "conductable_get_K", (PyCFunction)(void(*)(void))_wrap_conductable_get_K, METH_VARARGS|METH_KEYWORDS, "get_K(conductable self, point direction) -> real"},
+	 { "conductable_get_K", (PyCFunction)(void(*)(void))_wrap_conductable_get_K, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_K(conductable self, point direction) -> real\n"
+		"virtual real\n"
+		"get_K(cmf::geometry::point direction) const =0 \n"
+		""},
 	 { "conductable_cast", (PyCFunction)(void(*)(void))_wrap_conductable_cast, METH_VARARGS|METH_KEYWORDS, "cast(cmf::water::flux_node::ptr node) -> cmf::upslope::conductable::ptr"},
 	 { "delete_conductable", _wrap_delete_conductable, METH_O, "delete_conductable(conductable self)"},
 	 { "conductable_swigregister", conductable_swigregister, METH_O, NULL},
 	 { "SoilLayer_Position_get", _wrap_SoilLayer_Position_get, METH_O, "SoilLayer_Position_get(SoilLayer self) -> ptrdiff_t const"},
 	 { "SoilLayer_cell_get", _wrap_SoilLayer_cell_get, METH_O, "SoilLayer_cell_get(SoilLayer self) -> Cell"},
-	 { "SoilLayer___get_upper", _wrap_SoilLayer___get_upper, METH_O, "__get_upper(SoilLayer self) -> cmf::upslope::SoilLayer::ptr"},
-	 { "SoilLayer___get_lower", _wrap_SoilLayer___get_lower, METH_O, "__get_lower(SoilLayer self) -> cmf::upslope::SoilLayer::ptr"},
-	 { "SoilLayer_get_soil", _wrap_SoilLayer_get_soil, METH_O, "get_soil(SoilLayer self) -> RetentionCurve"},
-	 { "SoilLayer_set_soil", (PyCFunction)(void(*)(void))_wrap_SoilLayer_set_soil, METH_VARARGS|METH_KEYWORDS, "set_soil(SoilLayer self, RetentionCurve r_curve)"},
+	 { "SoilLayer___get_upper", _wrap_SoilLayer___get_upper, METH_O, "\n"
+		"__get_upper(SoilLayer self) -> cmf::upslope::SoilLayer::ptr\n"
+		"ptr\n"
+		"get_upper() const \n"
+		""},
+	 { "SoilLayer___get_lower", _wrap_SoilLayer___get_lower, METH_O, "\n"
+		"__get_lower(SoilLayer self) -> cmf::upslope::SoilLayer::ptr\n"
+		"ptr\n"
+		"get_lower() const \n"
+		""},
+	 { "SoilLayer_get_soil", _wrap_SoilLayer_get_soil, METH_O, "\n"
+		"get_soil(SoilLayer self) -> RetentionCurve\n"
+		"virtual\n"
+		"cmf::upslope::RetentionCurve& get_soil() const\n"
+		"\n"
+		"Returns the soil properties of the water storage. \n"
+		""},
+	 { "SoilLayer_set_soil", (PyCFunction)(void(*)(void))_wrap_SoilLayer_set_soil, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_soil(SoilLayer self, RetentionCurve r_curve)\n"
+		"virtual\n"
+		"void set_soil(const cmf::upslope::RetentionCurve &r_curve) \n"
+		""},
 	 { "SoilLayer_anisotropic_kf_set", _wrap_SoilLayer_anisotropic_kf_set, METH_VARARGS, "SoilLayer_anisotropic_kf_set(SoilLayer self, point anisotropic_kf)"},
 	 { "SoilLayer_anisotropic_kf_get", _wrap_SoilLayer_anisotropic_kf_get, METH_O, "SoilLayer_anisotropic_kf_get(SoilLayer self) -> point"},
-	 { "SoilLayer_get_capacity", _wrap_SoilLayer_get_capacity, METH_O, "get_capacity(SoilLayer self) -> real"},
-	 { "SoilLayer_get_saturated_depth", _wrap_SoilLayer_get_saturated_depth, METH_O, "get_saturated_depth(SoilLayer self) -> real"},
-	 { "SoilLayer_set_root_uptake_stress_function", (PyCFunction)(void(*)(void))_wrap_SoilLayer_set_root_uptake_stress_function, METH_VARARGS|METH_KEYWORDS, "set_root_uptake_stress_function(SoilLayer self, RootUptakeStressFunction stressfunction)"},
-	 { "SoilLayer_get_Tact", (PyCFunction)(void(*)(void))_wrap_SoilLayer_get_Tact, METH_VARARGS|METH_KEYWORDS, "get_Tact(SoilLayer self, double Tpot) -> double"},
-	 { "SoilLayer_get_flow_crosssection", (PyCFunction)(void(*)(void))_wrap_SoilLayer_get_flow_crosssection, METH_VARARGS|METH_KEYWORDS, "get_flow_crosssection(SoilLayer self, SoilLayer target, bool HorizontalLayers=False) -> real"},
+	 { "SoilLayer_get_capacity", _wrap_SoilLayer_get_capacity, METH_O, "\n"
+		"get_capacity(SoilLayer self) -> real\n"
+		"virtual\n"
+		"real get_capacity() const\n"
+		"\n"
+		"Returns the capacity of the water storage in m3. \n"
+		""},
+	 { "SoilLayer_get_saturated_depth", _wrap_SoilLayer_get_saturated_depth, METH_O, "\n"
+		"get_saturated_depth(SoilLayer self) -> real\n"
+		"virtual real get_saturated_depth() const\n"
+		"\n"
+		"Returns the depth for saturation \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     z_{sat,this} =\n"
+		"    \\\\left\\\\{z_{cell}-\\\\Psi_{tot} \\\\mbox{ if } W<1 \\\\\\\\\n"
+		"    z_{sat,upper layer} \\\\right. \n"
+		"\n"
+		". \n"
+		""},
+	 { "SoilLayer_set_root_uptake_stress_function", (PyCFunction)(void(*)(void))_wrap_SoilLayer_set_root_uptake_stress_function, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_root_uptake_stress_function(SoilLayer self, RootUptakeStressFunction stressfunction)\n"
+		"void\n"
+		"set_root_uptake_stress_function(const\n"
+		"cmf::upslope::ET::RootUptakeStressFunction &stressfunction)\n"
+		"\n"
+		"Sets the root uptake stress function. \n"
+		""},
+	 { "SoilLayer_get_Tact", (PyCFunction)(void(*)(void))_wrap_SoilLayer_get_Tact, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_Tact(SoilLayer self, double Tpot) -> double\n"
+		"double\n"
+		"get_Tact(double Tpot)\n"
+		"\n"
+		"Returns a factor to indicate the draught stress to be multiplied with\n"
+		"ETpot.\n"
+		"\n"
+		"1 = no stress, 0 = no uptake possible \n"
+		""},
+	 { "SoilLayer_get_flow_crosssection", (PyCFunction)(void(*)(void))_wrap_SoilLayer_get_flow_crosssection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_flow_crosssection(SoilLayer self, SoilLayer target, bool HorizontalLayers=False) -> real\n"
+		"real get_flow_crosssection(const cmf::upslope::SoilLayer &target,\n"
+		"bool HorizontalLayers=false) const\n"
+		"\n"
+		"Calculates the shared crosssectional area of this and another soil\n"
+		"water storage.\n"
+		"\n"
+		"If both layers belong to the same cell, the area of the cell is\n"
+		"returned, if they belong to different cells the area of the vertical\n"
+		"shared boundary is returned get_area in m2\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"target:  The other soil water storage\n"
+		"\n"
+		"HorizontalLayers:  If true, the layers are assumed to be parallel to\n"
+		"the gravitational potential, otherwise they are assumed to be parallel\n"
+		"to the ground topography \n"
+		""},
 	 { "SoilLayer_cast", (PyCFunction)(void(*)(void))_wrap_SoilLayer_cast, METH_VARARGS|METH_KEYWORDS, "cast(cmf::water::flux_node::ptr node) -> cmf::upslope::SoilLayer::ptr"},
 	 { "SoilLayer_gravitational_potential_get", _wrap_SoilLayer_gravitational_potential_get, METH_O, "SoilLayer_gravitational_potential_get(SoilLayer self) -> real"},
 	 { "SoilLayer_matrix_potential_get", _wrap_SoilLayer_matrix_potential_get, METH_O, "SoilLayer_matrix_potential_get(SoilLayer self) -> real"},
@@ -79179,23 +86358,99 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"layer_list(layer_list for_copy)\n"
 		"layer_list()\n"
 		"new_layer_list(node_list for_copy) -> layer_list\n"
+		"layer_list(const cmf::water::node_list &for_copy)\n"
+		"\n"
+		"Creates a list of all soil layers from a node_list. \n"
 		""},
-	 { "layer_list_pop", _wrap_layer_list_pop, METH_O, "pop(layer_list self) -> cmf::upslope::SoilLayer::ptr"},
-	 { "layer_list_append", (PyCFunction)(void(*)(void))_wrap_layer_list_append, METH_VARARGS|METH_KEYWORDS, "append(layer_list self, cmf::upslope::SoilLayer::ptr l) -> layer_list"},
+	 { "layer_list_pop", _wrap_layer_list_pop, METH_O, "\n"
+		"pop(layer_list self) -> cmf::upslope::SoilLayer::ptr\n"
+		"SoilLayer::ptr\n"
+		"pop()\n"
+		"\n"
+		"Deletes the last layer from the list and returns it. \n"
+		""},
+	 { "layer_list_append", (PyCFunction)(void(*)(void))_wrap_layer_list_append, METH_VARARGS|METH_KEYWORDS, "\n"
+		"append(layer_list self, cmf::upslope::SoilLayer::ptr l) -> layer_list\n"
+		"layer_list&\n"
+		"append(SoilLayer::ptr l)\n"
+		"\n"
+		"Appends a soil layer to the list. \n"
+		""},
 	 { "layer_list_extend", _wrap_layer_list_extend, METH_VARARGS, "\n"
 		"extend(layer_list self, layer_list ll) -> layer_list\n"
 		"extend(layer_list self, node_list nl) -> layer_list\n"
+		"layer_list&\n"
+		"extend(const cmf::water::node_list &nl)\n"
+		"\n"
+		"Appends all soil layers from a node_list to this. \n"
 		""},
-	 { "layer_list_get_slice", (PyCFunction)(void(*)(void))_wrap_layer_list_get_slice, METH_VARARGS|METH_KEYWORDS, "get_slice(layer_list self, size_t first=0, size_t last=1000000, size_t step=1) -> layer_list"},
-	 { "layer_list_clear", _wrap_layer_list_clear, METH_O, "clear(layer_list self)"},
-	 { "layer_list_size", _wrap_layer_list_size, METH_O, "size(layer_list self) -> size_t"},
-	 { "layer_list_set_wetness", (PyCFunction)(void(*)(void))_wrap_layer_list_set_wetness, METH_VARARGS|METH_KEYWORDS, "set_wetness(layer_list self, cmf::math::num_array const & Value, size_t offset=0)"},
-	 { "layer_list_set_potential", (PyCFunction)(void(*)(void))_wrap_layer_list_set_potential, METH_VARARGS|METH_KEYWORDS, "set_potential(layer_list self, cmf::math::num_array const & Value, size_t offset=0)"},
-	 { "layer_list_set_volume", (PyCFunction)(void(*)(void))_wrap_layer_list_set_volume, METH_VARARGS|METH_KEYWORDS, "set_volume(layer_list self, cmf::math::num_array const & Value, size_t offset=0)"},
-	 { "layer_list_get_percolation", (PyCFunction)(void(*)(void))_wrap_layer_list_get_percolation, METH_VARARGS|METH_KEYWORDS, "get_percolation(layer_list self, Time t) -> cmf::math::num_array"},
-	 { "layer_list_set_theta", (PyCFunction)(void(*)(void))_wrap_layer_list_set_theta, METH_VARARGS|METH_KEYWORDS, "set_theta(layer_list self, cmf::math::num_array const & Value, size_t offset=0)"},
-	 { "layer_list_set_ice_fraction", (PyCFunction)(void(*)(void))_wrap_layer_list_set_ice_fraction, METH_VARARGS|METH_KEYWORDS, "set_ice_fraction(layer_list self, cmf::math::num_array const & Value, size_t offset=0)"},
-	 { "layer_list_set_rootfraction", (PyCFunction)(void(*)(void))_wrap_layer_list_set_rootfraction, METH_VARARGS|METH_KEYWORDS, "set_rootfraction(layer_list self, cmf::math::num_array const & Value, size_t offset=0)"},
+	 { "layer_list_get_slice", (PyCFunction)(void(*)(void))_wrap_layer_list_get_slice, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_slice(layer_list self, size_t first=0, size_t last=1000000, size_t step=1) -> layer_list\n"
+		"layer_list get_slice(size_t first=0, size_t last=1000000, size_t\n"
+		"step=1) \n"
+		""},
+	 { "layer_list_clear", _wrap_layer_list_clear, METH_O, "\n"
+		"clear(layer_list self)\n"
+		"void clear()\n"
+		"\n"
+		"Clears the list. \n"
+		""},
+	 { "layer_list_size", _wrap_layer_list_size, METH_O, "\n"
+		"size(layer_list self) -> size_t\n"
+		"size_t size()\n"
+		"const\n"
+		"\n"
+		"Number of layers in the list. \n"
+		""},
+	 { "layer_list_set_wetness", (PyCFunction)(void(*)(void))_wrap_layer_list_set_wetness, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_wetness(layer_list self, cmf::math::num_array const & Value, size_t offset=0)\n"
+		"void\n"
+		"set_wetness(const cmf::math::num_array &Value, size_t offset=0)\n"
+		"\n"
+		"Sets the wetness in m3/m3 of layers [offset : arraysize]. \n"
+		""},
+	 { "layer_list_set_potential", (PyCFunction)(void(*)(void))_wrap_layer_list_set_potential, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_potential(layer_list self, cmf::math::num_array const & Value, size_t offset=0)\n"
+		"void\n"
+		"set_potential(const cmf::math::num_array &Value, size_t offset=0)\n"
+		"\n"
+		"Sets the potential (head) in m of layers [offset : arraysize]. \n"
+		""},
+	 { "layer_list_set_volume", (PyCFunction)(void(*)(void))_wrap_layer_list_set_volume, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_volume(layer_list self, cmf::math::num_array const & Value, size_t offset=0)\n"
+		"void\n"
+		"set_volume(const cmf::math::num_array &Value, size_t offset=0)\n"
+		"\n"
+		"Sets the Volume in m3 of layers [offset : arraysize]. \n"
+		""},
+	 { "layer_list_get_percolation", (PyCFunction)(void(*)(void))_wrap_layer_list_get_percolation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_percolation(layer_list self, Time t) -> cmf::math::num_array\n"
+		"cmf::math::num_array get_percolation(cmf::math::Time t) const\n"
+		"\n"
+		"Returns the flux to each layer from the upper layer, or, in case of\n"
+		"the first layer from the surface water. \n"
+		""},
+	 { "layer_list_set_theta", (PyCFunction)(void(*)(void))_wrap_layer_list_set_theta, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_theta(layer_list self, cmf::math::num_array const & Value, size_t offset=0)\n"
+		"void\n"
+		"set_theta(const cmf::math::num_array &Value, size_t offset=0)\n"
+		"\n"
+		"Sets the volumetric water content of the soil. \n"
+		""},
+	 { "layer_list_set_ice_fraction", (PyCFunction)(void(*)(void))_wrap_layer_list_set_ice_fraction, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_ice_fraction(layer_list self, cmf::math::num_array const & Value, size_t offset=0)\n"
+		"void set_ice_fraction(const cmf::math::num_array &Value, size_t\n"
+		"offset=0)\n"
+		"\n"
+		"Sets the fraction of the ice content of the soil water. \n"
+		""},
+	 { "layer_list_set_rootfraction", (PyCFunction)(void(*)(void))_wrap_layer_list_set_rootfraction, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_rootfraction(layer_list self, cmf::math::num_array const & Value, size_t offset=0)\n"
+		"void set_rootfraction(const cmf::math::num_array &Value, size_t\n"
+		"offset=0)\n"
+		"\n"
+		"Sets the fraction of roots in each layer. \n"
+		""},
 	 { "layer_list_gravitational_potential_get", _wrap_layer_list_gravitational_potential_get, METH_O, "layer_list_gravitational_potential_get(layer_list self) -> cmf::math::num_array"},
 	 { "layer_list_matrix_potential_get", _wrap_layer_list_matrix_potential_get, METH_O, "layer_list_matrix_potential_get(layer_list self) -> cmf::math::num_array"},
 	 { "layer_list_wetness_get", _wrap_layer_list_wetness_get, METH_O, "layer_list_wetness_get(layer_list self) -> cmf::math::num_array"},
@@ -79218,17 +86473,89 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "MacroPore_porefraction_min_get", _wrap_MacroPore_porefraction_min_get, METH_O, "MacroPore_porefraction_min_get(MacroPore self) -> real"},
 	 { "MacroPore_porefraction_max_set", _wrap_MacroPore_porefraction_max_set, METH_VARARGS, "MacroPore_porefraction_max_set(MacroPore self, real porefraction_max)"},
 	 { "MacroPore_porefraction_max_get", _wrap_MacroPore_porefraction_max_get, METH_O, "MacroPore_porefraction_max_get(MacroPore self) -> real"},
-	 { "MacroPore___get_layer", _wrap_MacroPore___get_layer, METH_O, "__get_layer(MacroPore self) -> cmf::upslope::SoilLayer::ptr"},
-	 { "MacroPore_get_porefraction", _wrap_MacroPore_get_porefraction, METH_O, "get_porefraction(MacroPore self) -> real"},
+	 { "MacroPore___get_layer", _wrap_MacroPore___get_layer, METH_O, "\n"
+		"__get_layer(MacroPore self) -> cmf::upslope::SoilLayer::ptr\n"
+		"SoilLayer::ptr get_layer() const\n"
+		"\n"
+		"Gets the soil layer (matrix water storage) for this macropore storage.\n"
+		"\n"
+		""},
+	 { "MacroPore_get_porefraction", _wrap_MacroPore_get_porefraction, METH_O, "\n"
+		"get_porefraction(MacroPore self) -> real\n"
+		"real get_porefraction() const\n"
+		"\n"
+		"The fraction of the macro pores in m3/m3. This adds to the porosity of\n"
+		"the layer. \n"
+		""},
 	 { "MacroPore_density_set", _wrap_MacroPore_density_set, METH_VARARGS, "MacroPore_density_set(MacroPore self, real density)"},
 	 { "MacroPore_density_get", _wrap_MacroPore_density_get, METH_O, "MacroPore_density_get(MacroPore self) -> real"},
 	 { "MacroPore_Ksat_set", _wrap_MacroPore_Ksat_set, METH_VARARGS, "MacroPore_Ksat_set(MacroPore self, real Ksat)"},
 	 { "MacroPore_Ksat_get", _wrap_MacroPore_Ksat_get, METH_O, "MacroPore_Ksat_get(MacroPore self) -> real"},
 	 { "MacroPore_crack_wetness_set", _wrap_MacroPore_crack_wetness_set, METH_VARARGS, "MacroPore_crack_wetness_set(MacroPore self, real crack_wetness)"},
 	 { "MacroPore_crack_wetness_get", _wrap_MacroPore_crack_wetness_get, METH_O, "MacroPore_crack_wetness_get(MacroPore self) -> real"},
-	 { "MacroPore_get_K", (PyCFunction)(void(*)(void))_wrap_MacroPore_get_K, METH_VARARGS|METH_KEYWORDS, "get_K(MacroPore self, point direction) -> real"},
-	 { "MacroPore_get_crackwidth", _wrap_MacroPore_get_crackwidth, METH_O, "get_crackwidth(MacroPore self) -> real"},
-	 { "MacroPore_get_flowwidth", _wrap_MacroPore_get_flowwidth, METH_O, "get_flowwidth(MacroPore self) -> real"},
+	 { "MacroPore_get_K", (PyCFunction)(void(*)(void))_wrap_MacroPore_get_K, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_K(MacroPore self, point direction) -> real\n"
+		"virtual real\n"
+		"get_K(cmf::geometry::point direction) const\n"
+		"\n"
+		"Returns the actual anisotropic conductivity along a direction :math:`K = (k_f \\\\cdot d) K`. \n"
+		""},
+	 { "MacroPore_get_crackwidth", _wrap_MacroPore_get_crackwidth, METH_O, "\n"
+		"get_crackwidth(MacroPore self) -> real\n"
+		"virtual real get_crackwidth() const\n"
+		"\n"
+		"Returns the crack width for a prismatic crackstructure.\n"
+		"\n"
+		"For a prismatic crack structure, the porefraction in m3/m3 equals the\n"
+		"vertical crack area in m2/m2. The length of equally spaced cracks is\n"
+		"in one direction the inverse of the density and twice the length for\n"
+		"two directions. \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     l_{crack} [m/m^2]= 2 \\\\frac {1}{d[m]}\n"
+		"\n"
+		"If\n"
+		"we again ignore the fact that the spacing of the cracking crossings is\n"
+		"counted double, the crack width is: \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     w_{crack}[m] =\n"
+		"    \\\\frac{A_{crack}[m^2/m^2]}{l_{crack}[m/m^2]} \n"
+		"\n"
+		"Combining both\n"
+		"eq. above: \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     w_{crack}[m] = A_{crack}[m^2/m^2]\\\\frac{d[m]}{2}\n"
+		"\n"
+		"\n"
+		"\n"
+		""},
+	 { "MacroPore_get_flowwidth", _wrap_MacroPore_get_flowwidth, METH_O, "\n"
+		"get_flowwidth(MacroPore self) -> real\n"
+		"real\n"
+		"get_flowwidth() const\n"
+		"\n"
+		"The approximate length of the aggregate boundaries.\n"
+		"\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"    l = \\\\frac{2}{d_{macro}} A\n"
+		"\n"
+		"where:  :math:`l` is the length of\n"
+		"the aggregate boundaries (in m)\n"
+		"\n"
+		":math:`2` is the number of directions\n"
+		"\n"
+		":math:`d_{macro}` is the mean distance between macropores (density) in m\n"
+		"\n"
+		":math:`A` is the area of the cell \n"
+		""},
 	 { "MacroPore_K_shape_set", _wrap_MacroPore_K_shape_set, METH_VARARGS, "MacroPore_K_shape_set(MacroPore self, real K_shape)"},
 	 { "MacroPore_K_shape_get", _wrap_MacroPore_K_shape_get, METH_O, "MacroPore_K_shape_get(MacroPore self) -> real"},
 	 { "MacroPore_create", (PyCFunction)(void(*)(void))_wrap_MacroPore_create, METH_VARARGS|METH_KEYWORDS, "create(cmf::upslope::SoilLayer::ptr layer, real porefraction=0.05, real Ksat=10, real density=0.05, real porefraction_wilt=-1., real K_shape=0.0) -> cmf::upslope::MacroPore::ptr"},
@@ -79241,11 +86568,32 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "MacroPore_swigregister", MacroPore_swigregister, METH_O, NULL},
 	 { "delete_BaseMacroFlow", _wrap_delete_BaseMacroFlow, METH_O, "delete_BaseMacroFlow(BaseMacroFlow self)"},
 	 { "BaseMacroFlow_swigregister", BaseMacroFlow_swigregister, METH_O, NULL},
-	 { "new_GradientMacroFlow", (PyCFunction)(void(*)(void))_wrap_new_GradientMacroFlow, METH_VARARGS|METH_KEYWORDS, "new_GradientMacroFlow(cmf::upslope::MacroPore::ptr left, cmf::water::flux_node::ptr right) -> GradientMacroFlow"},
+	 { "new_GradientMacroFlow", (PyCFunction)(void(*)(void))_wrap_new_GradientMacroFlow, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_GradientMacroFlow(cmf::upslope::MacroPore::ptr left, cmf::water::flux_node::ptr right) -> GradientMacroFlow\n"
+		"GradientMacroFlow(cmf::upslope::MacroPore::ptr left,\n"
+		"cmf::water::flux_node::ptr right) \n"
+		""},
 	 { "delete_GradientMacroFlow", _wrap_delete_GradientMacroFlow, METH_O, "delete_GradientMacroFlow(GradientMacroFlow self)"},
 	 { "GradientMacroFlow_swigregister", GradientMacroFlow_swigregister, METH_O, NULL},
 	 { "GradientMacroFlow_swiginit", GradientMacroFlow_swiginit, METH_VARARGS, NULL},
-	 { "new_KinematicMacroFlow", (PyCFunction)(void(*)(void))_wrap_new_KinematicMacroFlow, METH_VARARGS|METH_KEYWORDS, "new_KinematicMacroFlow(cmf::water::WaterStorage::ptr left, cmf::water::flux_node::ptr right, real beta=1.) -> KinematicMacroFlow"},
+	 { "new_KinematicMacroFlow", (PyCFunction)(void(*)(void))_wrap_new_KinematicMacroFlow, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_KinematicMacroFlow(cmf::water::WaterStorage::ptr left, cmf::water::flux_node::ptr right, real beta=1.) -> KinematicMacroFlow\n"
+		"KinematicMacroFlow(cmf::water::WaterStorage::ptr left,\n"
+		"cmf::water::flux_node::ptr right, real beta=1.)\n"
+		"\n"
+		"Creates the connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  right:  the nodes between the connection should be created.\n"
+		"\n"
+		"beta:  a conceptional curve shape parameter for the relation between\n"
+		"storage and outflow\n"
+		"\n"
+		"Either left or right needs to be a MacroPore, left needs to be a water\n"
+		"storage \n"
+		""},
 	 { "delete_KinematicMacroFlow", _wrap_delete_KinematicMacroFlow, METH_O, "delete_KinematicMacroFlow(KinematicMacroFlow self)"},
 	 { "KinematicMacroFlow_swigregister", KinematicMacroFlow_swigregister, METH_O, NULL},
 	 { "KinematicMacroFlow_swiginit", KinematicMacroFlow_swiginit, METH_VARARGS, NULL},
@@ -79253,11 +86601,32 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "JarvisMacroFlow_beta_get", _wrap_JarvisMacroFlow_beta_get, METH_O, "JarvisMacroFlow_beta_get(JarvisMacroFlow self) -> real"},
 	 { "JarvisMacroFlow_porefraction_r_set", _wrap_JarvisMacroFlow_porefraction_r_set, METH_VARARGS, "JarvisMacroFlow_porefraction_r_set(JarvisMacroFlow self, real porefraction_r)"},
 	 { "JarvisMacroFlow_porefraction_r_get", _wrap_JarvisMacroFlow_porefraction_r_get, METH_O, "JarvisMacroFlow_porefraction_r_get(JarvisMacroFlow self) -> real"},
-	 { "new_JarvisMacroFlow", (PyCFunction)(void(*)(void))_wrap_new_JarvisMacroFlow, METH_VARARGS|METH_KEYWORDS, "new_JarvisMacroFlow(cmf::water::WaterStorage::ptr left, cmf::water::flux_node::ptr right, real beta=1., real porefraction_r=0.0) -> JarvisMacroFlow"},
+	 { "new_JarvisMacroFlow", (PyCFunction)(void(*)(void))_wrap_new_JarvisMacroFlow, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_JarvisMacroFlow(cmf::water::WaterStorage::ptr left, cmf::water::flux_node::ptr right, real beta=1., real porefraction_r=0.0) -> JarvisMacroFlow\n"
+		"JarvisMacroFlow(cmf::water::WaterStorage::ptr left,\n"
+		"cmf::water::flux_node::ptr right, real beta=1., real\n"
+		"porefraction_r=0.0)\n"
+		"\n"
+		"Constructs the connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  right:  the connected macropores\n"
+		"\n"
+		"beta:  User defined parameter for the swelling reaction\n"
+		"\n"
+		"porefraction_r:  Porefraction at which flow starts. For swelling soils\n"
+		"that are closing completely th \n"
+		""},
 	 { "delete_JarvisMacroFlow", _wrap_delete_JarvisMacroFlow, METH_O, "delete_JarvisMacroFlow(JarvisMacroFlow self)"},
 	 { "JarvisMacroFlow_swigregister", JarvisMacroFlow_swigregister, METH_O, NULL},
 	 { "JarvisMacroFlow_swiginit", JarvisMacroFlow_swiginit, METH_VARARGS, NULL},
-	 { "new_GradientMacroMicroExchange", (PyCFunction)(void(*)(void))_wrap_new_GradientMacroMicroExchange, METH_VARARGS|METH_KEYWORDS, "new_GradientMacroMicroExchange(cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right) -> GradientMacroMicroExchange"},
+	 { "new_GradientMacroMicroExchange", (PyCFunction)(void(*)(void))_wrap_new_GradientMacroMicroExchange, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_GradientMacroMicroExchange(cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right) -> GradientMacroMicroExchange\n"
+		"GradientMacroMicroExchange(cmf::upslope::SoilLayer::ptr left,\n"
+		"cmf::upslope::MacroPore::ptr right) \n"
+		""},
 	 { "delete_GradientMacroMicroExchange", _wrap_delete_GradientMacroMicroExchange, METH_O, "delete_GradientMacroMicroExchange(GradientMacroMicroExchange self)"},
 	 { "GradientMacroMicroExchange_swigregister", GradientMacroMicroExchange_swigregister, METH_O, NULL},
 	 { "GradientMacroMicroExchange_swiginit", GradientMacroMicroExchange_swiginit, METH_VARARGS, NULL},
@@ -79265,7 +86634,11 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "DiffusiveMacroMicroExchange_omega_get", _wrap_DiffusiveMacroMicroExchange_omega_get, METH_O, "DiffusiveMacroMicroExchange_omega_get(DiffusiveMacroMicroExchange self) -> real"},
 	 { "DiffusiveMacroMicroExchange_pFrmi_set", _wrap_DiffusiveMacroMicroExchange_pFrmi_set, METH_VARARGS, "DiffusiveMacroMicroExchange_pFrmi_set(DiffusiveMacroMicroExchange self, real pFrmi)"},
 	 { "DiffusiveMacroMicroExchange_pFrmi_get", _wrap_DiffusiveMacroMicroExchange_pFrmi_get, METH_O, "DiffusiveMacroMicroExchange_pFrmi_get(DiffusiveMacroMicroExchange self) -> real"},
-	 { "new_DiffusiveMacroMicroExchange", (PyCFunction)(void(*)(void))_wrap_new_DiffusiveMacroMicroExchange, METH_VARARGS|METH_KEYWORDS, "new_DiffusiveMacroMicroExchange(cmf::upslope::MacroPore::ptr left, cmf::upslope::SoilLayer::ptr right, real omega, real pFrmi=4.2) -> DiffusiveMacroMicroExchange"},
+	 { "new_DiffusiveMacroMicroExchange", (PyCFunction)(void(*)(void))_wrap_new_DiffusiveMacroMicroExchange, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_DiffusiveMacroMicroExchange(cmf::upslope::MacroPore::ptr left, cmf::upslope::SoilLayer::ptr right, real omega, real pFrmi=4.2) -> DiffusiveMacroMicroExchange\n"
+		"DiffusiveMacroMicroExchange(cmf::upslope::MacroPore::ptr left,\n"
+		"cmf::upslope::SoilLayer::ptr right, real omega, real pFrmi=4.2) \n"
+		""},
 	 { "delete_DiffusiveMacroMicroExchange", _wrap_delete_DiffusiveMacroMicroExchange, METH_O, "delete_DiffusiveMacroMicroExchange(DiffusiveMacroMicroExchange self)"},
 	 { "DiffusiveMacroMicroExchange_swigregister", DiffusiveMacroMicroExchange_swigregister, METH_O, NULL},
 	 { "DiffusiveMacroMicroExchange_swiginit", DiffusiveMacroMicroExchange_swiginit, METH_VARARGS, NULL},
@@ -79273,45 +86646,193 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "MACROlikeMacroMicroExchange_Gf_get", _wrap_MACROlikeMacroMicroExchange_Gf_get, METH_O, "MACROlikeMacroMicroExchange_Gf_get(MACROlikeMacroMicroExchange self) -> real"},
 	 { "MACROlikeMacroMicroExchange_gamma_w_set", _wrap_MACROlikeMacroMicroExchange_gamma_w_set, METH_VARARGS, "MACROlikeMacroMicroExchange_gamma_w_set(MACROlikeMacroMicroExchange self, real gamma_w)"},
 	 { "MACROlikeMacroMicroExchange_gamma_w_get", _wrap_MACROlikeMacroMicroExchange_gamma_w_get, METH_O, "MACROlikeMacroMicroExchange_gamma_w_get(MACROlikeMacroMicroExchange self) -> real"},
-	 { "new_MACROlikeMacroMicroExchange", (PyCFunction)(void(*)(void))_wrap_new_MACROlikeMacroMicroExchange, METH_VARARGS|METH_KEYWORDS, "new_MACROlikeMacroMicroExchange(cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right, real _gamma_w=0.4, real _Gf=3) -> MACROlikeMacroMicroExchange"},
+	 { "new_MACROlikeMacroMicroExchange", (PyCFunction)(void(*)(void))_wrap_new_MACROlikeMacroMicroExchange, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_MACROlikeMacroMicroExchange(cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right, real _gamma_w=0.4, real _Gf=3) -> MACROlikeMacroMicroExchange\n"
+		"MACROlikeMacroMicroExchange(cmf::upslope::SoilLayer::ptr left,\n"
+		"cmf::upslope::MacroPore::ptr right, real _gamma_w=0.4, real _Gf=3) \n"
+		""},
 	 { "delete_MACROlikeMacroMicroExchange", _wrap_delete_MACROlikeMacroMicroExchange, METH_O, "delete_MACROlikeMacroMicroExchange(MACROlikeMacroMicroExchange self)"},
 	 { "MACROlikeMacroMicroExchange_swigregister", MACROlikeMacroMicroExchange_swigregister, METH_O, NULL},
 	 { "MACROlikeMacroMicroExchange_swiginit", MACROlikeMacroMicroExchange_swiginit, METH_VARARGS, NULL},
-	 { "IVolumeHeightFunction_h", (PyCFunction)(void(*)(void))_wrap_IVolumeHeightFunction_h, METH_VARARGS|METH_KEYWORDS, "h(IVolumeHeightFunction self, double V) -> double"},
-	 { "IVolumeHeightFunction_A", (PyCFunction)(void(*)(void))_wrap_IVolumeHeightFunction_A, METH_VARARGS|METH_KEYWORDS, "A(IVolumeHeightFunction self, double V) -> double"},
-	 { "IVolumeHeightFunction_V", (PyCFunction)(void(*)(void))_wrap_IVolumeHeightFunction_V, METH_VARARGS|METH_KEYWORDS, "V(IVolumeHeightFunction self, double h) -> double"},
-	 { "IVolumeHeightFunction_copy", _wrap_IVolumeHeightFunction_copy, METH_O, "copy(IVolumeHeightFunction self) -> IVolumeHeightFunction"},
-	 { "IVolumeHeightFunction_q", (PyCFunction)(void(*)(void))_wrap_IVolumeHeightFunction_q, METH_VARARGS|METH_KEYWORDS, "q(IVolumeHeightFunction self, double h, double slope) -> double"},
-	 { "delete_IVolumeHeightFunction", _wrap_delete_IVolumeHeightFunction, METH_O, "delete_IVolumeHeightFunction(IVolumeHeightFunction self)"},
+	 { "IVolumeHeightFunction_h", (PyCFunction)(void(*)(void))_wrap_IVolumeHeightFunction_h, METH_VARARGS|METH_KEYWORDS, "\n"
+		"h(IVolumeHeightFunction self, double V) -> double\n"
+		"virtual\n"
+		"double h(double V) const =0\n"
+		"\n"
+		"Returns the depth of a given volume. \n"
+		""},
+	 { "IVolumeHeightFunction_A", (PyCFunction)(void(*)(void))_wrap_IVolumeHeightFunction_A, METH_VARARGS|METH_KEYWORDS, "\n"
+		"A(IVolumeHeightFunction self, double V) -> double\n"
+		"virtual\n"
+		"double A(double V) const =0\n"
+		"\n"
+		"Returns the area of the surface for a given volume. \n"
+		""},
+	 { "IVolumeHeightFunction_V", (PyCFunction)(void(*)(void))_wrap_IVolumeHeightFunction_V, METH_VARARGS|METH_KEYWORDS, "\n"
+		"V(IVolumeHeightFunction self, double h) -> double\n"
+		"virtual\n"
+		"double V(double h) const =0 \n"
+		""},
+	 { "IVolumeHeightFunction_copy", _wrap_IVolumeHeightFunction_copy, METH_O, "\n"
+		"copy(IVolumeHeightFunction self) -> IVolumeHeightFunction\n"
+		"virtual IVolumeHeightFunction* copy() const =0 \n"
+		""},
+	 { "IVolumeHeightFunction_q", (PyCFunction)(void(*)(void))_wrap_IVolumeHeightFunction_q, METH_VARARGS|METH_KEYWORDS, "\n"
+		"q(IVolumeHeightFunction self, double h, double slope) -> double\n"
+		"virtual\n"
+		"double q(double h, double slope) const \n"
+		""},
+	 { "delete_IVolumeHeightFunction", _wrap_delete_IVolumeHeightFunction, METH_O, "\n"
+		"delete_IVolumeHeightFunction(IVolumeHeightFunction self)\n"
+		"virtual\n"
+		"~IVolumeHeightFunction() \n"
+		""},
 	 { "IVolumeHeightFunction_swigregister", IVolumeHeightFunction_swigregister, METH_O, NULL},
 	 { "Prism_Area_set", _wrap_Prism_Area_set, METH_VARARGS, "Prism_Area_set(Prism self, double Area)"},
 	 { "Prism_Area_get", _wrap_Prism_Area_get, METH_O, "Prism_Area_get(Prism self) -> double"},
 	 { "Prism_RoughThickness_set", _wrap_Prism_RoughThickness_set, METH_VARARGS, "Prism_RoughThickness_set(Prism self, double RoughThickness)"},
 	 { "Prism_RoughThickness_get", _wrap_Prism_RoughThickness_get, METH_O, "Prism_RoughThickness_get(Prism self) -> double"},
-	 { "new_Prism", (PyCFunction)(void(*)(void))_wrap_new_Prism, METH_VARARGS|METH_KEYWORDS, "new_Prism(double base_area, double thickness_of_rough_ground=0.01) -> Prism"},
-	 { "Prism_copy", _wrap_Prism_copy, METH_O, "copy(Prism self) -> Prism"},
-	 { "delete_Prism", _wrap_delete_Prism, METH_O, "delete_Prism(Prism self)"},
+	 { "new_Prism", (PyCFunction)(void(*)(void))_wrap_new_Prism, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Prism(double base_area, double thickness_of_rough_ground=0.01) -> Prism\n"
+		"Prism(double\n"
+		"base_area, double thickness_of_rough_ground=0.01) \n"
+		""},
+	 { "Prism_copy", _wrap_Prism_copy, METH_O, "\n"
+		"copy(Prism self) -> Prism\n"
+		"Prism* copy() const\n"
+		"\n"
+		""},
+	 { "delete_Prism", _wrap_delete_Prism, METH_O, "\n"
+		"delete_Prism(Prism self)\n"
+		"~Prism() \n"
+		""},
 	 { "Prism_swigregister", Prism_swigregister, METH_O, NULL},
 	 { "Prism_swiginit", Prism_swiginit, METH_VARARGS, NULL},
 	 { "new_volume_height_function", _wrap_new_volume_height_function, METH_VARARGS, "\n"
 		"volume_height_function(volume_height_function for_copy)\n"
 		"new_volume_height_function(IVolumeHeightFunction for_copy) -> volume_height_function\n"
+		"volume_height_function(const IVolumeHeightFunction &for_copy)\n"
+		"\n"
+		"Wrapper for any IVolumeHeightFunction. \n"
 		""},
-	 { "volume_height_function_copy", _wrap_volume_height_function_copy, METH_O, "copy(volume_height_function self) -> volume_height_function"},
-	 { "delete_volume_height_function", _wrap_delete_volume_height_function, METH_O, "delete_volume_height_function(volume_height_function self)"},
+	 { "volume_height_function_copy", _wrap_volume_height_function_copy, METH_O, "\n"
+		"copy(volume_height_function self) -> volume_height_function\n"
+		"volume_height_function* copy() const \n"
+		""},
+	 { "delete_volume_height_function", _wrap_delete_volume_height_function, METH_O, "\n"
+		"delete_volume_height_function(volume_height_function self)\n"
+		"virtual\n"
+		"~volume_height_function() \n"
+		""},
 	 { "volume_height_function_swigregister", volume_height_function_swigregister, METH_O, NULL},
 	 { "volume_height_function_swiginit", volume_height_function_swiginit, METH_VARARGS, NULL},
-	 { "IChannel_get_nManning", _wrap_IChannel_get_nManning, METH_O, "get_nManning(IChannel self) -> double"},
-	 { "IChannel_set_nManning", (PyCFunction)(void(*)(void))_wrap_IChannel_set_nManning, METH_VARARGS|METH_KEYWORDS, "set_nManning(IChannel self, double val)"},
-	 { "IChannel_get_length", _wrap_IChannel_get_length, METH_O, "get_length(IChannel self) -> double"},
-	 { "IChannel_typecode", _wrap_IChannel_typecode, METH_O, "typecode(IChannel self) -> char"},
-	 { "IChannel_get_channel_width", (PyCFunction)(void(*)(void))_wrap_IChannel_get_channel_width, METH_VARARGS|METH_KEYWORDS, "get_channel_width(IChannel self, double depth) -> double"},
-	 { "IChannel_get_wetted_perimeter", (PyCFunction)(void(*)(void))_wrap_IChannel_get_wetted_perimeter, METH_VARARGS|METH_KEYWORDS, "get_wetted_perimeter(IChannel self, double depth) -> double"},
-	 { "IChannel_get_depth", (PyCFunction)(void(*)(void))_wrap_IChannel_get_depth, METH_VARARGS|METH_KEYWORDS, "get_depth(IChannel self, double area) -> double"},
-	 { "IChannel_get_flux_crossection", (PyCFunction)(void(*)(void))_wrap_IChannel_get_flux_crossection, METH_VARARGS|METH_KEYWORDS, "get_flux_crossection(IChannel self, double depth) -> double"},
-	 { "IChannel_copy", _wrap_IChannel_copy, METH_O, "copy(IChannel self) -> IChannel"},
-	 { "IChannel_qManning", (PyCFunction)(void(*)(void))_wrap_IChannel_qManning, METH_VARARGS|METH_KEYWORDS, "qManning(IChannel self, double A, double slope) -> double"},
-	 { "delete_IChannel", _wrap_delete_IChannel, METH_O, "delete_IChannel(IChannel self)"},
+	 { "IChannel_get_nManning", _wrap_IChannel_get_nManning, METH_O, "\n"
+		"get_nManning(IChannel self) -> double\n"
+		"virtual\n"
+		"double get_nManning() const =0 \n"
+		""},
+	 { "IChannel_set_nManning", (PyCFunction)(void(*)(void))_wrap_IChannel_set_nManning, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_nManning(IChannel self, double val)\n"
+		"virtual\n"
+		"void set_nManning(double val)=0 \n"
+		""},
+	 { "IChannel_get_length", _wrap_IChannel_get_length, METH_O, "\n"
+		"get_length(IChannel self) -> double\n"
+		"virtual\n"
+		"double get_length() const =0\n"
+		"\n"
+		"Length of the reach. \n"
+		""},
+	 { "IChannel_typecode", _wrap_IChannel_typecode, METH_O, "\n"
+		"typecode(IChannel self) -> char\n"
+		"virtual char\n"
+		"typecode() const =0 \n"
+		""},
+	 { "IChannel_get_channel_width", (PyCFunction)(void(*)(void))_wrap_IChannel_get_channel_width, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_channel_width(IChannel self, double depth) -> double\n"
+		"virtual double get_channel_width(double depth) const =0\n"
+		"\n"
+		"Calculates the flow width from a given actual depth [m] using the\n"
+		"actual IChannel geometry. \n"
+		""},
+	 { "IChannel_get_wetted_perimeter", (PyCFunction)(void(*)(void))_wrap_IChannel_get_wetted_perimeter, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_wetted_perimeter(IChannel self, double depth) -> double\n"
+		"virtual double get_wetted_perimeter(double depth) const =0\n"
+		"\n"
+		"Calculates the wetted perimeter from a given actual depth [m] using\n"
+		"the actual IChannel geometry. \n"
+		""},
+	 { "IChannel_get_depth", (PyCFunction)(void(*)(void))_wrap_IChannel_get_depth, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_depth(IChannel self, double area) -> double\n"
+		"virtual\n"
+		"double get_depth(double area) const =0\n"
+		"\n"
+		"Calculates the actual depth of the reach using the IChannel geometry.\n"
+		"\n"
+		"get_depth of the reach [m]\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"area:  Wetted area of a river cross section [m2], can be obtained by\n"
+		"V/l, where V is the stored volume and l is the reach length \n"
+		""},
+	 { "IChannel_get_flux_crossection", (PyCFunction)(void(*)(void))_wrap_IChannel_get_flux_crossection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_flux_crossection(IChannel self, double depth) -> double\n"
+		"virtual double get_flux_crossection(double depth) const =0\n"
+		"\n"
+		"Calculates the wetted area from a given depth using the IChannel\n"
+		"geometry.\n"
+		"\n"
+		"In most cases use get_flux_crossection=V/l, where V is the stored\n"
+		"volume and l is the reach length Wetted area of a river cross section\n"
+		"[m2]\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"depth:  depth of the reach [m] \n"
+		""},
+	 { "IChannel_copy", _wrap_IChannel_copy, METH_O, "\n"
+		"copy(IChannel self) -> IChannel\n"
+		"virtual IChannel*\n"
+		"copy() const =0 \n"
+		""},
+	 { "IChannel_qManning", (PyCFunction)(void(*)(void))_wrap_IChannel_qManning, METH_VARARGS|METH_KEYWORDS, "\n"
+		"qManning(IChannel self, double A, double slope) -> double\n"
+		"virtual double\n"
+		"qManning(double A, double slope) const\n"
+		"\n"
+		"Calculates the flow rate from a given water volume in the reach\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     q_{Manning}&=& A R^{\\\\frac 2 3}\n"
+		"    \\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l\n"
+		"    \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per\n"
+		"    length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{\n"
+		"    the perimeter of the wetted crosssection, a function of reach depth}\n"
+		"    \\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the\n"
+		"    volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}\n"
+		"    \\\\mbox{ Slope of the reach} \n"
+		"\n"
+		".\n"
+		"\n"
+		"Flow rate [m3/s]\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"A:  The area of the cross section [m2]\n"
+		"\n"
+		"slope:  The slope of the reach [m/m] \n"
+		""},
+	 { "delete_IChannel", _wrap_delete_IChannel, METH_O, "\n"
+		"delete_IChannel(IChannel self)\n"
+		"virtual\n"
+		"~IChannel() \n"
+		""},
 	 { "IChannel_swigregister", IChannel_swigregister, METH_O, NULL},
 	 { "SWATReachType_BottomWidth_set", _wrap_SWATReachType_BottomWidth_set, METH_VARARGS, "SWATReachType_BottomWidth_set(SWATReachType self, double BottomWidth)"},
 	 { "SWATReachType_BottomWidth_get", _wrap_SWATReachType_BottomWidth_get, METH_O, "SWATReachType_BottomWidth_get(SWATReachType self) -> double"},
@@ -79325,9 +86846,27 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"SWATReachType(SWATReachType copy)\n"
 		"SWATReachType(double l)\n"
 		"new_SWATReachType(double l, double BankWidth, double Depth) -> SWATReachType\n"
+		"SWATReachType(double l, double BankWidth, double Depth)\n"
+		"\n"
+		"Creates a new reach structure from a give width and depth.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"l:  length of the channel [m]\n"
+		"\n"
+		"BankWidth:  get_channel_width of the reach from bank to bank [m]\n"
+		"\n"
+		"Depth:  Depth of the reach [m] \n"
 		""},
-	 { "SWATReachType_copy", _wrap_SWATReachType_copy, METH_O, "copy(SWATReachType self) -> SWATReachType"},
-	 { "delete_SWATReachType", _wrap_delete_SWATReachType, METH_O, "delete_SWATReachType(SWATReachType self)"},
+	 { "SWATReachType_copy", _wrap_SWATReachType_copy, METH_O, "\n"
+		"copy(SWATReachType self) -> SWATReachType\n"
+		"SWATReachType* copy() const \n"
+		""},
+	 { "delete_SWATReachType", _wrap_delete_SWATReachType, METH_O, "\n"
+		"delete_SWATReachType(SWATReachType self)\n"
+		"virtual ~SWATReachType() \n"
+		""},
 	 { "SWATReachType_swigregister", SWATReachType_swigregister, METH_O, NULL},
 	 { "SWATReachType_swiginit", SWATReachType_swiginit, METH_VARARGS, NULL},
 	 { "TriangularReach_BankSlope_set", _wrap_TriangularReach_BankSlope_set, METH_VARARGS, "TriangularReach_BankSlope_set(TriangularReach self, double BankSlope)"},
@@ -79335,17 +86874,31 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "new_TriangularReach", _wrap_new_TriangularReach, METH_VARARGS, "\n"
 		"TriangularReach(double l, double bankSlope=2)\n"
 		"new_TriangularReach(TriangularReach copy) -> TriangularReach\n"
+		"TriangularReach(const TriangularReach &copy) \n"
 		""},
-	 { "TriangularReach_copy", _wrap_TriangularReach_copy, METH_O, "copy(TriangularReach self) -> TriangularReach"},
-	 { "delete_TriangularReach", _wrap_delete_TriangularReach, METH_O, "delete_TriangularReach(TriangularReach self)"},
+	 { "TriangularReach_copy", _wrap_TriangularReach_copy, METH_O, "\n"
+		"copy(TriangularReach self) -> TriangularReach\n"
+		"TriangularReach* copy() const \n"
+		""},
+	 { "delete_TriangularReach", _wrap_delete_TriangularReach, METH_O, "\n"
+		"delete_TriangularReach(TriangularReach self)\n"
+		"virtual ~TriangularReach() \n"
+		""},
 	 { "TriangularReach_swigregister", TriangularReach_swigregister, METH_O, NULL},
 	 { "TriangularReach_swiginit", TriangularReach_swiginit, METH_VARARGS, NULL},
 	 { "new_RectangularReach", _wrap_new_RectangularReach, METH_VARARGS, "\n"
 		"RectangularReach(double l, double width)\n"
 		"new_RectangularReach(RectangularReach copy) -> RectangularReach\n"
+		"RectangularReach(const RectangularReach &copy) \n"
 		""},
-	 { "RectangularReach_copy", _wrap_RectangularReach_copy, METH_O, "copy(RectangularReach self) -> RectangularReach"},
-	 { "delete_RectangularReach", _wrap_delete_RectangularReach, METH_O, "delete_RectangularReach(RectangularReach self)"},
+	 { "RectangularReach_copy", _wrap_RectangularReach_copy, METH_O, "\n"
+		"copy(RectangularReach self) -> RectangularReach\n"
+		"RectangularReach* copy() const \n"
+		""},
+	 { "delete_RectangularReach", _wrap_delete_RectangularReach, METH_O, "\n"
+		"delete_RectangularReach(RectangularReach self)\n"
+		"virtual ~RectangularReach() \n"
+		""},
 	 { "RectangularReach_swigregister", RectangularReach_swigregister, METH_O, NULL},
 	 { "RectangularReach_swiginit", RectangularReach_swiginit, METH_VARARGS, NULL},
 	 { "PipeReach_radius_set", _wrap_PipeReach_radius_set, METH_VARARGS, "PipeReach_radius_set(PipeReach self, double radius)"},
@@ -79353,9 +86906,18 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "new_PipeReach", _wrap_new_PipeReach, METH_VARARGS, "\n"
 		"PipeReach(double l, double diameter)\n"
 		"new_PipeReach(PipeReach copy) -> PipeReach\n"
+		"PipeReach(const PipeReach &copy) \n"
 		""},
-	 { "PipeReach_copy", _wrap_PipeReach_copy, METH_O, "copy(PipeReach self) -> PipeReach"},
-	 { "delete_PipeReach", _wrap_delete_PipeReach, METH_O, "delete_PipeReach(PipeReach self)"},
+	 { "PipeReach_copy", _wrap_PipeReach_copy, METH_O, "\n"
+		"copy(PipeReach self) -> PipeReach\n"
+		"PipeReach* copy()\n"
+		"const \n"
+		""},
+	 { "delete_PipeReach", _wrap_delete_PipeReach, METH_O, "\n"
+		"delete_PipeReach(PipeReach self)\n"
+		"virtual\n"
+		"~PipeReach() \n"
+		""},
 	 { "PipeReach_swigregister", PipeReach_swigregister, METH_O, NULL},
 	 { "PipeReach_swiginit", PipeReach_swiginit, METH_VARARGS, NULL},
 	 { "new_Channel", _wrap_new_Channel, METH_VARARGS, "\n"
@@ -79365,17 +86927,60 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Channel(IVolumeHeightFunction for_casting)\n"
 		"Channel(Channel for_copy)\n"
 		"new_Channel(char typecode, double length, double width=1., double depth=0.25) -> Channel\n"
+		"Channel(char\n"
+		"typecode, double length, double width=1., double depth=0.25)\n"
+		"\n"
+		"Creates a reachtype using a short cut character.\n"
+		"\n"
+		"Acceptes one of the following characters: 'T' TriangularReach, width\n"
+		"and depth are ignored.\n"
+		"\n"
+		"'R' RectangularReach, depth is ignored\n"
+		"\n"
+		"'P' PipeReach, depth is ignored, width is the diameter of the pipe\n"
+		"\n"
+		"'S' SWATReachType, a trapezoid flow cross section, as used in the SWAT\n"
+		"model, width (bank width) and depth are used the reach type\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"typecode:  Describes the geometry of the reach cross section.\n"
+		"\n"
+		"length:  The length of the channel in m\n"
+		"\n"
+		"width:  width of the reach cross section in m (ignored for typecode\n"
+		"'T')\n"
+		"\n"
+		"depth:  depth of the reach (ignored for typecode 'T','R','P','S') \n"
 		""},
-	 { "Channel_copy", _wrap_Channel_copy, METH_O, "copy(Channel self) -> Channel"},
-	 { "delete_Channel", _wrap_delete_Channel, METH_O, "delete_Channel(Channel self)"},
+	 { "Channel_copy", _wrap_Channel_copy, METH_O, "\n"
+		"copy(Channel self) -> Channel\n"
+		"Channel* copy()\n"
+		"const \n"
+		""},
+	 { "delete_Channel", _wrap_delete_Channel, METH_O, "\n"
+		"delete_Channel(Channel self)\n"
+		"virtual\n"
+		"~Channel() \n"
+		""},
 	 { "Channel_swigregister", Channel_swigregister, METH_O, NULL},
 	 { "Channel_swiginit", Channel_swiginit, METH_VARARGS, NULL},
 	 { "new_MeanChannel", _wrap_new_MeanChannel, METH_VARARGS, "\n"
 		"MeanChannel(IChannel channel1, IChannel channel2)\n"
 		"new_MeanChannel(MeanChannel meanChannel) -> MeanChannel\n"
+		"MeanChannel(const MeanChannel &meanChannel) \n"
 		""},
-	 { "MeanChannel_copy", _wrap_MeanChannel_copy, METH_O, "copy(MeanChannel self) -> MeanChannel"},
-	 { "delete_MeanChannel", _wrap_delete_MeanChannel, METH_O, "delete_MeanChannel(MeanChannel self)"},
+	 { "MeanChannel_copy", _wrap_MeanChannel_copy, METH_O, "\n"
+		"copy(MeanChannel self) -> MeanChannel\n"
+		"MeanChannel*\n"
+		"copy() const \n"
+		""},
+	 { "delete_MeanChannel", _wrap_delete_MeanChannel, METH_O, "\n"
+		"delete_MeanChannel(MeanChannel self)\n"
+		"virtual\n"
+		"~MeanChannel() \n"
+		""},
 	 { "MeanChannel_swigregister", MeanChannel_swigregister, METH_O, NULL},
 	 { "MeanChannel_swiginit", MeanChannel_swiginit, METH_VARARGS, NULL},
 	 { "CrossSectionReach_depth_set", _wrap_CrossSectionReach_depth_set, METH_VARARGS, "CrossSectionReach_depth_set(CrossSectionReach self, cmf::math::num_array depth)"},
@@ -79385,15 +86990,42 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "new_CrossSectionReach", _wrap_new_CrossSectionReach, METH_VARARGS, "\n"
 		"CrossSectionReach(double l, cmf::math::num_array x, cmf::math::num_array depth)\n"
 		"new_CrossSectionReach(CrossSectionReach copy) -> CrossSectionReach\n"
+		"CrossSectionReach(const CrossSectionReach &copy) \n"
 		""},
-	 { "CrossSectionReach_copy", _wrap_CrossSectionReach_copy, METH_O, "copy(CrossSectionReach self) -> CrossSectionReach"},
-	 { "delete_CrossSectionReach", _wrap_delete_CrossSectionReach, METH_O, "delete_CrossSectionReach(CrossSectionReach self)"},
-	 { "CrossSectionReach_check_iterator", (PyCFunction)(void(*)(void))_wrap_CrossSectionReach_check_iterator, METH_VARARGS|METH_KEYWORDS, "check_iterator(CrossSectionReach self, double h)"},
+	 { "CrossSectionReach_copy", _wrap_CrossSectionReach_copy, METH_O, "\n"
+		"copy(CrossSectionReach self) -> CrossSectionReach\n"
+		"CrossSectionReach* copy() const \n"
+		""},
+	 { "delete_CrossSectionReach", _wrap_delete_CrossSectionReach, METH_O, "\n"
+		"delete_CrossSectionReach(CrossSectionReach self)\n"
+		"virtual\n"
+		"~CrossSectionReach() \n"
+		""},
+	 { "CrossSectionReach_check_iterator", (PyCFunction)(void(*)(void))_wrap_CrossSectionReach_check_iterator, METH_VARARGS|METH_KEYWORDS, "\n"
+		"check_iterator(CrossSectionReach self, double h)\n"
+		"void check_iterator(double h) const \n"
+		""},
 	 { "CrossSectionReach_swigregister", CrossSectionReach_swigregister, METH_O, NULL},
 	 { "CrossSectionReach_swiginit", CrossSectionReach_swiginit, METH_VARARGS, NULL},
-	 { "OpenWaterStorage_get_height_function", _wrap_OpenWaterStorage_get_height_function, METH_O, "get_height_function(OpenWaterStorage self) -> IVolumeHeightFunction"},
-	 { "OpenWaterStorage_set_height_function", (PyCFunction)(void(*)(void))_wrap_OpenWaterStorage_set_height_function, METH_VARARGS|METH_KEYWORDS, "set_height_function(OpenWaterStorage self, IVolumeHeightFunction val)"},
-	 { "OpenWaterStorage_wet_area", _wrap_OpenWaterStorage_wet_area, METH_O, "wet_area(OpenWaterStorage self) -> real"},
+	 { "OpenWaterStorage_get_height_function", _wrap_OpenWaterStorage_get_height_function, METH_O, "\n"
+		"get_height_function(OpenWaterStorage self) -> IVolumeHeightFunction\n"
+		"virtual const\n"
+		"IVolumeHeightFunction& get_height_function() const\n"
+		"\n"
+		"The functional relation between volume, depth and exposed area. \n"
+		""},
+	 { "OpenWaterStorage_set_height_function", (PyCFunction)(void(*)(void))_wrap_OpenWaterStorage_set_height_function, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_height_function(OpenWaterStorage self, IVolumeHeightFunction val)\n"
+		"virtual void\n"
+		"set_height_function(const IVolumeHeightFunction &val) \n"
+		""},
+	 { "OpenWaterStorage_wet_area", _wrap_OpenWaterStorage_wet_area, METH_O, "\n"
+		"wet_area(OpenWaterStorage self) -> real\n"
+		"real\n"
+		"wet_area() const\n"
+		"\n"
+		"Returns the exposed surface area in m2. \n"
+		""},
 	 { "OpenWaterStorage_create", _wrap_OpenWaterStorage_create, METH_VARARGS, "\n"
 		"create(project _project, real Area) -> cmf::river::OpenWaterStorage::ptr\n"
 		"create(project _project, IVolumeHeightFunction base_geo) -> cmf::river::OpenWaterStorage::ptr\n"
@@ -79403,37 +87035,174 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "OpenWaterStorage_depth_get", _wrap_OpenWaterStorage_depth_get, METH_O, "OpenWaterStorage_depth_get(OpenWaterStorage self) -> real"},
 	 { "delete_OpenWaterStorage", _wrap_delete_OpenWaterStorage, METH_O, "delete_OpenWaterStorage(OpenWaterStorage self)"},
 	 { "OpenWaterStorage_swigregister", OpenWaterStorage_swigregister, METH_O, NULL},
-	 { "Reach_get_reachtype", _wrap_Reach_get_reachtype, METH_O, "get_reachtype(Reach self) -> Channel"},
-	 { "Reach_set_height_function", (PyCFunction)(void(*)(void))_wrap_Reach_set_height_function, METH_VARARGS|METH_KEYWORDS, "set_height_function(Reach self, IChannel val)"},
-	 { "Reach_set_outlet", (PyCFunction)(void(*)(void))_wrap_Reach_set_outlet, METH_VARARGS|METH_KEYWORDS, "set_outlet(Reach self, cmf::water::flux_node::ptr outlet)"},
-	 { "Reach_set_dead_end", _wrap_Reach_set_dead_end, METH_O, "set_dead_end(Reach self)"},
-	 { "Reach_set_downstream", (PyCFunction)(void(*)(void))_wrap_Reach_set_downstream, METH_VARARGS|METH_KEYWORDS, "set_downstream(Reach self, cmf::river::Reach::ptr new_downstream, bool use_meanchannel=False)"},
-	 { "Reach___get_downstream", _wrap_Reach___get_downstream, METH_O, "__get_downstream(Reach self) -> cmf::water::flux_node::ptr"},
-	 { "Reach_get_upstream", (PyCFunction)(void(*)(void))_wrap_Reach_get_upstream, METH_VARARGS|METH_KEYWORDS, "get_upstream(Reach self, int index) -> cmf::river::Reach::ptr"},
-	 { "Reach_connect_to_surfacewater", (PyCFunction)(void(*)(void))_wrap_Reach_connect_to_surfacewater, METH_VARARGS|METH_KEYWORDS, "connect_to_surfacewater(Reach self, Cell cell, real width, bool diffusive)"},
-	 { "Reach_distance_to_cell", (PyCFunction)(void(*)(void))_wrap_Reach_distance_to_cell, METH_VARARGS|METH_KEYWORDS, "distance_to_cell(Reach self, Cell cell) -> double"},
-	 { "Reach___get_root", _wrap_Reach___get_root, METH_O, "__get_root(Reach self) -> cmf::river::Reach::ptr"},
-	 { "delete_Reach", _wrap_delete_Reach, METH_O, "delete_Reach(Reach self)"},
+	 { "Reach_get_reachtype", _wrap_Reach_get_reachtype, METH_O, "\n"
+		"get_reachtype(Reach self) -> Channel\n"
+		"Channel\n"
+		"get_reachtype() const\n"
+		"\n"
+		"Returns the channel shape. \n"
+		""},
+	 { "Reach_set_height_function", (PyCFunction)(void(*)(void))_wrap_Reach_set_height_function, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_height_function(Reach self, IChannel val)\n"
+		"void\n"
+		"set_height_function(const IChannel &val)\n"
+		"\n"
+		"Sets the channel shape. \n"
+		""},
+	 { "Reach_set_outlet", (PyCFunction)(void(*)(void))_wrap_Reach_set_outlet, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_outlet(Reach self, cmf::water::flux_node::ptr outlet)\n"
+		"void\n"
+		"set_outlet(cmf::water::flux_node::ptr outlet)\n"
+		"\n"
+		"Connects the reach to an outlet, e.g. a boundary condition. \n"
+		""},
+	 { "Reach_set_dead_end", _wrap_Reach_set_dead_end, METH_O, "\n"
+		"set_dead_end(Reach self)\n"
+		"void\n"
+		"set_dead_end()\n"
+		"\n"
+		"Deletes any downstream connection. \n"
+		""},
+	 { "Reach_set_downstream", (PyCFunction)(void(*)(void))_wrap_Reach_set_downstream, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_downstream(Reach self, cmf::river::Reach::ptr new_downstream, bool use_meanchannel=False)\n"
+		"void\n"
+		"set_downstream(ptr new_downstream, bool use_meanchannel=false)\n"
+		"\n"
+		"Connects the reach to another one downstream. \n"
+		""},
+	 { "Reach___get_downstream", _wrap_Reach___get_downstream, METH_O, "\n"
+		"__get_downstream(Reach self) -> cmf::water::flux_node::ptr\n"
+		"cmf::water::flux_node::ptr get_downstream() const\n"
+		"\n"
+		"Returns the reach downstream of this (or null if there is no reach\n"
+		"downstream) \n"
+		""},
+	 { "Reach_get_upstream", (PyCFunction)(void(*)(void))_wrap_Reach_get_upstream, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_upstream(Reach self, int index) -> cmf::river::Reach::ptr\n"
+		"ptr\n"
+		"get_upstream(int index) const\n"
+		"\n"
+		"Returns a reach upstream of this. \n"
+		""},
+	 { "Reach_connect_to_surfacewater", (PyCFunction)(void(*)(void))_wrap_Reach_connect_to_surfacewater, METH_VARARGS|METH_KEYWORDS, "\n"
+		"connect_to_surfacewater(Reach self, Cell cell, real width, bool diffusive)\n"
+		"void connect_to_surfacewater(cmf::upslope::Cell *cell, real width,\n"
+		"bool diffusive)\n"
+		"\n"
+		"Connects the surfacewater of a cell with this reach.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"cell:  The cell with the surface water to be connected with this reach\n"
+		"\n"
+		"width:  The flow width from cell to this reach\n"
+		"\n"
+		"diffusive:  If diffusive is false, a ManningKinematic connection is\n"
+		"used, else a ManningDiffusive connection \n"
+		""},
+	 { "Reach_distance_to_cell", (PyCFunction)(void(*)(void))_wrap_Reach_distance_to_cell, METH_VARARGS|METH_KEYWORDS, "\n"
+		"distance_to_cell(Reach self, Cell cell) -> double\n"
+		"double\n"
+		"distance_to_cell(cmf::upslope::Cell *cell) const\n"
+		"\n"
+		"Returns the distance (d) for connections between this reach and a\n"
+		"cell.\n"
+		"\n"
+		"If the effective inner cell distance (defined as :math:`R_{Cell} = 0.5\\\\frac{\\\\sqrt{A}}{\\\\pi}`) is smaller than the distance\n"
+		"between the center points, the cell radius is returned \n"
+		""},
+	 { "Reach___get_root", _wrap_Reach___get_root, METH_O, "\n"
+		"__get_root(Reach self) -> cmf::river::Reach::ptr\n"
+		"ptr get_root()\n"
+		"\n"
+		"Returns the reach most downstream from this reach. \n"
+		""},
+	 { "delete_Reach", _wrap_delete_Reach, METH_O, "\n"
+		"delete_Reach(Reach self)\n"
+		"virtual ~Reach() \n"
+		""},
 	 { "Reach_create", (PyCFunction)(void(*)(void))_wrap_Reach_create, METH_VARARGS|METH_KEYWORDS, "create(project project, IChannel shape, bool diffusive=False) -> cmf::river::Reach::ptr"},
 	 { "Reach_length_get", _wrap_Reach_length_get, METH_O, "Reach_length_get(Reach self) -> real"},
 	 { "Reach_width_get", _wrap_Reach_width_get, METH_O, "Reach_width_get(Reach self) -> real"},
 	 { "Reach_channel_get", _wrap_Reach_channel_get, METH_O, "Reach_channel_get(Reach self) -> IChannel"},
-	 { "Reach_upstream_count_get", _wrap_Reach_upstream_count_get, METH_O, "Reach_upstream_count_get(Reach self) -> int"},
+	 { "Reach_upstream_count_get", _wrap_Reach_upstream_count_get, METH_O, "\n"
+		"Reach_upstream_count_get(Reach self) -> int\n"
+		"int\n"
+		"upstream_count() const\n"
+		"\n"
+		"Returns the number of reaches upstream of this. \n"
+		""},
 	 { "Reach_diffusive_set", _wrap_Reach_diffusive_set, METH_VARARGS, "Reach_diffusive_set(Reach self, bool diffusive)"},
 	 { "Reach_diffusive_get", _wrap_Reach_diffusive_get, METH_O, "Reach_diffusive_get(Reach self) -> bool"},
 	 { "Reach_swigregister", Reach_swigregister, METH_O, NULL},
-	 { "ReachIterator_next", _wrap_ReachIterator_next, METH_O, "next(ReachIterator self) -> cmf::river::Reach::ptr"},
-	 { "ReachIterator_valid", _wrap_ReachIterator_valid, METH_O, "valid(ReachIterator self) -> bool"},
-	 { "new_ReachIterator", (PyCFunction)(void(*)(void))_wrap_new_ReachIterator, METH_VARARGS|METH_KEYWORDS, "new_ReachIterator(cmf::river::Reach::ptr first) -> ReachIterator"},
-	 { "ReachIterator___reach", _wrap_ReachIterator___reach, METH_O, "__reach(ReachIterator self) -> cmf::river::Reach::ptr"},
-	 { "ReachIterator_position_get", _wrap_ReachIterator_position_get, METH_O, "ReachIterator_position_get(ReachIterator self) -> double"},
+	 { "ReachIterator_next", _wrap_ReachIterator_next, METH_O, "\n"
+		"next(ReachIterator self) -> cmf::river::Reach::ptr\n"
+		"Reach::ptr\n"
+		"next()\n"
+		"\n"
+		"Returns the next reach in the upstream queue. \n"
+		""},
+	 { "ReachIterator_valid", _wrap_ReachIterator_valid, METH_O, "\n"
+		"valid(ReachIterator self) -> bool\n"
+		"bool valid()\n"
+		"const\n"
+		"\n"
+		"Returns true, if reaches are left to iterate over. \n"
+		""},
+	 { "new_ReachIterator", (PyCFunction)(void(*)(void))_wrap_new_ReachIterator, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ReachIterator(cmf::river::Reach::ptr first) -> ReachIterator\n"
+		"ReachIterator(Reach::ptr first)\n"
+		"\n"
+		"Creates a ReachIterator from a first reach. \n"
+		""},
+	 { "ReachIterator___reach", _wrap_ReachIterator___reach, METH_O, "\n"
+		"__reach(ReachIterator self) -> cmf::river::Reach::ptr\n"
+		"Reach::ptr\n"
+		"reach() const\n"
+		"\n"
+		"Returns the current reach. \n"
+		""},
+	 { "ReachIterator_position_get", _wrap_ReachIterator_position_get, METH_O, "\n"
+		"ReachIterator_position_get(ReachIterator self) -> double\n"
+		"double\n"
+		"position() const\n"
+		"\n"
+		"Returns the distance to the root reach. \n"
+		""},
 	 { "delete_ReachIterator", _wrap_delete_ReachIterator, METH_O, "delete_ReachIterator(ReachIterator self)"},
 	 { "ReachIterator_swigregister", ReachIterator_swigregister, METH_O, NULL},
 	 { "ReachIterator_swiginit", ReachIterator_swiginit, METH_VARARGS, NULL},
-	 { "make_river_gap", (PyCFunction)(void(*)(void))_wrap_make_river_gap, METH_VARARGS|METH_KEYWORDS, "make_river_gap(cmf::river::Reach::ptr root_reach) -> double"},
-	 { "SurfaceWater_get_height_function", _wrap_SurfaceWater_get_height_function, METH_O, "get_height_function(SurfaceWater self) -> Prism"},
-	 { "SurfaceWater_get_coverage", _wrap_SurfaceWater_get_coverage, METH_O, "get_coverage(SurfaceWater self) -> double"},
-	 { "SurfaceWater_get_cell", _wrap_SurfaceWater_get_cell, METH_O, "get_cell(SurfaceWater self) -> Cell"},
+	 { "make_river_gap", (PyCFunction)(void(*)(void))_wrap_make_river_gap, METH_VARARGS|METH_KEYWORDS, "\n"
+		"make_river_gap(cmf::river::Reach::ptr root_reach) -> double\n"
+		"double\n"
+		"cmf::river::make_river_gap(Reach::ptr root_reach)\n"
+		"\n"
+		"Ensures that rivers have a monotone downward flow direction.\n"
+		"\n"
+		"Reaches with a bottom higher than any upstream reach are lowered to\n"
+		"the minimum height of any (possibly distant) upstream reach. \n"
+		""},
+	 { "SurfaceWater_get_height_function", _wrap_SurfaceWater_get_height_function, METH_O, "\n"
+		"get_height_function(SurfaceWater self) -> Prism\n"
+		"virtual const cmf::river::Prism& get_height_function() const\n"
+		"\n"
+		"Gets the height function (a cmf::river::Prism) for further reference.\n"
+		"\n"
+		""},
+	 { "SurfaceWater_get_coverage", _wrap_SurfaceWater_get_coverage, METH_O, "\n"
+		"get_coverage(SurfaceWater self) -> double\n"
+		"double get_coverage() const\n"
+		"\n"
+		"Get surface coverage as a function of the actual volume. \n"
+		""},
+	 { "SurfaceWater_get_cell", _wrap_SurfaceWater_get_cell, METH_O, "\n"
+		"get_cell(SurfaceWater self) -> Cell\n"
+		"Cell&\n"
+		"get_cell() const\n"
+		"\n"
+		"Get the cell of the surface. \n"
+		""},
 	 { "SurfaceWater_cast", (PyCFunction)(void(*)(void))_wrap_SurfaceWater_cast, METH_VARARGS|METH_KEYWORDS, "cast(cmf::water::flux_node::ptr node) -> cmf::upslope::SurfaceWater::ptr"},
 	 { "SurfaceWater_puddledepth_set", _wrap_SurfaceWater_puddledepth_set, METH_VARARGS, "SurfaceWater_puddledepth_set(SurfaceWater self, real puddledepth)"},
 	 { "SurfaceWater_puddledepth_get", _wrap_SurfaceWater_puddledepth_get, METH_O, "SurfaceWater_puddledepth_get(SurfaceWater self) -> real"},
@@ -79441,13 +87210,37 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SurfaceWater_nManning_get", _wrap_SurfaceWater_nManning_get, METH_O, "SurfaceWater_nManning_get(SurfaceWater self) -> real"},
 	 { "delete_SurfaceWater", _wrap_delete_SurfaceWater, METH_O, "delete_SurfaceWater(SurfaceWater self)"},
 	 { "SurfaceWater_swigregister", SurfaceWater_swigregister, METH_O, NULL},
-	 { "new_KinematicSurfaceRunoff", (PyCFunction)(void(*)(void))_wrap_new_KinematicSurfaceRunoff, METH_VARARGS|METH_KEYWORDS, "new_KinematicSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left, cmf::water::flux_node::ptr right, real flowwidth, real distance=-1) -> KinematicSurfaceRunoff"},
+	 { "new_KinematicSurfaceRunoff", (PyCFunction)(void(*)(void))_wrap_new_KinematicSurfaceRunoff, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_KinematicSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left, cmf::water::flux_node::ptr right, real flowwidth, real distance=-1) -> KinematicSurfaceRunoff\n"
+		"KinematicSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left,\n"
+		"cmf::water::flux_node::ptr right, real flowwidth, real distance=-1)\n"
+		"\n"
+		"Creates a KinematicSurfaceRunoff between a SurfaceWater (left) with\n"
+		"another (right) node.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  A surfacewater storage\n"
+		"\n"
+		"right:  The target node\n"
+		"\n"
+		"flowwidth:  the length of the shared boundary between left and right\n"
+		"in m\n"
+		"\n"
+		"distance:  the distance between left and right in m. If d<=0m, the\n"
+		"distance is calculated according to the position of left and right \n"
+		""},
 	 { "delete_KinematicSurfaceRunoff", _wrap_delete_KinematicSurfaceRunoff, METH_O, "delete_KinematicSurfaceRunoff(KinematicSurfaceRunoff self)"},
 	 { "KinematicSurfaceRunoff_swigregister", KinematicSurfaceRunoff_swigregister, METH_O, NULL},
 	 { "KinematicSurfaceRunoff_swiginit", KinematicSurfaceRunoff_swiginit, METH_VARARGS, NULL},
 	 { "DiffusiveSurfaceRunoff_set_linear_slope", (PyCFunction)(void(*)(void))_wrap_DiffusiveSurfaceRunoff_set_linear_slope, METH_VARARGS|METH_KEYWORDS, "set_linear_slope(real width)"},
 	 { "DiffusiveSurfaceRunoff_get_linear_slope", _wrap_DiffusiveSurfaceRunoff_get_linear_slope, METH_NOARGS, "get_linear_slope() -> real"},
-	 { "new_DiffusiveSurfaceRunoff", (PyCFunction)(void(*)(void))_wrap_new_DiffusiveSurfaceRunoff, METH_VARARGS|METH_KEYWORDS, "new_DiffusiveSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left, cmf::water::flux_node::ptr right, real flowwidth, real distance=-1) -> DiffusiveSurfaceRunoff"},
+	 { "new_DiffusiveSurfaceRunoff", (PyCFunction)(void(*)(void))_wrap_new_DiffusiveSurfaceRunoff, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_DiffusiveSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left, cmf::water::flux_node::ptr right, real flowwidth, real distance=-1) -> DiffusiveSurfaceRunoff\n"
+		"DiffusiveSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left,\n"
+		"cmf::water::flux_node::ptr right, real flowwidth, real distance=-1) \n"
+		""},
 	 { "delete_DiffusiveSurfaceRunoff", _wrap_delete_DiffusiveSurfaceRunoff, METH_O, "delete_DiffusiveSurfaceRunoff(DiffusiveSurfaceRunoff self)"},
 	 { "DiffusiveSurfaceRunoff_swigregister", DiffusiveSurfaceRunoff_swigregister, METH_O, NULL},
 	 { "DiffusiveSurfaceRunoff_swiginit", DiffusiveSurfaceRunoff_swiginit, METH_VARARGS, NULL},
@@ -79459,10 +87252,32 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "aquifer_porosity_get", _wrap_aquifer_porosity_get, METH_O, "aquifer_porosity_get(aquifer self) -> real"},
 	 { "aquifer_K_set", _wrap_aquifer_K_set, METH_VARARGS, "aquifer_K_set(aquifer self, point K)"},
 	 { "aquifer_K_get", _wrap_aquifer_K_get, METH_O, "aquifer_K_get(aquifer self) -> point"},
-	 { "aquifer_get_abs_errtol", (PyCFunction)(void(*)(void))_wrap_aquifer_get_abs_errtol, METH_VARARGS|METH_KEYWORDS, "get_abs_errtol(aquifer self, real rel_errtol) -> real"},
+	 { "aquifer_get_abs_errtol", (PyCFunction)(void(*)(void))_wrap_aquifer_get_abs_errtol, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_abs_errtol(aquifer self, real rel_errtol) -> real\n"
+		"virtual\n"
+		"real get_abs_errtol(real rel_errtol) const \n"
+		""},
 	 { "new_aquifer", _wrap_new_aquifer, METH_VARARGS, "\n"
 		"aquifer(project p, point position, real area, real thickness, real porosity, real K=1e-4)\n"
 		"new_aquifer(cell_vector cells, real thickness, real porosity, real K=1e-4) -> aquifer\n"
+		"aquifer(cmf::upslope::cell_vector &cells, real thickness, real\n"
+		"porosity, real K=1e-4)\n"
+		"\n"
+		"Creates an aquifer below a collection of cells.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"cells:  The cells above the aquifer. The area of the aquifer equals\n"
+		"the area of the cells, and the upper boundary equals the soildepth of\n"
+		"the lowest cell\n"
+		"\n"
+		"thickness:  The thickness of the aquifer in m\n"
+		"\n"
+		"porosity:  Porosity of the aquifer\n"
+		"\n"
+		"K:  Conductivity of the aquifer in m/day. If the conductivity should\n"
+		"be anisotropic, change the x,y and z values of the member K \n"
 		""},
 	 { "aquifer_cast", (PyCFunction)(void(*)(void))_wrap_aquifer_cast, METH_VARARGS|METH_KEYWORDS, "cast(cmf::water::flux_node::ptr for_cast) -> cmf::upslope::aquifer::ptr"},
 	 { "aquifer_base_height_get", _wrap_aquifer_base_height_get, METH_O, "aquifer_base_height_get(aquifer self) -> double"},
@@ -79472,21 +87287,80 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "aquifer_swiginit", aquifer_swiginit, METH_VARARGS, NULL},
 	 { "aquifer_Darcy_flux_width_set", _wrap_aquifer_Darcy_flux_width_set, METH_VARARGS, "aquifer_Darcy_flux_width_set(aquifer_Darcy self, real flux_width)"},
 	 { "aquifer_Darcy_flux_width_get", _wrap_aquifer_Darcy_flux_width_get, METH_O, "aquifer_Darcy_flux_width_get(aquifer_Darcy self) -> real"},
-	 { "new_aquifer_Darcy", (PyCFunction)(void(*)(void))_wrap_new_aquifer_Darcy, METH_VARARGS|METH_KEYWORDS, "new_aquifer_Darcy(cmf::upslope::aquifer::ptr left, cmf::water::flux_node::ptr right, real width) -> aquifer_Darcy"},
+	 { "new_aquifer_Darcy", (PyCFunction)(void(*)(void))_wrap_new_aquifer_Darcy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_aquifer_Darcy(cmf::upslope::aquifer::ptr left, cmf::water::flux_node::ptr right, real width) -> aquifer_Darcy\n"
+		"aquifer_Darcy(aquifer::ptr left, cmf::water::flux_node::ptr right,\n"
+		"real width)\n"
+		"\n"
+		"Creates a new Darcy flow connection between two aquifers, or an\n"
+		"aquifer and another node acting as Dirichlet boundary condition.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  One aquifer\n"
+		"\n"
+		"right:  Another aquifer, or a flux node that can be interpreted as an\n"
+		"Dirichlet boundary\n"
+		"\n"
+		"width:  Width of the connection \n"
+		""},
 	 { "delete_aquifer_Darcy", _wrap_delete_aquifer_Darcy, METH_O, "delete_aquifer_Darcy(aquifer_Darcy self)"},
 	 { "aquifer_Darcy_swigregister", aquifer_Darcy_swigregister, METH_O, NULL},
 	 { "aquifer_Darcy_swiginit", aquifer_Darcy_swiginit, METH_VARARGS, NULL},
 	 { "delete_lateral_sub_surface_flux", _wrap_delete_lateral_sub_surface_flux, METH_O, "delete_lateral_sub_surface_flux(lateral_sub_surface_flux self)"},
 	 { "lateral_sub_surface_flux_swigregister", lateral_sub_surface_flux_swigregister, METH_O, NULL},
-	 { "new_Darcy", (PyCFunction)(void(*)(void))_wrap_new_Darcy, METH_VARARGS|METH_KEYWORDS, "new_Darcy(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) -> Darcy"},
+	 { "new_Darcy", (PyCFunction)(void(*)(void))_wrap_new_Darcy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Darcy(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) -> Darcy\n"
+		"Darcy(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr\n"
+		"right, real FlowWidth, real Distance=0) \n"
+		""},
 	 { "delete_Darcy", _wrap_delete_Darcy, METH_O, "delete_Darcy(Darcy self)"},
 	 { "Darcy_swigregister", Darcy_swigregister, METH_O, NULL},
 	 { "Darcy_swiginit", Darcy_swiginit, METH_VARARGS, NULL},
-	 { "new_TopographicGradientDarcy", (PyCFunction)(void(*)(void))_wrap_new_TopographicGradientDarcy, METH_VARARGS|METH_KEYWORDS, "new_TopographicGradientDarcy(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) -> TopographicGradientDarcy"},
+	 { "new_TopographicGradientDarcy", (PyCFunction)(void(*)(void))_wrap_new_TopographicGradientDarcy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_TopographicGradientDarcy(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) -> TopographicGradientDarcy\n"
+		"TopographicGradientDarcy(cmf::upslope::SoilLayer::ptr left,\n"
+		"cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0)\n"
+		"\n"
+		"Creates the connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  Left node of the connection (needs to be soil water storage)\n"
+		"\n"
+		"right:  Right node of the connection (can be any node)\n"
+		"\n"
+		"FlowWidth:  the width of the connection - is multiplied by layer\n"
+		"thickness to get the interface area\n"
+		"\n"
+		"Distance:  the length of the connection. If 0, the distance is\n"
+		"calculated from the position of the nodes \n"
+		""},
 	 { "delete_TopographicGradientDarcy", _wrap_delete_TopographicGradientDarcy, METH_O, "delete_TopographicGradientDarcy(TopographicGradientDarcy self)"},
 	 { "TopographicGradientDarcy_swigregister", TopographicGradientDarcy_swigregister, METH_O, NULL},
 	 { "TopographicGradientDarcy_swiginit", TopographicGradientDarcy_swiginit, METH_VARARGS, NULL},
-	 { "new_DarcyKinematic", (PyCFunction)(void(*)(void))_wrap_new_DarcyKinematic, METH_VARARGS|METH_KEYWORDS, "new_DarcyKinematic(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) -> DarcyKinematic"},
+	 { "new_DarcyKinematic", (PyCFunction)(void(*)(void))_wrap_new_DarcyKinematic, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_DarcyKinematic(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) -> DarcyKinematic\n"
+		"DarcyKinematic(cmf::upslope::SoilLayer::ptr left,\n"
+		"cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0)\n"
+		"\n"
+		"Creates the connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  Left node of the connection (needs to be soil water storage)\n"
+		"\n"
+		"right:  Right node of the connection (can be any node)\n"
+		"\n"
+		"FlowWidth:  the width of the connection - is multiplied by layer\n"
+		"thickness to get the interface area\n"
+		"\n"
+		"Distance:  the length of the connection. If 0, the distance is\n"
+		"calculated from the position of the nodes \n"
+		""},
 	 { "delete_DarcyKinematic", _wrap_delete_DarcyKinematic, METH_O, "delete_DarcyKinematic(DarcyKinematic self)"},
 	 { "DarcyKinematic_swigregister", DarcyKinematic_swigregister, METH_O, NULL},
 	 { "DarcyKinematic_swiginit", DarcyKinematic_swiginit, METH_VARARGS, NULL},
@@ -79494,7 +87368,26 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Richards_lateral_flow_thickness_get", _wrap_Richards_lateral_flow_thickness_get, METH_O, "Richards_lateral_flow_thickness_get(Richards_lateral self) -> real"},
 	 { "Richards_lateral_wet_right_node_set", _wrap_Richards_lateral_wet_right_node_set, METH_VARARGS, "Richards_lateral_wet_right_node_set(Richards_lateral self, bool wet_right_node)"},
 	 { "Richards_lateral_wet_right_node_get", _wrap_Richards_lateral_wet_right_node_get, METH_O, "Richards_lateral_wet_right_node_get(Richards_lateral self) -> bool"},
-	 { "new_Richards_lateral", (PyCFunction)(void(*)(void))_wrap_new_Richards_lateral, METH_VARARGS|METH_KEYWORDS, "new_Richards_lateral(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth=0, real Distance=0) -> Richards_lateral"},
+	 { "new_Richards_lateral", (PyCFunction)(void(*)(void))_wrap_new_Richards_lateral, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Richards_lateral(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth=0, real Distance=0) -> Richards_lateral\n"
+		"Richards_lateral(cmf::upslope::SoilLayer::ptr left,\n"
+		"cmf::water::flux_node::ptr right, real FlowWidth=0, real Distance=0)\n"
+		"\n"
+		"Creates the connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  Left node of the connection (needs to be soil water storage)\n"
+		"\n"
+		"right:  Right node of the connection (can be any node)\n"
+		"\n"
+		"FlowWidth:  the width of the connection - is multiplied by layer\n"
+		"thickness to get the interface area\n"
+		"\n"
+		"Distance:  the length of the connection. If 0, the distance is\n"
+		"calculated from the position of the nodes \n"
+		""},
 	 { "Richards_lateral_usebaseflow", (PyCFunction)(void(*)(void))_wrap_Richards_lateral_usebaseflow, METH_VARARGS|METH_KEYWORDS, "usebaseflow(bool use)"},
 	 { "delete_Richards_lateral", _wrap_delete_Richards_lateral, METH_O, "delete_Richards_lateral(Richards_lateral self)"},
 	 { "Richards_lateral_swigregister", Richards_lateral_swigregister, METH_O, NULL},
@@ -79507,7 +87400,12 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "TOPModelFlow_T0_get", _wrap_TOPModelFlow_T0_get, METH_O, "TOPModelFlow_T0_get(TOPModelFlow self) -> real"},
 	 { "TOPModelFlow_m_set", _wrap_TOPModelFlow_m_set, METH_VARARGS, "TOPModelFlow_m_set(TOPModelFlow self, real m)"},
 	 { "TOPModelFlow_m_get", _wrap_TOPModelFlow_m_get, METH_O, "TOPModelFlow_m_get(TOPModelFlow self) -> real"},
-	 { "new_TOPModelFlow", (PyCFunction)(void(*)(void))_wrap_new_TOPModelFlow, METH_VARARGS|METH_KEYWORDS, "new_TOPModelFlow(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real T0, real m, real flowwidth, real distance=0) -> TOPModelFlow"},
+	 { "new_TOPModelFlow", (PyCFunction)(void(*)(void))_wrap_new_TOPModelFlow, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_TOPModelFlow(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real T0, real m, real flowwidth, real distance=0) -> TOPModelFlow\n"
+		"TOPModelFlow(cmf::upslope::SoilLayer::ptr left,\n"
+		"cmf::water::flux_node::ptr right, real T0, real m, real flowwidth,\n"
+		"real distance=0) \n"
+		""},
 	 { "delete_TOPModelFlow", _wrap_delete_TOPModelFlow, METH_O, "delete_TOPModelFlow(TOPModelFlow self)"},
 	 { "TOPModelFlow_swigregister", TOPModelFlow_swigregister, METH_O, NULL},
 	 { "TOPModelFlow_swiginit", TOPModelFlow_swiginit, METH_VARARGS, NULL},
@@ -79519,77 +87417,195 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Manning_swigregister", Manning_swigregister, METH_O, NULL},
 	 { "Manning_Diffusive_linear_slope_width_set", _wrap_Manning_Diffusive_linear_slope_width_set, METH_VARARGS, "Manning_Diffusive_linear_slope_width_set(Manning_Diffusive self, real linear_slope_width)"},
 	 { "Manning_Diffusive_linear_slope_width_get", _wrap_Manning_Diffusive_linear_slope_width_get, METH_O, "Manning_Diffusive_linear_slope_width_get(Manning_Diffusive self) -> real"},
-	 { "new_Manning_Diffusive", (PyCFunction)(void(*)(void))_wrap_new_Manning_Diffusive, METH_VARARGS|METH_KEYWORDS, "new_Manning_Diffusive(cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype) -> Manning_Diffusive"},
+	 { "new_Manning_Diffusive", (PyCFunction)(void(*)(void))_wrap_new_Manning_Diffusive, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Manning_Diffusive(cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype) -> Manning_Diffusive\n"
+		"Manning_Diffusive(cmf::river::OpenWaterStorage::ptr left,\n"
+		"cmf::water::flux_node::ptr right, const cmf::river::IChannel\n"
+		"&reachtype)\n"
+		"\n"
+		"Creates a diffusive wave connection between to open water storages.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  right:  The nodes to be connected by the diffusive wave. Left\n"
+		"needs to be an open water storage\n"
+		"\n"
+		"reachtype:  The channel geometry \n"
+		""},
 	 { "delete_Manning_Diffusive", _wrap_delete_Manning_Diffusive, METH_O, "delete_Manning_Diffusive(Manning_Diffusive self)"},
 	 { "Manning_Diffusive_swigregister", Manning_Diffusive_swigregister, METH_O, NULL},
 	 { "Manning_Diffusive_swiginit", Manning_Diffusive_swiginit, METH_VARARGS, NULL},
-	 { "new_Manning_Kinematic", (PyCFunction)(void(*)(void))_wrap_new_Manning_Kinematic, METH_VARARGS|METH_KEYWORDS, "new_Manning_Kinematic(cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype) -> Manning_Kinematic"},
+	 { "new_Manning_Kinematic", (PyCFunction)(void(*)(void))_wrap_new_Manning_Kinematic, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Manning_Kinematic(cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype) -> Manning_Kinematic\n"
+		"Manning_Kinematic(cmf::river::OpenWaterStorage::ptr left,\n"
+		"cmf::water::flux_node::ptr right, const cmf::river::IChannel\n"
+		"&reachtype)\n"
+		"\n"
+		"Creates a kinematic wave connection between to open water storages.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  right:  The nodes to be connected by the kinematic wave. Left\n"
+		"needs to be an open water storage\n"
+		"\n"
+		"reachtype:  The channel geometry \n"
+		""},
 	 { "delete_Manning_Kinematic", _wrap_delete_Manning_Kinematic, METH_O, "delete_Manning_Kinematic(Manning_Kinematic self)"},
 	 { "Manning_Kinematic_swigregister", Manning_Kinematic_swigregister, METH_O, NULL},
 	 { "Manning_Kinematic_swiginit", Manning_Kinematic_swiginit, METH_VARARGS, NULL},
-	 { "new_CanopyOverflow", (PyCFunction)(void(*)(void))_wrap_new_CanopyOverflow, METH_VARARGS|METH_KEYWORDS, "new_CanopyOverflow(cmf::water::WaterStorage::ptr Canopy, cmf::water::flux_node::ptr target, Cell cell) -> CanopyOverflow"},
+	 { "new_CanopyOverflow", (PyCFunction)(void(*)(void))_wrap_new_CanopyOverflow, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_CanopyOverflow(cmf::water::WaterStorage::ptr Canopy, cmf::water::flux_node::ptr target, Cell cell) -> CanopyOverflow\n"
+		"CanopyOverflow(cmf::water::WaterStorage::ptr Canopy,\n"
+		"cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell) \n"
+		""},
 	 { "CanopyOverflow_use_for_cell", (PyCFunction)(void(*)(void))_wrap_CanopyOverflow_use_for_cell, METH_VARARGS|METH_KEYWORDS, "use_for_cell(Cell cell) -> CanopyOverflow"},
 	 { "delete_CanopyOverflow", _wrap_delete_CanopyOverflow, METH_O, "delete_CanopyOverflow(CanopyOverflow self)"},
 	 { "CanopyOverflow_swigregister", CanopyOverflow_swigregister, METH_O, NULL},
 	 { "CanopyOverflow_swiginit", CanopyOverflow_swiginit, METH_VARARGS, NULL},
-	 { "new_RutterInterception", (PyCFunction)(void(*)(void))_wrap_new_RutterInterception, METH_VARARGS|METH_KEYWORDS, "new_RutterInterception(cmf::water::WaterStorage::ptr Canopy, cmf::water::flux_node::ptr target, Cell cell) -> RutterInterception"},
+	 { "new_RutterInterception", (PyCFunction)(void(*)(void))_wrap_new_RutterInterception, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_RutterInterception(cmf::water::WaterStorage::ptr Canopy, cmf::water::flux_node::ptr target, Cell cell) -> RutterInterception\n"
+		"RutterInterception(cmf::water::WaterStorage::ptr Canopy,\n"
+		"cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell) \n"
+		""},
 	 { "RutterInterception_use_for_cell", (PyCFunction)(void(*)(void))_wrap_RutterInterception_use_for_cell, METH_VARARGS|METH_KEYWORDS, "use_for_cell(Cell cell) -> RutterInterception"},
 	 { "delete_RutterInterception", _wrap_delete_RutterInterception, METH_O, "delete_RutterInterception(RutterInterception self)"},
 	 { "RutterInterception_swigregister", RutterInterception_swigregister, METH_O, NULL},
 	 { "RutterInterception_swiginit", RutterInterception_swiginit, METH_VARARGS, NULL},
 	 { "TempIndexSnowMelt_SnowMeltRate_set", _wrap_TempIndexSnowMelt_SnowMeltRate_set, METH_VARARGS, "TempIndexSnowMelt_SnowMeltRate_set(TempIndexSnowMelt self, real SnowMeltRate)"},
 	 { "TempIndexSnowMelt_SnowMeltRate_get", _wrap_TempIndexSnowMelt_SnowMeltRate_get, METH_O, "TempIndexSnowMelt_SnowMeltRate_get(TempIndexSnowMelt self) -> real"},
-	 { "new_TempIndexSnowMelt", (PyCFunction)(void(*)(void))_wrap_new_TempIndexSnowMelt, METH_VARARGS|METH_KEYWORDS, "new_TempIndexSnowMelt(cmf::water::WaterStorage::ptr snow, cmf::water::flux_node::ptr surface_water, Cell cell, real rate=7.0) -> TempIndexSnowMelt"},
+	 { "new_TempIndexSnowMelt", (PyCFunction)(void(*)(void))_wrap_new_TempIndexSnowMelt, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_TempIndexSnowMelt(cmf::water::WaterStorage::ptr snow, cmf::water::flux_node::ptr surface_water, Cell cell, real rate=7.0) -> TempIndexSnowMelt\n"
+		"TempIndexSnowMelt(cmf::water::WaterStorage::ptr snow,\n"
+		"cmf::water::flux_node::ptr surface_water, cmf::upslope::Cell &cell,\n"
+		"real rate=7.0)\n"
+		"\n"
+		"Creates a new snow melt connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"snow:  Snow storage, usually cel.snow\n"
+		"\n"
+		"surface_water:  target of the melted water (usually cell.surfacewater)\n"
+		"\n"
+		"cell:  The cell, needed to get weather and area\n"
+		"\n"
+		"rate:  The rate of snow melt, given in mm/(degC day), default = 7.0 \n"
+		""},
 	 { "TempIndexSnowMelt_use_for_cell", (PyCFunction)(void(*)(void))_wrap_TempIndexSnowMelt_use_for_cell, METH_VARARGS|METH_KEYWORDS, "use_for_cell(Cell cell)"},
 	 { "delete_TempIndexSnowMelt", _wrap_delete_TempIndexSnowMelt, METH_O, "delete_TempIndexSnowMelt(TempIndexSnowMelt self)"},
 	 { "TempIndexSnowMelt_swigregister", TempIndexSnowMelt_swigregister, METH_O, NULL},
 	 { "TempIndexSnowMelt_swiginit", TempIndexSnowMelt_swiginit, METH_VARARGS, NULL},
-	 { "new_EnergyBudgetSnowMelt", (PyCFunction)(void(*)(void))_wrap_new_EnergyBudgetSnowMelt, METH_VARARGS|METH_KEYWORDS, "new_EnergyBudgetSnowMelt(cmf::water::WaterStorage::ptr snow, cmf::water::flux_node::ptr surface_water, Cell cell) -> EnergyBudgetSnowMelt"},
+	 { "new_EnergyBudgetSnowMelt", (PyCFunction)(void(*)(void))_wrap_new_EnergyBudgetSnowMelt, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_EnergyBudgetSnowMelt(cmf::water::WaterStorage::ptr snow, cmf::water::flux_node::ptr surface_water, Cell cell) -> EnergyBudgetSnowMelt\n"
+		"EnergyBudgetSnowMelt(cmf::water::WaterStorage::ptr snow,\n"
+		"cmf::water::flux_node::ptr surface_water, cmf::upslope::Cell &cell) \n"
+		""},
 	 { "EnergyBudgetSnowMelt_use_for_cell", (PyCFunction)(void(*)(void))_wrap_EnergyBudgetSnowMelt_use_for_cell, METH_VARARGS|METH_KEYWORDS, "use_for_cell(Cell cell)"},
 	 { "delete_EnergyBudgetSnowMelt", _wrap_delete_EnergyBudgetSnowMelt, METH_O, "delete_EnergyBudgetSnowMelt(EnergyBudgetSnowMelt self)"},
 	 { "EnergyBudgetSnowMelt_swigregister", EnergyBudgetSnowMelt_swigregister, METH_O, NULL},
 	 { "EnergyBudgetSnowMelt_swiginit", EnergyBudgetSnowMelt_swiginit, METH_VARARGS, NULL},
-	 { "snowfraction", (PyCFunction)(void(*)(void))_wrap_snowfraction, METH_VARARGS|METH_KEYWORDS, "snowfraction(real T) -> real"},
+	 { "snowfraction", (PyCFunction)(void(*)(void))_wrap_snowfraction, METH_VARARGS|METH_KEYWORDS, "\n"
+		"snowfraction(real T) -> real\n"
+		"real\n"
+		"cmf::upslope::connections::snowfraction(real T)\n"
+		"\n"
+		"A function to calculate the snow fraction of the precipitation\n"
+		"according to the air temperature.\n"
+		"\n"
+		"Returns 0.0 for T>+1 degC, 1.0 for T<-1degC and interpolates linear\n"
+		"between. Values between 0 and 1 can be interpreted as sleet \n"
+		""},
 	 { "Rainfall_Throughfall_set", _wrap_Rainfall_Throughfall_set, METH_VARARGS, "Rainfall_Throughfall_set(Rainfall self, bool Throughfall)"},
 	 { "Rainfall_Throughfall_get", _wrap_Rainfall_Throughfall_get, METH_O, "Rainfall_Throughfall_get(Rainfall self) -> bool"},
 	 { "Rainfall_InterceptedRainfall_set", _wrap_Rainfall_InterceptedRainfall_set, METH_VARARGS, "Rainfall_InterceptedRainfall_set(Rainfall self, bool InterceptedRainfall)"},
 	 { "Rainfall_InterceptedRainfall_get", _wrap_Rainfall_InterceptedRainfall_get, METH_O, "Rainfall_InterceptedRainfall_get(Rainfall self) -> bool"},
-	 { "new_Rainfall", (PyCFunction)(void(*)(void))_wrap_new_Rainfall, METH_VARARGS|METH_KEYWORDS, "new_Rainfall(cmf::water::flux_node::ptr target, Cell cell, bool getthroughfall=True, bool getintercepted=True) -> Rainfall"},
+	 { "new_Rainfall", (PyCFunction)(void(*)(void))_wrap_new_Rainfall, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Rainfall(cmf::water::flux_node::ptr target, Cell cell, bool getthroughfall=True, bool getintercepted=True) -> Rainfall\n"
+		"Rainfall(cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell,\n"
+		"bool getthroughfall=true, bool getintercepted=true)\n"
+		"\n"
+		"Creates a new Rainfall connection. \n"
+		""},
 	 { "delete_Rainfall", _wrap_delete_Rainfall, METH_O, "delete_Rainfall(Rainfall self)"},
 	 { "Rainfall_swigregister", Rainfall_swigregister, METH_O, NULL},
 	 { "Rainfall_swiginit", Rainfall_swiginit, METH_VARARGS, NULL},
-	 { "new_Snowfall", (PyCFunction)(void(*)(void))_wrap_new_Snowfall, METH_VARARGS|METH_KEYWORDS, "new_Snowfall(cmf::water::flux_node::ptr target, Cell cell) -> Snowfall"},
+	 { "new_Snowfall", (PyCFunction)(void(*)(void))_wrap_new_Snowfall, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Snowfall(cmf::water::flux_node::ptr target, Cell cell) -> Snowfall\n"
+		"Snowfall(cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell)\n"
+		"\n"
+		""},
 	 { "delete_Snowfall", _wrap_delete_Snowfall, METH_O, "delete_Snowfall(Snowfall self)"},
 	 { "Snowfall_swigregister", Snowfall_swigregister, METH_O, NULL},
 	 { "Snowfall_swiginit", Snowfall_swiginit, METH_VARARGS, NULL},
-	 { "new_MatrixInfiltration", (PyCFunction)(void(*)(void))_wrap_new_MatrixInfiltration, METH_VARARGS|METH_KEYWORDS, "new_MatrixInfiltration(cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater) -> MatrixInfiltration"},
+	 { "new_MatrixInfiltration", (PyCFunction)(void(*)(void))_wrap_new_MatrixInfiltration, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_MatrixInfiltration(cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater) -> MatrixInfiltration\n"
+		"MatrixInfiltration(cmf::upslope::SoilLayer::ptr soilwater,\n"
+		"cmf::water::flux_node::ptr surfacewater) \n"
+		""},
 	 { "MatrixInfiltration_use_for_cell", (PyCFunction)(void(*)(void))_wrap_MatrixInfiltration_use_for_cell, METH_VARARGS|METH_KEYWORDS, "use_for_cell(Cell c)"},
 	 { "delete_MatrixInfiltration", _wrap_delete_MatrixInfiltration, METH_O, "delete_MatrixInfiltration(MatrixInfiltration self)"},
 	 { "MatrixInfiltration_swigregister", MatrixInfiltration_swigregister, METH_O, NULL},
 	 { "MatrixInfiltration_swiginit", MatrixInfiltration_swiginit, METH_VARARGS, NULL},
-	 { "new_GreenAmptInfiltration", (PyCFunction)(void(*)(void))_wrap_new_GreenAmptInfiltration, METH_VARARGS|METH_KEYWORDS, "new_GreenAmptInfiltration(cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater) -> GreenAmptInfiltration"},
+	 { "new_GreenAmptInfiltration", (PyCFunction)(void(*)(void))_wrap_new_GreenAmptInfiltration, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_GreenAmptInfiltration(cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater) -> GreenAmptInfiltration\n"
+		"GreenAmptInfiltration(cmf::upslope::SoilLayer::ptr soilwater,\n"
+		"cmf::water::flux_node::ptr surfacewater) \n"
+		""},
 	 { "GreenAmptInfiltration_use_for_cell", (PyCFunction)(void(*)(void))_wrap_GreenAmptInfiltration_use_for_cell, METH_VARARGS|METH_KEYWORDS, "use_for_cell(Cell c)"},
 	 { "delete_GreenAmptInfiltration", _wrap_delete_GreenAmptInfiltration, METH_O, "delete_GreenAmptInfiltration(GreenAmptInfiltration self)"},
 	 { "GreenAmptInfiltration_swigregister", GreenAmptInfiltration_swigregister, METH_O, NULL},
 	 { "GreenAmptInfiltration_swiginit", GreenAmptInfiltration_swiginit, METH_VARARGS, NULL},
 	 { "ConceptualInfiltration_W0_set", _wrap_ConceptualInfiltration_W0_set, METH_VARARGS, "ConceptualInfiltration_W0_set(ConceptualInfiltration self, real W0)"},
 	 { "ConceptualInfiltration_W0_get", _wrap_ConceptualInfiltration_W0_get, METH_O, "ConceptualInfiltration_W0_get(ConceptualInfiltration self) -> real"},
-	 { "new_ConceptualInfiltration", (PyCFunction)(void(*)(void))_wrap_new_ConceptualInfiltration, METH_VARARGS|METH_KEYWORDS, "new_ConceptualInfiltration(cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater, real W0=0.9) -> ConceptualInfiltration"},
+	 { "new_ConceptualInfiltration", (PyCFunction)(void(*)(void))_wrap_new_ConceptualInfiltration, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ConceptualInfiltration(cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater, real W0=0.9) -> ConceptualInfiltration\n"
+		"ConceptualInfiltration(cmf::upslope::SoilLayer::ptr soilwater,\n"
+		"cmf::water::flux_node::ptr surfacewater, real W0=0.9)\n"
+		"\n"
+		"Creates the connection between surfacewater and first soil layer.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"soilwater:  the infiltration target\n"
+		"\n"
+		"surfacewater:  the infiltration source\n"
+		"\n"
+		"W0:  the 50% saturation value \n"
+		""},
 	 { "ConceptualInfiltration_use_for_cell", (PyCFunction)(void(*)(void))_wrap_ConceptualInfiltration_use_for_cell, METH_VARARGS|METH_KEYWORDS, "use_for_cell(Cell c)"},
 	 { "delete_ConceptualInfiltration", _wrap_delete_ConceptualInfiltration, METH_O, "delete_ConceptualInfiltration(ConceptualInfiltration self)"},
 	 { "ConceptualInfiltration_swigregister", ConceptualInfiltration_swigregister, METH_O, NULL},
 	 { "ConceptualInfiltration_swiginit", ConceptualInfiltration_swiginit, METH_VARARGS, NULL},
 	 { "SWATPercolation_use_for_cell", (PyCFunction)(void(*)(void))_wrap_SWATPercolation_use_for_cell, METH_VARARGS|METH_KEYWORDS, "use_for_cell(Cell cell, bool no_override=True)"},
-	 { "new_SWATPercolation", (PyCFunction)(void(*)(void))_wrap_new_SWATPercolation, METH_VARARGS|METH_KEYWORDS, "new_SWATPercolation(cmf::upslope::SoilLayer::ptr upperLayer, cmf::upslope::SoilLayer::ptr lowerLayer) -> SWATPercolation"},
+	 { "new_SWATPercolation", (PyCFunction)(void(*)(void))_wrap_new_SWATPercolation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SWATPercolation(cmf::upslope::SoilLayer::ptr upperLayer, cmf::upslope::SoilLayer::ptr lowerLayer) -> SWATPercolation\n"
+		"SWATPercolation(cmf::upslope::SoilLayer::ptr upperLayer,\n"
+		"cmf::upslope::SoilLayer::ptr lowerLayer) \n"
+		""},
 	 { "delete_SWATPercolation", _wrap_delete_SWATPercolation, METH_O, "delete_SWATPercolation(SWATPercolation self)"},
 	 { "SWATPercolation_swigregister", SWATPercolation_swigregister, METH_O, NULL},
 	 { "SWATPercolation_swiginit", SWATPercolation_swiginit, METH_VARARGS, NULL},
-	 { "new_Richards", (PyCFunction)(void(*)(void))_wrap_new_Richards, METH_VARARGS|METH_KEYWORDS, "new_Richards(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> Richards"},
+	 { "new_Richards", (PyCFunction)(void(*)(void))_wrap_new_Richards, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_Richards(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> Richards\n"
+		"Richards(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr\n"
+		"right)\n"
+		"\n"
+		"Creates a Richards equation connection between two soil layers (left\n"
+		"and right, rather top and bottom) of the same cell. \n"
+		""},
 	 { "Richards_use_for_cell", (PyCFunction)(void(*)(void))_wrap_Richards_use_for_cell, METH_VARARGS|METH_KEYWORDS, "use_for_cell(Cell cell, bool no_override=True)"},
 	 { "delete_Richards", _wrap_delete_Richards, METH_O, "delete_Richards(Richards self)"},
 	 { "Richards_swigregister", Richards_swigregister, METH_O, NULL},
 	 { "Richards_swiginit", Richards_swiginit, METH_VARARGS, NULL},
-	 { "new_FreeDrainagePercolation", (PyCFunction)(void(*)(void))_wrap_new_FreeDrainagePercolation, METH_VARARGS|METH_KEYWORDS, "new_FreeDrainagePercolation(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> FreeDrainagePercolation"},
+	 { "new_FreeDrainagePercolation", (PyCFunction)(void(*)(void))_wrap_new_FreeDrainagePercolation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_FreeDrainagePercolation(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> FreeDrainagePercolation\n"
+		"FreeDrainagePercolation(cmf::upslope::SoilLayer::ptr left,\n"
+		"cmf::water::flux_node::ptr right) \n"
+		""},
 	 { "delete_FreeDrainagePercolation", _wrap_delete_FreeDrainagePercolation, METH_O, "delete_FreeDrainagePercolation(FreeDrainagePercolation self)"},
 	 { "FreeDrainagePercolation_swigregister", FreeDrainagePercolation_swigregister, METH_O, NULL},
 	 { "FreeDrainagePercolation_swiginit", FreeDrainagePercolation_swiginit, METH_VARARGS, NULL},
@@ -79599,15 +87615,75 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "LayerBypass_w0_get", _wrap_LayerBypass_w0_get, METH_O, "LayerBypass_w0_get(LayerBypass self) -> real"},
 	 { "LayerBypass_beta_set", _wrap_LayerBypass_beta_set, METH_VARARGS, "LayerBypass_beta_set(LayerBypass self, real beta)"},
 	 { "LayerBypass_beta_get", _wrap_LayerBypass_beta_get, METH_O, "LayerBypass_beta_get(LayerBypass self) -> real"},
-	 { "LayerBypass_K", (PyCFunction)(void(*)(void))_wrap_LayerBypass_K, METH_VARARGS|METH_KEYWORDS, "K(LayerBypass self, real w) -> real"},
-	 { "new_LayerBypass", (PyCFunction)(void(*)(void))_wrap_new_LayerBypass, METH_VARARGS|METH_KEYWORDS, "new_LayerBypass(cmf::water::flux_node::ptr left, cmf::upslope::SoilLayer::ptr right, real Kmax=100., real w0=0.0, real beta=1.0) -> LayerBypass"},
+	 { "LayerBypass_K", (PyCFunction)(void(*)(void))_wrap_LayerBypass_K, METH_VARARGS|METH_KEYWORDS, "\n"
+		"K(LayerBypass self, real w) -> real\n"
+		"real K(real w)\n"
+		"\n"
+		"the actual crack conductivity\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"w:  the wetness of the target layer \n"
+		""},
+	 { "new_LayerBypass", (PyCFunction)(void(*)(void))_wrap_new_LayerBypass, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_LayerBypass(cmf::water::flux_node::ptr left, cmf::upslope::SoilLayer::ptr right, real Kmax=100., real w0=0.0, real beta=1.0) -> LayerBypass\n"
+		"LayerBypass(cmf::water::flux_node::ptr left,\n"
+		"cmf::upslope::SoilLayer::ptr right, real Kmax=100., real w0=0.0, real\n"
+		"beta=1.0)\n"
+		"\n"
+		"Creates a layer bypass connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  The source of the flux, usually the surfacewater of the cell\n"
+		"\n"
+		"right:  The target soil layer\n"
+		"\n"
+		"Kmax:  maximum conductivity of the cracks in m/day\n"
+		"\n"
+		"w0:  is the actual wetness of the target layer\n"
+		"\n"
+		"beta:  is an empirical shape parameter of the crack size/wetness\n"
+		"relation \n"
+		""},
 	 { "delete_LayerBypass", _wrap_delete_LayerBypass, METH_O, "delete_LayerBypass(LayerBypass self)"},
 	 { "LayerBypass_swigregister", LayerBypass_swigregister, METH_O, NULL},
 	 { "LayerBypass_swiginit", LayerBypass_swiginit, METH_VARARGS, NULL},
-	 { "RootUptakeStressFunction_Tact", (PyCFunction)(void(*)(void))_wrap_RootUptakeStressFunction_Tact, METH_VARARGS|METH_KEYWORDS, "Tact(RootUptakeStressFunction self, SoilLayer soillayer, real Tpot) -> real"},
-	 { "RootUptakeStressFunction_copy", _wrap_RootUptakeStressFunction_copy, METH_O, "copy(RootUptakeStressFunction self) -> RootUptakeStressFunction"},
-	 { "RootUptakeStressFunction_to_string", _wrap_RootUptakeStressFunction_to_string, METH_O, "to_string(RootUptakeStressFunction self) -> std::string"},
-	 { "delete_RootUptakeStressFunction", _wrap_delete_RootUptakeStressFunction, METH_O, "delete_RootUptakeStressFunction(RootUptakeStressFunction self)"},
+	 { "RootUptakeStressFunction_Tact", (PyCFunction)(void(*)(void))_wrap_RootUptakeStressFunction_Tact, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Tact(RootUptakeStressFunction self, SoilLayer soillayer, real Tpot) -> real\n"
+		"virtual real\n"
+		"Tact(const cmf::upslope::SoilLayer *soillayer, real Tpot) const =0\n"
+		"\n"
+		"Calculates the water stress for a layer.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"soillayer:  The cmf::upslope::SoilLayer this stress function belongs\n"
+		"to\n"
+		"\n"
+		"Tpot:  Potential Transpiration in mm/day (for the full profile)\n"
+		"\n"
+		"Actual flux from layer in m3/day \n"
+		""},
+	 { "RootUptakeStressFunction_copy", _wrap_RootUptakeStressFunction_copy, METH_O, "\n"
+		"copy(RootUptakeStressFunction self) -> RootUptakeStressFunction\n"
+		"virtual\n"
+		"cmf::upslope::ET::RootUptakeStressFunction* copy() const =0\n"
+		"\n"
+		"Creates a new copy of this wetness. \n"
+		""},
+	 { "RootUptakeStressFunction_to_string", _wrap_RootUptakeStressFunction_to_string, METH_O, "\n"
+		"to_string(RootUptakeStressFunction self) -> std::string\n"
+		"virtual\n"
+		"std::string to_string() const =0 \n"
+		""},
+	 { "delete_RootUptakeStressFunction", _wrap_delete_RootUptakeStressFunction, METH_O, "\n"
+		"delete_RootUptakeStressFunction(RootUptakeStressFunction self)\n"
+		"virtual ~RootUptakeStressFunction() \n"
+		""},
 	 { "RootUptakeStressFunction_swigregister", RootUptakeStressFunction_swigregister, METH_O, NULL},
 	 { "SuctionStress_P0_set", _wrap_SuctionStress_P0_set, METH_VARARGS, "SuctionStress_P0_set(SuctionStress self, real P0)"},
 	 { "SuctionStress_P0_get", _wrap_SuctionStress_P0_get, METH_O, "SuctionStress_P0_get(SuctionStress self) -> real"},
@@ -79620,18 +87696,41 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "new_SuctionStress", _wrap_new_SuctionStress, METH_VARARGS, "\n"
 		"SuctionStress(real P0=1e308, real P1=1e307, real P2=-5, real P3=-160)\n"
 		"new_SuctionStress(SuctionStress other) -> SuctionStress\n"
+		"SuctionStress(const SuctionStress &other) \n"
 		""},
-	 { "SuctionStress_copy", _wrap_SuctionStress_copy, METH_O, "copy(SuctionStress self) -> SuctionStress"},
-	 { "delete_SuctionStress", _wrap_delete_SuctionStress, METH_O, "delete_SuctionStress(SuctionStress self)"},
+	 { "SuctionStress_copy", _wrap_SuctionStress_copy, METH_O, "\n"
+		"copy(SuctionStress self) -> SuctionStress\n"
+		"cmf::upslope::ET::SuctionStress* copy() const\n"
+		"\n"
+		"Creates a new copy of this wetness. \n"
+		""},
+	 { "delete_SuctionStress", _wrap_delete_SuctionStress, METH_O, "\n"
+		"delete_SuctionStress(SuctionStress self)\n"
+		"virtual ~SuctionStress() \n"
+		""},
 	 { "SuctionStress_swigregister", SuctionStress_swigregister, METH_O, NULL},
 	 { "SuctionStress_swiginit", SuctionStress_swiginit, METH_VARARGS, NULL},
 	 { "ContentStress_theta_d_set", _wrap_ContentStress_theta_d_set, METH_VARARGS, "ContentStress_theta_d_set(ContentStress self, real theta_d)"},
 	 { "ContentStress_theta_d_get", _wrap_ContentStress_theta_d_get, METH_O, "ContentStress_theta_d_get(ContentStress self) -> real"},
 	 { "ContentStress_theta_w_set", _wrap_ContentStress_theta_w_set, METH_VARARGS, "ContentStress_theta_w_set(ContentStress self, real theta_w)"},
 	 { "ContentStress_theta_w_get", _wrap_ContentStress_theta_w_get, METH_O, "ContentStress_theta_w_get(ContentStress self) -> real"},
-	 { "ContentStress_copy", _wrap_ContentStress_copy, METH_O, "copy(ContentStress self) -> ContentStress"},
-	 { "new_ContentStress", (PyCFunction)(void(*)(void))_wrap_new_ContentStress, METH_VARARGS|METH_KEYWORDS, "new_ContentStress(real theta_d=-1, real theta_w=-1) -> ContentStress"},
-	 { "delete_ContentStress", _wrap_delete_ContentStress, METH_O, "delete_ContentStress(ContentStress self)"},
+	 { "ContentStress_copy", _wrap_ContentStress_copy, METH_O, "\n"
+		"copy(ContentStress self) -> ContentStress\n"
+		"cmf::upslope::ET::ContentStress* copy() const\n"
+		"\n"
+		"Creates a new copy of this wetness. \n"
+		""},
+	 { "new_ContentStress", (PyCFunction)(void(*)(void))_wrap_new_ContentStress, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ContentStress(real theta_d=-1, real theta_w=-1) -> ContentStress\n"
+		"ContentStress(real theta_d=-1, real theta_w=-1)\n"
+		"\n"
+		"Creates a new ContentStress for critical water content theta_d in vol\n"
+		"Water/vol Soil and wilting point theta_w. \n"
+		""},
+	 { "delete_ContentStress", _wrap_delete_ContentStress, METH_O, "\n"
+		"delete_ContentStress(ContentStress self)\n"
+		"virtual ~ContentStress() \n"
+		""},
 	 { "ContentStress_swigregister", ContentStress_swigregister, METH_O, NULL},
 	 { "ContentStress_swiginit", ContentStress_swiginit, METH_VARARGS, NULL},
 	 { "VolumeStress_V1_set", _wrap_VolumeStress_V1_set, METH_VARARGS, "VolumeStress_V1_set(VolumeStress self, real V1)"},
@@ -79641,39 +87740,95 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "new_VolumeStress", _wrap_new_VolumeStress, METH_VARARGS, "\n"
 		"VolumeStress(real V1, real V0)\n"
 		"new_VolumeStress(VolumeStress other) -> VolumeStress\n"
+		"VolumeStress(const VolumeStress &other) \n"
 		""},
-	 { "VolumeStress_copy", _wrap_VolumeStress_copy, METH_O, "copy(VolumeStress self) -> VolumeStress"},
-	 { "delete_VolumeStress", _wrap_delete_VolumeStress, METH_O, "delete_VolumeStress(VolumeStress self)"},
+	 { "VolumeStress_copy", _wrap_VolumeStress_copy, METH_O, "\n"
+		"copy(VolumeStress self) -> VolumeStress\n"
+		"cmf::upslope::ET::VolumeStress* copy() const\n"
+		"\n"
+		"Creates a new copy of this wetness. \n"
+		""},
+	 { "delete_VolumeStress", _wrap_delete_VolumeStress, METH_O, "\n"
+		"delete_VolumeStress(VolumeStress self)\n"
+		"virtual ~VolumeStress() \n"
+		""},
 	 { "VolumeStress_swigregister", VolumeStress_swigregister, METH_O, NULL},
 	 { "VolumeStress_swiginit", VolumeStress_swiginit, METH_VARARGS, NULL},
-	 { "new_log_wind_profile", (PyCFunction)(void(*)(void))_wrap_new_log_wind_profile, METH_VARARGS|METH_KEYWORDS, "new_log_wind_profile(Cell _cell) -> log_wind_profile"},
-	 { "delete_log_wind_profile", _wrap_delete_log_wind_profile, METH_O, "delete_log_wind_profile(log_wind_profile self)"},
+	 { "new_log_wind_profile", (PyCFunction)(void(*)(void))_wrap_new_log_wind_profile, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_log_wind_profile(Cell _cell) -> log_wind_profile\n"
+		"log_wind_profile(cmf::upslope::Cell &_cell) \n"
+		""},
+	 { "delete_log_wind_profile", _wrap_delete_log_wind_profile, METH_O, "\n"
+		"delete_log_wind_profile(log_wind_profile self)\n"
+		"virtual\n"
+		"~log_wind_profile() \n"
+		""},
 	 { "log_wind_profile_swigregister", log_wind_profile_swigregister, METH_O, NULL},
 	 { "log_wind_profile_swiginit", log_wind_profile_swiginit, METH_VARARGS, NULL},
 	 { "PenmanMonteith", _wrap_PenmanMonteith, METH_VARARGS, "\n"
 		"PenmanMonteith(real Rn, real ra, real rs, real T, real vap_press_deficit) -> real\n"
 		"PenmanMonteith(Weather A, Vegetation veg, double h) -> real\n"
+		"real\n"
+		"cmf::upslope::ET::PenmanMonteith(cmf::atmosphere::Weather A, const\n"
+		"cmf::upslope::vegetation::Vegetation &veg, double h)\n"
+		"\n"
+		"Returns the potential ET after Penman-Monteith using some\n"
+		"simplifications for a weather and a vegetation object.\n"
+		"\n"
+		"aerodynamic and surface resistances, and a vapor pressure deficit\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"A:  Current weather\n"
+		"\n"
+		"veg:  Vegetation data\n"
+		"\n"
+		"h:  Height above sea level in m (for air pressure estimation) \n"
 		""},
-	 { "stressedET_get_layer", _wrap_stressedET_get_layer, METH_O, "get_layer(stressedET self) -> cmf::upslope::SoilLayer::ptr"},
-	 { "stressedET_ETpot", (PyCFunction)(void(*)(void))_wrap_stressedET_ETpot, METH_VARARGS|METH_KEYWORDS, "ETpot(stressedET self, Time t) -> real"},
+	 { "stressedET_get_layer", _wrap_stressedET_get_layer, METH_O, "\n"
+		"get_layer(stressedET self) -> cmf::upslope::SoilLayer::ptr\n"
+		"SoilLayer::ptr get_layer() const \n"
+		""},
+	 { "stressedET_ETpot", (PyCFunction)(void(*)(void))_wrap_stressedET_ETpot, METH_VARARGS|METH_KEYWORDS, "\n"
+		"ETpot(stressedET self, Time t) -> real\n"
+		"virtual\n"
+		"real ETpot(cmf::math::Time t) const \n"
+		""},
 	 { "delete_stressedET", _wrap_delete_stressedET, METH_O, "delete_stressedET(stressedET self)"},
 	 { "stressedET_swigregister", stressedET_swigregister, METH_O, NULL},
 	 { "constantETpot_ETpot_value_set", _wrap_constantETpot_ETpot_value_set, METH_VARARGS, "constantETpot_ETpot_value_set(constantETpot self, real ETpot_value)"},
 	 { "constantETpot_ETpot_value_get", _wrap_constantETpot_ETpot_value_get, METH_O, "constantETpot_ETpot_value_get(constantETpot self) -> real"},
-	 { "constantETpot_GetETpot", (PyCFunction)(void(*)(void))_wrap_constantETpot_GetETpot, METH_VARARGS|METH_KEYWORDS, "GetETpot(constantETpot self, Time t) -> real"},
-	 { "new_constantETpot", (PyCFunction)(void(*)(void))_wrap_new_constantETpot, METH_VARARGS|METH_KEYWORDS, "new_constantETpot(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, double constantETpot_value) -> constantETpot"},
+	 { "constantETpot_GetETpot", (PyCFunction)(void(*)(void))_wrap_constantETpot_GetETpot, METH_VARARGS|METH_KEYWORDS, "\n"
+		"GetETpot(constantETpot self, Time t) -> real\n"
+		"real GetETpot(cmf::math::Time t) const \n"
+		""},
+	 { "new_constantETpot", (PyCFunction)(void(*)(void))_wrap_new_constantETpot, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_constantETpot(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, double constantETpot_value) -> constantETpot\n"
+		"constantETpot(cmf::upslope::SoilLayer::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, double constantETpot_value) \n"
+		""},
 	 { "delete_constantETpot", _wrap_delete_constantETpot, METH_O, "delete_constantETpot(constantETpot self)"},
 	 { "constantETpot_swigregister", constantETpot_swigregister, METH_O, NULL},
 	 { "constantETpot_swiginit", constantETpot_swiginit, METH_VARARGS, NULL},
 	 { "timeseriesETpot_ETpot_data_set", _wrap_timeseriesETpot_ETpot_data_set, METH_VARARGS, "timeseriesETpot_ETpot_data_set(timeseriesETpot self, timeseries ETpot_data)"},
 	 { "timeseriesETpot_ETpot_data_get", _wrap_timeseriesETpot_ETpot_data_get, METH_O, "timeseriesETpot_ETpot_data_get(timeseriesETpot self) -> timeseries"},
-	 { "new_timeseriesETpot", (PyCFunction)(void(*)(void))_wrap_new_timeseriesETpot, METH_VARARGS|METH_KEYWORDS, "new_timeseriesETpot(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, timeseries ETpot_values) -> timeseriesETpot"},
+	 { "new_timeseriesETpot", (PyCFunction)(void(*)(void))_wrap_new_timeseriesETpot, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_timeseriesETpot(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, timeseries ETpot_values) -> timeseriesETpot\n"
+		"timeseriesETpot(cmf::upslope::SoilLayer::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, cmf::math::timeseries\n"
+		"ETpot_values) \n"
+		""},
 	 { "delete_timeseriesETpot", _wrap_delete_timeseriesETpot, METH_O, "delete_timeseriesETpot(timeseriesETpot self)"},
 	 { "timeseriesETpot_swigregister", timeseriesETpot_swigregister, METH_O, NULL},
 	 { "timeseriesETpot_swiginit", timeseriesETpot_swiginit, METH_VARARGS, NULL},
 	 { "PenmanMonteithET_daily_set", _wrap_PenmanMonteithET_daily_set, METH_VARARGS, "PenmanMonteithET_daily_set(PenmanMonteithET self, bool daily)"},
 	 { "PenmanMonteithET_daily_get", _wrap_PenmanMonteithET_daily_get, METH_O, "PenmanMonteithET_daily_get(PenmanMonteithET self) -> bool"},
-	 { "new_PenmanMonteithET", (PyCFunction)(void(*)(void))_wrap_new_PenmanMonteithET, METH_VARARGS|METH_KEYWORDS, "new_PenmanMonteithET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> PenmanMonteithET"},
+	 { "new_PenmanMonteithET", (PyCFunction)(void(*)(void))_wrap_new_PenmanMonteithET, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_PenmanMonteithET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> PenmanMonteithET\n"
+		"PenmanMonteithET(cmf::upslope::SoilLayer::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target) \n"
+		""},
 	 { "PenmanMonteithET_r_s", (PyCFunction)(void(*)(void))_wrap_PenmanMonteithET_r_s, METH_VARARGS|METH_KEYWORDS, "r_s(Vegetation veg) -> real"},
 	 { "PenmanMonteithET_r_a", (PyCFunction)(void(*)(void))_wrap_PenmanMonteithET_r_a, METH_VARARGS|METH_KEYWORDS, "r_a(Weather A, real veg_height) -> real"},
 	 { "PenmanMonteithET_use_for_cell", (PyCFunction)(void(*)(void))_wrap_PenmanMonteithET_use_for_cell, METH_VARARGS|METH_KEYWORDS, "use_for_cell(Cell cell)"},
@@ -79684,17 +87839,29 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "PriestleyTaylorET_daily_get", _wrap_PriestleyTaylorET_daily_get, METH_O, "PriestleyTaylorET_daily_get(PriestleyTaylorET self) -> bool"},
 	 { "PriestleyTaylorET_alpha_set", _wrap_PriestleyTaylorET_alpha_set, METH_VARARGS, "PriestleyTaylorET_alpha_set(PriestleyTaylorET self, real alpha)"},
 	 { "PriestleyTaylorET_alpha_get", _wrap_PriestleyTaylorET_alpha_get, METH_O, "PriestleyTaylorET_alpha_get(PriestleyTaylorET self) -> real"},
-	 { "new_PriestleyTaylorET", (PyCFunction)(void(*)(void))_wrap_new_PriestleyTaylorET, METH_VARARGS|METH_KEYWORDS, "new_PriestleyTaylorET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, real alpha=1.26) -> PriestleyTaylorET"},
+	 { "new_PriestleyTaylorET", (PyCFunction)(void(*)(void))_wrap_new_PriestleyTaylorET, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_PriestleyTaylorET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, real alpha=1.26) -> PriestleyTaylorET\n"
+		"PriestleyTaylorET(cmf::upslope::SoilLayer::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, real alpha=1.26) \n"
+		""},
 	 { "PriestleyTaylorET_use_for_cell", (PyCFunction)(void(*)(void))_wrap_PriestleyTaylorET_use_for_cell, METH_VARARGS|METH_KEYWORDS, "use_for_cell(Cell cell)"},
 	 { "delete_PriestleyTaylorET", _wrap_delete_PriestleyTaylorET, METH_O, "delete_PriestleyTaylorET(PriestleyTaylorET self)"},
 	 { "PriestleyTaylorET_swigregister", PriestleyTaylorET_swigregister, METH_O, NULL},
 	 { "PriestleyTaylorET_swiginit", PriestleyTaylorET_swiginit, METH_VARARGS, NULL},
-	 { "new_HargreaveET", (PyCFunction)(void(*)(void))_wrap_new_HargreaveET, METH_VARARGS|METH_KEYWORDS, "new_HargreaveET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> HargreaveET"},
+	 { "new_HargreaveET", (PyCFunction)(void(*)(void))_wrap_new_HargreaveET, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_HargreaveET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> HargreaveET\n"
+		"HargreaveET(cmf::upslope::SoilLayer::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target) \n"
+		""},
 	 { "HargreaveET_use_for_cell", (PyCFunction)(void(*)(void))_wrap_HargreaveET_use_for_cell, METH_VARARGS|METH_KEYWORDS, "use_for_cell(Cell cell)"},
 	 { "delete_HargreaveET", _wrap_delete_HargreaveET, METH_O, "delete_HargreaveET(HargreaveET self)"},
 	 { "HargreaveET_swigregister", HargreaveET_swigregister, METH_O, NULL},
 	 { "HargreaveET_swiginit", HargreaveET_swiginit, METH_VARARGS, NULL},
-	 { "new_OudinET", (PyCFunction)(void(*)(void))_wrap_new_OudinET, METH_VARARGS|METH_KEYWORDS, "new_OudinET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, double K1=100, double K2=5) -> OudinET"},
+	 { "new_OudinET", (PyCFunction)(void(*)(void))_wrap_new_OudinET, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_OudinET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, double K1=100, double K2=5) -> OudinET\n"
+		"OudinET(cmf::upslope::SoilLayer::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, double K1=100, double K2=5) \n"
+		""},
 	 { "OudinET_JensenHaise1963", (PyCFunction)(void(*)(void))_wrap_OudinET_JensenHaise1963, METH_VARARGS|METH_KEYWORDS, "JensenHaise1963(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> OudinET"},
 	 { "OudinET_McGuinessBordne1972", (PyCFunction)(void(*)(void))_wrap_OudinET_McGuinessBordne1972, METH_VARARGS|METH_KEYWORDS, "McGuinessBordne1972(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> OudinET"},
 	 { "OudinET_K1_set", _wrap_OudinET_K1_set, METH_VARARGS, "OudinET_K1_set(OudinET self, double K1)"},
@@ -79705,16 +87872,29 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_OudinET", _wrap_delete_OudinET, METH_O, "delete_OudinET(OudinET self)"},
 	 { "OudinET_swigregister", OudinET_swigregister, METH_O, NULL},
 	 { "OudinET_swiginit", OudinET_swiginit, METH_VARARGS, NULL},
-	 { "new_TurcET", (PyCFunction)(void(*)(void))_wrap_new_TurcET, METH_VARARGS|METH_KEYWORDS, "new_TurcET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> TurcET"},
+	 { "new_TurcET", (PyCFunction)(void(*)(void))_wrap_new_TurcET, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_TurcET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> TurcET\n"
+		"TurcET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr\n"
+		"ET_target) \n"
+		""},
 	 { "TurcET_use_for_cell", (PyCFunction)(void(*)(void))_wrap_TurcET_use_for_cell, METH_VARARGS|METH_KEYWORDS, "use_for_cell(Cell cell)"},
 	 { "delete_TurcET", _wrap_delete_TurcET, METH_O, "delete_TurcET(TurcET self)"},
 	 { "TurcET_swigregister", TurcET_swigregister, METH_O, NULL},
 	 { "TurcET_swiginit", TurcET_swiginit, METH_VARARGS, NULL},
-	 { "new_CanopyStorageEvaporation", (PyCFunction)(void(*)(void))_wrap_new_CanopyStorageEvaporation, METH_VARARGS|METH_KEYWORDS, "new_CanopyStorageEvaporation(cmf::water::WaterStorage::ptr CanopyStorage, cmf::water::flux_node::ptr ET_target, Cell cell) -> CanopyStorageEvaporation"},
+	 { "new_CanopyStorageEvaporation", (PyCFunction)(void(*)(void))_wrap_new_CanopyStorageEvaporation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_CanopyStorageEvaporation(cmf::water::WaterStorage::ptr CanopyStorage, cmf::water::flux_node::ptr ET_target, Cell cell) -> CanopyStorageEvaporation\n"
+		"CanopyStorageEvaporation(cmf::water::WaterStorage::ptr CanopyStorage,\n"
+		"cmf::water::flux_node::ptr ET_target, cmf::upslope::Cell &cell) \n"
+		""},
 	 { "delete_CanopyStorageEvaporation", _wrap_delete_CanopyStorageEvaporation, METH_O, "delete_CanopyStorageEvaporation(CanopyStorageEvaporation self)"},
 	 { "CanopyStorageEvaporation_swigregister", CanopyStorageEvaporation_swigregister, METH_O, NULL},
 	 { "CanopyStorageEvaporation_swiginit", CanopyStorageEvaporation_swiginit, METH_VARARGS, NULL},
-	 { "new_PenmanEvaporation", (PyCFunction)(void(*)(void))_wrap_new_PenmanEvaporation, METH_VARARGS|METH_KEYWORDS, "new_PenmanEvaporation(cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr Evap_target, Meteorology meteo) -> PenmanEvaporation"},
+	 { "new_PenmanEvaporation", (PyCFunction)(void(*)(void))_wrap_new_PenmanEvaporation, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_PenmanEvaporation(cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr Evap_target, Meteorology meteo) -> PenmanEvaporation\n"
+		"PenmanEvaporation(cmf::river::OpenWaterStorage::ptr source,\n"
+		"cmf::water::flux_node::ptr Evap_target, const\n"
+		"cmf::atmosphere::Meteorology &meteo) \n"
+		""},
 	 { "delete_PenmanEvaporation", _wrap_delete_PenmanEvaporation, METH_O, "delete_PenmanEvaporation(PenmanEvaporation self)"},
 	 { "PenmanEvaporation_swigregister", PenmanEvaporation_swigregister, METH_O, NULL},
 	 { "PenmanEvaporation_swiginit", PenmanEvaporation_swiginit, METH_VARARGS, NULL},
@@ -79733,6 +87913,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ShuttleworthWallace_refresh", _wrap_ShuttleworthWallace_refresh, METH_VARARGS, "\n"
 		"refresh(ShuttleworthWallace self, Time t)\n"
 		"refresh(ShuttleworthWallace self)\n"
+		"void refresh() \n"
 		""},
 	 { "ShuttleworthWallace_PTR_set", _wrap_ShuttleworthWallace_PTR_set, METH_VARARGS, "ShuttleworthWallace_PTR_set(ShuttleworthWallace self, double PTR)"},
 	 { "ShuttleworthWallace_PTR_get", _wrap_ShuttleworthWallace_PTR_get, METH_O, "ShuttleworthWallace_PTR_get(ShuttleworthWallace self) -> double"},
@@ -79754,88 +87935,574 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ShuttleworthWallace_KSNVP_get", _wrap_ShuttleworthWallace_KSNVP_get, METH_O, "ShuttleworthWallace_KSNVP_get(ShuttleworthWallace self) -> double"},
 	 { "ShuttleworthWallace_allow_dew_set", _wrap_ShuttleworthWallace_allow_dew_set, METH_VARARGS, "ShuttleworthWallace_allow_dew_set(ShuttleworthWallace self, bool allow_dew)"},
 	 { "ShuttleworthWallace_allow_dew_get", _wrap_ShuttleworthWallace_allow_dew_get, METH_O, "ShuttleworthWallace_allow_dew_get(ShuttleworthWallace self) -> bool"},
-	 { "ShuttleworthWallace_transp_from_layer", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_transp_from_layer, METH_VARARGS|METH_KEYWORDS, "transp_from_layer(ShuttleworthWallace self, cmf::upslope::SoilLayer::ptr sl, Time t) -> double"},
-	 { "ShuttleworthWallace_evap_from_layer", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_evap_from_layer, METH_VARARGS|METH_KEYWORDS, "evap_from_layer(ShuttleworthWallace self, cmf::upslope::SoilLayer::ptr sl, Time t) -> double"},
-	 { "ShuttleworthWallace_evap_from_surfacewater", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_evap_from_surfacewater, METH_VARARGS|METH_KEYWORDS, "evap_from_surfacewater(ShuttleworthWallace self, cmf::river::OpenWaterStorage::ptr ows, Time t) -> double"},
-	 { "ShuttleworthWallace_evap_from_canopy", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_evap_from_canopy, METH_VARARGS|METH_KEYWORDS, "evap_from_canopy(ShuttleworthWallace self, cmf::water::WaterStorage::ptr canopy, Time t) -> double"},
-	 { "ShuttleworthWallace_evap_from_snow", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_evap_from_snow, METH_VARARGS|METH_KEYWORDS, "evap_from_snow(ShuttleworthWallace self, cmf::water::WaterStorage::ptr snow, Time t) -> double"},
+	 { "ShuttleworthWallace_transp_from_layer", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_transp_from_layer, METH_VARARGS|METH_KEYWORDS, "\n"
+		"transp_from_layer(ShuttleworthWallace self, cmf::upslope::SoilLayer::ptr sl, Time t) -> double\n"
+		"double\n"
+		"transp_from_layer(cmf::upslope::SoilLayer::ptr sl, cmf::math::Time t)\n"
+		"\n"
+		""},
+	 { "ShuttleworthWallace_evap_from_layer", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_evap_from_layer, METH_VARARGS|METH_KEYWORDS, "\n"
+		"evap_from_layer(ShuttleworthWallace self, cmf::upslope::SoilLayer::ptr sl, Time t) -> double\n"
+		"double\n"
+		"evap_from_layer(cmf::upslope::SoilLayer::ptr sl, cmf::math::Time t) \n"
+		""},
+	 { "ShuttleworthWallace_evap_from_surfacewater", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_evap_from_surfacewater, METH_VARARGS|METH_KEYWORDS, "\n"
+		"evap_from_surfacewater(ShuttleworthWallace self, cmf::river::OpenWaterStorage::ptr ows, Time t) -> double\n"
+		"double\n"
+		"evap_from_surfacewater(cmf::river::OpenWaterStorage::ptr ows,\n"
+		"cmf::math::Time t) \n"
+		""},
+	 { "ShuttleworthWallace_evap_from_canopy", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_evap_from_canopy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"evap_from_canopy(ShuttleworthWallace self, cmf::water::WaterStorage::ptr canopy, Time t) -> double\n"
+		"double\n"
+		"evap_from_canopy(cmf::water::WaterStorage::ptr canopy, cmf::math::Time\n"
+		"t) \n"
+		""},
+	 { "ShuttleworthWallace_evap_from_snow", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_evap_from_snow, METH_VARARGS|METH_KEYWORDS, "\n"
+		"evap_from_snow(ShuttleworthWallace self, cmf::water::WaterStorage::ptr snow, Time t) -> double\n"
+		"double\n"
+		"evap_from_snow(cmf::water::WaterStorage::ptr snow, cmf::math::Time t)\n"
+		"\n"
+		""},
 	 { "ShuttleworthWallace_set_RSS_parameters", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_set_RSS_parameters, METH_VARARGS|METH_KEYWORDS, "set_RSS_parameters(double _RSSa=500., double _RSSb=1.0, double _RSSa_pot=-3.22)"},
-	 { "new_ShuttleworthWallace", (PyCFunction)(void(*)(void))_wrap_new_ShuttleworthWallace, METH_VARARGS|METH_KEYWORDS, "new_ShuttleworthWallace(Cell cell, bool allow_dew=True) -> ShuttleworthWallace"},
+	 { "new_ShuttleworthWallace", (PyCFunction)(void(*)(void))_wrap_new_ShuttleworthWallace, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ShuttleworthWallace(Cell cell, bool allow_dew=True) -> ShuttleworthWallace\n"
+		"ShuttleworthWallace(cmf::upslope::Cell &cell, bool allow_dew=true)\n"
+		"\n"
+		"Calculates the transpiration and the soil evaporation from dry\n"
+		"surfaces. \n"
+		""},
 	 { "ShuttleworthWallace_use_for_cell", (PyCFunction)(void(*)(void))_wrap_ShuttleworthWallace_use_for_cell, METH_VARARGS|METH_KEYWORDS, "use_for_cell(Cell cell) -> cmf::upslope::ET::ShuttleworthWallace::ptr"},
-	 { "delete_ShuttleworthWallace", _wrap_delete_ShuttleworthWallace, METH_O, "delete_ShuttleworthWallace(ShuttleworthWallace self)"},
+	 { "delete_ShuttleworthWallace", _wrap_delete_ShuttleworthWallace, METH_O, "\n"
+		"delete_ShuttleworthWallace(ShuttleworthWallace self)\n"
+		"~ShuttleworthWallace() \n"
+		""},
 	 { "ShuttleworthWallace_swigregister", ShuttleworthWallace_swigregister, METH_O, NULL},
 	 { "ShuttleworthWallace_swiginit", ShuttleworthWallace_swiginit, METH_VARARGS, NULL},
-	 { "new_SW_transpiration", (PyCFunction)(void(*)(void))_wrap_new_SW_transpiration, METH_VARARGS|METH_KEYWORDS, "new_SW_transpiration(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_transpiration"},
+	 { "new_SW_transpiration", (PyCFunction)(void(*)(void))_wrap_new_SW_transpiration, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SW_transpiration(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_transpiration\n"
+		"SW_transpiration(cmf::upslope::SoilLayer::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)\n"
+		"\n"
+		""},
 	 { "delete_SW_transpiration", _wrap_delete_SW_transpiration, METH_O, "delete_SW_transpiration(SW_transpiration self)"},
 	 { "SW_transpiration_swigregister", SW_transpiration_swigregister, METH_O, NULL},
 	 { "SW_transpiration_swiginit", SW_transpiration_swiginit, METH_VARARGS, NULL},
-	 { "new_SW_evap_from_layer", (PyCFunction)(void(*)(void))_wrap_new_SW_evap_from_layer, METH_VARARGS|METH_KEYWORDS, "new_SW_evap_from_layer(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_layer"},
+	 { "new_SW_evap_from_layer", (PyCFunction)(void(*)(void))_wrap_new_SW_evap_from_layer, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SW_evap_from_layer(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_layer\n"
+		"SW_evap_from_layer(cmf::upslope::SoilLayer::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)\n"
+		"\n"
+		""},
 	 { "delete_SW_evap_from_layer", _wrap_delete_SW_evap_from_layer, METH_O, "delete_SW_evap_from_layer(SW_evap_from_layer self)"},
 	 { "SW_evap_from_layer_swigregister", SW_evap_from_layer_swigregister, METH_O, NULL},
 	 { "SW_evap_from_layer_swiginit", SW_evap_from_layer_swiginit, METH_VARARGS, NULL},
-	 { "new_SW_evap_from_canopy", (PyCFunction)(void(*)(void))_wrap_new_SW_evap_from_canopy, METH_VARARGS|METH_KEYWORDS, "new_SW_evap_from_canopy(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_canopy"},
+	 { "new_SW_evap_from_canopy", (PyCFunction)(void(*)(void))_wrap_new_SW_evap_from_canopy, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SW_evap_from_canopy(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_canopy\n"
+		"SW_evap_from_canopy(cmf::water::WaterStorage::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)\n"
+		"\n"
+		""},
 	 { "delete_SW_evap_from_canopy", _wrap_delete_SW_evap_from_canopy, METH_O, "delete_SW_evap_from_canopy(SW_evap_from_canopy self)"},
 	 { "SW_evap_from_canopy_swigregister", SW_evap_from_canopy_swigregister, METH_O, NULL},
 	 { "SW_evap_from_canopy_swiginit", SW_evap_from_canopy_swiginit, METH_VARARGS, NULL},
-	 { "new_SW_evap_from_snow", (PyCFunction)(void(*)(void))_wrap_new_SW_evap_from_snow, METH_VARARGS|METH_KEYWORDS, "new_SW_evap_from_snow(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_snow"},
+	 { "new_SW_evap_from_snow", (PyCFunction)(void(*)(void))_wrap_new_SW_evap_from_snow, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SW_evap_from_snow(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_snow\n"
+		"SW_evap_from_snow(cmf::water::WaterStorage::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)\n"
+		"\n"
+		""},
 	 { "delete_SW_evap_from_snow", _wrap_delete_SW_evap_from_snow, METH_O, "delete_SW_evap_from_snow(SW_evap_from_snow self)"},
 	 { "SW_evap_from_snow_swigregister", SW_evap_from_snow_swigregister, METH_O, NULL},
 	 { "SW_evap_from_snow_swiginit", SW_evap_from_snow_swiginit, METH_VARARGS, NULL},
-	 { "new_SW_evap_from_surfacewater", (PyCFunction)(void(*)(void))_wrap_new_SW_evap_from_surfacewater, METH_VARARGS|METH_KEYWORDS, "new_SW_evap_from_surfacewater(cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_surfacewater"},
+	 { "new_SW_evap_from_surfacewater", (PyCFunction)(void(*)(void))_wrap_new_SW_evap_from_surfacewater, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SW_evap_from_surfacewater(cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_surfacewater\n"
+		"SW_evap_from_surfacewater(cmf::river::OpenWaterStorage::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)\n"
+		"\n"
+		""},
 	 { "delete_SW_evap_from_surfacewater", _wrap_delete_SW_evap_from_surfacewater, METH_O, "delete_SW_evap_from_surfacewater(SW_evap_from_surfacewater self)"},
 	 { "SW_evap_from_surfacewater_swigregister", SW_evap_from_surfacewater_swigregister, METH_O, NULL},
 	 { "SW_evap_from_surfacewater_swiginit", SW_evap_from_surfacewater_swiginit, METH_VARARGS, NULL},
-	 { "project_remove_node", (PyCFunction)(void(*)(void))_wrap_project_remove_node, METH_VARARGS|METH_KEYWORDS, "remove_node(project self, cmf::water::flux_node::ptr node) -> size_t"},
+	 { "project_remove_node", (PyCFunction)(void(*)(void))_wrap_project_remove_node, METH_VARARGS|METH_KEYWORDS, "\n"
+		"remove_node(project self, cmf::water::flux_node::ptr node) -> size_t\n"
+		"size_t\n"
+		"remove_node(cmf::water::flux_node::ptr node)\n"
+		"\n"
+		"Removes a node from the repository.\n"
+		"\n"
+		"Removes a node (boundary condition or water storage) from the node\n"
+		"repository of the project. NOTE: If you have other references to this\n"
+		"node, the node is not deleted. If you are creating a new solver, the\n"
+		"node will not be part of the solver. \n"
+		""},
 	 { "project_solutes_get", _wrap_project_solutes_get, METH_O, "project_solutes_get(project self) -> solute_vector"},
 	 { "project_meteo_stations_set", _wrap_project_meteo_stations_set, METH_VARARGS, "project_meteo_stations_set(project self, MeteoStationList meteo_stations)"},
 	 { "project_meteo_stations_get", _wrap_project_meteo_stations_get, METH_O, "project_meteo_stations_get(project self) -> MeteoStationList"},
 	 { "project_rainfall_stations_set", _wrap_project_rainfall_stations_set, METH_VARARGS, "project_rainfall_stations_set(project self, RainfallStationList rainfall_stations)"},
 	 { "project_rainfall_stations_get", _wrap_project_rainfall_stations_get, METH_O, "project_rainfall_stations_get(project self) -> RainfallStationList"},
-	 { "project_use_IDW_meteo", (PyCFunction)(void(*)(void))_wrap_project_use_IDW_meteo, METH_VARARGS|METH_KEYWORDS, "use_IDW_meteo(project self, double z_weight=0, double power=2)"},
-	 { "project_use_nearest_meteo", (PyCFunction)(void(*)(void))_wrap_project_use_nearest_meteo, METH_VARARGS|METH_KEYWORDS, "use_nearest_meteo(project self, double z_weight=0)"},
-	 { "project_use_IDW_rainfall", (PyCFunction)(void(*)(void))_wrap_project_use_IDW_rainfall, METH_VARARGS|METH_KEYWORDS, "use_IDW_rainfall(project self, double z_weight=0, double power=2)"},
-	 { "project_use_nearest_rainfall", (PyCFunction)(void(*)(void))_wrap_project_use_nearest_rainfall, METH_VARARGS|METH_KEYWORDS, "use_nearest_rainfall(project self, double z_weight=0)"},
-	 { "project_get_cell", (PyCFunction)(void(*)(void))_wrap_project_get_cell, METH_VARARGS|METH_KEYWORDS, "get_cell(project self, ptrdiff_t index) -> Cell"},
-	 { "project_size", _wrap_project_size, METH_O, "size(project self) -> size_t"},
-	 { "new_project", (PyCFunction)(void(*)(void))_wrap_new_project, METH_VARARGS|METH_KEYWORDS, "new_project(std::string solute_names=\"\") -> project"},
-	 { "delete_project", _wrap_delete_project, METH_O, "delete_project(project self)"},
-	 { "project_NewCell", (PyCFunction)(void(*)(void))_wrap_project_NewCell, METH_VARARGS|METH_KEYWORDS, "NewCell(project self, double x, double y, double z, double area, bool with_surfacewater=False) -> Cell"},
-	 { "project_NewOutlet", (PyCFunction)(void(*)(void))_wrap_project_NewOutlet, METH_VARARGS|METH_KEYWORDS, "NewOutlet(project self, std::string name, double x=0, double y=0, double z=0) -> cmf::water::DirichletBoundary::ptr"},
-	 { "project_NewStorage", (PyCFunction)(void(*)(void))_wrap_project_NewStorage, METH_VARARGS|METH_KEYWORDS, "NewStorage(project self, std::string name, double x=0, double y=0, double z=0) -> cmf::water::WaterStorage::ptr"},
-	 { "project_NewOpenStorage", (PyCFunction)(void(*)(void))_wrap_project_NewOpenStorage, METH_VARARGS|METH_KEYWORDS, "NewOpenStorage(project self, std::string name, double x, double y, double z, double area) -> cmf::river::OpenWaterStorage::ptr"},
-	 { "project_NewNeumannBoundary", (PyCFunction)(void(*)(void))_wrap_project_NewNeumannBoundary, METH_VARARGS|METH_KEYWORDS, "NewNeumannBoundary(project self, std::string name, cmf::water::WaterStorage::ptr target) -> cmf::water::NeumannBoundary::ptr"},
-	 { "project_NewReach", (PyCFunction)(void(*)(void))_wrap_project_NewReach, METH_VARARGS|METH_KEYWORDS, "NewReach(project self, double x, double y, double z, IChannel shape, bool diffusive=False) -> cmf::river::Reach::ptr"},
-	 { "project_get_reach", (PyCFunction)(void(*)(void))_wrap_project_get_reach, METH_VARARGS|METH_KEYWORDS, "get_reach(project self, ptrdiff_t index) -> cmf::river::Reach::ptr"},
-	 { "project_reach_count", _wrap_project_reach_count, METH_O, "reach_count(project self) -> size_t"},
-	 { "project_get_node", (PyCFunction)(void(*)(void))_wrap_project_get_node, METH_VARARGS|METH_KEYWORDS, "get_node(project self, ptrdiff_t index) -> cmf::water::flux_node::ptr"},
-	 { "project_node_count", _wrap_project_node_count, METH_O, "node_count(project self) -> size_t"},
-	 { "project_get_storages", _wrap_project_get_storages, METH_O, "get_storages(project self) -> node_list"},
+	 { "project_use_IDW_meteo", (PyCFunction)(void(*)(void))_wrap_project_use_IDW_meteo, METH_VARARGS|METH_KEYWORDS, "\n"
+		"use_IDW_meteo(project self, double z_weight=0, double power=2)\n"
+		"void\n"
+		"use_IDW_meteo(double z_weight=0, double power=2)\n"
+		"\n"
+		"Uses IDW interpolation to generate meterological data for each cell of\n"
+		"project.\n"
+		"\n"
+		"Creates a meteo-data source for each cell, using spatial interpolated\n"
+		"data from all meteorological stations of the project using Inverse\n"
+		"Distance Weighted (IDW) interpolation. The meteorolgical value f is\n"
+		"calculated with IDW for position x,y,z and time t as follows:\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     f(x,y,z,t) &=& \\\\sum^N_{i=1}{f_i(t) w_i(x,y,z)}\n"
+		"    \\\\\\\\ w_i(x,y,z) &=&\n"
+		"    \\\\frac{d_i(x,y,z)^{-p}}{\\\\sum^N_{j=0}{d_j(x,y,z)^{-p}}} \\\\\\\\\n"
+		"    d_i(x,y,z) &=& w_z \\\\left|z-z_i\\\\right| +\n"
+		"    \\\\sqrt{\\\\left(x-x_i\\\\right)^2 + \\\\left(y-y_i\\\\right)^2}\n"
+		"\n"
+		"\n"
+		"  :math:`N` is the number of stations\n"
+		"\n"
+		":math:`f_i(t)` the meteorological value at time t, eg. Temperature, Humidity\n"
+		"\n"
+		":math:`w_i` is the weight of station i\n"
+		"\n"
+		":math:`d_i` is the distance from x,y,z to station i\n"
+		"\n"
+		":math:`p` the power of the weighting function, usually 2.\n"
+		"\n"
+		":math:`x_i,y_i,z_i` is the position of station i in space\n"
+		"\n"
+		":math:`w_z` is a factor to weight the vertical distance between stations and\n"
+		"the cell. 0 results in a pure horizontal interpolation (normal IDW).\n"
+		"If :math:`w_z=1`, height difference is as important as horizontal distance,\n"
+		"and with :math:`w_z>1` the height difference is weighted more important than\n"
+		"horizontal distance See:  IDW_Meteorology\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"z_weight:   :math:`w_z` the weight of height difference between cell and\n"
+		"station\n"
+		"\n"
+		"power:  the power of the distance weight \n"
+		""},
+	 { "project_use_nearest_meteo", (PyCFunction)(void(*)(void))_wrap_project_use_nearest_meteo, METH_VARARGS|METH_KEYWORDS, "\n"
+		"use_nearest_meteo(project self, double z_weight=0)\n"
+		"void\n"
+		"use_nearest_meteo(double z_weight=0)\n"
+		"\n"
+		"Connects all cells of the project with its nearest meteorological\n"
+		"station.\n"
+		"\n"
+		"Distance is calculated as follows: \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"    d_i(x,y,z) = w_z\n"
+		"    \\\\left|z-z_i\\\\right| + \\\\sqrt{\\\\left(x-x_i\\\\right)^2 +\n"
+		"    \\\\left(y-y_i\\\\right)^2} \n"
+		"\n"
+		":math:`d_i` is the distance from x,y,z to\n"
+		"station i\n"
+		"\n"
+		":math:`p` the power of the weighting function, usually 2.\n"
+		"\n"
+		":math:`x_i,y_i,z_i` is the position of station i in space\n"
+		"\n"
+		":math:`w_z` is a factor to weight the vertical distance between stations and\n"
+		"the cell. 0 results in a pure horizontal interpolation (normal IDW).\n"
+		"If :math:`w_z=1`, height difference is as important as horizontal distance,\n"
+		"and with :math:`w_z>1` the height difference is weighted more important than\n"
+		"horizontal distance\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"z_weight:   :math:`w_z` the weight of height difference between cell and\n"
+		"station \n"
+		""},
+	 { "project_use_IDW_rainfall", (PyCFunction)(void(*)(void))_wrap_project_use_IDW_rainfall, METH_VARARGS|METH_KEYWORDS, "\n"
+		"use_IDW_rainfall(project self, double z_weight=0, double power=2)\n"
+		"void\n"
+		"use_IDW_rainfall(double z_weight=0, double power=2)\n"
+		"\n"
+		"Uses IDW interpolation to generate rainfall data for each cell of\n"
+		"project.\n"
+		"\n"
+		"Creates a rainfall-data source for each cell, using spatial\n"
+		"interpolated data from all meteorological stations of the project\n"
+		"using Inverse Distance Weighted (IDW) interpolation. The rainfall\n"
+		"intensity P is calculated with IDW for position x,y,z and time t as\n"
+		"follows: \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     P(x,y,z,t) &=& \\\\sum^N_{i=1}{P_i(t)\n"
+		"    w_i(x,y,z)} \\\\\\\\ w_i(x,y,z) &=&\n"
+		"    \\\\frac{d_i(x,y,z)^{-p}}{\\\\sum^N_{j=0}{d_j(x,y,z)^{-p}}} \\\\\\\\\n"
+		"    d_i(x,y,z) &=& w_z \\\\left|z-z_i\\\\right| +\n"
+		"    \\\\sqrt{\\\\left(x-x_i\\\\right)^2 + \\\\left(y-y_i\\\\right)^2}\n"
+		"\n"
+		"\n"
+		"  :math:`N` is the number of stations\n"
+		"\n"
+		":math:`P_i(t)` the meteorological value at time t, eg. Temperature, Humidity\n"
+		"\n"
+		":math:`w_i` is the weight of station i\n"
+		"\n"
+		":math:`d_i` is the distance from x,y,z to station i\n"
+		"\n"
+		":math:`p` the power of the weighting function, usually 2.\n"
+		"\n"
+		":math:`x_i,y_i,z_i` is the position of station i in space\n"
+		"\n"
+		":math:`w_z` is a factor to weight the vertical distance between stations and\n"
+		"the cell. 0 results in a pure horizontal interpolation (normal IDW).\n"
+		"If :math:`w_z=1`, height difference is as important as horizontal distance,\n"
+		"and with :math:`w_z>1` the height difference is weighted more important than\n"
+		"horizontal distance See:  IDW_Meteorology\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"z_weight:   :math:`w_z` the weight of height difference between cell and\n"
+		"station\n"
+		"\n"
+		"power:  the power of the distance weight \n"
+		""},
+	 { "project_use_nearest_rainfall", (PyCFunction)(void(*)(void))_wrap_project_use_nearest_rainfall, METH_VARARGS|METH_KEYWORDS, "\n"
+		"use_nearest_rainfall(project self, double z_weight=0)\n"
+		"void\n"
+		"use_nearest_rainfall(double z_weight=0)\n"
+		"\n"
+		"Connects all cells of the project with its nearest rainfall station.\n"
+		"\n"
+		"Distance is calculated as follows: \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"    d_i(x,y,z) = w_z\n"
+		"    \\\\left|z-z_i\\\\right| + \\\\sqrt{\\\\left(x-x_i\\\\right)^2 +\n"
+		"    \\\\left(y-y_i\\\\right)^2} \n"
+		"\n"
+		":math:`d_i` is the distance from x,y,z to\n"
+		"station i\n"
+		"\n"
+		":math:`p` the power of the weighting function, usually 2.\n"
+		"\n"
+		":math:`x_i,y_i,z_i` is the position of station i in space\n"
+		"\n"
+		":math:`w_z` is a factor to weight the vertical distance between stations and\n"
+		"the cell. 0 results in a pure horizontal interpolation (normal IDW).\n"
+		"If :math:`w_z=1`, height difference is as important as horizontal distance,\n"
+		"and with :math:`w_z>1` the height difference is weighted more important than\n"
+		"horizontal distance\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"z_weight:   :math:`w_z` the weight of height difference between cell and\n"
+		"station \n"
+		""},
+	 { "project_get_cell", (PyCFunction)(void(*)(void))_wrap_project_get_cell, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_cell(project self, ptrdiff_t index) -> Cell\n"
+		"upslope::Cell&\n"
+		"get_cell(ptrdiff_t index)\n"
+		"\n"
+		"Returns the reference to the cell at index in the project. \n"
+		""},
+	 { "project_size", _wrap_project_size, METH_O, "\n"
+		"size(project self) -> size_t\n"
+		"size_t size() const\n"
+		"\n"
+		"The number of cells in the project. \n"
+		""},
+	 { "new_project", (PyCFunction)(void(*)(void))_wrap_new_project, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_project(std::string solute_names=\"\") -> project\n"
+		"project(std::string\n"
+		"solute_names=\"\")\n"
+		"\n"
+		"Creates a new project.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"solute_names:  A string representing the names of the solutes to be\n"
+		"used in the project. Sepereate solute names with space. \n"
+		""},
+	 { "delete_project", _wrap_delete_project, METH_O, "\n"
+		"delete_project(project self)\n"
+		"~project() \n"
+		""},
+	 { "project_NewCell", (PyCFunction)(void(*)(void))_wrap_project_NewCell, METH_VARARGS|METH_KEYWORDS, "\n"
+		"NewCell(project self, double x, double y, double z, double area, bool with_surfacewater=False) -> Cell\n"
+		"cmf::upslope::Cell*\n"
+		"NewCell(double x, double y, double z, double area, bool\n"
+		"with_surfacewater=false)\n"
+		"\n"
+		"Creates a new cell.\n"
+		"\n"
+		"A new cell, owned by the project\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"x:  y:  z:  Position of the cell center in project coordinates (m)\n"
+		"\n"
+		"area:  Area of the cell in m^2\n"
+		"\n"
+		"with_surfacewater:  If true, the cell will own a surfacewater storage\n"
+		"upon creation \n"
+		""},
+	 { "project_NewOutlet", (PyCFunction)(void(*)(void))_wrap_project_NewOutlet, METH_VARARGS|METH_KEYWORDS, "\n"
+		"NewOutlet(project self, std::string name, double x=0, double y=0, double z=0) -> cmf::water::DirichletBoundary::ptr\n"
+		"cmf::water::DirichletBoundary::ptr NewOutlet(std::string name, double\n"
+		"x=0, double y=0, double z=0)\n"
+		"\n"
+		"Creates a new Dirichlet boundary condition and adds it to the list of\n"
+		"outlets The potential of the Dirichlet boundary equals z, but can be\n"
+		"changed.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"name:  Name of the boundary condition for output\n"
+		"\n"
+		"x:  y:  z:  Position of the boundary condition in project coordinates\n"
+		"\n"
+		""},
+	 { "project_NewStorage", (PyCFunction)(void(*)(void))_wrap_project_NewStorage, METH_VARARGS|METH_KEYWORDS, "\n"
+		"NewStorage(project self, std::string name, double x=0, double y=0, double z=0) -> cmf::water::WaterStorage::ptr\n"
+		"cmf::water::WaterStorage::ptr NewStorage(std::string name, double x=0,\n"
+		"double y=0, double z=0)\n"
+		"\n"
+		"Creates a new generic water storage at position x,y,z.\n"
+		"\n"
+		"The storage is added to the project nodes A new water storage, owned\n"
+		"by the project\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"name:  Name of the generic water storage for output\n"
+		"\n"
+		"x:  y:  z:  Position of the generic water storage condition in project\n"
+		"coordinates \n"
+		""},
+	 { "project_NewOpenStorage", (PyCFunction)(void(*)(void))_wrap_project_NewOpenStorage, METH_VARARGS|METH_KEYWORDS, "\n"
+		"NewOpenStorage(project self, std::string name, double x, double y, double z, double area) -> cmf::river::OpenWaterStorage::ptr\n"
+		"cmf::river::OpenWaterStorage::ptr NewOpenStorage(std::string name,\n"
+		"double x, double y, double z, double area)\n"
+		"\n"
+		"Creates a new open water storage with a prism geometry.\n"
+		"\n"
+		"The open water storage is added to the project nodes A new open water\n"
+		"storage, owned by the project\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"name:  Name of the open water storage for output\n"
+		"\n"
+		"x:  y:  z:  Position of the open water storage in project coordinates\n"
+		"\n"
+		"area:  Surface area of the open water storage \n"
+		""},
+	 { "project_NewNeumannBoundary", (PyCFunction)(void(*)(void))_wrap_project_NewNeumannBoundary, METH_VARARGS|METH_KEYWORDS, "\n"
+		"NewNeumannBoundary(project self, std::string name, cmf::water::WaterStorage::ptr target) -> cmf::water::NeumannBoundary::ptr\n"
+		"cmf::water::NeumannBoundary::ptr NewNeumannBoundary(std::string name,\n"
+		"cmf::water::WaterStorage::ptr target)\n"
+		"\n"
+		"Creates a new Neumann boundary for a target water storage.\n"
+		"\n"
+		"The boundary is stored with the project A new Neumann boundary\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"name:  The name of the boundary condition\n"
+		"\n"
+		"target:  The water storage to which the Neumann boundary is bound \n"
+		""},
+	 { "project_NewReach", (PyCFunction)(void(*)(void))_wrap_project_NewReach, METH_VARARGS|METH_KEYWORDS, "\n"
+		"NewReach(project self, double x, double y, double z, IChannel shape, bool diffusive=False) -> cmf::river::Reach::ptr\n"
+		"cmf::river::Reach::ptr\n"
+		"NewReach(double x, double y, double z, cmf::river::IChannel &shape,\n"
+		"bool diffusive=false)\n"
+		"\n"
+		"Creates a new reach.\n"
+		"\n"
+		"A new reach, owned by the project\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"x:  y:  z:  Position of the reach in project coordinates\n"
+		"\n"
+		"shape:  Crossectional geometry of the river. Any class inheriting from\n"
+		"cmf::water::IChannel\n"
+		"\n"
+		"diffusive:  If true, this reach uses by default a diffusive wave\n"
+		"connection \n"
+		""},
+	 { "project_get_reach", (PyCFunction)(void(*)(void))_wrap_project_get_reach, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_reach(project self, ptrdiff_t index) -> cmf::river::Reach::ptr\n"
+		"cmf::river::Reach::ptr get_reach(ptrdiff_t index)\n"
+		"\n"
+		"Returns the reach at index. \n"
+		""},
+	 { "project_reach_count", _wrap_project_reach_count, METH_O, "\n"
+		"reach_count(project self) -> size_t\n"
+		"size_t\n"
+		"reach_count() const\n"
+		"\n"
+		"Returns the number of reaches in this project. \n"
+		""},
+	 { "project_get_node", (PyCFunction)(void(*)(void))_wrap_project_get_node, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_node(project self, ptrdiff_t index) -> cmf::water::flux_node::ptr\n"
+		"cmf::water::flux_node::ptr get_node(ptrdiff_t index)\n"
+		"\n"
+		"Returns the node from the project nodes at index. \n"
+		""},
+	 { "project_node_count", _wrap_project_node_count, METH_O, "\n"
+		"node_count(project self) -> size_t\n"
+		"size_t node_count()\n"
+		"const\n"
+		"\n"
+		"Returns the number of nodes saved with this project. \n"
+		""},
+	 { "project_get_storages", _wrap_project_get_storages, METH_O, "\n"
+		"get_storages(project self) -> node_list\n"
+		"cmf::water::node_list get_storages()\n"
+		"\n"
+		"Returns a list of all storages of this project. \n"
+		""},
 	 { "project___cmf_state_list_interface__", _wrap_project___cmf_state_list_interface__, METH_O, "__cmf_state_list_interface__(project self) -> state_list"},
 	 { "project_cells_get", _wrap_project_cells_get, METH_O, "project_cells_get(project self) -> cell_vector"},
 	 { "project_swigregister", project_swigregister, METH_O, NULL},
 	 { "project_swiginit", project_swiginit, METH_VARARGS, NULL},
-	 { "delete_Integrator", _wrap_delete_Integrator, METH_O, "delete_Integrator(Integrator self)"},
-	 { "Integrator_set_system", (PyCFunction)(void(*)(void))_wrap_Integrator_set_system, METH_VARARGS|METH_KEYWORDS, "set_system(Integrator self, state_list states)"},
-	 { "Integrator_size", _wrap_Integrator_size, METH_O, "size(Integrator self) -> size_t"},
+	 { "delete_Integrator", _wrap_delete_Integrator, METH_O, "\n"
+		"delete_Integrator(Integrator self)\n"
+		"virtual\n"
+		"~Integrator()=default \n"
+		""},
+	 { "Integrator_set_system", (PyCFunction)(void(*)(void))_wrap_Integrator_set_system, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_system(Integrator self, state_list states)\n"
+		"void\n"
+		"set_system(const state_list &states) \n"
+		""},
+	 { "Integrator_size", _wrap_Integrator_size, METH_O, "\n"
+		"size(Integrator self) -> size_t\n"
+		"size_t size()\n"
+		"const \n"
+		""},
 	 { "Integrator___getitem", (PyCFunction)(void(*)(void))_wrap_Integrator___getitem, METH_VARARGS|METH_KEYWORDS, "__getitem(Integrator self, ptrdiff_t index) -> cmf::math::StateVariable::ptr"},
 	 { "Integrator___cmf_state_list_interface__", _wrap_Integrator___cmf_state_list_interface__, METH_O, "__cmf_state_list_interface__(Integrator self) -> state_list"},
-	 { "Integrator_to_string", _wrap_Integrator_to_string, METH_O, "to_string(Integrator self) -> std::string"},
-	 { "Integrator_get_t", _wrap_Integrator_get_t, METH_O, "get_t(Integrator self) -> Time"},
-	 { "Integrator_set_t", (PyCFunction)(void(*)(void))_wrap_Integrator_set_t, METH_VARARGS|METH_KEYWORDS, "set_t(Integrator self, Time val)"},
-	 { "Integrator_get_dt", _wrap_Integrator_get_dt, METH_O, "get_dt(Integrator self) -> Time"},
-	 { "Integrator_reset", _wrap_Integrator_reset, METH_O, "reset(Integrator self)"},
-	 { "Integrator_copy", _wrap_Integrator_copy, METH_O, "copy(Integrator self) -> Integrator"},
-	 { "Integrator_integrate", (PyCFunction)(void(*)(void))_wrap_Integrator_integrate, METH_VARARGS|METH_KEYWORDS, "integrate(Integrator self, Time t_max, Time dt) -> int"},
-	 { "Integrator_integrate_until", (PyCFunction)(void(*)(void))_wrap_Integrator_integrate_until, METH_VARARGS|METH_KEYWORDS, "integrate_until(Integrator self, Time t_max, Time dt=cmf::math::Time(), bool reset=False)"},
+	 { "Integrator_to_string", _wrap_Integrator_to_string, METH_O, "\n"
+		"to_string(Integrator self) -> std::string\n"
+		"virtual\n"
+		"std::string to_string() const =0\n"
+		"\n"
+		"Desrcibes the iterator. \n"
+		""},
+	 { "Integrator_get_t", _wrap_Integrator_get_t, METH_O, "\n"
+		"get_t(Integrator self) -> Time\n"
+		"cmf::math::Time\n"
+		"get_t() const\n"
+		"\n"
+		"Returns the current model time. \n"
+		""},
+	 { "Integrator_set_t", (PyCFunction)(void(*)(void))_wrap_Integrator_set_t, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_t(Integrator self, Time val)\n"
+		"void\n"
+		"set_t(cmf::math::Time val)\n"
+		"\n"
+		"Sets the current model time. \n"
+		""},
+	 { "Integrator_get_dt", _wrap_Integrator_get_dt, METH_O, "\n"
+		"get_dt(Integrator self) -> Time\n"
+		"cmf::math::Time\n"
+		"get_dt() const\n"
+		"\n"
+		"Returns the last time step. \n"
+		""},
+	 { "Integrator_reset", _wrap_Integrator_reset, METH_O, "\n"
+		"reset(Integrator self)\n"
+		"virtual void\n"
+		"reset()\n"
+		"\n"
+		"Resets any saved history (for multistep methods) \n"
+		""},
+	 { "Integrator_copy", _wrap_Integrator_copy, METH_O, "\n"
+		"copy(Integrator self) -> Integrator\n"
+		"virtual\n"
+		"Integrator* copy() const =0\n"
+		"\n"
+		"Polymorphic copy constructor. \n"
+		""},
+	 { "Integrator_integrate", (PyCFunction)(void(*)(void))_wrap_Integrator_integrate, METH_VARARGS|METH_KEYWORDS, "\n"
+		"integrate(Integrator self, Time t_max, Time dt) -> int\n"
+		"virtual int\n"
+		"integrate(cmf::math::Time t_max, cmf::math::Time dt)=0\n"
+		"\n"
+		"Integrates the vector of state variables.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"t_max:  To stop the model (if running in a model framework) at time\n"
+		"steps of value exchange e.g. full hours, the next value exchange time\n"
+		"can be given\n"
+		"\n"
+		"dt:  Takes the proposed time step, and changes it into the effectively\n"
+		"used time step according to the local stiffness of the problem and\n"
+		"MaxTime \n"
+		""},
+	 { "Integrator_integrate_until", (PyCFunction)(void(*)(void))_wrap_Integrator_integrate_until, METH_VARARGS|METH_KEYWORDS, "\n"
+		"integrate_until(Integrator self, Time t_max, Time dt=cmf::math::Time(), bool reset=False)\n"
+		"void\n"
+		"integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool\n"
+		"reset=false)\n"
+		"\n"
+		"Integrates the vector of state variables until t_max.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"t_max:   Time, the solver should run to\n"
+		"\n"
+		"dt:   Time step (may be omitted)\n"
+		"\n"
+		"reset:  If true, solver is reseted before integration starts \n"
+		""},
 	 { "Integrator___len__", _wrap_Integrator___len__, METH_O, "__len__(Integrator self) -> size_t"},
 	 { "Integrator_swigregister", Integrator_swigregister, METH_O, NULL},
-	 { "BDF2_get_error_position", _wrap_BDF2_get_error_position, METH_O, "get_error_position(BDF2 self) -> ptrdiff_t"},
+	 { "BDF2_get_error_position", _wrap_BDF2_get_error_position, METH_O, "\n"
+		"get_error_position(BDF2 self) -> ptrdiff_t\n"
+		"ptrdiff_t\n"
+		"get_error_position() const\n"
+		"\n"
+		"Returns the position of the biggest error. \n"
+		""},
 	 { "BDF2_max_order_set", _wrap_BDF2_max_order_set, METH_VARARGS, "BDF2_max_order_set(BDF2 self, int max_order)"},
 	 { "BDF2_max_order_get", _wrap_BDF2_max_order_get, METH_O, "BDF2_max_order_get(BDF2 self) -> int"},
 	 { "new_BDF2", _wrap_new_BDF2, METH_VARARGS, "\n"
 		"BDF2(real epsilon=1e-9, Time tStepMin=cmf::math::timespan(10))\n"
 		"BDF2(state_list states, real epsilon=1e-9, Time tStepMin=cmf::math::timespan(10))\n"
 		"new_BDF2(Integrator templ) -> BDF2\n"
+		"BDF2(const Integrator\n"
+		"&templ)\n"
+		"\n"
+		"Constructs a new BDF2 integrator.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"templ:  Template to be used to construct a BDF2 method \n"
 		""},
 	 { "delete_BDF2", _wrap_delete_BDF2, METH_O, "delete_BDF2(BDF2 self)"},
 	 { "BDF2_swigregister", BDF2_swigregister, METH_O, NULL},
@@ -79844,8 +88511,15 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"ExplicitEuler_fixed(state_list states)\n"
 		"ExplicitEuler_fixed()\n"
 		"new_ExplicitEuler_fixed(Integrator copy) -> ExplicitEuler_fixed\n"
+		"ExplicitEuler_fixed(const Integrator &copy)\n"
+		"\n"
+		"copy constructor \n"
 		""},
-	 { "delete_ExplicitEuler_fixed", _wrap_delete_ExplicitEuler_fixed, METH_O, "delete_ExplicitEuler_fixed(ExplicitEuler_fixed self)"},
+	 { "delete_ExplicitEuler_fixed", _wrap_delete_ExplicitEuler_fixed, METH_O, "\n"
+		"delete_ExplicitEuler_fixed(ExplicitEuler_fixed self)\n"
+		"virtual\n"
+		"~ExplicitEuler_fixed() \n"
+		""},
 	 { "ExplicitEuler_fixed_swigregister", ExplicitEuler_fixed_swigregister, METH_O, NULL},
 	 { "ExplicitEuler_fixed_swiginit", ExplicitEuler_fixed_swiginit, METH_VARARGS, NULL},
 	 { "HeunIntegrator_alpha_set", _wrap_HeunIntegrator_alpha_set, METH_VARARGS, "HeunIntegrator_alpha_set(HeunIntegrator self, real alpha)"},
@@ -79854,8 +88528,14 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"HeunIntegrator(state_list states, real Alpha=0.5)\n"
 		"HeunIntegrator(real Alpha=0.5)\n"
 		"new_HeunIntegrator(Integrator copy) -> HeunIntegrator\n"
+		"HeunIntegrator(const Integrator &copy)\n"
+		"\n"
+		"copy constructor \n"
 		""},
-	 { "delete_HeunIntegrator", _wrap_delete_HeunIntegrator, METH_O, "delete_HeunIntegrator(HeunIntegrator self)"},
+	 { "delete_HeunIntegrator", _wrap_delete_HeunIntegrator, METH_O, "\n"
+		"delete_HeunIntegrator(HeunIntegrator self)\n"
+		"virtual ~HeunIntegrator() \n"
+		""},
 	 { "HeunIntegrator_swigregister", HeunIntegrator_swigregister, METH_O, NULL},
 	 { "HeunIntegrator_swiginit", HeunIntegrator_swiginit, METH_VARARGS, NULL},
 	 { "ImplicitEuler_dt_min_set", _wrap_ImplicitEuler_dt_min_set, METH_VARARGS, "ImplicitEuler_dt_min_set(ImplicitEuler self, Time dt_min)"},
@@ -79864,6 +88544,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"ImplicitEuler(state_list states, real epsilon=1e-9, Time tStepMin=cmf::math::timespan(10))\n"
 		"ImplicitEuler(real epsilon=1e-9, Time tStepMin=cmf::math::timespan(10))\n"
 		"new_ImplicitEuler(Integrator arg1) -> ImplicitEuler\n"
+		"ImplicitEuler(const Integrator &)\n"
+		"\n"
+		"copy constructor \n"
 		""},
 	 { "delete_ImplicitEuler", _wrap_delete_ImplicitEuler, METH_O, "delete_ImplicitEuler(ImplicitEuler self)"},
 	 { "ImplicitEuler_swigregister", ImplicitEuler_swigregister, METH_O, NULL},
@@ -79871,6 +88554,17 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "new_RKFIntegrator", _wrap_new_RKFIntegrator, METH_VARARGS, "\n"
 		"RKFIntegrator(state_list states, real epsilon=1e-9, Time dt_min=cmf::math::timespan(1000))\n"
 		"new_RKFIntegrator(real epsilon=1e-9, Time dt_min=cmf::math::timespan(1000)) -> RKFIntegrator\n"
+		"RKFIntegrator(real epsilon=1e-9, cmf::math::Time\n"
+		"dt_min=cmf::math::timespan(1000))\n"
+		"\n"
+		"Constructs a new RKFIntegrator.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"epsilon:  relative error tolerance per time step (default=1e-9)\n"
+		"\n"
+		"dt_min:  minimum time step (default=1s) \n"
 		""},
 	 { "delete_RKFIntegrator", _wrap_delete_RKFIntegrator, METH_O, "delete_RKFIntegrator(RKFIntegrator self)"},
 	 { "RKFIntegrator_swigregister", RKFIntegrator_swigregister, METH_O, NULL},
@@ -79887,7 +88581,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "CVodeOptions_max_num_steps_get", _wrap_CVodeOptions_max_num_steps_get, METH_O, "CVodeOptions_max_num_steps_get(CVodeOptions self) -> int"},
 	 { "CVodeOptions_max_hnil_warnings_set", _wrap_CVodeOptions_max_hnil_warnings_set, METH_VARARGS, "CVodeOptions_max_hnil_warnings_set(CVodeOptions self, int max_hnil_warnings)"},
 	 { "CVodeOptions_max_hnil_warnings_get", _wrap_CVodeOptions_max_hnil_warnings_get, METH_O, "CVodeOptions_max_hnil_warnings_get(CVodeOptions self) -> int"},
-	 { "new_CVodeOptions", _wrap_new_CVodeOptions, METH_NOARGS, "new_CVodeOptions() -> CVodeOptions"},
+	 { "new_CVodeOptions", _wrap_new_CVodeOptions, METH_NOARGS, "\n"
+		"new_CVodeOptions() -> CVodeOptions\n"
+		"CVodeOptions() \n"
+		""},
 	 { "delete_CVodeOptions", _wrap_delete_CVodeOptions, METH_O, "delete_CVodeOptions(CVodeOptions self)"},
 	 { "CVodeOptions_swigregister", CVodeOptions_swigregister, METH_O, NULL},
 	 { "CVodeOptions_swiginit", CVodeOptions_swiginit, METH_VARARGS, NULL},
@@ -79919,38 +88616,131 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "CVodeInfo_dxdt_method_calls_get", _wrap_CVodeInfo_dxdt_method_calls_get, METH_O, "CVodeInfo_dxdt_method_calls_get(CVodeInfo self) -> long"},
 	 { "CVodeInfo_sundials_version_set", _wrap_CVodeInfo_sundials_version_set, METH_VARARGS, "CVodeInfo_sundials_version_set(CVodeInfo self, std::string const & sundials_version)"},
 	 { "CVodeInfo_sundials_version_get", _wrap_CVodeInfo_sundials_version_get, METH_O, "CVodeInfo_sundials_version_get(CVodeInfo self) -> std::string const &"},
-	 { "CVodeInfo_to_string", _wrap_CVodeInfo_to_string, METH_O, "to_string(CVodeInfo self) -> std::string"},
+	 { "CVodeInfo_to_string", _wrap_CVodeInfo_to_string, METH_O, "\n"
+		"to_string(CVodeInfo self) -> std::string\n"
+		"std::string\n"
+		"to_string() const \n"
+		""},
 	 { "new_CVodeInfo", _wrap_new_CVodeInfo, METH_NOARGS, "new_CVodeInfo() -> CVodeInfo"},
 	 { "delete_CVodeInfo", _wrap_delete_CVodeInfo, METH_O, "delete_CVodeInfo(CVodeInfo self)"},
 	 { "CVodeInfo_swigregister", CVodeInfo_swigregister, METH_O, NULL},
 	 { "CVodeInfo_swiginit", CVodeInfo_swiginit, METH_VARARGS, NULL},
 	 { "CVodeBase_options_set", _wrap_CVodeBase_options_set, METH_VARARGS, "CVodeBase_options_set(CVodeBase self, CVodeOptions options)"},
 	 { "CVodeBase_options_get", _wrap_CVodeBase_options_get, METH_O, "CVodeBase_options_get(CVodeBase self) -> CVodeOptions"},
-	 { "CVodeBase_initialize", _wrap_CVodeBase_initialize, METH_O, "initialize(CVodeBase self) -> int"},
-	 { "CVodeBase_set_error_msg", (PyCFunction)(void(*)(void))_wrap_CVodeBase_set_error_msg, METH_VARARGS|METH_KEYWORDS, "set_error_msg(CVodeBase self, std::string error)"},
-	 { "CVodeBase_copy", _wrap_CVodeBase_copy, METH_O, "copy(CVodeBase self) -> CVodeBase"},
+	 { "CVodeBase_initialize", _wrap_CVodeBase_initialize, METH_O, "\n"
+		"initialize(CVodeBase self) -> int\n"
+		"int\n"
+		"initialize()\n"
+		"\n"
+		"Initialize the internal memory.\n"
+		"\n"
+		"Automatically called, when one starts to integrate \n"
+		""},
+	 { "CVodeBase_set_error_msg", (PyCFunction)(void(*)(void))_wrap_CVodeBase_set_error_msg, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_error_msg(CVodeBase self, std::string error)\n"
+		"void\n"
+		"set_error_msg(std::string error)\n"
+		"\n"
+		"Sets an error message. \n"
+		""},
+	 { "CVodeBase_copy", _wrap_CVodeBase_copy, METH_O, "\n"
+		"copy(CVodeBase self) -> CVodeBase\n"
+		"CVodeBase* copy()\n"
+		"const\n"
+		"\n"
+		"Returns a copy of the solver. \n"
+		""},
 	 { "CVodeBase_error_msg_set", _wrap_CVodeBase_error_msg_set, METH_VARARGS, "CVodeBase_error_msg_set(CVodeBase self, std::string const & error_msg)"},
 	 { "CVodeBase_error_msg_get", _wrap_CVodeBase_error_msg_get, METH_O, "CVodeBase_error_msg_get(CVodeBase self) -> std::string const &"},
-	 { "CVodeBase_get_info", _wrap_CVodeBase_get_info, METH_O, "get_info(CVodeBase self) -> CVodeInfo"},
-	 { "CVodeBase_get_error", _wrap_CVodeBase_get_error, METH_O, "get_error(CVodeBase self) -> cmf::math::num_array"},
-	 { "CVodeBase__get_jacobian", _wrap_CVodeBase__get_jacobian, METH_O, "_get_jacobian(CVodeBase self) -> cmf::math::num_array"},
-	 { "delete_CVodeBase", _wrap_delete_CVodeBase, METH_O, "delete_CVodeBase(CVodeBase self)"},
+	 { "CVodeBase_get_info", _wrap_CVodeBase_get_info, METH_O, "\n"
+		"get_info(CVodeBase self) -> CVodeInfo\n"
+		"CVodeInfo\n"
+		"get_info() const\n"
+		"\n"
+		"Returns the current solver statistics. \n"
+		""},
+	 { "CVodeBase_get_error", _wrap_CVodeBase_get_error, METH_O, "\n"
+		"get_error(CVodeBase self) -> cmf::math::num_array\n"
+		"cmf::math::num_array get_error() const\n"
+		"\n"
+		"Error vector of the integrator. \n"
+		""},
+	 { "CVodeBase__get_jacobian", _wrap_CVodeBase__get_jacobian, METH_O, "\n"
+		"_get_jacobian(CVodeBase self) -> cmf::math::num_array\n"
+		"virtual\n"
+		"cmf::math::num_array _get_jacobian() const\n"
+		"\n"
+		"Returns a continuous 1D array representing the Jacobian columns\n"
+		"concatenated.\n"
+		"\n"
+		"In Python, get_jacobian returns the Jacobian as a 2D array \n"
+		""},
+	 { "delete_CVodeBase", _wrap_delete_CVodeBase, METH_O, "\n"
+		"delete_CVodeBase(CVodeBase self)\n"
+		"~CVodeBase()\n"
+		"\n"
+		""},
 	 { "CVodeBase_swigregister", CVodeBase_swigregister, METH_O, NULL},
-	 { "new_CVodeDense", (PyCFunction)(void(*)(void))_wrap_new_CVodeDense, METH_VARARGS|METH_KEYWORDS, "new_CVodeDense(state_list states, real epsilon=1e-9) -> CVodeDense"},
+	 { "new_CVodeDense", _wrap_new_CVodeDense, METH_VARARGS, "\n"
+		"CVodeDense(state_list states, real epsilon=1e-9)\n"
+		"new_CVodeDense(real epsilon=1e-9) -> CVodeDense\n"
+		"CVodeDense(real epsilon=1e-9) \n"
+		""},
+	 { "CVodeDense_copy", _wrap_CVodeDense_copy, METH_O, "\n"
+		"copy(CVodeDense self) -> CVodeDense\n"
+		"CVodeBase* copy()\n"
+		"const\n"
+		"\n"
+		"Returns a copy of the solver. \n"
+		""},
 	 { "delete_CVodeDense", _wrap_delete_CVodeDense, METH_O, "delete_CVodeDense(CVodeDense self)"},
 	 { "CVodeDense_swigregister", CVodeDense_swigregister, METH_O, NULL},
 	 { "CVodeDense_swiginit", CVodeDense_swiginit, METH_VARARGS, NULL},
-	 { "new_CVodeAdams", (PyCFunction)(void(*)(void))_wrap_new_CVodeAdams, METH_VARARGS|METH_KEYWORDS, "new_CVodeAdams(state_list states, real epsilon=1e-9) -> CVodeAdams"},
+	 { "new_CVodeAdams", _wrap_new_CVodeAdams, METH_VARARGS, "\n"
+		"CVodeAdams(real epsilon=1e-9)\n"
+		"new_CVodeAdams(state_list states, real epsilon=1e-9) -> CVodeAdams\n"
+		"CVodeAdams(const cmf::math::state_list &states, real epsilon=1e-9) \n"
+		""},
+	 { "CVodeAdams_copy", _wrap_CVodeAdams_copy, METH_O, "\n"
+		"copy(CVodeAdams self) -> CVodeAdams\n"
+		"CVodeBase* copy()\n"
+		"const\n"
+		"\n"
+		"Returns a copy of the solver. \n"
+		""},
 	 { "delete_CVodeAdams", _wrap_delete_CVodeAdams, METH_O, "delete_CVodeAdams(CVodeAdams self)"},
 	 { "CVodeAdams_swigregister", CVodeAdams_swigregister, METH_O, NULL},
 	 { "CVodeAdams_swiginit", CVodeAdams_swiginit, METH_VARARGS, NULL},
 	 { "CVodeBanded_bandwidth_set", _wrap_CVodeBanded_bandwidth_set, METH_VARARGS, "CVodeBanded_bandwidth_set(CVodeBanded self, int bandwidth)"},
 	 { "CVodeBanded_bandwidth_get", _wrap_CVodeBanded_bandwidth_get, METH_O, "CVodeBanded_bandwidth_get(CVodeBanded self) -> int"},
-	 { "new_CVodeBanded", (PyCFunction)(void(*)(void))_wrap_new_CVodeBanded, METH_VARARGS|METH_KEYWORDS, "new_CVodeBanded(state_list states, real epsilon=1e-9, int w=5) -> CVodeBanded"},
+	 { "new_CVodeBanded", _wrap_new_CVodeBanded, METH_VARARGS, "\n"
+		"CVodeBanded(real epsilon=1e-9, int w=5)\n"
+		"new_CVodeBanded(state_list states, real epsilon=1e-9, int w=5) -> CVodeBanded\n"
+		"CVodeBanded(const cmf::math::state_list &states, real epsilon=1e-9,\n"
+		"int w=5) \n"
+		""},
+	 { "CVodeBanded_copy", _wrap_CVodeBanded_copy, METH_O, "\n"
+		"copy(CVodeBanded self) -> CVodeBanded\n"
+		"CVodeBase*\n"
+		"copy() const\n"
+		"\n"
+		"Returns a copy of the solver. \n"
+		""},
 	 { "delete_CVodeBanded", _wrap_delete_CVodeBanded, METH_O, "delete_CVodeBanded(CVodeBanded self)"},
 	 { "CVodeBanded_swigregister", CVodeBanded_swigregister, METH_O, NULL},
 	 { "CVodeBanded_swiginit", CVodeBanded_swiginit, METH_VARARGS, NULL},
-	 { "new_CVodeDiag", (PyCFunction)(void(*)(void))_wrap_new_CVodeDiag, METH_VARARGS|METH_KEYWORDS, "new_CVodeDiag(state_list states, real epsilon=1e-9) -> CVodeDiag"},
+	 { "new_CVodeDiag", _wrap_new_CVodeDiag, METH_VARARGS, "\n"
+		"CVodeDiag(state_list states, real epsilon=1e-9)\n"
+		"new_CVodeDiag(real epsilon=1e-9) -> CVodeDiag\n"
+		"CVodeDiag(real epsilon=1e-9) \n"
+		""},
+	 { "CVodeDiag_copy", _wrap_CVodeDiag_copy, METH_O, "\n"
+		"copy(CVodeDiag self) -> CVodeDiag\n"
+		"CVodeBase* copy()\n"
+		"const\n"
+		"\n"
+		"Returns a copy of the solver. \n"
+		""},
 	 { "delete_CVodeDiag", _wrap_delete_CVodeDiag, METH_O, "delete_CVodeDiag(CVodeDiag self)"},
 	 { "CVodeDiag_swigregister", CVodeDiag_swigregister, METH_O, NULL},
 	 { "CVodeDiag_swiginit", CVodeDiag_swiginit, METH_VARARGS, NULL},
@@ -79958,25 +88748,93 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "CVodeKrylov_bandwidth_get", _wrap_CVodeKrylov_bandwidth_get, METH_O, "CVodeKrylov_bandwidth_get(CVodeKrylov self) -> int"},
 	 { "CVodeKrylov_preconditioner_set", _wrap_CVodeKrylov_preconditioner_set, METH_VARARGS, "CVodeKrylov_preconditioner_set(CVodeKrylov self, char preconditioner)"},
 	 { "CVodeKrylov_preconditioner_get", _wrap_CVodeKrylov_preconditioner_get, METH_O, "CVodeKrylov_preconditioner_get(CVodeKrylov self) -> char"},
-	 { "new_CVodeKrylov", (PyCFunction)(void(*)(void))_wrap_new_CVodeKrylov, METH_VARARGS|METH_KEYWORDS, "new_CVodeKrylov(state_list states, real epsilon=1e-9, int w=5, char p='L') -> CVodeKrylov"},
+	 { "new_CVodeKrylov", _wrap_new_CVodeKrylov, METH_VARARGS, "\n"
+		"CVodeKrylov(state_list states, real epsilon=1e-9, int w=5, char p='L')\n"
+		"new_CVodeKrylov(real epsilon=1e-9, int w=5, char p='L') -> CVodeKrylov\n"
+		"CVodeKrylov(real epsilon=1e-9, int w=5, char p='L') \n"
+		""},
+	 { "CVodeKrylov_copy", _wrap_CVodeKrylov_copy, METH_O, "\n"
+		"copy(CVodeKrylov self) -> CVodeKrylov\n"
+		"CVodeBase*\n"
+		"copy() const\n"
+		"\n"
+		"Returns a copy of the solver. \n"
+		""},
 	 { "delete_CVodeKrylov", _wrap_delete_CVodeKrylov, METH_O, "delete_CVodeKrylov(CVodeKrylov self)"},
 	 { "CVodeKrylov_swigregister", CVodeKrylov_swigregister, METH_O, NULL},
 	 { "CVodeKrylov_swiginit", CVodeKrylov_swiginit, METH_VARARGS, NULL},
-	 { "new_CVodeKLU", (PyCFunction)(void(*)(void))_wrap_new_CVodeKLU, METH_VARARGS|METH_KEYWORDS, "new_CVodeKLU(state_list states, real epsilon=1e-9) -> CVodeKLU"},
+	 { "new_CVodeKLU", _wrap_new_CVodeKLU, METH_VARARGS, "\n"
+		"CVodeKLU(real epsilon=1e-9)\n"
+		"new_CVodeKLU(state_list states, real epsilon=1e-9) -> CVodeKLU\n"
+		"CVodeKLU(const\n"
+		"cmf::math::state_list &states, real epsilon=1e-9) \n"
+		""},
+	 { "CVodeKLU_copy", _wrap_CVodeKLU_copy, METH_O, "\n"
+		"copy(CVodeKLU self) -> CVodeKLU\n"
+		"CVodeBase* copy()\n"
+		"const\n"
+		"\n"
+		"Returns a copy of the solver. \n"
+		""},
 	 { "delete_CVodeKLU", _wrap_delete_CVodeKLU, METH_O, "delete_CVodeKLU(CVodeKLU self)"},
 	 { "CVodeKLU_swigregister", CVodeKLU_swigregister, METH_O, NULL},
 	 { "CVodeKLU_swiginit", CVodeKLU_swiginit, METH_VARARGS, NULL},
-	 { "MultiIntegrator_copy", _wrap_MultiIntegrator_copy, METH_O, "copy(MultiIntegrator self) -> MultiIntegrator"},
-	 { "new_MultiIntegrator", (PyCFunction)(void(*)(void))_wrap_new_MultiIntegrator, METH_VARARGS|METH_KEYWORDS, "new_MultiIntegrator(Integrator template_integrator, int count) -> MultiIntegrator"},
+	 { "MultiIntegrator_copy", _wrap_MultiIntegrator_copy, METH_O, "\n"
+		"copy(MultiIntegrator self) -> MultiIntegrator\n"
+		"virtual\n"
+		"cmf::math::MultiIntegrator* copy() const\n"
+		"\n"
+		"Polymorphic copy constructor. \n"
+		""},
+	 { "new_MultiIntegrator", (PyCFunction)(void(*)(void))_wrap_new_MultiIntegrator, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_MultiIntegrator(Integrator template_integrator, int count) -> MultiIntegrator\n"
+		"MultiIntegrator(const cmf::math::Integrator &template_integrator, int\n"
+		"count)\n"
+		"\n"
+		"Creates a new MultiIntegrator.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"template_integrator:  Template for the integrators\n"
+		"\n"
+		"count:  Number of integrators \n"
+		""},
 	 { "delete_MultiIntegrator", _wrap_delete_MultiIntegrator, METH_O, "delete_MultiIntegrator(MultiIntegrator self)"},
 	 { "MultiIntegrator_swigregister", MultiIntegrator_swigregister, METH_O, NULL},
 	 { "MultiIntegrator_swiginit", MultiIntegrator_swiginit, METH_VARARGS, NULL},
-	 { "SoluteWaterIntegrator_copy", _wrap_SoluteWaterIntegrator_copy, METH_O, "copy(SoluteWaterIntegrator self) -> SoluteWaterIntegrator"},
+	 { "SoluteWaterIntegrator_copy", _wrap_SoluteWaterIntegrator_copy, METH_O, "\n"
+		"copy(SoluteWaterIntegrator self) -> SoluteWaterIntegrator\n"
+		"virtual cmf::math::SoluteWaterIntegrator* copy() const\n"
+		"\n"
+		"Polymorphic copy constructor. \n"
+		""},
 	 { "new_SoluteWaterIntegrator", _wrap_new_SoluteWaterIntegrator, METH_VARARGS, "\n"
 		"SoluteWaterIntegrator(solute_vector solutes, Integrator water_integrator, Integrator solute_integrator)\n"
 		"new_SoluteWaterIntegrator(solute_vector solutes, Integrator water_integrator, Integrator solute_integrator, state_list states) -> SoluteWaterIntegrator\n"
+		"SoluteWaterIntegrator(const cmf::water::solute_vector &solutes, const\n"
+		"cmf::math::Integrator &water_integrator, const cmf::math::Integrator\n"
+		"&solute_integrator, const cmf::math::state_list &states)\n"
+		"\n"
+		"Creates a new SoluteWaterIntegrator.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"solutes:  Solutes of the project\n"
+		"\n"
+		"water_integrator:  Template for the integrator of WaterStorage state\n"
+		"variables\n"
+		"\n"
+		"solute_integrator:  Template for the integrator of soluteStorage state\n"
+		"variables\n"
+		"\n"
+		"states:  States to be added to the integrators \n"
 		""},
-	 { "delete_SoluteWaterIntegrator", _wrap_delete_SoluteWaterIntegrator, METH_O, "delete_SoluteWaterIntegrator(SoluteWaterIntegrator self)"},
+	 { "delete_SoluteWaterIntegrator", _wrap_delete_SoluteWaterIntegrator, METH_O, "\n"
+		"delete_SoluteWaterIntegrator(SoluteWaterIntegrator self)\n"
+		"~SoluteWaterIntegrator() \n"
+		""},
 	 { "SoluteWaterIntegrator_swigregister", SoluteWaterIntegrator_swigregister, METH_O, NULL},
 	 { "SoluteWaterIntegrator_swiginit", SoluteWaterIntegrator_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }

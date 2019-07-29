@@ -65,7 +65,7 @@ namespace cmf {
 			/// @param solute_integrator Template for the integrator of soluteStorage state variables
 			/// @param states States to be added to the integrators
 			SoluteWaterIntegrator(
-			        cmf::water::solute_vector solutes,
+			        const cmf::water::solute_vector& solutes,
 			        const cmf::math::Integrator& water_integrator,
 			        const cmf::math::Integrator& solute_integrator,
 			        const cmf::math::state_list& states);

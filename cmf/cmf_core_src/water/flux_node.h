@@ -69,8 +69,6 @@ namespace cmf {
 			void DeregisterConnection(flux_connection* target);
 			// Allows the flux_connection class to call thereregister / deregister themselfs
 			friend class flux_connection;
-			// allows the waterbalance_integrator to call the water balance without refreshing the connection
-			friend class waterbalance_integrator;
 
 			// The mapping of the connections. The id is holding the node id's
 			typedef std::map<int, con_ptr > ConnectionMap;

@@ -17,7 +17,7 @@
 // Get Documentation
 
 %feature("compactdefaultargs");
-// %include "docstrings.i"
+%include "docstrings.i"
 %feature("autodoc","1");
 
 // Usage for automated downcast
