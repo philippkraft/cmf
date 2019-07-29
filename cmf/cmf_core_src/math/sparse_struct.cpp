@@ -14,6 +14,7 @@ cmf::math::sparse_structure::sparse_structure()
 
 size_t cmf::math::sparse_structure::generate(const cmf::math::state_list & states)
 {
+    this->errors.clear();
     N = states.size();
     StateVariable::list pointer_list;
     std::map<cmf::math::StateVariable*, size_t> pointer_positions;
@@ -32,7 +33,7 @@ size_t cmf::math::sparse_structure::generate(const cmf::math::state_list & state
         for (auto ptr : pointer_list) {
             size_t row = pointer_positions[ptr];
             if (row == 0) {
-                throw std::runtime_error("sparse_structure: a connection outside the defining state list exists!");
+                errors.push_back(ptr->to_string() + " is connected with " + col_state.to_string() + " but not part of the provided states");
             }
             indexvalues.push_back(row - 1);
         }
