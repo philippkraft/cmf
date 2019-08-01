@@ -15,7 +15,8 @@
 //
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
-//   
+//
+#include "../project.h"
 #include "../math/real.h"
 #include "ManningConnection.h"
 #include "../upslope/cell.h"
@@ -85,10 +86,10 @@ real cmf::river::Manning_Diffusive::get_slope(cmf::math::Time t, cmf::water::flu
                                               cmf::water::flux_node::ptr rnode, real d)
 {
 	real s = (lnode->get_potential(t)-rnode->get_potential(t))/d;
-	if (this->linear_slope_width) {
+	if (cmf::diffusive_singularity_protection > 0.0) {
 		real
 			// Only a shortcut for faster writing
-			s0 = this->linear_slope_width,
+			& s0 = cmf::diffusive_singularity_protection,
 			// Weight of linear part
 			w_lin = exp(-square((s/s0))),
 			// linear part using the slope at s0/4 

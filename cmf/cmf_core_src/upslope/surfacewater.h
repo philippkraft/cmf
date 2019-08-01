@@ -187,12 +187,10 @@ namespace cmf {
 				std::weak_ptr<cmf::upslope::SurfaceWater> wleft;
 				std::weak_ptr<cmf::river::OpenWaterStorage> owright;
 				std::weak_ptr<cmf::upslope::SurfaceWater> wright;
-				virtual real calc_q(cmf::math::Time t);
-				void NewNodes();
+				real calc_q(cmf::math::Time t) override;
+				void NewNodes() override;
 				real m_distance, m_flowwidth;
 			public:
-				static void set_linear_slope(real width);
-				static real get_linear_slope();
 				DiffusiveSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left,cmf::water::flux_node::ptr right,real flowwidth,real distance=-1)
 					: flux_connection(left,right,"Diffusive surface runoff"), m_distance(distance), m_flowwidth(flowwidth) {
 
