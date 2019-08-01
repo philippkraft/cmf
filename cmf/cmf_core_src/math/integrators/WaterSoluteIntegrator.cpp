@@ -116,9 +116,9 @@ std::string cmf::math::SoluteWaterIntegrator::to_string() const
 {
 	std::stringstream str;
 	str << "Solute water integrator with " << this->size() << " states total." << std::endl;
-	str << "    " << this->m_waterintegrator->size() << " states for water" << std::endl;
+	str << "    " << this->m_waterintegrator->to_string() << ": " << this->m_waterintegrator->size() << " states for water" << std::endl;
 	for(auto& solute: solutes) {
-		str << "    " << m_soluteintegrators[solute.Id]->size() << " states for [" << solute.Name << "]" << std::endl;
+		str << "    " << m_soluteintegrators[solute.Id]->to_string() << ": " << m_soluteintegrators[solute.Id]->size() << " states for [" << solute.Name << "]" << std::endl;
 	}
 	str << "dt=" << m_waterintegrator->get_dt() << std::endl;
 	return str.str();

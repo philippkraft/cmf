@@ -25,7 +25,7 @@ size_t cmf::math::sparse_structure::generate(const cmf::math::state_list & state
     // Pointers of a csr sparse structure always start with 0
     indexpointers.push_back(0);
     // Better approach would be if a state can return (or append to) a list of its connected states
-    for (int col = 0; col< N; ++col) {
+    for (size_t col = 0; col< N; ++col) {
         // Get the state to be tested for this col
         auto& col_state = *states[col];
         pointer_list.clear();
@@ -34,8 +34,9 @@ size_t cmf::math::sparse_structure::generate(const cmf::math::state_list & state
             size_t row = pointer_positions[ptr];
             if (row == 0) {
                 errors.push_back(ptr->to_string() + " is connected with " + col_state.to_string() + " but not part of the provided states");
+            } else {
+                indexvalues.push_back(row - 1);
             }
-            indexvalues.push_back(row - 1);
         }
         // Write the position of the next entry (from the new row) into pointers
         indexpointers.push_back(indexvalues.size());
