@@ -9,7 +9,7 @@
 #include "project.h"
 #include "water/WaterStorage.h"
 #include "water/simple_connections.h"
-#include "math/integrators/explicit_euler.h"
+#include "math/integrators/cvode.h"
 #include "math/integrators/WaterSoluteIntegrator.h"
 
 
@@ -36,12 +36,23 @@ int main() {
     W0[X].set_conc(1.0);
     W0[Y].set_conc(0.5);
 
-    auto w_solver_template=new HeunIntegrator();
-    auto s_solver_template= new ExplicitEuler_fixed();
+    auto w_solver_template=new CVodeKLU();
+    auto s_solver_template=new CVodeAdams();
     state_list sl(p);
     SoluteWaterIntegrator solver(p.solutes, *w_solver_template, *s_solver_template, sl);
+    std::cout << solver.to_string() << "\n";
+    std::cout << solver.get_t().to_string() << "W0.volume=" << W0.get_volume() << "m³, W0[X].state=" << W0[X].get_state()
+              << "g, W0[Y].state=" << W0[Y].get_state() << "g \n";
     delete w_solver_template;
     delete s_solver_template;
-    solver.integrate(h, h);
+    try {
+        solver.integrate_until(day, day);
+    }
+    catch (const std::runtime_error& e) {
+        std::cerr << e.what() << "\n";
+    }
+    std::cout << solver.get_t().to_string()<< "W0.volume=" << W0.get_volume()
+              << "m³, W0[X].state=" << W0[X].get_state()
+              << "g, W0[Y].state=" << W0[Y].get_state() << "g \n";
     return 0;
 }

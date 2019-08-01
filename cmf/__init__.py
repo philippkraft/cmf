@@ -22,8 +22,8 @@ from .describe import describe
 from .timetools import StopWatch, datetime_to_cmf, timerange
 
 
-__version__ = '2.0.0b2.repair_solute_water_integrator'
-__compiletime__ = 'Tue Jul  9 15:22:56 2019'
+__version__ = '2.0.0b2.CVodeKLU_for_SoluteWaterIntegrator'
+__compiletime__ = 'Thu Aug  1 15:09:13 2019'
 
 from .cmf_core import connect_cells_with_flux as __ccwf
 

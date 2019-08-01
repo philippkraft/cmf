@@ -137,7 +137,7 @@ class TestSolver(unittest.TestCase):
 
 class TestSoluteWaterSolver(unittest.TestCase):
 
-    def test_create(self):
+    def test_create_solutewatersolver(self):
 
         vol_ref = [0.04978707, 0.1493612, 0.2240418, 0.2240418, 0.1680314,
                    0.1008188, 0.05040941, 0.02160403, 0.008101512, 0.003802992]
@@ -145,7 +145,7 @@ class TestSoluteWaterSolver(unittest.TestCase):
                      0.08391794, 0.03350854, 0.0119045, 0.003802992, 0.001486583]
 
         p, stores, X = get_project(True)
-        w_solver_template = cmf.CVodeKrylov(1e-9)
+        w_solver_template = cmf.CVodeKLU(1e-9)
         s_solver_template = cmf.CVodeAdams(1e-9)
         solver = cmf.SoluteWaterIntegrator(p.solutes, w_solver_template, s_solver_template, p)
 

@@ -12,6 +12,7 @@ namespace cmf {
         struct sparse_structure {
             std::vector<size_t> indexvalues;
             std::vector<size_t> indexpointers;
+            std::vector<std::string> errors;
             /// @brief Creates the sparse row compressed structure from states variable list
             sparse_structure();
             size_t generate(const cmf::math::state_list& states);
