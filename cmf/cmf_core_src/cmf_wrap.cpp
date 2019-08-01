@@ -59088,63 +59088,6 @@ SWIGINTERN PyObject *KinematicSurfaceRunoff_swiginit(PyObject *SWIGUNUSEDPARM(se
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_DiffusiveSurfaceRunoff_set_linear_slope(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  real arg1 ;
-  double val1 ;
-  int ecode1 = 0 ;
-  PyObject * obj0 = 0 ;
-  char *  kwnames[] = {
-    (char *) "width", NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:DiffusiveSurfaceRunoff_set_linear_slope",kwnames,&obj0)) SWIG_fail;
-  ecode1 = SWIG_AsVal_double(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "DiffusiveSurfaceRunoff_set_linear_slope" "', argument " "1"" of type '" "real""'");
-  } 
-  arg1 = static_cast< real >(val1);
-  {
-    try {
-      cmf::upslope::connections::DiffusiveSurfaceRunoff::set_linear_slope(arg1);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown error");
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_DiffusiveSurfaceRunoff_get_linear_slope(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  real result;
-  
-  if (!SWIG_Python_UnpackTuple(args,"DiffusiveSurfaceRunoff_get_linear_slope",0,0,0)) SWIG_fail;
-  {
-    try {
-      result = (real)cmf::upslope::connections::DiffusiveSurfaceRunoff::get_linear_slope();
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown error");
-    }
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_new_DiffusiveSurfaceRunoff(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::upslope::SurfaceWater::ptr arg1 ;
@@ -61491,58 +61434,6 @@ SWIGINTERN PyObject *Manning_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObje
   SWIG_TypeNewClientData(SWIGTYPE_p_cmf__river__Manning, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
-
-SWIGINTERN PyObject *_wrap_Manning_Diffusive_linear_slope_width_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::river::Manning_Diffusive *arg1 = (cmf::river::Manning_Diffusive *) 0 ;
-  real arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"Manning_Diffusive_linear_slope_width_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__river__Manning_Diffusive, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Manning_Diffusive_linear_slope_width_set" "', argument " "1"" of type '" "cmf::river::Manning_Diffusive *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::river::Manning_Diffusive * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Manning_Diffusive_linear_slope_width_set" "', argument " "2"" of type '" "real""'");
-  } 
-  arg2 = static_cast< real >(val2);
-  if (arg1) (arg1)->linear_slope_width = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Manning_Diffusive_linear_slope_width_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::river::Manning_Diffusive *arg1 = (cmf::river::Manning_Diffusive *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  real result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__river__Manning_Diffusive, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Manning_Diffusive_linear_slope_width_get" "', argument " "1"" of type '" "cmf::river::Manning_Diffusive *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::river::Manning_Diffusive * >(argp1);
-  result = (real) ((arg1)->linear_slope_width);
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
 
 SWIGINTERN PyObject *_wrap_new_Manning_Diffusive(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
@@ -69829,6 +69720,29 @@ SWIGINTERN PyObject *SW_evap_from_surfacewater_swigregister(PyObject *SWIGUNUSED
 SWIGINTERN PyObject *SW_evap_from_surfacewater_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
+
+SWIGINTERN int Swig_var_diffusive_singularity_protection_set(PyObject *_val) {
+  {
+    double val;
+    int res = SWIG_AsVal_double(_val, &val);
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""cmf::diffusive_singularity_protection""' of type '""real""'");
+    }
+    cmf::diffusive_singularity_protection = static_cast< real >(val);
+  }
+  return 0;
+fail:
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_diffusive_singularity_protection_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_From_double(static_cast< double >(cmf::diffusive_singularity_protection));
+  return pyobj;
+}
+
 
 SWIGINTERN PyObject *_wrap_project_remove_node(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
@@ -82088,8 +82002,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_KinematicSurfaceRunoff", (PyCFunction)_wrap_delete_KinematicSurfaceRunoff, METH_O, (char *)"delete_KinematicSurfaceRunoff(KinematicSurfaceRunoff self)"},
 	 { (char *)"KinematicSurfaceRunoff_swigregister", KinematicSurfaceRunoff_swigregister, METH_VARARGS, NULL},
 	 { (char *)"KinematicSurfaceRunoff_swiginit", KinematicSurfaceRunoff_swiginit, METH_VARARGS, NULL},
-	 { (char *)"DiffusiveSurfaceRunoff_set_linear_slope", (PyCFunction) _wrap_DiffusiveSurfaceRunoff_set_linear_slope, METH_VARARGS | METH_KEYWORDS, (char *)"DiffusiveSurfaceRunoff_set_linear_slope(real width)"},
-	 { (char *)"DiffusiveSurfaceRunoff_get_linear_slope", (PyCFunction)_wrap_DiffusiveSurfaceRunoff_get_linear_slope, METH_NOARGS, (char *)"DiffusiveSurfaceRunoff_get_linear_slope() -> real"},
 	 { (char *)"new_DiffusiveSurfaceRunoff", (PyCFunction) _wrap_new_DiffusiveSurfaceRunoff, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"new_DiffusiveSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left, cmf::water::flux_node::ptr right, real flowwidth, real distance=-1) -> DiffusiveSurfaceRunoff\n"
 		"\n"
@@ -82278,8 +82190,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Manning_flux_geometry_get", (PyCFunction)_wrap_Manning_flux_geometry_get, METH_O, (char *)"Manning_flux_geometry_get(Manning self) -> volume_height_function"},
 	 { (char *)"delete_Manning", (PyCFunction)_wrap_delete_Manning, METH_O, (char *)"delete_Manning(Manning self)"},
 	 { (char *)"Manning_swigregister", Manning_swigregister, METH_VARARGS, NULL},
-	 { (char *)"Manning_Diffusive_linear_slope_width_set", _wrap_Manning_Diffusive_linear_slope_width_set, METH_VARARGS, (char *)"Manning_Diffusive_linear_slope_width_set(Manning_Diffusive self, real linear_slope_width)"},
-	 { (char *)"Manning_Diffusive_linear_slope_width_get", (PyCFunction)_wrap_Manning_Diffusive_linear_slope_width_get, METH_O, (char *)"Manning_Diffusive_linear_slope_width_get(Manning_Diffusive self) -> real"},
 	 { (char *)"new_Manning_Diffusive", (PyCFunction) _wrap_new_Manning_Diffusive, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"new_Manning_Diffusive(cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype) -> Manning_Diffusive\n"
 		"\n"
@@ -85976,6 +85886,7 @@ SWIG_init(void) {
   SWIG_addvarlink(SWIG_globals(),(char *)"TopographicGradientDarcy_cell_connector",Swig_var_TopographicGradientDarcy_cell_connector_get, Swig_var_TopographicGradientDarcy_cell_connector_set);
   SWIG_addvarlink(SWIG_globals(),(char *)"DarcyKinematic_cell_connector",Swig_var_DarcyKinematic_cell_connector_get, Swig_var_DarcyKinematic_cell_connector_set);
   SWIG_addvarlink(SWIG_globals(),(char *)"Richards_lateral_cell_connector",Swig_var_Richards_lateral_cell_connector_get, Swig_var_Richards_lateral_cell_connector_set);
+  SWIG_addvarlink(SWIG_globals(),(char *)"diffusive_singularity_protection",Swig_var_diffusive_singularity_protection_get, Swig_var_diffusive_singularity_protection_set);
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

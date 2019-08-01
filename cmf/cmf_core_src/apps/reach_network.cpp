@@ -160,7 +160,7 @@ namespace cmf {
 		{
 			std::cout << std::setprecision(8);
 			// std::cout << "Create network\n";
-			ReachNetwork network(100, false);
+			ReachNetwork network(100, true);
 			try {
 				// std::cout << ".. add reaches\n";
 				network.add_reaches(levels);

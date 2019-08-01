@@ -9572,18 +9572,6 @@ class DiffusiveSurfaceRunoff(flux_connection):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def set_linear_slope(*args, **kwargs):
-        """set_linear_slope(real width)"""
-        return _cmf_core.DiffusiveSurfaceRunoff_set_linear_slope(*args, **kwargs)
-
-    set_linear_slope = staticmethod(set_linear_slope)
-
-    def get_linear_slope(*args, **kwargs):
-        """get_linear_slope() -> real"""
-        return _cmf_core.DiffusiveSurfaceRunoff_get_linear_slope(*args, **kwargs)
-
-    get_linear_slope = staticmethod(get_linear_slope)
-
     def __init__(self, *args, **kwargs):
         """
         __init__(cmf::upslope::connections::DiffusiveSurfaceRunoff self, cmf::upslope::SurfaceWater::ptr left, cmf::water::flux_node::ptr right, real flowwidth, real distance=-1) -> DiffusiveSurfaceRunoff
@@ -9595,14 +9583,6 @@ class DiffusiveSurfaceRunoff(flux_connection):
     __swig_destroy__ = _cmf_core.delete_DiffusiveSurfaceRunoff
 _cmf_core.DiffusiveSurfaceRunoff_swigregister(DiffusiveSurfaceRunoff)
 # DiffusiveSurfaceRunoff end
-
-
-
-
-
-def DiffusiveSurfaceRunoff_get_linear_slope(*args):
-    """DiffusiveSurfaceRunoff_get_linear_slope() -> real"""
-    return _cmf_core.DiffusiveSurfaceRunoff_get_linear_slope(*args)
 DiffusiveSurfaceRunoff.cell_connector = _cmf_core.cvar.DiffusiveSurfaceRunoff_cell_connector
 
 class aquifer(WaterStorage, conductable):
@@ -10139,7 +10119,6 @@ class Manning_Diffusive(Manning):
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    linear_slope_width = _swig_property(_cmf_core.Manning_Diffusive_linear_slope_width_get, _cmf_core.Manning_Diffusive_linear_slope_width_set)
 
     def __init__(self, *args, **kwargs):
         """
