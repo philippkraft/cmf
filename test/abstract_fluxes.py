@@ -70,7 +70,7 @@ class TestAbstractFluxes(unittest.TestCase):
 class TestLinearGradientFlux(unittest.TestCase):
 
     def test_math(self):
-        """ Math is correct"""
+        """ Math of the linear gradient flux is correct"""
         p, w, o = get_project()
         cmf.LinearGradientFlux(w, o, 1, 1)
         w.volume = 1
@@ -79,11 +79,13 @@ class TestLinearGradientFlux(unittest.TestCase):
         self.assertAlmostEqual(w.flux_to(o, cmf.h * 0), 0.5)
 
     def test_auto_distance(self):
+        """LinearGradientFlux calculates distance correctly"""
         p, w, o = get_project()
         lgf = cmf.LinearGradientFlux(w, o, 1)
         self.assertEqual(lgf.d, 1)
 
     def test_boundary_storage(self):
+        """LinearGradientFlux works from boundary to storage"""
         p, w, o = get_project()
         cmf.LinearGradientFlux(o, w, 1, 1)
         w.volume = 1
@@ -93,7 +95,7 @@ class TestLinearGradientFlux(unittest.TestCase):
 
     @unittest.skip('Issue #71')
     def test_boundary_boundary(self):
-        """ Test if c'tor fails for connections between boundaries"""
+        """LinearGradientFlux fails for connections between boundaries"""
         p, w, o = get_project()
         o2 = p.NewOutlet('o2', 2, 0, -1)
         cmf.LinearGradientFlux(o, w, 1, 1)
