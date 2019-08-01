@@ -23,15 +23,6 @@ using namespace cmf::water;
 using namespace cmf::math;
 
 
-void SoluteWaterIntegrator::erase_integrators() {
-	delete m_waterintegrator;
-	for(Integrators::iterator it=m_soluteintegrators.begin();it!=m_soluteintegrators.end();++it){
-		delete *it;
-	}
-	m_soluteintegrators.erase(m_soluteintegrators.begin(),m_soluteintegrators.end());
-}
-
-
 void SoluteWaterIntegrator::distribute_states()
 {
 	state_list water_states;
@@ -58,7 +49,7 @@ int SoluteWaterIntegrator::integrate( Time t_max,Time dt )
 {
 	m_waterintegrator->integrate(t_max,dt);
 	Time t = m_waterintegrator->get_t();
-	for(Integrator* integ: m_soluteintegrators) {
+	for(integrator_ptr& integ: m_soluteintegrators) {
 		integ->reset();
 		integ->integrate_until(t,dt);
 	}
@@ -68,13 +59,13 @@ int SoluteWaterIntegrator::integrate( Time t_max,Time dt )
 }
 
  void createsoluteintegrators(
-	std::vector<Integrator*> & soluteintegrators,
+	cmf::math::solute_integrator_list & soluteintegrators,
 	const cmf::water::solute_vector& solutes, 
 	const cmf::math::Integrator& solute_integrator_templ ) 
 {
 	for(auto& solute: solutes){
-		Integrator* new_solute_integ=solute_integrator_templ.copy();
-		soluteintegrators.push_back(new_solute_integ);
+		auto new_solute_integ=cmf::math::integrator_ptr(solute_integrator_templ.copy());
+		soluteintegrators.push_back(std::move(new_solute_integ));
 	}
 
 }
@@ -83,9 +74,9 @@ cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator(
 		const cmf::water::solute_vector& _solutes, 
 		const cmf::math::Integrator& water_integrator_templ, 
 		const cmf::math::Integrator& solute_integrator_templ ) 
-	: Integrator(), solutes(_solutes), m_waterintegrator(0)
+	: Integrator(), solutes(_solutes)
 {
-	m_waterintegrator =water_integrator_templ.copy();
+	m_waterintegrator = integrator_ptr(water_integrator_templ.copy());
 	createsoluteintegrators(m_soluteintegrators,_solutes,solute_integrator_templ);
 }
 
@@ -94,9 +85,9 @@ cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator(
 		const cmf::math::Integrator& water_integrator_templ, 
 		const cmf::math::Integrator& solute_integrator_templ, 
 		const cmf::math::state_list& states )
-		: Integrator(states), solutes(_solutes), m_waterintegrator(0)
+		: Integrator(states), solutes(_solutes)
 {
-	m_waterintegrator =water_integrator_templ.copy();
+	m_waterintegrator = integrator_ptr(water_integrator_templ.copy());
 	createsoluteintegrators(m_soluteintegrators,_solutes,solute_integrator_templ);
 	distribute_states();
 }
