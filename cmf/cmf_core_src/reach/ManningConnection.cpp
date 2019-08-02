@@ -16,7 +16,6 @@
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //
-#include "../project.h"
 #include "../math/real.h"
 #include "ManningConnection.h"
 #include "../upslope/cell.h"
@@ -35,7 +34,7 @@ real cmf::river::Manning::calc_q( cmf::math::Time t )
 	real 
 		// Gradient of the reach
 		slope = get_slope(t, lnode, rnode, d),
-		abs_slope=fabs(slope);
+		abs_slope=std::abs(slope);
 	// No slope, no flux
 	if (abs_slope<=0) return 0.0;
 	// Get the source of the flow
@@ -86,16 +85,17 @@ real cmf::river::Manning_Diffusive::get_slope(cmf::math::Time t, cmf::water::flu
                                               cmf::water::flux_node::ptr rnode, real d)
 {
 	real s = (lnode->get_potential(t)-rnode->get_potential(t))/d;
-	if (cmf::diffusive_singularity_protection > 0.0) {
+	if (cmf::options::diffusive_slope_singularity_protection > 0.0) {
 		real
 			// Only a shortcut for faster writing
-			& s0 = cmf::diffusive_singularity_protection,
+			& s0 = cmf::options::diffusive_slope_singularity_protection,
 			// Weight of linear part
 			w_lin = exp(-square((s/s0))),
 			// linear part using the slope at s0/4 
 			s_lin = s/(2.*sqrt(s0/4)),
 			// Weighted sum of sqrt(s) and a*s
-			s_sqrt_w = w_lin * s_lin + (1-w_lin) * sqrt(abs(s));
+			s_sqrt = std::sqrt(std::abs(s)),
+			s_sqrt_w = w_lin * s_lin + (1-w_lin) * s_sqrt;
 		// Remove sqrt
 		return sign(s) * square(s_sqrt_w);
 	} else {

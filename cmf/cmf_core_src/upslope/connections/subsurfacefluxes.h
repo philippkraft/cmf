@@ -157,7 +157,6 @@ namespace cmf {
 						flow_thickness=minimum(flow_thickness,sw2.lock()->get_thickness());
 					}
 				}
-				static void usebaseflow(bool use);
 				static const CellConnector cell_connector;
 			};
 

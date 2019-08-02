@@ -41,10 +41,6 @@ void connections::Richards_lateral::connect_cells( Cell & cell1,Cell & cell2,ptr
 				}	}	}
 	}
 }
-bool baseflow=false;
-void connections::Richards_lateral::usebaseflow(bool use) {
-	baseflow = use;
-}
 real connections::Richards_lateral::calc_q( cmf::math::Time t )
 {
 	SoilLayer::ptr 
@@ -76,7 +72,7 @@ real connections::Richards_lateral::calc_q( cmf::math::Time t )
 		Ksat = l1->get_Ksat();
 	}
 	real r_flow = K * gradient * flow_width * flow_thickness;
-	if (baseflow) {
+	if (cmf::options::richards_lateral_base_flow) {
 		double ft = flow_thickness + l1->get_matrix_potential();
 		if (l2) ft = std::max(flow_thickness + l2->get_matrix_potential(),ft);
 		ft = minmax(ft,0,flow_thickness);
