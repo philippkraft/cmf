@@ -2,6 +2,13 @@ import cmf
 import numpy as np
 import unittest
 
+class TestReachCreation(unittest.TestCase):
+    def test_reach_creation(self):
+        p = cmf.project()
+        r_shape = cmf.TriangularReach(100)
+        r1 = p.NewReach(0, 0, 0, r_shape, True)
+        r2 = p.NewReach(100, 0, 0, r_shape, True)
+        r2.set_downstream(r1)
 
 class TestCrossectionReachType(unittest.TestCase):
     def test_area(self):
