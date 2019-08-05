@@ -32,12 +32,6 @@
 /// The main namespace of the model framework. Contains the other namespaces and the project class
 namespace cmf {
 
-    /// @brief Protects diffusive St. Venant equation from numerical problems for slope ≃ 0
-    ///
-    /// For diffusive St. Venant equations, near to zero, the driving force is sqrt(|h1-h2|).
-    /// For h1 ≃ h2, the sensitivity of the flow has a singularity. To avoid this
-    /// near to the slope zero the driver is overrriden by |h1-h2|. "Near" is defined by this constant.
-    extern real diffusive_singularity_protection;
 
 	/// @brief The study area, holding all cells, outlets and streams
 	/// \todo Describe tracers

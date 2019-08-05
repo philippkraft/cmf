@@ -16,7 +16,6 @@
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //
-#include "../project.h"
 #include "../math/real.h"
 #include "ManningConnection.h"
 #include "../upslope/cell.h"
@@ -34,12 +33,12 @@ real cmf::river::Manning::calc_q( cmf::math::Time t )
 		d=cast->get_length();
 	real 
 		// Gradient of the reach
-		slope = get_slope(t, lnode, rnode, d),
-		abs_slope=fabs(slope);
+		sqrt_slope = get_sqrt_slope(t, lnode, rnode, d),
+		abs_slope=square(sqrt_slope);
 	// No slope, no flux
 	if (abs_slope<=0) return 0.0;
 	// Get the source of the flow
-	OpenWaterStorage::ptr source=slope > 0 ? ows1 : ows2;
+	OpenWaterStorage::ptr source=sqrt_slope > 0 ? ows1 : ows2;
 	if (source==0) return 0; // Never generate flow from a flux node
 	// Wetted crossectional area, use mean volume of the water storages if both sides are water storages
 	real h;
@@ -52,7 +51,7 @@ real cmf::river::Manning::calc_q( cmf::math::Time t )
 	// Absolute flux in m3/s
 	real qManning = flux_geometry.q(h,abs_slope);
 	// Return flux with correct sign in m3/day
-	return prevent_negative_volume(qManning * sign(slope) * (24*60*60));
+	return prevent_negative_volume(qManning * sign(sqrt_slope) * (24*60*60));
 }
 void cmf::river::Manning::NewNodes()
 {
@@ -76,29 +75,49 @@ Manning* create_manning( cmf::river::OpenWaterStorage::ptr left,cmf::water::flux
 }
 
 
-real cmf::river::Manning_Kinematic::get_slope(cmf::math::Time t, cmf::water::flux_node::ptr lnode,
-                                              cmf::water::flux_node::ptr rnode, real d)
+real cmf::river::Manning_Kinematic::get_sqrt_slope(cmf::math::Time t, cmf::water::flux_node::ptr lnode,
+                                                   cmf::water::flux_node::ptr rnode, real d)
 {
-	return  (lnode->position.z - rnode->position.z)/d;	
+	real grad = (lnode->position.z - rnode->position.z)/d;
+	return sign(grad) * std::sqrt(grad);
 }
 
-real cmf::river::Manning_Diffusive::get_slope(cmf::math::Time t, cmf::water::flux_node::ptr lnode,
-                                              cmf::water::flux_node::ptr rnode, real d)
+real cmf::river::Manning_Diffusive::get_sqrt_slope(cmf::math::Time t, cmf::water::flux_node::ptr lnode,
+                                                   cmf::water::flux_node::ptr rnode, real d)
 {
-	real s = (lnode->get_potential(t)-rnode->get_potential(t))/d;
-	if (cmf::diffusive_singularity_protection > 0.0) {
-		real
-			// Only a shortcut for faster writing
-			& s0 = cmf::diffusive_singularity_protection,
-			// Weight of linear part
-			w_lin = exp(-square((s/s0))),
-			// linear part using the slope at s0/4 
-			s_lin = s/(2.*sqrt(s0/4)),
-			// Weighted sum of sqrt(s) and a*s
-			s_sqrt_w = w_lin * s_lin + (1-w_lin) * sqrt(abs(s));
+/*
+cd demo
+from pylab import ion, plot
+ion()
+import numpy as np
+import cmf
+p=cmf.project()
+r1 = p.NewReach(0,0,0, cmf.TriangularReach(100), True)
+r2 = p.NewReach(100,0,0, cmf.TriangularReach(100), True)
+r2.set_downstream(r1)
+r1.depth = 1.0
+def q(s):
+    r2.depth = r1.depth + s
+    return r2.flux_to(r1, cmf.Time())
+qq = np.vectorize(q, 'f')
+s = np.linspace(-0.1, 0.1, 1001)
+plot(s, qq(s))
+*/
+    // Only a shortcut for faster writing
+    real & dssp = cmf::diffusive_slope_singularity_protection;
+    // get the current gradient
+	real grad = (lnode->get_potential(t) - rnode->get_potential(t)) / d;
+    real s_sqrt = sign(grad) * std::sqrt(std::abs(grad));
+	if (dssp > 0.0) {
+        // Weight of linear part
+        real w_lin = exp(-square((grad / dssp)));
+        // linear part using the slope at dssp/4
+        real s_lin = grad / (2. * std::sqrt(dssp / 4));
+        // Weighted sum of sqrt(grad) and a*grad
+        real s_sqrt_w = w_lin * s_lin + (1-w_lin) * s_sqrt;
 		// Remove sqrt
-		return sign(s) * square(s_sqrt_w);
+		return s_sqrt_w;
 	} else {
-		return s;
+		return s_sqrt;
 	}
 }

@@ -106,9 +106,9 @@ real DiffusiveSurfaceRunoff::calc_q( cmf::math::Time t )
 
 	// linear slope width is a value in which slope range the slope should be altered
 	// to prevent a singularity in dq/ds
-	if (cmf::diffusive_singularity_protection > 0.0) {
+	if (cmf::diffusive_slope_singularity_protection > 0.0) {
         // Only a shortcut for faster writing
-		const real & s0 = cmf::diffusive_singularity_protection;
+		const real & s0 = cmf::diffusive_slope_singularity_protection;
         // Weight of linear part
 		real w_lin = exp(-square((grad/s0)));
         // linear part using the slope at s0/4

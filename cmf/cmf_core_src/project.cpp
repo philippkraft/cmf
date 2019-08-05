@@ -36,8 +36,6 @@ cmf::project::~project()
 		delete &cell;
 }
 
-real cmf::diffusive_singularity_protection = 1e-4;
-
 
 cmf::river::Reach::ptr cmf::project::get_reach( ptrdiff_t index )
 {

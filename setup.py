@@ -393,7 +393,7 @@ def make_cmf_core():
     if swig:
         # Adding cmf.i when build_ext should perform the swig call
         cmf_files.append("cmf/cmf_core_src/cmf.i")
-        swig_opts = ['-c++', '-w512', '-w511', '-O', '-keyword', '-castmode', '-modern']
+        swig_opts = ['-c++', '-w512', '-w511', '-O', '-keyword', '-castmode', '-modern', '-globals', 'options']
 
     else:
         # Else use what we have there

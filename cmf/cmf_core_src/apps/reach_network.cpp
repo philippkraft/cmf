@@ -156,11 +156,11 @@ namespace cmf {
 			}
 
 		}
-		int run_reaches(int levels, char _solver, int steps)
+		int run_reaches(int levels, char _solver, int steps, bool diffusive)
 		{
 			std::cout << std::setprecision(8);
 			// std::cout << "Create network\n";
-			ReachNetwork network(100, true);
+			ReachNetwork network(100, diffusive);
 			try {
 				// std::cout << ".. add reaches\n";
 				network.add_reaches(levels);
@@ -247,6 +247,6 @@ int main(int argc, char* argv[])
 	}
 	std::cout << solver_type << "\n";
 	for (int i=1; i<=9; ++i)
-		cmf::apps::run_reaches(i, solver_type, 0);
+		cmf::apps::run_reaches(i, solver_type, 0, true);
     return 0;
 }

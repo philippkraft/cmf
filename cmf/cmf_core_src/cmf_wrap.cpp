@@ -3919,6 +3919,20 @@ SWIG_From_std_string  (const std::string& s)
 }
 
 
+SWIGINTERN int
+SWIG_AsVal_bool (PyObject *obj, bool *val)
+{
+  int r;
+  if (!PyBool_Check(obj))
+    return SWIG_ERROR;
+  r = PyObject_IsTrue(obj);
+  if (r == -1)
+    return SWIG_ERROR;
+  if (val) *val = r ? true : false;
+  return SWIG_OK;
+}
+
+
 #ifdef SWIG_LONG_LONG_AVAILABLE
 SWIGINTERNINLINE PyObject* 
 SWIG_From_long_SS_long  (long long value)
@@ -4314,20 +4328,6 @@ struct SWIG_null_deleter {
 
 #define cmf_water_flux_node_connections_get(self_) new cmf::water::connection_list(self_->get_connections())
   
-
-SWIGINTERN int
-SWIG_AsVal_bool (PyObject *obj, bool *val)
-{
-  int r;
-  if (!PyBool_Check(obj))
-    return SWIG_ERROR;
-  r = PyObject_IsTrue(obj);
-  if (r == -1)
-    return SWIG_ERROR;
-  if (val) *val = r ? true : false;
-  return SWIG_OK;
-}
-
 SWIGINTERN size_t cmf_water_connection_list___len__(cmf::water::connection_list const *self){ return self->size();}
 SWIGINTERN bool cmf_water_connection_list___contains__(cmf::water::connection_list const *self,cmf::water::flux_connection::ptr const &con){ return self->contains(con);}
 
@@ -8127,20 +8127,6 @@ SWIGINTERN PyObject *point_vector_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObj
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN int Swig_var_Debug_set(PyObject *) {
-  SWIG_Error(SWIG_AttributeError,"Variable Debug is read-only.");
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_Debug_get(void) {
-  PyObject *pyobj = 0;
-  
-  pyobj = SWIG_From_bool(static_cast< bool >(Debug));
-  return pyobj;
-}
-
-
 SWIGINTERN int Swig_var___compiledate___set(PyObject *) {
   SWIG_Error(SWIG_AttributeError,"Variable __compiledate__ is read-only.");
   return 1;
@@ -8636,6 +8622,52 @@ SWIGINTERN PyObject *Swig_var_Pi_get(void) {
   PyObject *pyobj = 0;
   
   pyobj = SWIG_From_double(static_cast< double >(Pi));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_diffusive_slope_singularity_protection_set(PyObject *_val) {
+  {
+    double val;
+    int res = SWIG_AsVal_double(_val, &val);
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""cmf::diffusive_slope_singularity_protection""' of type '""real""'");
+    }
+    cmf::diffusive_slope_singularity_protection = static_cast< real >(val);
+  }
+  return 0;
+fail:
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_diffusive_slope_singularity_protection_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_From_double(static_cast< double >(cmf::diffusive_slope_singularity_protection));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_richards_lateral_base_flow_set(PyObject *_val) {
+  {
+    bool val;
+    int res = SWIG_AsVal_bool(_val, &val);
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""cmf::richards_lateral_base_flow""' of type '""bool""'");
+    }
+    cmf::richards_lateral_base_flow = static_cast< bool >(val);
+  }
+  return 0;
+fail:
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_richards_lateral_base_flow_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_From_bool(static_cast< bool >(cmf::richards_lateral_base_flow));
   return pyobj;
 }
 
@@ -60859,40 +60891,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Richards_lateral_usebaseflow(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  bool arg1 ;
-  bool val1 ;
-  int ecode1 = 0 ;
-  PyObject * obj0 = 0 ;
-  char *  kwnames[] = {
-    (char *) "use", NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:Richards_lateral_usebaseflow",kwnames,&obj0)) SWIG_fail;
-  ecode1 = SWIG_AsVal_bool(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "Richards_lateral_usebaseflow" "', argument " "1"" of type '" "bool""'");
-  } 
-  arg1 = static_cast< bool >(val1);
-  {
-    try {
-      cmf::upslope::connections::Richards_lateral::usebaseflow(arg1);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown error");
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN int Swig_var_Richards_lateral_cell_connector_set(PyObject *) {
   SWIG_Error(SWIG_AttributeError,"Variable Richards_lateral_cell_connector is read-only.");
   return 1;
@@ -69720,29 +69718,6 @@ SWIGINTERN PyObject *SW_evap_from_surfacewater_swigregister(PyObject *SWIGUNUSED
 SWIGINTERN PyObject *SW_evap_from_surfacewater_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
-
-SWIGINTERN int Swig_var_diffusive_singularity_protection_set(PyObject *_val) {
-  {
-    double val;
-    int res = SWIG_AsVal_double(_val, &val);
-    if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""cmf::diffusive_singularity_protection""' of type '""real""'");
-    }
-    cmf::diffusive_singularity_protection = static_cast< real >(val);
-  }
-  return 0;
-fail:
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_diffusive_singularity_protection_get(void) {
-  PyObject *pyobj = 0;
-  
-  pyobj = SWIG_From_double(static_cast< double >(cmf::diffusive_singularity_protection));
-  return pyobj;
-}
-
 
 SWIGINTERN PyObject *_wrap_project_remove_node(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
@@ -82162,7 +82137,6 @@ static PyMethodDef SwigMethods[] = {
 		"Distance:  the length of the connection. If 0, the distance is\n"
 		"calculated from the position of the nodes \n"
 		""},
-	 { (char *)"Richards_lateral_usebaseflow", (PyCFunction) _wrap_Richards_lateral_usebaseflow, METH_VARARGS | METH_KEYWORDS, (char *)"Richards_lateral_usebaseflow(bool use)"},
 	 { (char *)"delete_Richards_lateral", (PyCFunction)_wrap_delete_Richards_lateral, METH_O, (char *)"delete_Richards_lateral(Richards_lateral self)"},
 	 { (char *)"Richards_lateral_swigregister", Richards_lateral_swigregister, METH_VARARGS, NULL},
 	 { (char *)"Richards_lateral_swiginit", Richards_lateral_swiginit, METH_VARARGS, NULL},
@@ -85860,14 +85834,15 @@ SWIG_init(void) {
   
   SWIG_Python_SetConstant(d, "SHARED_PTR_DISOWN",SWIG_From_int(static_cast< int >(0)));
   import_array(); 
-  PyDict_SetItemString(md,(char *)"cvar", SWIG_globals());
+  PyDict_SetItemString(md,(char *)"options", SWIG_globals());
   SWIG_addvarlink(SWIG_globals(),(char *)"PI",Swig_var_PI_get, Swig_var_PI_set);
   
   PyDateTime_IMPORT;
   
-  SWIG_addvarlink(SWIG_globals(),(char *)"Debug",Swig_var_Debug_get, Swig_var_Debug_set);
   SWIG_addvarlink(SWIG_globals(),(char *)"__compiledate__",Swig_var___compiledate___get, Swig_var___compiledate___set);
   SWIG_addvarlink(SWIG_globals(),(char *)"Pi",Swig_var_Pi_get, Swig_var_Pi_set);
+  SWIG_addvarlink(SWIG_globals(),(char *)"diffusive_slope_singularity_protection",Swig_var_diffusive_slope_singularity_protection_get, Swig_var_diffusive_slope_singularity_protection_set);
+  SWIG_addvarlink(SWIG_globals(),(char *)"richards_lateral_base_flow",Swig_var_richards_lateral_base_flow_get, Swig_var_richards_lateral_base_flow_set);
   SWIG_Python_SetConstant(d, "JULIANDAY_0_1_1900",SWIG_From_int(static_cast< int >(2415019)));
   SWIG_Python_SetConstant(d, "Time_ms_per_day",SWIG_From_long_SS_long(static_cast< long long >(cmf::math::Time::ms_per_day)));
   SWIG_addvarlink(SWIG_globals(),(char *)"ms",Swig_var_ms_get, Swig_var_ms_set);
@@ -85886,7 +85861,6 @@ SWIG_init(void) {
   SWIG_addvarlink(SWIG_globals(),(char *)"TopographicGradientDarcy_cell_connector",Swig_var_TopographicGradientDarcy_cell_connector_get, Swig_var_TopographicGradientDarcy_cell_connector_set);
   SWIG_addvarlink(SWIG_globals(),(char *)"DarcyKinematic_cell_connector",Swig_var_DarcyKinematic_cell_connector_get, Swig_var_DarcyKinematic_cell_connector_set);
   SWIG_addvarlink(SWIG_globals(),(char *)"Richards_lateral_cell_connector",Swig_var_Richards_lateral_cell_connector_get, Swig_var_Richards_lateral_cell_connector_set);
-  SWIG_addvarlink(SWIG_globals(),(char *)"diffusive_singularity_protection",Swig_var_diffusive_singularity_protection_get, Swig_var_diffusive_singularity_protection_set);
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else
