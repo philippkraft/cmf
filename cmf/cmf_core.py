@@ -426,8 +426,8 @@ point.__rmul__ = new_instancemethod(_cmf_core.point___rmul__, None, point)
 point.__rdiv__ = new_instancemethod(_cmf_core.point___rdiv__, None, point)
 _cmf_core.point_swigregister(point)
 # point end
-cvar = _cmf_core.cvar
-PI = cvar.PI
+options = _cmf_core.options
+PI = options.PI
 
 
 
@@ -916,9 +916,8 @@ Time.__eq__ = new_instancemethod(_cmf_core.Time___eq__, None, Time)
 Time.__ne__ = new_instancemethod(_cmf_core.Time___ne__, None, Time)
 _cmf_core.Time_swigregister(Time)
 # Time end
-Debug = cvar.Debug
-__compiledate__ = cvar.__compiledate__
-Pi = cvar.Pi
+__compiledate__ = options.__compiledate__
+Pi = options.Pi
 
 class Date(object):
     """
@@ -1670,15 +1669,15 @@ timeseries.exp = new_instancemethod(_cmf_core.timeseries_exp, None, timeseries)
 timeseries.__len__ = new_instancemethod(_cmf_core.timeseries___len__, None, timeseries)
 _cmf_core.timeseries_swigregister(timeseries)
 # timeseries end
-ms = cvar.ms
-sec = cvar.sec
-min = cvar.min
-h = cvar.h
-day = cvar.day
-week = cvar.week
-year = cvar.year
-month = cvar.month
-never = cvar.never
+ms = options.ms
+sec = options.sec
+min = options.min
+h = options.h
+day = options.day
+week = options.week
+year = options.year
+month = options.month
+never = options.never
 
 
 
@@ -6982,7 +6981,7 @@ RetentionCurve.MatricPotential = new_instancemethod(_cmf_core.RetentionCurve_Mat
 RetentionCurve.copy = new_instancemethod(_cmf_core.RetentionCurve_copy, None, RetentionCurve)
 _cmf_core.RetentionCurve_swigregister(RetentionCurve)
 # RetentionCurve end
-rho_wg = cvar.rho_wg
+rho_wg = options.rho_wg
 
 class BrooksCoreyRetentionCurve(RetentionCurve):
     """
@@ -9501,7 +9500,7 @@ class KinematicSurfaceRunoff(flux_connection):
     __swig_destroy__ = _cmf_core.delete_KinematicSurfaceRunoff
 _cmf_core.KinematicSurfaceRunoff_swigregister(KinematicSurfaceRunoff)
 # KinematicSurfaceRunoff end
-KinematicSurfaceRunoff.cell_connector = _cmf_core.cvar.KinematicSurfaceRunoff_cell_connector
+KinematicSurfaceRunoff.cell_connector = _cmf_core.options.KinematicSurfaceRunoff_cell_connector
 
 class DiffusiveSurfaceRunoff(flux_connection):
     """
@@ -9583,7 +9582,7 @@ class DiffusiveSurfaceRunoff(flux_connection):
     __swig_destroy__ = _cmf_core.delete_DiffusiveSurfaceRunoff
 _cmf_core.DiffusiveSurfaceRunoff_swigregister(DiffusiveSurfaceRunoff)
 # DiffusiveSurfaceRunoff end
-DiffusiveSurfaceRunoff.cell_connector = _cmf_core.cvar.DiffusiveSurfaceRunoff_cell_connector
+DiffusiveSurfaceRunoff.cell_connector = _cmf_core.options.DiffusiveSurfaceRunoff_cell_connector
 
 class aquifer(WaterStorage, conductable):
     """
@@ -9790,7 +9789,7 @@ class Darcy(lateral_sub_surface_flux):
     __swig_destroy__ = _cmf_core.delete_Darcy
 _cmf_core.Darcy_swigregister(Darcy)
 # Darcy end
-Darcy.cell_connector = _cmf_core.cvar.Darcy_cell_connector
+Darcy.cell_connector = _cmf_core.options.Darcy_cell_connector
 
 class TopographicGradientDarcy(lateral_sub_surface_flux):
     """
@@ -9847,7 +9846,7 @@ class TopographicGradientDarcy(lateral_sub_surface_flux):
     __swig_destroy__ = _cmf_core.delete_TopographicGradientDarcy
 _cmf_core.TopographicGradientDarcy_swigregister(TopographicGradientDarcy)
 # TopographicGradientDarcy end
-TopographicGradientDarcy.cell_connector = _cmf_core.cvar.TopographicGradientDarcy_cell_connector
+TopographicGradientDarcy.cell_connector = _cmf_core.options.TopographicGradientDarcy_cell_connector
 
 class DarcyKinematic(lateral_sub_surface_flux):
     """
@@ -9894,7 +9893,7 @@ class DarcyKinematic(lateral_sub_surface_flux):
     __swig_destroy__ = _cmf_core.delete_DarcyKinematic
 _cmf_core.DarcyKinematic_swigregister(DarcyKinematic)
 # DarcyKinematic end
-DarcyKinematic.cell_connector = _cmf_core.cvar.DarcyKinematic_cell_connector
+DarcyKinematic.cell_connector = _cmf_core.options.DarcyKinematic_cell_connector
 
 class Richards_lateral(lateral_sub_surface_flux):
     """
@@ -9951,20 +9950,10 @@ class Richards_lateral(lateral_sub_surface_flux):
         calculated from the position of the nodes 
         """
         _cmf_core.Richards_lateral_swiginit(self, _cmf_core.new_Richards_lateral(*args, **kwargs))
-
-    def usebaseflow(*args, **kwargs):
-        """usebaseflow(bool use)"""
-        return _cmf_core.Richards_lateral_usebaseflow(*args, **kwargs)
-
-    usebaseflow = staticmethod(usebaseflow)
     __swig_destroy__ = _cmf_core.delete_Richards_lateral
 _cmf_core.Richards_lateral_swigregister(Richards_lateral)
 # Richards_lateral end
-
-
-
-
-Richards_lateral.cell_connector = _cmf_core.cvar.Richards_lateral_cell_connector
+Richards_lateral.cell_connector = _cmf_core.options.Richards_lateral_cell_connector
 
 class TOPModelFlow(flux_connection):
     """

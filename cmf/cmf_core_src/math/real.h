@@ -22,7 +22,9 @@
 #include <string>
 #include <limits>
 typedef double real;
-const real REAL_MAX(std::numeric_limits<real>::max());
+#ifndef SWIG
+const real REAL_MAX = std::numeric_limits<real>::max();
+#endif
 
 const std::string __compiledate__ = std::string("cmf compiled ") + std::string(__DATE__) + " - " + std::string(__TIME__);
 
@@ -47,19 +49,17 @@ const real Pi=3.141592654;
 
 namespace cmf {
     typedef std::string bytestring;
-    struct options
-    {
-        /// @brief Protects diffusive St. Venant equation from numerical problems for slope ≃ 0
-        ///
-        /// For diffusive St. Venant equations, near to zero, the driving force is sqrt(|h1-h2|).
-        /// For h1 ≃ h2, the sensitivity of the flow has a singularity. To avoid this
-        /// near to the slope zero the driver is overrriden by |h1-h2|. "Near" is defined by this constant.
-        static real diffusive_slope_singularity_protection;
 
-        /// @brief Allows the cmf::upslope::connections::Richards_lateral connection for faster flow in lower regions.
-        static bool richards_lateral_base_flow;
+    /// @brief Protects diffusive St. Venant equation from numerical problems for slope ≃ 0
+    ///
+    /// For diffusive St. Venant equations, near to zero, the driving force is sqrt(|h1-h2|).
+    /// For h1 ≃ h2, the sensitivity of the flow has a singularity. To avoid this
+    /// near to the slope zero the driver is overrriden by |h1-h2|. "Near" is defined by this constant.
+    extern real diffusive_slope_singularity_protection;
 
-    };
+    /// @brief Allows the cmf::upslope::connections::Richards_lateral connection for faster flow in lower regions.
+    extern bool richards_lateral_base_flow;
+
 
 }
 

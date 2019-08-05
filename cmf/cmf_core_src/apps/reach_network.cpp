@@ -246,7 +246,7 @@ int main(int argc, char* argv[])
 		solver_type = argv[1][0];
 	}
 	std::cout << solver_type << "\n";
-	for (int i=1; i<=1; ++i)
+	for (int i=1; i<=9; ++i)
 		cmf::apps::run_reaches(i, solver_type, 0, true);
     return 0;
 }
