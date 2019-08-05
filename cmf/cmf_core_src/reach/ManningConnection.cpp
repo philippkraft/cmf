@@ -17,6 +17,7 @@
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //
 #include "../math/real.h"
+#include "../project.h"
 #include "ManningConnection.h"
 #include "../upslope/cell.h"
 #include "../upslope/Topology.h"
@@ -104,7 +105,7 @@ s = np.linspace(-0.1, 0.1, 1001)
 plot(s, qq(s))
 */
     // Only a shortcut for faster writing
-    real & dssp = cmf::diffusive_slope_singularity_protection;
+    real & dssp = cmf::options.diffusive_slope_singularity_protection;
     // get the current gradient
 	real grad = (lnode->get_potential(t) - rnode->get_potential(t)) / d;
     real s_sqrt = sign(grad) * std::sqrt(std::abs(grad));

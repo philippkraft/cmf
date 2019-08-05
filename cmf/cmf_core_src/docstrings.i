@@ -1,20 +1,13 @@
 
 // File: index.xml
 
-// File: classcmf__core_1_1___swig_non_dynamic_meta.xml
-%feature("docstring") cmf_core::_SwigNonDynamicMeta "
+// File: structcmf_1_1___options.xml
+%feature("docstring") cmf::_Options "
 
-Meta class to enforce nondynamic attributes (no new attributes) for a
-class ";
+Holds global options for specific cmf behaviour, accessbile via
+cmf.options.
 
-
-// File: classcmf__core_1_1_adsorption.xml
-%feature("docstring") cmf_core::Adsorption "
-
-Proxy of C++ cmf::water::Adsorption class. ";
-
-%feature("docstring")  cmf_core::Adsorption::__init__ "def
-__init__(self, args, kwargs) ";
+C++ includes: project.h ";
 
 
 // File: classcmf_1_1water_1_1_adsorption.xml
@@ -86,14 +79,6 @@ cmf::math::Time t) const =0
 
 aerodynamic resistance from ground to atmosphere (r_ag) and from
 canopy to atmosphere (r_ac) ";
-
-
-// File: classcmf__core_1_1aerodynamic__resistance.xml
-%feature("docstring") cmf_core::aerodynamic_resistance "
-
-Proxy of C++ cmf::atmosphere::aerodynamic_resistance class. ";
-
-%feature("docstring")  cmf_core::aerodynamic_resistance::__init__ "def __init__(self, args, kwargs) ";
 
 
 // File: classcmf_1_1draw_1_1cellmap_1_1_animator.xml
@@ -368,29 +353,6 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
-// File: classcmf__core_1_1aquifer.xml
-%feature("docstring") cmf_core::aquifer "
-
-Proxy of C++ cmf::upslope::aquifer class. ";
-
-%feature("docstring")  cmf_core::aquifer::__init__ "def
-__init__(self, args)
-
-__init__(aquifer self, project p, point position, real area, real
-thickness, real porosity, real K=1e-4) -> aquifer __init__(aquifer
-self, cell_vector cells, real thickness, real porosity, real K=1e-4)
--> aquifer ";
-
-%feature("docstring")  cmf_core::aquifer::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::aquifer::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::aquifer::fluxes "def fluxes(self, t)
-";
-
-
 // File: classcmf_1_1upslope_1_1aquifer___darcy.xml
 %feature("docstring") cmf::upslope::aquifer_Darcy "
 
@@ -505,30 +467,6 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 %feature("docstring")  cmf::upslope::aquifer_Darcy::to_string "virtual std::string to_string() const ";
 
 
-// File: classcmf__core_1_1aquifer___darcy.xml
-%feature("docstring") cmf_core::aquifer_Darcy "
-
-Proxy of C++ cmf::upslope::aquifer_Darcy class. ";
-
-%feature("docstring")  cmf_core::aquifer_Darcy::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(aquifer_Darcy self, cmf::upslope::aquifer::ptr left,
-cmf::water::flux_node::ptr right, real width) -> aquifer_Darcy ";
-
-%feature("docstring")  cmf_core::aquifer_Darcy::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::aquifer_Darcy::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::aquifer_Darcy::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::aquifer_Darcy::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_base_macro_flow.xml
 %feature("docstring") cmf::upslope::connections::BaseMacroFlow "";
 
@@ -626,82 +564,6 @@ std::string short_string() const ";
 %feature("docstring")
 cmf::upslope::connections::BaseMacroFlow::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_base_macro_flow.xml
-%feature("docstring") cmf_core::BaseMacroFlow "
-
-Proxy of C++ cmf::upslope::connections::BaseMacroFlow class. ";
-
-%feature("docstring")  cmf_core::BaseMacroFlow::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::BaseMacroFlow::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::BaseMacroFlow::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::BaseMacroFlow::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::BaseMacroFlow::__repr__ "def
-__repr__(self) ";
-
-
-// File: classcmf__core_1_1_b_d_f2.xml
-%feature("docstring") cmf_core::BDF2 "
-
-Proxy of C++ cmf::math::BDF2 class. ";
-
-%feature("docstring")  cmf_core::BDF2::__init__ "def __init__(self,
-args)
-
-__init__(BDF2 self, real epsilon=1e-9, Time
-tStepMin=cmf::math::timespan(10)) -> BDF2 __init__(BDF2 self,
-state_list states, real epsilon=1e-9, Time
-tStepMin=cmf::math::timespan(10)) -> BDF2 __init__(BDF2 self,
-Integrator templ) -> BDF2 ";
-
-%feature("docstring")  cmf_core::BDF2::__call__ "def __call__(self,
-t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::BDF2::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::BDF2::__iter__ "def __iter__(self)
-";
-
-%feature("docstring")  cmf_core::BDF2::__repr__ "def __repr__(self)
-";
-
-%feature("docstring")  cmf_core::BDF2::run "def run(self, start=None,
-end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_b_d_f2.xml
@@ -1063,23 +925,6 @@ cmf::upslope::BrooksCoreyRetentionCurve::Wetness_pF "cmf::math::num_array Wetnes
 ";
 
 
-// File: classcmf__core_1_1_brooks_corey_retention_curve.xml
-%feature("docstring") cmf_core::BrooksCoreyRetentionCurve "
-
-Proxy of C++ cmf::upslope::BrooksCoreyRetentionCurve class. ";
-
-%feature("docstring")  cmf_core::BrooksCoreyRetentionCurve::__init__ "def __init__(self, args, kwargs)
-
-__init__(BrooksCoreyRetentionCurve self, real ksat=15, real
-porosity=0.5, real _b=5, real theta_x=0.2, real
-psi_x=cmf::upslope::pF_to_waterhead(2.5), real porosity_decay=0) ->
-BrooksCoreyRetentionCurve ";
-
-%feature("docstring")  cmf_core::BrooksCoreyRetentionCurve::__repr__ "def __repr__(self) ";
-
-%feature("docstring")  cmf_core::BrooksCoreyRetentionCurve::__str__ "def __str__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_canopy_overflow.xml
 %feature("docstring") cmf::upslope::connections::CanopyOverflow "
 
@@ -1205,53 +1050,6 @@ std::string short_string() const ";
 %feature("docstring")
 cmf::upslope::connections::CanopyOverflow::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_canopy_overflow.xml
-%feature("docstring") cmf_core::CanopyOverflow "
-
-Proxy of C++ cmf::upslope::connections::CanopyOverflow class. ";
-
-%feature("docstring")  cmf_core::CanopyOverflow::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(CanopyOverflow self, cmf::water::WaterStorage::ptr Canopy,
-cmf::water::flux_node::ptr target, Cell cell) -> CanopyOverflow ";
-
-%feature("docstring")  cmf_core::CanopyOverflow::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::CanopyOverflow::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::CanopyOverflow::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::CanopyOverflow::__repr__ "def
-__repr__(self) ";
-
-
-// File: classcmf__core_1_1_canopy_storage_evaporation.xml
-%feature("docstring") cmf_core::CanopyStorageEvaporation "
-
-Proxy of C++ cmf::upslope::ET::CanopyStorageEvaporation class. ";
-
-%feature("docstring")  cmf_core::CanopyStorageEvaporation::__init__ "def __init__(self, args, kwargs)
-
-__init__(CanopyStorageEvaporation self, cmf::water::WaterStorage::ptr
-CanopyStorage, cmf::water::flux_node::ptr ET_target, Cell cell) ->
-CanopyStorageEvaporation ";
-
-%feature("docstring")
-cmf_core::CanopyStorageEvaporation::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::CanopyStorageEvaporation::__getitem__
-"def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::CanopyStorageEvaporation::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::CanopyStorageEvaporation::__repr__ "def __repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_canopy_storage_evaporation.xml
@@ -1651,55 +1449,6 @@ double y, double z, double area, cmf::project &_project) ";
 to_string() const ";
 
 
-// File: classcmf__core_1_1_cell.xml
-%feature("docstring") cmf_core::Cell "
-
-Proxy of C++ cmf::upslope::Cell class. ";
-
-%feature("docstring")  cmf_core::Cell::__init__ "def __init__(self,
-args, kwargs)
-
-__init__(Cell self, double x, double y, double z, double area, project
-_project) -> Cell ";
-
-%feature("docstring")  cmf_core::Cell::__eq__ "def __eq__(self, cmp)
-";
-
-%feature("docstring")  cmf_core::Cell::__hash__ "def __hash__(self)
-";
-
-%feature("docstring")  cmf_core::Cell::__repr__ "def __repr__(self)
-";
-
-%feature("docstring")  cmf_core::Cell::connect_soil_with_node "def
-connect_soil_with_node(self, node, ctype, flowwidth, distance,
-upper_boundary=0, lower_boundary=None)
-
-Connects all layers between the boundaries with a node using a flux
-connection node: Target node (flux_node) type: Type of the connection
-(e.g. cmf.Richards_lateral) flowwidth: Width of the connection
-distance: distance of the connection upper_boundary: Connect only
-layers, whose lower depth is greater then this value lower_boundary:
-Connect only  layers, whose upper depth is smaller then this value ";
-
-%feature("docstring")  cmf_core::Cell::install_connection "def
-install_connection(self, connection_type)
-
-Calls the static use_for_cell method of the connection_type, if
-present. The use_for_cell method might do quite a lot of stuff, please
-consult the docs for the connection. Eg.
->>>help(Richards.use_for_cell) ";
-
-%feature("docstring")  cmf_core::Cell::neighbors "def neighbors(self)
-";
-
-%feature("docstring")  cmf_core::Cell::storages "def storages(self)
-";
-
-%feature("docstring")  cmf_core::Cell::surface_storages "def
-surface_storages(self) ";
-
-
 // File: classcmf_1_1upslope_1_1cell__const__iterator.xml
 %feature("docstring") cmf::upslope::cell_const_iterator "";
 
@@ -1796,24 +1545,6 @@ remove(const cmf::upslope::Cell &cell) ";
 const ";
 
 
-// File: classcmf__core_1_1cell__vector.xml
-%feature("docstring") cmf_core::cell_vector "
-
-Proxy of C++ cmf::upslope::cell_vector class. ";
-
-%feature("docstring")  cmf_core::cell_vector::__init__ "def
-__init__(self, args)
-
-__init__(cell_vector self) -> cell_vector __init__(cell_vector self,
-cell_vector copy) -> cell_vector ";
-
-%feature("docstring")  cmf_core::cell_vector::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::cell_vector::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1_cell_connector.xml
 %feature("docstring") cmf::upslope::CellConnector "
 
@@ -1827,18 +1558,6 @@ C++ includes: cell.h ";
 %feature("docstring")  cmf::upslope::CellConnector::connect "void
 connect(cmf::upslope::Cell &cell1, cmf::upslope::Cell &cell2,
 ptrdiff_t start_at_layer=0) const ";
-
-
-// File: classcmf__core_1_1_cell_connector.xml
-%feature("docstring") cmf_core::CellConnector "
-
-Proxy of C++ cmf::upslope::CellConnector class. ";
-
-%feature("docstring")  cmf_core::CellConnector::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(CellConnector self, cmf::upslope::connectorfunction
-connector) -> CellConnector ";
 
 
 // File: classcmf_1_1draw_1_1cellmap_1_1_cell_map.xml
@@ -2043,44 +1762,6 @@ const ";
 V(double h) const ";
 
 
-// File: classcmf__core_1_1_channel.xml
-%feature("docstring") cmf_core::Channel "
-
-Proxy of C++ cmf::river::Channel class. ";
-
-%feature("docstring")  cmf_core::Channel::__init__ "def
-__init__(self, args)
-
-__init__(Channel self) -> Channel __init__(Channel self, double
-length) -> Channel __init__(Channel self, IChannel for_wrapping) ->
-Channel __init__(Channel self, IVolumeHeightFunction for_casting) ->
-Channel __init__(Channel self, Channel for_copy) -> Channel
-__init__(Channel self, char typecode, double length, double width=1.,
-double depth=0.25) -> Channel ";
-
-
-// File: classcmf__core_1_1_conceptual_infiltration.xml
-%feature("docstring") cmf_core::ConceptualInfiltration "
-
-Proxy of C++ cmf::upslope::connections::ConceptualInfiltration class.
-";
-
-%feature("docstring")  cmf_core::ConceptualInfiltration::__init__ "def __init__(self, args, kwargs)
-
-__init__(ConceptualInfiltration self, cmf::upslope::SoilLayer::ptr
-soilwater, cmf::water::flux_node::ptr surfacewater, real W0=0.9) ->
-ConceptualInfiltration ";
-
-%feature("docstring")  cmf_core::ConceptualInfiltration::__contains__
-"def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::ConceptualInfiltration::__getitem__ "def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::ConceptualInfiltration::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::ConceptualInfiltration::__repr__ "def __repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_conceptual_infiltration.xml
 %feature("docstring")
 cmf::upslope::connections::ConceptualInfiltration "
@@ -2239,35 +1920,6 @@ C++ includes: conductable.h ";
 get_K(cmf::geometry::point direction) const =0 ";
 
 
-// File: classcmf__core_1_1conductable.xml
-%feature("docstring") cmf_core::conductable "
-
-Proxy of C++ cmf::upslope::conductable class. ";
-
-%feature("docstring")  cmf_core::conductable::__init__ "def
-__init__(self, args, kwargs) ";
-
-
-// File: classcmf__core_1_1connection__list.xml
-%feature("docstring") cmf_core::connection_list "
-
-Proxy of C++ cmf::water::connection_list class. ";
-
-%feature("docstring")  cmf_core::connection_list::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(connection_list self) -> connection_list ";
-
-%feature("docstring")  cmf_core::connection_list::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::connection_list::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::connection_list::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1water_1_1connection__list.xml
 %feature("docstring") cmf::water::connection_list "
 
@@ -2306,31 +1958,6 @@ remove(cmf::water::flux_connection::ptr connection) ";
 
 %feature("docstring")  cmf::water::connection_list::size "size_t
 size() const ";
-
-
-// File: classcmf__core_1_1constant_e_tpot.xml
-%feature("docstring") cmf_core::constantETpot "
-
-Proxy of C++ cmf::upslope::ET::constantETpot class. ";
-
-%feature("docstring")  cmf_core::constantETpot::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(constantETpot self, cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target, double constantETpot_value) ->
-constantETpot ";
-
-%feature("docstring")  cmf_core::constantETpot::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::constantETpot::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::constantETpot::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::constantETpot::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1constant_e_tpot.xml
@@ -2438,31 +2065,6 @@ set_tracer_filter(solute S, real value) ";
 %feature("docstring")  cmf::upslope::ET::constantETpot::to_string "virtual std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_constant_flux.xml
-%feature("docstring") cmf_core::ConstantFlux "
-
-Proxy of C++ cmf::water::ConstantFlux class. ";
-
-%feature("docstring")  cmf_core::ConstantFlux::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(ConstantFlux self, cmf::water::WaterStorage::ptr source,
-cmf::water::flux_node::ptr target, real maximum_flux, real
-minimal_state=0, Time flux_decrease_time=h) -> ConstantFlux ";
-
-%feature("docstring")  cmf_core::ConstantFlux::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::ConstantFlux::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::ConstantFlux::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::ConstantFlux::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1water_1_1_constant_flux.xml
 %feature("docstring") cmf::water::ConstantFlux "
 
@@ -2497,9 +2099,9 @@ source:  The source of the water
 
 target:  The target of the water
 
-maximum_flux:  The requested flux :math:`q_{0}`
+maximum_flux:  The requested flux :math:`q_{0} [\\\\frac{m^3}{day}]`
 
-minimal_state:  Minimal volume of stored water in source
+minimal_state:  Minimal volume of stored water in source in :math:`[m^3]`
 
 flux_decrease_time:  ( cmf::math::Time) ";
 
@@ -2618,20 +2220,6 @@ cmf::atmosphere::ConstantMeteorology::get_weather "virtual
 cmf::atmosphere::Weather get_weather(cmf::math::Time t) const
 
 Returns weather, regardless of t. ";
-
-
-// File: classcmf__core_1_1_constant_meteorology.xml
-%feature("docstring") cmf_core::ConstantMeteorology "
-
-Proxy of C++ cmf::atmosphere::ConstantMeteorology class. ";
-
-%feature("docstring")  cmf_core::ConstantMeteorology::__init__ "def
-__init__(self, args)
-
-__init__(ConstantMeteorology self) -> ConstantMeteorology
-__init__(ConstantMeteorology self, Weather w) -> ConstantMeteorology
-__init__(ConstantMeteorology self, ConstantMeteorology other) ->
-ConstantMeteorology ";
 
 
 // File: classcmf_1_1atmosphere_1_1_constant_rain_source.xml
@@ -2766,51 +2354,6 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
-// File: classcmf__core_1_1_constant_rain_source.xml
-%feature("docstring") cmf_core::ConstantRainSource "
-
-Proxy of C++ cmf::atmosphere::ConstantRainSource class. ";
-
-%feature("docstring")  cmf_core::ConstantRainSource::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(ConstantRainSource self, project _project, point location,
-real _intensity) -> ConstantRainSource ";
-
-%feature("docstring")  cmf_core::ConstantRainSource::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::ConstantRainSource::connected_nodes "def connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::ConstantRainSource::fluxes "def
-fluxes(self, t) ";
-
-
-// File: classcmf__core_1_1_constant_state_flux.xml
-%feature("docstring") cmf_core::ConstantStateFlux "
-
-Proxy of C++ cmf::water::ConstantStateFlux class. ";
-
-%feature("docstring")  cmf_core::ConstantStateFlux::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(ConstantStateFlux self, cmf::water::WaterStorage::ptr
-controlled_storage, cmf::water::flux_node::ptr other_end, real
-target_state, Time reaction_time) -> ConstantStateFlux ";
-
-%feature("docstring")  cmf_core::ConstantStateFlux::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::ConstantStateFlux::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::ConstantStateFlux::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::ConstantStateFlux::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1water_1_1_constant_state_flux.xml
 %feature("docstring") cmf::water::ConstantStateFlux "
 
@@ -2934,34 +2477,6 @@ set_tracer_filter(solute S, real value) ";
 %feature("docstring")  cmf::water::ConstantStateFlux::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::water::ConstantStateFlux::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_constraint_linear_storage_flux.xml
-%feature("docstring") cmf_core::ConstraintLinearStorageFlux "
-
-Proxy of C++ cmf::water::ConstraintLinearStorageFlux class. ";
-
-%feature("docstring")  cmf_core::ConstraintLinearStorageFlux::__init__
-"def __init__(self, args, kwargs)
-
-__init__(ConstraintLinearStorageFlux self,
-cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr
-target, real residencetime=1.0, real Vlmin=0.0, real Vrmax=1.0) ->
-ConstraintLinearStorageFlux ";
-
-%feature("docstring")
-cmf_core::ConstraintLinearStorageFlux::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")
-cmf_core::ConstraintLinearStorageFlux::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::ConstraintLinearStorageFlux::__iter__
-"def __iter__(self) ";
-
-%feature("docstring")  cmf_core::ConstraintLinearStorageFlux::__repr__
-"def __repr__(self) ";
 
 
 // File: classcmf_1_1water_1_1_constraint_linear_storage_flux.xml
@@ -3120,18 +2635,6 @@ std::string short_string() const ";
 %feature("docstring")
 cmf::water::ConstraintLinearStorageFlux::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_content_stress.xml
-%feature("docstring") cmf_core::ContentStress "
-
-Proxy of C++ cmf::upslope::ET::ContentStress class. ";
-
-%feature("docstring")  cmf_core::ContentStress::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(ContentStress self, real theta_d=-1, real theta_w=-1) ->
-ContentStress ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_content_stress.xml
@@ -3295,32 +2798,6 @@ typecode() const ";
 double V(double h) const ";
 
 
-// File: classcmf__core_1_1_cross_section_reach.xml
-%feature("docstring") cmf_core::CrossSectionReach "
-
-Proxy of C++ cmf::river::CrossSectionReach class. ";
-
-%feature("docstring")  cmf_core::CrossSectionReach::__init__ "def
-__init__(self, args)
-
-__init__(CrossSectionReach self, double l, cmf::math::num_array x,
-cmf::math::num_array depth) -> CrossSectionReach
-__init__(CrossSectionReach self, CrossSectionReach copy) ->
-CrossSectionReach ";
-
-
-// File: classcmf__core_1_1cubicspline.xml
-%feature("docstring") cmf_core::cubicspline "
-
-Proxy of C++ cmf::math::cubicspline class. ";
-
-%feature("docstring")  cmf_core::cubicspline::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(cubicspline self, cmf::math::num_array const & x,
-cmf::math::num_array const & y) -> cubicspline ";
-
-
 // File: classcmf_1_1math_1_1cubicspline.xml
 %feature("docstring") cmf::math::cubicspline "
 
@@ -3340,62 +2817,6 @@ generate() ";
 
 %feature("docstring")  cmf::math::cubicspline::size "size_t size()
 const ";
-
-
-// File: classcmf__core_1_1_c_vode_adams.xml
-%feature("docstring") cmf_core::CVodeAdams "
-
-Proxy of C++ cmf::math::CVodeAdams class. ";
-
-%feature("docstring")  cmf_core::CVodeAdams::__init__ "def
-__init__(self, args)
-
-__init__(CVodeAdams self, real epsilon=1e-9) -> CVodeAdams
-__init__(CVodeAdams self, state_list states, real epsilon=1e-9) ->
-CVodeAdams ";
-
-%feature("docstring")  cmf_core::CVodeAdams::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::CVodeAdams::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::CVodeAdams::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::CVodeAdams::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::CVodeAdams::get_jacobian "def
-get_jacobian(self) ";
-
-%feature("docstring")  cmf_core::CVodeAdams::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_c_vode_adams.xml
@@ -3453,8 +2874,7 @@ concatenated.
 
 In Python, get_jacobian returns the Jacobian as a 2D array ";
 
-%feature("docstring")  cmf::math::CVodeAdams::copy "CVodeBase* copy()
-const
+%feature("docstring")  cmf::math::CVodeAdams::copy "cmf::math::CVodeAdams* copy() const override
 
 Returns a copy of the solver. ";
 
@@ -3508,65 +2928,9 @@ set_system(const state_list &states) ";
 const ";
 
 %feature("docstring")  cmf::math::CVodeAdams::to_string "std::string
-to_string() const
+to_string() const override
 
 Returns a string representation of the solver. ";
-
-
-// File: classcmf__core_1_1_c_vode_banded.xml
-%feature("docstring") cmf_core::CVodeBanded "
-
-Proxy of C++ cmf::math::CVodeBanded class. ";
-
-%feature("docstring")  cmf_core::CVodeBanded::__init__ "def
-__init__(self, args)
-
-__init__(CVodeBanded self, real epsilon=1e-9, int w=5) -> CVodeBanded
-__init__(CVodeBanded self, state_list states, real epsilon=1e-9, int
-w=5) -> CVodeBanded ";
-
-%feature("docstring")  cmf_core::CVodeBanded::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::CVodeBanded::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::CVodeBanded::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::CVodeBanded::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::CVodeBanded::get_jacobian "def
-get_jacobian(self) ";
-
-%feature("docstring")  cmf_core::CVodeBanded::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_c_vode_banded.xml
@@ -3624,8 +2988,7 @@ concatenated.
 
 In Python, get_jacobian returns the Jacobian as a 2D array ";
 
-%feature("docstring")  cmf::math::CVodeBanded::copy "CVodeBase*
-copy() const
+%feature("docstring")  cmf::math::CVodeBanded::copy "cmf::math::CVodeBanded* copy() const override
 
 Returns a copy of the solver. ";
 
@@ -3684,58 +3047,6 @@ to_string() const override
 Returns a string representation of the solver. ";
 
 
-// File: classcmf__core_1_1_c_vode_base.xml
-%feature("docstring") cmf_core::CVodeBase "
-
-Proxy of C++ cmf::math::CVodeBase class. ";
-
-%feature("docstring")  cmf_core::CVodeBase::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::CVodeBase::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::CVodeBase::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::CVodeBase::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::CVodeBase::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::CVodeBase::get_jacobian "def
-get_jacobian(self) ";
-
-%feature("docstring")  cmf_core::CVodeBase::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
-
-
 // File: classcmf_1_1math_1_1_c_vode_base.xml
 %feature("docstring") cmf::math::CVodeBase "
 
@@ -3783,7 +3094,7 @@ dt:   Time step (may be omitted)
 reset:  If true, solver is reseted before integration starts ";
 
 %feature("docstring")  cmf::math::CVodeBase::~CVodeBase "~CVodeBase()
-";
+override ";
 
 %feature("docstring")  cmf::math::CVodeBase::_get_jacobian "virtual
 cmf::math::num_array _get_jacobian() const
@@ -3794,7 +3105,7 @@ concatenated.
 In Python, get_jacobian returns the Jacobian as a 2D array ";
 
 %feature("docstring")  cmf::math::CVodeBase::copy "CVodeBase* copy()
-const
+const override=0
 
 Returns a copy of the solver. ";
 
@@ -3847,66 +3158,10 @@ set_system(const state_list &states) ";
 %feature("docstring")  cmf::math::CVodeBase::size "size_t size()
 const ";
 
-%feature("docstring")  cmf::math::CVodeBase::to_string "virtual
-std::string to_string() const =0
+%feature("docstring")  cmf::math::CVodeBase::to_string "std::string
+to_string() const override=0
 
 Returns a string representation of the solver. ";
-
-
-// File: classcmf__core_1_1_c_vode_dense.xml
-%feature("docstring") cmf_core::CVodeDense "
-
-Proxy of C++ cmf::math::CVodeDense class. ";
-
-%feature("docstring")  cmf_core::CVodeDense::__init__ "def
-__init__(self, args)
-
-__init__(CVodeDense self, state_list states, real epsilon=1e-9) ->
-CVodeDense __init__(CVodeDense self, real epsilon=1e-9) -> CVodeDense
-";
-
-%feature("docstring")  cmf_core::CVodeDense::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::CVodeDense::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::CVodeDense::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::CVodeDense::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::CVodeDense::get_jacobian "def
-get_jacobian(self) ";
-
-%feature("docstring")  cmf_core::CVodeDense::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_c_vode_dense.xml
@@ -3963,16 +3218,14 @@ Creates a new implicit dense CVode solver. ";
 
 %feature("docstring")  cmf::math::CVodeDense::CVodeDense "CVodeDense(real epsilon=1e-9) ";
 
-%feature("docstring")  cmf::math::CVodeDense::_get_jacobian "virtual
-cmf::math::num_array _get_jacobian() const
+%feature("docstring")  cmf::math::CVodeDense::_get_jacobian "cmf::math::num_array _get_jacobian() const override
 
 Returns a continuous 1D array representing the Jacobian columns
 concatenated.
 
 In Python, get_jacobian returns the Jacobian as a 2D array ";
 
-%feature("docstring")  cmf::math::CVodeDense::copy "CVodeBase* copy()
-const
+%feature("docstring")  cmf::math::CVodeDense::copy "cmf::math::CVodeDense* copy() const override
 
 Returns a copy of the solver. ";
 
@@ -4026,64 +3279,9 @@ set_system(const state_list &states) ";
 const ";
 
 %feature("docstring")  cmf::math::CVodeDense::to_string "std::string
-to_string() const
+to_string() const override
 
 Returns a string representation of the solver. ";
-
-
-// File: classcmf__core_1_1_c_vode_diag.xml
-%feature("docstring") cmf_core::CVodeDiag "
-
-Proxy of C++ cmf::math::CVodeDiag class. ";
-
-%feature("docstring")  cmf_core::CVodeDiag::__init__ "def
-__init__(self, args)
-
-__init__(CVodeDiag self, state_list states, real epsilon=1e-9) ->
-CVodeDiag __init__(CVodeDiag self, real epsilon=1e-9) -> CVodeDiag ";
-
-%feature("docstring")  cmf_core::CVodeDiag::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::CVodeDiag::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::CVodeDiag::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::CVodeDiag::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::CVodeDiag::get_jacobian "def
-get_jacobian(self) ";
-
-%feature("docstring")  cmf_core::CVodeDiag::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_c_vode_diag.xml
@@ -4142,8 +3340,7 @@ concatenated.
 
 In Python, get_jacobian returns the Jacobian as a 2D array ";
 
-%feature("docstring")  cmf::math::CVodeDiag::copy "CVodeBase* copy()
-const
+%feature("docstring")  cmf::math::CVodeDiag::copy "cmf::math::CVodeDiag* copy() const
 
 Returns a copy of the solver. ";
 
@@ -4202,20 +3399,6 @@ to_string() const
 Returns a string representation of the solver. ";
 
 
-// File: classcmf__core_1_1_c_vode_info.xml
-%feature("docstring") cmf_core::CVodeInfo "
-
-Proxy of C++ cmf::math::CVodeInfo class. ";
-
-%feature("docstring")  cmf_core::CVodeInfo::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(CVodeInfo self) -> CVodeInfo ";
-
-%feature("docstring")  cmf_core::CVodeInfo::__repr__ "def
-__repr__(self) ";
-
-
 // File: structcmf_1_1math_1_1_c_vode_info.xml
 %feature("docstring") cmf::math::CVodeInfo "
 
@@ -4225,62 +3408,6 @@ C++ includes: cvode.h ";
 
 %feature("docstring")  cmf::math::CVodeInfo::to_string "std::string
 to_string() const ";
-
-
-// File: classcmf__core_1_1_c_vode_k_l_u.xml
-%feature("docstring") cmf_core::CVodeKLU "
-
-Proxy of C++ cmf::math::CVodeKLU class. ";
-
-%feature("docstring")  cmf_core::CVodeKLU::__init__ "def
-__init__(self, args)
-
-__init__(CVodeKLU self, real epsilon=1e-9) -> CVodeKLU
-__init__(CVodeKLU self, state_list states, real epsilon=1e-9) ->
-CVodeKLU ";
-
-%feature("docstring")  cmf_core::CVodeKLU::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::CVodeKLU::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::CVodeKLU::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::CVodeKLU::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::CVodeKLU::get_jacobian "def
-get_jacobian(self) ";
-
-%feature("docstring")  cmf_core::CVodeKLU::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_c_vode_k_l_u.xml
@@ -4331,10 +3458,7 @@ cmf::math::state_list &states, real epsilon=1e-9) ";
 %feature("docstring")  cmf::math::CVodeKLU::_get_jacobian "virtual
 cmf::math::num_array _get_jacobian() const ";
 
-%feature("docstring")  cmf::math::CVodeKLU::copy "CVodeBase* copy()
-const
-
-Returns a copy of the solver. ";
+%feature("docstring")  cmf::math::CVodeKLU::copy "cmf::math::CVodeKLU* copy() const override ";
 
 %feature("docstring")  cmf::math::CVodeKLU::get_error "cmf::math::num_array get_error() const
 
@@ -4387,62 +3511,6 @@ set_system(const state_list &states) ";
 
 %feature("docstring")  cmf::math::CVodeKLU::to_string "std::string
 to_string() const ";
-
-
-// File: classcmf__core_1_1_c_vode_krylov.xml
-%feature("docstring") cmf_core::CVodeKrylov "
-
-Proxy of C++ cmf::math::CVodeKrylov class. ";
-
-%feature("docstring")  cmf_core::CVodeKrylov::__init__ "def
-__init__(self, args)
-
-__init__(CVodeKrylov self, state_list states, real epsilon=1e-9, int
-w=5, char p='L') -> CVodeKrylov __init__(CVodeKrylov self, real
-epsilon=1e-9, int w=5, char p='L') -> CVodeKrylov ";
-
-%feature("docstring")  cmf_core::CVodeKrylov::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::CVodeKrylov::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::CVodeKrylov::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::CVodeKrylov::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::CVodeKrylov::get_jacobian "def
-get_jacobian(self) ";
-
-%feature("docstring")  cmf_core::CVodeKrylov::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_c_vode_krylov.xml
@@ -4500,8 +3568,7 @@ concatenated.
 
 In Python, get_jacobian returns the Jacobian as a 2D array ";
 
-%feature("docstring")  cmf::math::CVodeKrylov::copy "CVodeBase*
-copy() const
+%feature("docstring")  cmf::math::CVodeKrylov::copy "cmf::math::CVodeKrylov* copy() const
 
 Returns a copy of the solver. ";
 
@@ -4558,17 +3625,6 @@ const ";
 to_string() const
 
 Returns a string representation of the solver. ";
-
-
-// File: classcmf__core_1_1_c_vode_options.xml
-%feature("docstring") cmf_core::CVodeOptions "
-
-Proxy of C++ cmf::math::CVodeOptions class. ";
-
-%feature("docstring")  cmf_core::CVodeOptions::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(CVodeOptions self) -> CVodeOptions ";
 
 
 // File: structcmf_1_1math_1_1_c_vode_options.xml
@@ -4700,31 +3756,6 @@ set_tracer_filter(solute S, real value) ";
 %feature("docstring")  cmf::upslope::connections::Darcy::to_string "virtual std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_darcy.xml
-%feature("docstring") cmf_core::Darcy "
-
-Proxy of C++ cmf::upslope::connections::Darcy class. ";
-
-%feature("docstring")  cmf_core::Darcy::__init__ "def __init__(self,
-args, kwargs)
-
-__init__(Darcy self, cmf::upslope::SoilLayer::ptr left,
-cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) ->
-Darcy ";
-
-%feature("docstring")  cmf_core::Darcy::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::Darcy::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::Darcy::__iter__ "def __iter__(self)
-";
-
-%feature("docstring")  cmf_core::Darcy::__repr__ "def __repr__(self)
-";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_darcy_kinematic.xml
 %feature("docstring") cmf::upslope::connections::DarcyKinematic "
 
@@ -4852,59 +3883,6 @@ std::string short_string() const ";
 %feature("docstring")
 cmf::upslope::connections::DarcyKinematic::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_darcy_kinematic.xml
-%feature("docstring") cmf_core::DarcyKinematic "
-
-Proxy of C++ cmf::upslope::connections::DarcyKinematic class. ";
-
-%feature("docstring")  cmf_core::DarcyKinematic::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(DarcyKinematic self, cmf::upslope::SoilLayer::ptr left,
-cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) ->
-DarcyKinematic ";
-
-%feature("docstring")  cmf_core::DarcyKinematic::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::DarcyKinematic::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::DarcyKinematic::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::DarcyKinematic::__repr__ "def
-__repr__(self) ";
-
-
-// File: classcmf__core_1_1_date.xml
-%feature("docstring") cmf_core::Date "
-
-Proxy of C++ cmf::math::Date class. ";
-
-%feature("docstring")  cmf_core::Date::__init__ "def __init__(self,
-args)
-
-__init__(Date self, int _day, int _month, int _year, int _hour=0, int
-_minute=0, int _second=0, int _ms=0) -> Date __init__(Date self, Time
-time) -> Date ";
-
-%feature("docstring")  cmf_core::Date::__format__ "def
-__format__(self, fmt) ";
-
-%feature("docstring")  cmf_core::Date::__getstate__ "def
-__getstate__(self) ";
-
-%feature("docstring")  cmf_core::Date::__repr__ "def __repr__(self)
-";
-
-%feature("docstring")  cmf_core::Date::__setstate__ "def
-__setstate__(self, data) ";
-
-%feature("docstring")  cmf_core::Date::as_datetime "def
-as_datetime(self) ";
 
 
 // File: structcmf_1_1math_1_1_date.xml
@@ -5077,34 +4055,6 @@ cmf::upslope::connections::DiffusiveMacroMicroExchange::short_string "virtual st
 cmf::upslope::connections::DiffusiveMacroMicroExchange::to_string "virtual std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_diffusive_macro_micro_exchange.xml
-%feature("docstring") cmf_core::DiffusiveMacroMicroExchange "
-
-Proxy of C++ cmf::upslope::connections::DiffusiveMacroMicroExchange
-class. ";
-
-%feature("docstring")  cmf_core::DiffusiveMacroMicroExchange::__init__
-"def __init__(self, args, kwargs)
-
-__init__(DiffusiveMacroMicroExchange self,
-cmf::upslope::MacroPore::ptr left, cmf::upslope::SoilLayer::ptr right,
-real omega, real pFrmi=4.2) -> DiffusiveMacroMicroExchange ";
-
-%feature("docstring")
-cmf_core::DiffusiveMacroMicroExchange::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")
-cmf_core::DiffusiveMacroMicroExchange::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::DiffusiveMacroMicroExchange::__iter__
-"def __iter__(self) ";
-
-%feature("docstring")  cmf_core::DiffusiveMacroMicroExchange::__repr__
-"def __repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_diffusive_surface_runoff.xml
 %feature("docstring")
 cmf::upslope::connections::DiffusiveSurfaceRunoff "
@@ -5266,48 +4216,6 @@ cmf::upslope::connections::DiffusiveSurfaceRunoff::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_diffusive_surface_runoff.xml
-%feature("docstring") cmf_core::DiffusiveSurfaceRunoff "
-
-Proxy of C++ cmf::upslope::connections::DiffusiveSurfaceRunoff class.
-";
-
-%feature("docstring")  cmf_core::DiffusiveSurfaceRunoff::__init__ "def __init__(self, args, kwargs)
-
-__init__(DiffusiveSurfaceRunoff self, cmf::upslope::SurfaceWater::ptr
-left, cmf::water::flux_node::ptr right, real flowwidth, real
-distance=-1) -> DiffusiveSurfaceRunoff ";
-
-%feature("docstring")  cmf_core::DiffusiveSurfaceRunoff::__contains__
-"def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::DiffusiveSurfaceRunoff::__getitem__ "def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::DiffusiveSurfaceRunoff::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::DiffusiveSurfaceRunoff::__repr__ "def __repr__(self) ";
-
-
-// File: classcmf__core_1_1_dirichlet_boundary.xml
-%feature("docstring") cmf_core::DirichletBoundary "
-
-Proxy of C++ cmf::water::DirichletBoundary class. ";
-
-%feature("docstring")  cmf_core::DirichletBoundary::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(DirichletBoundary self, project _p, real potential, point
-Location=cmf::geometry::point()) -> DirichletBoundary ";
-
-%feature("docstring")  cmf_core::DirichletBoundary::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::DirichletBoundary::connected_nodes "def connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::DirichletBoundary::fluxes "def
-fluxes(self, t) ";
-
-
 // File: classcmf_1_1water_1_1_dirichlet_boundary.xml
 %feature("docstring") cmf::water::DirichletBoundary "
 
@@ -5418,29 +4326,6 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
-// File: classcmf__core_1_1_energy_budget_snow_melt.xml
-%feature("docstring") cmf_core::EnergyBudgetSnowMelt "
-
-Proxy of C++ cmf::upslope::connections::EnergyBudgetSnowMelt class. ";
-
-%feature("docstring")  cmf_core::EnergyBudgetSnowMelt::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(EnergyBudgetSnowMelt self, cmf::water::WaterStorage::ptr
-snow, cmf::water::flux_node::ptr surface_water, Cell cell) ->
-EnergyBudgetSnowMelt ";
-
-%feature("docstring")  cmf_core::EnergyBudgetSnowMelt::__contains__ "def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::EnergyBudgetSnowMelt::__getitem__ "def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::EnergyBudgetSnowMelt::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::EnergyBudgetSnowMelt::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_energy_budget_snow_melt.xml
 %feature("docstring") cmf::upslope::connections::EnergyBudgetSnowMelt
 "
@@ -5545,60 +4430,6 @@ cmf::upslope::connections::EnergyBudgetSnowMelt::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_explicit_euler__fixed.xml
-%feature("docstring") cmf_core::ExplicitEuler_fixed "
-
-Proxy of C++ cmf::math::ExplicitEuler_fixed class. ";
-
-%feature("docstring")  cmf_core::ExplicitEuler_fixed::__init__ "def
-__init__(self, args)
-
-__init__(ExplicitEuler_fixed self, state_list states) ->
-ExplicitEuler_fixed __init__(ExplicitEuler_fixed self) ->
-ExplicitEuler_fixed __init__(ExplicitEuler_fixed self, Integrator
-copy) -> ExplicitEuler_fixed ";
-
-%feature("docstring")  cmf_core::ExplicitEuler_fixed::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::ExplicitEuler_fixed::__getitem__ "def __getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::ExplicitEuler_fixed::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::ExplicitEuler_fixed::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::ExplicitEuler_fixed::run "def
-run(self, start=None, end=None, step=day *1, max_errors=0,
-reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
-
-
 // File: classcmf_1_1math_1_1_explicit_euler__fixed.xml
 %feature("docstring") cmf::math::ExplicitEuler_fixed "
 
@@ -5699,36 +4530,6 @@ size() const ";
 %feature("docstring")  cmf::math::ExplicitEuler_fixed::to_string "std::string to_string() const override
 
 Desrcibes the iterator. ";
-
-
-// File: classcmf__core_1_1_exponential_decline_connection.xml
-%feature("docstring") cmf_core::ExponentialDeclineConnection "
-
-Proxy of C++ cmf::water::ExponentialDeclineConnection class. ";
-
-%feature("docstring")
-cmf_core::ExponentialDeclineConnection::__init__ "def __init__(self,
-args, kwargs)
-
-__init__(ExponentialDeclineConnection self,
-cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr
-target, real Q0, real V0, real m) -> ExponentialDeclineConnection ";
-
-%feature("docstring")
-cmf_core::ExponentialDeclineConnection::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")
-cmf_core::ExponentialDeclineConnection::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")
-cmf_core::ExponentialDeclineConnection::__iter__ "def __iter__(self)
-";
-
-%feature("docstring")
-cmf_core::ExponentialDeclineConnection::__repr__ "def __repr__(self)
-";
 
 
 // File: classcmf_1_1water_1_1_exponential_decline_connection.xml
@@ -5845,29 +4646,6 @@ std::string short_string() const ";
 %feature("docstring")
 cmf::water::ExponentialDeclineConnection::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_externally_controlled_flux.xml
-%feature("docstring") cmf_core::ExternallyControlledFlux "
-
-Proxy of C++ cmf::water::ExternallyControlledFlux class. ";
-
-%feature("docstring")  cmf_core::ExternallyControlledFlux::__init__ "def __init__(self, args, kwargs)
-
-__init__(ExternallyControlledFlux self, cmf::water::flux_node::ptr
-source, cmf::water::flux_node::ptr target, real flux_value=0) ->
-ExternallyControlledFlux ";
-
-%feature("docstring")
-cmf_core::ExternallyControlledFlux::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::ExternallyControlledFlux::__getitem__
-"def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::ExternallyControlledFlux::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::ExternallyControlledFlux::__repr__ "def __repr__(self) ";
 
 
 // File: classcmf_1_1water_1_1_externally_controlled_flux.xml
@@ -6037,27 +4815,6 @@ cmf::fit_retention_curve::FitVanGenuchtenMualem::get_error "def
 get_error(self, params) ";
 
 
-// File: classcmf__core_1_1flux__connection.xml
-%feature("docstring") cmf_core::flux_connection "
-
-Proxy of C++ cmf::water::flux_connection class. ";
-
-%feature("docstring")  cmf_core::flux_connection::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::flux_connection::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::flux_connection::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::flux_connection::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::flux_connection::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1water_1_1flux__connection.xml
 %feature("docstring") cmf::water::flux_connection "
 
@@ -6161,27 +4918,6 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 %feature("docstring")  cmf::water::flux_connection::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::water::flux_connection::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1flux__node.xml
-%feature("docstring") cmf_core::flux_node "
-
-Proxy of C++ cmf::water::flux_node class. ";
-
-%feature("docstring")  cmf_core::flux_node::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(flux_node self, project _project, point
-location=cmf::geometry::point()) -> flux_node ";
-
-%feature("docstring")  cmf_core::flux_node::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::flux_node::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::flux_node::fluxes "def fluxes(self,
-t) ";
 
 
 // File: classcmf_1_1water_1_1flux__node.xml
@@ -6312,28 +5048,6 @@ The current time step :param kwargs: Keyword arguments for plt.quiver
 __call__(self, t=None) ";
 
 
-// File: classcmf__core_1_1_free_drainage_percolation.xml
-%feature("docstring") cmf_core::FreeDrainagePercolation "
-
-Proxy of C++ cmf::upslope::connections::FreeDrainagePercolation class.
-";
-
-%feature("docstring")  cmf_core::FreeDrainagePercolation::__init__ "def __init__(self, args, kwargs)
-
-__init__(FreeDrainagePercolation self, cmf::upslope::SoilLayer::ptr
-left, cmf::water::flux_node::ptr right) -> FreeDrainagePercolation ";
-
-%feature("docstring")  cmf_core::FreeDrainagePercolation::__contains__
-"def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::FreeDrainagePercolation::__getitem__
-"def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::FreeDrainagePercolation::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::FreeDrainagePercolation::__repr__ "def __repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_free_drainage_percolation.xml
 %feature("docstring")
 cmf::upslope::connections::FreeDrainagePercolation "
@@ -6454,20 +5168,6 @@ cmf::upslope::connections::FreeDrainagePercolation::short_string "virtual std::s
 
 %feature("docstring")
 cmf::upslope::connections::FreeDrainagePercolation::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_freundlich_adsorbtion.xml
-%feature("docstring") cmf_core::FreundlichAdsorbtion "
-
-Proxy of C++ cmf::water::FreundlichAdsorbtion class. ";
-
-%feature("docstring")  cmf_core::FreundlichAdsorbtion::__init__ "def
-__init__(self, args)
-
-__init__(FreundlichAdsorbtion self, real K, real n, real m, real
-epsilon=1e-12, int maxiter=100) -> FreundlichAdsorbtion
-__init__(FreundlichAdsorbtion self, FreundlichAdsorbtion other) ->
-FreundlichAdsorbtion ";
 
 
 // File: classcmf_1_1water_1_1_freundlich_adsorbtion.xml
@@ -6684,30 +5384,6 @@ cmf::upslope::connections::GradientMacroFlow::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_gradient_macro_flow.xml
-%feature("docstring") cmf_core::GradientMacroFlow "
-
-Proxy of C++ cmf::upslope::connections::GradientMacroFlow class. ";
-
-%feature("docstring")  cmf_core::GradientMacroFlow::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(GradientMacroFlow self, cmf::upslope::MacroPore::ptr left,
-cmf::water::flux_node::ptr right) -> GradientMacroFlow ";
-
-%feature("docstring")  cmf_core::GradientMacroFlow::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::GradientMacroFlow::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::GradientMacroFlow::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::GradientMacroFlow::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_gradient_macro_micro_exchange.xml
 %feature("docstring")
 cmf::upslope::connections::GradientMacroMicroExchange "
@@ -6833,58 +5509,6 @@ cmf::upslope::connections::GradientMacroMicroExchange::short_string "virtual std
 
 %feature("docstring")
 cmf::upslope::connections::GradientMacroMicroExchange::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_gradient_macro_micro_exchange.xml
-%feature("docstring") cmf_core::GradientMacroMicroExchange "
-
-Proxy of C++ cmf::upslope::connections::GradientMacroMicroExchange
-class. ";
-
-%feature("docstring")  cmf_core::GradientMacroMicroExchange::__init__
-"def __init__(self, args, kwargs)
-
-__init__(GradientMacroMicroExchange self, cmf::upslope::SoilLayer::ptr
-left, cmf::upslope::MacroPore::ptr right) ->
-GradientMacroMicroExchange ";
-
-%feature("docstring")
-cmf_core::GradientMacroMicroExchange::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")
-cmf_core::GradientMacroMicroExchange::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::GradientMacroMicroExchange::__iter__
-"def __iter__(self) ";
-
-%feature("docstring")  cmf_core::GradientMacroMicroExchange::__repr__
-"def __repr__(self) ";
-
-
-// File: classcmf__core_1_1_green_ampt_infiltration.xml
-%feature("docstring") cmf_core::GreenAmptInfiltration "
-
-Proxy of C++ cmf::upslope::connections::GreenAmptInfiltration class.
-";
-
-%feature("docstring")  cmf_core::GreenAmptInfiltration::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(GreenAmptInfiltration self, cmf::upslope::SoilLayer::ptr
-soilwater, cmf::water::flux_node::ptr surfacewater) ->
-GreenAmptInfiltration ";
-
-%feature("docstring")  cmf_core::GreenAmptInfiltration::__contains__ "def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::GreenAmptInfiltration::__getitem__ "def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::GreenAmptInfiltration::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::GreenAmptInfiltration::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_green_ampt_infiltration.xml
@@ -7056,30 +5680,6 @@ cmf::upslope::connections::GreenAmptInfiltration::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_hargreave_e_t.xml
-%feature("docstring") cmf_core::HargreaveET "
-
-Proxy of C++ cmf::upslope::ET::HargreaveET class. ";
-
-%feature("docstring")  cmf_core::HargreaveET::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(HargreaveET self, cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target) -> HargreaveET ";
-
-%feature("docstring")  cmf_core::HargreaveET::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::HargreaveET::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::HargreaveET::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::HargreaveET::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1_e_t_1_1_hargreave_e_t.xml
 %feature("docstring") cmf::upslope::ET::HargreaveET "
 
@@ -7212,60 +5812,6 @@ set_tracer_filter(solute S, real value) ";
 %feature("docstring")  cmf::upslope::ET::HargreaveET::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::ET::HargreaveET::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_heun_integrator.xml
-%feature("docstring") cmf_core::HeunIntegrator "
-
-Proxy of C++ cmf::math::HeunIntegrator class. ";
-
-%feature("docstring")  cmf_core::HeunIntegrator::__init__ "def
-__init__(self, args)
-
-__init__(HeunIntegrator self, state_list states, real Alpha=0.5) ->
-HeunIntegrator __init__(HeunIntegrator self, real Alpha=0.5) ->
-HeunIntegrator __init__(HeunIntegrator self, Integrator copy) ->
-HeunIntegrator ";
-
-%feature("docstring")  cmf_core::HeunIntegrator::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::HeunIntegrator::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::HeunIntegrator::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::HeunIntegrator::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::HeunIntegrator::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_heun_integrator.xml
@@ -7526,15 +6072,6 @@ typecode() const =0 ";
 V(double h) const ";
 
 
-// File: classcmf__core_1_1_i_channel.xml
-%feature("docstring") cmf_core::IChannel "
-
-Proxy of C++ cmf::river::IChannel class. ";
-
-%feature("docstring")  cmf_core::IChannel::__init__ "def
-__init__(self, args, kwargs) ";
-
-
 // File: classcmf_1_1atmosphere_1_1_i_d_w___meteorology.xml
 %feature("docstring") cmf::atmosphere::IDW_Meteorology "
 
@@ -7583,20 +6120,6 @@ Returns the height of the instruments above canopy. ";
 
 Returns the Weather at time t. Pure virtual function. Must get
 implemented by child functions. ";
-
-
-// File: classcmf__core_1_1_i_d_w___meteorology.xml
-%feature("docstring") cmf_core::IDW_Meteorology "
-
-Proxy of C++ cmf::atmosphere::IDW_Meteorology class. ";
-
-%feature("docstring")  cmf_core::IDW_Meteorology::__init__ "def
-__init__(self, args)
-
-__init__(IDW_Meteorology self, point position, MeteoStationList
-stations, double z_weight, double power) -> IDW_Meteorology
-__init__(IDW_Meteorology self, IDW_Meteorology copy) ->
-IDW_Meteorology ";
 
 
 // File: classcmf_1_1atmosphere_1_1_i_d_w_rainfall.xml
@@ -7690,79 +6213,6 @@ t:  Time of the query
 
 Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
-
-
-// File: classcmf__core_1_1_i_d_w_rainfall.xml
-%feature("docstring") cmf_core::IDWRainfall "
-
-Proxy of C++ cmf::atmosphere::IDWRainfall class. ";
-
-%feature("docstring")  cmf_core::IDWRainfall::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::IDWRainfall::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::IDWRainfall::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::IDWRainfall::fluxes "def
-fluxes(self, t) ";
-
-
-// File: classcmf__core_1_1_implicit_euler.xml
-%feature("docstring") cmf_core::ImplicitEuler "
-
-Proxy of C++ cmf::math::ImplicitEuler class. ";
-
-%feature("docstring")  cmf_core::ImplicitEuler::__init__ "def
-__init__(self, args)
-
-__init__(ImplicitEuler self, state_list states, real epsilon=1e-9,
-Time tStepMin=cmf::math::timespan(10)) -> ImplicitEuler
-__init__(ImplicitEuler self, real epsilon=1e-9, Time
-tStepMin=cmf::math::timespan(10)) -> ImplicitEuler
-__init__(ImplicitEuler self, Integrator arg2) -> ImplicitEuler ";
-
-%feature("docstring")  cmf_core::ImplicitEuler::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::ImplicitEuler::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::ImplicitEuler::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::ImplicitEuler::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::ImplicitEuler::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_implicit_euler.xml
@@ -7875,55 +6325,6 @@ const ";
 %feature("docstring")  cmf::math::ImplicitEuler::to_string "std::string to_string() const override
 
 Desrcibes the iterator. ";
-
-
-// File: classcmf__core_1_1_integrator.xml
-%feature("docstring") cmf_core::Integrator "
-
-Proxy of C++ cmf::math::Integrator class. ";
-
-%feature("docstring")  cmf_core::Integrator::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::Integrator::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::Integrator::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::Integrator::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::Integrator::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::Integrator::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_integrator.xml
@@ -8067,15 +6468,6 @@ double q(double h, double slope) const ";
 
 %feature("docstring")  cmf::river::IVolumeHeightFunction::V "virtual
 double V(double h) const =0 ";
-
-
-// File: classcmf__core_1_1_i_volume_height_function.xml
-%feature("docstring") cmf_core::IVolumeHeightFunction "
-
-Proxy of C++ cmf::river::IVolumeHeightFunction class. ";
-
-%feature("docstring")  cmf_core::IVolumeHeightFunction::__init__ "def
-__init__(self, args, kwargs) ";
 
 
 // File: classcmf_1_1jacobian_1_1_jacobian.xml
@@ -8257,31 +6649,6 @@ cmf::upslope::connections::JarvisMacroFlow::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_jarvis_macro_flow.xml
-%feature("docstring") cmf_core::JarvisMacroFlow "
-
-Proxy of C++ cmf::upslope::connections::JarvisMacroFlow class. ";
-
-%feature("docstring")  cmf_core::JarvisMacroFlow::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(JarvisMacroFlow self, cmf::water::WaterStorage::ptr left,
-cmf::water::flux_node::ptr right, real beta=1., real
-porefraction_r=0.0) -> JarvisMacroFlow ";
-
-%feature("docstring")  cmf_core::JarvisMacroFlow::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::JarvisMacroFlow::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::JarvisMacroFlow::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::JarvisMacroFlow::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_kinematic_macro_flow.xml
 %feature("docstring") cmf::upslope::connections::KinematicMacroFlow "
 
@@ -8417,30 +6784,6 @@ std::string short_string() const ";
 %feature("docstring")
 cmf::upslope::connections::KinematicMacroFlow::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_kinematic_macro_flow.xml
-%feature("docstring") cmf_core::KinematicMacroFlow "
-
-Proxy of C++ cmf::upslope::connections::KinematicMacroFlow class. ";
-
-%feature("docstring")  cmf_core::KinematicMacroFlow::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(KinematicMacroFlow self, cmf::water::WaterStorage::ptr left,
-cmf::water::flux_node::ptr right, real beta=1.) -> KinematicMacroFlow
-";
-
-%feature("docstring")  cmf_core::KinematicMacroFlow::__contains__ "def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::KinematicMacroFlow::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::KinematicMacroFlow::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::KinematicMacroFlow::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_kinematic_surface_runoff.xml
@@ -8602,41 +6945,6 @@ cmf::upslope::connections::KinematicSurfaceRunoff::short_string "virtual std::st
 %feature("docstring")
 cmf::upslope::connections::KinematicSurfaceRunoff::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_kinematic_surface_runoff.xml
-%feature("docstring") cmf_core::KinematicSurfaceRunoff "
-
-Proxy of C++ cmf::upslope::connections::KinematicSurfaceRunoff class.
-";
-
-%feature("docstring")  cmf_core::KinematicSurfaceRunoff::__init__ "def __init__(self, args, kwargs)
-
-__init__(KinematicSurfaceRunoff self, cmf::upslope::SurfaceWater::ptr
-left, cmf::water::flux_node::ptr right, real flowwidth, real
-distance=-1) -> KinematicSurfaceRunoff ";
-
-%feature("docstring")  cmf_core::KinematicSurfaceRunoff::__contains__
-"def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::KinematicSurfaceRunoff::__getitem__ "def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::KinematicSurfaceRunoff::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::KinematicSurfaceRunoff::__repr__ "def __repr__(self) ";
-
-
-// File: classcmf__core_1_1_langmuir_adsorption.xml
-%feature("docstring") cmf_core::LangmuirAdsorption "
-
-Proxy of C++ cmf::water::LangmuirAdsorption class. ";
-
-%feature("docstring")  cmf_core::LangmuirAdsorption::__init__ "def
-__init__(self, args)
-
-__init__(LangmuirAdsorption self, real K, real m) ->
-LangmuirAdsorption __init__(LangmuirAdsorption self,
-LangmuirAdsorption other) -> LangmuirAdsorption ";
 
 
 // File: classcmf_1_1water_1_1_langmuir_adsorption.xml
@@ -8824,26 +7132,6 @@ cmf::upslope::connections::lateral_sub_surface_flux::short_string "virtual std::
 cmf::upslope::connections::lateral_sub_surface_flux::to_string "virtual std::string to_string() const ";
 
 
-// File: classcmf__core_1_1lateral__sub__surface__flux.xml
-%feature("docstring") cmf_core::lateral_sub_surface_flux "
-
-Proxy of C++ cmf::upslope::connections::lateral_sub_surface_flux
-class. ";
-
-%feature("docstring")  cmf_core::lateral_sub_surface_flux::__init__ "def __init__(self, args, kwargs) ";
-
-%feature("docstring")
-cmf_core::lateral_sub_surface_flux::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::lateral_sub_surface_flux::__getitem__
-"def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::lateral_sub_surface_flux::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::lateral_sub_surface_flux::__repr__ "def __repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1layer__list.xml
 %feature("docstring") cmf::upslope::layer_list "
 
@@ -9008,56 +7296,6 @@ const
 Number of layers in the list. ";
 
 
-// File: classcmf__core_1_1layer__list.xml
-%feature("docstring") cmf_core::layer_list "
-
-Proxy of C++ cmf::upslope::layer_list class. ";
-
-%feature("docstring")  cmf_core::layer_list::__init__ "def
-__init__(self, args)
-
-__init__(layer_list self, layer_list for_copy) -> layer_list
-__init__(layer_list self) -> layer_list __init__(layer_list self,
-node_list for_copy) -> layer_list ";
-
-%feature("docstring")  cmf_core::layer_list::__add__ "def
-__add__(self, other) ";
-
-%feature("docstring")  cmf_core::layer_list::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::layer_list::__iadd__ "def
-__iadd__(self, other) ";
-
-%feature("docstring")  cmf_core::layer_list::__iter__ "def
-__iter__(self) ";
-
-
-// File: classcmf__core_1_1_layer_bypass.xml
-%feature("docstring") cmf_core::LayerBypass "
-
-Proxy of C++ cmf::upslope::connections::LayerBypass class. ";
-
-%feature("docstring")  cmf_core::LayerBypass::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(LayerBypass self, cmf::water::flux_node::ptr left,
-cmf::upslope::SoilLayer::ptr right, real Kmax=100., real w0=0.0, real
-beta=1.0) -> LayerBypass ";
-
-%feature("docstring")  cmf_core::LayerBypass::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::LayerBypass::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::LayerBypass::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::LayerBypass::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_layer_bypass.xml
 %feature("docstring") cmf::upslope::connections::LayerBypass "
 
@@ -9212,18 +7450,6 @@ cmf::upslope::connections::LayerBypass::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1linear__scale.xml
-%feature("docstring") cmf_core::linear_scale "
-
-Proxy of C++ cmf::water::linear_scale class. ";
-
-%feature("docstring")  cmf_core::linear_scale::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(linear_scale self, real _slope=1, real _displacement=0) ->
-linear_scale ";
-
-
 // File: classcmf_1_1water_1_1linear__scale.xml
 %feature("docstring") cmf::water::linear_scale "
 
@@ -9234,19 +7460,6 @@ C++ includes: boundary_condition.h ";
 %feature("docstring")  cmf::water::linear_scale::linear_scale "linear_scale(real _slope=1, real _displacement=0)
 
 Creates a linear scale (by default it is a unity scale, :math:`a=1; b=0`) ";
-
-
-// File: classcmf__core_1_1_linear_adsorption.xml
-%feature("docstring") cmf_core::LinearAdsorption "
-
-Proxy of C++ cmf::water::LinearAdsorption class. ";
-
-%feature("docstring")  cmf_core::LinearAdsorption::__init__ "def
-__init__(self, args)
-
-__init__(LinearAdsorption self, real K, real m) -> LinearAdsorption
-__init__(LinearAdsorption self, LinearAdsorption other) ->
-LinearAdsorption ";
 
 
 // File: classcmf_1_1water_1_1_linear_adsorption.xml
@@ -9331,30 +7544,6 @@ xf:   :math:`x_f` the dissolved tracer mass in the storage
 V:   :math:`V m^3` the water volume in the storage
 
 :math:`x_t` the total mass of the tracer ";
-
-
-// File: classcmf__core_1_1_linear_gradient_flux.xml
-%feature("docstring") cmf_core::LinearGradientFlux "
-
-Proxy of C++ cmf::water::LinearGradientFlux class. ";
-
-%feature("docstring")  cmf_core::LinearGradientFlux::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(LinearGradientFlux self, cmf::water::flux_node::ptr left,
-cmf::water::flux_node::ptr right, real Q1, real d=-1.0) ->
-LinearGradientFlux ";
-
-%feature("docstring")  cmf_core::LinearGradientFlux::__contains__ "def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::LinearGradientFlux::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::LinearGradientFlux::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::LinearGradientFlux::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1water_1_1_linear_gradient_flux.xml
@@ -9599,40 +7788,6 @@ returns the volumetric water content at a given pF value ";
 ";
 
 
-// File: classcmf__core_1_1_linear_retention.xml
-%feature("docstring") cmf_core::LinearRetention "
-
-Proxy of C++ cmf::upslope::LinearRetention class. ";
-
-%feature("docstring")  cmf_core::LinearRetention::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(LinearRetention self, real ksat, real phi, real thickness,
-real residual_wetness=0.1) -> LinearRetention ";
-
-
-// File: classcmf__core_1_1_linear_storage_connection.xml
-%feature("docstring") cmf_core::LinearStorageConnection "
-
-Proxy of C++ cmf::water::LinearStorageConnection class. ";
-
-%feature("docstring")  cmf_core::LinearStorageConnection::__init__ "def __init__(self, args, kwargs)
-
-__init__(LinearStorageConnection self, cmf::water::WaterStorage::ptr
-source, cmf::water::flux_node::ptr target, real residencetime, real
-residual=0.0) -> LinearStorageConnection ";
-
-%feature("docstring")  cmf_core::LinearStorageConnection::__contains__
-"def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::LinearStorageConnection::__getitem__
-"def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::LinearStorageConnection::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::LinearStorageConnection::__repr__ "def __repr__(self) ";
-
-
 // File: classcmf_1_1water_1_1_linear_storage_connection.xml
 %feature("docstring") cmf::water::LinearStorageConnection "
 
@@ -9766,17 +7921,6 @@ std::string short_string() const ";
 
 %feature("docstring")  cmf::water::LinearStorageConnection::to_string
 "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1log__wind__profile.xml
-%feature("docstring") cmf_core::log_wind_profile "
-
-Proxy of C++ cmf::atmosphere::log_wind_profile class. ";
-
-%feature("docstring")  cmf_core::log_wind_profile::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(log_wind_profile self, Cell _cell) -> log_wind_profile ";
 
 
 // File: classcmf_1_1atmosphere_1_1log__wind__profile.xml
@@ -9944,34 +8088,6 @@ cmf::upslope::connections::MACROlikeMacroMicroExchange::short_string "virtual st
 
 %feature("docstring")
 cmf::upslope::connections::MACROlikeMacroMicroExchange::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_m_a_c_r_olike_macro_micro_exchange.xml
-%feature("docstring") cmf_core::MACROlikeMacroMicroExchange "
-
-Proxy of C++ cmf::upslope::connections::MACROlikeMacroMicroExchange
-class. ";
-
-%feature("docstring")  cmf_core::MACROlikeMacroMicroExchange::__init__
-"def __init__(self, args, kwargs)
-
-__init__(MACROlikeMacroMicroExchange self,
-cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right,
-real _gamma_w=0.4, real _Gf=3) -> MACROlikeMacroMicroExchange ";
-
-%feature("docstring")
-cmf_core::MACROlikeMacroMicroExchange::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")
-cmf_core::MACROlikeMacroMicroExchange::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::MACROlikeMacroMicroExchange::__iter__
-"def __iter__(self) ";
-
-%feature("docstring")  cmf_core::MACROlikeMacroMicroExchange::__repr__
-"def __repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1_macro_pore.xml
@@ -10247,24 +8363,6 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
-// File: classcmf__core_1_1_macro_pore.xml
-%feature("docstring") cmf_core::MacroPore "
-
-Proxy of C++ cmf::upslope::MacroPore class. ";
-
-%feature("docstring")  cmf_core::MacroPore::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::MacroPore::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::MacroPore::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::MacroPore::fluxes "def fluxes(self,
-t) ";
-
-
 // File: classcmf_1_1river_1_1_manning.xml
 %feature("docstring") cmf::river::Manning "
 
@@ -10392,27 +8490,6 @@ std::string short_string() const ";
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_manning.xml
-%feature("docstring") cmf_core::Manning "
-
-Proxy of C++ cmf::river::Manning class. ";
-
-%feature("docstring")  cmf_core::Manning::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::Manning::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::Manning::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::Manning::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::Manning::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1river_1_1_manning___diffusive.xml
 %feature("docstring") cmf::river::Manning_Diffusive "
 
@@ -10536,31 +8613,6 @@ set_tracer_filter(solute S, real value) ";
 %feature("docstring")  cmf::river::Manning_Diffusive::to_string "virtual std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_manning___diffusive.xml
-%feature("docstring") cmf_core::Manning_Diffusive "
-
-Proxy of C++ cmf::river::Manning_Diffusive class. ";
-
-%feature("docstring")  cmf_core::Manning_Diffusive::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(Manning_Diffusive self, cmf::river::OpenWaterStorage::ptr
-left, cmf::water::flux_node::ptr right, IChannel reachtype) ->
-Manning_Diffusive ";
-
-%feature("docstring")  cmf_core::Manning_Diffusive::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::Manning_Diffusive::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::Manning_Diffusive::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::Manning_Diffusive::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1river_1_1_manning___kinematic.xml
 %feature("docstring") cmf::river::Manning_Kinematic "
 
@@ -10682,31 +8734,6 @@ set_tracer_filter(solute S, real value) ";
 %feature("docstring")  cmf::river::Manning_Kinematic::to_string "virtual std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_manning___kinematic.xml
-%feature("docstring") cmf_core::Manning_Kinematic "
-
-Proxy of C++ cmf::river::Manning_Kinematic class. ";
-
-%feature("docstring")  cmf_core::Manning_Kinematic::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(Manning_Kinematic self, cmf::river::OpenWaterStorage::ptr
-left, cmf::water::flux_node::ptr right, IChannel reachtype) ->
-Manning_Kinematic ";
-
-%feature("docstring")  cmf_core::Manning_Kinematic::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::Manning_Kinematic::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::Manning_Kinematic::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::Manning_Kinematic::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1maps_1_1_map.xml
 %feature("docstring") cmf::maps::Map "
 
@@ -10732,30 +8759,6 @@ returns default, regardless of the position given ";
 __nonzero__(self) ";
 
 %feature("docstring")  cmf::maps::Map::values "def values(self) ";
-
-
-// File: classcmf__core_1_1_matrix_infiltration.xml
-%feature("docstring") cmf_core::MatrixInfiltration "
-
-Proxy of C++ cmf::upslope::connections::MatrixInfiltration class. ";
-
-%feature("docstring")  cmf_core::MatrixInfiltration::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(MatrixInfiltration self, cmf::upslope::SoilLayer::ptr
-soilwater, cmf::water::flux_node::ptr surfacewater) ->
-MatrixInfiltration ";
-
-%feature("docstring")  cmf_core::MatrixInfiltration::__contains__ "def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::MatrixInfiltration::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::MatrixInfiltration::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::MatrixInfiltration::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_matrix_infiltration.xml
@@ -11013,19 +9016,6 @@ typecode() const ";
 V(double h) const ";
 
 
-// File: classcmf__core_1_1_mean_channel.xml
-%feature("docstring") cmf_core::MeanChannel "
-
-Proxy of C++ cmf::river::MeanChannel class. ";
-
-%feature("docstring")  cmf_core::MeanChannel::__init__ "def
-__init__(self, args)
-
-__init__(MeanChannel self, IChannel channel1, IChannel channel2) ->
-MeanChannel __init__(MeanChannel self, MeanChannel meanChannel) ->
-MeanChannel ";
-
-
 // File: classcmf_1_1atmosphere_1_1_meteorology.xml
 %feature("docstring") cmf::atmosphere::Meteorology "
 
@@ -11053,15 +9043,6 @@ Returns the height of the instruments above canopy. ";
 
 Returns the Weather at time t. Pure virtual function. Must get
 implemented by child functions. ";
-
-
-// File: classcmf__core_1_1_meteorology.xml
-%feature("docstring") cmf_core::Meteorology "
-
-Proxy of C++ cmf::atmosphere::Meteorology class. ";
-
-%feature("docstring")  cmf_core::Meteorology::__init__ "def
-__init__(self, args, kwargs) ";
 
 
 // File: classcmf_1_1atmosphere_1_1_meteo_station.xml
@@ -11133,22 +9114,6 @@ seehttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
 %feature("docstring")  cmf::atmosphere::MeteoStation::MeteoStation "MeteoStation(const cmf::atmosphere::MeteoStation &other)
 
 Copy c'tor. ";
-
-
-// File: classcmf__core_1_1_meteo_station.xml
-%feature("docstring") cmf_core::MeteoStation "
-
-Proxy of C++ cmf::atmosphere::MeteoStation class. ";
-
-%feature("docstring")  cmf_core::MeteoStation::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(MeteoStation self, MeteoStation other) -> MeteoStation ";
-
-%feature("docstring")  cmf_core::MeteoStation::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::MeteoStation::TimeseriesDictionary "def TimeseriesDictionary(self) ";
 
 
 // File: classcmf_1_1atmosphere_1_1_meteo_station_list.xml
@@ -11240,25 +9205,6 @@ the removed station. If the station is deleted, 0 is returned. ";
 Returns the number of stations. ";
 
 
-// File: classcmf__core_1_1_meteo_station_list.xml
-%feature("docstring") cmf_core::MeteoStationList "
-
-Proxy of C++ cmf::atmosphere::MeteoStationList class. ";
-
-%feature("docstring")  cmf_core::MeteoStationList::__init__ "def
-__init__(self, args)
-
-__init__(MeteoStationList self) -> MeteoStationList
-__init__(MeteoStationList self, MeteoStationList copy) ->
-MeteoStationList ";
-
-%feature("docstring")  cmf_core::MeteoStationList::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::MeteoStationList::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1atmosphere_1_1_meteo_station_reference.xml
 %feature("docstring") cmf::atmosphere::MeteoStationReference "
 
@@ -11310,72 +9256,6 @@ Returns the station referenced. ";
 cmf::atmosphere::MeteoStationReference::get_weather "cmf::atmosphere::Weather get_weather(cmf::math::Time t) const
 
 Returns the weather at the time t. ";
-
-
-// File: classcmf__core_1_1_meteo_station_reference.xml
-%feature("docstring") cmf_core::MeteoStationReference "
-
-Proxy of C++ cmf::atmosphere::MeteoStationReference class. ";
-
-%feature("docstring")  cmf_core::MeteoStationReference::__init__ "def
-__init__(self, args)
-
-__init__(MeteoStationReference self,
-cmf::atmosphere::MeteoStation::ptr station, point location) ->
-MeteoStationReference __init__(MeteoStationReference self,
-MeteoStationReference copy) -> MeteoStationReference ";
-
-
-// File: classcmf__core_1_1_multi_integrator.xml
-%feature("docstring") cmf_core::MultiIntegrator "
-
-Proxy of C++ cmf::math::MultiIntegrator class. ";
-
-%feature("docstring")  cmf_core::MultiIntegrator::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(MultiIntegrator self, Integrator template_integrator, int
-count) -> MultiIntegrator ";
-
-%feature("docstring")  cmf_core::MultiIntegrator::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::MultiIntegrator::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::MultiIntegrator::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::MultiIntegrator::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::MultiIntegrator::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_multi_integrator.xml
@@ -11530,40 +9410,6 @@ Points the iterator to the next neighbor. ";
 
 %feature("docstring")  cmf::upslope::neighbor_iterator::valid "bool
 valid() const ";
-
-
-// File: classcmf__core_1_1neighbor__iterator.xml
-%feature("docstring") cmf_core::neighbor_iterator "
-
-Proxy of C++ cmf::upslope::neighbor_iterator class. ";
-
-%feature("docstring")  cmf_core::neighbor_iterator::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(neighbor_iterator self, Cell cell) -> neighbor_iterator ";
-
-
-// File: classcmf__core_1_1_neumann_boundary.xml
-%feature("docstring") cmf_core::NeumannBoundary "
-
-Proxy of C++ cmf::water::NeumannBoundary class. ";
-
-%feature("docstring")  cmf_core::NeumannBoundary::__init__ "def
-__init__(self, args)
-
-__init__(NeumannBoundary self, project _project, timeseries _flux,
-SoluteTimeseries _concentration=cmf::water::SoluteTimeseries(), point
-loc=cmf::geometry::point()) -> NeumannBoundary
-__init__(NeumannBoundary self, project _project, point
-loc=cmf::geometry::point()) -> NeumannBoundary ";
-
-%feature("docstring")  cmf_core::NeumannBoundary::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::NeumannBoundary::connected_nodes "def connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::NeumannBoundary::fluxes "def
-fluxes(self, t) ";
 
 
 // File: classcmf_1_1water_1_1_neumann_boundary.xml
@@ -11790,59 +9636,6 @@ Returns the water balance of each vector as a vector
 Replaces slow Python code like: ";
 
 
-// File: classcmf__core_1_1_neumann_boundary__list.xml
-%feature("docstring") cmf_core::NeumannBoundary_list "
-
-Proxy of C++ cmf::water::NeumannBoundary_list class. ";
-
-%feature("docstring")  cmf_core::NeumannBoundary_list::__init__ "def
-__init__(self, args)
-
-__init__(NeumannBoundary_list self) -> NeumannBoundary_list
-__init__(NeumannBoundary_list self, node_list copy) ->
-NeumannBoundary_list __init__(NeumannBoundary_list self,
-NeumannBoundary_list copy) -> NeumannBoundary_list ";
-
-%feature("docstring")  cmf_core::NeumannBoundary_list::__getitem__ "def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::NeumannBoundary_list::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::NeumannBoundary_list::__len__ "def
-__len__(self) ";
-
-%feature("docstring")  cmf_core::NeumannBoundary_list::extend "def
-extend(self, sequence)
-
-Extends the list of Neumann boundaries with the sequence (any iterable
-will do) ";
-
-
-// File: classcmf__core_1_1_neumann_flux.xml
-%feature("docstring") cmf_core::NeumannFlux "
-
-Proxy of C++ cmf::water::NeumannFlux class. ";
-
-%feature("docstring")  cmf_core::NeumannFlux::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(NeumannFlux self, std::shared_ptr<
-cmf::water::NeumannBoundary > left, cmf::water::flux_node::ptr right)
--> NeumannFlux ";
-
-%feature("docstring")  cmf_core::NeumannFlux::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::NeumannFlux::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::NeumannFlux::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::NeumannFlux::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1water_1_1_neumann_flux.xml
 %feature("docstring") cmf::water::NeumannFlux "
 
@@ -11930,35 +9723,6 @@ std::string short_string() const ";
 
 %feature("docstring")  cmf::water::NeumannFlux::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf__core_1_1node__list.xml
-%feature("docstring") cmf_core::node_list "
-
-Proxy of C++ cmf::water::node_list class. ";
-
-%feature("docstring")  cmf_core::node_list::__init__ "def
-__init__(self, args)
-
-__init__(node_list self) -> node_list __init__(node_list self,
-node_list forcopy) -> node_list ";
-
-%feature("docstring")  cmf_core::node_list::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::node_list::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::node_list::__len__ "def
-__len__(self) ";
-
-%feature("docstring")  cmf_core::node_list::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::node_list::extend "def extend(self,
-sequence)
-
-Extends the node list with the sequence (any iterable will do) ";
 
 
 // File: classcmf_1_1water_1_1node__list.xml
@@ -12106,17 +9870,6 @@ Replaces slow Python code like: ";
 
 %feature("docstring")
 cmf::math::root_finding::not_finite_error::not_finite_error "not_finite_error(const std::string &msg) ";
-
-
-// File: classcmf__core_1_1_null_adsorption.xml
-%feature("docstring") cmf_core::NullAdsorption "
-
-Proxy of C++ cmf::water::NullAdsorption class. ";
-
-%feature("docstring")  cmf_core::NullAdsorption::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(NullAdsorption self) -> NullAdsorption ";
 
 
 // File: classcmf_1_1water_1_1_null_adsorption.xml
@@ -12517,48 +10270,6 @@ wet_area() const
 Returns the exposed surface area in m2. ";
 
 
-// File: classcmf__core_1_1_open_water_storage.xml
-%feature("docstring") cmf_core::OpenWaterStorage "
-
-Proxy of C++ cmf::river::OpenWaterStorage class. ";
-
-%feature("docstring")  cmf_core::OpenWaterStorage::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::OpenWaterStorage::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::OpenWaterStorage::connected_nodes "def connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::OpenWaterStorage::fluxes "def
-fluxes(self, t) ";
-
-
-// File: classcmf__core_1_1_oudin_e_t.xml
-%feature("docstring") cmf_core::OudinET "
-
-Proxy of C++ cmf::upslope::ET::OudinET class. ";
-
-%feature("docstring")  cmf_core::OudinET::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(OudinET self, cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target, double K1=100, double K2=5) ->
-OudinET ";
-
-%feature("docstring")  cmf_core::OudinET::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::OudinET::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::OudinET::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::OudinET::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1_e_t_1_1_oudin_e_t.xml
 %feature("docstring") cmf::upslope::ET::OudinET "
 
@@ -12660,31 +10371,6 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_penman_evaporation.xml
-%feature("docstring") cmf_core::PenmanEvaporation "
-
-Proxy of C++ cmf::upslope::ET::PenmanEvaporation class. ";
-
-%feature("docstring")  cmf_core::PenmanEvaporation::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(PenmanEvaporation self, cmf::river::OpenWaterStorage::ptr
-source, cmf::water::flux_node::ptr Evap_target, Meteorology meteo) ->
-PenmanEvaporation ";
-
-%feature("docstring")  cmf_core::PenmanEvaporation::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::PenmanEvaporation::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::PenmanEvaporation::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::PenmanEvaporation::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1_e_t_1_1_penman_evaporation.xml
 %feature("docstring") cmf::upslope::ET::PenmanEvaporation "
 
@@ -12781,30 +10467,6 @@ std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::ET::PenmanEvaporation::to_string
 "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_penman_monteith_e_t.xml
-%feature("docstring") cmf_core::PenmanMonteithET "
-
-Proxy of C++ cmf::upslope::ET::PenmanMonteithET class. ";
-
-%feature("docstring")  cmf_core::PenmanMonteithET::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(PenmanMonteithET self, cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target) -> PenmanMonteithET ";
-
-%feature("docstring")  cmf_core::PenmanMonteithET::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::PenmanMonteithET::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::PenmanMonteithET::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::PenmanMonteithET::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_penman_monteith_e_t.xml
@@ -13066,18 +10728,6 @@ typecode() const ";
 V(double h) const ";
 
 
-// File: classcmf__core_1_1_pipe_reach.xml
-%feature("docstring") cmf_core::PipeReach "
-
-Proxy of C++ cmf::river::PipeReach class. ";
-
-%feature("docstring")  cmf_core::PipeReach::__init__ "def
-__init__(self, args)
-
-__init__(PipeReach self, double l, double diameter) -> PipeReach
-__init__(PipeReach self, PipeReach copy) -> PipeReach ";
-
-
 // File: classcmf_1_1geometry_1_1point.xml
 %feature("docstring") cmf::geometry::point "
 
@@ -13149,36 +10799,6 @@ height difference times a factor.
 ";
 
 
-// File: classcmf__core_1_1point.xml
-%feature("docstring") cmf_core::point "
-
-Proxy of C++ cmf::geometry::point class. ";
-
-%feature("docstring")  cmf_core::point::__init__ "def __init__(self,
-args)
-
-__init__(point self) -> point __init__(point self, point p) -> point
-__init__(point self, double x_, double y_, double z_=0.0) -> point ";
-
-%feature("docstring")  cmf_core::point::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::point::__iter__ "def __iter__(self)
-";
-
-%feature("docstring")  cmf_core::point::__itruediv__ "def
-__itruediv__(self, args) ";
-
-%feature("docstring")  cmf_core::point::__repr__ "def __repr__(self)
-";
-
-%feature("docstring")  cmf_core::point::__setitem__ "def
-__setitem__(self, index, value) ";
-
-%feature("docstring")  cmf_core::point::__truediv__ "def
-__truediv__(self, args) ";
-
-
 // File: classcmf_1_1geometry_1_1point__vector.xml
 %feature("docstring") cmf::geometry::point_vector "
 
@@ -13204,17 +10824,6 @@ Change the point at index. ";
 size() const
 
 Return the number of points in the point_vector. ";
-
-
-// File: classcmf__core_1_1point__vector.xml
-%feature("docstring") cmf_core::point_vector "
-
-Proxy of C++ cmf::geometry::point_vector class. ";
-
-%feature("docstring")  cmf_core::point_vector::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(point_vector self, ptrdiff_t size) -> point_vector ";
 
 
 // File: classcmf_1_1maps_1_1_polygon_map.xml
@@ -13244,30 +10853,6 @@ remove(self, polygon) ";
 
 %feature("docstring")  cmf::maps::PolygonMap::values "def
 values(self) ";
-
-
-// File: classcmf__core_1_1_power_law_connection.xml
-%feature("docstring") cmf_core::PowerLawConnection "
-
-Proxy of C++ cmf::water::PowerLawConnection class. ";
-
-%feature("docstring")  cmf_core::PowerLawConnection::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(PowerLawConnection self, cmf::water::WaterStorage::ptr
-source, cmf::water::flux_node::ptr target, real Q0, real V0, real
-beta=1.0, real residual=0.0) -> PowerLawConnection ";
-
-%feature("docstring")  cmf_core::PowerLawConnection::__contains__ "def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::PowerLawConnection::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::PowerLawConnection::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::PowerLawConnection::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1water_1_1_power_law_connection.xml
@@ -13409,31 +10994,6 @@ set_tracer_filter(solute S, real value) ";
 %feature("docstring")  cmf::water::PowerLawConnection::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::water::PowerLawConnection::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_priestley_taylor_e_t.xml
-%feature("docstring") cmf_core::PriestleyTaylorET "
-
-Proxy of C++ cmf::upslope::ET::PriestleyTaylorET class. ";
-
-%feature("docstring")  cmf_core::PriestleyTaylorET::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(PriestleyTaylorET self, cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target, real alpha=1.26) ->
-PriestleyTaylorET ";
-
-%feature("docstring")  cmf_core::PriestleyTaylorET::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::PriestleyTaylorET::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::PriestleyTaylorET::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::PriestleyTaylorET::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_priestley_taylor_e_t.xml
@@ -13589,52 +11149,10 @@ h, double slope) const ";
 ";
 
 
-// File: classcmf__core_1_1_prism.xml
-%feature("docstring") cmf_core::Prism "
-
-Proxy of C++ cmf::river::Prism class. ";
-
-%feature("docstring")  cmf_core::Prism::__init__ "def __init__(self,
-args, kwargs)
-
-__init__(Prism self, double base_area, double
-thickness_of_rough_ground=0.01) -> Prism ";
-
-
-// File: classcmf__core_1_1project.xml
-%feature("docstring") cmf_core::project "
-
-Proxy of C++ cmf::project class. ";
-
-%feature("docstring")  cmf_core::project::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(project self, std::string solute_names=\"\") -> project ";
-
-%feature("docstring")  cmf_core::project::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::project::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::project::__len__ "def __len__(self)
-";
-
-%feature("docstring")  cmf_core::project::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::project::nodes "def nodes(self) ";
-
-%feature("docstring")  cmf_core::project::reaches "def reaches(self)
-";
-
-
 // File: classcmf_1_1project.xml
 %feature("docstring") cmf::project "
 
 The study area, holding all cells, outlets and streams.
-
-Todo Describe tracers
 
 C++ includes: project.h ";
 
@@ -13956,24 +11474,6 @@ z_weight:   :math:`w_z` the weight of height difference between cell and
 station ";
 
 
-// File: classcmf__core_1_1project__list__wrapper.xml
-%feature("docstring") cmf_core::project_list_wrapper "";
-
-%feature("docstring")  cmf_core::project_list_wrapper::__init__ "def
-__init__(self, getitem, getlen, name) ";
-
-%feature("docstring")  cmf_core::project_list_wrapper::__getitem__ "def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::project_list_wrapper::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::project_list_wrapper::__len__ "def
-__len__(self) ";
-
-%feature("docstring")  cmf_core::project_list_wrapper::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1geometry_1_1qtree_1_1_quadtree.xml
 %feature("docstring") cmf::geometry::qtree::Quadtree "
 
@@ -14012,30 +11512,6 @@ iterable of (object, bounds) tuples :return: ";
 Iterates through all positions in the boundaries :param bounds: The
 boundary rectangle. A 4 item sequence (xmin, ymin, xmax, ymax)
 :return: (i,j) position tuple ";
-
-
-// File: classcmf__core_1_1_rainfall.xml
-%feature("docstring") cmf_core::Rainfall "
-
-Proxy of C++ cmf::upslope::connections::Rainfall class. ";
-
-%feature("docstring")  cmf_core::Rainfall::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(Rainfall self, cmf::water::flux_node::ptr target, Cell cell,
-bool getthroughfall=True, bool getintercepted=True) -> Rainfall ";
-
-%feature("docstring")  cmf_core::Rainfall::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::Rainfall::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::Rainfall::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::Rainfall::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_rainfall.xml
@@ -14161,35 +11637,6 @@ Returns the name and the mean yearly rainfall. ";
 "void use_for_cell(cmf::upslope::Cell &c)
 
 Connects a cell with this rainfall station. ";
-
-
-// File: classcmf__core_1_1_rainfall_station.xml
-%feature("docstring") cmf_core::RainfallStation "
-
-Proxy of C++ cmf::atmosphere::RainfallStation class. ";
-
-%feature("docstring")  cmf_core::RainfallStation::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(RainfallStation self, RainfallStation copy) ->
-RainfallStation ";
-
-
-// File: classcmf__core_1_1_rainfall_station_list.xml
-%feature("docstring") cmf_core::RainfallStationList "
-
-Proxy of C++ cmf::atmosphere::RainfallStationList class. ";
-
-%feature("docstring")  cmf_core::RainfallStationList::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(RainfallStationList self) -> RainfallStationList ";
-
-%feature("docstring")  cmf_core::RainfallStationList::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::RainfallStationList::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1atmosphere_1_1_rainfall_station_list.xml
@@ -14341,22 +11788,6 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
-// File: classcmf__core_1_1_rainfall_station_reference.xml
-%feature("docstring") cmf_core::RainfallStationReference "
-
-Proxy of C++ cmf::atmosphere::RainfallStationReference class. ";
-
-%feature("docstring")  cmf_core::RainfallStationReference::__init__ "def __init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::RainfallStationReference::__repr__ "def __repr__(self) ";
-
-%feature("docstring")
-cmf_core::RainfallStationReference::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::RainfallStationReference::fluxes "def fluxes(self, t) ";
-
-
 // File: classcmf_1_1atmosphere_1_1_rain_source.xml
 %feature("docstring") cmf::atmosphere::RainSource "
 
@@ -14447,24 +11878,6 @@ t:  Time of the query
 
 Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
-
-
-// File: classcmf__core_1_1_rain_source.xml
-%feature("docstring") cmf_core::RainSource "
-
-Proxy of C++ cmf::atmosphere::RainSource class. ";
-
-%feature("docstring")  cmf_core::RainSource::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::RainSource::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::RainSource::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::RainSource::fluxes "def fluxes(self,
-t) ";
 
 
 // File: classcmf_1_1river_1_1_reach.xml
@@ -14741,59 +12154,6 @@ const
 Returns the exposed surface area in m2. ";
 
 
-// File: classcmf__core_1_1_reach.xml
-%feature("docstring") cmf_core::Reach "
-
-Proxy of C++ cmf::river::Reach class. ";
-
-%feature("docstring")  cmf_core::Reach::__init__ "def __init__(self,
-args, kwargs) ";
-
-%feature("docstring")  cmf_core::Reach::__hash__ "def __hash__(self)
-";
-
-%feature("docstring")  cmf_core::Reach::__repr__ "def __repr__(self)
-";
-
-%feature("docstring")  cmf_core::Reach::connect_to_cell "def
-connect_to_cell(self, cell, width, subsurface_connection_type=None,
-subsurface_connection_depth=None, diffusive=None)
-
-Connects a cell with this reach using Manning's equation for surface
-runoff and a given connection for subsurface interflow   - width :
-Boundary width in m  - subsurface_connection_type  : Any lateral flow
-connection type  - subsurface_connection_depth : The depth below
-ground of the deepest layer to be connected by
-subsurface_connection_type,                          default (None) =
-cell.z - reach.position.z  - diffusive: Determines if a kinematic or
-diffusive wave is to be used for surface runoff ";
-
-%feature("docstring")  cmf_core::Reach::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::Reach::fluxes "def fluxes(self, t)
-";
-
-%feature("docstring")  cmf_core::Reach::upstream "def upstream(self)
-
-Returns a list containing all reaches flowing into self ";
-
-
-// File: classcmf__core_1_1_reach_iterator.xml
-%feature("docstring") cmf_core::ReachIterator "
-
-Proxy of C++ cmf::river::ReachIterator class. ";
-
-%feature("docstring")  cmf_core::ReachIterator::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(ReachIterator self, cmf::river::Reach::ptr first) ->
-ReachIterator ";
-
-%feature("docstring")  cmf_core::ReachIterator::__iter__ "def
-__iter__(self) ";
-
-
 // File: classcmf_1_1river_1_1_reach_iterator.xml
 %feature("docstring") cmf::river::ReachIterator "
 
@@ -14827,19 +12187,6 @@ Returns the current reach. ";
 const
 
 Returns true, if reaches are left to iterate over. ";
-
-
-// File: classcmf__core_1_1_rectangular_reach.xml
-%feature("docstring") cmf_core::RectangularReach "
-
-Proxy of C++ cmf::river::RectangularReach class. ";
-
-%feature("docstring")  cmf_core::RectangularReach::__init__ "def
-__init__(self, args)
-
-__init__(RectangularReach self, double l, double width) ->
-RectangularReach __init__(RectangularReach self, RectangularReach
-copy) -> RectangularReach ";
 
 
 // File: classcmf_1_1river_1_1_rectangular_reach.xml
@@ -15061,39 +12408,6 @@ returns the volumetric water content at a given pF value ";
 
 %feature("docstring")  cmf::upslope::RetentionCurve::Wetness_pF "cmf::math::num_array Wetness_pF(const cmf::math::num_array &pF) const
 ";
-
-
-// File: classcmf__core_1_1_retention_curve.xml
-%feature("docstring") cmf_core::RetentionCurve "
-
-Proxy of C++ cmf::upslope::RetentionCurve class. ";
-
-%feature("docstring")  cmf_core::RetentionCurve::__init__ "def
-__init__(self, args, kwargs) ";
-
-
-// File: classcmf__core_1_1_richards.xml
-%feature("docstring") cmf_core::Richards "
-
-Proxy of C++ cmf::upslope::connections::Richards class. ";
-
-%feature("docstring")  cmf_core::Richards::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(Richards self, cmf::upslope::SoilLayer::ptr left,
-cmf::water::flux_node::ptr right) -> Richards ";
-
-%feature("docstring")  cmf_core::Richards::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::Richards::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::Richards::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::Richards::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_richards.xml
@@ -15357,85 +12671,6 @@ cmf::upslope::connections::Richards_lateral::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_richards__lateral.xml
-%feature("docstring") cmf_core::Richards_lateral "
-
-Proxy of C++ cmf::upslope::connections::Richards_lateral class. ";
-
-%feature("docstring")  cmf_core::Richards_lateral::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(Richards_lateral self, cmf::upslope::SoilLayer::ptr left,
-cmf::water::flux_node::ptr right, real FlowWidth=0, real Distance=0)
--> Richards_lateral ";
-
-%feature("docstring")  cmf_core::Richards_lateral::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::Richards_lateral::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::Richards_lateral::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::Richards_lateral::__repr__ "def
-__repr__(self) ";
-
-
-// File: classcmf__core_1_1_r_k_f_integrator.xml
-%feature("docstring") cmf_core::RKFIntegrator "
-
-Proxy of C++ cmf::math::RKFIntegrator class. ";
-
-%feature("docstring")  cmf_core::RKFIntegrator::__init__ "def
-__init__(self, args)
-
-__init__(RKFIntegrator self, state_list states, real epsilon=1e-9,
-Time dt_min=cmf::math::timespan(1000)) -> RKFIntegrator
-__init__(RKFIntegrator self, real epsilon=1e-9, Time
-dt_min=cmf::math::timespan(1000)) -> RKFIntegrator ";
-
-%feature("docstring")  cmf_core::RKFIntegrator::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::RKFIntegrator::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::RKFIntegrator::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::RKFIntegrator::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::RKFIntegrator::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
-
-
 // File: classcmf_1_1math_1_1_r_k_f_integrator.xml
 %feature("docstring") cmf::math::RKFIntegrator "
 
@@ -15541,14 +12776,6 @@ const ";
 %feature("docstring")  cmf::math::RKFIntegrator::to_string "std::string to_string() const override
 
 Desrcibes the iterator. ";
-
-
-// File: classcmf__core_1_1_root_uptake_stress_function.xml
-%feature("docstring") cmf_core::RootUptakeStressFunction "
-
-Proxy of C++ cmf::upslope::ET::RootUptakeStressFunction class. ";
-
-%feature("docstring")  cmf_core::RootUptakeStressFunction::__init__ "def __init__(self, args, kwargs) ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stress_function.xml
@@ -15732,30 +12959,6 @@ cmf::upslope::connections::RutterInterception::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_rutter_interception.xml
-%feature("docstring") cmf_core::RutterInterception "
-
-Proxy of C++ cmf::upslope::connections::RutterInterception class. ";
-
-%feature("docstring")  cmf_core::RutterInterception::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(RutterInterception self, cmf::water::WaterStorage::ptr
-Canopy, cmf::water::flux_node::ptr target, Cell cell) ->
-RutterInterception ";
-
-%feature("docstring")  cmf_core::RutterInterception::__contains__ "def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::RutterInterception::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::RutterInterception::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::RutterInterception::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1draw_1_1shapemap_1_1_shape_map.xml
 %feature("docstring") cmf::draw::shapemap::ShapeMap "
 
@@ -15768,18 +12971,6 @@ __init__(self, features, kwargs) ";
 
 %feature("docstring")  cmf::draw::shapemap::ShapeMap::refresh "def
 refresh(self) ";
-
-
-// File: classcmf__core_1_1_shuttleworth_wallace.xml
-%feature("docstring") cmf_core::ShuttleworthWallace "
-
-Proxy of C++ cmf::upslope::ET::ShuttleworthWallace class. ";
-
-%feature("docstring")  cmf_core::ShuttleworthWallace::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(ShuttleworthWallace self, Cell cell, bool allow_dew=True) ->
-ShuttleworthWallace ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.xml
@@ -15897,30 +13088,6 @@ add_object(self, object, bounds) ";
 get_objects(self, bounds) ";
 
 
-// File: classcmf__core_1_1_snowfall.xml
-%feature("docstring") cmf_core::Snowfall "
-
-Proxy of C++ cmf::upslope::connections::Snowfall class. ";
-
-%feature("docstring")  cmf_core::Snowfall::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(Snowfall self, cmf::water::flux_node::ptr target, Cell cell)
--> Snowfall ";
-
-%feature("docstring")  cmf_core::Snowfall::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::Snowfall::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::Snowfall::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::Snowfall::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_snowfall.xml
 %feature("docstring") cmf::upslope::connections::Snowfall "
 
@@ -16016,24 +13183,6 @@ std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::connections::Snowfall::to_string
 "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_soil_layer.xml
-%feature("docstring") cmf_core::SoilLayer "
-
-Proxy of C++ cmf::upslope::SoilLayer class. ";
-
-%feature("docstring")  cmf_core::SoilLayer::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::SoilLayer::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::SoilLayer::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::SoilLayer::fluxes "def fluxes(self,
-t) ";
 
 
 // File: classcmf_1_1upslope_1_1_soil_layer.xml
@@ -16353,17 +13502,6 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
-// File: classcmf__core_1_1solute.xml
-%feature("docstring") cmf_core::solute "
-
-Proxy of C++ cmf::water::solute class. ";
-
-%feature("docstring")  cmf_core::solute::__init__ "def __init__(self,
-args, kwargs)
-
-__init__(solute self, solute copy) -> solute ";
-
-
 // File: structcmf_1_1water_1_1solute.xml
 %feature("docstring") cmf::water::solute "
 
@@ -16373,23 +13511,6 @@ C++ includes: Solute.h ";
 
 %feature("docstring")  cmf::water::solute::solute "solute(const
 solute &copy) ";
-
-
-// File: classcmf__core_1_1solute__vector.xml
-%feature("docstring") cmf_core::solute_vector "
-
-Proxy of C++ cmf::water::solute_vector class. ";
-
-%feature("docstring")  cmf_core::solute_vector::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(solute_vector self, std::string str) -> solute_vector ";
-
-%feature("docstring")  cmf_core::solute_vector::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::solute_vector::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1water_1_1solute__vector.xml
@@ -16491,32 +13612,6 @@ Gives access to the state variable. ";
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_solute_storage.xml
-%feature("docstring") cmf_core::SoluteStorage "
-
-Proxy of C++ cmf::water::SoluteStorage class. ";
-
-%feature("docstring")  cmf_core::SoluteStorage::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::SoluteStorage::__repr__ "def
-__repr__(self) ";
-
-
-// File: classcmf__core_1_1_solute_timeseries.xml
-%feature("docstring") cmf_core::SoluteTimeseries "
-
-Proxy of C++ cmf::water::SoluteTimeseries class. ";
-
-%feature("docstring")  cmf_core::SoluteTimeseries::__init__ "def
-__init__(self, args)
-
-__init__(SoluteTimeseries self) -> SoluteTimeseries
-__init__(SoluteTimeseries self, solute_vector solutes, Time begin,
-Time step) -> SoluteTimeseries __init__(SoluteTimeseries self,
-SoluteTimeseries sts) -> SoluteTimeseries ";
-
-
 // File: classcmf_1_1water_1_1_solute_timeseries.xml
 %feature("docstring") cmf::water::SoluteTimeseries "
 
@@ -16551,61 +13646,6 @@ end() ";
 size() const
 
 Returns the number of solutes in the solution. ";
-
-
-// File: classcmf__core_1_1_solute_water_integrator.xml
-%feature("docstring") cmf_core::SoluteWaterIntegrator "
-
-Proxy of C++ cmf::math::SoluteWaterIntegrator class. ";
-
-%feature("docstring")  cmf_core::SoluteWaterIntegrator::__init__ "def
-__init__(self, args)
-
-__init__(SoluteWaterIntegrator self, solute_vector solutes, Integrator
-water_integrator, Integrator solute_integrator) ->
-SoluteWaterIntegrator __init__(SoluteWaterIntegrator self,
-solute_vector solutes, Integrator water_integrator, Integrator
-solute_integrator, state_list states) -> SoluteWaterIntegrator ";
-
-%feature("docstring")  cmf_core::SoluteWaterIntegrator::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::SoluteWaterIntegrator::__getitem__ "def __getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::SoluteWaterIntegrator::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::SoluteWaterIntegrator::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::SoluteWaterIntegrator::run "def
-run(self, start=None, end=None, step=day *1, max_errors=0,
-reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_solute_water_integrator.xml
@@ -16692,18 +13732,16 @@ variables
 
 states:  States to be added to the integrators ";
 
-%feature("docstring")
-cmf::math::SoluteWaterIntegrator::~SoluteWaterIntegrator "~SoluteWaterIntegrator() ";
-
-%feature("docstring")  cmf::math::SoluteWaterIntegrator::copy "virtual cmf::math::SoluteWaterIntegrator* copy() const
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::copy "cmf::math::SoluteWaterIntegrator* copy() const override
 
 Polymorphic copy constructor. ";
 
-%feature("docstring")  cmf::math::SoluteWaterIntegrator::integrate "int integrate(cmf::math::Time t_max, cmf::math::Time dt)
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::integrate "int integrate(cmf::math::Time t_max, cmf::math::Time dt) override
 
 Add state variables from a cmf::math::state_list. ";
 
-%feature("docstring")  cmf::math::SoluteWaterIntegrator::reset "virtual void reset()
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::reset "void
+reset() override
 
 Resets the integrators (only needed for multistep methods) ";
 
@@ -16727,27 +13765,6 @@ Creates the sparse row compressed structure from states variable list.
 
 %feature("docstring")  cmf::math::sparse_structure::generate "size_t
 generate(const cmf::math::state_list &states) ";
-
-
-// File: classcmf__core_1_1state__list.xml
-%feature("docstring") cmf_core::state_list "
-
-Proxy of C++ cmf::math::state_list class. ";
-
-%feature("docstring")  cmf_core::state_list::__init__ "def
-__init__(self, args)
-
-__init__(state_list self) -> state_list __init__(state_list self,
-state_list other) -> state_list ";
-
-%feature("docstring")  cmf_core::state_list::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::state_list::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::state_list::__nonzero__ "def
-__nonzero__(self) ";
 
 
 // File: classcmf_1_1math_1_1state__list.xml
@@ -16820,18 +13837,6 @@ Gives access to the state variable. ";
 std::string to_string() const =0 ";
 
 
-// File: classcmf__core_1_1_state_variable.xml
-%feature("docstring") cmf_core::StateVariable "
-
-Proxy of C++ cmf::math::StateVariable class. ";
-
-%feature("docstring")  cmf_core::StateVariable::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::StateVariable::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1timetools_1_1_stop_watch.xml
 %feature("docstring") cmf::timetools::StopWatch "
 
@@ -16861,27 +13866,6 @@ remaining seconds of the task ";
 restart(self)
 
 Restarts the stopwatch ";
-
-
-// File: classcmf__core_1_1stressed_e_t.xml
-%feature("docstring") cmf_core::stressedET "
-
-Proxy of C++ cmf::upslope::ET::stressedET class. ";
-
-%feature("docstring")  cmf_core::stressedET::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::stressedET::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::stressedET::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::stressedET::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::stressedET::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1stressed_e_t.xml
@@ -16994,31 +13978,6 @@ pourpoint:  The pourpoint (outlet of the subcatchment)
 area_threshold:  Minimum contributing area size to form a
 subcatchment. When area_threshold > area(cells), all upslope cells of
 pourpoint are used. ";
-
-
-// File: classcmf__core_1_1subcatchment.xml
-%feature("docstring") cmf_core::subcatchment "
-
-Proxy of C++ cmf::upslope::subcatchment class. ";
-
-%feature("docstring")  cmf_core::subcatchment::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(subcatchment self, Cell pourpoint, double
-area_threshold=1e308) -> subcatchment ";
-
-
-// File: classcmf__core_1_1_suction_stress.xml
-%feature("docstring") cmf_core::SuctionStress "
-
-Proxy of C++ cmf::upslope::ET::SuctionStress class. ";
-
-%feature("docstring")  cmf_core::SuctionStress::__init__ "def
-__init__(self, args)
-
-__init__(SuctionStress self, real P0=1e308, real P1=1e307, real P2=-5,
-real P3=-160) -> SuctionStress __init__(SuctionStress self,
-SuctionStress other) -> SuctionStress ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_suction_stress.xml
@@ -17300,48 +14259,6 @@ wet_area() const
 Returns the exposed surface area in m2. ";
 
 
-// File: classcmf__core_1_1_surface_water.xml
-%feature("docstring") cmf_core::SurfaceWater "
-
-Proxy of C++ cmf::upslope::SurfaceWater class. ";
-
-%feature("docstring")  cmf_core::SurfaceWater::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::SurfaceWater::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::SurfaceWater::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::SurfaceWater::fluxes "def
-fluxes(self, t) ";
-
-
-// File: classcmf__core_1_1_s_w__evap__from__canopy.xml
-%feature("docstring") cmf_core::SW_evap_from_canopy "
-
-Proxy of C++ cmf::upslope::ET::SW_evap_from_canopy class. ";
-
-%feature("docstring")  cmf_core::SW_evap_from_canopy::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(SW_evap_from_canopy self, cmf::water::WaterStorage::ptr
-source, cmf::water::flux_node::ptr ET_target,
-cmf::upslope::ET::ShuttleworthWallace::ptr owner) ->
-SW_evap_from_canopy ";
-
-%feature("docstring")  cmf_core::SW_evap_from_canopy::__contains__ "def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_canopy::__getitem__ "def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_canopy::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_canopy::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1_e_t_1_1_s_w__evap__from__canopy.xml
 %feature("docstring") cmf::upslope::ET::SW_evap_from_canopy "
 
@@ -17549,57 +14466,6 @@ std::string short_string() const ";
 "virtual std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_s_w__evap__from__layer.xml
-%feature("docstring") cmf_core::SW_evap_from_layer "
-
-Proxy of C++ cmf::upslope::ET::SW_evap_from_layer class. ";
-
-%feature("docstring")  cmf_core::SW_evap_from_layer::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(SW_evap_from_layer self, cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target,
-cmf::upslope::ET::ShuttleworthWallace::ptr owner) ->
-SW_evap_from_layer ";
-
-%feature("docstring")  cmf_core::SW_evap_from_layer::__contains__ "def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_layer::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_layer::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_layer::__repr__ "def
-__repr__(self) ";
-
-
-// File: classcmf__core_1_1_s_w__evap__from__snow.xml
-%feature("docstring") cmf_core::SW_evap_from_snow "
-
-Proxy of C++ cmf::upslope::ET::SW_evap_from_snow class. ";
-
-%feature("docstring")  cmf_core::SW_evap_from_snow::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(SW_evap_from_snow self, cmf::water::WaterStorage::ptr source,
-cmf::water::flux_node::ptr ET_target,
-cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_snow
-";
-
-%feature("docstring")  cmf_core::SW_evap_from_snow::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_snow::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_snow::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_snow::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1_e_t_1_1_s_w__evap__from__snow.xml
 %feature("docstring") cmf::upslope::ET::SW_evap_from_snow "
 
@@ -17696,31 +14562,6 @@ std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::ET::SW_evap_from_snow::to_string
 "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_s_w__evap__from__surfacewater.xml
-%feature("docstring") cmf_core::SW_evap_from_surfacewater "
-
-Proxy of C++ cmf::upslope::ET::SW_evap_from_surfacewater class. ";
-
-%feature("docstring")  cmf_core::SW_evap_from_surfacewater::__init__ "def __init__(self, args, kwargs)
-
-__init__(SW_evap_from_surfacewater self,
-cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr
-ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) ->
-SW_evap_from_surfacewater ";
-
-%feature("docstring")
-cmf_core::SW_evap_from_surfacewater::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")
-cmf_core::SW_evap_from_surfacewater::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_surfacewater::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_surfacewater::__repr__ "def __repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_s_w__evap__from__surfacewater.xml
@@ -17830,32 +14671,6 @@ cmf::upslope::ET::SW_evap_from_surfacewater::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_s_w__transpiration.xml
-%feature("docstring") cmf_core::SW_transpiration "
-
-Proxy of C++ cmf::upslope::ET::SW_transpiration class. ";
-
-%feature("docstring")  cmf_core::SW_transpiration::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(SW_transpiration self, cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target,
-cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_transpiration
-";
-
-%feature("docstring")  cmf_core::SW_transpiration::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::SW_transpiration::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::SW_transpiration::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::SW_transpiration::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1_e_t_1_1_s_w__transpiration.xml
 %feature("docstring") cmf::upslope::ET::SW_transpiration "
 
@@ -17951,31 +14766,6 @@ cmf::upslope::ET::SW_transpiration::short_string "virtual std::string
 short_string() const ";
 
 %feature("docstring")  cmf::upslope::ET::SW_transpiration::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_s_w_a_t_percolation.xml
-%feature("docstring") cmf_core::SWATPercolation "
-
-Proxy of C++ cmf::upslope::connections::SWATPercolation class. ";
-
-%feature("docstring")  cmf_core::SWATPercolation::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(SWATPercolation self, cmf::upslope::SoilLayer::ptr
-upperLayer, cmf::upslope::SoilLayer::ptr lowerLayer) ->
-SWATPercolation ";
-
-%feature("docstring")  cmf_core::SWATPercolation::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::SWATPercolation::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::SWATPercolation::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::SWATPercolation::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_s_w_a_t_percolation.xml
@@ -18093,20 +14883,6 @@ std::string short_string() const ";
 %feature("docstring")
 cmf::upslope::connections::SWATPercolation::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_s_w_a_t_reach_type.xml
-%feature("docstring") cmf_core::SWATReachType "
-
-Proxy of C++ cmf::river::SWATReachType class. ";
-
-%feature("docstring")  cmf_core::SWATReachType::__init__ "def
-__init__(self, args)
-
-__init__(SWATReachType self, SWATReachType copy) -> SWATReachType
-__init__(SWATReachType self, double l) -> SWATReachType
-__init__(SWATReachType self, double l, double BankWidth, double Depth)
--> SWATReachType ";
 
 
 // File: classcmf_1_1river_1_1_s_w_a_t_reach_type.xml
@@ -18300,31 +15076,6 @@ typecode() const ";
 
 %feature("docstring")  cmf::river::SWATReachType::V "virtual double
 V(double h) const ";
-
-
-// File: classcmf__core_1_1_temp_index_snow_melt.xml
-%feature("docstring") cmf_core::TempIndexSnowMelt "
-
-Proxy of C++ cmf::upslope::connections::TempIndexSnowMelt class. ";
-
-%feature("docstring")  cmf_core::TempIndexSnowMelt::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(TempIndexSnowMelt self, cmf::water::WaterStorage::ptr snow,
-cmf::water::flux_node::ptr surface_water, Cell cell, real rate=7.0) ->
-TempIndexSnowMelt ";
-
-%feature("docstring")  cmf_core::TempIndexSnowMelt::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::TempIndexSnowMelt::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::TempIndexSnowMelt::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::TempIndexSnowMelt::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_temp_index_snow_melt.xml
@@ -18604,53 +15355,6 @@ Returns the number of times this is included in t1. ";
 %feature("docstring")  cmf::math::Time::long_time_if_zero "cmf::math::Time long_time_if_zero() const ";
 
 
-// File: classcmf__core_1_1_time.xml
-%feature("docstring") cmf_core::Time "
-
-Proxy of C++ cmf::math::Time class. ";
-
-%feature("docstring")  cmf_core::Time::__init__ "def __init__(self,
-args)
-
-__init__(Time self, int day, int month, int year, int hour=0, int
-minute=0, int second=0, int ms=0) -> Time __init__(Time self, Date
-date) -> Time __init__(Time self, Time t) -> Time __init__(Time self)
--> Time __init__(Time self, long long milliseconds) -> Time ";
-
-%feature("docstring")  cmf_core::Time::__format__ "def
-__format__(self, fmt) ";
-
-%feature("docstring")  cmf_core::Time::__getstate__ "def
-__getstate__(self) ";
-
-%feature("docstring")  cmf_core::Time::__itruediv__ "def
-__itruediv__(self, args) ";
-
-%feature("docstring")  cmf_core::Time::__nonzero__ "def
-__nonzero__(self) ";
-
-%feature("docstring")  cmf_core::Time::__radd__ "def __radd__(self,
-other) ";
-
-%feature("docstring")  cmf_core::Time::__repr__ "def __repr__(self)
-";
-
-%feature("docstring")  cmf_core::Time::__rmul__ "def __rmul__(self,
-other) ";
-
-%feature("docstring")  cmf_core::Time::__setstate__ "def
-__setstate__(self, data) ";
-
-%feature("docstring")  cmf_core::Time::__truediv__ "def
-__truediv__(self, args) ";
-
-%feature("docstring")  cmf_core::Time::as_datetime "def
-as_datetime(self) ";
-
-%feature("docstring")  cmf_core::Time::as_timedelta "def
-as_timedelta(self) ";
-
-
 // File: classcmf_1_1timetools_1_1timerange.xml
 %feature("docstring") cmf::timetools::timerange "
 
@@ -18671,99 +15375,6 @@ __len__(self) ";
 
 %feature("docstring")  cmf::timetools::timerange::__repr__ "def
 __repr__(self) ";
-
-
-// File: classcmf__core_1_1timeseries.xml
-%feature("docstring") cmf_core::timeseries "
-
-Proxy of C++ cmf::math::timeseries class. ";
-
-%feature("docstring")  cmf_core::timeseries::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(timeseries self, Time begin=cmf::math::Time(), Time step=day,
-int interpolationmethod=1, size_t count=0) -> timeseries ";
-
-%feature("docstring")  cmf_core::timeseries::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::timeseries::__getstate__ "def
-__getstate__(self) ";
-
-%feature("docstring")  cmf_core::timeseries::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::timeseries::__itruediv__ "def
-__itruediv__(self, args) ";
-
-%feature("docstring")  cmf_core::timeseries::__radd__ "def
-__radd__(self, other) ";
-
-%feature("docstring")  cmf_core::timeseries::__rdiv__ "def
-__rdiv__(self, other) ";
-
-%feature("docstring")  cmf_core::timeseries::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::timeseries::__rmul__ "def
-__rmul__(self, other) ";
-
-%feature("docstring")  cmf_core::timeseries::__rsub__ "def
-__rsub__(self, other) ";
-
-%feature("docstring")  cmf_core::timeseries::__setitem__ "def
-__setitem__(self, index, value) ";
-
-%feature("docstring")  cmf_core::timeseries::__setstate__ "def
-__setstate__(self, data) ";
-
-%feature("docstring")  cmf_core::timeseries::__truediv__ "def
-__truediv__(self, args) ";
-
-%feature("docstring")  cmf_core::timeseries::extend "def extend(self,
-list)
-
-Adds the values of a sequence to the timeseries ";
-
-%feature("docstring")  cmf_core::timeseries::from_buffer "def
-from_buffer(cls, buf) ";
-
-%feature("docstring")  cmf_core::timeseries::from_file "def
-from_file(cls, f)
-
-Loads a timeseries saved with to_file from a file  Description of the
-file layout: byte:  0   Number of (int64) 8   Begin of timeseries (in
-ms since 31.12.1899 00:00) (int64) 16  Step size of timeseries (in ms)
-(int64) 24  Interpolation power (int64) 32  First value of timeseries
-(float64) ";
-
-%feature("docstring")  cmf_core::timeseries::from_sequence "def
-from_sequence(cls, begin, step, sequence, interpolation_mode=1) ";
-
-%feature("docstring")  cmf_core::timeseries::iter_time "def
-iter_time(self)
-
-Returns an iterator to iterate over each timestep ";
-
-%feature("docstring")  cmf_core::timeseries::to_buffer "def
-to_buffer(self)
-
-Returns a binary buffer filled with the data of self ";
-
-%feature("docstring")  cmf_core::timeseries::to_file "def
-to_file(self, f)
-
-Saves a timeseries in a special binary format. The format consists of
-4 integers with 64 bit, indicating the milliseconds after the
-31.12.1899 00:00 of the beginning of the timeseries, the milliseconds
-of the time step, the interpolation power and the number of values.
-The following 64 bit floats, are the values of the timeseries ";
-
-%feature("docstring")  cmf_core::timeseries::to_pandas "def
-to_pandas(self)
-
-Returns the timeseries as a pandas Series object :return: A
-pandas.Series object with the timesteps as index ";
 
 
 // File: classcmf_1_1math_1_1timeseries.xml
@@ -19067,31 +15678,6 @@ set_tracer_filter(solute S, real value) ";
 %feature("docstring")  cmf::upslope::ET::timeseriesETpot::to_string "virtual std::string to_string() const ";
 
 
-// File: classcmf__core_1_1timeseries_e_tpot.xml
-%feature("docstring") cmf_core::timeseriesETpot "
-
-Proxy of C++ cmf::upslope::ET::timeseriesETpot class. ";
-
-%feature("docstring")  cmf_core::timeseriesETpot::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(timeseriesETpot self, cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target, timeseries ETpot_values) ->
-timeseriesETpot ";
-
-%feature("docstring")  cmf_core::timeseriesETpot::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::timeseriesETpot::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::timeseriesETpot::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::timeseriesETpot::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1atmosphere_1_1_timeseries_rain_source.xml
 %feature("docstring") cmf::atmosphere::TimeseriesRainSource "
 
@@ -19205,24 +15791,6 @@ t:  Time of the query
 
 Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
-
-
-// File: classcmf__core_1_1_timeseries_rain_source.xml
-%feature("docstring") cmf_core::TimeseriesRainSource "
-
-Proxy of C++ cmf::atmosphere::TimeseriesRainSource class. ";
-
-%feature("docstring")  cmf_core::TimeseriesRainSource::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::TimeseriesRainSource::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::TimeseriesRainSource::connected_nodes
-"def connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::TimeseriesRainSource::fluxes "def
-fluxes(self, t) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_t_o_p_model_flow.xml
@@ -19367,31 +15935,6 @@ cmf::upslope::connections::TOPModelFlow::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_t_o_p_model_flow.xml
-%feature("docstring") cmf_core::TOPModelFlow "
-
-Proxy of C++ cmf::upslope::connections::TOPModelFlow class. ";
-
-%feature("docstring")  cmf_core::TOPModelFlow::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(TOPModelFlow self, cmf::upslope::SoilLayer::ptr left,
-cmf::water::flux_node::ptr right, real T0, real m, real flowwidth,
-real distance=0) -> TOPModelFlow ";
-
-%feature("docstring")  cmf_core::TOPModelFlow::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::TOPModelFlow::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::TOPModelFlow::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::TOPModelFlow::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_topographic_gradient_darcy.xml
 %feature("docstring")
 cmf::upslope::connections::TopographicGradientDarcy "
@@ -19531,30 +16074,6 @@ cmf::upslope::connections::TopographicGradientDarcy::short_string "virtual std::
 cmf::upslope::connections::TopographicGradientDarcy::to_string "virtual std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_topographic_gradient_darcy.xml
-%feature("docstring") cmf_core::TopographicGradientDarcy "
-
-Proxy of C++ cmf::upslope::connections::TopographicGradientDarcy
-class. ";
-
-%feature("docstring")  cmf_core::TopographicGradientDarcy::__init__ "def __init__(self, args, kwargs)
-
-__init__(TopographicGradientDarcy self, cmf::upslope::SoilLayer::ptr
-left, cmf::water::flux_node::ptr right, real FlowWidth, real
-Distance=0) -> TopographicGradientDarcy ";
-
-%feature("docstring")
-cmf_core::TopographicGradientDarcy::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::TopographicGradientDarcy::__getitem__
-"def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::TopographicGradientDarcy::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::TopographicGradientDarcy::__repr__ "def __repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1_topology.xml
 %feature("docstring") cmf::upslope::Topology "
 
@@ -19601,15 +16120,6 @@ Returns the number of neighbors. ";
 RemoveNeighbor(Topology &target)
 
 Removes the topological relation to the given cell. ";
-
-
-// File: classcmf__core_1_1_topology.xml
-%feature("docstring") cmf_core::Topology "
-
-Proxy of C++ cmf::upslope::Topology class. ";
-
-%feature("docstring")  cmf_core::Topology::__init__ "def
-__init__(self, args, kwargs) ";
 
 
 // File: classcmf_1_1river_1_1_triangular_reach.xml
@@ -19739,19 +16249,6 @@ typecode() const ";
 V(double h) const ";
 
 
-// File: classcmf__core_1_1_triangular_reach.xml
-%feature("docstring") cmf_core::TriangularReach "
-
-Proxy of C++ cmf::river::TriangularReach class. ";
-
-%feature("docstring")  cmf_core::TriangularReach::__init__ "def
-__init__(self, args)
-
-__init__(TriangularReach self, double l, double bankSlope=2) ->
-TriangularReach __init__(TriangularReach self, TriangularReach copy)
--> TriangularReach ";
-
-
 // File: classcmf_1_1upslope_1_1_e_t_1_1_turc_e_t.xml
 %feature("docstring") cmf::upslope::ET::TurcET "
 
@@ -19858,30 +16355,6 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 
 %feature("docstring")  cmf::upslope::ET::TurcET::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_turc_e_t.xml
-%feature("docstring") cmf_core::TurcET "
-
-Proxy of C++ cmf::upslope::ET::TurcET class. ";
-
-%feature("docstring")  cmf_core::TurcET::__init__ "def __init__(self,
-args, kwargs)
-
-__init__(TurcET self, cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target) -> TurcET ";
-
-%feature("docstring")  cmf_core::TurcET::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::TurcET::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::TurcET::__iter__ "def __iter__(self)
-";
-
-%feature("docstring")  cmf_core::TurcET::__repr__ "def __repr__(self)
-";
 
 
 // File: classcmf_1_1upslope_1_1_van_genuchten_mualem.xml
@@ -20128,40 +16601,6 @@ returns the volumetric water content at a given pF value ";
 ";
 
 
-// File: classcmf__core_1_1_van_genuchten_mualem.xml
-%feature("docstring") cmf_core::VanGenuchtenMualem "
-
-Proxy of C++ cmf::upslope::VanGenuchtenMualem class. ";
-
-%feature("docstring")  cmf_core::VanGenuchtenMualem::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(VanGenuchtenMualem self, real Ksat=15, real phi=0.5, real
-alpha=0.2178, real n=1.211, real m=-1, real theta_r=0.0, real w0=0.99)
--> VanGenuchtenMualem ";
-
-%feature("docstring")  cmf_core::VanGenuchtenMualem::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::VanGenuchtenMualem::__str__ "def
-__str__(self) ";
-
-
-// File: classcmf__core_1_1_vegetation.xml
-%feature("docstring") cmf_core::Vegetation "
-
-Proxy of C++ cmf::upslope::vegetation::Vegetation class. ";
-
-%feature("docstring")  cmf_core::Vegetation::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(Vegetation self, double _LAI=2.88, double _Height=0.12,
-double _RootDepth=0.25, double _StomatalResistance=100, double
-_albedo=0.23, double _CanopyClosure=1, double
-_CanopyCapacityPerLAI=0.1, double _fraction_at_rootdepth=1.0) ->
-Vegetation ";
-
-
 // File: classcmf_1_1upslope_1_1vegetation_1_1_vegetation.xml
 %feature("docstring") cmf::upslope::vegetation::Vegetation "
 
@@ -20253,30 +16692,6 @@ q(double h, double slope) const ";
 V(double h) const ";
 
 
-// File: classcmf__core_1_1volume__height__function.xml
-%feature("docstring") cmf_core::volume_height_function "
-
-Proxy of C++ cmf::river::volume_height_function class. ";
-
-%feature("docstring")  cmf_core::volume_height_function::__init__ "def __init__(self, args)
-
-__init__(volume_height_function self, volume_height_function for_copy)
--> volume_height_function __init__(volume_height_function self,
-IVolumeHeightFunction for_copy) -> volume_height_function ";
-
-
-// File: classcmf__core_1_1_volume_stress.xml
-%feature("docstring") cmf_core::VolumeStress "
-
-Proxy of C++ cmf::upslope::ET::VolumeStress class. ";
-
-%feature("docstring")  cmf_core::VolumeStress::__init__ "def
-__init__(self, args)
-
-__init__(VolumeStress self, real V1, real V0) -> VolumeStress
-__init__(VolumeStress self, VolumeStress other) -> VolumeStress ";
-
-
 // File: classcmf_1_1upslope_1_1_e_t_1_1_volume_stress.xml
 %feature("docstring") cmf::upslope::ET::VolumeStress "
 
@@ -20322,30 +16737,6 @@ Tpot:  Potential Transpiration in mm/day (for the full profile)
 Actual flux from layer in m3/day ";
 
 %feature("docstring")  cmf::upslope::ET::VolumeStress::to_string "std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_waterbalance_flux.xml
-%feature("docstring") cmf_core::WaterbalanceFlux "
-
-Proxy of C++ cmf::water::WaterbalanceFlux class. ";
-
-%feature("docstring")  cmf_core::WaterbalanceFlux::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(WaterbalanceFlux self, cmf::water::flux_node::ptr source,
-cmf::water::flux_node::ptr target) -> WaterbalanceFlux ";
-
-%feature("docstring")  cmf_core::WaterbalanceFlux::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::WaterbalanceFlux::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::WaterbalanceFlux::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::WaterbalanceFlux::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1water_1_1_waterbalance_flux.xml
@@ -20445,27 +16836,6 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 %feature("docstring")  cmf::water::WaterbalanceFlux::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::water::WaterbalanceFlux::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_water_storage.xml
-%feature("docstring") cmf_core::WaterStorage "
-
-Proxy of C++ cmf::water::WaterStorage class. ";
-
-%feature("docstring")  cmf_core::WaterStorage::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(WaterStorage self, project project, std::string const &
-Name=\"\", double InitialState=0, double scale=1) -> WaterStorage ";
-
-%feature("docstring")  cmf_core::WaterStorage::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::WaterStorage::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::WaterStorage::fluxes "def
-fluxes(self, t) ";
 
 
 // File: classcmf_1_1water_1_1_water_storage.xml
@@ -20732,25 +17102,6 @@ calculated ";
 %feature("docstring")  cmf::atmosphere::Weather::to_string "std::string to_string() const
 
 Returns a string representation. ";
-
-
-// File: classcmf__core_1_1_weather.xml
-%feature("docstring") cmf_core::Weather "
-
-Proxy of C++ cmf::atmosphere::Weather class. ";
-
-%feature("docstring")  cmf_core::Weather::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(Weather self, double T=15.0, double Tmax=17.0, double
-Tmin=13.0, double rH=70.0, double wind=2.0, double sunshine=0.5,
-double Rs=15, double Ra=30, double daylength=12) -> Weather ";
-
-%feature("docstring")  cmf_core::Weather::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::Weather::__str__ "def __str__(self)
-";
 
 
 // File: structcmf_1_1upslope_1_1_soil_layer_1_1wet.xml
@@ -21374,9 +17725,6 @@ external_control_connection exists. ";
 
 
 // File: _weather_8h.xml
-
-
-// File: cmf__core_8py.xml
 
 
 // File: geometry_8h.xml

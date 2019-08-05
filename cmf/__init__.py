@@ -22,8 +22,8 @@ from .describe import describe
 from .timetools import StopWatch, datetime_to_cmf, timerange
 
 
-__version__ = '2.0.0b2.diffusive_singularity_i75'
-__compiletime__ = 'Mon Aug  5 11:24:15 2019'
+__version__ = '2.0.0b2.cmf2'
+__compiletime__ = 'Mon Aug  5 16:10:10 2019'
 
 from .cmf_core import connect_cells_with_flux as __ccwf
 
