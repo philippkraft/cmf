@@ -30,7 +30,7 @@ from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import customize_compiler
 from distutils.command.build_py import build_py
 
-version = '2.0.0b2'
+version = '2.0.0b3'
 
 branchversion = version
 try:
