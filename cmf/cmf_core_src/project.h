@@ -41,7 +41,7 @@ namespace cmf {
         double diffusive_slope_singularity_protection=1e-4;
 
         /// @brief Allows the cmf::upslope::connections::Richards_lateral connection for faster flow in lower regions.
-        bool richards_lateral_base_flow=true;
+        bool richards_lateral_base_flow=false;
 
     };
 
