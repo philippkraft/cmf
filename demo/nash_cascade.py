@@ -7,7 +7,7 @@ import os
 
 def load_hourly_rainfall():
 
-    ts = pd.read_csv('data/hourly_rainfall_giessen', parse_dates=[0], index_col=0).iloc[:, 0]
+    ts = pd.read_csv('data/hourly_rainfall_giessen.csv', parse_dates=[0], index_col=0).iloc[:, 0]
     return cmf.timeseries.from_pandas(ts, True)
 
 
@@ -21,18 +21,21 @@ class Model(cmf.project):
         self.connection_type = connection
         self.outlet = self.NewStorage('outlet', 0, 0, 0)
 
-    def run(self, solvertype):
-        solver = solvertype(self)
-        ts = cmf.timeseries.from_sequence(
-            self.tstart, self.dt,
-            [self.outlet(t) for t in
-             solver.run(self.tstart, self.tend, self.dt)])
-        return ts.to_pandas(), solver
+    def run(self, solver, tstart=None, tend=None, dt=None, *, verbose=False):
+        tstart = tstart or self.tstart
+        tend = tend or self.tend
+        dt = dt or self.dt
+        for t in solver.run(tstart, tend, dt):
+            o = self.outlet(t)
+            if verbose:
+                print(f'{t:%Y-%m-%d %H} {o*1000:12.5g} l/day')
+            yield t.as_datetime(), o
 
     def initialize(self, startvol=1.0):
         for c in self:
             for stor in c.layers:
                 stor.wetness = startvol
+        return self
 
     def create_cell(self, x, y, z):
         c = self.NewCell(x, y, z, 1, False)
@@ -47,6 +50,29 @@ class Model(cmf.project):
                 if con not in cons and not str(con).startswith('waterbalance'):
                     cons.append(con)
         return cons
+
+    @property
+    def rainfall(self):
+        if self.rainfall_stations:
+            return self.rainfall_stations[0].data
+        else:
+            return None
+
+    @rainfall.setter
+    def rainfall(self, rain_ts: cmf.timeseries):
+        if not self.rainfall_stations:
+            self.rainfall_stations.add(str(self), rain_ts, self.outlet.position)
+        else:
+            self.rainfall_stations[0].data = rain_ts
+        self.use_nearest_rainfall()
+        self.tstart = rain_ts.begin
+        self.tend = rain_ts.end
+        self.dt = rain_ts.step
+
+    def set_rainfall(self, rain_ts: cmf.timeseries):
+        self.rainfall = rain_ts
+        return self
+
 
     def __repr__(self):
         return '{}({}, N={}, C={})'.format(
