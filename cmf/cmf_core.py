@@ -262,7 +262,7 @@ _cmf_core.point_vector_swigregister(point_vector)
 
 
 import datetime
-import struct
+
 
 minimum = _cmf_core.minimum
 maximum = _cmf_core.maximum
@@ -670,87 +670,6 @@ class timeseries(object):
         res*=other
         return res
 
-    def iter_time(self):
-        """
-        Returns an iterator to iterate over each timestep
-        """
-        for i in range(len(self)):
-            yield self.begin + self.step * i
-
-    def to_buffer(self):
-        """Returns a binary buffer filled with the data of self"""
-        return struct.pack('qqqq{}d'.format(self.size()), self.size(), self.begin.AsMilliseconds(),self.step.AsMilliseconds(),self.interpolationpower(), *self)
-
-    def to_file(self,f):
-        """ Saves a timeseries in a special binary format.
-        The format consists of 4 integers with 64 bit, indicating the milliseconds after the 31.12.1899 00:00 of the beginning of the timeseries, the milliseconds of the time step,
-        the interpolation power and the number of values. The following 64 bit floats, are the values of the timeseries
-        """
-        if isinstance(f,str):
-            f=open(f,'wb')
-        elif not hasattr(f,'write'):
-            raise TypeError("The file f must be either an object providing a write method, like a file, or a valid file name")
-        f.write(self.to_buffer())
-
-    def __getstate__(self):
-        return dict(size=len(self),
-                    begin=self.begin.AsMilliseconds(),
-                    step=self.step.AsMilliseconds(),
-                    interpolationpower=self.interpolationpower(),
-                    values=self.as_array()
-                    )
-
-    def __setstate__(self, data):
-        begin = ms * data['begin']
-        step = ms * data['step']
-        self.__init__(begin, step, data['interpolationpower'])
-        self.extend(data['values'])
-
-    def to_pandas(self):
-        """
-        Returns the timeseries as a pandas Series object
-        :return: A pandas.Series object with the timesteps as index
-        """
-        import pandas as pd
-        import numpy as np
-
-        return pd.Series(data=self.as_array(),index=(t.as_datetime() for t in self.iter_time()))
-
-    @classmethod
-    def from_sequence(cls, begin, step, sequence, interpolation_mode=1):
-        res=cls(begin,step,interpolation_mode)
-        res.extend(sequence)
-        return res
-
-    @classmethod
-    def from_buffer(cls,buf):
-        import numpy as np
-        header_length=struct.calcsize('qqqq')
-        header=struct.unpack('qqqq',buf[:header_length])
-        res=cls(header[1]*ms,header[2]*ms,header[3])
-        res.extend(np.fromstring(buf[header_length:], dtype=float))
-        return res
-
-    @classmethod
-    def from_file(cls,f):
-        """ Loads a timeseries saved with to_file from a file 
-        Description of the file layout:
-        byte: 
-        0   Number of (int64)
-        8   Begin of timeseries (in ms since 31.12.1899 00:00) (int64)
-        16  Step size of timeseries (in ms) (int64)
-        24  Interpolation power (int64)
-        32  First value of timeseries (float64)
-        """
-        if isinstance(f,str):
-            f=open(f,'rb')
-        elif not hasattr(f,'read'):
-            raise TypeError("The file f must either implement a 'read' method, like a file, or must be a vild file name")
-        header_length=struct.calcsize('qqqq') 
-        header=struct.unpack('qqqq',f.read(header_length))
-        res=cls(header[1]*ms,header[2]*ms,header[3])
-        res.extend(struct.unpack('%id' % header[0],f.read(-1)))
-        return res
 
     __swig_destroy__ = _cmf_core.delete_timeseries
 
@@ -1954,9 +1873,9 @@ class ConstantFlux(flux_connection):
 
         target:  The target of the water
 
-        maximum_flux:  The requested flux :math:`q_{0}`
+        maximum_flux:  The requested flux :math:`q_{0} [\\frac{m^3}{day}]`
 
-        minimal_state:  Minimal volume of stored water in source
+        minimal_state:  Minimal volume of stored water in source in :math:`[m^3]`
 
         flux_decrease_time:  ( cmf::math::Time) 
         """
@@ -6755,7 +6674,14 @@ class project_list_wrapper:
 
 
 class _Options(object):
-    r"""Proxy of C++ cmf::_Options class."""
+    r"""
+
+
+    Holds global options for specific cmf behaviour, accessbile via
+    cmf.options.
+
+    C++ includes: project.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -6775,8 +6701,6 @@ class project(object):
 
 
     The study area, holding all cells, outlets and streams.
-
-    Todo Describe tracers
 
     C++ includes: project.h 
     """
