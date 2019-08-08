@@ -78672,9 +78672,9 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"target:  The target of the water\n"
 		"\n"
-		"maximum_flux:  The requested flux :math:`q_{0}`\n"
+		"maximum_flux:  The requested flux :math:`q_{0} [\\\\frac{m^3}{day}]`\n"
 		"\n"
-		"minimal_state:  Minimal volume of stored water in source\n"
+		"minimal_state:  Minimal volume of stored water in source in :math:`[m^3]`\n"
 		"\n"
 		"flux_decrease_time:  ( cmf::math::Time) \n"
 		""},
@@ -82842,7 +82842,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "CVodeBase_copy", _wrap_CVodeBase_copy, METH_O, "\n"
 		"CVodeBase_copy(CVodeBase self) -> CVodeBase\n"
 		"CVodeBase* copy()\n"
-		"const\n"
+		"const override=0\n"
 		"\n"
 		"Returns a copy of the solver. \n"
 		""},
@@ -82874,7 +82874,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_CVodeBase", _wrap_delete_CVodeBase, METH_O, "\n"
 		"delete_CVodeBase(CVodeBase self)\n"
 		"~CVodeBase()\n"
-		"\n"
+		"override \n"
 		""},
 	 { "CVodeBase_swigregister", CVodeBase_swigregister, METH_O, NULL},
 	 { "new_CVodeDense", _wrap_new_CVodeDense, METH_VARARGS, "\n"
@@ -82884,8 +82884,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "CVodeDense_copy", _wrap_CVodeDense_copy, METH_O, "\n"
 		"CVodeDense_copy(CVodeDense self) -> CVodeDense\n"
-		"CVodeBase* copy()\n"
-		"const\n"
+		"cmf::math::CVodeDense* copy() const override\n"
 		"\n"
 		"Returns a copy of the solver. \n"
 		""},
@@ -82899,8 +82898,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "CVodeAdams_copy", _wrap_CVodeAdams_copy, METH_O, "\n"
 		"CVodeAdams_copy(CVodeAdams self) -> CVodeAdams\n"
-		"CVodeBase* copy()\n"
-		"const\n"
+		"cmf::math::CVodeAdams* copy() const override\n"
 		"\n"
 		"Returns a copy of the solver. \n"
 		""},
@@ -82917,8 +82915,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "CVodeBanded_copy", _wrap_CVodeBanded_copy, METH_O, "\n"
 		"CVodeBanded_copy(CVodeBanded self) -> CVodeBanded\n"
-		"CVodeBase*\n"
-		"copy() const\n"
+		"cmf::math::CVodeBanded* copy() const override\n"
 		"\n"
 		"Returns a copy of the solver. \n"
 		""},
@@ -82932,8 +82929,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "CVodeDiag_copy", _wrap_CVodeDiag_copy, METH_O, "\n"
 		"CVodeDiag_copy(CVodeDiag self) -> CVodeDiag\n"
-		"CVodeBase* copy()\n"
-		"const\n"
+		"cmf::math::CVodeDiag* copy() const\n"
 		"\n"
 		"Returns a copy of the solver. \n"
 		""},
@@ -82951,8 +82947,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "CVodeKrylov_copy", _wrap_CVodeKrylov_copy, METH_O, "\n"
 		"CVodeKrylov_copy(CVodeKrylov self) -> CVodeKrylov\n"
-		"CVodeBase*\n"
-		"copy() const\n"
+		"cmf::math::CVodeKrylov* copy() const\n"
 		"\n"
 		"Returns a copy of the solver. \n"
 		""},
@@ -82967,10 +82962,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "CVodeKLU_copy", _wrap_CVodeKLU_copy, METH_O, "\n"
 		"CVodeKLU_copy(CVodeKLU self) -> CVodeKLU\n"
-		"CVodeBase* copy()\n"
-		"const\n"
-		"\n"
-		"Returns a copy of the solver. \n"
+		"cmf::math::CVodeKLU* copy() const override \n"
 		""},
 	 { "delete_CVodeKLU", _wrap_delete_CVodeKLU, METH_O, "delete_CVodeKLU(CVodeKLU self)"},
 	 { "CVodeKLU_swigregister", CVodeKLU_swigregister, METH_O, NULL},
@@ -83001,7 +82993,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "MultiIntegrator_swiginit", MultiIntegrator_swiginit, METH_VARARGS, NULL},
 	 { "SoluteWaterIntegrator_copy", _wrap_SoluteWaterIntegrator_copy, METH_O, "\n"
 		"SoluteWaterIntegrator_copy(SoluteWaterIntegrator self) -> SoluteWaterIntegrator\n"
-		"virtual cmf::math::SoluteWaterIntegrator* copy() const\n"
+		"cmf::math::SoluteWaterIntegrator* copy() const override\n"
 		"\n"
 		"Polymorphic copy constructor. \n"
 		""},
@@ -83027,10 +83019,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"states:  States to be added to the integrators \n"
 		""},
-	 { "delete_SoluteWaterIntegrator", _wrap_delete_SoluteWaterIntegrator, METH_O, "\n"
-		"delete_SoluteWaterIntegrator(SoluteWaterIntegrator self)\n"
-		"~SoluteWaterIntegrator() \n"
-		""},
+	 { "delete_SoluteWaterIntegrator", _wrap_delete_SoluteWaterIntegrator, METH_O, "delete_SoluteWaterIntegrator(SoluteWaterIntegrator self)"},
 	 { "SoluteWaterIntegrator_swigregister", SoluteWaterIntegrator_swigregister, METH_O, NULL},
 	 { "SoluteWaterIntegrator_swiginit", SoluteWaterIntegrator_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -84526,9 +84515,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"\n"
 		"target:  The target of the water\n"
 		"\n"
-		"maximum_flux:  The requested flux :math:`q_{0}`\n"
+		"maximum_flux:  The requested flux :math:`q_{0} [\\\\frac{m^3}{day}]`\n"
 		"\n"
-		"minimal_state:  Minimal volume of stored water in source\n"
+		"minimal_state:  Minimal volume of stored water in source in :math:`[m^3]`\n"
 		"\n"
 		"flux_decrease_time:  ( cmf::math::Time) \n"
 		""},
@@ -88696,7 +88685,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "CVodeBase_copy", _wrap_CVodeBase_copy, METH_O, "\n"
 		"copy(CVodeBase self) -> CVodeBase\n"
 		"CVodeBase* copy()\n"
-		"const\n"
+		"const override=0\n"
 		"\n"
 		"Returns a copy of the solver. \n"
 		""},
@@ -88728,7 +88717,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_CVodeBase", _wrap_delete_CVodeBase, METH_O, "\n"
 		"delete_CVodeBase(CVodeBase self)\n"
 		"~CVodeBase()\n"
-		"\n"
+		"override \n"
 		""},
 	 { "CVodeBase_swigregister", CVodeBase_swigregister, METH_O, NULL},
 	 { "new_CVodeDense", _wrap_new_CVodeDense, METH_VARARGS, "\n"
@@ -88738,8 +88727,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "CVodeDense_copy", _wrap_CVodeDense_copy, METH_O, "\n"
 		"copy(CVodeDense self) -> CVodeDense\n"
-		"CVodeBase* copy()\n"
-		"const\n"
+		"cmf::math::CVodeDense* copy() const override\n"
 		"\n"
 		"Returns a copy of the solver. \n"
 		""},
@@ -88753,8 +88741,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "CVodeAdams_copy", _wrap_CVodeAdams_copy, METH_O, "\n"
 		"copy(CVodeAdams self) -> CVodeAdams\n"
-		"CVodeBase* copy()\n"
-		"const\n"
+		"cmf::math::CVodeAdams* copy() const override\n"
 		"\n"
 		"Returns a copy of the solver. \n"
 		""},
@@ -88771,8 +88758,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "CVodeBanded_copy", _wrap_CVodeBanded_copy, METH_O, "\n"
 		"copy(CVodeBanded self) -> CVodeBanded\n"
-		"CVodeBase*\n"
-		"copy() const\n"
+		"cmf::math::CVodeBanded* copy() const override\n"
 		"\n"
 		"Returns a copy of the solver. \n"
 		""},
@@ -88786,8 +88772,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "CVodeDiag_copy", _wrap_CVodeDiag_copy, METH_O, "\n"
 		"copy(CVodeDiag self) -> CVodeDiag\n"
-		"CVodeBase* copy()\n"
-		"const\n"
+		"cmf::math::CVodeDiag* copy() const\n"
 		"\n"
 		"Returns a copy of the solver. \n"
 		""},
@@ -88805,8 +88790,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "CVodeKrylov_copy", _wrap_CVodeKrylov_copy, METH_O, "\n"
 		"copy(CVodeKrylov self) -> CVodeKrylov\n"
-		"CVodeBase*\n"
-		"copy() const\n"
+		"cmf::math::CVodeKrylov* copy() const\n"
 		"\n"
 		"Returns a copy of the solver. \n"
 		""},
@@ -88821,10 +88805,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "CVodeKLU_copy", _wrap_CVodeKLU_copy, METH_O, "\n"
 		"copy(CVodeKLU self) -> CVodeKLU\n"
-		"CVodeBase* copy()\n"
-		"const\n"
-		"\n"
-		"Returns a copy of the solver. \n"
+		"cmf::math::CVodeKLU* copy() const override \n"
 		""},
 	 { "delete_CVodeKLU", _wrap_delete_CVodeKLU, METH_O, "delete_CVodeKLU(CVodeKLU self)"},
 	 { "CVodeKLU_swigregister", CVodeKLU_swigregister, METH_O, NULL},
@@ -88855,7 +88836,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "MultiIntegrator_swiginit", MultiIntegrator_swiginit, METH_VARARGS, NULL},
 	 { "SoluteWaterIntegrator_copy", _wrap_SoluteWaterIntegrator_copy, METH_O, "\n"
 		"copy(SoluteWaterIntegrator self) -> SoluteWaterIntegrator\n"
-		"virtual cmf::math::SoluteWaterIntegrator* copy() const\n"
+		"cmf::math::SoluteWaterIntegrator* copy() const override\n"
 		"\n"
 		"Polymorphic copy constructor. \n"
 		""},
@@ -88881,10 +88862,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"\n"
 		"states:  States to be added to the integrators \n"
 		""},
-	 { "delete_SoluteWaterIntegrator", _wrap_delete_SoluteWaterIntegrator, METH_O, "\n"
-		"delete_SoluteWaterIntegrator(SoluteWaterIntegrator self)\n"
-		"~SoluteWaterIntegrator() \n"
-		""},
+	 { "delete_SoluteWaterIntegrator", _wrap_delete_SoluteWaterIntegrator, METH_O, "delete_SoluteWaterIntegrator(SoluteWaterIntegrator self)"},
 	 { "SoluteWaterIntegrator_swigregister", SoluteWaterIntegrator_swigregister, METH_O, NULL},
 	 { "SoluteWaterIntegrator_swiginit", SoluteWaterIntegrator_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
