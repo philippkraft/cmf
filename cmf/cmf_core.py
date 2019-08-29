@@ -93,6 +93,39 @@ class _SwigNonDynamicMeta(type):
     __setattr__ = _swig_setattr_nondynamic_class_variable(type.__setattr__)
 
 
+import weakref
+
+class SwigPyIterator(object):
+    r"""Proxy of C++ swig::SwigPyIterator class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _cmf_core.delete_SwigPyIterator
+    value = _swig_new_instance_method(_cmf_core.SwigPyIterator_value)
+    incr = _swig_new_instance_method(_cmf_core.SwigPyIterator_incr)
+    decr = _swig_new_instance_method(_cmf_core.SwigPyIterator_decr)
+    distance = _swig_new_instance_method(_cmf_core.SwigPyIterator_distance)
+    equal = _swig_new_instance_method(_cmf_core.SwigPyIterator_equal)
+    copy = _swig_new_instance_method(_cmf_core.SwigPyIterator_copy)
+    next = _swig_new_instance_method(_cmf_core.SwigPyIterator_next)
+    __next__ = _swig_new_instance_method(_cmf_core.SwigPyIterator___next__)
+    previous = _swig_new_instance_method(_cmf_core.SwigPyIterator_previous)
+    advance = _swig_new_instance_method(_cmf_core.SwigPyIterator_advance)
+    __eq__ = _swig_new_instance_method(_cmf_core.SwigPyIterator___eq__)
+    __ne__ = _swig_new_instance_method(_cmf_core.SwigPyIterator___ne__)
+    __iadd__ = _swig_new_instance_method(_cmf_core.SwigPyIterator___iadd__)
+    __isub__ = _swig_new_instance_method(_cmf_core.SwigPyIterator___isub__)
+    __add__ = _swig_new_instance_method(_cmf_core.SwigPyIterator___add__)
+    __sub__ = _swig_new_instance_method(_cmf_core.SwigPyIterator___sub__)
+    def __iter__(self):
+        return self
+
+# Register SwigPyIterator in _cmf_core:
+_cmf_core.SwigPyIterator_swigregister(SwigPyIterator)
+
 SHARED_PTR_DISOWN = _cmf_core.SHARED_PTR_DISOWN
 
 get_parallel_threads = _cmf_core.get_parallel_threads
@@ -1059,7 +1092,7 @@ class solute_vector(object):
         for i in range(len(self)):
             yield self[i]
     def __repr__(self):
-        return str([s.Name for s in self])
+        return repr([s.Name for s in self])
 
     __swig_destroy__ = _cmf_core.delete_solute_vector
 
@@ -1095,6 +1128,290 @@ class SoluteTimeseries(object):
 
 # Register SoluteTimeseries in _cmf_core:
 _cmf_core.SoluteTimeseries_swigregister(SoluteTimeseries)
+
+class _List_solute_reaction_ptr(object):
+    r"""Proxy of C++ cmf::List< cmf::water::SoluteReaction::ptr > class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    append = _swig_new_instance_method(_cmf_core._List_solute_reaction_ptr_append)
+    extend = _swig_new_instance_method(_cmf_core._List_solute_reaction_ptr_extend)
+    __getitem = _swig_new_instance_method(_cmf_core._List_solute_reaction_ptr___getitem)
+    clear = _swig_new_instance_method(_cmf_core._List_solute_reaction_ptr_clear)
+    size = _swig_new_instance_method(_cmf_core._List_solute_reaction_ptr_size)
+
+    def __init__(self, *args):
+        r"""
+        __init__(_List_solute_reaction_ptr self) -> _List_solute_reaction_ptr
+        __init__(_List_solute_reaction_ptr self, _List_solute_reaction_ptr other) -> _List_solute_reaction_ptr
+        """
+        _cmf_core._List_solute_reaction_ptr_swiginit(self, _cmf_core.new__List_solute_reaction_ptr(*args))
+    __swig_destroy__ = _cmf_core.delete__List_solute_reaction_ptr
+
+# Register _List_solute_reaction_ptr in _cmf_core:
+_cmf_core._List_solute_reaction_ptr_swigregister(_List_solute_reaction_ptr)
+
+class SoluteReaction(object):
+    r"""Proxy of C++ cmf::water::SoluteReaction class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    get_flux = _swig_new_instance_method(_cmf_core.SoluteReaction_get_flux)
+    __call__ = _swig_new_instance_method(_cmf_core.SoluteReaction___call__)
+    to_string = _swig_new_instance_method(_cmf_core.SoluteReaction_to_string)
+    __swig_destroy__ = _cmf_core.delete_SoluteReaction
+
+    def __repr__(self): 
+        return self.to_string()
+
+
+    def __init__(self, *args, **kwargs):
+        r"""__init__(SoluteReaction self) -> SoluteReaction"""
+        if self.__class__ == SoluteReaction:
+            _self = None
+        else:
+            _self = self
+        _cmf_core.SoluteReaction_swiginit(self, _cmf_core.new_SoluteReaction(_self, *args, **kwargs))
+    def __disown__(self):
+        self.this.disown()
+        _cmf_core.disown_SoluteReaction(self)
+        return weakref.proxy(self)
+
+# Register SoluteReaction in _cmf_core:
+_cmf_core.SoluteReaction_swigregister(SoluteReaction)
+
+class SoluteConstantFluxReaction(SoluteReaction):
+    r"""Proxy of C++ cmf::water::SoluteConstantFluxReaction class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    flux = property(_cmf_core.SoluteConstantFluxReaction_flux_get, _cmf_core.SoluteConstantFluxReaction_flux_set, doc=r"""flux : real""")
+
+    def __init__(self, *args, **kwargs):
+        r"""
+        __init__(SoluteConstantFluxReaction self, real f) -> SoluteConstantFluxReaction
+        SoluteConstantFluxReaction(real f) 
+        """
+        _cmf_core.SoluteConstantFluxReaction_swiginit(self, _cmf_core.new_SoluteConstantFluxReaction(*args, **kwargs))
+
+    def __repr__(self): 
+        return self.to_string()
+
+    __swig_destroy__ = _cmf_core.delete_SoluteConstantFluxReaction
+
+# Register SoluteConstantFluxReaction in _cmf_core:
+_cmf_core.SoluteConstantFluxReaction_swigregister(SoluteConstantFluxReaction)
+
+class SoluteDecayReaction(SoluteReaction):
+    r"""Proxy of C++ cmf::water::SoluteDecayReaction class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    decay = property(_cmf_core.SoluteDecayReaction_decay_get, _cmf_core.SoluteDecayReaction_decay_set, doc=r"""decay : real""")
+
+    def __init__(self, *args, **kwargs):
+        r"""
+        __init__(SoluteDecayReaction self, real d) -> SoluteDecayReaction
+        SoluteDecayReaction(real d) 
+        """
+        _cmf_core.SoluteDecayReaction_swiginit(self, _cmf_core.new_SoluteDecayReaction(*args, **kwargs))
+
+    def __repr__(self): 
+        return self.to_string()
+
+    __swig_destroy__ = _cmf_core.delete_SoluteDecayReaction
+
+# Register SoluteDecayReaction in _cmf_core:
+_cmf_core.SoluteDecayReaction_swigregister(SoluteDecayReaction)
+
+class SoluteEquilibriumReaction(SoluteReaction):
+    r"""
+
+
+    An equilibrium reaction between two solutes A<->B.
+
+
+
+    .. math::
+
+         A \\rightleftharpoons B 
+
+
+
+    .. math::
+
+        \\frac{d[B]}{dt} = -\\frac{d[A]}{dt} = k_{AB} [A] - k_{BA}
+        [B] 
+
+    C++ includes: SoluteStorage.h 
+    """
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    A = property(_cmf_core.SoluteEquilibriumReaction_A_get, _cmf_core.SoluteEquilibriumReaction_A_set, doc=r"""A : cmf::water::solute""")
+    B = property(_cmf_core.SoluteEquilibriumReaction_B_get, _cmf_core.SoluteEquilibriumReaction_B_set, doc=r"""B : cmf::water::solute""")
+    k_ab = property(_cmf_core.SoluteEquilibriumReaction_k_ab_get, _cmf_core.SoluteEquilibriumReaction_k_ab_set, doc=r"""k_ab : real""")
+    k_ba = property(_cmf_core.SoluteEquilibriumReaction_k_ba_get, _cmf_core.SoluteEquilibriumReaction_k_ba_set, doc=r"""k_ba : real""")
+
+    def __init__(self, *args, **kwargs):
+        r"""
+        __init__(SoluteEquilibriumReaction self, solute A, solute B, real k_ab, real k_ba) -> SoluteEquilibriumReaction
+        SoluteEquilibriumReaction(const solute &A, const solute &B, real k_ab,
+        real k_ba)
+
+        Creates a solute equilibrium reaction A<->B. 
+        """
+        _cmf_core.SoluteEquilibriumReaction_swiginit(self, _cmf_core.new_SoluteEquilibriumReaction(*args, **kwargs))
+
+    def __repr__(self): 
+        return self.to_string()
+
+    __swig_destroy__ = _cmf_core.delete_SoluteEquilibriumReaction
+
+# Register SoluteEquilibriumReaction in _cmf_core:
+_cmf_core.SoluteEquilibriumReaction_swigregister(SoluteEquilibriumReaction)
+
+class Solute1stOrderReaction(SoluteReaction):
+    r"""
+
+
+    A solute reaction of 1st order kinetics (linear decline to product)
+    A->B.
+
+
+
+    .. math::
+
+         A \\rightarrow B 
+
+
+
+    .. math::
+
+        \\frac{d[B]}{dt} = -\\frac{d[A]}{dt} = k [A]
+
+    Where A is the educt and B is the product.
+
+    C++ includes: SoluteStorage.h 
+    """
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    A = property(_cmf_core.Solute1stOrderReaction_A_get, _cmf_core.Solute1stOrderReaction_A_set, doc=r"""A : cmf::water::solute""")
+    B = property(_cmf_core.Solute1stOrderReaction_B_get, _cmf_core.Solute1stOrderReaction_B_set, doc=r"""B : cmf::water::solute""")
+    k = property(_cmf_core.Solute1stOrderReaction_k_get, _cmf_core.Solute1stOrderReaction_k_set, doc=r"""k : real""")
+
+    def __init__(self, *args, **kwargs):
+        r"""
+        __init__(Solute1stOrderReaction self, solute A, solute B, real k) -> Solute1stOrderReaction
+        Solute1stOrderReaction(const solute &A, const solute &B, real k) 
+        """
+        _cmf_core.Solute1stOrderReaction_swiginit(self, _cmf_core.new_Solute1stOrderReaction(*args, **kwargs))
+
+    def __repr__(self): 
+        return self.to_string()
+
+    __swig_destroy__ = _cmf_core.delete_Solute1stOrderReaction
+
+# Register Solute1stOrderReaction in _cmf_core:
+_cmf_core.Solute1stOrderReaction_swigregister(Solute1stOrderReaction)
+
+class Solute2ndOrderReaction(SoluteReaction):
+    r"""
+
+
+    A solute reaction of 2nd order kinetics A + B -> C.
+
+
+
+    .. math::
+
+         A + B \\rightarrow C 
+
+
+
+    .. math::
+
+        \\frac{d[C]}{dt} =
+        -\\frac{d[A]}{dt} = -\\frac{d[B]}{dt} = k [A] [B]
+
+    Where A and B are the educts and C is the product. For a 2nd order
+    reaction of a single educt A just write:
+
+    C++ includes: SoluteStorage.h 
+    """
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    A = property(_cmf_core.Solute2ndOrderReaction_A_get, _cmf_core.Solute2ndOrderReaction_A_set, doc=r"""A : cmf::water::solute""")
+    B = property(_cmf_core.Solute2ndOrderReaction_B_get, _cmf_core.Solute2ndOrderReaction_B_set, doc=r"""B : cmf::water::solute""")
+    C = property(_cmf_core.Solute2ndOrderReaction_C_get, _cmf_core.Solute2ndOrderReaction_C_set, doc=r"""C : cmf::water::solute""")
+    k = property(_cmf_core.Solute2ndOrderReaction_k_get, _cmf_core.Solute2ndOrderReaction_k_set, doc=r"""k : real""")
+
+    def __init__(self, *args, **kwargs):
+        r"""
+        __init__(Solute2ndOrderReaction self, solute A, solute B, solute C, real k) -> Solute2ndOrderReaction
+        Solute2ndOrderReaction(const solute &A, const solute &B, const solute
+        &C, real k)
+
+        Creates a 2nd order kinetic reaction. 
+        """
+        _cmf_core.Solute2ndOrderReaction_swiginit(self, _cmf_core.new_Solute2ndOrderReaction(*args, **kwargs))
+
+    def __repr__(self): 
+        return self.to_string()
+
+    __swig_destroy__ = _cmf_core.delete_Solute2ndOrderReaction
+
+# Register Solute2ndOrderReaction in _cmf_core:
+_cmf_core.Solute2ndOrderReaction_swigregister(Solute2ndOrderReaction)
+
+class SoluteReactionList(_List_solute_reaction_ptr):
+    r"""Proxy of C++ cmf::water::SoluteReactionList class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    get_flux = _swig_new_instance_method(_cmf_core.SoluteReactionList_get_flux)
+    to_string = _swig_new_instance_method(_cmf_core.SoluteReactionList_to_string)
+
+    def __init__(self, *args):
+        r"""
+        __init__(SoluteReactionList self) -> SoluteReactionList
+        __init__(SoluteReactionList self, SoluteReactionList other) -> SoluteReactionList
+        """
+        _cmf_core.SoluteReactionList_swiginit(self, _cmf_core.new_SoluteReactionList(*args))
+
+    def __repr__(self): 
+        return self.to_string()
+
+    __len__ = _swig_new_instance_method(_cmf_core.SoluteReactionList___len__)
+
+    def __iter__(self):
+        for i in range(len(self)):
+            yield self[i]
+
+    def __getitem__(list_obj, index):
+
+        if isinstance(index,slice):
+            res = type(list_obj)()
+            for i in range(*index.indices(len(list_obj))):
+                res.append(list_obj.__getitem(i))
+            return res
+        else:
+            try:
+                it=iter(index)
+                res = type(list_obj)()
+                for o in it:
+                    res.append(list_obj.__getitem(o))
+                return res
+            except:
+                return list_obj.__getitem(index)
+
+
+    __swig_destroy__ = _cmf_core.delete_SoluteReactionList
+
+# Register SoluteReactionList in _cmf_core:
+_cmf_core.SoluteReactionList_swigregister(SoluteReactionList)
 
 class SoluteStorage(StateVariable):
     r"""
@@ -1132,11 +1449,11 @@ class SoluteStorage(StateVariable):
         raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
     set_adsorption = _swig_new_instance_method(_cmf_core.SoluteStorage_set_adsorption)
-    decay = property(_cmf_core.SoluteStorage_decay_get, _cmf_core.SoluteStorage_decay_set, doc=r"""decay : real""")
-    source = property(_cmf_core.SoluteStorage_source_get, _cmf_core.SoluteStorage_source_set, doc=r"""source : real""")
+    reactions = property(_cmf_core.SoluteStorage_reactions_get, _cmf_core.SoluteStorage_reactions_set, doc=r"""reactions : cmf::water::SoluteReactionList""")
     Solute = property(_cmf_core.SoluteStorage_Solute_get, doc=r"""Solute : r.q(const).cmf::water::solute""")
     get_water = _swig_new_instance_method(_cmf_core.SoluteStorage_get_water)
     add_connected_states = _swig_new_instance_method(_cmf_core.SoluteStorage_add_connected_states)
+    reactive_flux = _swig_new_instance_method(_cmf_core.SoluteStorage_reactive_flux)
     conc = property(_cmf_core.SoluteStorage_conc_get, _cmf_core.SoluteStorage_conc_set, doc=r"""conc : real""")
 
     def __repr__(self): 
@@ -2040,7 +2357,6 @@ class node_list(object):
     global_water_balance = _swig_new_instance_method(_cmf_core.node_list_global_water_balance)
     water_balance = _swig_new_instance_method(_cmf_core.node_list_water_balance)
     conc = _swig_new_instance_method(_cmf_core.node_list_conc)
-    set_solute_source = _swig_new_instance_method(_cmf_core.node_list_set_solute_source)
     get_fluxes_to = _swig_new_instance_method(_cmf_core.node_list_get_fluxes_to)
     get_fluxes3d_to = _swig_new_instance_method(_cmf_core.node_list_get_fluxes3d_to)
     get_fluxes3d = _swig_new_instance_method(_cmf_core.node_list_get_fluxes3d)

@@ -77,24 +77,21 @@ real SoluteStorage::dxdt( const cmf::math::Time& time )
 {
  	// Sums up the fluxes as water fluxes (mol/day)
 	
-	connection_list connections=m_water->get_connections();
 	real inflow=0, outflow=0;
-	for (connection_list::iterator it = connections.begin();it!=connections.end();++it)
+	for (const auto& con: m_water->get_connections())
 	{
-		flux_connection& con=**it;
-		real q=con.q(*m_water,time);
+		real q=con->q(*m_water,time);
 		if (q>0)
 		{
-			inflow += q * con.conc(time,Solute);
+			inflow += q * con->conc(time,Solute);
 		}
 		else if (q<0)
 		{
-			outflow += q * con.conc(time,Solute);
+			outflow += q * con->conc(time,Solute);
 		}
 	}
-	real source_term = source;
-	real decay_term = this->get_state() * decay;
-	return inflow + outflow + source_term - decay_term;
+	real reactive_flux = this->reactive_flux(time);
+	return inflow + outflow + reactive_flux;
 }
 
 real SoluteStorage::get_conc() const
@@ -126,3 +123,110 @@ void cmf::water::SoluteStorage::set_conc( real NewConcentration )
 	
 
 }
+
+real SoluteStorage::reactive_flux(const cmf::math::Time &time) const {
+    real result = 0.0;
+    for (const auto& r: reactions) {
+        result += r->get_flux(*this , time);
+    }
+    return result;
+
+    // return this->reactions.get_flux(*this, time);
+}
+
+real SoluteDecayReaction::get_flux(const SoluteStorage &solute_storage, const cmf::math::Time &t) const {
+    return - decay * solute_storage.get_state();
+}
+
+SoluteDecayReaction::SoluteDecayReaction(real d) {
+    this->decay = d;
+}
+
+std::string SoluteDecayReaction::to_string() const {
+    return "linear decay reaction k=" + std::to_string(decay) + " 1/day";
+}
+
+real SoluteConstantFluxReaction::get_flux(const SoluteStorage &solute_storage, const cmf::math::Time &t) const {
+    return flux;
+}
+
+SoluteConstantFluxReaction::SoluteConstantFluxReaction(real f) {
+    this->flux = f;
+}
+
+std::string SoluteConstantFluxReaction::to_string() const {
+    return "constant solute flux reaction f=" + std::to_string(flux) + " (mol | g)/day";
+}
+
+
+real SoluteEquilibriumReaction::get_flux(const SoluteStorage &solute_storage, const cmf::math::Time &t) const {
+    auto water_storage = solute_storage.get_water();
+    real vol = water_storage.get_volume();
+    real a_conc = water_storage[A].get_conc();
+    real b_conc = water_storage[B].get_conc();
+
+    if (solute_storage.Solute == A) {
+        return (- k_ab * a_conc + k_ba * b_conc) * vol;
+    } else if (solute_storage.Solute == B) {
+        return (+ k_ab * a_conc - k_ba * b_conc) * vol;
+    } else {
+        return 0.0;
+    }
+
+}
+
+std::string SoluteEquilibriumReaction::to_string() const {
+    return "equilibirum reaction [" + A.Name + "]<->[" + B.Name + "]";
+}
+
+real Solute1stOrderReaction::get_flux(const SoluteStorage &solute_storage, const cmf::math::Time &t) const {
+    auto water_storage = solute_storage.get_water();
+    real vol = water_storage.get_volume();
+    real a_conc = water_storage[A].get_conc();
+    if (solute_storage.Solute == A) {
+        return (- k * a_conc) * vol;
+    } else if (solute_storage.Solute == B) {
+        return (+ k * a_conc ) * vol;
+    } else {
+        return 0.0;
+    }
+}
+
+std::string Solute1stOrderReaction::to_string() const {
+    return "1st order reaction [" + A.Name + "]->[" + B.Name + "]";
+}
+
+real Solute2ndOrderReaction::get_flux(const SoluteStorage &solute_storage, const cmf::math::Time &t) const {
+    auto water_storage = solute_storage.get_water();
+    real vol = water_storage.get_volume();
+    real a_conc = water_storage[A].get_conc();
+    real b_conc = water_storage[B].get_conc();
+    if (solute_storage.Solute == A) {
+        return (- k * a_conc * b_conc) * vol;
+    } else if (solute_storage.Solute == B) {
+        return (- k * a_conc * b_conc) * vol;
+    } else if (solute_storage.Solute == C) {
+        return (+ k * a_conc * b_conc) * vol;
+    } else {
+        return 0.0;
+    }
+}
+
+std::string Solute2ndOrderReaction::to_string() const {
+    return "2nd order reaction [" + A.Name + "] + [" + B.Name + "]->[" + C.Name + "]";
+}
+
+real SoluteReactionList::get_flux(const SoluteStorage &solute_storage, const cmf::math::Time &t) const {
+    real result = 0.0;
+    for (const auto& r : *this) {
+        result += r->get_flux(solute_storage, t);
+    }
+    return result;
+}
+/*
+SoluteReactionList::SoluteReactionList(std::initializer_list<SoluteReaction::ptr> l)
+        : SoluteReactionVector(l)
+{
+
+}
+*/

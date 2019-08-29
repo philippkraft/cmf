@@ -181,6 +181,18 @@ Included macros:
     	}
     }
 }
+%typemap(in) LISTTYPE* (LISTTYPE temp_list) {
+    if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor, SWIG_POINTER_EXCEPTION) == -1) {
+        int conversion_errors = 0;
+        int res = iterable_to_list<ITEMTYPE, LISTTYPE>($input,$descriptor(ITEMTYPE*), temp_list, &conversion_errors);
+        if (SWIG_IsOK(res)) {
+            $1 = &temp_list;
+        } else {
+            SWIG_exception_fail(SWIG_TypeError,"Only iterables can be converted to LISTTYPE");
+        }
+    }
+}
+
 %typemap(typecheck,precedence=0) LISTTYPE& {
 	$1 = is_listtype_or_iterable($input,$1_descriptor);
 }
@@ -233,22 +245,22 @@ Included macros:
         for i in range(len(self)):
             yield self[i]
 
-    def __getitem__(list_obj, index):
+    def __getitem__(self, index):
 
         if isinstance(index,slice):
             res = type(list_obj)()
             for i in range(*index.indices(len(list_obj))):
-                res.append(list_obj.__getitem(i))
+                res.append(self.__getitem(i))
             return res
         else:
             try:
                 it=iter(index)
                 res = type(list_obj)()
                 for o in it:
-                    res.append(list_obj.__getitem(o))
+                    res.append(self.__getitem(o))
                 return res
             except:
-                return list_obj.__getitem(index)
+                return self.__getitem(index)
 
 }}
 %enddef

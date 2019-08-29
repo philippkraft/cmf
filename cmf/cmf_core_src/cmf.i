@@ -25,7 +25,7 @@
 
 // Include typemaps for STL
 %include "std_string.i"
-
+%include "std_vector.i"
 // enable exception support
 %include "exception.i"
 %exception {
@@ -63,13 +63,20 @@ std::string pyrepr(PyObject* o) {
 %}
 
 // Start my Module
-%module cmf_core
+%module(directors="1") cmf_core
 %include "math/num_array.i"
 %include "math/geometry.i"
 %include "math/time.i"
 
 %include "math/ODEsystem.i"
 
+%rename(__getitem) *::operator[];
+%{
+    #include "list.h"
+%}
+%include "list.h"
+
+%include "water/solute.i"
 %include "water/water.i"
 %include "atmosphere/meteorology.i"
 %include "upslope/cell.i"

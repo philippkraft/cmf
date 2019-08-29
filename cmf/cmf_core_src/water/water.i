@@ -18,8 +18,6 @@
 //   
 
 
-%shared_ptr(cmf::water::SoluteStorage);
-
 %shared_ptr(cmf::water::flux_node);
 %shared_ptr(cmf::water::WaterStorage);
 %shared_ptr(cmf::water::DirichletBoundary);
@@ -30,57 +28,11 @@
 %shared_ptr(cmf::water::flux_integrator);
 
 %{
-	// Include Water
-	#include "water/Solute.h"
-	#include "water/SoluteStorage.h"
 	#include "water/WaterStorage.h"
 	#include "water/flux_connection.h"
     #include "water/boundary_condition.h"
     #include "water/simple_connections.h"
 %}
-// Include Water
-%include "water/adsorption.h"
-%include "water/Solute.h"
-%extend cmf::water::solute { 
-    std::string __repr__() { return "[" + $self->Name + "]"; }
-}
-%extend cmf::water::solute_vector
-{
-	cmf::water::solute* __getitem__(int i)
-	{
-		return $self->get_solute(i);
-	}
-	size_t __len__() { return $self->size();}
-	%pythoncode
-	{
-    def __iter__(self):
-        for i in range(len(self)):
-            yield self[i]
-    def __repr__(self):
-        return str([s.Name for s in self])
-	}
-}
-%extend cmf::water::SoluteTimeseries
-{
-	cmf::math::timeseries& __getitem__(const cmf::water::solute& solute)
-	{
-		return (*$self)[solute];
-	}
-	void __setitem__(const cmf::water::solute& solute,cmf::math::timeseries concentration)
-	{
-		(*$self)[solute]=concentration;
-	}
-	size_t __len__() const
-	{
-		return $self->size();
-	}
-}
-
-%attribute(cmf::water::SoluteStorage, real, conc, get_conc, set_conc);
-
-%include "water/SoluteStorage.h"
-%extend__repr__(cmf::water::SoluteStorage);
-
 
 // flux_connection and Node
 %feature("ref") cmf::water::flux_connection ""

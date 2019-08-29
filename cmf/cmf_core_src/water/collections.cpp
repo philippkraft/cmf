@@ -140,26 +140,6 @@ cmf::math::num_array cmf::water::node_list::conc( cmf::math::Time t, const cmf::
 	return res;
 }
 
-ptrdiff_t cmf::water::node_list::set_solute_source( const cmf::water::solute& _Solute, cmf::math::num_array source_fluxes)
-{
-	if (size()!=source_fluxes.size())
-		throw std::out_of_range("Size of solute source array does not fit the size of the node_list");
-	ptrdiff_t ok_count=size();
-#pragma omp parallel for
-	for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
-	{
-		cmf::water::WaterStorage* storage=dynamic_cast<cmf::water::WaterStorage*>(m_nodes[i].get());
-		if (storage)
-		{
-			storage->Solute(_Solute).source = source_fluxes[i];
-		}
-		else
-			--ok_count;
-	}
-	return ok_count;
-
-}
-
 
 void cmf::water::node_list::append( flux_node::ptr node )
 {

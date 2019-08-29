@@ -23,7 +23,7 @@
 #include "../math/geometry.h"
 #include "../math/num_array.h"
 namespace cmf {
-	namespace water {
+    namespace water {
 
 		/// @brief A collection of nodes for fast access of the waterbalance
 		///
@@ -114,8 +114,6 @@ namespace cmf {
 			/// @brief Returns an array holding the concentration of all the flux nodes for the given solute
 			cmf::math::num_array conc(cmf::math::Time t, const cmf::water::solute& _Solute) const;
 			
-			/// @brief Sets the source flux of a solute storage associated  with a node (node has to be a water storage)
-			ptrdiff_t set_solute_source(const cmf::water::solute& _Solute, cmf::math::num_array source_fluxes);
 
 			/// @brief A fast method to perform flux queries as a batch. The node lists left and right should have the same length.
 			///
