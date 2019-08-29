@@ -212,8 +212,10 @@ Included macros:
             }
             Py_DECREF(iter);
             return 1;
+        } else {
+            PyErr_Clear();
         }
-        else if (PySlice_Check(item)) {
+        if (PySlice_Check(item)) {
             Py_ssize_t start, stop, step;
             PySlice_GetIndices(item, source.size(), &start, &stop, &step);
             for (Py_ssize_t i=start; i<stop; i+=step) {
@@ -278,8 +280,8 @@ PyObject* __getitem__(PyObject* item) {
         ITEMTYPE obj = (*result)[0];
         delete result;
         return SWIG_NewPointerObj(
-            &obj,
-            $descriptor(ITEMTYPE), 
+            new ITEMTYPE(obj),
+            $descriptor(ITEMTYPE*),
             SWIG_POINTER_OWN);
     }
     else  {
