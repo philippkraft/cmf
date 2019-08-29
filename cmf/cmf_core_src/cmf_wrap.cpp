@@ -3321,8 +3321,14 @@ namespace Swig {
 #define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__const_iterator swig_types[211]
 #define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__iterator swig_types[212]
 #define SWIGTYPE_p_swig__SwigPyIterator swig_types[213]
-static swig_type_info *swig_types[215];
-static swig_module_info swig_module = {swig_types, 214, 0, 0, 0, 0};
+#define SWIGTYPE_std__shared_ptrT_cmf__water__Solute1stOrderReaction_t swig_types[214]
+#define SWIGTYPE_std__shared_ptrT_cmf__water__Solute2ndOrderReaction_t swig_types[215]
+#define SWIGTYPE_std__shared_ptrT_cmf__water__SoluteConstantFluxReaction_t swig_types[216]
+#define SWIGTYPE_std__shared_ptrT_cmf__water__SoluteDecayReaction_t swig_types[217]
+#define SWIGTYPE_std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_t swig_types[218]
+#define SWIGTYPE_std__shared_ptrT_cmf__water__SoluteReaction_t swig_types[219]
+static swig_type_info *swig_types[221];
+static swig_module_info swig_module = {swig_types, 220, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3986,6 +3992,41 @@ SWIGINTERNINLINE PyObject*
     }
 
 
+    template<typename _listtype>
+    int list_getitem_from_index(const _listtype& source, PyObject* item, _listtype& target) {
+        PyObject* iter = PyObject_GetIter(item);
+        if (iter) {
+            while (PyObject* py_item = PyIter_Next(iter)) {
+                Py_ssize_t index = PyLong_AsSsize_t(py_item);
+                Py_DECREF(py_item);
+                if (PyErr_Occurred()) return 0;
+                target.append(source[index]);
+            }
+            Py_DECREF(iter);
+            return 1;
+        }
+        else if (PySlice_Check(item)) {
+            Py_ssize_t start, stop, step;
+            PySlice_GetIndices(item, source.size(), &start, &stop, &step);
+            for (Py_ssize_t i=start; i<stop; i+=step) {
+                target.append(source[i]);
+            }
+            return 1;
+        }
+        else if (PyLong_Check(item)) {
+            Py_ssize_t i = PyLong_AsSsize_t(item);
+            target.append(source[i]);
+            return 1;
+        }
+        else {
+            SWIG_Error(SWIG_ValueError, "Index for item assessment must be either int, sequence or slice");
+            return 0;
+        }
+        
+        
+    }
+
+
 std::string pyrepr(PyObject* o) {
 	PyObject* s = PyObject_Repr(o);
 	#if PY_MAJOR_VERSION < 3
@@ -4551,9 +4592,29 @@ struct SWIG_null_deleter {
 
 #define SWIG_NO_NULL_DELETER_SWIG_BUILTIN_INIT
 
-SWIGINTERN size_t cmf_water_SoluteReactionList___len__(cmf::water::SoluteReactionList const *self){
-        return self->size();
+SWIGINTERN PyObject *cmf_water_SoluteReactionList___getitem__(cmf::water::SoluteReactionList *self,PyObject *item){
+    cmf::water::SoluteReactionList* result = new cmf::water::SoluteReactionList();
+    int res=list_getitem_from_index(*self, item, *result);
+    if (res == 0 || result->size() == 0) {
+        delete result;
+        Py_RETURN_NONE;
     }
+    if (result->size() == 1) {
+        cmf::water::SoluteReaction::ptr obj = (*result)[0];
+        delete result;
+        return SWIG_NewPointerObj(
+            &obj,
+            SWIGTYPE_std__shared_ptrT_cmf__water__SoluteReaction_t, 
+            SWIG_POINTER_OWN);
+    }
+    else  {
+        return SWIG_NewPointerObj(
+            result, 
+            SWIGTYPE_p_cmf__water__SoluteReactionList, 
+            SWIG_POINTER_OWN);
+    }
+    
+}
 
 	#include "water/WaterStorage.h"
 	#include "water/flux_connection.h"
@@ -17659,7 +17720,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_state_list___getitem(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_state_list__getitem(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::math::state_list *arg1 = (cmf::math::state_list *) 0 ;
   ptrdiff_t arg2 ;
@@ -17674,15 +17735,15 @@ SWIGINTERN PyObject *_wrap_state_list___getitem(PyObject *SWIGUNUSEDPARM(self), 
   };
   cmf::math::StateVariable::ptr result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:state_list___getitem", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:state_list__getitem", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__math__state_list, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "state_list___getitem" "', argument " "1"" of type '" "cmf::math::state_list const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "state_list__getitem" "', argument " "1"" of type '" "cmf::math::state_list const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::state_list * >(argp1);
   ecode2 = SWIG_AsVal_ptrdiff_t(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "state_list___getitem" "', argument " "2"" of type '" "ptrdiff_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "state_list__getitem" "', argument " "2"" of type '" "ptrdiff_t""'");
   } 
   arg2 = static_cast< ptrdiff_t >(val2);
   {
@@ -20777,7 +20838,7 @@ SWIGINTERN PyObject *SoluteTimeseries_swiginit(PyObject *SWIGUNUSEDPARM(self), P
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap__List_solute_reaction_ptr_append(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap__SoluteReactionListBase_append(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::List< cmf::water::SoluteReaction::ptr > *arg1 = (cmf::List< cmf::water::SoluteReaction::ptr > *) 0 ;
   cmf::water::SoluteReaction::ptr arg2 ;
@@ -20791,17 +20852,17 @@ SWIGINTERN PyObject *_wrap__List_solute_reaction_ptr_append(PyObject *SWIGUNUSED
     (char *)"self",  (char *)"r",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:_List_solute_reaction_ptr_append", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:_SoluteReactionListBase_append", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__ListT_cmf__water__SoluteReaction__ptr_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_List_solute_reaction_ptr_append" "', argument " "1"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_SoluteReactionListBase_append" "', argument " "1"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > *""'"); 
   }
   arg1 = reinterpret_cast< cmf::List< cmf::water::SoluteReaction::ptr > * >(argp1);
   {
     int newmem = 0;
     res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteReaction_t,  0 , &newmem);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "_List_solute_reaction_ptr_append" "', argument " "2"" of type '" "cmf::water::SoluteReaction::ptr""'");
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "_SoluteReactionListBase_append" "', argument " "2"" of type '" "cmf::water::SoluteReaction::ptr""'");
     }
     if (argp2) arg2 = *(reinterpret_cast< cmf::water::SoluteReaction::ptr * >(argp2));
     if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::SoluteReaction::ptr * >(argp2);
@@ -20824,7 +20885,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap__List_solute_reaction_ptr_extend(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap__SoluteReactionListBase_extend(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::List< cmf::water::SoluteReaction::ptr > *arg1 = (cmf::List< cmf::water::SoluteReaction::ptr > *) 0 ;
   cmf::List< cmf::water::SoluteReaction::ptr > *arg2 = 0 ;
@@ -20838,18 +20899,18 @@ SWIGINTERN PyObject *_wrap__List_solute_reaction_ptr_extend(PyObject *SWIGUNUSED
     (char *)"self",  (char *)"rl",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:_List_solute_reaction_ptr_extend", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:_SoluteReactionListBase_extend", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__ListT_cmf__water__SoluteReaction__ptr_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_List_solute_reaction_ptr_extend" "', argument " "1"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_SoluteReactionListBase_extend" "', argument " "1"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > *""'"); 
   }
   arg1 = reinterpret_cast< cmf::List< cmf::water::SoluteReaction::ptr > * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__ListT_cmf__water__SoluteReaction__ptr_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "_List_solute_reaction_ptr_extend" "', argument " "2"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "_SoluteReactionListBase_extend" "', argument " "2"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "_List_solute_reaction_ptr_extend" "', argument " "2"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "_SoluteReactionListBase_extend" "', argument " "2"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > const &""'"); 
   }
   arg2 = reinterpret_cast< cmf::List< cmf::water::SoluteReaction::ptr > * >(argp2);
   {
@@ -20870,7 +20931,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap__List_solute_reaction_ptr___getitem(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap__SoluteReactionListBase___getitem(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::List< cmf::water::SoluteReaction::ptr > *arg1 = (cmf::List< cmf::water::SoluteReaction::ptr > *) 0 ;
   ptrdiff_t arg2 ;
@@ -20885,15 +20946,15 @@ SWIGINTERN PyObject *_wrap__List_solute_reaction_ptr___getitem(PyObject *SWIGUNU
   };
   cmf::water::SoluteReaction::ptr result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:_List_solute_reaction_ptr___getitem", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:_SoluteReactionListBase___getitem", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__ListT_cmf__water__SoluteReaction__ptr_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_List_solute_reaction_ptr___getitem" "', argument " "1"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_SoluteReactionListBase___getitem" "', argument " "1"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > *""'"); 
   }
   arg1 = reinterpret_cast< cmf::List< cmf::water::SoluteReaction::ptr > * >(argp1);
   ecode2 = SWIG_AsVal_ptrdiff_t(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "_List_solute_reaction_ptr___getitem" "', argument " "2"" of type '" "ptrdiff_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "_SoluteReactionListBase___getitem" "', argument " "2"" of type '" "ptrdiff_t""'");
   } 
   arg2 = static_cast< ptrdiff_t >(val2);
   {
@@ -20917,7 +20978,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap__List_solute_reaction_ptr_clear(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap__SoluteReactionListBase_clear(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::List< cmf::water::SoluteReaction::ptr > *arg1 = (cmf::List< cmf::water::SoluteReaction::ptr > *) 0 ;
   void *argp1 = 0 ;
@@ -20928,7 +20989,7 @@ SWIGINTERN PyObject *_wrap__List_solute_reaction_ptr_clear(PyObject *SWIGUNUSEDP
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__ListT_cmf__water__SoluteReaction__ptr_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_List_solute_reaction_ptr_clear" "', argument " "1"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_SoluteReactionListBase_clear" "', argument " "1"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > *""'"); 
   }
   arg1 = reinterpret_cast< cmf::List< cmf::water::SoluteReaction::ptr > * >(argp1);
   {
@@ -20949,7 +21010,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap__List_solute_reaction_ptr_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap__SoluteReactionListBase_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::List< cmf::water::SoluteReaction::ptr > *arg1 = (cmf::List< cmf::water::SoluteReaction::ptr > *) 0 ;
   void *argp1 = 0 ;
@@ -20961,7 +21022,7 @@ SWIGINTERN PyObject *_wrap__List_solute_reaction_ptr_size(PyObject *SWIGUNUSEDPA
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__ListT_cmf__water__SoluteReaction__ptr_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_List_solute_reaction_ptr_size" "', argument " "1"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_SoluteReactionListBase_size" "', argument " "1"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::List< cmf::water::SoluteReaction::ptr > * >(argp1);
   {
@@ -20982,7 +21043,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new__List_solute_reaction_ptr__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+SWIGINTERN PyObject *_wrap_new__SoluteReactionListBase__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
   cmf::List< cmf::water::SoluteReaction::ptr > *result = 0 ;
   
@@ -21005,7 +21066,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new__List_solute_reaction_ptr__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new__SoluteReactionListBase__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::List< cmf::water::SoluteReaction::ptr > *arg1 = 0 ;
   void *argp1 = 0 ;
@@ -21015,10 +21076,10 @@ SWIGINTERN PyObject *_wrap_new__List_solute_reaction_ptr__SWIG_1(PyObject *SWIGU
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__ListT_cmf__water__SoluteReaction__ptr_t,  0  | 0);
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new__List_solute_reaction_ptr" "', argument " "1"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new__SoluteReactionListBase" "', argument " "1"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > const &""'"); 
   }
   if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new__List_solute_reaction_ptr" "', argument " "1"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new__SoluteReactionListBase" "', argument " "1"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > const &""'"); 
   }
   arg1 = reinterpret_cast< cmf::List< cmf::water::SoluteReaction::ptr > * >(argp1);
   {
@@ -21039,13 +21100,13 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new__List_solute_reaction_ptr(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_new__SoluteReactionListBase(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[2] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new__List_solute_reaction_ptr", 0, 1, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new__SoluteReactionListBase", 0, 1, argv))) SWIG_fail;
   --argc;
   {
     unsigned long _index = 0;
@@ -21081,14 +21142,14 @@ SWIGINTERN PyObject *_wrap_new__List_solute_reaction_ptr(PyObject *self, PyObjec
   dispatch:
     switch(_index) {
     case 1:
-      return _wrap_new__List_solute_reaction_ptr__SWIG_0(self, argc, argv);
+      return _wrap_new__SoluteReactionListBase__SWIG_0(self, argc, argv);
     case 2:
-      return _wrap_new__List_solute_reaction_ptr__SWIG_1(self, argc, argv);
+      return _wrap_new__SoluteReactionListBase__SWIG_1(self, argc, argv);
     }
   }
   
 fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new__List_solute_reaction_ptr'.\n"
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new__SoluteReactionListBase'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    cmf::List< cmf::water::SoluteReaction::ptr >::List()\n"
     "    cmf::List< cmf::water::SoluteReaction::ptr >::List(cmf::List< cmf::water::SoluteReaction::ptr > const &)\n");
@@ -21096,7 +21157,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_delete__List_solute_reaction_ptr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete__SoluteReactionListBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::List< cmf::water::SoluteReaction::ptr > *arg1 = (cmf::List< cmf::water::SoluteReaction::ptr > *) 0 ;
   void *argp1 = 0 ;
@@ -21107,7 +21168,7 @@ SWIGINTERN PyObject *_wrap_delete__List_solute_reaction_ptr(PyObject *SWIGUNUSED
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__ListT_cmf__water__SoluteReaction__ptr_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete__List_solute_reaction_ptr" "', argument " "1"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete__SoluteReactionListBase" "', argument " "1"" of type '" "cmf::List< cmf::water::SoluteReaction::ptr > *""'"); 
   }
   arg1 = reinterpret_cast< cmf::List< cmf::water::SoluteReaction::ptr > * >(argp1);
   {
@@ -21128,14 +21189,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_List_solute_reaction_ptr_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_SoluteReactionListBase_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
   SWIG_TypeNewClientData(SWIGTYPE_p_cmf__ListT_cmf__water__SoluteReaction__ptr_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_List_solute_reaction_ptr_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_SoluteReactionListBase_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
@@ -23279,19 +23340,23 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SoluteReactionList___len__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_SoluteReactionList___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::water::SoluteReactionList *arg1 = (cmf::water::SoluteReactionList *) 0 ;
+  PyObject *arg2 = (PyObject *) 0 ;
   cmf::water::SoluteReactionList temp_list1 ;
-  PyObject *swig_obj[1] ;
-  size_t result;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"item",  NULL 
+  };
+  PyObject *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:SoluteReactionList___getitem__", kwnames, &obj0, &obj1)) SWIG_fail;
   {
-    if (SWIG_ConvertPtr(swig_obj[0], (void **) &arg1, SWIGTYPE_p_cmf__water__SoluteReactionList, SWIG_POINTER_EXCEPTION) == -1) {
+    if (SWIG_ConvertPtr(obj0, (void **) &arg1, SWIGTYPE_p_cmf__water__SoluteReactionList, SWIG_POINTER_EXCEPTION) == -1) {
       int conversion_errors = 0;
-      int res = iterable_to_list<cmf::water::SoluteReaction::ptr, cmf::water::SoluteReactionList>(swig_obj[0],SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteReaction_t, temp_list1, &conversion_errors);
+      int res = iterable_to_list<cmf::water::SoluteReaction::ptr, cmf::water::SoluteReactionList>(obj0,SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteReaction_t, temp_list1, &conversion_errors);
       if (SWIG_IsOK(res)) {
         arg1 = &temp_list1;
       } else {
@@ -23299,9 +23364,10 @@ SWIGINTERN PyObject *_wrap_SoluteReactionList___len__(PyObject *SWIGUNUSEDPARM(s
       }
     }
   }
+  arg2 = obj1;
   {
     try {
-      result = cmf_water_SoluteReactionList___len__((cmf::water::SoluteReactionList const *)arg1);
+      result = (PyObject *)cmf_water_SoluteReactionList___getitem__(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -23310,7 +23376,7 @@ SWIGINTERN PyObject *_wrap_SoluteReactionList___len__(PyObject *SWIGUNUSEDPARM(s
       SWIG_exception(SWIG_RuntimeError, "unknown error");
     }
   }
-  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  resultobj = result;
   return resultobj;
 fail:
   return NULL;
@@ -82256,7 +82322,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "state_list___nonzero__", _wrap_state_list___nonzero__, METH_O, "state_list___nonzero__(state_list self) -> bool"},
 	 { "state_list___iadd__", (PyCFunction)(void(*)(void))_wrap_state_list___iadd__, METH_VARARGS|METH_KEYWORDS, "state_list___iadd__(state_list self, state_list food) -> state_list"},
-	 { "state_list___getitem", (PyCFunction)(void(*)(void))_wrap_state_list___getitem, METH_VARARGS|METH_KEYWORDS, "state_list___getitem(state_list self, ptrdiff_t index) -> cmf::math::StateVariable::ptr"},
+	 { "state_list__getitem", (PyCFunction)(void(*)(void))_wrap_state_list__getitem, METH_VARARGS|METH_KEYWORDS, "state_list__getitem(state_list self, ptrdiff_t index) -> cmf::math::StateVariable::ptr"},
 	 { "state_list___len__", _wrap_state_list___len__, METH_O, "state_list___len__(state_list self) -> size_t"},
 	 { "delete_state_list", _wrap_delete_state_list, METH_O, "delete_state_list(state_list self)"},
 	 { "state_list_swigregister", state_list_swigregister, METH_O, NULL},
@@ -82481,18 +82547,18 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_SoluteTimeseries", _wrap_delete_SoluteTimeseries, METH_O, "delete_SoluteTimeseries(SoluteTimeseries self)"},
 	 { "SoluteTimeseries_swigregister", SoluteTimeseries_swigregister, METH_O, NULL},
 	 { "SoluteTimeseries_swiginit", SoluteTimeseries_swiginit, METH_VARARGS, NULL},
-	 { "_List_solute_reaction_ptr_append", (PyCFunction)(void(*)(void))_wrap__List_solute_reaction_ptr_append, METH_VARARGS|METH_KEYWORDS, "_List_solute_reaction_ptr_append(_List_solute_reaction_ptr self, cmf::water::SoluteReaction::ptr r)"},
-	 { "_List_solute_reaction_ptr_extend", (PyCFunction)(void(*)(void))_wrap__List_solute_reaction_ptr_extend, METH_VARARGS|METH_KEYWORDS, "_List_solute_reaction_ptr_extend(_List_solute_reaction_ptr self, _List_solute_reaction_ptr rl)"},
-	 { "_List_solute_reaction_ptr___getitem", (PyCFunction)(void(*)(void))_wrap__List_solute_reaction_ptr___getitem, METH_VARARGS|METH_KEYWORDS, "_List_solute_reaction_ptr___getitem(_List_solute_reaction_ptr self, ptrdiff_t index) -> cmf::water::SoluteReaction::ptr"},
-	 { "_List_solute_reaction_ptr_clear", _wrap__List_solute_reaction_ptr_clear, METH_O, "_List_solute_reaction_ptr_clear(_List_solute_reaction_ptr self)"},
-	 { "_List_solute_reaction_ptr_size", _wrap__List_solute_reaction_ptr_size, METH_O, "_List_solute_reaction_ptr_size(_List_solute_reaction_ptr self) -> size_t"},
-	 { "new__List_solute_reaction_ptr", _wrap_new__List_solute_reaction_ptr, METH_VARARGS, "\n"
-		"_List_solute_reaction_ptr()\n"
-		"new__List_solute_reaction_ptr(_List_solute_reaction_ptr other) -> _List_solute_reaction_ptr\n"
+	 { "_SoluteReactionListBase_append", (PyCFunction)(void(*)(void))_wrap__SoluteReactionListBase_append, METH_VARARGS|METH_KEYWORDS, "_SoluteReactionListBase_append(_SoluteReactionListBase self, cmf::water::SoluteReaction::ptr r)"},
+	 { "_SoluteReactionListBase_extend", (PyCFunction)(void(*)(void))_wrap__SoluteReactionListBase_extend, METH_VARARGS|METH_KEYWORDS, "_SoluteReactionListBase_extend(_SoluteReactionListBase self, _SoluteReactionListBase rl)"},
+	 { "_SoluteReactionListBase___getitem", (PyCFunction)(void(*)(void))_wrap__SoluteReactionListBase___getitem, METH_VARARGS|METH_KEYWORDS, "_SoluteReactionListBase___getitem(_SoluteReactionListBase self, ptrdiff_t index) -> cmf::water::SoluteReaction::ptr"},
+	 { "_SoluteReactionListBase_clear", _wrap__SoluteReactionListBase_clear, METH_O, "_SoluteReactionListBase_clear(_SoluteReactionListBase self)"},
+	 { "_SoluteReactionListBase_size", _wrap__SoluteReactionListBase_size, METH_O, "_SoluteReactionListBase_size(_SoluteReactionListBase self) -> size_t"},
+	 { "new__SoluteReactionListBase", _wrap_new__SoluteReactionListBase, METH_VARARGS, "\n"
+		"_SoluteReactionListBase()\n"
+		"new__SoluteReactionListBase(_SoluteReactionListBase other) -> _SoluteReactionListBase\n"
 		""},
-	 { "delete__List_solute_reaction_ptr", _wrap_delete__List_solute_reaction_ptr, METH_O, "delete__List_solute_reaction_ptr(_List_solute_reaction_ptr self)"},
-	 { "_List_solute_reaction_ptr_swigregister", _List_solute_reaction_ptr_swigregister, METH_O, NULL},
-	 { "_List_solute_reaction_ptr_swiginit", _List_solute_reaction_ptr_swiginit, METH_VARARGS, NULL},
+	 { "delete__SoluteReactionListBase", _wrap_delete__SoluteReactionListBase, METH_O, "delete__SoluteReactionListBase(_SoluteReactionListBase self)"},
+	 { "_SoluteReactionListBase_swigregister", _SoluteReactionListBase_swigregister, METH_O, NULL},
+	 { "_SoluteReactionListBase_swiginit", _SoluteReactionListBase_swiginit, METH_VARARGS, NULL},
 	 { "SoluteReaction_get_flux", (PyCFunction)(void(*)(void))_wrap_SoluteReaction_get_flux, METH_VARARGS|METH_KEYWORDS, "\n"
 		"SoluteReaction_get_flux(SoluteReaction self, SoluteStorage solute_storage, Time t) -> real\n"
 		"virtual\n"
@@ -82591,7 +82657,7 @@ static PyMethodDef SwigMethods[] = {
 		"SoluteReactionList()\n"
 		"new_SoluteReactionList(SoluteReactionList other) -> SoluteReactionList\n"
 		""},
-	 { "SoluteReactionList___len__", _wrap_SoluteReactionList___len__, METH_O, "SoluteReactionList___len__(SoluteReactionList self) -> size_t"},
+	 { "SoluteReactionList___getitem__", (PyCFunction)(void(*)(void))_wrap_SoluteReactionList___getitem__, METH_VARARGS|METH_KEYWORDS, "SoluteReactionList___getitem__(SoluteReactionList self, PyObject * item) -> PyObject *"},
 	 { "delete_SoluteReactionList", _wrap_delete_SoluteReactionList, METH_O, "delete_SoluteReactionList(SoluteReactionList self)"},
 	 { "SoluteReactionList_swigregister", SoluteReactionList_swigregister, METH_O, NULL},
 	 { "SoluteReactionList_swiginit", SoluteReactionList_swiginit, METH_VARARGS, NULL},
@@ -88225,7 +88291,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "state_list___nonzero__", _wrap_state_list___nonzero__, METH_O, "__nonzero__(state_list self) -> bool"},
 	 { "state_list___iadd__", (PyCFunction)(void(*)(void))_wrap_state_list___iadd__, METH_VARARGS|METH_KEYWORDS, "__iadd__(state_list self, state_list food) -> state_list"},
-	 { "state_list___getitem", (PyCFunction)(void(*)(void))_wrap_state_list___getitem, METH_VARARGS|METH_KEYWORDS, "__getitem(state_list self, ptrdiff_t index) -> cmf::math::StateVariable::ptr"},
+	 { "state_list__getitem", (PyCFunction)(void(*)(void))_wrap_state_list__getitem, METH_VARARGS|METH_KEYWORDS, "_getitem(state_list self, ptrdiff_t index) -> cmf::math::StateVariable::ptr"},
 	 { "state_list___len__", _wrap_state_list___len__, METH_O, "__len__(state_list self) -> size_t"},
 	 { "delete_state_list", _wrap_delete_state_list, METH_O, "delete_state_list(state_list self)"},
 	 { "state_list_swigregister", state_list_swigregister, METH_O, NULL},
@@ -88450,18 +88516,18 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_SoluteTimeseries", _wrap_delete_SoluteTimeseries, METH_O, "delete_SoluteTimeseries(SoluteTimeseries self)"},
 	 { "SoluteTimeseries_swigregister", SoluteTimeseries_swigregister, METH_O, NULL},
 	 { "SoluteTimeseries_swiginit", SoluteTimeseries_swiginit, METH_VARARGS, NULL},
-	 { "_List_solute_reaction_ptr_append", (PyCFunction)(void(*)(void))_wrap__List_solute_reaction_ptr_append, METH_VARARGS|METH_KEYWORDS, "append(_List_solute_reaction_ptr self, cmf::water::SoluteReaction::ptr r)"},
-	 { "_List_solute_reaction_ptr_extend", (PyCFunction)(void(*)(void))_wrap__List_solute_reaction_ptr_extend, METH_VARARGS|METH_KEYWORDS, "extend(_List_solute_reaction_ptr self, _List_solute_reaction_ptr rl)"},
-	 { "_List_solute_reaction_ptr___getitem", (PyCFunction)(void(*)(void))_wrap__List_solute_reaction_ptr___getitem, METH_VARARGS|METH_KEYWORDS, "__getitem(_List_solute_reaction_ptr self, ptrdiff_t index) -> cmf::water::SoluteReaction::ptr"},
-	 { "_List_solute_reaction_ptr_clear", _wrap__List_solute_reaction_ptr_clear, METH_O, "clear(_List_solute_reaction_ptr self)"},
-	 { "_List_solute_reaction_ptr_size", _wrap__List_solute_reaction_ptr_size, METH_O, "size(_List_solute_reaction_ptr self) -> size_t"},
-	 { "new__List_solute_reaction_ptr", _wrap_new__List_solute_reaction_ptr, METH_VARARGS, "\n"
-		"_List_solute_reaction_ptr()\n"
-		"new__List_solute_reaction_ptr(_List_solute_reaction_ptr other) -> _List_solute_reaction_ptr\n"
+	 { "_SoluteReactionListBase_append", (PyCFunction)(void(*)(void))_wrap__SoluteReactionListBase_append, METH_VARARGS|METH_KEYWORDS, "append(_SoluteReactionListBase self, cmf::water::SoluteReaction::ptr r)"},
+	 { "_SoluteReactionListBase_extend", (PyCFunction)(void(*)(void))_wrap__SoluteReactionListBase_extend, METH_VARARGS|METH_KEYWORDS, "extend(_SoluteReactionListBase self, _SoluteReactionListBase rl)"},
+	 { "_SoluteReactionListBase___getitem", (PyCFunction)(void(*)(void))_wrap__SoluteReactionListBase___getitem, METH_VARARGS|METH_KEYWORDS, "__getitem(_SoluteReactionListBase self, ptrdiff_t index) -> cmf::water::SoluteReaction::ptr"},
+	 { "_SoluteReactionListBase_clear", _wrap__SoluteReactionListBase_clear, METH_O, "clear(_SoluteReactionListBase self)"},
+	 { "_SoluteReactionListBase_size", _wrap__SoluteReactionListBase_size, METH_O, "size(_SoluteReactionListBase self) -> size_t"},
+	 { "new__SoluteReactionListBase", _wrap_new__SoluteReactionListBase, METH_VARARGS, "\n"
+		"_SoluteReactionListBase()\n"
+		"new__SoluteReactionListBase(_SoluteReactionListBase other) -> _SoluteReactionListBase\n"
 		""},
-	 { "delete__List_solute_reaction_ptr", _wrap_delete__List_solute_reaction_ptr, METH_O, "delete__List_solute_reaction_ptr(_List_solute_reaction_ptr self)"},
-	 { "_List_solute_reaction_ptr_swigregister", _List_solute_reaction_ptr_swigregister, METH_O, NULL},
-	 { "_List_solute_reaction_ptr_swiginit", _List_solute_reaction_ptr_swiginit, METH_VARARGS, NULL},
+	 { "delete__SoluteReactionListBase", _wrap_delete__SoluteReactionListBase, METH_O, "delete__SoluteReactionListBase(_SoluteReactionListBase self)"},
+	 { "_SoluteReactionListBase_swigregister", _SoluteReactionListBase_swigregister, METH_O, NULL},
+	 { "_SoluteReactionListBase_swiginit", _SoluteReactionListBase_swiginit, METH_VARARGS, NULL},
 	 { "SoluteReaction_get_flux", (PyCFunction)(void(*)(void))_wrap_SoluteReaction_get_flux, METH_VARARGS|METH_KEYWORDS, "\n"
 		"get_flux(SoluteReaction self, SoluteStorage solute_storage, Time t) -> real\n"
 		"virtual\n"
@@ -88560,7 +88626,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"SoluteReactionList()\n"
 		"new_SoluteReactionList(SoluteReactionList other) -> SoluteReactionList\n"
 		""},
-	 { "SoluteReactionList___len__", _wrap_SoluteReactionList___len__, METH_O, "__len__(SoluteReactionList self) -> size_t"},
+	 { "SoluteReactionList___getitem__", (PyCFunction)(void(*)(void))_wrap_SoluteReactionList___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(SoluteReactionList self, PyObject * item) -> PyObject *"},
 	 { "delete_SoluteReactionList", _wrap_delete_SoluteReactionList, METH_O, "delete_SoluteReactionList(SoluteReactionList self)"},
 	 { "SoluteReactionList_swigregister", SoluteReactionList_swigregister, METH_O, NULL},
 	 { "SoluteReactionList_swiginit", SoluteReactionList_swiginit, METH_VARARGS, NULL},
@@ -93816,6 +93882,26 @@ static void *_p_std__shared_ptrT_cmf__water__SoluteConstantFluxReaction_tTo_p_st
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new std::shared_ptr< cmf::water::SoluteReaction >(*(std::shared_ptr< cmf::water::SoluteConstantFluxReaction > *)x);
 }
+static void *_std__shared_ptrT_cmf__water__Solute1stOrderReaction_tTo_std__shared_ptrT_cmf__water__SoluteReaction_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new std::shared_ptr< cmf::water::SoluteReaction >(*(std::shared_ptr< cmf::water::Solute1stOrderReaction > *)x);
+}
+static void *_std__shared_ptrT_cmf__water__Solute2ndOrderReaction_tTo_std__shared_ptrT_cmf__water__SoluteReaction_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new std::shared_ptr< cmf::water::SoluteReaction >(*(std::shared_ptr< cmf::water::Solute2ndOrderReaction > *)x);
+}
+static void *_std__shared_ptrT_cmf__water__SoluteDecayReaction_tTo_std__shared_ptrT_cmf__water__SoluteReaction_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new std::shared_ptr< cmf::water::SoluteReaction >(*(std::shared_ptr< cmf::water::SoluteDecayReaction > *)x);
+}
+static void *_std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_tTo_std__shared_ptrT_cmf__water__SoluteReaction_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new std::shared_ptr< cmf::water::SoluteReaction >(*(std::shared_ptr< cmf::water::SoluteEquilibriumReaction > *)x);
+}
+static void *_std__shared_ptrT_cmf__water__SoluteConstantFluxReaction_tTo_std__shared_ptrT_cmf__water__SoluteReaction_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new std::shared_ptr< cmf::water::SoluteReaction >(*(std::shared_ptr< cmf::water::SoluteConstantFluxReaction > *)x);
+}
 static void *_p_cmf__water__SoluteConstantFluxReactionTo_p_cmf__water__SoluteReaction(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::SoluteReaction *)  ((cmf::water::SoluteConstantFluxReaction *) x));
 }
@@ -94104,12 +94190,6 @@ static void *_p_std__shared_ptrT_cmf__upslope__SurfaceWater_tTo_p_std__shared_pt
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new std::shared_ptr< cmf::math::StateVariable >(*(std::shared_ptr< cmf::upslope::SurfaceWater > *)x);
 }
-static void *_p_cmf__river__ReachTo_p_cmf__river__OpenWaterStorage(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::river::OpenWaterStorage *)  ((cmf::river::Reach *) x));
-}
-static void *_p_cmf__upslope__SurfaceWaterTo_p_cmf__river__OpenWaterStorage(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::river::OpenWaterStorage *)  ((cmf::upslope::SurfaceWater *) x));
-}
 static void *_p_cmf__river__ReachTo_p_cmf__water__WaterStorage(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::WaterStorage *) (cmf::river::OpenWaterStorage *) ((cmf::river::Reach *) x));
 }
@@ -94127,6 +94207,12 @@ static void *_p_cmf__river__OpenWaterStorageTo_p_cmf__water__WaterStorage(void *
 }
 static void *_p_cmf__upslope__aquiferTo_p_cmf__water__WaterStorage(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::WaterStorage *)  ((cmf::upslope::aquifer *) x));
+}
+static void *_p_cmf__river__ReachTo_p_cmf__river__OpenWaterStorage(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::river::OpenWaterStorage *)  ((cmf::river::Reach *) x));
+}
+static void *_p_cmf__upslope__SurfaceWaterTo_p_cmf__river__OpenWaterStorage(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::river::OpenWaterStorage *)  ((cmf::upslope::SurfaceWater *) x));
 }
 static void *_p_cmf__river__ReachTo_p_cmf__math__StateVariable(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::math::StateVariable *) (cmf::water::WaterStorage *)(cmf::river::OpenWaterStorage *) ((cmf::river::Reach *) x));
@@ -94432,6 +94518,12 @@ static swig_type_info _swigt__p_std__vectorT_std__shared_ptrT_cmf__water__WaterS
 static swig_type_info _swigt__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__const_iterator = {"_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__const_iterator", "cmf::water::connection_list::const_iterator *|std::vector< std::shared_ptr< cmf::water::flux_connection >,std::allocator< std::shared_ptr< cmf::water::flux_connection > > >::const_iterator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__iterator = {"_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__iterator", "cmf::water::connection_list::iterator *|std::vector< std::shared_ptr< cmf::water::flux_connection >,std::allocator< std::shared_ptr< cmf::water::flux_connection > > >::iterator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_swig__SwigPyIterator = {"_p_swig__SwigPyIterator", "swig::SwigPyIterator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__std__shared_ptrT_cmf__water__SoluteReaction_t = {"_std__shared_ptrT_cmf__water__SoluteReaction_t", "cmf::water::SoluteReaction::ptr|std::shared_ptr< cmf::water::SoluteReaction >", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_t = {"_std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_t", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__std__shared_ptrT_cmf__water__Solute1stOrderReaction_t = {"_std__shared_ptrT_cmf__water__Solute1stOrderReaction_t", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__std__shared_ptrT_cmf__water__Solute2ndOrderReaction_t = {"_std__shared_ptrT_cmf__water__Solute2ndOrderReaction_t", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__std__shared_ptrT_cmf__water__SoluteDecayReaction_t = {"_std__shared_ptrT_cmf__water__SoluteDecayReaction_t", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__std__shared_ptrT_cmf__water__SoluteConstantFluxReaction_t = {"_std__shared_ptrT_cmf__water__SoluteConstantFluxReaction_t", 0, 0, 0, 0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_char,
@@ -94648,6 +94740,12 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__const_iterator,
   &_swigt__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__iterator,
   &_swigt__p_swig__SwigPyIterator,
+  &_swigt__std__shared_ptrT_cmf__water__Solute1stOrderReaction_t,
+  &_swigt__std__shared_ptrT_cmf__water__Solute2ndOrderReaction_t,
+  &_swigt__std__shared_ptrT_cmf__water__SoluteConstantFluxReaction_t,
+  &_swigt__std__shared_ptrT_cmf__water__SoluteDecayReaction_t,
+  &_swigt__std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_t,
+  &_swigt__std__shared_ptrT_cmf__water__SoluteReaction_t,
 };
 
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
@@ -94864,6 +94962,12 @@ static swig_cast_info _swigc__p_std__vectorT_std__shared_ptrT_cmf__water__WaterS
 static swig_cast_info _swigc__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__const_iterator[] = {  {&_swigt__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__const_iterator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__iterator[] = {  {&_swigt__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__iterator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_swig__SwigPyIterator[] = {  {&_swigt__p_swig__SwigPyIterator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_t[] = {{&_swigt__std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__std__shared_ptrT_cmf__water__Solute1stOrderReaction_t[] = {{&_swigt__std__shared_ptrT_cmf__water__Solute1stOrderReaction_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__std__shared_ptrT_cmf__water__Solute2ndOrderReaction_t[] = {{&_swigt__std__shared_ptrT_cmf__water__Solute2ndOrderReaction_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__std__shared_ptrT_cmf__water__SoluteDecayReaction_t[] = {{&_swigt__std__shared_ptrT_cmf__water__SoluteDecayReaction_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__std__shared_ptrT_cmf__water__SoluteConstantFluxReaction_t[] = {{&_swigt__std__shared_ptrT_cmf__water__SoluteConstantFluxReaction_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__std__shared_ptrT_cmf__water__SoluteReaction_t[] = {  {&_swigt__std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_t, _std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_tTo_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0},  {&_swigt__std__shared_ptrT_cmf__water__Solute1stOrderReaction_t, _std__shared_ptrT_cmf__water__Solute1stOrderReaction_tTo_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0},  {&_swigt__std__shared_ptrT_cmf__water__Solute2ndOrderReaction_t, _std__shared_ptrT_cmf__water__Solute2ndOrderReaction_tTo_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0},  {&_swigt__std__shared_ptrT_cmf__water__SoluteDecayReaction_t, _std__shared_ptrT_cmf__water__SoluteDecayReaction_tTo_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0},  {&_swigt__std__shared_ptrT_cmf__water__SoluteConstantFluxReaction_t, _std__shared_ptrT_cmf__water__SoluteConstantFluxReaction_tTo_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0},  {&_swigt__std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_char,
@@ -95080,6 +95184,12 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__const_iterator,
   _swigc__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__iterator,
   _swigc__p_swig__SwigPyIterator,
+  _swigc__std__shared_ptrT_cmf__water__Solute1stOrderReaction_t,
+  _swigc__std__shared_ptrT_cmf__water__Solute2ndOrderReaction_t,
+  _swigc__std__shared_ptrT_cmf__water__SoluteConstantFluxReaction_t,
+  _swigc__std__shared_ptrT_cmf__water__SoluteDecayReaction_t,
+  _swigc__std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_t,
+  _swigc__std__shared_ptrT_cmf__water__SoluteReaction_t,
 };
 
 

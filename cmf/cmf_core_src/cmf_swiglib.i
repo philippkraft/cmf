@@ -198,31 +198,31 @@ Included macros:
 }
 %enddef
 
-/*
+
 %{
     template<typename _listtype>
-    int list_getitem_from_index(const _listtype& source, *PyObject item, _listtype& target) {
-        PyObject* iter = PyObject_GetIter(item)
+    int list_getitem_from_index(const _listtype& source, PyObject* item, _listtype& target) {
+        PyObject* iter = PyObject_GetIter(item);
         if (iter) {
             while (PyObject* py_item = PyIter_Next(iter)) {
                 Py_ssize_t index = PyLong_AsSsize_t(py_item);
-                PyDECREF(py_item);
-                if (PyErr_Occured()) return 0;
+                Py_DECREF(py_item);
+                if (PyErr_Occurred()) return 0;
                 target.append(source[index]);
             }
             Py_DECREF(iter);
             return 1;
         }
         else if (PySlice_Check(item)) {
-            PySsize_t start, stop, step;
+            Py_ssize_t start, stop, step;
             PySlice_GetIndices(item, source.size(), &start, &stop, &step);
-            for (PySsize_t i=start; i<stop; i+=step) {
-                target.append(source[i])
+            for (Py_ssize_t i=start; i<stop; i+=step) {
+                target.append(source[i]);
             }
             return 1;
         }
         else if (PyLong_Check(item)) {
-            Py_ssize_t index = PyLong_AsSsize_t(item);
+            Py_ssize_t i = PyLong_AsSsize_t(item);
             target.append(source[i]);
             return 1;
         }
@@ -234,7 +234,7 @@ Included macros:
         
     }
 %}
-*/
+
 %define %extend_pysequence(LISTTYPE)
 %extend LISTTYPE {
     size_t __len__() const {
@@ -264,18 +264,21 @@ Included macros:
 
 }}
 %enddef
-/*
+
 %define %extend_getitem(LISTTYPE,ITEMTYPE)
 %extend LISTTYPE {
 PyObject* __getitem__(PyObject* item) {
     LISTTYPE* result = new LISTTYPE();
     int res=list_getitem_from_index(*$self, item, *result);
-    if res
+    if (res == 0 || result->size() == 0) {
+        delete result;
+        Py_RETURN_NONE;
+    }
     if (result->size() == 1) {
-        ITEMTYPE obj = (*result)[0]);
+        ITEMTYPE obj = (*result)[0];
         delete result;
         return SWIG_NewPointerObj(
-            obj, 
+            &obj,
             $descriptor(ITEMTYPE), 
             SWIG_POINTER_OWN);
     }
@@ -287,5 +290,5 @@ PyObject* __getitem__(PyObject* item) {
     }
     
 }
+}
 %enddef
-*/

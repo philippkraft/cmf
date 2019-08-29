@@ -76,8 +76,8 @@
 
 
 %attribute(cmf::water::SoluteStorage, real, conc, get_conc, set_conc);
-%template() cmf::List<cmf::water::SoluteReaction::ptr>;
-%rename(__getitem) cmf::water::SoluteReactionList::operator[];
+%template(_SoluteReactionListBase) cmf::List<cmf::water::SoluteReaction::ptr>;
+%rename(_getitem) cmf::water::SoluteReactionList::operator[];
 %iterable_to_list(cmf::water::SoluteReactionList,cmf::water::SoluteReaction::ptr)
 %feature("director") cmf::water::SoluteReaction;
 %include "water/SoluteStorage.h"
@@ -91,7 +91,9 @@
 %extend__repr__(cmf::water::SoluteEquilibriumReaction);
 
 %extend__repr__(cmf::water::SoluteReactionList);
-%extend_pysequence(cmf::water::SoluteReactionList);
+// %extend_pysequence(cmf::water::SoluteReactionList);
+%extend_getitem(cmf::water::SoluteReactionList, cmf::water::SoluteReaction::ptr);
+
 
 %extend__repr__(cmf::water::SoluteStorage);
 
