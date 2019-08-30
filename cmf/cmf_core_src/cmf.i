@@ -70,11 +70,12 @@ std::string pyrepr(PyObject* o) {
 
 %include "math/ODEsystem.i"
 
-%rename(__getitem) *::operator[];
+%ignore *::operator[];
 %{
     #include "list.h"
 %}
 %include "list.h"
+%extend_getitem(cmf::List, T);
 
 %include "water/solute.i"
 %include "water/water.i"

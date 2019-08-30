@@ -122,7 +122,7 @@ Included macros:
 
 %define %extend__repr__(TYPE) 
 %extend TYPE { %pythoncode {
-    def __repr__(self): 
+    def __repr__(self):
         return self.to_string()
 }}
 %enddef
@@ -269,8 +269,8 @@ Included macros:
 
 %define %extend_getitem(LISTTYPE,ITEMTYPE)
 %extend LISTTYPE {
-PyObject* __getitem__(PyObject* item) {
-    LISTTYPE* result = new LISTTYPE();
+PyObject* __getitem__(PyObject* item){
+    auto* result = new LISTTYPE<ITEMTYPE>();
     int res=list_getitem_from_index(*$self, item, *result);
     if (res == 0 || result->size() == 0) {
         delete result;
@@ -287,10 +287,34 @@ PyObject* __getitem__(PyObject* item) {
     else  {
         return SWIG_NewPointerObj(
             result, 
-            $descriptor(LISTTYPE*), 
+            $descriptor(LISTTYPE<ITEMTYPE>*),
             SWIG_POINTER_OWN);
     }
-    
+}
+void __setitem__(long long index, T& item) {
+    (*$self)[index] = item;
+}
+void __delitem__(long long index) {
+    $self->remove_at(index);
+}
+long long __len__(){
+    return $self->size();
+}
+
+bool __contains__(const T& what) {
+    try
+    {
+        size_t index = $self->index(what);
+        return true;
+    }
+    catch (const std::out_of_range& e)
+    {
+        return false;
+    }
+}
+%pythoncode {
+    def __repr__(self):
+        return type(self).__name__ + '([' + ', '.join(repr(obj) for obj in self) + '])'
 }
 }
 %enddef

@@ -24,17 +24,14 @@
 %shared_ptr(cmf::water::SoluteConstantFluxReaction);
 %shared_ptr(cmf::water::SoluteDecayReaction);
 %shared_ptr(cmf::water::SoluteEquilibriumReaction);
-// %shared_ptr(cmf::water::SoluteReactionList);
 
 %shared_ptr(cmf::water::SoluteStorage);
 
 %{
 // Include Water
 #include "water/Solute.h"
-#include "water/SoluteStorage.h"
-
+#include "water/reaction.h"
 %}
-
 // Include Water
 %include "water/adsorption.h"
 %include "water/Solute.h"
@@ -75,12 +72,11 @@
 
 
 
-%attribute(cmf::water::SoluteStorage, real, conc, get_conc, set_conc);
-%template(_SoluteReactionListBase) cmf::List<cmf::water::SoluteReaction::ptr>;
-%rename(_getitem) cmf::water::SoluteReactionList::operator[];
-%iterable_to_list(cmf::water::SoluteReactionList,cmf::water::SoluteReaction::ptr)
+
 %feature("director") cmf::water::SoluteReaction;
-%include "water/SoluteStorage.h"
+// %rename(__repr__) *::to_string();
+
+%include "water/reaction.h"
 
 
 %extend__repr__(cmf::water::SoluteReaction);
@@ -90,10 +86,15 @@
 %extend__repr__(cmf::water::SoluteDecayReaction);
 %extend__repr__(cmf::water::SoluteEquilibriumReaction);
 
-%extend__repr__(cmf::water::SoluteReactionList);
+// %extend__repr__(cmf::water::SoluteReactionList);
 // %extend_pysequence(cmf::water::SoluteReactionList);
-%extend_getitem(cmf::water::SoluteReactionList, cmf::water::SoluteReaction::ptr);
 
+%iterable_to_list(cmf::List<cmf::water::SoluteReaction::ptr>,cmf::water::SoluteReaction::ptr);%template(SoluteReactionList) cmf::List<cmf::water::SoluteReaction::ptr>;
 
+%{
+#include "water/SoluteStorage.h"
+%}
+%attribute(cmf::water::SoluteStorage, real, conc, get_conc, set_conc);
+%include "water/SoluteStorage.h"
 %extend__repr__(cmf::water::SoluteStorage);
 

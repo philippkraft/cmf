@@ -1,6 +1,10 @@
 #ifndef list_h__
 #define list_h__
 
+#include <vector>
+#include <sstream>
+#include <algorithm>
+#include <stdexcept>
 
 namespace cmf {
 
@@ -29,12 +33,35 @@ namespace cmf {
             return std::vector<T>::at(index);
         }
 
-
+        void remove(const T& what) {
+            auto it = std::find(begin(), end(), what);
+            if (it == end()) {
+                throw std::out_of_range("Requested object is not a part of this cmf.List");
+            } else {
+                this->erase(it);
+            }
+        }
+        void remove_at(long long index) {
+            if (index < 0 ) index += size();
+            auto it = begin() + index;
+            if (it >= begin() && it < end()) {
+                this->erase(it);
+            } else {
+                throw std::out_of_range("Requested position is not a part of this cmf.List");
+            }
+        }
         void clear() {std::vector<T>::clear();}
         size_t size() const {return std::vector<T>::size();};
+        size_t index(const T& what) {
+            auto it = std::find(begin(), end(), what);
+            if (it == end()) {
+                throw std::out_of_range("Requested object is not a part of this cmf.List");
+            } else {
+                return std::distance(begin(), it);
+            }
+        }
         List() = default;
         List(const List<T>& other) = default;
-
     };
 
 }

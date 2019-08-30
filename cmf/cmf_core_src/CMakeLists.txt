@@ -81,7 +81,7 @@ add_library(cmf_core STATIC
         upslope/Topology.cpp
         math/integrators/WaterSoluteIntegrator.cpp
         project.cpp
-        )
+        water/reaction.cpp)
 
 find_package(OpenMP)
 if(OpenMP_CXX_FOUND)
