@@ -78,7 +78,9 @@ namespace cmf {
 			virtual real dxdt(const cmf::math::Time& time);
 			virtual std::string to_string() const;
 			typedef std::shared_ptr<SoluteStorage> ptr;
-		};
+
+            real get_abs_errtol(real rel_errtol) const override;
+        };
 	}
 }
 
