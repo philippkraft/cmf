@@ -64,5 +64,3 @@ real boltzmann(real x,real x_half,real tau)
 	return 1.0/(1.0 + std::exp(-(x-x_half)/tau));
 }
 
-real cmf::diffusive_slope_singularity_protection = 1e-4;
-bool cmf::richards_lateral_base_flow;

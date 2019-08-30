@@ -31,10 +31,24 @@
 #include "upslope/cell_vector.h"
 /// The main namespace of the model framework. Contains the other namespaces and the project class
 namespace cmf {
+    /// Holds global options for specific cmf behaviour, accessbile via cmf.options
+    struct _Options {
+        /// @brief Protects diffusive Saint-Venant equation from numerical problems for slope ≃ 0
+        ///
+        /// For diffusive St. Venant equations, near to zero, the driving force is sqrt(|h1-h2|).
+        /// For h1 ≃ h2, the sensitivity of the flow has a singularity. To avoid this
+        /// near to the slope zero the driver is overrriden by |h1-h2|. "Near" is defined by this constant.
+        double diffusive_slope_singularity_protection=1e-4;
 
+        /// @brief Allows the cmf::upslope::connections::Richards_lateral connection for faster flow in lower regions.
+        bool richards_lateral_base_flow=true;
+
+    };
+
+    /// The global options storage
+    extern _Options options;
 
 	/// @brief The study area, holding all cells, outlets and streams
-	/// \todo Describe tracers
 	class project
 	{
 	private:

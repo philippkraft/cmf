@@ -50,15 +50,6 @@ const real Pi=3.141592654;
 namespace cmf {
     typedef std::string bytestring;
 
-    /// @brief Protects diffusive St. Venant equation from numerical problems for slope ≃ 0
-    ///
-    /// For diffusive St. Venant equations, near to zero, the driving force is sqrt(|h1-h2|).
-    /// For h1 ≃ h2, the sensitivity of the flow has a singularity. To avoid this
-    /// near to the slope zero the driver is overrriden by |h1-h2|. "Near" is defined by this constant.
-    extern real diffusive_slope_singularity_protection;
-
-    /// @brief Allows the cmf::upslope::connections::Richards_lateral connection for faster flow in lower regions.
-    extern bool richards_lateral_base_flow;
 
 
 }

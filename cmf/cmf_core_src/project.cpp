@@ -25,6 +25,9 @@
 #include <omp.h>
 #endif
 #include <algorithm>
+
+cmf::_Options cmf::options;
+
 cmf::project::project(std::string solutenames)
 :	solutes(solutenames)
 {

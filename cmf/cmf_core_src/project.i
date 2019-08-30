@@ -72,3 +72,6 @@
     }
 }    
     
+%pythoncode {
+ options = cvar.options
+}

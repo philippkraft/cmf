@@ -16,6 +16,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
+#include "../../project.h"
 #include "subsurfacefluxes.h"
 #include "../../math/real.h"
 #include "../../math/geometry.h"
@@ -72,7 +73,7 @@ real connections::Richards_lateral::calc_q( cmf::math::Time t )
 		Ksat = l1->get_Ksat();
 	}
 	real r_flow = K * gradient * flow_width * flow_thickness;
-	if (cmf::richards_lateral_base_flow) {
+	if (cmf::options.richards_lateral_base_flow) {
 		double ft = flow_thickness + l1->get_matrix_potential();
 		if (l2) ft = std::max(flow_thickness + l2->get_matrix_potential(),ft);
 		ft = minmax(ft,0,flow_thickness);
