@@ -126,3 +126,7 @@ void cmf::water::SoluteStorage::set_conc( real NewConcentration )
 	
 
 }
+
+real SoluteStorage::get_abs_errtol(real rel_errtol) const {
+    return 0.1 * m_water->get_abs_errtol(rel_errtol);
+}
