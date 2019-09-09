@@ -5,7 +5,7 @@ import time
 def SoluteWaterSolver(states, epsilon=1e-9):
     wsolver = cmf.CVodeKrylov(epsilon)
     ssolver = cmf.CVodeAdams(epsilon)
-    return cmf.SoluteWaterIntegrator(wsolver, ssolver, states)
+    return cmf.SoluteWaterIntegrator(states.solutes, wsolver, ssolver, states)
 
 class ReachNetwork:
     def __init__(self, levels=3):
@@ -39,6 +39,7 @@ class ReachNetwork:
     def make_upstream(self, level, *downstream):
         upstream = []
         p = self.project
+        X = p.solutes[0] if p.solutes else None
         if level <= self.levels:
             for rd in downstream:
                 u1 = p.NewReach(rd.position.x - 50 / level ** 2, level * 100, level, self.rtype)
@@ -47,6 +48,10 @@ class ReachNetwork:
                 u2 = p.NewReach(rd.position.x + 50 / level ** 2, level * 100, level, self.rtype)
                 u2.Name = rd.Name + 'r'
                 u2.set_downstream(rd)
+                if X:
+                    u1[X].source = 1
+                    u1[X].set_abs_errtol(100)
+                    u2[X].set_abs_errtol(100)
                 upstream.extend((u1, u2))
             return self.make_upstream(level + 1, *upstream) + upstream
         else:
@@ -59,7 +64,7 @@ class Model:
         self.network.set_inflow(total_inflow)
         self.solver = solver_class(self.network.project)
         self.solver.use_OpenMP = False
-        self.solver.initialize()
+        # self.solver.initialize()
 
     def __call__(self, time=cmf.day):
         self.solver(time)
@@ -70,28 +75,6 @@ class Model:
 
     def outflux(self):
         return self.network.outlet(self.solver.t)
-
-
-class SparseStructure:
-    def __init__(self, state_owner):
-        self.sps = cmf.sparse_structure()
-        self.sps.generate(state_owner.get_states())
-
-    def __iter__(self):
-        idx_ptr = list(self.sps.indexpointers)
-        idx_val = list(self.sps.indexvalues)
-        for col in range(self.sps.NP):
-            try:
-                for row in idx_val[idx_ptr[col]:idx_ptr[col + 1]]:
-                    yield row, col
-            except IndexError:
-                raise IndexError(f'col={col}, idx_ptr[col]={idx_ptr[col]}, idx_ptr[col+1]={idx_ptr[col + 1]}')
-
-    def as_dense(self):
-        res = np.zeros(shape=(self.sps.N, self.sps.N), dtype=bool)
-        for row, col in self:
-            res[row, col] = True
-        return res
 
 
 if __name__ == '__main__':
@@ -107,7 +90,11 @@ if __name__ == '__main__':
                 model(cmf.h)
                 model.network.set_inflow(50 + 50 * (i % 2))
             elapsed = time.time() - tstart - tinit
-            info = model.solver.info
+            if hasattr(model.solver, 'info'):
+                size = model.solver.info.size
+                dxdt_method_calls = model.solver.info.dxdt_method_calls
+            else:
+                size = model.solver.size()
+                dxdt_method_calls = -9999
             name = model.solver.to_string()
-            print(f'{name:>25}{level:6d}{info.size:5d}{tinit:10.2f}{elapsed:10.2f}{info.dxdt_method_calls:15,d}')
-    klu = Model(5, cmf.CVodeKLU)(cmf.day)
+            print(f'{name:>25}{level:6d}{size:5d}{tinit:10.2f}{elapsed:10.2f}{dxdt_method_calls:15d}')
