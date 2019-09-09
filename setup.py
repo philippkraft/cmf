@@ -50,7 +50,9 @@ openmp = False
 debug = False
 
 class StaticLibrary:
-
+    """
+    A wrapper to build and link static libraries to an extension
+    """
     def __init__(self, includepath, libpath, *libs, build_script=None, build_always=False):
         self.includepath = includepath
         self.libpath = libpath
@@ -440,6 +442,7 @@ if __name__ == '__main__':
           ext_modules=ext,
           packages=['cmf', 'cmf.draw', 'cmf.geometry'],
           python_requires='>=3.5',
+          install_requires='numpy>=1.11.1',
           keywords='hydrology catchment simulation toolbox',
           author='Philipp Kraft',
           author_email="philipp.kraft@umwelt.uni-giessen.de",
