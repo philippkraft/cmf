@@ -76,7 +76,7 @@ void cmf::water::SoluteStorage::add_connected_states(cmf::math::StateVariable::l
 real SoluteStorage::dxdt( const cmf::math::Time& time )
 {
  	// Sums up the fluxes as water fluxes (mol/day)
-	
+
 	real inflow=0, outflow=0;
 	for (const auto& con: m_water->get_connections())
 	{
@@ -135,3 +135,7 @@ real SoluteStorage::reactive_flux(const cmf::math::Time &time) const {
 }
 
 
+
+real SoluteStorage::get_abs_errtol(real rel_errtol) const {
+    return m_Scale * m_water->get_abs_errtol(rel_errtol);
+}

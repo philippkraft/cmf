@@ -78,8 +78,15 @@ namespace cmf {
 
             real get_abs_errtol(real rel_errtol) const override;
 
-            typedef std::shared_ptr<SoluteStorage> ptr;
-		};
+    		typedef std::shared_ptr<SoluteStorage> ptr;
+
+            real get_abs_errtol(real rel_errtol) const override;
+            /// Sets a scaling factor for the absolute error tolerance of this storage in terms
+            /// of the absolute error tolerance of the owning waterstorage. The absolute error tolerance
+            void set_abs_errtol(real scale) {
+                this->m_Scale = scale;
+            }
+        };
 	}
 }
 
