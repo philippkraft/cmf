@@ -20,7 +20,7 @@ def get_project(with_solute=False):
         cmf.LinearStorageConnection(l, r, 1)
     stores[0].volume = 1
     if with_solute:
-        stores[0][X].source = 1
+        stores[0][X].reactions = cmf.SoluteConstantFluxReaction(1),
     return p, stores, X
 
 

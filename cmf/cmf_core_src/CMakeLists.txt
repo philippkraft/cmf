@@ -44,6 +44,7 @@ add_library(cmf_core STATIC
         water/flux_node.cpp
         water/simple_connections.cpp
         water/Solute.cpp
+        water/reaction.cpp
         water/SoluteStorage.cpp
         water/WaterStorage.cpp
         math/integrators/explicit_euler.cpp
@@ -81,7 +82,7 @@ add_library(cmf_core STATIC
         upslope/Topology.cpp
         math/integrators/WaterSoluteIntegrator.cpp
         project.cpp
-        water/reaction.cpp)
+        )
 
 find_package(OpenMP)
 if(OpenMP_CXX_FOUND)

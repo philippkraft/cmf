@@ -24,23 +24,25 @@
 #include "../math/real.h"
 #include "adsorption.h"
 #include "reaction.h"
+#include "WaterStorage.h"
 namespace cmf {
 	namespace water {
 
 		class WaterStorage;
-		/// @brief A class for the storage of any tracer. The state is the amount (mol, kg etc. see cmf::water) 
+		/// @defgroup Solutes Solute transport
+		/// @brief The framework to transport and modify solutes in the water framework.
+
+		/// @ingroup Solutes
+		/// @brief A class for the storage of any tracer. The state is the amount (mol, kg etc. see cmf::water)
 		/// of the tracer in the storage.
 		///
 		/// The derivative function is given by:
-		/// \f{eqnarray*}
-		/// \frac{dX}{dt}&=&\sum_{f=1}^{F}\left( q_f [X]_f\right) + X_{in} - r^-X \left[\frac{mol}{day}\right]\\
-		/// F&=& \mbox{Number of fluxes in water storage} \\
-		/// q_f&=& \mbox{Water flux in } \frac{m^3}{day}	\\
-		/// \left[X\right]_f &=& \mbox{Concentration of solute X in flux }q_f \mbox{ in } \frac{mol}{m^3} \\
-		/// X_{in} &=& \mbox{Absolute source or sink term} \frac{mol}{day} \\
-		/// r^- &=& \mbox{Decay rate} \frac 1{day} \\
-		/// V &=& \mbox{Volume of water in water storage }\left[m^3\right]
-		/// \f}
+		/// \f[\frac{dX}{dt} = \sum_{f=1}^{F}{q_f \cdot [X]_f} + \sum_{r=1}^{R}{q_r([X], t)} \left[\frac{mol}{day}\right] \f]
+		/// - \f$F\f$ =  Number of fluxes in water storage
+		/// - \f$q_f\f$ = Water flux in \f$\frac{m^3}{day}\f$
+		/// - \f$\left[X\right]_f \f$ = Concentration of solute X in flux \f$q_f\f$ in \f$\frac{mol}{m^3} \f$
+		/// - \f$q_r([X], t)\f$ = Production or loss rate from R cmf::water::SoluteReaction objects \f$\frac{mol}{day}\f$
+		///
 		class SoluteStorage : public cmf::math::StateVariable
 		{
 			SoluteStorage(WaterStorage* _water,const cmf::water::solute& _Solute, double InitialState=0) 
@@ -56,8 +58,10 @@ namespace cmf {
 				adsorption.reset(newadsorption.copy(m));
 			}
 			friend class WaterStorage;
-			SoluteReactionList reactions;
-			/// @brief The solute, which is stored in this
+
+			/// @brief Attached reactions
+			cmf::List<cmf::water::SoluteReaction::ptr> reactions;
+			/// @brief The solute, which is stored in this storage
 			const cmf::water::solute& Solute;
 			/// @brief Returns the concentration of the solute
 			real get_conc() const;
@@ -80,14 +84,14 @@ namespace cmf {
 
     		typedef std::shared_ptr<SoluteStorage> ptr;
 
-            real get_abs_errtol(real rel_errtol) const override;
             /// Sets a scaling factor for the absolute error tolerance of this storage in terms
             /// of the absolute error tolerance of the owning waterstorage. The absolute error tolerance
             void set_abs_errtol(real scale) {
                 this->m_Scale = scale;
             }
         };
-	}
+
+    }
 }
 
 #endif // SoluteStorage_h__

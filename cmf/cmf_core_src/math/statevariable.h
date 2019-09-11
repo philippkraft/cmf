@@ -83,7 +83,6 @@ namespace cmf {
                 return true;
             }
 #ifndef SWIG
-            /// Not part of the API, used to create sparse structure
             typedef std::vector<StateVariable*> list;
             virtual void add_connected_states(list& states);
 #endif // !SWIG

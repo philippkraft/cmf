@@ -250,14 +250,14 @@ Included macros:
     def __getitem__(self, index):
 
         if isinstance(index,slice):
-            res = type(list_obj)()
-            for i in range(*index.indices(len(list_obj))):
+            res = type(self)()
+            for i in range(*index.indices(len(self))):
                 res.append(self.__getitem(i))
             return res
         else:
             try:
                 it=iter(index)
-                res = type(list_obj)()
+                res = type(self)()
                 for o in it:
                     res.append(self.__getitem(o))
                 return res

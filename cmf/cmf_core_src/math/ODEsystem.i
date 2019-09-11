@@ -72,10 +72,10 @@
 }
 
 
-%rename(_getitem) cmf::math::state_list::operator[];
+%rename(__getitem) cmf::math::state_list::operator[];
 
 %iterable_to_list(cmf::math::integratable_list,cmf::math::integratable::ptr)
-%rename(_getitem) cmf::math::integratable_list::operator[];
+%rename(__getitem) cmf::math::integratable_list::operator[];
 
 %state_downcast(cmf::math::StateVariable::ptr cmf::math::state_list::operator[]);
 

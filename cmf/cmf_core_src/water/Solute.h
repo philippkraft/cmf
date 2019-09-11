@@ -92,7 +92,7 @@ namespace cmf
 			/// @brief An automatically set identifier of the solute
 			const size_t Id;
 		};
-		/// @brief Manages the solutes of the model. 
+		/// @brief Manages the solutes of the model.
 		class solute_vector
 		{
 			std::vector<cmf::water::solute>	m_Solutes;
@@ -100,8 +100,9 @@ namespace cmf
 			size_t size() const {return m_Solutes.size();}
 			/// @brief Creates a solute vector from solute names, separated by whitespace. E.g. solutes=solute_vector("dO18 dH2")
 			solute_vector(std::string str);
+            const solute& operator[](int i) const;
+
 #ifndef SWIG
-			const solute& operator[](int i) const;
 			typedef std::vector<solute>::const_iterator const_iterator;
 			const_iterator begin() const {return m_Solutes.begin();}
 			const_iterator end()   const {return m_Solutes.end();  }

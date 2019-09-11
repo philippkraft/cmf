@@ -24,14 +24,17 @@
 %shared_ptr(cmf::water::SoluteConstantFluxReaction);
 %shared_ptr(cmf::water::SoluteDecayReaction);
 %shared_ptr(cmf::water::SoluteEquilibriumReaction);
+%shared_ptr(cmf::water::SoluteDiffusiveTransport);
 
 %shared_ptr(cmf::water::SoluteStorage);
 
 %{
 // Include Water
+#include "water/adsorption.h"
 #include "water/Solute.h"
 #include "water/reaction.h"
 %}
+
 // Include Water
 %include "water/adsorption.h"
 %include "water/Solute.h"
@@ -40,10 +43,6 @@
 }
 %extend cmf::water::solute_vector
 {
-    cmf::water::solute* __getitem__(int i)
-    {
-        return $self->get_solute(i);
-    }
     size_t __len__() { return $self->size();}
     %pythoncode
     {
@@ -52,6 +51,23 @@
                 yield self[i]
         def __repr__(self):
             return repr([s.Name for s in self])
+        def __getitem__(self, index):
+
+            if isinstance(index,slice):
+                res = " ".join(
+                        self.get_solute(i).Name
+                        for i in range(*index.indices(len(self)))
+                )
+                return type(self)(res)
+            else:
+                try:
+                    it=iter(index)
+                    res = type(self)()
+                    for o in it:
+                        res.append(self.get_solute(o))
+                    return res
+                except:
+                    return self.get_solute(index)
     }
 }
 %extend cmf::water::SoluteTimeseries
@@ -85,11 +101,12 @@
 %extend__repr__(cmf::water::SoluteConstantFluxReaction);
 %extend__repr__(cmf::water::SoluteDecayReaction);
 %extend__repr__(cmf::water::SoluteEquilibriumReaction);
-
+%extend__repr__(cmf::water::SoluteDiffusiveTransport);
 // %extend__repr__(cmf::water::SoluteReactionList);
 // %extend_pysequence(cmf::water::SoluteReactionList);
 
-%iterable_to_list(cmf::List<cmf::water::SoluteReaction::ptr>,cmf::water::SoluteReaction::ptr);%template(SoluteReactionList) cmf::List<cmf::water::SoluteReaction::ptr>;
+%iterable_to_list(cmf::List<cmf::water::SoluteReaction::ptr>,cmf::water::SoluteReaction::ptr);
+%template(SoluteReactionList) cmf::List<cmf::water::SoluteReaction::ptr>;
 
 %{
 #include "water/SoluteStorage.h"

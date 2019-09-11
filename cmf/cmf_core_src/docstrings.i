@@ -1,18 +1,6 @@
 
 // File: index.xml
 
-// File: classcmf__core_1_1___options.xml
-%feature("docstring") cmf_core::_Options "
-
-Holds global options for specific cmf behaviour, accessbile via
-cmf.options.  C++ includes: project.h ";
-
-%feature("docstring")  cmf_core::_Options::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(_Options self) -> _Options ";
-
-
 // File: structcmf_1_1___options.xml
 %feature("docstring") cmf::_Options "
 
@@ -20,24 +8,6 @@ Holds global options for specific cmf behaviour, accessbile via
 cmf.options.
 
 C++ includes: project.h ";
-
-
-// File: classcmf__core_1_1___swig_non_dynamic_meta.xml
-%feature("docstring") cmf_core::_SwigNonDynamicMeta "
-
-Meta class to enforce nondynamic attributes (no new attributes) for a
-class ";
-
-
-// File: classcmf__core_1_1_adsorption.xml
-%feature("docstring") cmf_core::Adsorption "
-
-Abstract class to use adsorption process for tracers on surfaces.  Use
-the derived classes to use a certain isotherm  C++ includes:
-adsorption.h ";
-
-%feature("docstring")  cmf_core::Adsorption::__init__ "def
-__init__(self, args, kwargs) ";
 
 
 // File: classcmf_1_1water_1_1_adsorption.xml
@@ -109,16 +79,6 @@ cmf::math::Time t) const =0
 
 aerodynamic resistance from ground to atmosphere (r_ag) and from
 canopy to atmosphere (r_ac) ";
-
-
-// File: classcmf__core_1_1aerodynamic__resistance.xml
-%feature("docstring") cmf_core::aerodynamic_resistance "
-
-Abstract class. Child classes can be used to calculate aerodynamic
-resistances against turbulent heat fluxes.  C++ includes:
-meteorology.h ";
-
-%feature("docstring")  cmf_core::aerodynamic_resistance::__init__ "def __init__(self, args, kwargs) ";
 
 
 // File: classcmf_1_1draw_1_1cellmap_1_1_animator.xml
@@ -393,47 +353,6 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
-// File: classcmf__core_1_1aquifer.xml
-%feature("docstring") cmf_core::aquifer "
-
-A class to represent large groundwater storages, not bounded to the
-usual horizontal discretization scheme, the Cell.  Naturally aquifers
-are connected with aquifer_Darcy or kinematic_wave connections. As a
-boundary condition for a cell based soil water system, aquifers are
-used as a right hand side node of percolation connections.  Basic head
-( :math:`\\\\\\\\Psi`) / volume ( :math:`V`) relation:   .. math::
-\\\\\\\\Psi =     z_{base} + \\\\\\\\frac {V}{A \\\\\\\\Phi}
-:math:`\\\\\\\\Psi` water head in m  :math:`z_{base}` base height of
-the aquifer  :math:`V` volume of stored water in m3  :math:`A` Base
-area of the aquifer in m2  :math:`\\\\\\\\Phi` Porosity, or more
-general, :math:`\\\\\\\\frac{dV_{bulk}}{dV_{H_2O}}`  C++ includes:
-groundwater.h ";
-
-%feature("docstring")  cmf_core::aquifer::__init__ "def
-__init__(self, args)
-
-__init__(aquifer self, project p, point position, real area, real
-thickness, real porosity, real K=1e-4) -> aquifer __init__(aquifer
-self, cell_vector cells, real thickness, real porosity, real K=1e-4)
--> aquifer aquifer(cmf::upslope::cell_vector &cells, real thickness,
-real porosity, real K=1e-4)  Creates an aquifer below a collection of
-cells.  Parameters: -----------  cells:  The cells above the aquifer.
-The area of the aquifer equals the area of the cells, and the upper
-boundary equals the soildepth of the lowest cell  thickness:  The
-thickness of the aquifer in m  porosity:  Porosity of the aquifer  K:
-Conductivity of the aquifer in m/day. If the conductivity should be
-anisotropic, change the x,y and z values of the member K ";
-
-%feature("docstring")  cmf_core::aquifer::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::aquifer::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::aquifer::fluxes "def fluxes(self, t)
-";
-
-
 // File: classcmf_1_1upslope_1_1aquifer___darcy.xml
 %feature("docstring") cmf::upslope::aquifer_Darcy "
 
@@ -548,38 +467,6 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 %feature("docstring")  cmf::upslope::aquifer_Darcy::to_string "virtual std::string to_string() const ";
 
 
-// File: classcmf__core_1_1aquifer___darcy.xml
-%feature("docstring") cmf_core::aquifer_Darcy "
-
-Lateral darcy flow between aquifer objects.    .. math::
-v_{Darcy}=K_{1,2}\\\\\\\\nabla\\\\\\\\Psi     .. math::      q =
-v_{Darcy} w     \\\\\\\\Delta z  C++ includes: groundwater.h ";
-
-%feature("docstring")  cmf_core::aquifer_Darcy::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(aquifer_Darcy self, cmf::upslope::aquifer::ptr left,
-cmf::water::flux_node::ptr right, real width) -> aquifer_Darcy
-aquifer_Darcy(aquifer::ptr left, cmf::water::flux_node::ptr right,
-real width)  Creates a new Darcy flow connection between two aquifers,
-or an aquifer and another node acting as Dirichlet boundary condition.
-Parameters: -----------  left:  One aquifer  right:  Another aquifer,
-or a flux node that can be interpreted as an Dirichlet boundary width:
-Width of the connection ";
-
-%feature("docstring")  cmf_core::aquifer_Darcy::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::aquifer_Darcy::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::aquifer_Darcy::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::aquifer_Darcy::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_base_macro_flow.xml
 %feature("docstring") cmf::upslope::connections::BaseMacroFlow "";
 
@@ -677,91 +564,6 @@ std::string short_string() const ";
 %feature("docstring")
 cmf::upslope::connections::BaseMacroFlow::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_base_macro_flow.xml
-%feature("docstring") cmf_core::BaseMacroFlow "
-
-Proxy of C++ cmf::upslope::connections::BaseMacroFlow class. ";
-
-%feature("docstring")  cmf_core::BaseMacroFlow::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::BaseMacroFlow::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::BaseMacroFlow::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::BaseMacroFlow::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::BaseMacroFlow::__repr__ "def
-__repr__(self) ";
-
-
-// File: classcmf__core_1_1_b_d_f2.xml
-%feature("docstring") cmf_core::BDF2 "
-
-An order 2 BDF-Method with fixed-point iteration and variable step
-size.  Derived from Roussel C. and Roussel M. (2003) \"Generic Object-
-Oriented Differential Equation Integrators\", C/C++ User Journal, Nov.
-2003,http://www.ddj.com/cpp/184401724?pgno=8 and  Eckert S., Baaser
-H., Gross D. and Scherf O. (2004) \"A BDF2 integration method with
-step size control for elasto-plasticity\", Computational Mechanics 34,
-377 - 386, DOI: 10.1007/s00466-004-0581-1  Most important function:
-Integrate  C++ includes: bdf2.h ";
-
-%feature("docstring")  cmf_core::BDF2::__init__ "def __init__(self,
-args)
-
-__init__(BDF2 self, real epsilon=1e-9, Time
-tStepMin=cmf::math::timespan(10)) -> BDF2 __init__(BDF2 self,
-state_list states, real epsilon=1e-9, Time
-tStepMin=cmf::math::timespan(10)) -> BDF2 __init__(BDF2 self,
-Integrator templ) -> BDF2 BDF2(const Integrator &templ)  Constructs a
-new BDF2 integrator.  Parameters: -----------  templ:  Template to be
-used to construct a BDF2 method ";
-
-%feature("docstring")  cmf_core::BDF2::__call__ "def __call__(self,
-t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::BDF2::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::BDF2::__iter__ "def __iter__(self)
-";
-
-%feature("docstring")  cmf_core::BDF2::__repr__ "def __repr__(self)
-";
-
-%feature("docstring")  cmf_core::BDF2::run "def run(self, start=None,
-end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_b_d_f2.xml
@@ -1123,55 +925,6 @@ cmf::upslope::BrooksCoreyRetentionCurve::Wetness_pF "cmf::math::num_array Wetnes
 ";
 
 
-// File: classcmf__core_1_1_brooks_corey_retention_curve.xml
-%feature("docstring") cmf_core::BrooksCoreyRetentionCurve "
-
-Provides the use of the Brooks-Corey retention curve.    .. math::
-W(\\\\\\\\theta) &=& \\\\\\\\frac{\\\\\\\\theta -
-\\\\\\\\theta_r}{\\\\\\\\theta_s - \\\\\\\\theta_r} \\\\\\\\\\\\\\\\
-K(W) &=& K_{sat}     W^{2b+3} \\\\\\\\\\\\\\\\ \\\\\\\\Psi(W) &=&
-\\\\\\\\Psi_X     \\\\\\\\left(\\\\\\\\frac{W}{W_X}\\\\\\\\right)^{-b}
-\\\\\\\\\\\\\\\\ W(\\\\\\\\Psi) &=&     {\\\\\\\\left(
-\\\\\\\\frac{\\\\\\\\Psi_X}{\\\\\\\\Psi}\\\\\\\\right)
-}^{\\\\\\\\frac{1}{b}}\\\\\\\\ W_X    where:  :math:`K` is the
-conductivity in :math:`\\\\\\\\frac m{day}`  :math:`W` is the wetness
-(Volume of soil water per volume of pores)  :math:`b` is the shape of
-the retention curve (usually between 4 (sand) and 14 (clay))
-:math:`\\\\\\\\Psi(W)` is the matric potential in :math:`m H_2O` at
-wetness W  :math:`\\\\\\\\Psi_X` is a matric potential at a known
-wetness in :math:`m H_2O`  :math:`W_X` is the wetness with a known
-matric potential for dynamic changes with depth, exponential decays of
-porosity and saturated conductivity are used The decay function is:
-:math:`v(d)=v(0) (1+a)^{-d}`, where v is the value (
-:math:`K_{sat},\\\\\\\\Phi`), d is the depth in m and a is the
-fractional decay per m. E.g. 0.1 means the value has in 1 m depth 90%
-of the value at the surface  C++ includes: RetentionCurve.h ";
-
-%feature("docstring")  cmf_core::BrooksCoreyRetentionCurve::__init__ "def __init__(self, args, kwargs)
-
-__init__(BrooksCoreyRetentionCurve self, real ksat=15, real
-porosity=0.5, real _b=5, real theta_x=0.2, real
-psi_x=cmf::upslope::pF_to_waterhead(2.5), real porosity_decay=0) ->
-BrooksCoreyRetentionCurve BrooksCoreyRetentionCurve(real ksat=15, real
-porosity=0.5, real _b=5, real theta_x=0.2, real
-psi_x=pF_to_waterhead(2.5), real porosity_decay=0)  Creates a brooks
-corey retention curve.  Parameters: -----------  ksat:  Saturated
-conductivity :math:`\\\\\\\\frac{m}{day}`  porosity:
-:math:`\\\\\\\\frac{m^3 Pores}{m^3 Soil}`  _b:  Shape of the retention
-curve (if you do not know how to parameterize this, take a look at the
-other constructor)  theta_x:   :math:`\\\\\\\\theta_X` Water content
-at a specific suction pressure  psi_x:  Suction pressure for
-:math:`\\\\\\\\theta_X` in m water column, use the conversion
-functions pF_to_waterhead, pressure_to_waterhead to convert pressure
-in to waterhead height (default pF=2.5)  porosity_decay:  Relative
-decay of porosity with depth, e.g. 0.1 means conductivity gets 10%
-smaller per meter ";
-
-%feature("docstring")  cmf_core::BrooksCoreyRetentionCurve::__repr__ "def __repr__(self) ";
-
-%feature("docstring")  cmf_core::BrooksCoreyRetentionCurve::__str__ "def __str__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_canopy_overflow.xml
 %feature("docstring") cmf::upslope::connections::CanopyOverflow "
 
@@ -1297,70 +1050,6 @@ std::string short_string() const ";
 %feature("docstring")
 cmf::upslope::connections::CanopyOverflow::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_canopy_overflow.xml
-%feature("docstring") cmf_core::CanopyOverflow "
-
-Calculates the overflow of a canopy storage using a kinematic wave
-approach.  This model routes only water that exceeds the canopy
-capacity to the ground with an ad hoc estimated function:   .. math::
-q_{CO} =
-\\\\\\\\left(\\\\\\\\frac{V_{act}-V_{max}}{V_{max}}\\\\\\\\right) ^2
-\\\\\\\\cdot 2400     \\\\\\\\frac{A_{cell}}{1000}  With:
-:math:`q_{CO}(t)[\\\\\\\\frac{m^3}{day}]`: The flux from canopy to the
-ground  :math:`V_{act}[mm]=1000 [mm/m]
-\\\\\\\\frac{V_{canopy}[m^3]}{A_{cell} [m^2]}` The stored water of the
-canopy in mm  :math:`V_{max}[mm]=c_{LAI}[mm] LAI` The capacity of the
-canopy in mm, defined by the factor CanopyCapacityPerLAI [mm/LAI], and
-the leaf area index LAI. (see: cmf::upslope::Vegetation)  C++
-includes: surfacefluxes.h ";
-
-%feature("docstring")  cmf_core::CanopyOverflow::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(CanopyOverflow self, cmf::water::WaterStorage::ptr Canopy,
-cmf::water::flux_node::ptr target, Cell cell) -> CanopyOverflow
-CanopyOverflow(cmf::water::WaterStorage::ptr Canopy,
-cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell) ";
-
-%feature("docstring")  cmf_core::CanopyOverflow::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::CanopyOverflow::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::CanopyOverflow::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::CanopyOverflow::__repr__ "def
-__repr__(self) ";
-
-
-// File: classcmf__core_1_1_canopy_storage_evaporation.xml
-%feature("docstring") cmf_core::CanopyStorageEvaporation "
-
-Calculates the evaporation from a canopy storage.  C++ includes: ET.h
-";
-
-%feature("docstring")  cmf_core::CanopyStorageEvaporation::__init__ "def __init__(self, args, kwargs)
-
-__init__(CanopyStorageEvaporation self, cmf::water::WaterStorage::ptr
-CanopyStorage, cmf::water::flux_node::ptr ET_target, Cell cell) ->
-CanopyStorageEvaporation
-CanopyStorageEvaporation(cmf::water::WaterStorage::ptr CanopyStorage,
-cmf::water::flux_node::ptr ET_target, cmf::upslope::Cell &cell) ";
-
-%feature("docstring")
-cmf_core::CanopyStorageEvaporation::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::CanopyStorageEvaporation::__getitem__
-"def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::CanopyStorageEvaporation::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::CanopyStorageEvaporation::__repr__ "def __repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_canopy_storage_evaporation.xml
@@ -1760,59 +1449,6 @@ double y, double z, double area, cmf::project &_project) ";
 to_string() const ";
 
 
-// File: classcmf__core_1_1_cell.xml
-%feature("docstring") cmf_core::Cell "
-
-This class is the basic landscape object.  It is the owner of water
-storages, and the upper and lower boundary conditions of the system
-(rainfall, atmospheric vapor, deep groundwater)  C++ includes: cell.h
-";
-
-%feature("docstring")  cmf_core::Cell::__init__ "def __init__(self,
-args, kwargs)
-
-__init__(Cell self, double x, double y, double z, double area, project
-_project) -> Cell Cell(double x, double y, double z, double area,
-cmf::project &_project) ";
-
-%feature("docstring")  cmf_core::Cell::__eq__ "def __eq__(self, cmp)
-";
-
-%feature("docstring")  cmf_core::Cell::__hash__ "def __hash__(self)
-";
-
-%feature("docstring")  cmf_core::Cell::__repr__ "def __repr__(self)
-";
-
-%feature("docstring")  cmf_core::Cell::connect_soil_with_node "def
-connect_soil_with_node(self, node, ctype, flowwidth, distance,
-upper_boundary=0, lower_boundary=None)
-
-Connects all layers between the boundaries with a node using a flux
-connection node: Target node (flux_node) type: Type of the connection
-(e.g. cmf.Richards_lateral) flowwidth: Width of the connection
-distance: distance of the connection upper_boundary: Connect only
-layers, whose lower depth is greater then this value lower_boundary:
-Connect only  layers, whose upper depth is smaller then this value ";
-
-%feature("docstring")  cmf_core::Cell::install_connection "def
-install_connection(self, connection_type)
-
-Calls the static use_for_cell method of the connection_type, if
-present. The use_for_cell method might do quite a lot of stuff, please
-consult the docs for the connection. Eg.
->>>help(Richards.use_for_cell) ";
-
-%feature("docstring")  cmf_core::Cell::neighbors "def neighbors(self)
-";
-
-%feature("docstring")  cmf_core::Cell::storages "def storages(self)
-";
-
-%feature("docstring")  cmf_core::Cell::surface_storages "def
-surface_storages(self) ";
-
-
 // File: classcmf_1_1upslope_1_1cell__const__iterator.xml
 %feature("docstring") cmf::upslope::cell_const_iterator "";
 
@@ -1909,25 +1545,6 @@ remove(const cmf::upslope::Cell &cell) ";
 const ";
 
 
-// File: classcmf__core_1_1cell__vector.xml
-%feature("docstring") cmf_core::cell_vector "
-
-A cell vector holds a bunch of cells.  C++ includes: cell_vector.h ";
-
-%feature("docstring")  cmf_core::cell_vector::__init__ "def
-__init__(self, args)
-
-__init__(cell_vector self) -> cell_vector __init__(cell_vector self,
-cell_vector copy) -> cell_vector cell_vector(cell_const_iterator
-first, cell_const_iterator last) ";
-
-%feature("docstring")  cmf_core::cell_vector::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::cell_vector::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1_cell_connector.xml
 %feature("docstring") cmf::upslope::CellConnector "
 
@@ -1941,21 +1558,6 @@ C++ includes: cell.h ";
 %feature("docstring")  cmf::upslope::CellConnector::connect "void
 connect(cmf::upslope::Cell &cell1, cmf::upslope::Cell &cell2,
 ptrdiff_t start_at_layer=0) const ";
-
-
-// File: classcmf__core_1_1_cell_connector.xml
-%feature("docstring") cmf_core::CellConnector "
-
-A helper class to connect cells with flux_connection objects. This is
-generated by flux_connection classes, intended to connect cells.  C++
-includes: cell.h ";
-
-%feature("docstring")  cmf_core::CellConnector::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(CellConnector self, cmf::upslope::connectorfunction
-connector) -> CellConnector CellConnector(connectorfunction connector)
-";
 
 
 // File: classcmf_1_1draw_1_1cellmap_1_1_cell_map.xml
@@ -2160,75 +1762,6 @@ const ";
 V(double h) const ";
 
 
-// File: classcmf__core_1_1_channel.xml
-%feature("docstring") cmf_core::Channel "
-
-A wrapper for channel geometries.  C++ includes: ReachType.h ";
-
-%feature("docstring")  cmf_core::Channel::__init__ "def
-__init__(self, args)
-
-__init__(Channel self) -> Channel __init__(Channel self, double
-length) -> Channel __init__(Channel self, IChannel for_wrapping) ->
-Channel __init__(Channel self, IVolumeHeightFunction for_casting) ->
-Channel __init__(Channel self, Channel for_copy) -> Channel
-__init__(Channel self, char typecode, double length, double width=1.,
-double depth=0.25) -> Channel Channel(char typecode, double length,
-double width=1., double depth=0.25)  Creates a reachtype using a short
-cut character.  Acceptes one of the following characters: 'T'
-TriangularReach, width and depth are ignored.  'R' RectangularReach,
-depth is ignored  'P' PipeReach, depth is ignored, width is the
-diameter of the pipe  'S' SWATReachType, a trapezoid flow cross
-section, as used in the SWAT model, width (bank width) and depth are
-used the reach type  Parameters: -----------  typecode:  Describes the
-geometry of the reach cross section.  length:  The length of the
-channel in m  width:  width of the reach cross section in m (ignored
-for typecode 'T')  depth:  depth of the reach (ignored for typecode
-'T','R','P','S') ";
-
-
-// File: classcmf__core_1_1_conceptual_infiltration.xml
-%feature("docstring") cmf_core::ConceptualInfiltration "
-
-Connects the surfacewater and the most upper layer using a simplified
-infiltration model suitable for conceptional models.    .. math::
-q_{inf} = \\\\\\\\left(1-e_{sat}\\\\\\\\left(W,
-W_0\\\\\\\\right)\\\\\\\\right)     q_{inf,pot}   where:
-:math:`q_{inf}` Effective infiltration from surface to first layer
-(soil)  :math:`e_{sat}(W, W_0)` Saturation excess, ranging from 0
-(nowhere saturated soil layer) to 1 (fully saturated). :math:`W` is
-the average wetness calculated from the soil layer, :math:`W_0` is a
-parameter denoting the wetness, where 50% of the layer is saturated
-using a sigmoidal function:  :math:`e_{sat}(W_{soil}, W_0) =
-\\\\\\\\left(1+e^{-(W-W_0)0.2(1-W_0)}\\\\\\\\right)^{-1}`
-:math:`q_{inf,pot}` is the potential infiltration, given by the
-incoming fluxes limited by the saturated conductivity:
-:math:`q_{inf,pot} = \\\\\\\\min(q_{in}, K_{sat} A)`  :math:`q_{in}`
-Sum of incoming fluxes to the surfacewater in :math:`m^3/day`
-:math:`K_{sat}` Saturated conductivity in :math:`m/day`  :math:`A`
-Cell area in :math:`m^2`  C++ includes: infiltration.h ";
-
-%feature("docstring")  cmf_core::ConceptualInfiltration::__init__ "def __init__(self, args, kwargs)
-
-__init__(ConceptualInfiltration self, cmf::upslope::SoilLayer::ptr
-soilwater, cmf::water::flux_node::ptr surfacewater, real W0=0.9) ->
-ConceptualInfiltration
-ConceptualInfiltration(cmf::upslope::SoilLayer::ptr soilwater,
-cmf::water::flux_node::ptr surfacewater, real W0=0.9)  Creates the
-connection between surfacewater and first soil layer.  Parameters:
------------  soilwater:  the infiltration target  surfacewater:  the
-infiltration source  W0:  the 50% saturation value ";
-
-%feature("docstring")  cmf_core::ConceptualInfiltration::__contains__
-"def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::ConceptualInfiltration::__getitem__ "def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::ConceptualInfiltration::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::ConceptualInfiltration::__repr__ "def __repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_conceptual_infiltration.xml
 %feature("docstring")
 cmf::upslope::connections::ConceptualInfiltration "
@@ -2387,41 +1920,6 @@ C++ includes: conductable.h ";
 get_K(cmf::geometry::point direction) const =0 ";
 
 
-// File: classcmf__core_1_1conductable.xml
-%feature("docstring") cmf_core::conductable "
-
-An abstract interface for all classes providing a conductivity (e.g.
-soil layer or aquifer) Each water storage where the concept of
-conductivity is applicable should implement (by deriving) the
-interface  This class is not part of the Python interface, since a
-dynamic typed language can use duck typing instead of this interface
-C++ includes: conductable.h ";
-
-%feature("docstring")  cmf_core::conductable::__init__ "def
-__init__(self, args, kwargs) ";
-
-
-// File: classcmf__core_1_1connection__list.xml
-%feature("docstring") cmf_core::connection_list "
-
-A self sorting list of connections.  C++ includes: flux_connection.h
-";
-
-%feature("docstring")  cmf_core::connection_list::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(connection_list self) -> connection_list ";
-
-%feature("docstring")  cmf_core::connection_list::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::connection_list::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::connection_list::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1water_1_1connection__list.xml
 %feature("docstring") cmf::water::connection_list "
 
@@ -2460,35 +1958,6 @@ remove(cmf::water::flux_connection::ptr connection) ";
 
 %feature("docstring")  cmf::water::connection_list::size "size_t
 size() const ";
-
-
-// File: classcmf__core_1_1constant_e_tpot.xml
-%feature("docstring") cmf_core::constantETpot "
-
-A constant evapotranspiration.  Uses a constant measured or elsewhere
-modelled ETpot. Actual Evapotranspiration is calculated from rootdepth
-and actual matrix potential in the layers using Tact. The value of
-ETpot can be changed during runtime  C++ includes: ET.h ";
-
-%feature("docstring")  cmf_core::constantETpot::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(constantETpot self, cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target, double constantETpot_value) ->
-constantETpot constantETpot(cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target, double constantETpot_value) ";
-
-%feature("docstring")  cmf_core::constantETpot::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::constantETpot::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::constantETpot::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::constantETpot::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1constant_e_tpot.xml
@@ -2594,49 +2063,6 @@ set_tracer_filter(solute S, real value) ";
 %feature("docstring")  cmf::upslope::ET::constantETpot::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::ET::constantETpot::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_constant_flux.xml
-%feature("docstring") cmf_core::ConstantFlux "
-
-Produces a constant but changeable flux from a source to a target, if
-enough water is present in the source.    .. math::
-q=\\\\\\\\begin{cases}0 & V_{source}\\\\\\\\le V_{min}\\\\\\\\\\\\\\\\
-q_0     \\\\\\\\frac{V_{source} - V_{min}}{t_{decr} q_{0} - V_{min}} &
-V_{source}     \\\\\\\\le t_{decr} q_{0}\\\\\\\\\\\\\\\\ q_{0} &
-\\\\\\\\end{cases}  This is similar to a neumann boundary, however
-this is not a boundary condition, but water is taken from the source
-(left) water storage and limited by that water storage.  C++ includes:
-simple_connections.h ";
-
-%feature("docstring")  cmf_core::ConstantFlux::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(ConstantFlux self, cmf::water::WaterStorage::ptr source,
-cmf::water::flux_node::ptr target, real maximum_flux, real
-minimal_state=0, Time flux_decrease_time=h) -> ConstantFlux
-ConstantFlux(cmf::water::WaterStorage::ptr source,
-cmf::water::flux_node::ptr target, real maximum_flux, real
-minimal_state=0, cmf::math::Time flux_decrease_time=cmf::math::h)
-Produces a constant but changeable flux from a source to a target, if
-enough water is present in the source.  Parameters: -----------
-source:  The source of the water  target:  The target of the water
-maximum_flux:  The requested flux :math:`q_{0}
-[\\\\\\\\frac{m^3}{day}]`  minimal_state:  Minimal volume of stored
-water in source in :math:`[m^3]`  flux_decrease_time:  (
-cmf::math::Time) ";
-
-%feature("docstring")  cmf_core::ConstantFlux::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::ConstantFlux::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::ConstantFlux::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::ConstantFlux::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1water_1_1_constant_flux.xml
@@ -2796,23 +2222,6 @@ cmf::atmosphere::Weather get_weather(cmf::math::Time t) const
 Returns weather, regardless of t. ";
 
 
-// File: classcmf__core_1_1_constant_meteorology.xml
-%feature("docstring") cmf_core::ConstantMeteorology "
-
-A primitive implementation of the Meteorology interface.  Holds a
-Weather record and returns it for any date  C++ includes:
-meteorology.h ";
-
-%feature("docstring")  cmf_core::ConstantMeteorology::__init__ "def
-__init__(self, args)
-
-__init__(ConstantMeteorology self) -> ConstantMeteorology
-__init__(ConstantMeteorology self, Weather w) -> ConstantMeteorology
-__init__(ConstantMeteorology self, ConstantMeteorology other) ->
-ConstantMeteorology ConstantMeteorology(const
-cmf::atmosphere::ConstantMeteorology &other)  Copy constructor. ";
-
-
 // File: classcmf_1_1atmosphere_1_1_constant_rain_source.xml
 %feature("docstring") cmf::atmosphere::ConstantRainSource "
 
@@ -2945,71 +2354,6 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
-// File: classcmf__core_1_1_constant_rain_source.xml
-%feature("docstring") cmf_core::ConstantRainSource "
-
-A simple implementation of RainSource.  Returns intensity for any time
-step.  C++ includes: precipitation.h ";
-
-%feature("docstring")  cmf_core::ConstantRainSource::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(ConstantRainSource self, project _project, point location,
-real _intensity) -> ConstantRainSource ConstantRainSource(cmf::project
-&_project, cmf::geometry::point location, real _intensity)  Creates a
-new ConstantRainSource.  Consider using Cell::set_rainfall for
-internal creation of a constant rain source, instead of direct use
-Parameters: -----------  _project:  The project the rain source is
-belonging to.  location:  The location of the rain source  _intensity:
-The constant rainfall intensity in mm/day ";
-
-%feature("docstring")  cmf_core::ConstantRainSource::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::ConstantRainSource::connected_nodes "def connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::ConstantRainSource::fluxes "def
-fluxes(self, t) ";
-
-
-// File: classcmf__core_1_1_constant_state_flux.xml
-%feature("docstring") cmf_core::ConstantStateFlux "
-
-Calculates a flux to or from a water storage to hold it's state at a
-more or less constant level.    .. math::       q=\\\\\\\\frac{h_1 -
-h_{target}}{t_c [days]}   where:  :math:`q` the resulting flux in
-m3/day  :math:`h_1` the reference state  :math:`h_{target}` the state
-of the target (right) node  :math:`t_c` the time to reach the target
-state  C++ includes: simple_connections.h ";
-
-%feature("docstring")  cmf_core::ConstantStateFlux::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(ConstantStateFlux self, cmf::water::WaterStorage::ptr
-controlled_storage, cmf::water::flux_node::ptr other_end, real
-target_state, Time reaction_time) -> ConstantStateFlux
-ConstantStateFlux(cmf::water::WaterStorage::ptr controlled_storage,
-cmf::water::flux_node::ptr other_end, real target_state,
-cmf::math::Time reaction_time)  Creates a flux connection to control
-the state of a storage.  Parameters: -----------  controlled_storage:
-Water storage, to be controlled  other_end:  source of missing water
-or target of excessive water  target_state:  State the controlled
-storage should hold ( :math:`h_{target}`)  reaction_time:  Time to
-reach state ( :math:`t_c`) ";
-
-%feature("docstring")  cmf_core::ConstantStateFlux::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::ConstantStateFlux::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::ConstantStateFlux::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::ConstantStateFlux::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1water_1_1_constant_state_flux.xml
 %feature("docstring") cmf::water::ConstantStateFlux "
 
@@ -3133,61 +2477,6 @@ set_tracer_filter(solute S, real value) ";
 %feature("docstring")  cmf::water::ConstantStateFlux::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::water::ConstantStateFlux::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_constraint_linear_storage_flux.xml
-%feature("docstring") cmf_core::ConstraintLinearStorageFlux "
-
-Calculates flux out of a storage as a linear function of its volume,
-constraint by the volume stored in the target storage.    .. math:: q
-= \\\\\\\\frac {1}{t_r} \\\\\\\\left({V_{l} - V_{l,min}}\\\\\\\\right)
-\\\\\\\\cdot
-\\\\\\\\left(\\\\\\\\frac{V_{r,max}-V_{r}}{V_{r,max}}\\\\\\\\right)
-where:  :math:`V_l` The actual volume stored by the left water storage
-:math:`V_{l,min} [m^3]` The volume of water not flowing out (default =
-0)  :math:`\\\\\\\\beta` A parameter to shape the response curve. In
-case of :math:`\\\\\\\\beta \\\\\\\\neq 1`, :math:`t_r` is not a
-residence time, but just a parameter.  :math:`t_r [days]` The
-residence time of the water in this storage in days  :math:`V_{r,max}`
-The capacity of the right water storage in m3  :math:`V_{r}` The
-actual volume of the right water storage  :math:`\\\\\\\\gamma` A
-shape parameter for the target capacity constriction  C++ includes:
-simple_connections.h ";
-
-%feature("docstring")  cmf_core::ConstraintLinearStorageFlux::__init__
-"def __init__(self, args, kwargs)
-
-__init__(ConstraintLinearStorageFlux self,
-cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr
-target, real residencetime=1.0, real Vlmin=0.0, real Vrmax=1.0) ->
-ConstraintLinearStorageFlux
-ConstraintLinearStorageFlux(WaterStorage::ptr source,
-WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real
-Vrmax=1.0)  Creates a linear storage connection, constrained by the
-fill level of the source   .. math::       q = \\\\\\\\frac 1 {t_r}
-{\\\\\\\\left(\\\\\\\\frac{V -     V_{residual}}{V_0}
-\\\\\\\\right)^\\\\\\\\beta}   .  Parameters: -----------  source:
-Water storage from which the water flows out. Flux is a function of
-source.volume  target:  Target node (boundary condition or storage).
-Does not influence the strength of the flow  residencetime: :math:`t_r
-[days]` The residence time of the water in this storage Vlmin:
-:math:`V_{l,min} [m^3]` The volume of water not flowing out (default =
-0)  Vrmax:   :math:`V_{r,max}` Capacity of the target water storage in
-m3 ";
-
-%feature("docstring")
-cmf_core::ConstraintLinearStorageFlux::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")
-cmf_core::ConstraintLinearStorageFlux::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::ConstraintLinearStorageFlux::__iter__
-"def __iter__(self) ";
-
-%feature("docstring")  cmf_core::ConstraintLinearStorageFlux::__repr__
-"def __repr__(self) ";
 
 
 // File: classcmf_1_1water_1_1_constraint_linear_storage_flux.xml
@@ -3346,35 +2635,6 @@ std::string short_string() const ";
 %feature("docstring")
 cmf::water::ConstraintLinearStorageFlux::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_content_stress.xml
-%feature("docstring") cmf_core::ContentStress "
-
-A simple water content based stress model based on Feddes (1978)
-stress a is piecewise linear function based on water content  if
-:math:`\\\\\\\\theta>\\\\\\\\theta_d \\\\\\\\rightarrow ET = ET_{pot}`
-if :math:`\\\\\\\\theta_d>\\\\\\\\theta > \\\\\\\\theta_{wilt}
-\\\\\\\\rightarrow ET = \\\\\\\\frac{\\\\\\\\theta_d -
-\\\\\\\\theta}{\\\\\\\\theta_d - \\\\\\\\theta_{wilt}} ET_{pot}`  if
-:math:`\\\\\\\\theta_{wilt}>\\\\\\\\theta \\\\\\\\rightarrow ET = 0.0`
-The parameters :math:`\\\\\\\\theta_{d,w}` can be omitted (or set to a
-negative value) to use default values derived from the layer
-properties. The critical water content (where stress starts) is then
-defined (conf. Feddes 1978) as the center between field capacity (
-:math:`\\\\\\\\theta_{fc}`) and the wilting point (
-:math:`\\\\\\\\theta_{wp}`).  :math:`\\\\\\\\theta_w =
-\\\\\\\\theta(pF=4.2)`: Water content at pF=4.2 :math:`\\\\\\\\theta_d
-= 1/2 (\\\\\\\\theta(pF=1.8) + \\\\\\\\theta(pF=4.2))`  C++ includes:
-waterstress.h ";
-
-%feature("docstring")  cmf_core::ContentStress::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(ContentStress self, real theta_d=-1, real theta_w=-1) ->
-ContentStress ContentStress(real theta_d=-1, real theta_w=-1)  Creates
-a new ContentStress for critical water content theta_d in vol
-Water/vol Soil and wilting point theta_w. ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_content_stress.xml
@@ -3538,39 +2798,6 @@ typecode() const ";
 double V(double h) const ";
 
 
-// File: classcmf__core_1_1_cross_section_reach.xml
-%feature("docstring") cmf_core::CrossSectionReach "
-
-Structure for the description of reaches with a freely defined cross
-section.  Although double triangular cross section reach are rarely
-met, a triangular reach does scale with its water load, and is
-therefore preferable in case where nothing about IChannel geometry is
-known  C++ includes: cross_section_reach.h ";
-
-%feature("docstring")  cmf_core::CrossSectionReach::__init__ "def
-__init__(self, args)
-
-__init__(CrossSectionReach self, double l, cmf::math::num_array x,
-cmf::math::num_array depth) -> CrossSectionReach
-__init__(CrossSectionReach self, CrossSectionReach copy) ->
-CrossSectionReach CrossSectionReach(const CrossSectionReach &copy) ";
-
-
-// File: classcmf__core_1_1cubicspline.xml
-%feature("docstring") cmf_core::cubicspline "
-
-Interpolates points with a cubic spline interpolation.  Code is
-modified after:http://ganeshtiwaridotcomdotnp.blogspot.de/2009/12/c-c-
-code- cubic- spline-interpolation.html  C++ includes: spline.h ";
-
-%feature("docstring")  cmf_core::cubicspline::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(cubicspline self, cmf::math::num_array const & x,
-cmf::math::num_array const & y) -> cubicspline cubicspline(const
-cmf::math::num_array &x, const cmf::math::num_array &y) ";
-
-
 // File: classcmf_1_1math_1_1cubicspline.xml
 %feature("docstring") cmf::math::cubicspline "
 
@@ -3590,63 +2817,6 @@ generate() ";
 
 %feature("docstring")  cmf::math::cubicspline::size "size_t size()
 const ";
-
-
-// File: classcmf__core_1_1_c_vode_adams.xml
-%feature("docstring") cmf_core::CVodeAdams "
-
-Explizit multistep solver using CVode.  C++ includes: cvode.h ";
-
-%feature("docstring")  cmf_core::CVodeAdams::__init__ "def
-__init__(self, args)
-
-__init__(CVodeAdams self, real epsilon=1e-9) -> CVodeAdams
-__init__(CVodeAdams self, state_list states, real epsilon=1e-9) ->
-CVodeAdams CVodeAdams(const cmf::math::state_list &states, real
-epsilon=1e-9) ";
-
-%feature("docstring")  cmf_core::CVodeAdams::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::CVodeAdams::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::CVodeAdams::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::CVodeAdams::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::CVodeAdams::get_jacobian "def
-get_jacobian(self) ";
-
-%feature("docstring")  cmf_core::CVodeAdams::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_c_vode_adams.xml
@@ -3763,64 +2933,6 @@ to_string() const override
 Returns a string representation of the solver. ";
 
 
-// File: classcmf__core_1_1_c_vode_banded.xml
-%feature("docstring") cmf_core::CVodeBanded "
-
-implicit BDF CVode solver with a banded Jacobian approximation  C++
-includes: cvode.h ";
-
-%feature("docstring")  cmf_core::CVodeBanded::__init__ "def
-__init__(self, args)
-
-__init__(CVodeBanded self, real epsilon=1e-9, int w=5) -> CVodeBanded
-__init__(CVodeBanded self, state_list states, real epsilon=1e-9, int
-w=5) -> CVodeBanded CVodeBanded(const cmf::math::state_list &states,
-real epsilon=1e-9, int w=5) ";
-
-%feature("docstring")  cmf_core::CVodeBanded::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::CVodeBanded::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::CVodeBanded::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::CVodeBanded::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::CVodeBanded::get_jacobian "def
-get_jacobian(self) ";
-
-%feature("docstring")  cmf_core::CVodeBanded::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
-
-
 // File: classcmf_1_1math_1_1_c_vode_banded.xml
 %feature("docstring") cmf::math::CVodeBanded "
 
@@ -3933,60 +3045,6 @@ const ";
 to_string() const override
 
 Returns a string representation of the solver. ";
-
-
-// File: classcmf__core_1_1_c_vode_base.xml
-%feature("docstring") cmf_core::CVodeBase "
-
-Abstract base class for different modes of the CVode solver.
-Initantiate one of the child classes to gain different modes of the
-CVode solver  C++ includes: cvode.h ";
-
-%feature("docstring")  cmf_core::CVodeBase::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::CVodeBase::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::CVodeBase::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::CVodeBase::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::CVodeBase::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::CVodeBase::get_jacobian "def
-get_jacobian(self) ";
-
-%feature("docstring")  cmf_core::CVodeBase::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_c_vode_base.xml
@@ -4104,66 +3162,6 @@ const ";
 to_string() const override=0
 
 Returns a string representation of the solver. ";
-
-
-// File: classcmf__core_1_1_c_vode_dense.xml
-%feature("docstring") cmf_core::CVodeDense "
-
-implicit BDF CVode solver with full Jacobian approximation  Use this
-solver for small but stiff systems (<20 state variables)  The solver
-calculates for each step the full Jacobian matrix of the system using
-a difference quotient approximation of the real Jacobian  C++
-includes: cvode.h ";
-
-%feature("docstring")  cmf_core::CVodeDense::__init__ "def
-__init__(self, args)
-
-__init__(CVodeDense self, state_list states, real epsilon=1e-9) ->
-CVodeDense __init__(CVodeDense self, real epsilon=1e-9) -> CVodeDense
-CVodeDense(real epsilon=1e-9) ";
-
-%feature("docstring")  cmf_core::CVodeDense::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::CVodeDense::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::CVodeDense::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::CVodeDense::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::CVodeDense::get_jacobian "def
-get_jacobian(self) ";
-
-%feature("docstring")  cmf_core::CVodeDense::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_c_vode_dense.xml
@@ -4286,63 +3284,6 @@ to_string() const override
 Returns a string representation of the solver. ";
 
 
-// File: classcmf__core_1_1_c_vode_diag.xml
-%feature("docstring") cmf_core::CVodeDiag "
-
-implicit BDF CVode solver with a one line diagonal Jacobian
-approximation  C++ includes: cvode.h ";
-
-%feature("docstring")  cmf_core::CVodeDiag::__init__ "def
-__init__(self, args)
-
-__init__(CVodeDiag self, state_list states, real epsilon=1e-9) ->
-CVodeDiag __init__(CVodeDiag self, real epsilon=1e-9) -> CVodeDiag
-CVodeDiag(real epsilon=1e-9) ";
-
-%feature("docstring")  cmf_core::CVodeDiag::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::CVodeDiag::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::CVodeDiag::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::CVodeDiag::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::CVodeDiag::get_jacobian "def
-get_jacobian(self) ";
-
-%feature("docstring")  cmf_core::CVodeDiag::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
-
-
 // File: classcmf_1_1math_1_1_c_vode_diag.xml
 %feature("docstring") cmf::math::CVodeDiag "
 
@@ -4458,20 +3399,6 @@ to_string() const
 Returns a string representation of the solver. ";
 
 
-// File: classcmf__core_1_1_c_vode_info.xml
-%feature("docstring") cmf_core::CVodeInfo "
-
-Reports the current state of a CVode solver.  C++ includes: cvode.h ";
-
-%feature("docstring")  cmf_core::CVodeInfo::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(CVodeInfo self) -> CVodeInfo ";
-
-%feature("docstring")  cmf_core::CVodeInfo::__repr__ "def
-__repr__(self) ";
-
-
 // File: structcmf_1_1math_1_1_c_vode_info.xml
 %feature("docstring") cmf::math::CVodeInfo "
 
@@ -4481,63 +3408,6 @@ C++ includes: cvode.h ";
 
 %feature("docstring")  cmf::math::CVodeInfo::to_string "std::string
 to_string() const ";
-
-
-// File: classcmf__core_1_1_c_vode_k_l_u.xml
-%feature("docstring") cmf_core::CVodeKLU "
-
-Proxy of C++ cmf::math::CVodeKLU class. ";
-
-%feature("docstring")  cmf_core::CVodeKLU::__init__ "def
-__init__(self, args)
-
-__init__(CVodeKLU self, real epsilon=1e-9) -> CVodeKLU
-__init__(CVodeKLU self, state_list states, real epsilon=1e-9) ->
-CVodeKLU CVodeKLU(const cmf::math::state_list &states, real
-epsilon=1e-9) ";
-
-%feature("docstring")  cmf_core::CVodeKLU::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::CVodeKLU::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::CVodeKLU::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::CVodeKLU::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::CVodeKLU::get_jacobian "def
-get_jacobian(self) ";
-
-%feature("docstring")  cmf_core::CVodeKLU::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_c_vode_k_l_u.xml
@@ -4641,64 +3511,6 @@ set_system(const state_list &states) ";
 
 %feature("docstring")  cmf::math::CVodeKLU::to_string "std::string
 to_string() const ";
-
-
-// File: classcmf__core_1_1_c_vode_krylov.xml
-%feature("docstring") cmf_core::CVodeKrylov "
-
-implicit BDF CVode solver with a Krylov preconditioner  C++ includes:
-cvode.h ";
-
-%feature("docstring")  cmf_core::CVodeKrylov::__init__ "def
-__init__(self, args)
-
-__init__(CVodeKrylov self, state_list states, real epsilon=1e-9, int
-w=5, char p='L') -> CVodeKrylov __init__(CVodeKrylov self, real
-epsilon=1e-9, int w=5, char p='L') -> CVodeKrylov CVodeKrylov(real
-epsilon=1e-9, int w=5, char p='L') ";
-
-%feature("docstring")  cmf_core::CVodeKrylov::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::CVodeKrylov::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::CVodeKrylov::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::CVodeKrylov::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::CVodeKrylov::get_jacobian "def
-get_jacobian(self) ";
-
-%feature("docstring")  cmf_core::CVodeKrylov::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_c_vode_krylov.xml
@@ -4813,22 +3625,6 @@ const ";
 to_string() const
 
 Returns a string representation of the solver. ";
-
-
-// File: classcmf__core_1_1_c_vode_options.xml
-%feature("docstring") cmf_core::CVodeOptions "
-
-A set of options for all CVode3 solver.  Negative numbers indicate
-that this option stays on the default value. For the meaning of the
-options see CVODE-UD, section 4.5.6  See Hindmarsh, A., Serban, R. and
-Reynolds, D.: User Documentation for cvode v3.1.0, 2017, UCRL-
-SM-208108  Usage example: >>>solver = CVodeDens(p, 1e-9)
->>>solver.options.max_order = 2  C++ includes: cvode.h ";
-
-%feature("docstring")  cmf_core::CVodeOptions::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(CVodeOptions self) -> CVodeOptions CVodeOptions() ";
 
 
 // File: structcmf_1_1math_1_1_c_vode_options.xml
@@ -4960,40 +3756,6 @@ set_tracer_filter(solute S, real value) ";
 %feature("docstring")  cmf::upslope::connections::Darcy::to_string "virtual std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_darcy.xml
-%feature("docstring") cmf_core::Darcy "
-
-Calculates the lateral flow using the gravitational potential gradient
-only.    .. math::       q_{lat} = \\\\\\\\frac{\\\\\\\\Delta
-\\\\\\\\Psi_G}{\\\\\\\\|C_1-C_2\\\\\\\\|}     \\\\\\\\frac 12
-(T(C_1)+T(C_2)) w   where  :math:`\\\\\\\\Delta \\\\\\\\Psi_G` is the
-gravitational potential difference  :math:`\\\\\\\\|C_1-C_2\\\\\\\\|`
-is the distance from Cell 1 to Cell 2  :math:`T(C)` is the
-transmissivity of cell C, calculated by SoilType::Transmissivity
-:math:`w` is the width of the connection of the cells  C++ includes:
-subsurfacefluxes.h ";
-
-%feature("docstring")  cmf_core::Darcy::__init__ "def __init__(self,
-args, kwargs)
-
-__init__(Darcy self, cmf::upslope::SoilLayer::ptr left,
-cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) ->
-Darcy Darcy(cmf::upslope::SoilLayer::ptr left,
-cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) ";
-
-%feature("docstring")  cmf_core::Darcy::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::Darcy::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::Darcy::__iter__ "def __iter__(self)
-";
-
-%feature("docstring")  cmf_core::Darcy::__repr__ "def __repr__(self)
-";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_darcy_kinematic.xml
 %feature("docstring") cmf::upslope::connections::DarcyKinematic "
 
@@ -5121,70 +3883,6 @@ std::string short_string() const ";
 %feature("docstring")
 cmf::upslope::connections::DarcyKinematic::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_darcy_kinematic.xml
-%feature("docstring") cmf_core::DarcyKinematic "
-
-A simple kinemtic wave model for subsurface flux.    .. math::       q
-= \\\\\\\\frac{\\\\\\\\Delta z_{surface}}{d} K(\\\\\\\\theta)_{source}
-A_{cross}   C++ includes: subsurfacefluxes.h ";
-
-%feature("docstring")  cmf_core::DarcyKinematic::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(DarcyKinematic self, cmf::upslope::SoilLayer::ptr left,
-cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) ->
-DarcyKinematic DarcyKinematic(cmf::upslope::SoilLayer::ptr left,
-cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0)
-Creates the connection.  Parameters: -----------  left:  Left node of
-the connection (needs to be soil water storage)  right:  Right node of
-the connection (can be any node)  FlowWidth:  the width of the
-connection - is multiplied by layer thickness to get the interface
-area  Distance:  the length of the connection. If 0, the distance is
-calculated from the position of the nodes ";
-
-%feature("docstring")  cmf_core::DarcyKinematic::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::DarcyKinematic::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::DarcyKinematic::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::DarcyKinematic::__repr__ "def
-__repr__(self) ";
-
-
-// File: classcmf__core_1_1_date.xml
-%feature("docstring") cmf_core::Date "
-
-An absolute time, not for calculation. Date and Time are
-interchangable.  C++ includes: time.h ";
-
-%feature("docstring")  cmf_core::Date::__init__ "def __init__(self,
-args)
-
-__init__(Date self, int _day, int _month, int _year, int _hour=0, int
-_minute=0, int _second=0, int _ms=0) -> Date __init__(Date self, Time
-time) -> Date Date(const Time &time)  Creates a new date from time
-(based on the 31.12.1899, like in Excel(TM)) ";
-
-%feature("docstring")  cmf_core::Date::__format__ "def
-__format__(self, fmt) ";
-
-%feature("docstring")  cmf_core::Date::__getstate__ "def
-__getstate__(self) ";
-
-%feature("docstring")  cmf_core::Date::__repr__ "def __repr__(self)
-";
-
-%feature("docstring")  cmf_core::Date::__setstate__ "def
-__setstate__(self, data) ";
-
-%feature("docstring")  cmf_core::Date::as_datetime "def
-as_datetime(self) ";
 
 
 // File: structcmf_1_1math_1_1_date.xml
@@ -5357,50 +4055,6 @@ cmf::upslope::connections::DiffusiveMacroMicroExchange::short_string "virtual st
 cmf::upslope::connections::DiffusiveMacroMicroExchange::to_string "virtual std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_diffusive_macro_micro_exchange.xml
-%feature("docstring") cmf_core::DiffusiveMacroMicroExchange "
-
-A simple first order diffusive water exchange between MacroPore and
-matrix ( SoilLayer)    .. math::       q = \\\\\\\\omega (W_{ma} -
-W_{mi,eff}) V_{soil}  where: :math:`\\\\\\\\omega` is the exchange
-rate in :math:`day^{-1}`  :math:`W_{ma}` is the filled fraction of the
-macropore system [-]  :math:`W_{mi,eff}` is the water filled pore
-space of the micropores above the residual pF value [-], default 4.2
-:math:`V_{soil} = A_{cell} d_{layer}` is the total volume of the soil
-layer [ :math:`m^3`]  The residual micropore pF is used to determine a
-residual water content of the micropores. Residual in this case means,
-that above this pF value, water is not draining to the macro pores,
-even if they are empty. Although the default value is at wilting
-point, lower pF values are much more sensible, and should be rather
-lower than field capacity (pF=1.8 - 2.5). However, since this equation
-is rather conceptual than physical, this value can only be estimated
-or calibrated.  cf. Simunek et al J. of Hydr. 2003  C++ includes:
-macropore.h ";
-
-%feature("docstring")  cmf_core::DiffusiveMacroMicroExchange::__init__
-"def __init__(self, args, kwargs)
-
-__init__(DiffusiveMacroMicroExchange self,
-cmf::upslope::MacroPore::ptr left, cmf::upslope::SoilLayer::ptr right,
-real omega, real pFrmi=4.2) -> DiffusiveMacroMicroExchange
-DiffusiveMacroMicroExchange(cmf::upslope::MacroPore::ptr left,
-cmf::upslope::SoilLayer::ptr right, real omega, real pFrmi=4.2) ";
-
-%feature("docstring")
-cmf_core::DiffusiveMacroMicroExchange::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")
-cmf_core::DiffusiveMacroMicroExchange::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::DiffusiveMacroMicroExchange::__iter__
-"def __iter__(self) ";
-
-%feature("docstring")  cmf_core::DiffusiveMacroMicroExchange::__repr__
-"def __repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_diffusive_surface_runoff.xml
 %feature("docstring")
 cmf::upslope::connections::DiffusiveSurfaceRunoff "
@@ -5562,84 +4216,6 @@ cmf::upslope::connections::DiffusiveSurfaceRunoff::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_diffusive_surface_runoff.xml
-%feature("docstring") cmf_core::DiffusiveSurfaceRunoff "
-
-A connection to route water from a SurfaceWater storage to another
-node following the gradient of the water level.    .. math::
-q_{runoff} = A_{cross} d_{eff}^{2/3} \\\\\\\\frac{\\\\\\\\sqrt{S}}{n}
-where:  :math:`q_{runoff}` is the surface runoff  :math:`A_{cross}` is
-the wetted crossectional flux area, given as :math:`d_{eff}
-\\\\\\\\cdot w`  :math:`w` is the width of the shared boundary between
-the surface water storage and the target node  :math:`d_{eff}` is the
-effective flow depth of the surface water.The effective flow depth is
-defined as either the mean of the effective depth of the left and the
-right node (when use_depthmax=false) or the maximum of the efficitve
-depth. The effective depth for a surfacewater is always defined as:
-.. math:: d_{eff} = \\\\\\\\begin{cases}     V/A-d_{puddle}\\\\\\\\ &
-V/A>d_{puddle} \\\\\\\\\\\\\\\\ 0.0 & V/A<=d_{puddle}
-\\\\\\\\end{cases}  The right node might be not a surfacewater. If the
-right node is an OpenWaterStorage, then the effective depth is the
-depth of the OWS above the cell height of the left surfacewater, given
-by:   .. math::      d_{eff,ows} = \\\\\\\\Psi_{ows} - z_{cell}  In
-case of another node, the right node depth equals the effective depth
-of the left node.  :math:`V` the volume of stored water in the surface
-in :math:`m^3`  :math:`A` the area of the cell in :math:`m^2`
-:math:`d_{puddle}=V_{puddle}/A` the average depth of water in the
-surface water needed to start run off  :math:`S =
-\\\\\\\\|\\\\\\\\frac{\\\\\\\\Delta h\\\\\\\\|}{d}` the slope between
-surfacewater center potential and the target node potential  :math:`n`
-the manning roughness  The DiffusiveSurfaceRunoff can be used as a
-cell connecting flux as in: This results in a connection of the
-surfacewater storage of each cell with the surface water storages of
-its neighborssee  C++ includes: surfacewater.h ";
-
-%feature("docstring")  cmf_core::DiffusiveSurfaceRunoff::__init__ "def __init__(self, args, kwargs)
-
-__init__(DiffusiveSurfaceRunoff self, cmf::upslope::SurfaceWater::ptr
-left, cmf::water::flux_node::ptr right, real flowwidth, real
-distance=-1) -> DiffusiveSurfaceRunoff
-DiffusiveSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left,
-cmf::water::flux_node::ptr right, real flowwidth, real distance=-1) ";
-
-%feature("docstring")  cmf_core::DiffusiveSurfaceRunoff::__contains__
-"def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::DiffusiveSurfaceRunoff::__getitem__ "def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::DiffusiveSurfaceRunoff::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::DiffusiveSurfaceRunoff::__repr__ "def __repr__(self) ";
-
-
-// File: classcmf__core_1_1_dirichlet_boundary.xml
-%feature("docstring") cmf_core::DirichletBoundary "
-
-Dirichlet (constant head) boundary condition.  This boundary condition
-can be used either as a pure sink boundary condition or as a
-conditional source / sink boundary condition. The constant head of the
-boundary condition is interpreted and handled by the connections of
-the boundary condition. Not head aware connections, should not be
-used, since they are ignoring the constant head.  C++ includes:
-boundary_condition.h ";
-
-%feature("docstring")  cmf_core::DirichletBoundary::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(DirichletBoundary self, project _p, real potential, point
-Location=cmf::geometry::point()) -> DirichletBoundary
-DirichletBoundary(cmf::project &_p, real potential,
-cmf::geometry::point Location=cmf::geometry::point()) ";
-
-%feature("docstring")  cmf_core::DirichletBoundary::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::DirichletBoundary::connected_nodes "def connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::DirichletBoundary::fluxes "def
-fluxes(self, t) ";
-
-
 // File: classcmf_1_1water_1_1_dirichlet_boundary.xml
 %feature("docstring") cmf::water::DirichletBoundary "
 
@@ -5750,32 +4326,6 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
-// File: classcmf__core_1_1_energy_budget_snow_melt.xml
-%feature("docstring") cmf_core::EnergyBudgetSnowMelt "
-
-Calculates snow melt using the surface energy budget method.  C++
-includes: surfacefluxes.h ";
-
-%feature("docstring")  cmf_core::EnergyBudgetSnowMelt::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(EnergyBudgetSnowMelt self, cmf::water::WaterStorage::ptr
-snow, cmf::water::flux_node::ptr surface_water, Cell cell) ->
-EnergyBudgetSnowMelt
-EnergyBudgetSnowMelt(cmf::water::WaterStorage::ptr snow,
-cmf::water::flux_node::ptr surface_water, cmf::upslope::Cell &cell) ";
-
-%feature("docstring")  cmf_core::EnergyBudgetSnowMelt::__contains__ "def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::EnergyBudgetSnowMelt::__getitem__ "def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::EnergyBudgetSnowMelt::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::EnergyBudgetSnowMelt::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_energy_budget_snow_melt.xml
 %feature("docstring") cmf::upslope::connections::EnergyBudgetSnowMelt
 "
@@ -5880,62 +4430,6 @@ cmf::upslope::connections::EnergyBudgetSnowMelt::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_explicit_euler__fixed.xml
-%feature("docstring") cmf_core::ExplicitEuler_fixed "
-
-An explicit Euler integrator, with a fixed time step.  C++ includes:
-explicit_euler.h ";
-
-%feature("docstring")  cmf_core::ExplicitEuler_fixed::__init__ "def
-__init__(self, args)
-
-__init__(ExplicitEuler_fixed self, state_list states) ->
-ExplicitEuler_fixed __init__(ExplicitEuler_fixed self) ->
-ExplicitEuler_fixed __init__(ExplicitEuler_fixed self, Integrator
-copy) -> ExplicitEuler_fixed ExplicitEuler_fixed(const Integrator
-&copy)  copy constructor ";
-
-%feature("docstring")  cmf_core::ExplicitEuler_fixed::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::ExplicitEuler_fixed::__getitem__ "def __getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::ExplicitEuler_fixed::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::ExplicitEuler_fixed::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::ExplicitEuler_fixed::run "def
-run(self, start=None, end=None, step=day *1, max_errors=0,
-reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
-
-
 // File: classcmf_1_1math_1_1_explicit_euler__fixed.xml
 %feature("docstring") cmf::math::ExplicitEuler_fixed "
 
@@ -6036,40 +4530,6 @@ size() const ";
 %feature("docstring")  cmf::math::ExplicitEuler_fixed::to_string "std::string to_string() const override
 
 Desrcibes the iterator. ";
-
-
-// File: classcmf__core_1_1_exponential_decline_connection.xml
-%feature("docstring") cmf_core::ExponentialDeclineConnection "
-
-A conceptual TOPmodel inspired connection.    .. math::       q = Q_0
-\\\\\\\\cdot e^{(V-V_0)/m}   C++ includes: simple_connections.h ";
-
-%feature("docstring")
-cmf_core::ExponentialDeclineConnection::__init__ "def __init__(self,
-args, kwargs)
-
-__init__(ExponentialDeclineConnection self,
-cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr
-target, real Q0, real V0, real m) -> ExponentialDeclineConnection
-ExponentialDeclineConnection(WaterStorage::ptr source, flux_node::ptr
-target, real Q0, real V0, real m)  creates the exponential decline
-connection ";
-
-%feature("docstring")
-cmf_core::ExponentialDeclineConnection::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")
-cmf_core::ExponentialDeclineConnection::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")
-cmf_core::ExponentialDeclineConnection::__iter__ "def __iter__(self)
-";
-
-%feature("docstring")
-cmf_core::ExponentialDeclineConnection::__repr__ "def __repr__(self)
-";
 
 
 // File: classcmf_1_1water_1_1_exponential_decline_connection.xml
@@ -6186,34 +4646,6 @@ std::string short_string() const ";
 %feature("docstring")
 cmf::water::ExponentialDeclineConnection::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_externally_controlled_flux.xml
-%feature("docstring") cmf_core::ExternallyControlledFlux "
-
-Flux from one node to another, controlled by the user or an external
-program, by changing the flux constant.  It is easy to create negative
-volumes in water storages with this connection, which can be hazard to
-the solver, since most connections rely on a positive volume in a
-storage. Handle with care!  C++ includes: simple_connections.h ";
-
-%feature("docstring")  cmf_core::ExternallyControlledFlux::__init__ "def __init__(self, args, kwargs)
-
-__init__(ExternallyControlledFlux self, cmf::water::flux_node::ptr
-source, cmf::water::flux_node::ptr target, real flux_value=0) ->
-ExternallyControlledFlux ExternallyControlledFlux(flux_node::ptr
-source, flux_node::ptr target, real flux_value=0) ";
-
-%feature("docstring")
-cmf_core::ExternallyControlledFlux::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::ExternallyControlledFlux::__getitem__
-"def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::ExternallyControlledFlux::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::ExternallyControlledFlux::__repr__ "def __repr__(self) ";
 
 
 // File: classcmf_1_1water_1_1_externally_controlled_flux.xml
@@ -6383,30 +4815,6 @@ cmf::fit_retention_curve::FitVanGenuchtenMualem::get_error "def
 get_error(self, params) ";
 
 
-// File: classcmf__core_1_1flux__connection.xml
-%feature("docstring") cmf_core::flux_connection "
-
-The connections in cmf hold the processes for the calculation of
-fluxes between water storages and model boundaries.  Todo Elaborate on
-this Represents a connection between flux_nodes, where water fluxes
-occur.  C++ includes: flux_connection.h ";
-
-%feature("docstring")  cmf_core::flux_connection::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::flux_connection::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::flux_connection::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::flux_connection::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::flux_connection::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1water_1_1flux__connection.xml
 %feature("docstring") cmf::water::flux_connection "
 
@@ -6510,32 +4918,6 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 %feature("docstring")  cmf::water::flux_connection::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::water::flux_connection::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1flux__node.xml
-%feature("docstring") cmf_core::flux_node "
-
-Base class for everything that can be connected by fluxes.  Flux nodes
-can be WaterStorages, flux end points, sinks, sources and bridges to
-other model domains (e.g. Ponded water to river system). The base
-class can be used where a simple routing, potentially with mixing, is
-needed.  C++ includes: flux_node.h ";
-
-%feature("docstring")  cmf_core::flux_node::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(flux_node self, project _project, point
-location=cmf::geometry::point()) -> flux_node flux_node(cmf::project
-&_project, cmf::geometry::point location=cmf::geometry::point()) ";
-
-%feature("docstring")  cmf_core::flux_node::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::flux_node::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::flux_node::fluxes "def fluxes(self,
-t) ";
 
 
 // File: classcmf_1_1water_1_1flux__node.xml
@@ -6666,35 +5048,6 @@ The current time step :param kwargs: Keyword arguments for plt.quiver
 __call__(self, t=None) ";
 
 
-// File: classcmf__core_1_1_free_drainage_percolation.xml
-%feature("docstring") cmf_core::FreeDrainagePercolation "
-
-Calculates a free drainage (unit gradient) from a layer to somewhere
-else.    .. math::       q = K(\\\\\\\\theta) A  where:  :math:`q`
-Flux from the layer to the other side of the connection in
-:math:`m^3/day`  :math:`K(\\\\\\\\theta)` Actual conductivity in
-:math:`m/day` depending on the water content of the layer
-:math:`\\\\\\\\theta`  :math:`A` Cell area in :math:`m^2`  C++
-includes: Percolation.h ";
-
-%feature("docstring")  cmf_core::FreeDrainagePercolation::__init__ "def __init__(self, args, kwargs)
-
-__init__(FreeDrainagePercolation self, cmf::upslope::SoilLayer::ptr
-left, cmf::water::flux_node::ptr right) -> FreeDrainagePercolation
-FreeDrainagePercolation(cmf::upslope::SoilLayer::ptr left,
-cmf::water::flux_node::ptr right) ";
-
-%feature("docstring")  cmf_core::FreeDrainagePercolation::__contains__
-"def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::FreeDrainagePercolation::__getitem__
-"def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::FreeDrainagePercolation::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::FreeDrainagePercolation::__repr__ "def __repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_free_drainage_percolation.xml
 %feature("docstring")
 cmf::upslope::connections::FreeDrainagePercolation "
@@ -6815,37 +5168,6 @@ cmf::upslope::connections::FreeDrainagePercolation::short_string "virtual std::s
 
 %feature("docstring")
 cmf::upslope::connections::FreeDrainagePercolation::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_freundlich_adsorbtion.xml
-%feature("docstring") cmf_core::FreundlichAdsorbtion "
-
-BROKEN: This class calculates the adsorption equilibrium between
-sorbat and sorbent using the Freundlich isotherme.  Freundlich
-isotherme:    .. math::      \\\\\\\\frac{x_{ad}}{m} = K c^n  where
-:math:`x_{ad} = x_{tot} - x_{free}` is the adsorbed tracer mass
-:math:`x_{tot}` is the total tracer mass  :math:`x_{free}` is the
-dissolved tracer mass  :math:`m` is the mass of the sorbent in the
-same unit as the tracer mass  :math:`K` is the Freundlich sorption
-coefficient  :math:`c = \\\\\\\\frac{x_{free}}{V}` is the
-concentration of the tracer in tracer mass per m3  :math:`n` is the
-Freundlich exponent  CMF stores in a solute storage the total mass of
-a tracer and needs to calculate the free tracer mass. The eq. above
-can not be rearanged to get :math:`x_{free}` from :math:`x_{tot}`.
-Instead, the value is iterated usingregula falsi. If n is near to 1,
-using LinearAdsorption will speed up your calculations.  The simplest
-physically based adsorption model by Langmuir ( LangmuirAdsorption)
-has also a analytical solution and is hence calculated faster then
-Freundlich.  C++ includes: adsorption.h ";
-
-%feature("docstring")  cmf_core::FreundlichAdsorbtion::__init__ "def
-__init__(self, args)
-
-__init__(FreundlichAdsorbtion self, real K, real n, real m, real
-epsilon=1e-12, int maxiter=100) -> FreundlichAdsorbtion
-__init__(FreundlichAdsorbtion self, FreundlichAdsorbtion other) ->
-FreundlichAdsorbtion FreundlichAdsorbtion(const FreundlichAdsorbtion
-&other) ";
 
 
 // File: classcmf_1_1water_1_1_freundlich_adsorbtion.xml
@@ -7062,36 +5384,6 @@ cmf::upslope::connections::GradientMacroFlow::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_gradient_macro_flow.xml
-%feature("docstring") cmf_core::GradientMacroFlow "
-
-Gradient based flux from macro pore to macro pore.  Deprecated The
-MacroPore model is still very experimental and not stable. Only for
-tryouts!    .. math::       q = K(\\\\\\\\theta)
-\\\\\\\\frac{\\\\\\\\Delta \\\\\\\\Psi}{\\\\\\\\Delta z}   C++
-includes: macropore.h ";
-
-%feature("docstring")  cmf_core::GradientMacroFlow::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(GradientMacroFlow self, cmf::upslope::MacroPore::ptr left,
-cmf::water::flux_node::ptr right) -> GradientMacroFlow
-GradientMacroFlow(cmf::upslope::MacroPore::ptr left,
-cmf::water::flux_node::ptr right) ";
-
-%feature("docstring")  cmf_core::GradientMacroFlow::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::GradientMacroFlow::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::GradientMacroFlow::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::GradientMacroFlow::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_gradient_macro_micro_exchange.xml
 %feature("docstring")
 cmf::upslope::connections::GradientMacroMicroExchange "
@@ -7217,96 +5509,6 @@ cmf::upslope::connections::GradientMacroMicroExchange::short_string "virtual std
 
 %feature("docstring")
 cmf::upslope::connections::GradientMacroMicroExchange::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_gradient_macro_micro_exchange.xml
-%feature("docstring") cmf_core::GradientMacroMicroExchange "
-
-A gradient based exchange term between macropores and micropores,
-using a fixed (air-) potential for macropores.    .. math::      q = K
-\\\\\\\\frac{\\\\\\\\Delta\\\\\\\\Psi}{d/2} A   where:  :math:`K` The
-conductivity of the aggregate boundary
-:math:`\\\\\\\\Delta\\\\\\\\Psi` The potential difference. Using the
-air potential as the constant potential for the macro pores, you get:
-:math:`\\\\\\\\Delta\\\\\\\\Psi =
-\\\\\\\\Psi_M(\\\\\\\\theta_{micro})`  :math:`d` the mean aggregate
-size in m  :math:`A` the crosssection area, given as the flow width (
-cmf::upslope::MacroPore::get_flowwidth) times layer thickness  C++
-includes: macropore.h ";
-
-%feature("docstring")  cmf_core::GradientMacroMicroExchange::__init__
-"def __init__(self, args, kwargs)
-
-__init__(GradientMacroMicroExchange self, cmf::upslope::SoilLayer::ptr
-left, cmf::upslope::MacroPore::ptr right) ->
-GradientMacroMicroExchange
-GradientMacroMicroExchange(cmf::upslope::SoilLayer::ptr left,
-cmf::upslope::MacroPore::ptr right) ";
-
-%feature("docstring")
-cmf_core::GradientMacroMicroExchange::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")
-cmf_core::GradientMacroMicroExchange::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::GradientMacroMicroExchange::__iter__
-"def __iter__(self) ";
-
-%feature("docstring")  cmf_core::GradientMacroMicroExchange::__repr__
-"def __repr__(self) ";
-
-
-// File: classcmf__core_1_1_green_ampt_infiltration.xml
-%feature("docstring") cmf_core::GreenAmptInfiltration "
-
-Connects the surfacewater and the most upper layer using a Green-Ampt
-equation like infiltration.  The Green-Ampt formula is given as:   ..
-math::      q(t) = -K_s \\\\\\\\frac{dh}{dz}     A  where:
-:math:`q(t)` is the infiltration rate in m3/day  :math:`K_s` is the
-saturated conductivity in m/day  :math:`\\\\\\\\frac{dh}{dz}` is the
-hydraulic gradient in the wetting front  :math:`A` is the surface area
-of the cell  The gradient in the wetting front is calculated as:   ..
-math::      \\\\\\\\frac{dh}{dz} = \\\\\\\\frac{h_f - h_0}{Z_f} =
-\\\\\\\\frac{|\\\\\\\\Psi_f| + Z_f}{Z_f}  where:  :math:`h_f` is the
-hydraulic head at the bottom of the wetting front in m  :math:`h_0` is
-the hydraulic head at the surface in m  :math:`Z_f` is the length of
-the wetting front in m  Since :math:`Z_f` is unknown, the depth of the
-wetting front can be approximated by:   .. math::      Z_f =
-\\\\\\\\frac{F}{\\\\\\\\theta_s -     \\\\\\\\theta_i}  with:
-:math:`F` the accumulated volume per area of infiltrated water
-:math:`\\\\\\\\theta_s, \\\\\\\\theta_i` the volumetric water content
-at saturation resp. at start of the infiltration  If the surface water
-is modeled by a distinct water storage, the actual infiltration is
-given as the product of the potential infiltration with the coverage
-of the surface water cmf::upslope::Cell::surface_water_coverage   ..
-math::      q_{act} = q_{max}     \\\\\\\\frac{A_{water}}{A_{cell}} If
-the surface water is no storage on its own, but just a water
-distribution node, the actual infiltration is the minimum of the
-potential infiltration and the current inflow (rain, snow melt) to the
-surface   .. math::      q_{act} = \\\\\\\\min\\\\\\\\left(q_{max},
-\\\\\\\\sum{q_{in,surfacewater}}\\\\\\\\right)  C++ includes:
-infiltration.h ";
-
-%feature("docstring")  cmf_core::GreenAmptInfiltration::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(GreenAmptInfiltration self, cmf::upslope::SoilLayer::ptr
-soilwater, cmf::water::flux_node::ptr surfacewater) ->
-GreenAmptInfiltration
-GreenAmptInfiltration(cmf::upslope::SoilLayer::ptr soilwater,
-cmf::water::flux_node::ptr surfacewater) ";
-
-%feature("docstring")  cmf_core::GreenAmptInfiltration::__contains__ "def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::GreenAmptInfiltration::__getitem__ "def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::GreenAmptInfiltration::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::GreenAmptInfiltration::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_green_ampt_infiltration.xml
@@ -7478,56 +5680,6 @@ cmf::upslope::connections::GreenAmptInfiltration::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_hargreave_e_t.xml
-%feature("docstring") cmf_core::HargreaveET "
-
-Calculates the Evapotranspiration using Hargreave's equation.    ..
-math::      ET_{rc} = 0.0135 K_T\\\\\\\\ s_0
-\\\\\\\\sqrt{\\\\\\\\Delta T} (T +     17.8)  where:  :math:`ET_{rc}`
-the reference crop evapotranspiration in mm/day  :math:`K_T =
-0.00185{\\\\\\\\Delta T}^2 - 0.0433 \\\\\\\\Delta T + 0.4023`
-Continentality factor as given in the reference  :math:`\\\\\\\\Delta
-T = |T_{max} - T_{min}|[K]` Daily temperature range  :math:`T
-[^\\\\\\\\circ C]` daily mean temperature  :math:`s_0 = 15.392 d_r
-\\\\\\\\left(\\\\\\\\omega_s\\\\\\\\sin(\\\\\\\\Phi)
-\\\\\\\\sin{\\\\\\\\gamma} +
-\\\\\\\\cos{\\\\\\\\Phi}\\\\\\\\cos{\\\\\\\\gamma} *
-\\\\\\\\sin(\\\\\\\\omega_s)\\\\\\\\right)` the extraterrestrial solar
-radiation in mm/day  :math:`d_r = 1 + 0.0033
-\\\\\\\\cos(DOY\\\\\\\\frac{2 \\\\\\\\pi}{365})` relative distance
-between earth and sun  :math:`\\\\\\\\omega_s =
-\\\\\\\\arccos(-\\\\\\\\tan{\\\\\\\\Phi} \\\\\\\\tan{\\\\\\\\gamma})`
-sunset hour angle (radians)  :math:`\\\\\\\\gamma = 0.4039
-\\\\\\\\sin(DOY\\\\\\\\frac{2 \\\\\\\\pi}{365} - 1.405)` solar
-declination (radians)  :math:`\\\\\\\\Phi` geographic latitude
-(radians)  See:  SAMANI, Zohrab.Estimating solar radiation and
-evapotranspiration using minimum climatological data. Journal of
-Irrigation and Drainage Engineering, 2000, 126. Jg., Nr. 4, S.
-265-267.  Crop specific potential evapotranspiration is scaled by LAI:
-:math:`ET_{pot} = ET_{rc} \\\\\\\\frac{LAI}{2.88}`.  C++ includes:
-ET.h ";
-
-%feature("docstring")  cmf_core::HargreaveET::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(HargreaveET self, cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target) -> HargreaveET
-HargreaveET(cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target) ";
-
-%feature("docstring")  cmf_core::HargreaveET::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::HargreaveET::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::HargreaveET::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::HargreaveET::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1_e_t_1_1_hargreave_e_t.xml
 %feature("docstring") cmf::upslope::ET::HargreaveET "
 
@@ -7660,64 +5812,6 @@ set_tracer_filter(solute S, real value) ";
 %feature("docstring")  cmf::upslope::ET::HargreaveET::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::ET::HargreaveET::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_heun_integrator.xml
-%feature("docstring") cmf_core::HeunIntegrator "
-
-A simple predictor - corrector solver.  Not tested and very
-experimentally :math:`y^{n+1} = y^n + \\\\\\\\alpha f(y^n +
-f(y^n)dt)dt + (1-\\\\\\\\alpha)f(y^n)dt`  C++ includes:
-explicit_euler.h ";
-
-%feature("docstring")  cmf_core::HeunIntegrator::__init__ "def
-__init__(self, args)
-
-__init__(HeunIntegrator self, state_list states, real Alpha=0.5) ->
-HeunIntegrator __init__(HeunIntegrator self, real Alpha=0.5) ->
-HeunIntegrator __init__(HeunIntegrator self, Integrator copy) ->
-HeunIntegrator HeunIntegrator(const Integrator &copy)  copy
-constructor ";
-
-%feature("docstring")  cmf_core::HeunIntegrator::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::HeunIntegrator::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::HeunIntegrator::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::HeunIntegrator::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::HeunIntegrator::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_heun_integrator.xml
@@ -7978,17 +6072,6 @@ typecode() const =0 ";
 V(double h) const ";
 
 
-// File: classcmf__core_1_1_i_channel.xml
-%feature("docstring") cmf_core::IChannel "
-
-Structure for the description of structural parameters of a reach
-Abstract base class for different IChannel geometries.  C++ includes:
-ReachType.h ";
-
-%feature("docstring")  cmf_core::IChannel::__init__ "def
-__init__(self, args, kwargs) ";
-
-
 // File: classcmf_1_1atmosphere_1_1_i_d_w___meteorology.xml
 %feature("docstring") cmf::atmosphere::IDW_Meteorology "
 
@@ -8037,23 +6120,6 @@ Returns the height of the instruments above canopy. ";
 
 Returns the Weather at time t. Pure virtual function. Must get
 implemented by child functions. ";
-
-
-// File: classcmf__core_1_1_i_d_w___meteorology.xml
-%feature("docstring") cmf_core::IDW_Meteorology "
-
-Regionalizes meteorological measurements using a simple inverse
-distance weighted (IDW) method.  See:  IDW  C++ includes:
-meteorology.h ";
-
-%feature("docstring")  cmf_core::IDW_Meteorology::__init__ "def
-__init__(self, args)
-
-__init__(IDW_Meteorology self, point position, MeteoStationList
-stations, double z_weight, double power) -> IDW_Meteorology
-__init__(IDW_Meteorology self, IDW_Meteorology copy) ->
-IDW_Meteorology IDW_Meteorology(const IDW_Meteorology &copy)  Copy
-c'tor. ";
 
 
 // File: classcmf_1_1atmosphere_1_1_i_d_w_rainfall.xml
@@ -8147,83 +6213,6 @@ t:  Time of the query
 
 Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
-
-
-// File: classcmf__core_1_1_i_d_w_rainfall.xml
-%feature("docstring") cmf_core::IDWRainfall "
-
-A RainSource using a spatially interpolated rainfall intensity from
-all stations.  Interpolation method is inverse distance weighted (IDW)
-C++ includes: precipitation.h ";
-
-%feature("docstring")  cmf_core::IDWRainfall::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::IDWRainfall::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::IDWRainfall::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::IDWRainfall::fluxes "def
-fluxes(self, t) ";
-
-
-// File: classcmf__core_1_1_implicit_euler.xml
-%feature("docstring") cmf_core::ImplicitEuler "
-
-An implicit (backward) Euler integrator using fixpoint iteration.  C++
-includes: implicit_euler.h ";
-
-%feature("docstring")  cmf_core::ImplicitEuler::__init__ "def
-__init__(self, args)
-
-__init__(ImplicitEuler self, state_list states, real epsilon=1e-9,
-Time tStepMin=cmf::math::timespan(10)) -> ImplicitEuler
-__init__(ImplicitEuler self, real epsilon=1e-9, Time
-tStepMin=cmf::math::timespan(10)) -> ImplicitEuler
-__init__(ImplicitEuler self, Integrator arg2) -> ImplicitEuler
-ImplicitEuler(const Integrator &)  copy constructor ";
-
-%feature("docstring")  cmf_core::ImplicitEuler::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::ImplicitEuler::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::ImplicitEuler::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::ImplicitEuler::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::ImplicitEuler::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_implicit_euler.xml
@@ -8336,57 +6325,6 @@ const ";
 %feature("docstring")  cmf::math::ImplicitEuler::to_string "std::string to_string() const override
 
 Desrcibes the iterator. ";
-
-
-// File: classcmf__core_1_1_integrator.xml
-%feature("docstring") cmf_core::Integrator "
-
-Base class for any kind of integrator.  Pure virtual functions:
-Integrate  copy Please provide a custom copy constructor  C++
-includes: integrator.h ";
-
-%feature("docstring")  cmf_core::Integrator::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::Integrator::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::Integrator::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::Integrator::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::Integrator::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::Integrator::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_integrator.xml
@@ -8530,18 +6468,6 @@ double q(double h, double slope) const ";
 
 %feature("docstring")  cmf::river::IVolumeHeightFunction::V "virtual
 double V(double h) const =0 ";
-
-
-// File: classcmf__core_1_1_i_volume_height_function.xml
-%feature("docstring") cmf_core::IVolumeHeightFunction "
-
-Volume height relations are functional objects, which return a height
-and a crosssectional area of a volume for different geometric bodies.
-This is the abstract base class, where the geometries derive from  C++
-includes: ReachType.h ";
-
-%feature("docstring")  cmf_core::IVolumeHeightFunction::__init__ "def
-__init__(self, args, kwargs) ";
 
 
 // File: classcmf_1_1jacobian_1_1_jacobian.xml
@@ -8721,88 +6647,6 @@ std::string short_string() const ";
 %feature("docstring")
 cmf::upslope::connections::JarvisMacroFlow::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_jarvis_macro_flow.xml
-%feature("docstring") cmf_core::JarvisMacroFlow "
-
-A physically based macropore to macropore connection according to
-Jarvis & Leeds-Harrison 1987, JSS.    .. math::      q_{i->j} [m/s]=
-\\\\\\\\rho \\\\\\\\frac G {12\\\\\\\\eta} w^2 \\\\\\\\frac{e_v-
-e_r}{1-e_r} S_{c,i}^\\\\\\\\beta\\\\\\\\ (1-S_{c,j})  where:
-:math:`q_{i->j}` the flow from macro pore layer i to macropore layer j
-:math:`\\\\\\\\rho=10^{-3} kg/m^3` - the density of water
-:math:`G=9.81 m/s^2` the earth acceleration  :math:`\\\\\\\\eta=1.0
-kg/(m s)` the viscosity of water (at 20 degC)  :math:`w [m]` the crack
-width, a function of water content and crack distance  :math:`e_v [-]`
-the crack porosity  :math:`e_r [-]` crack por  :math:`S_c [-]` the
-crack saturation of layer i resp. j  :math:`\\\\\\\\beta [-]` a
-conceptional exponent to shape the flow reaction  C++ includes:
-macropore.h ";
-
-%feature("docstring")  cmf_core::JarvisMacroFlow::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(JarvisMacroFlow self, cmf::water::WaterStorage::ptr left,
-cmf::water::flux_node::ptr right, real beta=1., real
-porefraction_r=0.0) -> JarvisMacroFlow
-JarvisMacroFlow(cmf::water::WaterStorage::ptr left,
-cmf::water::flux_node::ptr right, real beta=1., real
-porefraction_r=0.0)  Constructs the connection.  Parameters:
------------  left:  right:  the connected macropores  beta:  User
-defined parameter for the swelling reaction  porefraction_r:
-Porefraction at which flow starts. For swelling soils that are closing
-completely th ";
-
-%feature("docstring")  cmf_core::JarvisMacroFlow::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::JarvisMacroFlow::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::JarvisMacroFlow::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::JarvisMacroFlow::__repr__ "def
-__repr__(self) ";
-
-
-// File: classcmf__core_1_1_kinematic_macro_flow.xml
-%feature("docstring") cmf_core::KinematicMacroFlow "
-
-Linear storage based flux from macro pore to macro pore.  Deprecated
-The MacroPore model is still very experimental and not stable. Only
-for tryouts!    .. math::       q = A_{cell} K_{macro}
-\\\\\\\\left(\\\\\\\\frac{V_{upper}}{C_{upper}}\\\\\\\\right)^\\\\\\\\beta
-\\\\\\\\left(1-\\\\\\\\frac{V_{lower}}{C_{lower}}\\\\\\\\right) where:
-:math:`A_{cell}` is the area of the owning cell in m2
-:math:`K_{macro}` is the conductivity of the macro pore storage
-:math:`V` is the actual stored water volume in the upper resp. lower
-macro pore storage  :math:`C` is the capacity of the upper resp. lower
-macro pore storage  C++ includes: macropore.h ";
-
-%feature("docstring")  cmf_core::KinematicMacroFlow::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(KinematicMacroFlow self, cmf::water::WaterStorage::ptr left,
-cmf::water::flux_node::ptr right, real beta=1.) -> KinematicMacroFlow
-KinematicMacroFlow(cmf::water::WaterStorage::ptr left,
-cmf::water::flux_node::ptr right, real beta=1.)  Creates the
-connection.  Parameters: -----------  left:  right:  the nodes between
-the connection should be created.  beta:  a conceptional curve shape
-parameter for the relation between storage and outflow  Either left or
-right needs to be a MacroPore, left needs to be a water storage ";
-
-%feature("docstring")  cmf_core::KinematicMacroFlow::__contains__ "def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::KinematicMacroFlow::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::KinematicMacroFlow::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::KinematicMacroFlow::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_kinematic_macro_flow.xml
@@ -9103,82 +6947,6 @@ cmf::upslope::connections::KinematicSurfaceRunoff::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_kinematic_surface_runoff.xml
-%feature("docstring") cmf_core::KinematicSurfaceRunoff "
-
-A connection to route water from a SurfaceWater storage to another
-node following a topographic gradient.    .. math::      q_{runoff} =
-A_{cross} d_{eff}^{2/3}     \\\\\\\\frac{\\\\\\\\sqrt{S}}{n}  where:
-:math:`q_{runoff}` is the surface runoff  :math:`A_{cross}` is the
-wetted crossectional flux area, given as :math:`d_{eff} \\\\\\\\cdot
-w`  :math:`w` is the width of the shared boundary between the surface
-water storage and the target node  :math:`d_{eff}` is the effective
-flow depth of the surface water.The effective flow depth is defined as
-.. math::      d_{eff} = \\\\\\\\begin{cases} V/A-d_{puddle}\\\\\\\\ &
-V/A>d_{puddle} \\\\\\\\\\\\\\\\ 0.0 & V/A<=d_{puddle}
-\\\\\\\\end{cases}  :math:`V` the volume of stored water in the
-surface in :math:`m^3`  :math:`A` the area of the cell in :math:`m^2`
-:math:`d_{puddle}=V_{puddle}/A` the average depth of water in the
-surface water needed to start run off  :math:`S =
-\\\\\\\\|\\\\\\\\frac{\\\\\\\\Delta z\\\\\\\\|}{d}` the slope between
-surfacewater center and the target node  :math:`n` the manning
-roughness  The KinematicSurfaceRunoff can be used as a cell connecting
-flux as in: This results in a connection of the surfacewater storage
-of each cell with the surface water storages of its neighborssee  C++
-includes: surfacewater.h ";
-
-%feature("docstring")  cmf_core::KinematicSurfaceRunoff::__init__ "def __init__(self, args, kwargs)
-
-__init__(KinematicSurfaceRunoff self, cmf::upslope::SurfaceWater::ptr
-left, cmf::water::flux_node::ptr right, real flowwidth, real
-distance=-1) -> KinematicSurfaceRunoff
-KinematicSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left,
-cmf::water::flux_node::ptr right, real flowwidth, real distance=-1)
-Creates a KinematicSurfaceRunoff between a SurfaceWater (left) with
-another (right) node.  Parameters: -----------  left:  A surfacewater
-storage  right:  The target node  flowwidth:  the length of the shared
-boundary between left and right in m  distance:  the distance between
-left and right in m. If d<=0m, the distance is calculated according to
-the position of left and right ";
-
-%feature("docstring")  cmf_core::KinematicSurfaceRunoff::__contains__
-"def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::KinematicSurfaceRunoff::__getitem__ "def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::KinematicSurfaceRunoff::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::KinematicSurfaceRunoff::__repr__ "def __repr__(self) ";
-
-
-// File: classcmf__core_1_1_langmuir_adsorption.xml
-%feature("docstring") cmf_core::LangmuirAdsorption "
-
-This class calculates the adsorption equilibrium between sorbat and
-sorbent using the Langmuir isotherme.  Langmuir Adsorption:    ..
-math::      \\\\\\\\frac{x_{ad}}{m} = q = \\\\\\\\frac{K c}{1 + K c}
-where :math:`x_{ad} = x_{tot} - x_{free}` is the adsorbed tracer mass
-:math:`x_{tot}` is the total tracer mass  :math:`x_{free}` is the
-dissolved tracer mass  :math:`m` is the mass of the sorbent in the
-same unit as the tracer mass  :math:`K` is the Langmuir sorption
-coefficient  :math:`c = \\\\\\\\frac{x_{free}}{V}` is the
-concentration of the tracer in tracer mass per m3  CMF stores in a
-solute storage the total mass of a tracer and needs to calculate the
-free tracer mass. The analytical solution for :math:`x_{free}` from
-:math:`x_{tot}` is implemented in freesolute and derived usingsympy.
-If you really want to see it, look in the code.
-http://en.wikipedia.org/wiki/Langmuir_equation  C++ includes:
-adsorption.h ";
-
-%feature("docstring")  cmf_core::LangmuirAdsorption::__init__ "def
-__init__(self, args)
-
-__init__(LangmuirAdsorption self, real K, real m) ->
-LangmuirAdsorption __init__(LangmuirAdsorption self,
-LangmuirAdsorption other) -> LangmuirAdsorption
-LangmuirAdsorption(const LangmuirAdsorption &other) ";
-
-
 // File: classcmf_1_1water_1_1_langmuir_adsorption.xml
 %feature("docstring") cmf::water::LangmuirAdsorption "
 
@@ -9364,26 +7132,6 @@ cmf::upslope::connections::lateral_sub_surface_flux::short_string "virtual std::
 cmf::upslope::connections::lateral_sub_surface_flux::to_string "virtual std::string to_string() const ";
 
 
-// File: classcmf__core_1_1lateral__sub__surface__flux.xml
-%feature("docstring") cmf_core::lateral_sub_surface_flux "
-
-An abstract base class for lateral subsurface fluxes.  C++ includes:
-subsurfacefluxes.h ";
-
-%feature("docstring")  cmf_core::lateral_sub_surface_flux::__init__ "def __init__(self, args, kwargs) ";
-
-%feature("docstring")
-cmf_core::lateral_sub_surface_flux::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::lateral_sub_surface_flux::__getitem__
-"def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::lateral_sub_surface_flux::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::lateral_sub_surface_flux::__repr__ "def __repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1layer__list.xml
 %feature("docstring") cmf::upslope::layer_list "
 
@@ -9548,76 +7296,6 @@ const
 Number of layers in the list. ";
 
 
-// File: classcmf__core_1_1layer__list.xml
-%feature("docstring") cmf_core::layer_list "
-
-A vector of layers, with array access to the properties of the layers,
-for fast data exchange.  C++ includes: layer_list.h ";
-
-%feature("docstring")  cmf_core::layer_list::__init__ "def
-__init__(self, args)
-
-__init__(layer_list self, layer_list for_copy) -> layer_list
-__init__(layer_list self) -> layer_list __init__(layer_list self,
-node_list for_copy) -> layer_list layer_list(const
-cmf::water::node_list &for_copy)  Creates a list of all soil layers
-from a node_list. ";
-
-%feature("docstring")  cmf_core::layer_list::__add__ "def
-__add__(self, other) ";
-
-%feature("docstring")  cmf_core::layer_list::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::layer_list::__iadd__ "def
-__iadd__(self, other) ";
-
-%feature("docstring")  cmf_core::layer_list::__iter__ "def
-__iter__(self) ";
-
-
-// File: classcmf__core_1_1_layer_bypass.xml
-%feature("docstring") cmf_core::LayerBypass "
-
-A simplification of macro pore flux for swelling soils.  Connects the
-surfacewater of the cell with deeper layers, assuming the presence of
-cracks. At saturation level of the target layer, the cracks are closed
-.. math::      q_{crack} = K_{max,crack}
-\\\\\\\\left(1-\\\\\\\\left(\\\\\\\\frac{w-w_0}{1-w_0}\\\\\\\\right)^\\\\\\\\beta\\\\\\\\right)
-A  where:  :math:`q_{crack}` is the flux from the surface water to the
-target layer in m3/day  :math:`K_{max,crack}` is the maximum
-conductivity of the cracks in m/day  :math:`w` is the actual wetness
-of the target layer  :math:`w_0` is saturation, where the shrinkage of
-the cracks starts  :math:`\\\\\\\\beta` is an empirical shape
-parameter of the crack size/wetness relation  :math:`A` is the area of
-the cell  C++ includes: Percolation.h ";
-
-%feature("docstring")  cmf_core::LayerBypass::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(LayerBypass self, cmf::water::flux_node::ptr left,
-cmf::upslope::SoilLayer::ptr right, real Kmax=100., real w0=0.0, real
-beta=1.0) -> LayerBypass LayerBypass(cmf::water::flux_node::ptr left,
-cmf::upslope::SoilLayer::ptr right, real Kmax=100., real w0=0.0, real
-beta=1.0)  Creates a layer bypass connection.  Parameters: -----------
-left:  The source of the flux, usually the surfacewater of the cell
-right:  The target soil layer  Kmax:  maximum conductivity of the
-cracks in m/day  w0:  is the actual wetness of the target layer  beta:
-is an empirical shape parameter of the crack size/wetness relation ";
-
-%feature("docstring")  cmf_core::LayerBypass::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::LayerBypass::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::LayerBypass::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::LayerBypass::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_layer_bypass.xml
 %feature("docstring") cmf::upslope::connections::LayerBypass "
 
@@ -9772,20 +7450,6 @@ cmf::upslope::connections::LayerBypass::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1linear__scale.xml
-%feature("docstring") cmf_core::linear_scale "
-
-A linear scaling functor, with slope and displacement.  C++ includes:
-boundary_condition.h ";
-
-%feature("docstring")  cmf_core::linear_scale::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(linear_scale self, real _slope=1, real _displacement=0) ->
-linear_scale linear_scale(real _slope=1, real _displacement=0) Creates
-a linear scale (by default it is a unity scale, :math:`a=1; b=0`) ";
-
-
 // File: classcmf_1_1water_1_1linear__scale.xml
 %feature("docstring") cmf::water::linear_scale "
 
@@ -9796,31 +7460,6 @@ C++ includes: boundary_condition.h ";
 %feature("docstring")  cmf::water::linear_scale::linear_scale "linear_scale(real _slope=1, real _displacement=0)
 
 Creates a linear scale (by default it is a unity scale, :math:`a=1; b=0`) ";
-
-
-// File: classcmf__core_1_1_linear_adsorption.xml
-%feature("docstring") cmf_core::LinearAdsorption "
-
-This class calculates the adsorption equilibrium between sorbat and
-sorbent using the linear (Henry) isotherme.  Linear (Henry) isotherme:
-.. math::      \\\\\\\\frac{x_{ad}}{m} = K c  where  :math:`x_{ad} =
-x_{tot} - x_{free}` is the adsorbed tracer mass  :math:`x_{tot}` is
-the total tracer mass  :math:`x_{free}` is the dissolved tracer mass
-:math:`m` is the mass of the sorbent in the same unit as the tracer
-mass  :math:`K` is the Henry sorption coefficient  :math:`c =
-\\\\\\\\frac{x_{free}}{V}` is the concentration of the tracer in
-tracer mass per m3  CMF stores in a solute storage the total mass of a
-tracer and needs to calculate the free tracer mass. Calculating
-:math:`x_{free}` from :math:`x_{tot}` gives from the eq. above:   ..
-math::      x_{free} = x_{tot} \\\\\\\\frac{V}{K m +     V}  C++
-includes: adsorption.h ";
-
-%feature("docstring")  cmf_core::LinearAdsorption::__init__ "def
-__init__(self, args)
-
-__init__(LinearAdsorption self, real K, real m) -> LinearAdsorption
-__init__(LinearAdsorption self, LinearAdsorption other) ->
-LinearAdsorption LinearAdsorption(const LinearAdsorption &other) ";
 
 
 // File: classcmf_1_1water_1_1_linear_adsorption.xml
@@ -9905,48 +7544,6 @@ xf:   :math:`x_f` the dissolved tracer mass in the storage
 V:   :math:`V m^3` the water volume in the storage
 
 :math:`x_t` the total mass of the tracer ";
-
-
-// File: classcmf__core_1_1_linear_gradient_flux.xml
-%feature("docstring") cmf_core::LinearGradientFlux "
-
-A generic node-to-node gradient based connection.  This connection is
-similar to the Darcy-connection, but there are no restrictions
-concerning the type of nodes. However, the left side needs to be a
-water storage   .. math::       q = Q_1 \\\\\\\\nabla \\\\\\\\Psi
-where:  :math:`q`: the resulting flux in :math:`m^3/day`  :math:`Q_1`:
-Flux over the connection for a unity gradient ( :math:`\\\\\\\\nabla
-\\\\\\\\Psi = 1`) in :math:`\\\\\\\\frac{m^3}{day}`
-:math:`\\\\\\\\nabla \\\\\\\\Psi =
-\\\\\\\\frac{\\\\\\\\Psi_{l}-\\\\\\\\Psi_{r}}{d}`: The hydraulic
-gradient of the (l)eft, resp. (r)ight node of the connection
-:math:`d`: The topographic length of the connection in m  C++
-includes: simple_connections.h ";
-
-%feature("docstring")  cmf_core::LinearGradientFlux::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(LinearGradientFlux self, cmf::water::flux_node::ptr left,
-cmf::water::flux_node::ptr right, real Q1, real d=-1.0) ->
-LinearGradientFlux LinearGradientFlux(cmf::water::flux_node::ptr left,
-cmf::water::flux_node::ptr right, real Q1, real d=-1.0)  Creates a
-generic gradient based flux, if enough water is present in the source.
-Parameters: -----------  left:  The left node of the connection right:
-The right node of the connection  Q1:  Flux over the connection for a
-unity gradient ( :math:`\\\\\\\\nabla \\\\\\\\Psi = 1`) in
-:math:`\\\\\\\\frac{m^3}{day}`  d:  the topographic lenght of the
-connection in m ";
-
-%feature("docstring")  cmf_core::LinearGradientFlux::__contains__ "def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::LinearGradientFlux::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::LinearGradientFlux::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::LinearGradientFlux::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1water_1_1_linear_gradient_flux.xml
@@ -10191,66 +7788,6 @@ returns the volumetric water content at a given pF value ";
 ";
 
 
-// File: classcmf__core_1_1_linear_retention.xml
-%feature("docstring") cmf_core::LinearRetention "
-
-The linear retention curve provides a simple linear relationship
-between storage and head.  Head function (head in m, calculated from
-upper side control volume)   .. math::       h(\\\\\\\\theta) =
--\\\\\\\\Delta z \\\\\\\\left( 1 - \\\\\\\\frac{\\\\\\\\theta -
-\\\\\\\\theta_r}{\\\\\\\\theta_s - \\\\\\\\theta_r} \\\\\\\\right)
-Conductivity function   .. math::       K(\\\\\\\\theta) = K_{sat}
-\\\\\\\\left(\\\\\\\\frac{\\\\\\\\theta -
-\\\\\\\\theta_r}{\\\\\\\\theta_s -
-\\\\\\\\theta_r}\\\\\\\\right)^\\\\\\\\beta   C++ includes:
-RetentionCurve.h ";
-
-%feature("docstring")  cmf_core::LinearRetention::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(LinearRetention self, real ksat, real phi, real thickness,
-real residual_wetness=0.1) -> LinearRetention LinearRetention(real
-ksat, real phi, real thickness, real residual_wetness=0.1) ";
-
-
-// File: classcmf__core_1_1_linear_storage_connection.xml
-%feature("docstring") cmf_core::LinearStorageConnection "
-
-Calculates flux out of a storage as a linear function of its volume.
-This connection serves the same purpose as the old kinematic_wave
-connection, but the parameters are easier to explain    .. math:: q =
-\\\\\\\\frac{V - V_{residual}}{t_r}   where:  :math:`V` The actual
-volume of water stored in source  :math:`V_{residual} [m^3]` The
-volume of water not flowing out (default = 0) :math:`t_r` is the
-residence time in the source.  C++ includes: simple_connections.h ";
-
-%feature("docstring")  cmf_core::LinearStorageConnection::__init__ "def __init__(self, args, kwargs)
-
-__init__(LinearStorageConnection self, cmf::water::WaterStorage::ptr
-source, cmf::water::flux_node::ptr target, real residencetime, real
-residual=0.0) -> LinearStorageConnection
-LinearStorageConnection(WaterStorage::ptr source, flux_node::ptr
-target, real residencetime, real residual=0.0)  Creates a linear
-storage connection or Nash-box.    .. math::       q = \\\\\\\\frac{V
-- V_{residual}}{t_r}}   Parameters: -----------  source:  Water
-storage from which the water flows out. Flux is a function of
-source.volume  target:  Target node (boundary condition or storage).
-Does not influence the strength of the flow  residencetime: :math:`t_r
-[days]` The residence time of the water in this storage residual:
-:math:`V_{residual} [m^3]` The volume of water not flowing out
-(default = 0) ";
-
-%feature("docstring")  cmf_core::LinearStorageConnection::__contains__
-"def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::LinearStorageConnection::__getitem__
-"def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::LinearStorageConnection::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::LinearStorageConnection::__repr__ "def __repr__(self) ";
-
-
 // File: classcmf_1_1water_1_1_linear_storage_connection.xml
 %feature("docstring") cmf::water::LinearStorageConnection "
 
@@ -10386,17 +7923,34 @@ std::string short_string() const ";
 "virtual std::string to_string() const ";
 
 
-// File: classcmf__core_1_1log__wind__profile.xml
-%feature("docstring") cmf_core::log_wind_profile "
+// File: classcmf_1_1_list.xml
+%feature("docstring") cmf::List "";
 
-, A logarithmic wind profile  Todo Cite literature for this
-windprofile and insert equation  C++ includes: ET.h ";
+%feature("docstring")  cmf::List::List "List(std::initializer_list< T
+> l) ";
 
-%feature("docstring")  cmf_core::log_wind_profile::__init__ "def
-__init__(self, args, kwargs)
+%feature("docstring")  cmf::List::List "List()=default ";
 
-__init__(log_wind_profile self, Cell _cell) -> log_wind_profile
-log_wind_profile(cmf::upslope::Cell &_cell) ";
+%feature("docstring")  cmf::List::List "List(const List< T >
+&other)=default ";
+
+%feature("docstring")  cmf::List::append "void append(T r) ";
+
+%feature("docstring")  cmf::List::clear "void clear() ";
+
+%feature("docstring")  cmf::List::extend "void extend(const List< T >
+&rl) ";
+
+%feature("docstring")  cmf::List::index "size_t index(const T &what)
+";
+
+%feature("docstring")  cmf::List::remove "void remove(const T &what)
+";
+
+%feature("docstring")  cmf::List::remove_at "void remove_at(long long
+index) ";
+
+%feature("docstring")  cmf::List::size "size_t size() const ";
 
 
 // File: classcmf_1_1atmosphere_1_1log__wind__profile.xml
@@ -10564,54 +8118,6 @@ cmf::upslope::connections::MACROlikeMacroMicroExchange::short_string "virtual st
 
 %feature("docstring")
 cmf::upslope::connections::MACROlikeMacroMicroExchange::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_m_a_c_r_olike_macro_micro_exchange.xml
-%feature("docstring") cmf_core::MACROlikeMacroMicroExchange "
-
-This connection models the water exchange between macropores and
-micropores as in the MACRO Model (Larsbo & Jarvis, 2003), which
-follows Gerke & van Genuchten 1996.  WARNING:  Deprecated This
-connection uses the diffusivity of a soil given by its retention
-curve. Since no retention curve provides a valid value for Diffusivity
-in case of saturation this connection will blow up the numerical
-solution for sure.  The exchange between Macropore and matrix is
-defined as follows: (MACRO 5 Tech report, Larsbo & Jarvis 2003)    ..
-math::      q = \\\\\\\\frac{G_f D_w
-\\\\\\\\gamma_w}{d^2}(\\\\\\\\theta_b -     \\\\\\\\theta_{mi})
-V_{layer}  where:  :math:`G_f` is the geometry factor. Use 3 for a
-rectangular slab geometry  :math:`gamma_w` A scaling factor to fit
-analytical and numerical solution (0.4)  :math:`d` is an effective
-diffusive path length related to aggregate size and the influence of
-coatings on the aggregate surfaces in m  :math:`\\\\\\\\theta_b` the
-saturated water content of the matrix  :math:`\\\\\\\\theta_{mi}` the
-actual water content of the matrix  :math:`D_w =
-\\\\\\\\frac12(D(\\\\\\\\theta_b)+D(\\\\\\\\theta_{mi})W_{ma})` is the
-effective water diffusivity in m2/day, as defined below :math:`W_{ma}`
-is the saturation of the macropores  C++ includes: macropore.h ";
-
-%feature("docstring")  cmf_core::MACROlikeMacroMicroExchange::__init__
-"def __init__(self, args, kwargs)
-
-__init__(MACROlikeMacroMicroExchange self,
-cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right,
-real _gamma_w=0.4, real _Gf=3) -> MACROlikeMacroMicroExchange
-MACROlikeMacroMicroExchange(cmf::upslope::SoilLayer::ptr left,
-cmf::upslope::MacroPore::ptr right, real _gamma_w=0.4, real _Gf=3) ";
-
-%feature("docstring")
-cmf_core::MACROlikeMacroMicroExchange::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")
-cmf_core::MACROlikeMacroMicroExchange::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::MACROlikeMacroMicroExchange::__iter__
-"def __iter__(self) ";
-
-%feature("docstring")  cmf_core::MACROlikeMacroMicroExchange::__repr__
-"def __repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1_macro_pore.xml
@@ -10887,34 +8393,6 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
-// File: classcmf__core_1_1_macro_pore.xml
-%feature("docstring") cmf_core::MacroPore "
-
-An additional water storage for a soil layer to model matrix water and
-macro pore water seperately.  Deprecated The MacroPore model is still
-very experimental and not stable. Only for tryouts!  If present, the
-soil layer water storage holds the matrix water and the MacroPore
-holds the water in the macro pore. Use cmf::upslope::Macropore::create
-to create a macropore storage.  Use
-cmf::upslope::connections::GradientMacroFlow or
-cmf::upslope::connections::KinematicMacroFlow to model water flow
-between macro pores and a lateral connection ( lateral subsurface
-fluxes) like cmf::upslope::connections::Richards_lateral to connect
-the macro pore with the matrix.  C++ includes: macropore.h ";
-
-%feature("docstring")  cmf_core::MacroPore::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::MacroPore::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::MacroPore::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::MacroPore::fluxes "def fluxes(self,
-t) ";
-
-
 // File: classcmf_1_1river_1_1_manning.xml
 %feature("docstring") cmf::river::Manning "
 
@@ -11042,46 +8520,6 @@ std::string short_string() const ";
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_manning.xml
-%feature("docstring") cmf_core::Manning "
-
-Calculates the flux between two open water bodies, using Manning's
-equation.  This is the base class for a kinematic wave approach
-(topography driven) and a diffusive wave approach (water table
-driven). The only difference between both approaches is the
-calculation of the flux driving slope. For the model, one of
-ManningKinematic or ManningDiffusive connection is selected   ..
-math::       v = R^{\\\\\\\\frac 2 3}
-\\\\\\\\frac{\\\\\\\\sqrt{\\\\\\\\Delta_z}}{n} \\\\\\\\\\\\\\\\ q = v
-\\\\\\\\cdot A   Where:  :math:`A = \\\\\\\\frac V l`: Crosssectional
-area of the wetted crossection, Volume per length  :math:`R =
-\\\\\\\\frac A{P(d)}`: The hydraulic radius  :math:`P(d)`: the
-perimeter of the wetted crosssection, a function of reach depth
-:math:`d(V)`: the depth of the reach, a function of the volume
-:math:`\\\\\\\\Delta_z = \\\\\\\\frac{|z_1 - z_2|}{l}`: Slope of the
-reach  :math:`n`: Manning friction number  For the kinematic wave the
-slope of the river bed is used as slope:   .. math:: \\\\\\\\Delta_z =
-\\\\\\\\frac{|z_1 - z_2|}{l}  while for the diffusive wave the slope
-is calculated from the actual water head: .. math::
-\\\\\\\\Delta_z = \\\\\\\\frac{|h_1 - h_2|}{l}  C++ includes:
-ManningConnection.h ";
-
-%feature("docstring")  cmf_core::Manning::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::Manning::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::Manning::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::Manning::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::Manning::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1river_1_1_manning___diffusive.xml
 %feature("docstring") cmf::river::Manning_Diffusive "
 
@@ -11205,49 +8643,6 @@ set_tracer_filter(solute S, real value) ";
 %feature("docstring")  cmf::river::Manning_Diffusive::to_string "virtual std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_manning___diffusive.xml
-%feature("docstring") cmf_core::Manning_Diffusive "
-
-Connecting surface water bodies using a diffusive wave.  This approach
-might not be numerical stable for deep water with small gradient cmf
-for experimental reasons   .. math::       q_{Manning}&=& A
-R^{\\\\\\\\frac 2 3} \\\\\\\\sqrt{\\\\\\\\frac {\\\\\\\\Delta_z} n}
-\\\\\\\\\\\\\\\\ A &=& \\\\\\\\frac V l \\\\\\\\mbox{, (Crosssectional
-area of the     wetted crossection, Volume per length)}
-\\\\\\\\\\\\\\\\ R &=& \\\\\\\\frac A     {P(d)} \\\\\\\\\\\\\\\\ P(d)
-&=& \\\\\\\\mbox{ the perimeter of the wetted     crosssection, a
-function of reach depth} \\\\\\\\\\\\\\\\ d(V) &=& \\\\\\\\mbox{ the
-depth of the reach a function of the volume} \\\\\\\\\\\\\\\\
-\\\\\\\\Delta_z     = \\\\\\\\|\\\\\\\\frac{h_1 - h_2}{l}
-\\\\\\\\mbox{ Slope of the reach     waterlevels} \\\\\\\\\\\\\\\\
-n&=&\\\\\\\\mbox{Manning friction number}     C++ includes:
-ManningConnection.h ";
-
-%feature("docstring")  cmf_core::Manning_Diffusive::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(Manning_Diffusive self, cmf::river::OpenWaterStorage::ptr
-left, cmf::water::flux_node::ptr right, IChannel reachtype) ->
-Manning_Diffusive Manning_Diffusive(cmf::river::OpenWaterStorage::ptr
-left, cmf::water::flux_node::ptr right, const cmf::river::IChannel
-&reachtype)  Creates a diffusive wave connection between to open water
-storages.  Parameters: -----------  left:  right:  The nodes to be
-connected by the diffusive wave. Left needs to be an open water
-storage  reachtype:  The channel geometry ";
-
-%feature("docstring")  cmf_core::Manning_Diffusive::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::Manning_Diffusive::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::Manning_Diffusive::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::Manning_Diffusive::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1river_1_1_manning___kinematic.xml
 %feature("docstring") cmf::river::Manning_Kinematic "
 
@@ -11367,48 +8762,6 @@ set_tracer_filter(solute S, real value) ";
 %feature("docstring")  cmf::river::Manning_Kinematic::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::river::Manning_Kinematic::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_manning___kinematic.xml
-%feature("docstring") cmf_core::Manning_Kinematic "
-
-Connecting surface water bodies using a kinematic wave.  Note the
-fixed gradient :math:`\\\\\\\\Delta_z`   .. math:: q_{Manning}&=& A
-R^{\\\\\\\\frac 2 3} \\\\\\\\sqrt{\\\\\\\\frac {\\\\\\\\Delta_z} n}
-\\\\\\\\\\\\\\\\ A &=& \\\\\\\\frac V l \\\\\\\\mbox{, (Crosssectional
-area of the     wetted crossection, Volume per length)}
-\\\\\\\\\\\\\\\\ R &=& \\\\\\\\frac A     {P(d)} \\\\\\\\\\\\\\\\ P(d)
-&=& \\\\\\\\mbox{ the perimeter of the wetted crosssection, a function
-of reach depth} \\\\\\\\\\\\\\\\ d(V) &=& \\\\\\\\mbox{     the depth
-of the reach a function of the volume} \\\\\\\\\\\\\\\\
-\\\\\\\\Delta_z     &=& \\\\\\\\frac{\\\\\\\\|z_1 - z_2\\\\\\\\|}{l}
-\\\\\\\\mbox{ Slope of the reach} \\\\\\\\\\\\\\\\
-n&=&\\\\\\\\mbox{Manning friction number}     C++ includes:
-ManningConnection.h ";
-
-%feature("docstring")  cmf_core::Manning_Kinematic::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(Manning_Kinematic self, cmf::river::OpenWaterStorage::ptr
-left, cmf::water::flux_node::ptr right, IChannel reachtype) ->
-Manning_Kinematic Manning_Kinematic(cmf::river::OpenWaterStorage::ptr
-left, cmf::water::flux_node::ptr right, const cmf::river::IChannel
-&reachtype)  Creates a kinematic wave connection between to open water
-storages.  Parameters: -----------  left:  right:  The nodes to be
-connected by the kinematic wave. Left needs to be an open water
-storage  reachtype:  The channel geometry ";
-
-%feature("docstring")  cmf_core::Manning_Kinematic::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::Manning_Kinematic::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::Manning_Kinematic::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::Manning_Kinematic::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1maps_1_1_map.xml
@@ -11578,52 +8931,6 @@ cmf::upslope::connections::MatrixInfiltration::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_matrix_infiltration.xml
-%feature("docstring") cmf_core::MatrixInfiltration "
-
-Connects the surfacewater and the most upper layer using a Richards
-equation like infiltration model.  The potential infiltration is
-calculated according to the Richards equation. The gradient is from
-the cell surface to the center of the first layer and the conductivity
-is the geometric mean of the wetted surface ( :math:`K_{sat}`) and the
-conductivity of the layer center ( :math:`K(\\\\\\\\theta_{layer})` ..
-math::       q_{max} &=&     \\\\\\\\frac{\\\\\\\\Psi_{surface} -
-\\\\\\\\Psi_{soil}}{\\\\\\\\Delta z} K A_{cell}     \\\\\\\\\\\\\\\\ K
-&=&
-\\\\\\\\sqrt{K\\\\\\\\left(\\\\\\\\theta_{layer}\\\\\\\\right)K_{sat}}
-\\\\\\\\\\\\\\\\ \\\\\\\\Delta z &=& z_{cell} - z_{layer center} If
-the surface water is modeled by a distinct water storage, the actual
-infiltration is given as the product of the potential infiltration
-with the coverage of the surface water
-cmf::upslope::Cell::surface_water_coverage   .. math::      q_{act} =
-q_{max}     \\\\\\\\frac{A_{water}}{A_{cell}}  If the surface water is
-no storage on its own, but just a water distribution node, the actual
-infiltration is the minimum of the potential infiltration and the
-current inflow (rain, snow melt) to the surface   .. math:: q_{act} =
-\\\\\\\\min\\\\\\\\left(q_{max},
-\\\\\\\\sum{q_{in,surfacewater}}\\\\\\\\right)  C++ includes:
-infiltration.h ";
-
-%feature("docstring")  cmf_core::MatrixInfiltration::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(MatrixInfiltration self, cmf::upslope::SoilLayer::ptr
-soilwater, cmf::water::flux_node::ptr surfacewater) ->
-MatrixInfiltration MatrixInfiltration(cmf::upslope::SoilLayer::ptr
-soilwater, cmf::water::flux_node::ptr surfacewater) ";
-
-%feature("docstring")  cmf_core::MatrixInfiltration::__contains__ "def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::MatrixInfiltration::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::MatrixInfiltration::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::MatrixInfiltration::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1river_1_1_mean_channel.xml
 %feature("docstring") cmf::river::MeanChannel "
 
@@ -11739,29 +9046,6 @@ typecode() const ";
 V(double h) const ";
 
 
-// File: classcmf__core_1_1_mean_channel.xml
-%feature("docstring") cmf_core::MeanChannel "
-
-A combination of two channel geometries.  C++ includes: ReachType.h ";
-
-%feature("docstring")  cmf_core::MeanChannel::__init__ "def
-__init__(self, args)
-
-__init__(MeanChannel self, IChannel channel1, IChannel channel2) ->
-MeanChannel __init__(MeanChannel self, MeanChannel meanChannel) ->
-MeanChannel MeanChannel(const MeanChannel &meanChannel) ";
-
-
-// File: classcmf__core_1_1_meteorology.xml
-%feature("docstring") cmf_core::Meteorology "
-
-An abstract class, for objects generating Weather records at a
-specific time.  C++ includes: meteorology.h ";
-
-%feature("docstring")  cmf_core::Meteorology::__init__ "def
-__init__(self, args, kwargs) ";
-
-
 // File: classcmf_1_1atmosphere_1_1_meteorology.xml
 %feature("docstring") cmf::atmosphere::Meteorology "
 
@@ -11862,38 +9146,6 @@ seehttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
 Copy c'tor. ";
 
 
-// File: classcmf__core_1_1_meteo_station.xml
-%feature("docstring") cmf_core::MeteoStation "
-
-A meteorological station holding timeseries to create Weather records.
-In order to calculate ETpot with cmf a big amount of meteorological
-data is needed, more data than usually available. The MeteoStation
-class can estimate missing data from a minimal set. As more data, as
-one provides, the better the calculation of ETpot becomes. The minimal
-data needed is Tmin and Tmax (daily) and precipitation. To calculate
-the global radiation (although measured global radiation could be
-inserted), the position of meteorological station in geographic
-coordinates has to be set.  A meteorological station is created by
-cmf::atmosphere::MeteoStationList::add_station . Usage from python:
-There are two modes for the meteorology: daily=true and daily=false.
-If daily=true, Radiation is given as a daily mean value. If
-daily=false, Radiation is given as an hourly mean value, which shows
-the dial ETpot variation but results in erronous results if the
-timestep is daily.  C++ includes: meteorology.h ";
-
-%feature("docstring")  cmf_core::MeteoStation::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(MeteoStation self, MeteoStation other) -> MeteoStation
-MeteoStation(const cmf::atmosphere::MeteoStation &other)  Copy c'tor.
-";
-
-%feature("docstring")  cmf_core::MeteoStation::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::MeteoStation::TimeseriesDictionary "def TimeseriesDictionary(self) ";
-
-
 // File: classcmf_1_1atmosphere_1_1_meteo_station_list.xml
 %feature("docstring") cmf::atmosphere::MeteoStationList "
 
@@ -11983,28 +9235,6 @@ the removed station. If the station is deleted, 0 is returned. ";
 Returns the number of stations. ";
 
 
-// File: classcmf__core_1_1_meteo_station_list.xml
-%feature("docstring") cmf_core::MeteoStationList "
-
-A list of meteorological stations.  Can find the nearest station for a
-position and calculate the temperature lapse  C++ includes:
-meteorology.h ";
-
-%feature("docstring")  cmf_core::MeteoStationList::__init__ "def
-__init__(self, args)
-
-__init__(MeteoStationList self) -> MeteoStationList
-__init__(MeteoStationList self, MeteoStationList copy) ->
-MeteoStationList MeteoStationList(const MeteoStationList &copy)  Copy
-c'tor. ";
-
-%feature("docstring")  cmf_core::MeteoStationList::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::MeteoStationList::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1atmosphere_1_1_meteo_station_reference.xml
 %feature("docstring") cmf::atmosphere::MeteoStationReference "
 
@@ -12056,80 +9286,6 @@ Returns the station referenced. ";
 cmf::atmosphere::MeteoStationReference::get_weather "cmf::atmosphere::Weather get_weather(cmf::math::Time t) const
 
 Returns the weather at the time t. ";
-
-
-// File: classcmf__core_1_1_meteo_station_reference.xml
-%feature("docstring") cmf_core::MeteoStationReference "
-
-A reference to a meteorological station.  Returns the weather at a
-given time for its place using MeteoStation::T_lapse  C++ includes:
-meteorology.h ";
-
-%feature("docstring")  cmf_core::MeteoStationReference::__init__ "def
-__init__(self, args)
-
-__init__(MeteoStationReference self,
-cmf::atmosphere::MeteoStation::ptr station, point location) ->
-MeteoStationReference __init__(MeteoStationReference self,
-MeteoStationReference copy) -> MeteoStationReference
-MeteoStationReference(const MeteoStationReference &copy) ";
-
-
-// File: classcmf__core_1_1_multi_integrator.xml
-%feature("docstring") cmf_core::MultiIntegrator "
-
-The MultiIntegrator is a wrapper for a bunch integrators. The states
-of the integrators should not have direct connections over integrator
-boundaries.  C++ includes: multiintegrator.h ";
-
-%feature("docstring")  cmf_core::MultiIntegrator::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(MultiIntegrator self, Integrator template_integrator, int
-count) -> MultiIntegrator MultiIntegrator(const cmf::math::Integrator
-&template_integrator, int count)  Creates a new MultiIntegrator.
-Parameters: -----------  template_integrator:  Template for the
-integrators  count:  Number of integrators ";
-
-%feature("docstring")  cmf_core::MultiIntegrator::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::MultiIntegrator::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::MultiIntegrator::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::MultiIntegrator::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::MultiIntegrator::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_multi_integrator.xml
@@ -12284,49 +9440,6 @@ Points the iterator to the next neighbor. ";
 
 %feature("docstring")  cmf::upslope::neighbor_iterator::valid "bool
 valid() const ";
-
-
-// File: classcmf__core_1_1neighbor__iterator.xml
-%feature("docstring") cmf_core::neighbor_iterator "
-
-A class to iterate through the neighbors of a cell (const). Not needed
-from the Python side, use the generator cell.neighbors instead.  C++
-includes: Topology.h ";
-
-%feature("docstring")  cmf_core::neighbor_iterator::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(neighbor_iterator self, Cell cell) -> neighbor_iterator
-neighbor_iterator(cmf::upslope::Cell *cell) ";
-
-
-// File: classcmf__core_1_1_neumann_boundary.xml
-%feature("docstring") cmf_core::NeumannBoundary "
-
-A Neumann boundary condition (constant flux boundary condition)  The
-flux is a timeseries, but can be used as a scalar. To scale the
-timeseries to the specific conditions of this boundary condition the
-linear_scale flux_scale can be used.  C++ includes:
-boundary_condition.h ";
-
-%feature("docstring")  cmf_core::NeumannBoundary::__init__ "def
-__init__(self, args)
-
-__init__(NeumannBoundary self, project _project, timeseries _flux,
-SoluteTimeseries _concentration=cmf::water::SoluteTimeseries(), point
-loc=cmf::geometry::point()) -> NeumannBoundary
-__init__(NeumannBoundary self, project _project, point
-loc=cmf::geometry::point()) -> NeumannBoundary
-NeumannBoundary(cmf::project &_project, cmf::geometry::point
-loc=cmf::geometry::point()) ";
-
-%feature("docstring")  cmf_core::NeumannBoundary::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::NeumannBoundary::connected_nodes "def connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::NeumannBoundary::fluxes "def
-fluxes(self, t) ";
 
 
 // File: classcmf_1_1water_1_1_neumann_boundary.xml
@@ -12553,44 +9666,6 @@ Returns the water balance of each vector as a vector
 Replaces slow Python code like: ";
 
 
-// File: classcmf__core_1_1_neumann_boundary__list.xml
-%feature("docstring") cmf_core::NeumannBoundary_list "
-
-Provides fast access to Neumann boundaries for flux update.  If many
-Neumann boundary conditions are present in a project, a fast data
-exchange to update the fluxes might be needed.  With this specialized
-list a num_array can be passed to the boundary conditions for a fast
-flux update If a multiple system layout for the cmf setup is chosen,
-we might have a node_list Dirichlet boundary conditions (dbc), a
-corresponding NeumannBoundary_list (nbc) of Neumann boundaries and a
-node_list containing the storages connected with the
-NeumannBoundary_list (storages). The fast data exchange is written in
-Python as:  C++ includes: collections.h ";
-
-%feature("docstring")  cmf_core::NeumannBoundary_list::__init__ "def
-__init__(self, args)
-
-__init__(NeumannBoundary_list self) -> NeumannBoundary_list
-__init__(NeumannBoundary_list self, node_list copy) ->
-NeumannBoundary_list __init__(NeumannBoundary_list self,
-NeumannBoundary_list copy) -> NeumannBoundary_list
-NeumannBoundary_list(const NeumannBoundary_list &copy) ";
-
-%feature("docstring")  cmf_core::NeumannBoundary_list::__getitem__ "def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::NeumannBoundary_list::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::NeumannBoundary_list::__len__ "def
-__len__(self) ";
-
-%feature("docstring")  cmf_core::NeumannBoundary_list::extend "def
-extend(self, sequence)
-
-Extends the list of Neumann boundaries with the sequence (any iterable
-will do) ";
-
-
 // File: classcmf_1_1water_1_1_neumann_flux.xml
 %feature("docstring") cmf::water::NeumannFlux "
 
@@ -12678,70 +9753,6 @@ std::string short_string() const ";
 
 %feature("docstring")  cmf::water::NeumannFlux::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_neumann_flux.xml
-%feature("docstring") cmf_core::NeumannFlux "
-
-Connection between Neumann-boundary and a flux node.  This
-flux_connection is created, when connecting a Neumann boundary
-condition with a state variable using Neumann::connect_to  C++
-includes: boundary_condition.h ";
-
-%feature("docstring")  cmf_core::NeumannFlux::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(NeumannFlux self, std::shared_ptr<
-cmf::water::NeumannBoundary > left, cmf::water::flux_node::ptr right)
--> NeumannFlux NeumannFlux(std::shared_ptr< NeumannBoundary > left,
-cmf::water::flux_node::ptr right) ";
-
-%feature("docstring")  cmf_core::NeumannFlux::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::NeumannFlux::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::NeumannFlux::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::NeumannFlux::__repr__ "def
-__repr__(self) ";
-
-
-// File: classcmf__core_1_1node__list.xml
-%feature("docstring") cmf_core::node_list "
-
-A collection of nodes for fast access of the waterbalance.  In setups
-with many storages and rather fast computations, the speed of data
-access for output generation can take a high portion of the total run
-time. To accelerate data access, one can use the node_list object Todo
-Add a get_volume / set_volume function pair, to complement
-get_potential / set_potential  C++ includes: collections.h ";
-
-%feature("docstring")  cmf_core::node_list::__init__ "def
-__init__(self, args)
-
-__init__(node_list self) -> node_list __init__(node_list self,
-node_list forcopy) -> node_list node_list(const cmf::water::node_list
-&forcopy)  Copy the node_list. ";
-
-%feature("docstring")  cmf_core::node_list::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::node_list::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::node_list::__len__ "def
-__len__(self) ";
-
-%feature("docstring")  cmf_core::node_list::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::node_list::extend "def extend(self,
-sequence)
-
-Extends the node list with the sequence (any iterable will do) ";
 
 
 // File: classcmf_1_1water_1_1node__list.xml
@@ -12860,12 +9871,6 @@ Sets the potentials of the node_list.
 If nodes do not have changeable potentials, they are skipped silently
 The number of nodes with changed potential ";
 
-%feature("docstring")  cmf::water::node_list::set_solute_source "ptrdiff_t set_solute_source(const cmf::water::solute &_Solute,
-cmf::math::num_array source_fluxes)
-
-Sets the source flux of a solute storage associated with a node (node
-has to be a water storage) ";
-
 %feature("docstring")  cmf::water::node_list::size "size_t size()
 const
 
@@ -12889,18 +9894,6 @@ Replaces slow Python code like: ";
 
 %feature("docstring")
 cmf::math::root_finding::not_finite_error::not_finite_error "not_finite_error(const std::string &msg) ";
-
-
-// File: classcmf__core_1_1_null_adsorption.xml
-%feature("docstring") cmf_core::NullAdsorption "
-
-A class for tracers without interaction with the storage container.
-freesolute returns xt.  C++ includes: adsorption.h ";
-
-%feature("docstring")  cmf_core::NullAdsorption::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(NullAdsorption self) -> NullAdsorption ";
 
 
 // File: classcmf_1_1water_1_1_null_adsorption.xml
@@ -13301,58 +10294,6 @@ wet_area() const
 Returns the exposed surface area in m2. ";
 
 
-// File: classcmf__core_1_1_open_water_storage.xml
-%feature("docstring") cmf_core::OpenWaterStorage "
-
-An open water body.  The potential is calculated from the stored water
-using a water table function  C++ includes: OpenWaterStorage.h ";
-
-%feature("docstring")  cmf_core::OpenWaterStorage::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::OpenWaterStorage::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::OpenWaterStorage::connected_nodes "def connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::OpenWaterStorage::fluxes "def
-fluxes(self, t) ";
-
-
-// File: classcmf__core_1_1_oudin_e_t.xml
-%feature("docstring") cmf_core::OudinET "
-
-Calculates ETpot after Oudin et al 2005.
-https://doi.org/10.1016/j.jhydrol.2004.08.026 This ETpot formula is a
-generalization of two older approaches by introducing parameters to
-shape the dependency of ETpot from temperature and extraterrestrial
-radiation  :math:`\\\\\\\\lambda ET_{pot} = R_{a} \\\\\\\\cdot
-\\\\\\\\frac{T_{a} + K_2}{K_1}`  Oudin et al (2005) found an optimum
-for :math:`K_1=100, K_2=5`. The origin of this formula lays in Jensen
-& Haise (1963) with :math:`K_1=40, K_2=0` and McGuiness-Bordne (1972)
-with :math:`K_1=68, K_2=5`.  C++ includes: ET.h ";
-
-%feature("docstring")  cmf_core::OudinET::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(OudinET self, cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target, double K1=100, double K2=5) ->
-OudinET OudinET(cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target, double K1=100, double K2=5) ";
-
-%feature("docstring")  cmf_core::OudinET::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::OudinET::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::OudinET::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::OudinET::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1_e_t_1_1_oudin_e_t.xml
 %feature("docstring") cmf::upslope::ET::OudinET "
 
@@ -13454,33 +10395,6 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_penman_evaporation.xml
-%feature("docstring") cmf_core::PenmanEvaporation "
-
-Calculates evaporation from an open water body.  C++ includes: ET.h ";
-
-%feature("docstring")  cmf_core::PenmanEvaporation::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(PenmanEvaporation self, cmf::river::OpenWaterStorage::ptr
-source, cmf::water::flux_node::ptr Evap_target, Meteorology meteo) ->
-PenmanEvaporation PenmanEvaporation(cmf::river::OpenWaterStorage::ptr
-source, cmf::water::flux_node::ptr Evap_target, const
-cmf::atmosphere::Meteorology &meteo) ";
-
-%feature("docstring")  cmf_core::PenmanEvaporation::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::PenmanEvaporation::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::PenmanEvaporation::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::PenmanEvaporation::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1_e_t_1_1_penman_evaporation.xml
 %feature("docstring") cmf::upslope::ET::PenmanEvaporation "
 
@@ -13577,74 +10491,6 @@ std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::ET::PenmanEvaporation::to_string
 "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_penman_monteith_e_t.xml
-%feature("docstring") cmf_core::PenmanMonteithET "
-
-Calculates the potential evapotranspiration according to FAO(1998)
-Governing equations:   .. math::       \\\\\\\\lambda ET &=&
-\\\\\\\\frac{\\\\\\\\Delta\\\\\\\\left(R_n -
-G\\\\\\\\right)+\\\\\\\\rho_a c_p     \\\\\\\\frac{e_s -
-e_a}{r_a}}{\\\\\\\\Delta +
-\\\\\\\\gamma\\\\\\\\left(1+\\\\\\\\frac{r_s}{r_a}\\\\\\\\right)}
-\\\\\\\\mbox{ FAO 1998,     Eq. 3} \\\\\\\\\\\\\\\\
-\\\\\\\\mbox{With:} \\\\\\\\\\\\\\\\ \\\\\\\\Delta &=& 4098
-\\\\\\\\frac{0.6108 e^{17.27 T}}{(T+237.3)^2}
-\\\\\\\\frac{kPa}{^\\\\\\\\circ C}     \\\\\\\\mbox{ (FAO 1998, Eq.
-13)} \\\\\\\\\\\\\\\\ T &=& \\\\\\\\mbox{Actual     Temperature in }
-^\\\\\\\\circ C \\\\\\\\\\\\\\\\ R_n &=& \\\\\\\\mbox{net Radiation
-(see Atmosphere) in } \\\\\\\\frac{MJ}{m^2day} \\\\\\\\\\\\\\\\ G &=&
-0 \\\\\\\\     \\\\\\\\frac{MJ}{m^2day} \\\\\\\\mbox{ if daily average
-(FAO 1998, Eq. 42)}     \\\\\\\\\\\\\\\\ && 0.1 R_n \\\\\\\\
-\\\\\\\\mbox{ if day time (FAO 1998, Eq. 45)}     \\\\\\\\\\\\\\\\ &&
-0.5 R_n \\\\\\\\ \\\\\\\\mbox{ if night time (FAO 1998, Eq. 46)}
-\\\\\\\\\\\\\\\\ \\\\\\\\gamma &=& \\\\\\\\frac{c_p P}{\\\\\\\\epsilon
-\\\\\\\\lambda}     \\\\\\\\mbox{ (FAO 1998,Eq. 8): Psychrometric
-constant }     \\\\\\\\frac{kPa}{^\\\\\\\\circ C} \\\\\\\\\\\\\\\\ c_p
-&=& 0.001013     \\\\\\\\frac{MJ}{kg\\\\\\\\ ^\\\\\\\\circ
-C}\\\\\\\\mbox{ specific heat at constant     pressure }
-\\\\\\\\\\\\\\\\ P &=& 101.3
-\\\\\\\\left(\\\\\\\\frac{293-0.0065z}{293}\\\\\\\\right)^{5.26}
-\\\\\\\\mbox{ (FAO     1998,Eq. 7)} \\\\\\\\\\\\\\\\ \\\\\\\\epsilon
-&=& 0.622 \\\\\\\\frac{mol/g \\\\\\\\mbox{     vapor}}{mol/g
-\\\\\\\\mbox{ liquid water}} \\\\\\\\\\\\\\\\ \\\\\\\\lambda &=& 2.45
-\\\\\\\\frac{MJ}{kg} \\\\\\\\mbox{ (FAO 1998,Eq. 8)} \\\\\\\\\\\\\\\\
-R &=& 0.287     \\\\\\\\frac{kJ}{kg\\\\\\\\ k}\\\\\\\\mbox{ Spec. gas
-const.} \\\\\\\\\\\\\\\\ \\\\\\\\rho_a     &=&
-\\\\\\\\frac{P}{1.01(T+273)R} \\\\\\\\mbox{ (FAO 1998,Box. 6)}
-\\\\\\\\\\\\\\\\     e_s &=& \\\\\\\\mbox{ Sat. vapor press. } [kPa]
-\\\\\\\\\\\\\\\\ e_a &=& \\\\\\\\mbox{     Act. vapor press. } [kPa]
-\\\\\\\\\\\\\\\\ r_a &=&
-\\\\\\\\frac{\\\\\\\\ln\\\\\\\\left(\\\\\\\\frac{2-d}{z_{om}}\\\\\\\\right)\\\\\\\\ln\\\\\\\\left(\\\\\\\\frac{2-d}{z_{oh}}\\\\\\\\right)}{k^2
-u_2} \\\\\\\\mbox{ (FAO 1998, Eq. 4/Box 4} \\\\\\\\frac s m
-\\\\\\\\\\\\\\\\ &&     d=\\\\\\\\frac 2 3 h,z_{om}=0.123 h,z_{oh}=0.1
-z_{om}, k=0.41 \\\\\\\\\\\\\\\\ h     &=& \\\\\\\\mbox{ Vegetation
-height in }m \\\\\\\\\\\\\\\\ u_2 &=& \\\\\\\\mbox{     Windspeed in
-2m above canopy } \\\\\\\\frac m s \\\\\\\\\\\\\\\\ r_s &=&
-\\\\\\\\frac{r_l}{LAI_{Active}} \\\\\\\\mbox{ (FAO 1998, Eq. 5/Box 5)}
-\\\\\\\\frac s m \\\\\\\\\\\\\\\\ && r_l=100 \\\\\\\\frac s m,
-LAI_{Active}=0.5 LAI     C++ includes: ET.h ";
-
-%feature("docstring")  cmf_core::PenmanMonteithET::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(PenmanMonteithET self, cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target) -> PenmanMonteithET
-PenmanMonteithET(cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target) ";
-
-%feature("docstring")  cmf_core::PenmanMonteithET::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::PenmanMonteithET::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::PenmanMonteithET::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::PenmanMonteithET::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_penman_monteith_e_t.xml
@@ -13906,19 +10752,6 @@ typecode() const ";
 V(double h) const ";
 
 
-// File: classcmf__core_1_1_pipe_reach.xml
-%feature("docstring") cmf_core::PipeReach "
-
-Describes the geometry of a closed pipe.  C++ includes: ReachType.h ";
-
-%feature("docstring")  cmf_core::PipeReach::__init__ "def
-__init__(self, args)
-
-__init__(PipeReach self, double l, double diameter) -> PipeReach
-__init__(PipeReach self, PipeReach copy) -> PipeReach PipeReach(const
-PipeReach &copy) ";
-
-
 // File: classcmf_1_1geometry_1_1point.xml
 %feature("docstring") cmf::geometry::point "
 
@@ -13990,40 +10823,6 @@ height difference times a factor.
 ";
 
 
-// File: classcmf__core_1_1point.xml
-%feature("docstring") cmf_core::point "
-
-2D-Point Class.  Used as location property anywhere in the text
-Calculation of distances  +,-,-=,*= Operators overloaded  C++
-includes: geometry.h ";
-
-%feature("docstring")  cmf_core::point::__init__ "def __init__(self,
-args)
-
-__init__(point self) -> point __init__(point self, point p) -> point
-__init__(point self, double x_, double y_, double z_=0.0) -> point
-point(double x_, double y_, double z_=0.0)  Creates a point from two
-doubles. ";
-
-%feature("docstring")  cmf_core::point::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::point::__iter__ "def __iter__(self)
-";
-
-%feature("docstring")  cmf_core::point::__itruediv__ "def
-__itruediv__(self, args) ";
-
-%feature("docstring")  cmf_core::point::__repr__ "def __repr__(self)
-";
-
-%feature("docstring")  cmf_core::point::__setitem__ "def
-__setitem__(self, index, value) ";
-
-%feature("docstring")  cmf_core::point::__truediv__ "def
-__truediv__(self, args) ";
-
-
 // File: classcmf_1_1geometry_1_1point__vector.xml
 %feature("docstring") cmf::geometry::point_vector "
 
@@ -14049,20 +10848,6 @@ Change the point at index. ";
 size() const
 
 Return the number of points in the point_vector. ";
-
-
-// File: classcmf__core_1_1point__vector.xml
-%feature("docstring") cmf_core::point_vector "
-
-Holds three arrays x,y and z for fast access of point coordinates. C++
-includes: geometry.h ";
-
-%feature("docstring")  cmf_core::point_vector::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(point_vector self, ptrdiff_t size) -> point_vector
-point_vector(ptrdiff_t size)  Create a point vector of a specific
-size. ";
 
 
 // File: classcmf_1_1maps_1_1_polygon_map.xml
@@ -14092,55 +10877,6 @@ remove(self, polygon) ";
 
 %feature("docstring")  cmf::maps::PolygonMap::values "def
 values(self) ";
-
-
-// File: classcmf__core_1_1_power_law_connection.xml
-%feature("docstring") cmf_core::PowerLawConnection "
-
-Calculates flux out of a storage as a linear function of its volume to
-a power.  This connection serves the same purpose as the old
-kinematic_wave connection, but the parameters are easier to explain.
-.. math::       q = Q_0 {\\\\\\\\left(\\\\\\\\frac{V -
-V_{residual}}{V_0}     \\\\\\\\right)^\\\\\\\\beta}   where: :math:`V`
-The actual volume of water stored in source :math:`V_{residual} [m^3]`
-The volume of water not flowing out (default = 0)  :math:`V_0` A
-reference volume to scale the outflux. One can see :math:`V_0` as the
-inflection point of the outflow curve :math:`\\\\\\\\beta` A parameter
-to shape the response curve. :math:`Q_0` is the outflow from the
-source in :math:`\\\\\\\\frac{m^3}{day}`, when :math:`V = V_0`.
-WARNING: :math:`\\\\\\\\beta < 0.5` may lead to numerical troubles and
-have a dubious hydrological meaning. Please avoid.  C++ includes:
-simple_connections.h ";
-
-%feature("docstring")  cmf_core::PowerLawConnection::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(PowerLawConnection self, cmf::water::WaterStorage::ptr
-source, cmf::water::flux_node::ptr target, real Q0, real V0, real
-beta=1.0, real residual=0.0) -> PowerLawConnection
-PowerLawConnection(WaterStorage::ptr source, flux_node::ptr target,
-real Q0, real V0, real beta=1.0, real residual=0.0)  Creates a power
-law connection.  Parameters: -----------  source:  Water storage from
-which the water flows out. Flux is a function of source.volume target:
-Target node (boundary condition or storage). Does not influence the
-strength of the flow  Q0:  Reference flow :math:`Q_0 = q(V_0)` Outflow
-when the source storage equals the reference volume V0:  Reference
-volume :math:`V_0` The reference volume to scale the exponent  beta:
-:math:`\\\\\\\\beta [-]` An empirical exponent to shape the flux
-function (default = 1 (linear function))  residual:
-:math:`V_{residual} [m^3]` The volume of water not flowing out
-(default = 0) ";
-
-%feature("docstring")  cmf_core::PowerLawConnection::__contains__ "def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::PowerLawConnection::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::PowerLawConnection::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::PowerLawConnection::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1water_1_1_power_law_connection.xml
@@ -14407,44 +11143,6 @@ std::string short_string() const ";
 "virtual std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_priestley_taylor_e_t.xml
-%feature("docstring") cmf_core::PriestleyTaylorET "
-
-Calculates the Evapotranspiration using Priestley-Taylor equation. ..
-math::      lambda ET = \\\\\\\\alpha
-\\\\\\\\frac{\\\\\\\\Delta}{\\\\\\\\Delta + \\\\\\\\gamma}
-\\\\\\\\left(R_n - G\\\\\\\\right)  where:  :math:`\\\\\\\\Delta =
-4098 \\\\\\\\frac{0.6108 e^{17.27 T}}{(T+237.3)^2}
-\\\\\\\\frac{kPa}{^\\\\\\\\circ C}`, the slope of the vapor pressure/
-temperature curve  :math:`\\\\\\\\gamma = \\\\\\\\frac{c_p
-P}{\\\\\\\\epsilon \\\\\\\\lambda} \\\\\\\\frac{kPa}{^\\\\\\\\circ C}`
-Psychrometric constant  :math:`\\\\\\\\lambda = 2.45
-\\\\\\\\frac{MJ}{kg}` the latent heat of vaporization  :math:`R_n
-\\\\\\\\frac{MJ}{m^2day}` net Radiation (see Atmosphere)  :math:`G`
-Ground heat flux  :math:`\\\\\\\\alpha` the Priestley-Taylor constant
-(default 1.26 for humid climates)  C++ includes: ET.h ";
-
-%feature("docstring")  cmf_core::PriestleyTaylorET::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(PriestleyTaylorET self, cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target, real alpha=1.26) ->
-PriestleyTaylorET PriestleyTaylorET(cmf::upslope::SoilLayer::ptr
-source, cmf::water::flux_node::ptr ET_target, real alpha=1.26) ";
-
-%feature("docstring")  cmf_core::PriestleyTaylorET::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::PriestleyTaylorET::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::PriestleyTaylorET::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::PriestleyTaylorET::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1river_1_1_prism.xml
 %feature("docstring") cmf::river::Prism "
 
@@ -14472,53 +11170,6 @@ base_area, double thickness_of_rough_ground=0.01) ";
 h, double slope) const ";
 
 %feature("docstring")  cmf::river::Prism::V "double V(double h) const
-";
-
-
-// File: classcmf__core_1_1_prism.xml
-%feature("docstring") cmf_core::Prism "
-
-the height of a volume in a Prism with a defined base area  C++
-includes: ReachType.h ";
-
-%feature("docstring")  cmf_core::Prism::__init__ "def __init__(self,
-args, kwargs)
-
-__init__(Prism self, double base_area, double
-thickness_of_rough_ground=0.01) -> Prism Prism(double base_area,
-double thickness_of_rough_ground=0.01) ";
-
-
-// File: classcmf__core_1_1project.xml
-%feature("docstring") cmf_core::project "
-
-The study area, holding all cells, outlets and streams.  C++ includes:
-project.h ";
-
-%feature("docstring")  cmf_core::project::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(project self, std::string solute_names=\"\") -> project
-project(std::string solute_names=\"\")  Creates a new project.
-Parameters: -----------  solute_names:  A string representing the
-names of the solutes to be used in the project. Sepereate solute names
-with space. ";
-
-%feature("docstring")  cmf_core::project::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::project::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::project::__len__ "def __len__(self)
-";
-
-%feature("docstring")  cmf_core::project::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::project::nodes "def nodes(self) ";
-
-%feature("docstring")  cmf_core::project::reaches "def reaches(self)
 ";
 
 
@@ -14847,24 +11498,6 @@ z_weight:   :math:`w_z` the weight of height difference between cell and
 station ";
 
 
-// File: classcmf__core_1_1project__list__wrapper.xml
-%feature("docstring") cmf_core::project_list_wrapper "";
-
-%feature("docstring")  cmf_core::project_list_wrapper::__init__ "def
-__init__(self, getitem, getlen, name) ";
-
-%feature("docstring")  cmf_core::project_list_wrapper::__getitem__ "def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::project_list_wrapper::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::project_list_wrapper::__len__ "def
-__len__(self) ";
-
-%feature("docstring")  cmf_core::project_list_wrapper::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1geometry_1_1qtree_1_1_quadtree.xml
 %feature("docstring") cmf::geometry::qtree::Quadtree "
 
@@ -14903,34 +11536,6 @@ iterable of (object, bounds) tuples :return: ";
 Iterates through all positions in the boundaries :param bounds: The
 boundary rectangle. A 4 item sequence (xmin, ymin, xmax, ymax)
 :return: (i,j) position tuple ";
-
-
-// File: classcmf__core_1_1_rainfall.xml
-%feature("docstring") cmf_core::Rainfall "
-
-A connection routing rainfall to surface water and to an eventually
-existing canopy storage.  C++ includes: AtmosphericFluxes.h ";
-
-%feature("docstring")  cmf_core::Rainfall::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(Rainfall self, cmf::water::flux_node::ptr target, Cell cell,
-bool getthroughfall=True, bool getintercepted=True) -> Rainfall
-Rainfall(cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell,
-bool getthroughfall=true, bool getintercepted=true)  Creates a new
-Rainfall connection. ";
-
-%feature("docstring")  cmf_core::Rainfall::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::Rainfall::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::Rainfall::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::Rainfall::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_rainfall.xml
@@ -15058,21 +11663,6 @@ Returns the name and the mean yearly rainfall. ";
 Connects a cell with this rainfall station. ";
 
 
-// File: classcmf__core_1_1_rainfall_station.xml
-%feature("docstring") cmf_core::RainfallStation "
-
-RainfallStation describes a rainfall timeseries in mm/day at a certain
-place.  Use RainfallStationReference or IDWRainfall to distribute the
-data into space  C++ includes: precipitation.h ";
-
-%feature("docstring")  cmf_core::RainfallStation::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(RainfallStation self, RainfallStation copy) ->
-RainfallStation RainfallStation(const RainfallStation &copy)  copy
-c'tor ";
-
-
 // File: classcmf_1_1atmosphere_1_1_rainfall_station_list.xml
 %feature("docstring") cmf::atmosphere::RainfallStationList "
 
@@ -15104,23 +11694,6 @@ Removes the station at index from this list. ";
 %feature("docstring")  cmf::atmosphere::RainfallStationList::size "size_t size() const
 
 Returns the number of rainfall stations. ";
-
-
-// File: classcmf__core_1_1_rainfall_station_list.xml
-%feature("docstring") cmf_core::RainfallStationList "
-
-A list of rainfall stations.  C++ includes: precipitation.h ";
-
-%feature("docstring")  cmf_core::RainfallStationList::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(RainfallStationList self) -> RainfallStationList ";
-
-%feature("docstring")  cmf_core::RainfallStationList::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::RainfallStationList::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1atmosphere_1_1_rainfall_station_reference.xml
@@ -15239,42 +11812,6 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
-// File: classcmf__core_1_1_rainfall_station_reference.xml
-%feature("docstring") cmf_core::RainfallStationReference "
-
-References a single RainfallStation to provide rainfall intensity
-data.  C++ includes: precipitation.h ";
-
-%feature("docstring")  cmf_core::RainfallStationReference::__init__ "def __init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::RainfallStationReference::__repr__ "def __repr__(self) ";
-
-%feature("docstring")
-cmf_core::RainfallStationReference::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::RainfallStationReference::fluxes "def fluxes(self, t) ";
-
-
-// File: classcmf__core_1_1_rain_source.xml
-%feature("docstring") cmf_core::RainSource "
-
-An abstract class for different types of rainfall sources.  C++
-includes: precipitation.h ";
-
-%feature("docstring")  cmf_core::RainSource::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::RainSource::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::RainSource::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::RainSource::fluxes "def fluxes(self,
-t) ";
-
-
 // File: classcmf_1_1atmosphere_1_1_rain_source.xml
 %feature("docstring") cmf::atmosphere::RainSource "
 
@@ -15365,47 +11902,6 @@ t:  Time of the query
 
 Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
-
-
-// File: classcmf__core_1_1_reach.xml
-%feature("docstring") cmf_core::Reach "
-
-A reach represents the section of a riover and is a specialization of
-an open water storage.  The OpenWaterStorage attributes and methods
-are extended by topological features, for the creation of a network of
-reaches.  C++ includes: Reach.h ";
-
-%feature("docstring")  cmf_core::Reach::__init__ "def __init__(self,
-args, kwargs) ";
-
-%feature("docstring")  cmf_core::Reach::__hash__ "def __hash__(self)
-";
-
-%feature("docstring")  cmf_core::Reach::__repr__ "def __repr__(self)
-";
-
-%feature("docstring")  cmf_core::Reach::connect_to_cell "def
-connect_to_cell(self, cell, width, subsurface_connection_type=None,
-subsurface_connection_depth=None, diffusive=None)
-
-Connects a cell with this reach using Manning's equation for surface
-runoff and a given connection for subsurface interflow   - width :
-Boundary width in m  - subsurface_connection_type  : Any lateral flow
-connection type  - subsurface_connection_depth : The depth below
-ground of the deepest layer to be connected by
-subsurface_connection_type,                          default (None) =
-cell.z - reach.position.z  - diffusive: Determines if a kinematic or
-diffusive wave is to be used for surface runoff ";
-
-%feature("docstring")  cmf_core::Reach::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::Reach::fluxes "def fluxes(self, t)
-";
-
-%feature("docstring")  cmf_core::Reach::upstream "def upstream(self)
-
-Returns a list containing all reaches flowing into self ";
 
 
 // File: classcmf_1_1river_1_1_reach.xml
@@ -15682,24 +12178,6 @@ const
 Returns the exposed surface area in m2. ";
 
 
-// File: classcmf__core_1_1_reach_iterator.xml
-%feature("docstring") cmf_core::ReachIterator "
-
-An iterator over every upstream reach from a start reach.  Implements
-both the Python and the C++ iterator interface Usage C++: Usage
-Python:  C++ includes: Reach.h ";
-
-%feature("docstring")  cmf_core::ReachIterator::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(ReachIterator self, cmf::river::Reach::ptr first) ->
-ReachIterator ReachIterator(Reach::ptr first)  Creates a ReachIterator
-from a first reach. ";
-
-%feature("docstring")  cmf_core::ReachIterator::__iter__ "def
-__iter__(self) ";
-
-
 // File: classcmf_1_1river_1_1_reach_iterator.xml
 %feature("docstring") cmf::river::ReachIterator "
 
@@ -15859,33 +12337,6 @@ typecode() const ";
 double V(double h) const ";
 
 
-// File: classcmf__core_1_1_rectangular_reach.xml
-%feature("docstring") cmf_core::RectangularReach "
-
-Describes a IChannel with a rectangular crosssection.  C++ includes:
-ReachType.h ";
-
-%feature("docstring")  cmf_core::RectangularReach::__init__ "def
-__init__(self, args)
-
-__init__(RectangularReach self, double l, double width) ->
-RectangularReach __init__(RectangularReach self, RectangularReach
-copy) -> RectangularReach RectangularReach(const RectangularReach
-&copy) ";
-
-
-// File: classcmf__core_1_1_retention_curve.xml
-%feature("docstring") cmf_core::RetentionCurve "
-
-Abstract base class for different types of retention curves.  This
-class, and its children uses wetness instead of volumetric water
-content. The wetness of a soil is defined as water content per void
-volume  C++ includes: RetentionCurve.h ";
-
-%feature("docstring")  cmf_core::RetentionCurve::__init__ "def
-__init__(self, args, kwargs) ";
-
-
 // File: classcmf_1_1upslope_1_1_retention_curve.xml
 %feature("docstring") cmf::upslope::RetentionCurve "
 
@@ -15981,45 +12432,6 @@ returns the volumetric water content at a given pF value ";
 
 %feature("docstring")  cmf::upslope::RetentionCurve::Wetness_pF "cmf::math::num_array Wetness_pF(const cmf::math::num_array &pF) const
 ";
-
-
-// File: classcmf__core_1_1_richards.xml
-%feature("docstring") cmf_core::Richards "
-
-Calculates flow according to the Richards equation.    .. math::
-q_{Richards} &=&     \\\\\\\\frac{\\\\\\\\Delta\\\\\\\\Psi_{tot}}{d}
-K(\\\\\\\\theta) A \\\\\\\\\\\\\\\\     \\\\\\\\Psi_{tot} &=
-&\\\\\\\\Psi_{M}(\\\\\\\\theta) + h    where
-:math:`\\\\\\\\Delta\\\\\\\\Psi_{tot} [m]` is the difference of the
-total water potentials of the two soil layers  :math:`d [m]` is the
-distance between the two soil layers
-:math:`K(\\\\\\\\theta)\\\\\\\\left[\\\\\\\\frac m{day}\\\\\\\\right]`
-is the geometric mean conductivity (see SoilType::Kunsat)  :math:`A
-[m^2]` is the crosssectional area of the flux
-:math:`\\\\\\\\Psi_M(\\\\\\\\theta) [m]` is the matrix potential (see
-SoilType::MatrixPotential)  :math:`h [m]` is the height of a soil
-layer above sea level  C++ includes: Percolation.h ";
-
-%feature("docstring")  cmf_core::Richards::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(Richards self, cmf::upslope::SoilLayer::ptr left,
-cmf::water::flux_node::ptr right) -> Richards
-Richards(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr
-right)  Creates a Richards equation connection between two soil layers
-(left and right, rather top and bottom) of the same cell. ";
-
-%feature("docstring")  cmf_core::Richards::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::Richards::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::Richards::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::Richards::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_richards.xml
@@ -16283,106 +12695,6 @@ cmf::upslope::connections::Richards_lateral::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_richards__lateral.xml
-%feature("docstring") cmf_core::Richards_lateral "
-
-Calculates the flux using Richard's equation for adjacent layers   ..
-math::       q_{lat} = \\\\\\\\frac{\\\\\\\\Psi_1 -
-\\\\\\\\Psi_2}{\\\\\\\\|C_1-C_2\\\\\\\\|}     K(\\\\\\\\theta) A
-where:  :math:`q_{lat}` the lateral flow in :math:`m^3/day`
-:math:`\\\\\\\\Psi_i` the head of node i
-:math:`\\\\\\\\|C_1-C_2\\\\\\\\|` is the distance from Cell 1 to Cell
-2  :math:`K(\\\\\\\\theta_{1,2}) = \\\\\\\\sqrt{K(\\\\\\\\theta_1)
-K(\\\\\\\\theta_2)}`  :math:`A` the crosssectional area of the
-interface between storages 1 and 2  C++ includes: subsurfacefluxes.h
-";
-
-%feature("docstring")  cmf_core::Richards_lateral::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(Richards_lateral self, cmf::upslope::SoilLayer::ptr left,
-cmf::water::flux_node::ptr right, real FlowWidth=0, real Distance=0)
--> Richards_lateral Richards_lateral(cmf::upslope::SoilLayer::ptr
-left, cmf::water::flux_node::ptr right, real FlowWidth=0, real
-Distance=0)  Creates the connection.  Parameters: -----------  left:
-Left node of the connection (needs to be soil water storage)  right:
-Right node of the connection (can be any node)  FlowWidth:  the width
-of the connection - is multiplied by layer thickness to get the
-interface area  Distance:  the length of the connection. If 0, the
-distance is calculated from the position of the nodes ";
-
-%feature("docstring")  cmf_core::Richards_lateral::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::Richards_lateral::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::Richards_lateral::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::Richards_lateral::__repr__ "def
-__repr__(self) ";
-
-
-// File: classcmf__core_1_1_r_k_f_integrator.xml
-%feature("docstring") cmf_core::RKFIntegrator "
-
-Integrates a vector of cmf::math::StateVariable with the Runge-Kutta-
-Fehlberg (RKF54) method.  C++ includes: RKFintegrator.h ";
-
-%feature("docstring")  cmf_core::RKFIntegrator::__init__ "def
-__init__(self, args)
-
-__init__(RKFIntegrator self, state_list states, real epsilon=1e-9,
-Time dt_min=cmf::math::timespan(1000)) -> RKFIntegrator
-__init__(RKFIntegrator self, real epsilon=1e-9, Time
-dt_min=cmf::math::timespan(1000)) -> RKFIntegrator RKFIntegrator(real
-epsilon=1e-9, cmf::math::Time dt_min=cmf::math::timespan(1000))
-Constructs a new RKFIntegrator.  Parameters: -----------  epsilon:
-relative error tolerance per time step (default=1e-9)  dt_min: minimum
-time step (default=1s) ";
-
-%feature("docstring")  cmf_core::RKFIntegrator::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::RKFIntegrator::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::RKFIntegrator::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::RKFIntegrator::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::RKFIntegrator::run "def run(self,
-start=None, end=None, step=day *1, max_errors=0, reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
-
-
 // File: classcmf_1_1math_1_1_r_k_f_integrator.xml
 %feature("docstring") cmf::math::RKFIntegrator "
 
@@ -16532,17 +12844,6 @@ cmf::upslope::ET::RootUptakeStressFunction::to_string "virtual
 std::string to_string() const =0 ";
 
 
-// File: classcmf__core_1_1_root_uptake_stress_function.xml
-%feature("docstring") cmf_core::RootUptakeStressFunction "
-
-An abstract class to calculate the actual transpiration from potential
-transpiration.  Implementations of WaterStressFunction are used by ET
-connections derived from cmf::upslope::ET::stressedET  C++ includes:
-waterstress.h ";
-
-%feature("docstring")  cmf_core::RootUptakeStressFunction::__init__ "def __init__(self, args, kwargs) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_rutter_interception.xml
 %feature("docstring") cmf::upslope::connections::RutterInterception "
 
@@ -16682,52 +12983,6 @@ cmf::upslope::connections::RutterInterception::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_rutter_interception.xml
-%feature("docstring") cmf_core::RutterInterception "
-
-Interception storage overflow according to the Rutter and Morton
-(1977) model.  Calculates the interception overflow as a storage
-depending fraction of incoming rainfall The Rutter model of
-interception reads as follows after Meuser, A., 1990. Effects of
-afforestation on run-off characteristics. Agric. For. Meteorol. 50:
-125-138.:   .. math::      \\\\\\\\frac{dI_C(t)}{dt}=P(t)(1-p_F-
-p_S)-P(t)(1-p_F-     p_S)\\\\\\\\frac{I_C(t)}{I_CMAX}-f_I(E-e)(t) With
-:math:`I_C` the current canopy storage and :math:`P(t)` the current
-rainfall.  The second term of the equation denotes the flux from the
-canopy to the ground. The implemented formula for canopy storage
-overflow reads then as:   .. math::      q_{CO}(t) =
-P_{net}(t)\\\\\\\\frac{V_{act}[mm]}{V_{max}[mm]}  With:
-:math:`q_{CO}(t)[\\\\\\\\frac{m^3}{day}]`: The flux from canopy to the
-ground  :math:`P_{net}(t)[\\\\\\\\frac{m^3}{day}]`: The flux from the
-rain to the canopy  :math:`V_{act}[mm]=1000 [mm/m]
-\\\\\\\\frac{V_{canopy}[m^3]}{A_{cell} [m^2]}` The stored water of the
-canopy in mm  :math:`V_{max}[mm]=c_{LAI}[mm]\\\\\\\\cdot LAI` The
-capacity of the canopy in mm, defined by the factor
-CanopyCapacityPerLAI [mm/LAI], and the leaf area index LAI. (see:
-cmf::upslope::vegetation::Vegetation)  C++ includes: surfacefluxes.h
-";
-
-%feature("docstring")  cmf_core::RutterInterception::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(RutterInterception self, cmf::water::WaterStorage::ptr
-Canopy, cmf::water::flux_node::ptr target, Cell cell) ->
-RutterInterception RutterInterception(cmf::water::WaterStorage::ptr
-Canopy, cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell)
-";
-
-%feature("docstring")  cmf_core::RutterInterception::__contains__ "def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::RutterInterception::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::RutterInterception::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::RutterInterception::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1draw_1_1shapemap_1_1_shape_map.xml
 %feature("docstring") cmf::draw::shapemap::ShapeMap "
 
@@ -16740,48 +12995,6 @@ __init__(self, features, kwargs) ";
 
 %feature("docstring")  cmf::draw::shapemap::ShapeMap::refresh "def
 refresh(self) ";
-
-
-// File: classcmf__core_1_1_shuttleworth_wallace.xml
-%feature("docstring") cmf_core::ShuttleworthWallace "
-
-Calculates the sum of soil evaporation and transpiration according to
-Shuttleworth & Wallace 1985, as implemented in BROOK 90 (Federer 1990)
-The difference to BROOK90 is, that the actual transpiration is not
-calculated by plant resitance and potential gradient between plant and
-soil, but by an piecewise linear function of the pF value :math:`pF =
-\\\\\\\\log_{10}\\\\\\\\left(-\\\\\\\\Psi [hPa]\\\\\\\\right)`:   ..
-math::       \\\\\\\\frac{T_{act}}{T_{pot}} = \\\\\\\\begin{cases}1 &
-pF \\\\\\\\le 3.35     \\\\\\\\\\\\\\\\ \\\\\\\\frac{pF - 4.2}{3.35 -
-4.2} & pF \\\\\\\\in [3.35 .. 4.2]     \\\\\\\\\\\\\\\\ 0 & pF
-\\\\\\\\ge 4.2\\\\\\\\end{cases}   Calculation procedure, as in BROOK
-90:  Evapotranspiration from the canopy: :math:`\\\\\\\\lambda
-ET_{canopy} = \\\\\\\\frac{r_{ac} \\\\\\\\Delta\\\\\\\\ R_{n,canopy} +
-c_p\\\\\\\\rho D_0}{\\\\\\\\Delta \\\\\\\\gamma r_{ac} + \\\\\\\\gamma
-r_{sc}}`  Evaporation from the ground: :math:`\\\\\\\\lambda
-E_{ground} = \\\\\\\\frac{r_{as} \\\\\\\\Delta\\\\\\\\ R_{n,ground} +
-c_p\\\\\\\\rho D_0}{\\\\\\\\Delta \\\\\\\\gamma r_{as} + \\\\\\\\gamma
-r_{ss}}`  In case of a complete surface water covered ground, the
-surface resistance :math:`r_{ss}` becomes 0. (GIR)  with
-:math:`\\\\\\\\Delta = \\\\\\\\frac{de_s}{dT} = 4098\\\\\\\\ 0.6108
-\\\\\\\\exp\\\\\\\\left(\\\\\\\\frac{17.27
-T}{T+237.3}\\\\\\\\right)(T+237.3)^{-2}`, the slope of the sat. vap.
-press. T function  :math:`R_{n,ground} = R_n \\\\\\\\exp(-C_R LAI)`,
-the net radiation flux to the ground  :math:`R_{n,canopy} = R_n -
-R_{n,ground}`, the net radiation flux to the canopy
-:math:`\\\\\\\\lambda,c_p\\\\\\\\rho,\\\\\\\\gamma` latent heat of
-vaporization, heat capacity of air, psychrometer constant  :math:`D_0`
-vapor pressure deficit at effective source height, see function D0
-:math:`r_{ac}, r_{sc}, r_{as}, r_{ss}` Resistances for the vapor
-pressure (see below)  C++ includes: ShuttleworthWallace.h ";
-
-%feature("docstring")  cmf_core::ShuttleworthWallace::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(ShuttleworthWallace self, Cell cell, bool allow_dew=True) ->
-ShuttleworthWallace ShuttleworthWallace(cmf::upslope::Cell &cell, bool
-allow_dew=true)  Calculates the transpiration and the soil evaporation
-from dry surfaces. ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.xml
@@ -16897,32 +13110,6 @@ add_object(self, object, bounds) ";
 
 %feature("docstring")  cmf::maps::SimpleQuadTree::get_objects "def
 get_objects(self, bounds) ";
-
-
-// File: classcmf__core_1_1_snowfall.xml
-%feature("docstring") cmf_core::Snowfall "
-
-A connection routing snowfall (precipitation below freezing Temp) to
-the snow pack.  C++ includes: AtmosphericFluxes.h ";
-
-%feature("docstring")  cmf_core::Snowfall::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(Snowfall self, cmf::water::flux_node::ptr target, Cell cell)
--> Snowfall Snowfall(cmf::water::flux_node::ptr target,
-cmf::upslope::Cell &cell) ";
-
-%feature("docstring")  cmf_core::Snowfall::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::Snowfall::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::Snowfall::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::Snowfall::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_snowfall.xml
@@ -17339,36 +13526,6 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
-// File: classcmf__core_1_1_soil_layer.xml
-%feature("docstring") cmf_core::SoilLayer "
-
-A representation of a SoilLayer.  C++ includes: SoilLayer.h ";
-
-%feature("docstring")  cmf_core::SoilLayer::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::SoilLayer::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::SoilLayer::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::SoilLayer::fluxes "def fluxes(self,
-t) ";
-
-
-// File: classcmf__core_1_1solute.xml
-%feature("docstring") cmf_core::solute "
-
-A structure to identify a solute.  C++ includes: Solute.h ";
-
-%feature("docstring")  cmf_core::solute::__init__ "def __init__(self,
-args, kwargs)
-
-__init__(solute self, solute copy) -> solute solute(const solute
-&copy) ";
-
-
 // File: structcmf_1_1water_1_1solute.xml
 %feature("docstring") cmf::water::solute "
 
@@ -17400,13 +13557,23 @@ A->B.
 
 Where A is the educt and B is the product.
 
-C++ includes: SoluteStorage.h ";
+C++ includes: reaction.h ";
 
 %feature("docstring")
 cmf::water::Solute1stOrderReaction::Solute1stOrderReaction "Solute1stOrderReaction(const solute &A, const solute &B, real k) ";
 
 %feature("docstring")  cmf::water::Solute1stOrderReaction::get_flux "real get_flux(const SoluteStorage &solute_storage, const
-cmf::math::Time &t) override ";
+cmf::math::Time &t) const override
+
+Calculates the reactive flux from / to the given solute storage at
+time t. ";
+
+%feature("docstring")
+cmf::water::Solute1stOrderReaction::is_compatible "bool
+is_compatible(const SoluteStorage &solute_storage) override
+
+Tests if the reaction is compatible to a solute storage. Returns true
+if not overwritten by a child class. ";
 
 %feature("docstring")  cmf::water::Solute1stOrderReaction::to_string "std::string to_string() const override ";
 
@@ -17426,13 +13593,13 @@ A solute reaction of 2nd order kinetics A + B -> C.
 
 .. math::
 
-    \\\\frac{d[C]}{dt} =
-    -\\\\frac{d[A]}{dt} = -\\\\frac{d[B]}{dt} = k [A] [B]
+    \\\\frac{d[C]}{dt} = -\\\\frac{d[A]}{dt} = -\\\\frac{d[B]}{dt} =
+    k [A] [B]
 
 Where A and B are the educts and C is the product. For a 2nd order
 reaction of a single educt A just write:
 
-C++ includes: SoluteStorage.h ";
+C++ includes: reaction.h ";
 
 %feature("docstring")
 cmf::water::Solute2ndOrderReaction::Solute2ndOrderReaction "Solute2ndOrderReaction(const solute &A, const solute &B, const solute
@@ -17441,29 +13608,19 @@ cmf::water::Solute2ndOrderReaction::Solute2ndOrderReaction "Solute2ndOrderReacti
 Creates a 2nd order kinetic reaction. ";
 
 %feature("docstring")  cmf::water::Solute2ndOrderReaction::get_flux "real get_flux(const SoluteStorage &solute_storage, const
-cmf::math::Time &t) override ";
+cmf::math::Time &t) const override
+
+Calculates the reactive flux from / to the given solute storage at
+time t. ";
+
+%feature("docstring")
+cmf::water::Solute2ndOrderReaction::is_compatible "bool
+is_compatible(const SoluteStorage &solute_storage) override
+
+Tests if the reaction is compatible to a solute storage. Returns true
+if not overwritten by a child class. ";
 
 %feature("docstring")  cmf::water::Solute2ndOrderReaction::to_string "std::string to_string() const override ";
-
-
-// File: classcmf__core_1_1solute__vector.xml
-%feature("docstring") cmf_core::solute_vector "
-
-Manages the solutes of the model.  C++ includes: Solute.h ";
-
-%feature("docstring")  cmf_core::solute_vector::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(solute_vector self, std::string str) -> solute_vector
-solute_vector(std::string str)  Creates a solute vector from solute
-names, separated by whitespace. E.g. solutes= solute_vector(\"dO18
-dH2\") ";
-
-%feature("docstring")  cmf_core::solute_vector::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::solute_vector::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1water_1_1solute__vector.xml
@@ -17490,14 +13647,34 @@ const ";
 
 
 // File: classcmf_1_1water_1_1_solute_constant_flux_reaction.xml
-%feature("docstring") cmf::water::SoluteConstantFluxReaction "";
+%feature("docstring") cmf::water::SoluteConstantFluxReaction "
+
+Adds a constant flux to the solute storage.
+
+Normally used for operator split model coupling. Use this to replace
+the old source parameter of a solute storage
+
+Usage:
+
+C++ includes: reaction.h ";
 
 %feature("docstring")
 cmf::water::SoluteConstantFluxReaction::SoluteConstantFluxReaction "SoluteConstantFluxReaction(real f) ";
 
 %feature("docstring")
 cmf::water::SoluteConstantFluxReaction::get_flux "real get_flux(const
-SoluteStorage &solute_storage, const cmf::math::Time &t) override ";
+SoluteStorage &solute_storage, const cmf::math::Time &t) const
+override
+
+Calculates the reactive flux from / to the given solute storage at
+time t. ";
+
+%feature("docstring")
+cmf::water::SoluteConstantFluxReaction::is_compatible "virtual bool
+is_compatible(const SoluteStorage &solute_storage)
+
+Tests if the reaction is compatible to a solute storage. Returns true
+if not overwritten by a child class. ";
 
 %feature("docstring")
 cmf::water::SoluteConstantFluxReaction::to_string "std::string
@@ -17505,15 +13682,78 @@ to_string() const override ";
 
 
 // File: classcmf_1_1water_1_1_solute_decay_reaction.xml
-%feature("docstring") cmf::water::SoluteDecayReaction "";
+%feature("docstring") cmf::water::SoluteDecayReaction "
+
+Adds a linear decay to solute storages.
+
+Normally used for operator split model coupling. Use this to replace
+the old source parameter of a solute storage
+
+Usage:
+
+C++ includes: reaction.h ";
 
 %feature("docstring")
 cmf::water::SoluteDecayReaction::SoluteDecayReaction "SoluteDecayReaction(real d) ";
 
 %feature("docstring")  cmf::water::SoluteDecayReaction::get_flux "real get_flux(const SoluteStorage &solute_storage, const
-cmf::math::Time &t) override ";
+cmf::math::Time &t) const override
+
+Calculates the reactive flux from / to the given solute storage at
+time t. ";
+
+%feature("docstring")  cmf::water::SoluteDecayReaction::is_compatible
+"virtual bool is_compatible(const SoluteStorage &solute_storage)
+
+Tests if the reaction is compatible to a solute storage. Returns true
+if not overwritten by a child class. ";
 
 %feature("docstring")  cmf::water::SoluteDecayReaction::to_string "std::string to_string() const override ";
+
+
+// File: classcmf_1_1water_1_1_solute_diffusive_transport.xml
+%feature("docstring") cmf::water::SoluteDiffusiveTransport "
+
+Calculates a diffusive flux between solute storages.
+
+WARNING:  Experimental feature! 
+
+.. math::
+
+     q = \\\\alpha \\\\cdot
+    \\\\left([A]_1 - [A]_2\\\\right) V_2 
+
+:math:`[A]_n` Concentration of
+solute A in storage n in mol/m³ or a similar unit
+
+:math:`\\\\alpha` Diffusion velocity in 1/day. Depends on the distance
+between the storages. To calculate it from a distance independent
+diffusion velocity :math:`D [m/day]` over a distance d use :math:`\\\\alpha = D / d`
+
+:math:`V_2` the water volume of the source water storage
+
+C++ includes: reaction.h ";
+
+%feature("docstring")
+cmf::water::SoluteDiffusiveTransport::SoluteDiffusiveTransport "SoluteDiffusiveTransport(real alpha, const SoluteStorage &left, const
+SoluteStorage &right) ";
+
+%feature("docstring")  cmf::water::SoluteDiffusiveTransport::get_flux
+"real get_flux(const SoluteStorage &solute_storage, const
+cmf::math::Time &t) const override
+
+Calculates the reactive flux from / to the given solute storage at
+time t. ";
+
+%feature("docstring")
+cmf::water::SoluteDiffusiveTransport::is_compatible "virtual bool
+is_compatible(const SoluteStorage &solute_storage)
+
+Tests if the reaction is compatible to a solute storage. Returns true
+if not overwritten by a child class. ";
+
+%feature("docstring")  cmf::water::SoluteDiffusiveTransport::to_string
+"std::string to_string() const override ";
 
 
 // File: classcmf_1_1water_1_1_solute_equilibrium_reaction.xml
@@ -17534,7 +13774,7 @@ An equilibrium reaction between two solutes A<->B.
     \\\\frac{d[B]}{dt} = -\\\\frac{d[A]}{dt} = k_{AB} [A] - k_{BA}
     [B] 
 
-C++ includes: SoluteStorage.h ";
+C++ includes: reaction.h ";
 
 %feature("docstring")
 cmf::water::SoluteEquilibriumReaction::SoluteEquilibriumReaction "SoluteEquilibriumReaction(const solute &A, const solute &B, real k_ab,
@@ -17544,7 +13784,17 @@ Creates a solute equilibrium reaction A<->B. ";
 
 %feature("docstring")  cmf::water::SoluteEquilibriumReaction::get_flux
 "real get_flux(const SoluteStorage &solute_storage, const
-cmf::math::Time &t) override ";
+cmf::math::Time &t) const override
+
+Calculates the reactive flux from / to the given solute storage at
+time t. ";
+
+%feature("docstring")
+cmf::water::SoluteEquilibriumReaction::is_compatible "bool
+is_compatible(const SoluteStorage &solute_storage) override
+
+Tests if the reaction is compatible to a solute storage. Returns true
+if not overwritten by a child class. ";
 
 %feature("docstring")
 cmf::water::SoluteEquilibriumReaction::to_string "std::string
@@ -17552,62 +13802,30 @@ to_string() const override ";
 
 
 // File: classcmf_1_1water_1_1_solute_reaction.xml
-%feature("docstring") cmf::water::SoluteReaction "";
+%feature("docstring") cmf::water::SoluteReaction "
+
+Abstract class for a solute reaction.
+
+Can be derived with python.
+
+C++ includes: reaction.h ";
+
+%feature("docstring")  cmf::water::SoluteReaction::~SoluteReaction "virtual ~SoluteReaction()=default ";
 
 %feature("docstring")  cmf::water::SoluteReaction::get_flux "virtual
 real get_flux(const SoluteStorage &solute_storage, const
-cmf::math::Time &t)=0 ";
+cmf::math::Time &t) const =0
+
+Calculates the reactive flux from / to the given solute storage at
+time t. ";
+
+%feature("docstring")  cmf::water::SoluteReaction::is_compatible "virtual bool is_compatible(const SoluteStorage &solute_storage)
+
+Tests if the reaction is compatible to a solute storage. Returns true
+if not overwritten by a child class. ";
 
 %feature("docstring")  cmf::water::SoluteReaction::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf_1_1water_1_1_solute_reaction_list.xml
-%feature("docstring") cmf::water::SoluteReactionList "";
-
-%feature("docstring")  cmf::water::SoluteReactionList::append "void
-append(SoluteReaction::ptr r) ";
-
-%feature("docstring")  cmf::water::SoluteReactionList::clear "void
-clear() ";
-
-%feature("docstring")  cmf::water::SoluteReactionList::extend "void
-extend(const SoluteReactionList &rl) ";
-
-%feature("docstring")  cmf::water::SoluteReactionList::get_flux "real
-get_flux(const SoluteStorage &solute_storage, const cmf::math::Time
-&t) override ";
-
-%feature("docstring")  cmf::water::SoluteReactionList::size "ptrdiff_t size() const ";
-
-%feature("docstring")  cmf::water::SoluteReactionList::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_solute_storage.xml
-%feature("docstring") cmf_core::SoluteStorage "
-
-A class for the storage of any tracer.  The state is the amount (mol,
-kg etc. see cmf::water) of the tracer in the storage.  The derivative
-function is given by:   .. math::
-\\\\\\\\frac{dX}{dt}&=&\\\\\\\\sum_{f=1}^{F}\\\\\\\\left( q_f
-[X]_f\\\\\\\\right) +     X_{in} - r^-X
-\\\\\\\\left[\\\\\\\\frac{mol}{day}\\\\\\\\right]\\\\\\\\\\\\\\\\ F&=&
-\\\\\\\\mbox{Number of fluxes in water storage} \\\\\\\\\\\\\\\\
-q_f&=&     \\\\\\\\mbox{Water flux in } \\\\\\\\frac{m^3}{day}
-\\\\\\\\\\\\\\\\     \\\\\\\\left[X\\\\\\\\right]_f &=&
-\\\\\\\\mbox{Concentration of solute X in flux     }q_f \\\\\\\\mbox{
-in } \\\\\\\\frac{mol}{m^3} \\\\\\\\\\\\\\\\ X_{in} &=&
-\\\\\\\\mbox{Absolute source or sink term} \\\\\\\\frac{mol}{day}
-\\\\\\\\\\\\\\\\ r^-     &=& \\\\\\\\mbox{Decay rate} \\\\\\\\frac
-1{day} \\\\\\\\\\\\\\\\ V &=&     \\\\\\\\mbox{Volume of water in
-water storage }\\\\\\\\left[m^3\\\\\\\\right]     C++ includes:
-SoluteStorage.h ";
-
-%feature("docstring")  cmf_core::SoluteStorage::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::SoluteStorage::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1water_1_1_solute_storage.xml
@@ -17622,19 +13840,20 @@ The derivative function is given by:
 
 .. math::
 
-    
-    \\\\frac{dX}{dt}&=&\\\\sum_{f=1}^{F}\\\\left( q_f [X]_f\\\\right) +
-    X_{in} - r^-X \\\\left[\\\\frac{mol}{day}\\\\right]\\\\\\\\ F&=&
-    \\\\mbox{Number of fluxes in water storage} \\\\\\\\ q_f&=&
-    \\\\mbox{Water flux in } \\\\frac{m^3}{day} \\\\\\\\
-    \\\\left[X\\\\right]_f &=& \\\\mbox{Concentration of solute X in flux
-    }q_f \\\\mbox{ in } \\\\frac{mol}{m^3} \\\\\\\\ X_{in} &=&
-    \\\\mbox{Absolute source or sink term} \\\\frac{mol}{day} \\\\\\\\ r^-
-    &=& \\\\mbox{Decay rate} \\\\frac 1{day} \\\\\\\\ V &=&
-    \\\\mbox{Volume of water in water storage }\\\\left[m^3\\\\right]
-    
+    \\\\frac{dX}{dt} =
+    \\\\sum_{f=1}^{F}{q_f \\\\cdot [X]_f} + \\\\sum_{r=1}^{R}{q_r([X], t)}
+    \\\\left[\\\\frac{mol}{day}\\\\right] 
 
+:math:`F` = Number of fluxes in
+water storage
 
+:math:`q_f` = Water flux in :math:`\\\\frac{m^3}{day}`
+
+:math:`\\\\left[X\\\\right]_f` = Concentration of solute X in flux :math:`q_f` in
+:math:`\\\\frac{mol}{m^3}`
+
+:math:`q_r([X], t)` = Production or loss rate from R
+cmf::water::SoluteReaction objects :math:`\\\\frac{mol}{day}`
 
 C++ includes: SoluteStorage.h ";
 
@@ -17647,7 +13866,7 @@ dxdt(const cmf::math::Time &time)
 
 Returns the derivate of the state variable at time time. ";
 
-%feature("docstring")  cmf::water::SoluteStorage::get_abs_errtol "virtual real get_abs_errtol(real rel_errtol) const ";
+%feature("docstring")  cmf::water::SoluteStorage::get_abs_errtol "real get_abs_errtol(real rel_errtol) const override ";
 
 %feature("docstring")  cmf::water::SoluteStorage::get_conc "real
 get_conc() const
@@ -17668,6 +13887,15 @@ get the waterstorge of the solute storage ";
 
 Returns True if this solute storage is effected by another state. ";
 
+%feature("docstring")  cmf::water::SoluteStorage::reactive_flux "virtual real reactive_flux(const cmf::math::Time &time) const ";
+
+%feature("docstring")  cmf::water::SoluteStorage::set_abs_errtol "void set_abs_errtol(real scale)
+
+Sets a scaling factor for the absolute error tolerance of this storage
+in terms of the absolute error tolerance of the owning waterstorage.
+
+The absolute error tolerance ";
+
 %feature("docstring")  cmf::water::SoluteStorage::set_adsorption "void set_adsorption(const Adsorption &newadsorption, real m=-1) ";
 
 %feature("docstring")  cmf::water::SoluteStorage::set_conc "void
@@ -17684,22 +13912,6 @@ Gives access to the state variable. ";
 
 %feature("docstring")  cmf::water::SoluteStorage::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_solute_timeseries.xml
-%feature("docstring") cmf_core::SoluteTimeseries "
-
-A map of concentration time series for solutes.  C++ includes:
-Solute.h ";
-
-%feature("docstring")  cmf_core::SoluteTimeseries::__init__ "def
-__init__(self, args)
-
-__init__(SoluteTimeseries self) -> SoluteTimeseries
-__init__(SoluteTimeseries self, solute_vector solutes, Time begin,
-Time step) -> SoluteTimeseries __init__(SoluteTimeseries self,
-SoluteTimeseries sts) -> SoluteTimeseries SoluteTimeseries(const
-cmf::water::SoluteTimeseries &sts) ";
 
 
 // File: classcmf_1_1water_1_1_solute_timeseries.xml
@@ -17736,73 +13948,6 @@ end() ";
 size() const
 
 Returns the number of solutes in the solution. ";
-
-
-// File: classcmf__core_1_1_solute_water_integrator.xml
-%feature("docstring") cmf_core::SoluteWaterIntegrator "
-
-A SoluteWaterIntegrator implements the cmf::math::Integrator
-interface, but consists of two independent ODE-solvers.  Added
-statevariables are sorted by waterstorages and solute storages and
-assigned to the correct solver.  C++ includes: WaterSoluteIntegrator.h
-";
-
-%feature("docstring")  cmf_core::SoluteWaterIntegrator::__init__ "def
-__init__(self, args)
-
-__init__(SoluteWaterIntegrator self, solute_vector solutes, Integrator
-water_integrator, Integrator solute_integrator) ->
-SoluteWaterIntegrator __init__(SoluteWaterIntegrator self,
-solute_vector solutes, Integrator water_integrator, Integrator
-solute_integrator, state_list states) -> SoluteWaterIntegrator
-SoluteWaterIntegrator(const cmf::water::solute_vector &solutes, const
-cmf::math::Integrator &water_integrator, const cmf::math::Integrator
-&solute_integrator, const cmf::math::state_list &states)  Creates a
-new SoluteWaterIntegrator.  Parameters: -----------  solutes:  Solutes
-of the project  water_integrator:  Template for the integrator of
-WaterStorage state variables  solute_integrator:  Template for the
-integrator of soluteStorage state variables  states:  States to be
-added to the integrators ";
-
-%feature("docstring")  cmf_core::SoluteWaterIntegrator::__call__ "def
-__call__(self, t, dt=None, reset=False)
-
-Advances the integration until `t`  A shortcut to .integrate_until
-Parameters ---------- t : cmf.Time     The time step to advance to. If
-t < current time, the solver will     advance to self.t + t dt :
-cmf.Time, optional     The timestep for the integration. If not given
-try to integrate in one step reset : bool, optional     If True, the
-solver will perform a reset before starting  Returns ------- cmf.Time
-The new time stamp ";
-
-%feature("docstring")  cmf_core::SoluteWaterIntegrator::__getitem__ "def __getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::SoluteWaterIntegrator::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::SoluteWaterIntegrator::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::SoluteWaterIntegrator::run "def
-run(self, start=None, end=None, step=day *1, max_errors=0,
-reset=False)
-
-Returns an iterator over the timesteps start..end  **Examples:**  >>>
-solver=cmf.CVodeIntegrator(...) >>> for t in solver.run(solver.t,
-solver.t + cmf.week, cmf.h): >>>    print(t, solver[0].state) or with
-list comprehension >>> states = [solver[0].state for t in
-solver.run(solver.t, solver.t + cmf.week, cmf.h)]  Parameters
----------- start : cmf.Time, optional Start time for the solver
-iteration end : cmf.Time, optional End time of the iteration step :
-cmf.Time, optional Step size for the integration max_errors: int
-Number of tolerated errors. If >0, up to these number of runtime
-errors will be saved with their time and the integration proceeds
-after a reset of the solver. Some systems operate with values close to
-their physical limits and inifinite values in the integration can
-easily occur. For these kind of systems set max_errors to eg. 10. A
-larger number of errors should be eliminated usually. reset: bool If
-True, the solver performs a `reset` at every time step  Yields ------
-cmf.Time      the actual timestep ";
 
 
 // File: classcmf_1_1math_1_1_solute_water_integrator.xml
@@ -17952,40 +14097,6 @@ extend(const state_list &svl) ";
 const ";
 
 
-// File: classcmf__core_1_1state__list.xml
-%feature("docstring") cmf_core::state_list "
-
-Proxy of C++ cmf::math::state_list class. ";
-
-%feature("docstring")  cmf_core::state_list::__init__ "def
-__init__(self, args)
-
-__init__(state_list self) -> state_list __init__(state_list self,
-state_list other) -> state_list state_list(const state_list &other) ";
-
-%feature("docstring")  cmf_core::state_list::__getitem__ "def
-__getitem__(list_obj, index) ";
-
-%feature("docstring")  cmf_core::state_list::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::state_list::__nonzero__ "def
-__nonzero__(self) ";
-
-
-// File: classcmf__core_1_1_state_variable.xml
-%feature("docstring") cmf_core::StateVariable "
-
-Abstract class state variable.  Simple exponential system class header
-implementing a state variable:  C++ includes: statevariable.h ";
-
-%feature("docstring")  cmf_core::StateVariable::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::StateVariable::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1math_1_1_state_variable.xml
 %feature("docstring") cmf::math::StateVariable "
 
@@ -18057,28 +14168,6 @@ remaining seconds of the task ";
 restart(self)
 
 Restarts the stopwatch ";
-
-
-// File: classcmf__core_1_1stressed_e_t.xml
-%feature("docstring") cmf_core::stressedET "
-
-An abstract base class for ET Methods with a WaterStressFunction.  C++
-includes: ET.h ";
-
-%feature("docstring")  cmf_core::stressedET::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::stressedET::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::stressedET::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::stressedET::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::stressedET::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1stressed_e_t.xml
@@ -18171,24 +14260,6 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 %feature("docstring")  cmf::upslope::ET::stressedET::to_string "virtual std::string to_string() const ";
 
 
-// File: classcmf__core_1_1subcatchment.xml
-%feature("docstring") cmf_core::subcatchment "
-
-A class to structure cells in a project using their main outlets.  C++
-includes: algorithm.h ";
-
-%feature("docstring")  cmf_core::subcatchment::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(subcatchment self, Cell pourpoint, double
-area_threshold=1e308) -> subcatchment subcatchment(cmf::upslope::Cell
-&pourpoint, double area_threshold=1e308)  Creates a subcatchment from
-a pourpoint cell.  Parameters: -----------  pourpoint:  The pourpoint
-(outlet of the subcatchment)  area_threshold:  Minimum contributing
-area size to form a subcatchment. When area_threshold > area(cells),
-all upslope cells of pourpoint are used. ";
-
-
 // File: classcmf_1_1upslope_1_1subcatchment.xml
 %feature("docstring") cmf::upslope::subcatchment "
 
@@ -18209,34 +14280,6 @@ pourpoint:  The pourpoint (outlet of the subcatchment)
 area_threshold:  Minimum contributing area size to form a
 subcatchment. When area_threshold > area(cells), all upslope cells of
 pourpoint are used. ";
-
-
-// File: classcmf__core_1_1_suction_stress.xml
-%feature("docstring") cmf_core::SuctionStress "
-
-The classical suction depending transpiration Stress curve after
-Feddes.  The ability of roots to take water from the soil up is
-limited by the suction pressure (matrix potential) of the soil. The
-stress is defined using a trapezoid function, with P0 being the
-pressure, where water uptake is prohibited by saturation. Between P0
-and P1 the saturation stress gets lower. Between P1 and P2, no stress
-occurs ( ET=ETpot) and with a pressure below P2, water uptake is
-limited by drought. P3 indicates the highest suction (lowest pressure)
-to which plants can extract water (wilting point).  Default values:
-:math:`P_0 = \\\\\\\\infty, P_1=\\\\\\\\infty, P_2=-5m, P_3=-160m`,
-resulting in no saturation stress and draught stress starting at -5m
-and a wilting point of -160m.  If one would like to include saturation
-stress, typical values for P0 and P1 are 0.0m and 0.1m. By changing P2
-and P3, you can account for different drought sensibility for
-different plant types.  C++ includes: waterstress.h ";
-
-%feature("docstring")  cmf_core::SuctionStress::__init__ "def
-__init__(self, args)
-
-__init__(SuctionStress self, real P0=1e308, real P1=1e307, real P2=-5,
-real P3=-160) -> SuctionStress __init__(SuctionStress self,
-SuctionStress other) -> SuctionStress SuctionStress(const
-SuctionStress &other) ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_suction_stress.xml
@@ -18296,27 +14339,6 @@ Tpot:  Potential Transpiration in mm/day (for the full profile)
 Actual flux from layer in m3/day ";
 
 %feature("docstring")  cmf::upslope::ET::SuctionStress::to_string "std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_surface_water.xml
-%feature("docstring") cmf_core::SurfaceWater "
-
-A child class of OpenWaterStorage to model surface water on a cell.
-Specially created to connect a SurfaceWater with other nodes, is the
-flux connection cmf::upslope::connections::KinematicSurfaceRunoff  C++
-includes: surfacewater.h ";
-
-%feature("docstring")  cmf_core::SurfaceWater::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::SurfaceWater::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::SurfaceWater::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::SurfaceWater::fluxes "def
-fluxes(self, t) ";
 
 
 // File: classcmf_1_1upslope_1_1_surface_water.xml
@@ -18539,33 +14561,6 @@ wet_area() const
 Returns the exposed surface area in m2. ";
 
 
-// File: classcmf__core_1_1_s_w__evap__from__canopy.xml
-%feature("docstring") cmf_core::SW_evap_from_canopy "
-
-Connection for Shuttleworth-Wallace canopy interception evaporation.
-C++ includes: ShuttleworthWallace.h ";
-
-%feature("docstring")  cmf_core::SW_evap_from_canopy::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(SW_evap_from_canopy self, cmf::water::WaterStorage::ptr
-source, cmf::water::flux_node::ptr ET_target,
-cmf::upslope::ET::ShuttleworthWallace::ptr owner) ->
-SW_evap_from_canopy SW_evap_from_canopy(cmf::water::WaterStorage::ptr
-source, cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr
-owner) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_canopy::__contains__ "def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_canopy::__getitem__ "def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_canopy::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_canopy::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1_e_t_1_1_s_w__evap__from__canopy.xml
 %feature("docstring") cmf::upslope::ET::SW_evap_from_canopy "
 
@@ -18773,34 +14768,6 @@ std::string short_string() const ";
 "virtual std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_s_w__evap__from__layer.xml
-%feature("docstring") cmf_core::SW_evap_from_layer "
-
-Connection for Shuttleworth-Wallace ground evaporation.  C++ includes:
-ShuttleworthWallace.h ";
-
-%feature("docstring")  cmf_core::SW_evap_from_layer::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(SW_evap_from_layer self, cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target,
-cmf::upslope::ET::ShuttleworthWallace::ptr owner) ->
-SW_evap_from_layer SW_evap_from_layer(cmf::upslope::SoilLayer::ptr
-source, cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr
-owner) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_layer::__contains__ "def __contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_layer::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_layer::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_layer::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1_e_t_1_1_s_w__evap__from__snow.xml
 %feature("docstring") cmf::upslope::ET::SW_evap_from_snow "
 
@@ -18897,35 +14864,6 @@ std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::ET::SW_evap_from_snow::to_string
 "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_s_w__evap__from__snow.xml
-%feature("docstring") cmf_core::SW_evap_from_snow "
-
-Connection for Shuttleworth-Wallace canopy interception evaporation.
-C++ includes: ShuttleworthWallace.h ";
-
-%feature("docstring")  cmf_core::SW_evap_from_snow::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(SW_evap_from_snow self, cmf::water::WaterStorage::ptr source,
-cmf::water::flux_node::ptr ET_target,
-cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_snow
-SW_evap_from_snow(cmf::water::WaterStorage::ptr source,
-cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)
-";
-
-%feature("docstring")  cmf_core::SW_evap_from_snow::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_snow::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_snow::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_snow::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_s_w__evap__from__surfacewater.xml
@@ -19035,35 +14973,6 @@ cmf::upslope::ET::SW_evap_from_surfacewater::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_s_w__evap__from__surfacewater.xml
-%feature("docstring") cmf_core::SW_evap_from_surfacewater "
-
-Connection for Shuttleworth-Wallace canopy interception evaporation.
-C++ includes: ShuttleworthWallace.h ";
-
-%feature("docstring")  cmf_core::SW_evap_from_surfacewater::__init__ "def __init__(self, args, kwargs)
-
-__init__(SW_evap_from_surfacewater self,
-cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr
-ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) ->
-SW_evap_from_surfacewater
-SW_evap_from_surfacewater(cmf::river::OpenWaterStorage::ptr source,
-cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)
-";
-
-%feature("docstring")
-cmf_core::SW_evap_from_surfacewater::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")
-cmf_core::SW_evap_from_surfacewater::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_surfacewater::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::SW_evap_from_surfacewater::__repr__ "def __repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1_e_t_1_1_s_w__transpiration.xml
 %feature("docstring") cmf::upslope::ET::SW_transpiration "
 
@@ -19159,67 +15068,6 @@ cmf::upslope::ET::SW_transpiration::short_string "virtual std::string
 short_string() const ";
 
 %feature("docstring")  cmf::upslope::ET::SW_transpiration::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_s_w__transpiration.xml
-%feature("docstring") cmf_core::SW_transpiration "
-
-Connection for Shuttleworth-Wallace transpiration.  C++ includes:
-ShuttleworthWallace.h ";
-
-%feature("docstring")  cmf_core::SW_transpiration::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(SW_transpiration self, cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target,
-cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_transpiration
-SW_transpiration(cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)
-";
-
-%feature("docstring")  cmf_core::SW_transpiration::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::SW_transpiration::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::SW_transpiration::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::SW_transpiration::__repr__ "def
-__repr__(self) ";
-
-
-// File: classcmf__core_1_1_s_w_a_t_percolation.xml
-%feature("docstring") cmf_core::SWATPercolation "
-
-A tipping bucket percolation approach similar to the approach in SWAT.
-.. math::       q_{perc} &=&
-V_{H_2O,drain}\\\\\\\\left(1-e^{-\\\\\\\\frac
-1{-TT_{perc}}}\\\\\\\\right)     \\\\\\\\\\\\\\\\ TT_{perc} &=&
-\\\\\\\\frac{V_{pores,drain} - V_{field     cap.}}{K_{sat}}
-\\\\\\\\\\\\\\\\ V_{x,drain} &=& V_{x,drain} - V_{field cap.}     C++
-includes: Percolation.h ";
-
-%feature("docstring")  cmf_core::SWATPercolation::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(SWATPercolation self, cmf::upslope::SoilLayer::ptr
-upperLayer, cmf::upslope::SoilLayer::ptr lowerLayer) ->
-SWATPercolation SWATPercolation(cmf::upslope::SoilLayer::ptr
-upperLayer, cmf::upslope::SoilLayer::ptr lowerLayer) ";
-
-%feature("docstring")  cmf_core::SWATPercolation::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::SWATPercolation::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::SWATPercolation::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::SWATPercolation::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_s_w_a_t_percolation.xml
@@ -19337,29 +15185,6 @@ std::string short_string() const ";
 %feature("docstring")
 cmf::upslope::connections::SWATPercolation::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_s_w_a_t_reach_type.xml
-%feature("docstring") cmf_core::SWATReachType "
-
-Structure for the description of structural parameters of a reach.
-Uses the SWAT IChannel geometry (see SWAT Theoretical Documentation,
-Version 2005 (ch. 7:1.1), Neitsch et al. 2005), in this class
-referenced as SWATtheoDoc. Differences to the SWAT geometry: The flood
-plain is not plain, but has a small slope=0.5%, but has an infinite
-width  C++ includes: ReachType.h ";
-
-%feature("docstring")  cmf_core::SWATReachType::__init__ "def
-__init__(self, args)
-
-__init__(SWATReachType self, SWATReachType copy) -> SWATReachType
-__init__(SWATReachType self, double l) -> SWATReachType
-__init__(SWATReachType self, double l, double BankWidth, double Depth)
--> SWATReachType SWATReachType(double l, double BankWidth, double
-Depth)  Creates a new reach structure from a give width and depth.
-Parameters: -----------  l:  length of the channel [m]  BankWidth:
-get_channel_width of the reach from bank to bank [m]  Depth:  Depth of
-the reach [m] ";
 
 
 // File: classcmf_1_1river_1_1_s_w_a_t_reach_type.xml
@@ -19555,37 +15380,29 @@ typecode() const ";
 V(double h) const ";
 
 
-// File: classcmf__core_1_1_temp_index_snow_melt.xml
-%feature("docstring") cmf_core::TempIndexSnowMelt "
+// File: class_swig_director___solute_reaction.xml
+%feature("docstring") SwigDirector_SoluteReaction "";
 
-Calculates snow melt using a simple degree day method.    .. math::
-q_{melt} [mm/day] = (T-T_{thres}) * r   Usage:  C++ includes:
-surfacefluxes.h ";
+%feature("docstring")
+SwigDirector_SoluteReaction::SwigDirector_SoluteReaction "SwigDirector_SoluteReaction(PyObject *self) ";
 
-%feature("docstring")  cmf_core::TempIndexSnowMelt::__init__ "def
-__init__(self, args, kwargs)
+%feature("docstring")
+SwigDirector_SoluteReaction::~SwigDirector_SoluteReaction "virtual
+~SwigDirector_SoluteReaction() ";
 
-__init__(TempIndexSnowMelt self, cmf::water::WaterStorage::ptr snow,
-cmf::water::flux_node::ptr surface_water, Cell cell, real rate=7.0) ->
-TempIndexSnowMelt TempIndexSnowMelt(cmf::water::WaterStorage::ptr
-snow, cmf::water::flux_node::ptr surface_water, cmf::upslope::Cell
-&cell, real rate=7.0)  Creates a new snow melt connection. Parameters:
------------  snow:  Snow storage, usually cel.snow surface_water:
-target of the melted water (usually cell.surfacewater) cell:  The
-cell, needed to get weather and area  rate:  The rate of snow melt,
-given in mm/(degC day), default = 7.0 ";
+%feature("docstring")  SwigDirector_SoluteReaction::get_flux "virtual
+real get_flux(cmf::water::SoluteStorage const &solute_storage,
+cmf::math::Time const &t) const ";
 
-%feature("docstring")  cmf_core::TempIndexSnowMelt::__contains__ "def
-__contains__(self, cmp) ";
+%feature("docstring")  SwigDirector_SoluteReaction::is_compatible "virtual bool is_compatible(cmf::water::SoluteStorage const
+&solute_storage) ";
 
-%feature("docstring")  cmf_core::TempIndexSnowMelt::__getitem__ "def
-__getitem__(self, index) ";
+%feature("docstring")  SwigDirector_SoluteReaction::swig_get_inner "bool swig_get_inner(const char *swig_protected_method_name) const ";
 
-%feature("docstring")  cmf_core::TempIndexSnowMelt::__iter__ "def
-__iter__(self) ";
+%feature("docstring")  SwigDirector_SoluteReaction::swig_set_inner "void swig_set_inner(const char *swig_protected_method_name, bool
+swig_val) const ";
 
-%feature("docstring")  cmf_core::TempIndexSnowMelt::__repr__ "def
-__repr__(self) ";
+%feature("docstring")  SwigDirector_SoluteReaction::to_string "virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_temp_index_snow_melt.xml
@@ -19865,83 +15682,6 @@ Returns the number of times this is included in t1. ";
 %feature("docstring")  cmf::math::Time::long_time_if_zero "cmf::math::Time long_time_if_zero() const ";
 
 
-// File: classcmf__core_1_1_time.xml
-%feature("docstring") cmf_core::Time "
-
-A time class, used to pass around current modelling times.  Timespans
-and dates in cmf are used with a special object, called Time. An extra
-class has the advantage, that the user does not have to remember,
-which unit of time he or she uses or what time unit is accepted by a
-specific function of the model. Arithmetic and boolean operators are
-supported by Time. Internally the time classes stores the time as
-integer milliseconds, therefore rounding issues will only appear at
-very small time ranges. Absolute time (like dates) are represented as
-milliseconds gone by from Dec, 31st 1899. Microsoft Excel dates are
-represented as days from that time, using floating point numbers,
-therefore it is very simple to convert Excel time representations to
-cmf time.  Another object is Date, which is doesn't provide the
-operators, but has a nice printed version and some special date
-functions, like day of year (DOY) and provides access to the current
-hour of day and so on, which only applyto dates and not to time spans.
-You can convert Time to Date an vice versa. The printing is not
-culture aware and uses the European representation. If you use the
-Python standard library datetime, conversion between Python time and
-cmf time is possible  Creating absolute time values (dates) Creating
-time spans  In principle, there are three ways to create time spans.
-One is to use one of the static functions, another is to multiply an
-existing time span (like one of the build in constants) or to
-substrate two absolute times.  Available constants  : 4.1 seconds  :
-2.3 hours (138 min)  : 2.3 hours (138 min)  : 60 hours (2.5 days)  : 7
-days  : 365/12 days (30.4167 days)  : 365 days  Available operators:
-time + time = time, time - time = time  time * float = time ,time /
-float = time  time/time=float  >, <, ==, !=  Conversions  Converting
-to python datetime  Converting to numbers  t.AsMilliseconds()
-t.AsSeconds()  t.AsMinutes()  t.AsHours()  t.AsDays()  t.AsYears()
-Creating time ranges  C++ includes: time.h ";
-
-%feature("docstring")  cmf_core::Time::__init__ "def __init__(self,
-args)
-
-__init__(Time self, int day, int month, int year, int hour=0, int
-minute=0, int second=0, int ms=0) -> Time __init__(Time self, Date
-date) -> Time __init__(Time self, Time t) -> Time __init__(Time self)
--> Time __init__(Time self, long long milliseconds) -> Time Time(long
-long milliseconds) ";
-
-%feature("docstring")  cmf_core::Time::__format__ "def
-__format__(self, fmt) ";
-
-%feature("docstring")  cmf_core::Time::__getstate__ "def
-__getstate__(self) ";
-
-%feature("docstring")  cmf_core::Time::__itruediv__ "def
-__itruediv__(self, args) ";
-
-%feature("docstring")  cmf_core::Time::__nonzero__ "def
-__nonzero__(self) ";
-
-%feature("docstring")  cmf_core::Time::__radd__ "def __radd__(self,
-other) ";
-
-%feature("docstring")  cmf_core::Time::__repr__ "def __repr__(self)
-";
-
-%feature("docstring")  cmf_core::Time::__rmul__ "def __rmul__(self,
-other) ";
-
-%feature("docstring")  cmf_core::Time::__setstate__ "def
-__setstate__(self, data) ";
-
-%feature("docstring")  cmf_core::Time::__truediv__ "def
-__truediv__(self, args) ";
-
-%feature("docstring")  cmf_core::Time::as_datetime "def
-as_datetime(self) ";
-
-%feature("docstring")  cmf_core::Time::as_timedelta "def
-as_timedelta(self) ";
-
-
 // File: classcmf_1_1timetools_1_1timerange.xml
 %feature("docstring") cmf::timetools::timerange "
 
@@ -20160,61 +15900,6 @@ step() const
 Time between the measurements. ";
 
 
-// File: classcmf__core_1_1timeseries.xml
-%feature("docstring") cmf_core::timeseries "
-
-A timeseries is a list of values, equally distributed over time.  To
-create one, one have to provide as start date and a step size. The end
-time is calculated from the number of values. Values queried for times
-before the start time are returned as the first item, values after the
-end time equal the last item. A timeseries with only one item reacts
-like a scalar value.  Creating a time series  With this technique it
-is simple to read files or databases to fill timeseries.<b> Using a
-timeseries</b>  C++ includes: timeseries.h ";
-
-%feature("docstring")  cmf_core::timeseries::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(timeseries self, Time begin=cmf::math::Time(), Time step=day,
-int interpolationmethod=1, size_t count=0) -> timeseries
-timeseries(const cmf::math::timeseries &ts) ";
-
-%feature("docstring")  cmf_core::timeseries::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::timeseries::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::timeseries::__itruediv__ "def
-__itruediv__(self, args) ";
-
-%feature("docstring")  cmf_core::timeseries::__radd__ "def
-__radd__(self, other) ";
-
-%feature("docstring")  cmf_core::timeseries::__rdiv__ "def
-__rdiv__(self, other) ";
-
-%feature("docstring")  cmf_core::timeseries::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::timeseries::__rmul__ "def
-__rmul__(self, other) ";
-
-%feature("docstring")  cmf_core::timeseries::__rsub__ "def
-__rsub__(self, other) ";
-
-%feature("docstring")  cmf_core::timeseries::__setitem__ "def
-__setitem__(self, index, value) ";
-
-%feature("docstring")  cmf_core::timeseries::__truediv__ "def
-__truediv__(self, args) ";
-
-%feature("docstring")  cmf_core::timeseries::extend "def extend(self,
-list)
-
-Adds the values of a sequence to the timeseries ";
-
-
 // File: structcmf_1_1math_1_1timeseries_1_1timeseries__data.xml
 
 
@@ -20318,57 +16003,6 @@ set_tracer_filter(solute S, real value) ";
 "virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::ET::timeseriesETpot::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1timeseries_e_tpot.xml
-%feature("docstring") cmf_core::timeseriesETpot "
-
-A timeseries driven evapotranspiration.  Uses a timeseries of measured
-or elsewhere modelled ETpot. Actual Evapotranspiration is calculated
-from rootdepth and actual matrix potential in the layers using Tact.
-The value of ETpot can be changed during runtime  C++ includes: ET.h
-";
-
-%feature("docstring")  cmf_core::timeseriesETpot::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(timeseriesETpot self, cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target, timeseries ETpot_values) ->
-timeseriesETpot timeseriesETpot(cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target, cmf::math::timeseries
-ETpot_values) ";
-
-%feature("docstring")  cmf_core::timeseriesETpot::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::timeseriesETpot::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::timeseriesETpot::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::timeseriesETpot::__repr__ "def
-__repr__(self) ";
-
-
-// File: classcmf__core_1_1_timeseries_rain_source.xml
-%feature("docstring") cmf_core::TimeseriesRainSource "
-
-A rainsource with a timeseries.  Simpler to use than a rainfall
-station if there are only few cells in the project  C++ includes:
-precipitation.h ";
-
-%feature("docstring")  cmf_core::TimeseriesRainSource::__init__ "def
-__init__(self, args, kwargs) ";
-
-%feature("docstring")  cmf_core::TimeseriesRainSource::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::TimeseriesRainSource::connected_nodes
-"def connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::TimeseriesRainSource::fluxes "def
-fluxes(self, t) ";
 
 
 // File: classcmf_1_1atmosphere_1_1_timeseries_rain_source.xml
@@ -20628,48 +16262,6 @@ cmf::upslope::connections::TOPModelFlow::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf__core_1_1_t_o_p_model_flow.xml
-%feature("docstring") cmf_core::TOPModelFlow "
-
-Calculates a flux from a soil layer using TOPMODELs (Beven & Kirkby
-1979) exponential transmissivity concept.    .. math::       T = T_0
-\\\\\\\\exp(-D_i/m)   where:  :math:`T` is the actual transmissivity
-of the profile in :math:`m^2/day`  :math:`T0` is the transmissivity of
-the profile at saturation  :math:`D_i` is the drained depth in m,
-calculated as :math:`(C-V)/A`, the capacity of the layer - volume per
-area  :math:`m` a scaling factor in m  By using the transmissivity in
-Darcy's law and assuming the GW gradient to be parallel to the
-topographic slope we get for the flow:   .. math::       q = T_0
-\\\\\\\\exp(-D_i/m) w s  where:  :math:`q` is the flux in
-:math:`m^3/day`  :math:`w` is the flow width (unit contour length)
-:math:`s` is the topographic slope between layer and outlet  TOPMODEL
-is based on the concept of drained depth, not, as cmf on the concept
-of stored volume. Hence, negative volumes can occur if  C++ includes:
-subsurfacefluxes.h ";
-
-%feature("docstring")  cmf_core::TOPModelFlow::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(TOPModelFlow self, cmf::upslope::SoilLayer::ptr left,
-cmf::water::flux_node::ptr right, real T0, real m, real flowwidth,
-real distance=0) -> TOPModelFlow
-TOPModelFlow(cmf::upslope::SoilLayer::ptr left,
-cmf::water::flux_node::ptr right, real T0, real m, real flowwidth,
-real distance=0) ";
-
-%feature("docstring")  cmf_core::TOPModelFlow::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::TOPModelFlow::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::TOPModelFlow::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::TOPModelFlow::__repr__ "def
-__repr__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_topographic_gradient_darcy.xml
 %feature("docstring")
 cmf::upslope::connections::TopographicGradientDarcy "
@@ -20807,54 +16399,6 @@ cmf::upslope::connections::TopographicGradientDarcy::short_string "virtual std::
 
 %feature("docstring")
 cmf::upslope::connections::TopographicGradientDarcy::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_topographic_gradient_darcy.xml
-%feature("docstring") cmf_core::TopographicGradientDarcy "
-
-Calculates the lateral flow using the topographic gradient.    ..
-math::       q_{lat} = \\\\\\\\frac{z_1 -
-z_2}{\\\\\\\\|C_1-C_2\\\\\\\\|} \\\\\\\\frac 12     (T(C_1)+T(C_2)) w
-where  :math:`z_1 - z_2` is the topographic height difference
-:math:`\\\\\\\\|C_1-C_2\\\\\\\\|` is the distance from Cell 1 to Cell
-2  :math:`T(C)` is the transmissivity of cell C, calculated by
-SoilType::Transmissivity  :math:`w` is the width of the connection of
-the cells  C++ includes: subsurfacefluxes.h ";
-
-%feature("docstring")  cmf_core::TopographicGradientDarcy::__init__ "def __init__(self, args, kwargs)
-
-__init__(TopographicGradientDarcy self, cmf::upslope::SoilLayer::ptr
-left, cmf::water::flux_node::ptr right, real FlowWidth, real
-Distance=0) -> TopographicGradientDarcy
-TopographicGradientDarcy(cmf::upslope::SoilLayer::ptr left,
-cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0)
-Creates the connection.  Parameters: -----------  left:  Left node of
-the connection (needs to be soil water storage)  right:  Right node of
-the connection (can be any node)  FlowWidth:  the width of the
-connection - is multiplied by layer thickness to get the interface
-area  Distance:  the length of the connection. If 0, the distance is
-calculated from the position of the nodes ";
-
-%feature("docstring")
-cmf_core::TopographicGradientDarcy::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::TopographicGradientDarcy::__getitem__
-"def __getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::TopographicGradientDarcy::__iter__ "def __iter__(self) ";
-
-%feature("docstring")  cmf_core::TopographicGradientDarcy::__repr__ "def __repr__(self) ";
-
-
-// File: classcmf__core_1_1_topology.xml
-%feature("docstring") cmf_core::Topology "
-
-represents the connectivity of cells to each other  C++ includes:
-Topology.h ";
-
-%feature("docstring")  cmf_core::Topology::__init__ "def
-__init__(self, args, kwargs) ";
 
 
 // File: classcmf_1_1upslope_1_1_topology.xml
@@ -21030,57 +16574,6 @@ typecode() const ";
 
 %feature("docstring")  cmf::river::TriangularReach::V "virtual double
 V(double h) const ";
-
-
-// File: classcmf__core_1_1_triangular_reach.xml
-%feature("docstring") cmf_core::TriangularReach "
-
-Structure for the description of reaches with a triangular cross
-section.  Although double triangular cross section reach are rarely
-met, a triangular reach does scale with its water load, and is
-therefore preferable in case where nothing about IChannel geometry is
-known  C++ includes: ReachType.h ";
-
-%feature("docstring")  cmf_core::TriangularReach::__init__ "def
-__init__(self, args)
-
-__init__(TriangularReach self, double l, double bankSlope=2) ->
-TriangularReach __init__(TriangularReach self, TriangularReach copy)
--> TriangularReach TriangularReach(const TriangularReach &copy) ";
-
-
-// File: classcmf__core_1_1_turc_e_t.xml
-%feature("docstring") cmf_core::TurcET "
-
-Calculates ETpot after Turc (DVWK).  :math:`ET_{act}` is calculated
-using a WaterStressFunction    .. math::       ET_{pot,Turc} = 0.0031
-C(rH) (R_G + 209) \\\\\\\\frac{T}{T + 15}   where:  :math:`T` is the
-mean daily temperature  :math:`C(rH) = \\\\\\\\begin{cases} 1 +
-\\\\\\\\frac{50\\\\\\\\% - rH}{70\\\\\\\\%}, & rH < 50\\\\\\\\%
-\\\\\\\\\\\\\\\\ 1 & rH > 50\\\\\\\\% \\\\\\\\end{cases}`, a
-modification parameter for low humidity  :math:`rH` relative Humidity
-in %  :math:`R_G` global radiation in :math:`J/cm^2`  C++ includes:
-ET.h ";
-
-%feature("docstring")  cmf_core::TurcET::__init__ "def __init__(self,
-args, kwargs)
-
-__init__(TurcET self, cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target) -> TurcET
-TurcET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr
-ET_target) ";
-
-%feature("docstring")  cmf_core::TurcET::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::TurcET::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::TurcET::__iter__ "def __iter__(self)
-";
-
-%feature("docstring")  cmf_core::TurcET::__repr__ "def __repr__(self)
-";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_turc_e_t.xml
@@ -21435,53 +16928,6 @@ returns the volumetric water content at a given pF value ";
 ";
 
 
-// File: classcmf__core_1_1_van_genuchten_mualem.xml
-%feature("docstring") cmf_core::VanGenuchtenMualem "
-
-Provides the use of the Van Genuchten - Mualem retention curve (Van
-Genuchten 1980)  Head - moisture relationship:   .. math::
-W(\\\\\\\\theta) &=&     \\\\\\\\frac{\\\\\\\\theta -
-\\\\\\\\theta_r}{\\\\\\\\theta_s - \\\\\\\\theta_r} \\\\\\\\\\\\\\\\
-K(W) &=& K_{sat} \\\\\\\\sqrt{W}
-\\\\\\\\left(1-\\\\\\\\left(1-W^{1/m}\\\\\\\\right)^m\\\\\\\\right)^2
-\\\\\\\\\\\\\\\\ m &=&     1-\\\\\\\\frac 1 n \\\\\\\\\\\\\\\\
-\\\\\\\\Psi(W) &=& 0.01 \\\\\\\\frac{m}{cm}
-\\\\\\\\frac{{\\\\\\\\left(1-{W}^{\\\\\\\\frac{1}{m}}\\\\\\\\right)
-}^{\\\\\\\\frac{1}{n}}}{\\\\\\\\alpha\\\\\\\\,{W}^{\\\\\\\\frac{1}{m\\\\\\\\,n}}}
-\\\\\\\\\\\\\\\\     W(\\\\\\\\Psi) &=&
-\\\\\\\\left(1+\\\\\\\\left(\\\\\\\\alpha\\\\\\\\,100\\\\\\\\frac{cm}{m}\\\\\\\\Psi\\\\\\\\right)^n\\\\\\\\right)^{-m}
-where:  :math:`K` is the conductivity in :math:`\\\\\\\\frac m{day}`
-:math:`W` is the wetness (Volume of soil water per volume of pores)
-:math:`n` is a shape parameter of the retention curve
-:math:`\\\\\\\\alpha` is inverse of the air entry potential in
-:math:`cm^{-1}`  :math:`\\\\\\\\Psi(W)` is the matric potential in
-:math:`m H_2O` at wetness W  C++ includes: RetentionCurve.h ";
-
-%feature("docstring")  cmf_core::VanGenuchtenMualem::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(VanGenuchtenMualem self, real Ksat=15, real phi=0.5, real
-alpha=0.2178, real n=1.211, real m=-1, real theta_r=0.0, real w0=0.99)
--> VanGenuchtenMualem VanGenuchtenMualem(real Ksat=15, real phi=0.5,
-real alpha=0.2178, real n=1.211, real m=-1, real theta_r=0.0, real
-w0=0.99)  Creates a van Genuchten-Mualem retention curve.  Parameters:
------------  Ksat:  Saturated conductivity in :math:`\\\\\\\\frac
-m{day}`  phi:  Porosity in :math:`\\\\\\\\frac{m^3 Pores}{m^3 Soil}`
-alpha:  Van Genuchten :math:`\\\\\\\\alpha` in :math:`\\\\\\\\frac
-1{cm}`  n:  Van Genuchten n  m:  Van Genuchten m parameter, if
-negative m is calculated as :math:`1-\\\\\\\\frac 1 n`  theta_r: Water
-content for :math:`\\\\\\\\lim\\\\\\\\limits_{\\\\\\\\Psi_M
-\\\\\\\\rightarrow -\\\\\\\\infty}{\\\\\\\\theta(\\\\\\\\Psi_M)}`  w0:
-Wetness above the parabolic extrapolation is used instead of the Van
-Genuchten curve (usually calculated with fit_w0) ";
-
-%feature("docstring")  cmf_core::VanGenuchtenMualem::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::VanGenuchtenMualem::__str__ "def
-__str__(self) ";
-
-
 // File: classcmf_1_1upslope_1_1vegetation_1_1_vegetation.xml
 %feature("docstring") cmf::upslope::vegetation::Vegetation "
 
@@ -21531,41 +16977,6 @@ cmf::upslope::vegetation::Vegetation::RootLength "double RootLength()
 const
 
 Returns the average root length in m/m2. ";
-
-
-// File: classcmf__core_1_1_vegetation.xml
-%feature("docstring") cmf_core::Vegetation "
-
-Holds the vegetation parameters for the calculation of ET and
-fractionating rainfall. Not every ET method uses all parameters.  C++
-includes: StructVegetation.h ";
-
-%feature("docstring")  cmf_core::Vegetation::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(Vegetation self, double _LAI=2.88, double _Height=0.12,
-double _RootDepth=0.25, double _StomatalResistance=100, double
-_albedo=0.23, double _CanopyClosure=1, double
-_CanopyCapacityPerLAI=0.1, double _fraction_at_rootdepth=1.0) ->
-Vegetation Vegetation(double _LAI=2.88, double _Height=0.12, double
-_RootDepth=0.25, double _StomatalResistance=100, double _albedo=0.23,
-double _CanopyClosure=1, double _CanopyCapacityPerLAI=0.1, double
-_fraction_at_rootdepth=1.0) ";
-
-
-// File: classcmf__core_1_1volume__height__function.xml
-%feature("docstring") cmf_core::volume_height_function "
-
-A wrapper class for volume / height functional relations.  C++
-includes: ReachType.h ";
-
-%feature("docstring")  cmf_core::volume_height_function::__init__ "def __init__(self, args)
-
-__init__(volume_height_function self, volume_height_function for_copy)
--> volume_height_function __init__(volume_height_function self,
-IVolumeHeightFunction for_copy) -> volume_height_function
-volume_height_function(const IVolumeHeightFunction &for_copy)  Wrapper
-for any IVolumeHeightFunction. ";
 
 
 // File: classcmf_1_1river_1_1volume__height__function.xml
@@ -21653,21 +17064,6 @@ Tpot:  Potential Transpiration in mm/day (for the full profile)
 Actual flux from layer in m3/day ";
 
 %feature("docstring")  cmf::upslope::ET::VolumeStress::to_string "std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_volume_stress.xml
-%feature("docstring") cmf_core::VolumeStress "
-
-A WaterStressFunction based on the stored water volume of a layer.  If
-the layer contains more water than V1, ET is not limited ( ET=ETpot).
-Below V1 ET goes linear to 0.0 at V0  C++ includes: waterstress.h ";
-
-%feature("docstring")  cmf_core::VolumeStress::__init__ "def
-__init__(self, args)
-
-__init__(VolumeStress self, real V1, real V0) -> VolumeStress
-__init__(VolumeStress self, VolumeStress other) -> VolumeStress
-VolumeStress(const VolumeStress &other) ";
 
 
 // File: classcmf_1_1water_1_1_waterbalance_flux.xml
@@ -21767,71 +17163,6 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 %feature("docstring")  cmf::water::WaterbalanceFlux::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::water::WaterbalanceFlux::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf__core_1_1_waterbalance_flux.xml
-%feature("docstring") cmf_core::WaterbalanceFlux "
-
-Routes the sum of all other fluxes to a target.    .. math:: q_{1,0} =
-\\\\\\\\sum_{i=2}^N{q_{1,i}(V_1,V_i,t)}  where: :math:`q_{i,j}` is the
-flux between the two node i and j. Subscript 0 is the right node,
-subscript 1 is the left node and 2..N are the nodes connected to the
-left node, except for the right node  C++ includes:
-simple_connections.h ";
-
-%feature("docstring")  cmf_core::WaterbalanceFlux::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(WaterbalanceFlux self, cmf::water::flux_node::ptr source,
-cmf::water::flux_node::ptr target) -> WaterbalanceFlux
-WaterbalanceFlux(flux_node::ptr source, flux_node::ptr target) ";
-
-%feature("docstring")  cmf_core::WaterbalanceFlux::__contains__ "def
-__contains__(self, cmp) ";
-
-%feature("docstring")  cmf_core::WaterbalanceFlux::__getitem__ "def
-__getitem__(self, index) ";
-
-%feature("docstring")  cmf_core::WaterbalanceFlux::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf_core::WaterbalanceFlux::__repr__ "def
-__repr__(self) ";
-
-
-// File: classcmf__core_1_1_water_storage.xml
-%feature("docstring") cmf_core::WaterStorage "
-
-A state variable for the storage of water.  A class for the storage of
-water. The state is the volume of water stored in :math:`m^3` The
-derivative function is given by:   .. math::
-\\\\\\\\frac{dV}{dt}&=&\\\\\\\\sum_{f=1}^{F} q_f \\\\\\\\\\\\\\\\ F&=&
-\\\\\\\\mbox{Number of fluxes in water storage} \\\\\\\\\\\\\\\\
-q_f&=&     \\\\\\\\mbox{Water flux in } \\\\\\\\frac{m^3}{day}
-\\\\\\\\\\\\\\\\     Todo Check the head based state mode  C++
-includes: WaterStorage.h ";
-
-%feature("docstring")  cmf_core::WaterStorage::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(WaterStorage self, project project, std::string const &
-Name=\"\", double InitialState=0, double scale=1) -> WaterStorage
-WaterStorage(cmf::project &project, const std::string &Name=\"\",
-double InitialState=0, double scale=1)  creates a water storage
-(abstract class)  Parameters: -----------  project:  The project the
-waterstorage belongs to  Name:  Name of the water storage
-InitialState:  Initial water content in m3  scale:  A kind of
-\"standard size\" in m3 of the water storage to scale tolerances,
-default 1m3 ";
-
-%feature("docstring")  cmf_core::WaterStorage::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::WaterStorage::connected_nodes "def
-connected_nodes(self) ";
-
-%feature("docstring")  cmf_core::WaterStorage::fluxes "def
-fluxes(self, t) ";
 
 
 // File: classcmf_1_1water_1_1_water_storage.xml
@@ -22098,37 +17429,6 @@ calculated ";
 %feature("docstring")  cmf::atmosphere::Weather::to_string "std::string to_string() const
 
 Returns a string representation. ";
-
-
-// File: classcmf__core_1_1_weather.xml
-%feature("docstring") cmf_core::Weather "
-
-A structure holding meteorological information, excluding
-precipitation  C++ includes: Weather.h ";
-
-%feature("docstring")  cmf_core::Weather::__init__ "def
-__init__(self, args, kwargs)
-
-__init__(Weather self, double T=15.0, double Tmax=17.0, double
-Tmin=13.0, double rH=70.0, double wind=2.0, double sunshine=0.5,
-double Rs=15, double Ra=30, double daylength=12) -> Weather
-Weather(double T=15.0, double Tmax=17.0, double Tmin=13.0, double
-rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double
-Ra=30, double daylength=12)  Creates a \"weather\" from given data.
-Parameters: -----------  T:  actual Temperature in deg C  Tmax:  daily
-maximum Temperature in deg C  Tmin:  daily minimum Temperature in deg
-C  rH:  actual relative humidity in % [0..100]  wind:  actual wind
-speed in m/s  sunshine:  actual fraction of sunshine duration per
-potential sunshine duration in h/h  Rs:  actual incoming shortwave
-global radiation in MJ/(m2 day)  Ra:  actual extraterrestrial
-shortwave global radiation in MJ/(m2 day)  daylength:  length of the
-day in h ";
-
-%feature("docstring")  cmf_core::Weather::__repr__ "def
-__repr__(self) ";
-
-%feature("docstring")  cmf_core::Weather::__str__ "def __str__(self)
-";
 
 
 // File: structcmf_1_1upslope_1_1_soil_layer_1_1wet.xml
@@ -22746,6 +18046,12 @@ h:  Height above sea level in m (for air pressure estimation) ";
 
 
 // File: namespacecmf_1_1water.xml
+%feature("docstring")  cmf::water::attach_reactions_to_waterstorage "void cmf::water::attach_reactions_to_waterstorage(std::shared_ptr<
+cmf::water::WaterStorage > waterstorage, const SoluteReactionList
+&reactions)
+
+Attaches reactions to all solutes of a waterstorage. ";
+
 %feature("docstring")  cmf::water::can_set_flux "bool
 cmf::water::can_set_flux(flux_node::ptr source, flux_node::ptr target)
 
@@ -22753,6 +18059,12 @@ Checks if a constant flux between two nodes can be set.
 
 Returns true if the nodes are connected by an
 external_control_connection ";
+
+%feature("docstring")  cmf::water::clear_reactions_of_waterstorage "void
+cmf::water::clear_reactions_of_waterstorage(cmf::water::WaterStorage
+&waterstorage)
+
+Clear all reactions of a water storage. ";
 
 %feature("docstring")  cmf::water::count_node_references "int
 cmf::water::count_node_references(flux_node::ptr node) ";
@@ -22804,7 +18116,10 @@ external_control_connection exists. ";
 // File: _weather_8h.xml
 
 
-// File: cmf__core_8py.xml
+// File: cmf__wrap_8h.xml
+
+
+// File: list_8h.xml
 
 
 // File: geometry_8h.xml
@@ -22993,6 +18308,9 @@ ymax=1) ";
 
 
 // File: flux__node_8h.xml
+
+
+// File: reaction_8h.xml
 
 
 // File: simple__connections_8h.xml
@@ -23227,6 +18545,9 @@ ymax=1) ";
 
 
 // File: group__perc.xml
+
+
+// File: group___solutes.xml
 
 
 // File: group__storages.xml
