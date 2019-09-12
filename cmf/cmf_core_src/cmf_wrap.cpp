@@ -3261,69 +3261,71 @@ namespace Swig {
 #define SWIGTYPE_p_cmf__water__SoluteDecayReaction swig_types[151]
 #define SWIGTYPE_p_cmf__water__SoluteDiffusiveTransport swig_types[152]
 #define SWIGTYPE_p_cmf__water__SoluteEquilibriumReaction swig_types[153]
-#define SWIGTYPE_p_cmf__water__SoluteReaction swig_types[154]
-#define SWIGTYPE_p_cmf__water__SoluteStorage swig_types[155]
-#define SWIGTYPE_p_cmf__water__SoluteTimeseries swig_types[156]
-#define SWIGTYPE_p_cmf__water__WaterStorage swig_types[157]
-#define SWIGTYPE_p_cmf__water__WaterbalanceFlux swig_types[158]
-#define SWIGTYPE_p_cmf__water__connection_list swig_types[159]
-#define SWIGTYPE_p_cmf__water__flux_connection swig_types[160]
-#define SWIGTYPE_p_cmf__water__flux_node swig_types[161]
-#define SWIGTYPE_p_cmf__water__linear_scale swig_types[162]
-#define SWIGTYPE_p_cmf__water__node_list swig_types[163]
-#define SWIGTYPE_p_cmf__water__solute swig_types[164]
-#define SWIGTYPE_p_cmf__water__solute_vector swig_types[165]
-#define SWIGTYPE_p_const_iterator swig_types[166]
-#define SWIGTYPE_p_double swig_types[167]
-#define SWIGTYPE_p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void swig_types[168]
-#define SWIGTYPE_p_iterator swig_types[169]
-#define SWIGTYPE_p_ptr swig_types[170]
-#define SWIGTYPE_p_std__invalid_argument swig_types[171]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t swig_types[172]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__IDWRainfall_t swig_types[173]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__MeteoStation_t swig_types[174]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainSource_t swig_types[175]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t swig_types[176]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStation_t swig_types[177]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__TimeseriesRainSource_t swig_types[178]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t swig_types[179]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__log_wind_profile_t swig_types[180]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t swig_types[181]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t swig_types[182]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__river__Reach_t swig_types[183]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t swig_types[184]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__aerodynamic_resistance_t swig_types[185]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__MacroPore_t swig_types[186]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t swig_types[187]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t swig_types[188]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__aquifer_t swig_types[189]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__conductable_t swig_types[190]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__DirichletBoundary_t swig_types[191]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__NeumannBoundary_t swig_types[192]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__Solute1stOrderReaction_t swig_types[193]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__Solute2ndOrderReaction_t swig_types[194]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteConstantFluxReaction_t swig_types[195]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteDecayReaction_t swig_types[196]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteDiffusiveTransport_t swig_types[197]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_t swig_types[198]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteReaction_t swig_types[199]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t swig_types[200]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SystemBridge_t swig_types[201]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t swig_types[202]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_connection_t swig_types[203]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_integrator_t swig_types[204]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t swig_types[205]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__waterbalance_integrator_t swig_types[206]
-#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t swig_types[207]
-#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t swig_types[208]
-#define SWIGTYPE_p_std__string swig_types[209]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__math__StateVariable_t_std__allocatorT_std__shared_ptrT_cmf__math__StateVariable_t_t_t swig_types[210]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_std__allocatorT_std__shared_ptrT_cmf__water__WaterStorage_t_t_t swig_types[211]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__const_iterator swig_types[212]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__iterator swig_types[213]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[214]
-static swig_type_info *swig_types[216];
-static swig_module_info swig_module = {swig_types, 215, 0, 0, 0, 0};
+#define SWIGTYPE_p_cmf__water__SoluteRateReaction swig_types[154]
+#define SWIGTYPE_p_cmf__water__SoluteReaction swig_types[155]
+#define SWIGTYPE_p_cmf__water__SoluteStorage swig_types[156]
+#define SWIGTYPE_p_cmf__water__SoluteTimeseries swig_types[157]
+#define SWIGTYPE_p_cmf__water__WaterStorage swig_types[158]
+#define SWIGTYPE_p_cmf__water__WaterbalanceFlux swig_types[159]
+#define SWIGTYPE_p_cmf__water__connection_list swig_types[160]
+#define SWIGTYPE_p_cmf__water__flux_connection swig_types[161]
+#define SWIGTYPE_p_cmf__water__flux_node swig_types[162]
+#define SWIGTYPE_p_cmf__water__linear_scale swig_types[163]
+#define SWIGTYPE_p_cmf__water__node_list swig_types[164]
+#define SWIGTYPE_p_cmf__water__solute swig_types[165]
+#define SWIGTYPE_p_cmf__water__solute_vector swig_types[166]
+#define SWIGTYPE_p_const_iterator swig_types[167]
+#define SWIGTYPE_p_double swig_types[168]
+#define SWIGTYPE_p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void swig_types[169]
+#define SWIGTYPE_p_iterator swig_types[170]
+#define SWIGTYPE_p_ptr swig_types[171]
+#define SWIGTYPE_p_std__invalid_argument swig_types[172]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t swig_types[173]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__IDWRainfall_t swig_types[174]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__MeteoStation_t swig_types[175]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainSource_t swig_types[176]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t swig_types[177]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStation_t swig_types[178]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__TimeseriesRainSource_t swig_types[179]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t swig_types[180]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__log_wind_profile_t swig_types[181]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t swig_types[182]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t swig_types[183]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__river__Reach_t swig_types[184]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t swig_types[185]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__aerodynamic_resistance_t swig_types[186]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__MacroPore_t swig_types[187]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t swig_types[188]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t swig_types[189]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__aquifer_t swig_types[190]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__conductable_t swig_types[191]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__DirichletBoundary_t swig_types[192]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__NeumannBoundary_t swig_types[193]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__Solute1stOrderReaction_t swig_types[194]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__Solute2ndOrderReaction_t swig_types[195]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteConstantFluxReaction_t swig_types[196]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteDecayReaction_t swig_types[197]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteDiffusiveTransport_t swig_types[198]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_t swig_types[199]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteRateReaction_t swig_types[200]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteReaction_t swig_types[201]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t swig_types[202]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SystemBridge_t swig_types[203]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t swig_types[204]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_connection_t swig_types[205]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_integrator_t swig_types[206]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t swig_types[207]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__waterbalance_integrator_t swig_types[208]
+#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t swig_types[209]
+#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t swig_types[210]
+#define SWIGTYPE_p_std__string swig_types[211]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__math__StateVariable_t_std__allocatorT_std__shared_ptrT_cmf__math__StateVariable_t_t_t swig_types[212]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_std__allocatorT_std__shared_ptrT_cmf__water__WaterStorage_t_t_t swig_types[213]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__const_iterator swig_types[214]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__iterator swig_types[215]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[216]
+static swig_type_info *swig_types[218];
+static swig_module_info swig_module = {swig_types, 217, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -20264,7 +20266,7 @@ SWIGINTERN PyObject *_wrap_solute_vector_get_solute(PyObject *SWIGUNUSEDPARM(sel
   char * kwnames[] = {
     (char *)"self",  (char *)"position",  NULL 
   };
-  cmf::water::solute *result = 0 ;
+  SwigValueWrapper< cmf::water::solute > result;
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:solute_vector_get_solute", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__water__solute_vector, 0 |  0 );
@@ -20279,7 +20281,7 @@ SWIGINTERN PyObject *_wrap_solute_vector_get_solute(PyObject *SWIGUNUSEDPARM(sel
   arg2 = static_cast< int >(val2);
   {
     try {
-      result = (cmf::water::solute *)(arg1)->get_solute(arg2);
+      result = (arg1)->get_solute(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -20288,9 +20290,60 @@ SWIGINTERN PyObject *_wrap_solute_vector_get_solute(PyObject *SWIGUNUSEDPARM(sel
       SWIG_exception(SWIG_RuntimeError, "unknown error");
     }
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__solute, 0 |  0 );
+  resultobj = SWIG_NewPointerObj((new cmf::water::solute(static_cast< const cmf::water::solute& >(result))), SWIGTYPE_p_cmf__water__solute, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_solute_vector_find_by_name(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::water::solute_vector *arg1 = (cmf::water::solute_vector *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"name",  NULL 
+  };
+  SwigValueWrapper< cmf::water::solute > result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:solute_vector_find_by_name", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__water__solute_vector, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "solute_vector_find_by_name" "', argument " "1"" of type '" "cmf::water::solute_vector const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::solute_vector * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "solute_vector_find_by_name" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "solute_vector_find_by_name" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    try {
+      result = ((cmf::water::solute_vector const *)arg1)->find_by_name((std::string const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown error");
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new cmf::water::solute(static_cast< const cmf::water::solute& >(result))), SWIGTYPE_p_cmf__water__solute, SWIG_POINTER_OWN |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -22058,6 +22111,340 @@ SWIGINTERN PyObject *SoluteEquilibriumReaction_swigregister(PyObject *SWIGUNUSED
 }
 
 SWIGINTERN PyObject *SoluteEquilibriumReaction_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_SoluteRateReaction_k_forward_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::SoluteRateReaction *arg1 = (cmf::water::SoluteRateReaction *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::water::SoluteRateReaction > tempshared1 ;
+  std::shared_ptr< cmf::water::SoluteRateReaction > *smartarg1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SoluteRateReaction_k_forward_set", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteRateReaction_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoluteRateReaction_k_forward_set" "', argument " "1"" of type '" "cmf::water::SoluteRateReaction *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::water::SoluteRateReaction > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::water::SoluteRateReaction > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteRateReaction * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::water::SoluteRateReaction > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteRateReaction * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SoluteRateReaction_k_forward_set" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  if (arg1) (arg1)->k_forward = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SoluteRateReaction_k_forward_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::SoluteRateReaction *arg1 = (cmf::water::SoluteRateReaction *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::water::SoluteRateReaction > tempshared1 ;
+  std::shared_ptr< cmf::water::SoluteRateReaction > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  real result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteRateReaction_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoluteRateReaction_k_forward_get" "', argument " "1"" of type '" "cmf::water::SoluteRateReaction *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::water::SoluteRateReaction > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::water::SoluteRateReaction > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteRateReaction * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::water::SoluteRateReaction > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteRateReaction * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (real) ((arg1)->k_forward);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SoluteRateReaction_k_back_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::SoluteRateReaction *arg1 = (cmf::water::SoluteRateReaction *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::water::SoluteRateReaction > tempshared1 ;
+  std::shared_ptr< cmf::water::SoluteRateReaction > *smartarg1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SoluteRateReaction_k_back_set", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteRateReaction_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoluteRateReaction_k_back_set" "', argument " "1"" of type '" "cmf::water::SoluteRateReaction *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::water::SoluteRateReaction > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::water::SoluteRateReaction > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteRateReaction * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::water::SoluteRateReaction > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteRateReaction * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SoluteRateReaction_k_back_set" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  if (arg1) (arg1)->k_back = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SoluteRateReaction_k_back_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::SoluteRateReaction *arg1 = (cmf::water::SoluteRateReaction *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::water::SoluteRateReaction > tempshared1 ;
+  std::shared_ptr< cmf::water::SoluteRateReaction > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  real result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteRateReaction_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoluteRateReaction_k_back_get" "', argument " "1"" of type '" "cmf::water::SoluteRateReaction *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::water::SoluteRateReaction > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::water::SoluteRateReaction > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteRateReaction * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::water::SoluteRateReaction > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteRateReaction * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (real) ((arg1)->k_back);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_SoluteRateReaction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  real arg1 ;
+  real arg2 = (real) 0.0 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"kForward",  (char *)"kBack",  NULL 
+  };
+  cmf::water::SoluteRateReaction *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:new_SoluteRateReaction", kwnames, &obj0, &obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_SoluteRateReaction" "', argument " "1"" of type '" "real""'");
+  } 
+  arg1 = static_cast< real >(val1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_double(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_SoluteRateReaction" "', argument " "2"" of type '" "real""'");
+    } 
+    arg2 = static_cast< real >(val2);
+  }
+  {
+    try {
+      result = (cmf::water::SoluteRateReaction *)new cmf::water::SoluteRateReaction(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown error");
+    }
+  }
+  {
+    std::shared_ptr<  cmf::water::SoluteRateReaction > *smartresult = result ? new std::shared_ptr<  cmf::water::SoluteRateReaction >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteRateReaction_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SoluteRateReaction_add_reactance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::water::SoluteRateReaction *arg1 = (cmf::water::SoluteRateReaction *) 0 ;
+  cmf::water::solute *arg2 = 0 ;
+  real arg3 ;
+  real arg4 = (real) -999 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::water::SoluteRateReaction > tempshared1 ;
+  std::shared_ptr< cmf::water::SoluteRateReaction > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"solute",  (char *)"stoichiometric_coefficient",  (char *)"partial_order",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:SoluteRateReaction_add_reactance", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteRateReaction_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoluteRateReaction_add_reactance" "', argument " "1"" of type '" "cmf::water::SoluteRateReaction *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::water::SoluteRateReaction > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::water::SoluteRateReaction > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteRateReaction * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::water::SoluteRateReaction > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteRateReaction * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SoluteRateReaction_add_reactance" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SoluteRateReaction_add_reactance" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "SoluteRateReaction_add_reactance" "', argument " "3"" of type '" "real""'");
+  } 
+  arg3 = static_cast< real >(val3);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_double(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "SoluteRateReaction_add_reactance" "', argument " "4"" of type '" "real""'");
+    } 
+    arg4 = static_cast< real >(val4);
+  }
+  {
+    try {
+      (arg1)->add_reactance((cmf::water::solute const &)*arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SoluteRateReaction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::SoluteRateReaction *arg1 = (cmf::water::SoluteRateReaction *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::water::SoluteRateReaction > tempshared1 ;
+  std::shared_ptr< cmf::water::SoluteRateReaction > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteRateReaction_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SoluteRateReaction" "', argument " "1"" of type '" "cmf::water::SoluteRateReaction *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::water::SoluteRateReaction > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::water::SoluteRateReaction > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteRateReaction * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::water::SoluteRateReaction > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteRateReaction * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      (void)arg1; delete smartarg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *SoluteRateReaction_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteRateReaction_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *SoluteRateReaction_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
@@ -83131,6 +83518,7 @@ static PyMethodDef SwigMethods[] = {
 		"solute_vector_get_solute(solute_vector self, int position) -> solute\n"
 		"cmf::water::solute* get_solute(int position) \n"
 		""},
+	 { "solute_vector_find_by_name", (PyCFunction)(void(*)(void))_wrap_solute_vector_find_by_name, METH_VARARGS|METH_KEYWORDS, "solute_vector_find_by_name(solute_vector self, std::string const & name) -> solute"},
 	 { "solute_vector___len__", _wrap_solute_vector___len__, METH_O, "solute_vector___len__(solute_vector self) -> size_t"},
 	 { "delete_solute_vector", _wrap_delete_solute_vector, METH_O, "delete_solute_vector(solute_vector self)"},
 	 { "solute_vector_swigregister", solute_vector_swigregister, METH_O, NULL},
@@ -83225,6 +83613,25 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_SoluteEquilibriumReaction", _wrap_delete_SoluteEquilibriumReaction, METH_O, "delete_SoluteEquilibriumReaction(SoluteEquilibriumReaction self)"},
 	 { "SoluteEquilibriumReaction_swigregister", SoluteEquilibriumReaction_swigregister, METH_O, NULL},
 	 { "SoluteEquilibriumReaction_swiginit", SoluteEquilibriumReaction_swiginit, METH_VARARGS, NULL},
+	 { "SoluteRateReaction_k_forward_set", _wrap_SoluteRateReaction_k_forward_set, METH_VARARGS, "SoluteRateReaction_k_forward_set(SoluteRateReaction self, real k_forward)"},
+	 { "SoluteRateReaction_k_forward_get", _wrap_SoluteRateReaction_k_forward_get, METH_O, "SoluteRateReaction_k_forward_get(SoluteRateReaction self) -> real"},
+	 { "SoluteRateReaction_k_back_set", _wrap_SoluteRateReaction_k_back_set, METH_VARARGS, "SoluteRateReaction_k_back_set(SoluteRateReaction self, real k_back)"},
+	 { "SoluteRateReaction_k_back_get", _wrap_SoluteRateReaction_k_back_get, METH_O, "SoluteRateReaction_k_back_get(SoluteRateReaction self) -> real"},
+	 { "new_SoluteRateReaction", (PyCFunction)(void(*)(void))_wrap_new_SoluteRateReaction, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SoluteRateReaction(real kForward, real kBack=0.0) -> SoluteRateReaction\n"
+		"SoluteRateReaction(real kForward, real kBack=0.0) \n"
+		""},
+	 { "SoluteRateReaction_add_reactance", (PyCFunction)(void(*)(void))_wrap_SoluteRateReaction_add_reactance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"SoluteRateReaction_add_reactance(SoluteRateReaction self, solute solute, real stoichiometric_coefficient, real partial_order=-999)\n"
+		"SoluteReaction& add_reactance(const solute &solute, real\n"
+		"stoichiometric_coefficient, real partial_order=-999)\n"
+		"\n"
+		"Use positive stoichiometric_coefficient for products and negative for\n"
+		"educts. \n"
+		""},
+	 { "delete_SoluteRateReaction", _wrap_delete_SoluteRateReaction, METH_O, "delete_SoluteRateReaction(SoluteRateReaction self)"},
+	 { "SoluteRateReaction_swigregister", SoluteRateReaction_swigregister, METH_O, NULL},
+	 { "SoluteRateReaction_swiginit", SoluteRateReaction_swiginit, METH_VARARGS, NULL},
 	 { "Solute1stOrderReaction_A_set", _wrap_Solute1stOrderReaction_A_set, METH_VARARGS, "Solute1stOrderReaction_A_set(Solute1stOrderReaction self, solute A)"},
 	 { "Solute1stOrderReaction_A_get", _wrap_Solute1stOrderReaction_A_get, METH_O, "Solute1stOrderReaction_A_get(Solute1stOrderReaction self) -> solute"},
 	 { "Solute1stOrderReaction_B_set", _wrap_Solute1stOrderReaction_B_set, METH_VARARGS, "Solute1stOrderReaction_B_set(Solute1stOrderReaction self, solute B)"},
@@ -83278,9 +83685,8 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "clear_reactions_of_waterstorage", (PyCFunction)(void(*)(void))_wrap_clear_reactions_of_waterstorage, METH_VARARGS|METH_KEYWORDS, "\n"
 		"clear_reactions_of_waterstorage(std::shared_ptr< cmf::water::WaterStorage > waterstorage)\n"
-		"void\n"
-		"cmf::water::clear_reactions_of_waterstorage(cmf::water::WaterStorage\n"
-		"&waterstorage)\n"
+		"void cmf::water::clear_reactions_of_waterstorage(std::shared_ptr<\n"
+		"cmf::water::WaterStorage > waterstorage)\n"
 		"\n"
 		"Clear all reactions of a water storage. \n"
 		""},
@@ -89168,6 +89574,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"get_solute(solute_vector self, int position) -> solute\n"
 		"cmf::water::solute* get_solute(int position) \n"
 		""},
+	 { "solute_vector_find_by_name", (PyCFunction)(void(*)(void))_wrap_solute_vector_find_by_name, METH_VARARGS|METH_KEYWORDS, "find_by_name(solute_vector self, std::string const & name) -> solute"},
 	 { "solute_vector___len__", _wrap_solute_vector___len__, METH_O, "__len__(solute_vector self) -> size_t"},
 	 { "delete_solute_vector", _wrap_delete_solute_vector, METH_O, "delete_solute_vector(solute_vector self)"},
 	 { "solute_vector_swigregister", solute_vector_swigregister, METH_O, NULL},
@@ -89262,6 +89669,25 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_SoluteEquilibriumReaction", _wrap_delete_SoluteEquilibriumReaction, METH_O, "delete_SoluteEquilibriumReaction(SoluteEquilibriumReaction self)"},
 	 { "SoluteEquilibriumReaction_swigregister", SoluteEquilibriumReaction_swigregister, METH_O, NULL},
 	 { "SoluteEquilibriumReaction_swiginit", SoluteEquilibriumReaction_swiginit, METH_VARARGS, NULL},
+	 { "SoluteRateReaction_k_forward_set", _wrap_SoluteRateReaction_k_forward_set, METH_VARARGS, "SoluteRateReaction_k_forward_set(SoluteRateReaction self, real k_forward)"},
+	 { "SoluteRateReaction_k_forward_get", _wrap_SoluteRateReaction_k_forward_get, METH_O, "SoluteRateReaction_k_forward_get(SoluteRateReaction self) -> real"},
+	 { "SoluteRateReaction_k_back_set", _wrap_SoluteRateReaction_k_back_set, METH_VARARGS, "SoluteRateReaction_k_back_set(SoluteRateReaction self, real k_back)"},
+	 { "SoluteRateReaction_k_back_get", _wrap_SoluteRateReaction_k_back_get, METH_O, "SoluteRateReaction_k_back_get(SoluteRateReaction self) -> real"},
+	 { "new_SoluteRateReaction", (PyCFunction)(void(*)(void))_wrap_new_SoluteRateReaction, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SoluteRateReaction(real kForward, real kBack=0.0) -> SoluteRateReaction\n"
+		"SoluteRateReaction(real kForward, real kBack=0.0) \n"
+		""},
+	 { "SoluteRateReaction_add_reactance", (PyCFunction)(void(*)(void))_wrap_SoluteRateReaction_add_reactance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"add_reactance(SoluteRateReaction self, solute solute, real stoichiometric_coefficient, real partial_order=-999)\n"
+		"SoluteReaction& add_reactance(const solute &solute, real\n"
+		"stoichiometric_coefficient, real partial_order=-999)\n"
+		"\n"
+		"Use positive stoichiometric_coefficient for products and negative for\n"
+		"educts. \n"
+		""},
+	 { "delete_SoluteRateReaction", _wrap_delete_SoluteRateReaction, METH_O, "delete_SoluteRateReaction(SoluteRateReaction self)"},
+	 { "SoluteRateReaction_swigregister", SoluteRateReaction_swigregister, METH_O, NULL},
+	 { "SoluteRateReaction_swiginit", SoluteRateReaction_swiginit, METH_VARARGS, NULL},
 	 { "Solute1stOrderReaction_A_set", _wrap_Solute1stOrderReaction_A_set, METH_VARARGS, "Solute1stOrderReaction_A_set(Solute1stOrderReaction self, solute A)"},
 	 { "Solute1stOrderReaction_A_get", _wrap_Solute1stOrderReaction_A_get, METH_O, "Solute1stOrderReaction_A_get(Solute1stOrderReaction self) -> solute"},
 	 { "Solute1stOrderReaction_B_set", _wrap_Solute1stOrderReaction_B_set, METH_VARARGS, "Solute1stOrderReaction_B_set(Solute1stOrderReaction self, solute B)"},
@@ -89315,9 +89741,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "clear_reactions_of_waterstorage", (PyCFunction)(void(*)(void))_wrap_clear_reactions_of_waterstorage, METH_VARARGS|METH_KEYWORDS, "\n"
 		"clear_reactions_of_waterstorage(std::shared_ptr< cmf::water::WaterStorage > waterstorage)\n"
-		"void\n"
-		"cmf::water::clear_reactions_of_waterstorage(cmf::water::WaterStorage\n"
-		"&waterstorage)\n"
+		"void cmf::water::clear_reactions_of_waterstorage(std::shared_ptr<\n"
+		"cmf::water::WaterStorage > waterstorage)\n"
 		"\n"
 		"Clear all reactions of a water storage. \n"
 		""},
@@ -94627,6 +95052,10 @@ static void *_p_std__shared_ptrT_cmf__water__SoluteDecayReaction_tTo_p_std__shar
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new std::shared_ptr< cmf::water::SoluteReaction >(*(std::shared_ptr< cmf::water::SoluteDecayReaction > *)x);
 }
+static void *_p_std__shared_ptrT_cmf__water__SoluteRateReaction_tTo_p_std__shared_ptrT_cmf__water__SoluteReaction_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new std::shared_ptr< cmf::water::SoluteReaction >(*(std::shared_ptr< cmf::water::SoluteRateReaction > *)x);
+}
 static void *_p_std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_tTo_p_std__shared_ptrT_cmf__water__SoluteReaction_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new std::shared_ptr< cmf::water::SoluteReaction >(*(std::shared_ptr< cmf::water::SoluteEquilibriumReaction > *)x);
@@ -94646,6 +95075,9 @@ static void *_p_cmf__water__SoluteDecayReactionTo_p_cmf__water__SoluteReaction(v
 }
 static void *_p_cmf__water__SoluteEquilibriumReactionTo_p_cmf__water__SoluteReaction(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::SoluteReaction *)  ((cmf::water::SoluteEquilibriumReaction *) x));
+}
+static void *_p_cmf__water__SoluteRateReactionTo_p_cmf__water__SoluteReaction(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::water::SoluteReaction *)  ((cmf::water::SoluteRateReaction *) x));
 }
 static void *_p_cmf__water__Solute1stOrderReactionTo_p_cmf__water__SoluteReaction(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::SoluteReaction *)  ((cmf::water::Solute1stOrderReaction *) x));
@@ -95191,6 +95623,7 @@ static swig_type_info _swigt__p_cmf__water__SoluteConstantFluxReaction = {"_p_cm
 static swig_type_info _swigt__p_cmf__water__SoluteDecayReaction = {"_p_cmf__water__SoluteDecayReaction", "cmf::water::SoluteDecayReaction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__SoluteDiffusiveTransport = {"_p_cmf__water__SoluteDiffusiveTransport", "cmf::water::SoluteDiffusiveTransport *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__SoluteEquilibriumReaction = {"_p_cmf__water__SoluteEquilibriumReaction", "cmf::water::SoluteEquilibriumReaction *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_cmf__water__SoluteRateReaction = {"_p_cmf__water__SoluteRateReaction", "cmf::water::SoluteRateReaction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__SoluteReaction = {"_p_cmf__water__SoluteReaction", "cmf::water::SoluteReaction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__SoluteStorage = {"_p_cmf__water__SoluteStorage", "cmf::water::SoluteStorage *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__SoluteTimeseries = {"_p_cmf__water__SoluteTimeseries", "cmf::water::SoluteTimeseries *", 0, 0, (void*)0, 0};
@@ -95236,6 +95669,7 @@ static swig_type_info _swigt__p_std__shared_ptrT_cmf__water__SoluteConstantFluxR
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__water__SoluteDecayReaction_t = {"_p_std__shared_ptrT_cmf__water__SoluteDecayReaction_t", "std::shared_ptr< cmf::water::SoluteDecayReaction > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__water__SoluteDiffusiveTransport_t = {"_p_std__shared_ptrT_cmf__water__SoluteDiffusiveTransport_t", "std::shared_ptr< cmf::water::SoluteDiffusiveTransport > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_t = {"_p_std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_t", "std::shared_ptr< cmf::water::SoluteEquilibriumReaction > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__shared_ptrT_cmf__water__SoluteRateReaction_t = {"_p_std__shared_ptrT_cmf__water__SoluteRateReaction_t", "std::shared_ptr< cmf::water::SoluteRateReaction > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__water__SoluteReaction_t = {"_p_std__shared_ptrT_cmf__water__SoluteReaction_t", "cmf::water::SoluteReaction::ptr *|std::shared_ptr< cmf::water::SoluteReaction > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__water__SoluteStorage_t = {"_p_std__shared_ptrT_cmf__water__SoluteStorage_t", "std::shared_ptr< cmf::water::SoluteStorage > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__water__SystemBridge_t = {"_p_std__shared_ptrT_cmf__water__SystemBridge_t", "std::shared_ptr< cmf::water::SystemBridge > *", 0, 0, (void*)0, 0};
@@ -95408,6 +95842,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_cmf__water__SoluteDecayReaction,
   &_swigt__p_cmf__water__SoluteDiffusiveTransport,
   &_swigt__p_cmf__water__SoluteEquilibriumReaction,
+  &_swigt__p_cmf__water__SoluteRateReaction,
   &_swigt__p_cmf__water__SoluteReaction,
   &_swigt__p_cmf__water__SoluteStorage,
   &_swigt__p_cmf__water__SoluteTimeseries,
@@ -95453,6 +95888,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__shared_ptrT_cmf__water__SoluteDecayReaction_t,
   &_swigt__p_std__shared_ptrT_cmf__water__SoluteDiffusiveTransport_t,
   &_swigt__p_std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_t,
+  &_swigt__p_std__shared_ptrT_cmf__water__SoluteRateReaction_t,
   &_swigt__p_std__shared_ptrT_cmf__water__SoluteReaction_t,
   &_swigt__p_std__shared_ptrT_cmf__water__SoluteStorage_t,
   &_swigt__p_std__shared_ptrT_cmf__water__SystemBridge_t,
@@ -95625,7 +96061,8 @@ static swig_cast_info _swigc__p_cmf__water__SoluteConstantFluxReaction[] = {  {&
 static swig_cast_info _swigc__p_cmf__water__SoluteDecayReaction[] = {  {&_swigt__p_cmf__water__SoluteDecayReaction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__SoluteDiffusiveTransport[] = {  {&_swigt__p_cmf__water__SoluteDiffusiveTransport, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__SoluteEquilibriumReaction[] = {  {&_swigt__p_cmf__water__SoluteEquilibriumReaction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__water__SoluteReaction[] = {  {&_swigt__p_cmf__water__SoluteDiffusiveTransport, _p_cmf__water__SoluteDiffusiveTransportTo_p_cmf__water__SoluteReaction, 0, 0},  {&_swigt__p_cmf__water__SoluteReaction, 0, 0, 0},  {&_swigt__p_cmf__water__SoluteConstantFluxReaction, _p_cmf__water__SoluteConstantFluxReactionTo_p_cmf__water__SoluteReaction, 0, 0},  {&_swigt__p_cmf__water__SoluteDecayReaction, _p_cmf__water__SoluteDecayReactionTo_p_cmf__water__SoluteReaction, 0, 0},  {&_swigt__p_cmf__water__SoluteEquilibriumReaction, _p_cmf__water__SoluteEquilibriumReactionTo_p_cmf__water__SoluteReaction, 0, 0},  {&_swigt__p_cmf__water__Solute1stOrderReaction, _p_cmf__water__Solute1stOrderReactionTo_p_cmf__water__SoluteReaction, 0, 0},  {&_swigt__p_cmf__water__Solute2ndOrderReaction, _p_cmf__water__Solute2ndOrderReactionTo_p_cmf__water__SoluteReaction, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__water__SoluteRateReaction[] = {  {&_swigt__p_cmf__water__SoluteRateReaction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__water__SoluteReaction[] = {  {&_swigt__p_cmf__water__SoluteDiffusiveTransport, _p_cmf__water__SoluteDiffusiveTransportTo_p_cmf__water__SoluteReaction, 0, 0},  {&_swigt__p_cmf__water__SoluteReaction, 0, 0, 0},  {&_swigt__p_cmf__water__SoluteConstantFluxReaction, _p_cmf__water__SoluteConstantFluxReactionTo_p_cmf__water__SoluteReaction, 0, 0},  {&_swigt__p_cmf__water__SoluteDecayReaction, _p_cmf__water__SoluteDecayReactionTo_p_cmf__water__SoluteReaction, 0, 0},  {&_swigt__p_cmf__water__SoluteEquilibriumReaction, _p_cmf__water__SoluteEquilibriumReactionTo_p_cmf__water__SoluteReaction, 0, 0},  {&_swigt__p_cmf__water__SoluteRateReaction, _p_cmf__water__SoluteRateReactionTo_p_cmf__water__SoluteReaction, 0, 0},  {&_swigt__p_cmf__water__Solute1stOrderReaction, _p_cmf__water__Solute1stOrderReactionTo_p_cmf__water__SoluteReaction, 0, 0},  {&_swigt__p_cmf__water__Solute2ndOrderReaction, _p_cmf__water__Solute2ndOrderReactionTo_p_cmf__water__SoluteReaction, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__SoluteStorage[] = {  {&_swigt__p_cmf__water__SoluteStorage, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__SoluteTimeseries[] = {  {&_swigt__p_cmf__water__SoluteTimeseries, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__WaterStorage[] = {  {&_swigt__p_cmf__river__Reach, _p_cmf__river__ReachTo_p_cmf__water__WaterStorage, 0, 0},  {&_swigt__p_cmf__upslope__SurfaceWater, _p_cmf__upslope__SurfaceWaterTo_p_cmf__water__WaterStorage, 0, 0},  {&_swigt__p_cmf__upslope__SoilLayer, _p_cmf__upslope__SoilLayerTo_p_cmf__water__WaterStorage, 0, 0},  {&_swigt__p_cmf__upslope__MacroPore, _p_cmf__upslope__MacroPoreTo_p_cmf__water__WaterStorage, 0, 0},  {&_swigt__p_cmf__water__WaterStorage, 0, 0, 0},  {&_swigt__p_cmf__river__OpenWaterStorage, _p_cmf__river__OpenWaterStorageTo_p_cmf__water__WaterStorage, 0, 0},  {&_swigt__p_cmf__upslope__aquifer, _p_cmf__upslope__aquiferTo_p_cmf__water__WaterStorage, 0, 0},{0, 0, 0, 0}};
@@ -95670,7 +96107,8 @@ static swig_cast_info _swigc__p_std__shared_ptrT_cmf__water__SoluteConstantFluxR
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__water__SoluteDecayReaction_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__water__SoluteDecayReaction_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__water__SoluteDiffusiveTransport_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__water__SoluteDiffusiveTransport_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__shared_ptrT_cmf__water__SoluteReaction_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__water__SoluteDecayReaction_t, _p_std__shared_ptrT_cmf__water__SoluteDecayReaction_tTo_p_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_t, _p_std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_tTo_p_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__water__SoluteConstantFluxReaction_t, _p_std__shared_ptrT_cmf__water__SoluteConstantFluxReaction_tTo_p_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__water__SoluteDiffusiveTransport_t, _p_std__shared_ptrT_cmf__water__SoluteDiffusiveTransport_tTo_p_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__water__Solute1stOrderReaction_t, _p_std__shared_ptrT_cmf__water__Solute1stOrderReaction_tTo_p_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__water__Solute2ndOrderReaction_t, _p_std__shared_ptrT_cmf__water__Solute2ndOrderReaction_tTo_p_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__shared_ptrT_cmf__water__SoluteRateReaction_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__water__SoluteRateReaction_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__shared_ptrT_cmf__water__SoluteReaction_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__water__SoluteDecayReaction_t, _p_std__shared_ptrT_cmf__water__SoluteDecayReaction_tTo_p_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_t, _p_std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_tTo_p_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__water__SoluteConstantFluxReaction_t, _p_std__shared_ptrT_cmf__water__SoluteConstantFluxReaction_tTo_p_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__water__SoluteDiffusiveTransport_t, _p_std__shared_ptrT_cmf__water__SoluteDiffusiveTransport_tTo_p_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__water__SoluteRateReaction_t, _p_std__shared_ptrT_cmf__water__SoluteRateReaction_tTo_p_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__water__Solute1stOrderReaction_t, _p_std__shared_ptrT_cmf__water__Solute1stOrderReaction_tTo_p_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__water__Solute2ndOrderReaction_t, _p_std__shared_ptrT_cmf__water__Solute2ndOrderReaction_tTo_p_std__shared_ptrT_cmf__water__SoluteReaction_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__water__SoluteStorage_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__water__SoluteStorage_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__water__SystemBridge_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__water__SystemBridge_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__water__WaterStorage_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__water__WaterStorage_t, 0, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__river__OpenWaterStorage_t, _p_std__shared_ptrT_cmf__river__OpenWaterStorage_tTo_p_std__shared_ptrT_cmf__water__WaterStorage_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__upslope__MacroPore_t, _p_std__shared_ptrT_cmf__upslope__MacroPore_tTo_p_std__shared_ptrT_cmf__water__WaterStorage_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__upslope__SurfaceWater_t, _p_std__shared_ptrT_cmf__upslope__SurfaceWater_tTo_p_std__shared_ptrT_cmf__water__WaterStorage_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__upslope__SoilLayer_t, _p_std__shared_ptrT_cmf__upslope__SoilLayer_tTo_p_std__shared_ptrT_cmf__water__WaterStorage_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__river__Reach_t, _p_std__shared_ptrT_cmf__river__Reach_tTo_p_std__shared_ptrT_cmf__water__WaterStorage_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__upslope__aquifer_t, _p_std__shared_ptrT_cmf__upslope__aquifer_tTo_p_std__shared_ptrT_cmf__water__WaterStorage_t, 0, 0},{0, 0, 0, 0}};
@@ -95842,6 +96280,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_cmf__water__SoluteDecayReaction,
   _swigc__p_cmf__water__SoluteDiffusiveTransport,
   _swigc__p_cmf__water__SoluteEquilibriumReaction,
+  _swigc__p_cmf__water__SoluteRateReaction,
   _swigc__p_cmf__water__SoluteReaction,
   _swigc__p_cmf__water__SoluteStorage,
   _swigc__p_cmf__water__SoluteTimeseries,
@@ -95887,6 +96326,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__shared_ptrT_cmf__water__SoluteDecayReaction_t,
   _swigc__p_std__shared_ptrT_cmf__water__SoluteDiffusiveTransport_t,
   _swigc__p_std__shared_ptrT_cmf__water__SoluteEquilibriumReaction_t,
+  _swigc__p_std__shared_ptrT_cmf__water__SoluteRateReaction_t,
   _swigc__p_std__shared_ptrT_cmf__water__SoluteReaction_t,
   _swigc__p_std__shared_ptrT_cmf__water__SoluteStorage_t,
   _swigc__p_std__shared_ptrT_cmf__water__SystemBridge_t,

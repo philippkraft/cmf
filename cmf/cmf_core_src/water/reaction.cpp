@@ -156,3 +156,68 @@ SoluteDiffusiveTransport::SoluteDiffusiveTransport(real alpha, const SoluteStora
 std::string SoluteDiffusiveTransport::to_string() const {
     return "Diffusive Transport between " + left.to_string() + " and " + right.to_string();
 }
+struct SolutePartialOrder {
+    int v; ///<stoichiometric_coefficient
+    real o;  ///< partial order
+};
+typedef std::map<solute, SolutePartialOrder> partial_order;
+
+
+
+std::string SoluteRateReaction::to_string() const {
+    std::stringstream out;
+    out << "Reaction rate equation: "
+        << print_partial_order(_reactance)
+    ;
+    return out.str();
+}
+
+void SoluteRateReaction::add_reactance(const cmf::water::solute &solute, real stoichiometric_coefficient,
+                                  real partial_order) {
+    if (partial_order == -999) partial_order = std::abs(stoichiometric_coefficient);
+    _reactance[solute] = {stoichiometric_coefficient, partial_order};
+
+}
+
+
+std::string SoluteRateReaction::print_partial_order(const partial_order &po) {
+    std::stringstream stream;
+    for (auto& e : po) {
+        if (e.first != po.begin()->first) {
+            stream << " + ";
+        }
+        stream << e.second.v << " [" << e.first.Name << "]^" << e.second.o;
+    }
+    return stream.str();
+
+}
+
+real SoluteRateReaction::get_flux(const SoluteStorage &solute_storage, const cmf::math::Time &t) const {
+    real r_f = k_forward;
+    real r_b = k_back;
+    const auto& W = solute_storage.get_water();
+    const solute& X = solute_storage.Solute;
+    // Calculate forward and backward reaction rate r_f and r_b
+    for (auto& e : _reactance) {
+        if (e.second.v < 0) {
+            r_f *= std::pow(W[e.first].get_conc(), e.second.o);
+        } else if (e.second.v > 0) {
+            r_b *= std::pow(W[e.first].get_conc(), e.second.o);
+        }
+    }
+
+    if (_reactance.count(X)) {
+        const auto& po = _reactance.at(X);
+        return (r_f * po.v - r_b * po.v) * W.get_volume();
+    } else {
+        return 0.0;
+    }
+}
+
+SoluteRateReaction::SoluteRateReaction(real kForward, real kBack) : k_forward(kForward), k_back(kBack) {
+}
+
+bool SoluteRateReaction::is_compatible(const SoluteStorage &solute_storage) {
+
+    return _reactance.count(solute_storage.Solute) > 0;
+}

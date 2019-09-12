@@ -118,14 +118,65 @@ namespace cmf {
 
         };
 
-        /// A solute reaction of 1st order kinetics (linear decline to product) A->B
+        /// @ingroup Solutes
+        /// @warning Experimental feature!
+        ///
+        /// @brief A general solute reaction system to describe multi-species kinetics with a power law
+        ///
+        /// cf. to https://en.wikipedia.org/wiki/Rate_equation
+        ///
+        /// \f[ A + 2B \rightarrow 3C \Rightarrow 0 = -1A - 2B + 3C \f]
+        ///
+        /// Where \f$ -1, -2, 3 \f$ are the stoichiometric coefficients \f$v_i\f$ corresponding to the substance \f$X_i\f$.
+        ///
+        /// The reaction rate \f$r^+\f$ is given by a power law:
+        ///
+        /// \f[ r = k \prod [X_i]^{m_i} \forall v_i < 0 \f]
+        /// With \f$m_i\f$ as the partial order, which is sometimes equal to the stoichiometric coefficient.
+        ///
+        /// Which gives the following differential equation system
+        ///
+        /// \f[\frac{dX_i}{dt} = v_i r^+([X]) V \f]
+        ///
+        /// If the opposite reaction is taking place at the same time (equilibrium reaction),
+        /// with the reaction rate \f$r^-\f$ for the backwards reaction we get:
+        /// \f[\frac{dX_i}{dt} = V \left(v_i r^+([X]) - v_i r^-([X])\right)\f]
+        class SoluteRateReaction: public SoluteReaction {
+        private:
+            struct SolutePartialOrder {
+                real v; ///<stoichiometric_coefficient
+                real o;  ///< partial order
+            };
+            typedef std::map<solute, SolutePartialOrder> partial_order;
+             partial_order _reactance;
+            static std::string print_partial_order(const partial_order& po);
+        public:
+            /// Rate constant for forward reaction
+            real k_forward;
+            /// Rate constant for backward reaction
+            real k_back;
+
+            SoluteRateReaction(real kForward, real kBack=0.0);
+
+            /// Use positive stoichiometric_coefficient for products and negative for educts
+            void add_reactance(const solute& solute, real stoichiometric_coefficient, real partial_order=-999);
+
+            real get_flux(const SoluteStorage &solute_storage, const cmf::math::Time &t) const override;
+
+            std::string to_string() const override;
+
+            bool is_compatible(const SoluteStorage &solute_storage) override;
+        };
+
+
+        /// @ingroup Solutes
+        /// @brief A solute reaction of 1st order kinetics (linear decline to product) A->B.
         ///
         /// @f[ A \rightarrow B @f]
         ///
         /// @f[\frac{d[B]}{dt} = -\frac{d[A]}{dt} = k [A]@f]
         ///
         /// Where A is the educt and B is the product.
-
         class Solute1stOrderReaction : public SoluteReaction {
         public:
 
@@ -175,7 +226,8 @@ namespace cmf {
 
 
         /// @ingroup Solutes
-        /// @warning Experimental feature!
+        /// @warning Experimental feature! The math might not be a correct diffusion equation
+        ///
         /// @brief Calculates a diffusive flux between solute storages
         ///
         /// \f[ q = \alpha \cdot \left([A]_1 - [A]_2\right) V_2 \f]

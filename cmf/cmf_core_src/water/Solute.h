@@ -107,9 +107,17 @@ namespace cmf
 			const_iterator begin() const {return m_Solutes.begin();}
 			const_iterator end()   const {return m_Solutes.end();  }
 #endif
-			cmf::water::solute* get_solute(int position)
+			cmf::water::solute get_solute(int position)
 			{
-				return &m_Solutes.at(position<0 ? position + size() : position);
+				return m_Solutes.at(position<0 ? position + size() : position);
+			}
+			cmf::water::solute find_by_name(const std::string& name ) const {
+			    for (const auto & s : m_Solutes) {
+			        if (name == s.Name) {
+			            return s;
+			        }
+			    }
+			    throw std::out_of_range(name + " is not a solute");
 			}
 		};
 

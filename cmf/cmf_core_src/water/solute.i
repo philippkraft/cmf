@@ -23,6 +23,7 @@
 %shared_ptr(cmf::water::Solute2ndOrderReaction);
 %shared_ptr(cmf::water::SoluteConstantFluxReaction);
 %shared_ptr(cmf::water::SoluteDecayReaction);
+%shared_ptr(cmf::water::SoluteRateReaction);
 %shared_ptr(cmf::water::SoluteEquilibriumReaction);
 %shared_ptr(cmf::water::SoluteDiffusiveTransport);
 
@@ -40,6 +41,10 @@
 %include "water/Solute.h"
 %extend cmf::water::solute {
         std::string __repr__() { return "[" + $self->Name + "]"; }
+        %pythoncode {
+            def __hash__(self):
+                return hash((type(self), self.Id))
+        }
 }
 %extend cmf::water::solute_vector
 {
@@ -102,11 +107,25 @@
 %extend__repr__(cmf::water::SoluteDecayReaction);
 %extend__repr__(cmf::water::SoluteEquilibriumReaction);
 %extend__repr__(cmf::water::SoluteDiffusiveTransport);
-// %extend__repr__(cmf::water::SoluteReactionList);
-// %extend_pysequence(cmf::water::SoluteReactionList);
+%extend__repr__(cmf::water::SoluteRateReaction);
 
 %iterable_to_list(cmf::List<cmf::water::SoluteReaction::ptr>,cmf::water::SoluteReaction::ptr);
 %template(SoluteReactionList) cmf::List<cmf::water::SoluteReaction::ptr>;
+
+%extend cmf::water::SoluteRateReaction {
+    %pythoncode
+    {
+        def extend(self, reactances):
+            if any(not isinstance(s, solute) for s in reactances):
+                raise TypeError('All dict keys need to be cmf.solute objects')
+            for s, value in reactances.items():
+                try:
+                    self.add_reactance(s, *value)
+                except TypeError:
+                    self.add_reactance(s, value)
+            return self
+    }
+}
 
 %{
 #include "water/SoluteStorage.h"

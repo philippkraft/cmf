@@ -1057,6 +1057,10 @@ class solute(object):
     Uptake = property(_cmf_core.solute_Uptake_get, _cmf_core.solute_Uptake_set, doc=r"""Uptake : double""")
     Id = property(_cmf_core.solute_Id_get, doc=r"""Id : q(const).size_t""")
     __repr__ = _swig_new_instance_method(_cmf_core.solute___repr__)
+
+    def __hash__(self):
+        return hash((type(self), self.Id))
+
     __swig_destroy__ = _cmf_core.delete_solute
 
 # Register solute in _cmf_core:
@@ -1085,6 +1089,7 @@ class solute_vector(object):
         """
         _cmf_core.solute_vector_swiginit(self, _cmf_core.new_solute_vector(*args, **kwargs))
     get_solute = _swig_new_instance_method(_cmf_core.solute_vector_get_solute)
+    find_by_name = _swig_new_instance_method(_cmf_core.solute_vector_find_by_name)
     __len__ = _swig_new_instance_method(_cmf_core.solute_vector___len__)
 
     def __iter__(self):
@@ -1296,6 +1301,85 @@ class SoluteEquilibriumReaction(SoluteReaction):
 # Register SoluteEquilibriumReaction in _cmf_core:
 _cmf_core.SoluteEquilibriumReaction_swigregister(SoluteEquilibriumReaction)
 
+class SoluteRateReaction(SoluteReaction):
+    r"""
+
+
+    A general solute reaction system to describe multi-species kinetics
+    with a power law.
+
+    WARNING:  Experimental feature!  cf.
+    tohttps://en.wikipedia.org/wiki/Rate_equation
+
+
+
+    .. math::
+
+         A + 2B \\rightarrow 3C \\Rightarrow 0 = -1A - 2B + 3C 
+
+    Where :math:`-1, -2, 3` are the stoichiometric coefficients :math:`v_i`
+    corresponding to the substance :math:`X_i`.
+
+    The reaction rate :math:`r^+` is given by a power law:
+
+
+
+    .. math::
+
+         r = k \\prod [X_i]^{m_i} \\forall v_i < 0 
+
+    With :math:`m_i`
+    as the partial order, which is sometimes equal to the stoichiometric
+    coefficient.
+
+    Which gives the following differential equation system
+
+
+
+    .. math::
+
+        \\frac{dX_i}{dt} = v_i r^+([X]) V 
+
+    If the opposite reaction is taking place at the same time (equilibrium
+    reaction), with the reaction rate :math:`r^-` for the backwards reaction we
+    get: 
+
+    .. math::
+
+        \\frac{dX_i}{dt} = V \\left(v_i r^+([X]) - v_i
+        r^-([X])\\right)
+
+    C++ includes: reaction.h 
+    """
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    k_forward = property(_cmf_core.SoluteRateReaction_k_forward_get, _cmf_core.SoluteRateReaction_k_forward_set, doc=r"""k_forward : real""")
+    k_back = property(_cmf_core.SoluteRateReaction_k_back_get, _cmf_core.SoluteRateReaction_k_back_set, doc=r"""k_back : real""")
+
+    def __init__(self, *args, **kwargs):
+        r"""
+        __init__(SoluteRateReaction self, real kForward, real kBack=0.0) -> SoluteRateReaction
+        SoluteRateReaction(real kForward, real kBack=0.0) 
+        """
+        _cmf_core.SoluteRateReaction_swiginit(self, _cmf_core.new_SoluteRateReaction(*args, **kwargs))
+    add_reactance = _swig_new_instance_method(_cmf_core.SoluteRateReaction_add_reactance)
+
+    def extend(self, reactances):
+        if any(not isinstance(s, solute) for s in reactances):
+            raise TypeError('All dict keys need to be cmf.solute objects')
+        for s, value in reactances.items():
+            try:
+                self.add_reactance(s, *value)
+            except TypeError:
+                self.add_reactance(s, value)
+        return self
+
+    __swig_destroy__ = _cmf_core.delete_SoluteRateReaction
+
+# Register SoluteRateReaction in _cmf_core:
+_cmf_core.SoluteRateReaction_swigregister(SoluteRateReaction)
+
 class Solute1stOrderReaction(SoluteReaction):
     r"""
 
@@ -1397,15 +1481,16 @@ class SoluteDiffusiveTransport(SoluteReaction):
 
     Calculates a diffusive flux between solute storages.
 
-    WARNING:  Experimental feature! 
+    WARNING:  Experimental feature! The math might not be a correct
+    diffusion equation  
 
     .. math::
 
-         q = \\alpha \\cdot
-        \\left([A]_1 - [A]_2\\right) V_2 
+         q = \\alpha \\cdot \\left([A]_1 -
+        [A]_2\\right) V_2 
 
-    :math:`[A]_n` Concentration of
-    solute A in storage n in mol/m³ or a similar unit
+    :math:`[A]_n` Concentration of solute A in
+    storage n in mol/m³ or a similar unit
 
     :math:`\\alpha` Diffusion velocity in 1/day. Depends on the distance
     between the storages. To calculate it from a distance independent

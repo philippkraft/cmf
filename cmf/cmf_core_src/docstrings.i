@@ -13716,15 +13716,16 @@ if not overwritten by a child class. ";
 
 Calculates a diffusive flux between solute storages.
 
-WARNING:  Experimental feature! 
+WARNING:  Experimental feature! The math might not be a correct
+diffusion equation  
 
 .. math::
 
-     q = \\\\alpha \\\\cdot
-    \\\\left([A]_1 - [A]_2\\\\right) V_2 
+     q = \\\\alpha \\\\cdot \\\\left([A]_1 -
+    [A]_2\\\\right) V_2 
 
-:math:`[A]_n` Concentration of
-solute A in storage n in mol/m³ or a similar unit
+:math:`[A]_n` Concentration of solute A in
+storage n in mol/m³ or a similar unit
 
 :math:`\\\\alpha` Diffusion velocity in 1/day. Depends on the distance
 between the storages. To calculate it from a distance independent
@@ -13799,6 +13800,82 @@ if not overwritten by a child class. ";
 %feature("docstring")
 cmf::water::SoluteEquilibriumReaction::to_string "std::string
 to_string() const override ";
+
+
+// File: structcmf_1_1water_1_1_solute_rate_reaction_1_1_solute_partial_order.xml
+
+
+// File: classcmf_1_1water_1_1_solute_rate_reaction.xml
+%feature("docstring") cmf::water::SoluteRateReaction "
+
+A general solute reaction system to describe multi-species kinetics
+with a power law.
+
+WARNING:  Experimental feature!  cf.
+tohttps://en.wikipedia.org/wiki/Rate_equation
+
+
+
+.. math::
+
+     A + 2B \\\\rightarrow 3C \\\\Rightarrow 0 = -1A - 2B + 3C 
+
+Where :math:`-1, -2, 3` are the stoichiometric coefficients :math:`v_i`
+corresponding to the substance :math:`X_i`.
+
+The reaction rate :math:`r^+` is given by a power law:
+
+
+
+.. math::
+
+     r = k \\\\prod [X_i]^{m_i} \\\\forall v_i < 0 
+
+With :math:`m_i`
+as the partial order, which is sometimes equal to the stoichiometric
+coefficient.
+
+Which gives the following differential equation system
+
+
+
+.. math::
+
+    \\\\frac{dX_i}{dt} = v_i r^+([X]) V 
+
+If the opposite reaction is taking place at the same time (equilibrium
+reaction), with the reaction rate :math:`r^-` for the backwards reaction we
+get: 
+
+.. math::
+
+    \\\\frac{dX_i}{dt} = V \\\\left(v_i r^+([X]) - v_i
+    r^-([X])\\\\right)
+
+C++ includes: reaction.h ";
+
+%feature("docstring")
+cmf::water::SoluteRateReaction::SoluteRateReaction "SoluteRateReaction(real kForward, real kBack=0.0) ";
+
+%feature("docstring")  cmf::water::SoluteRateReaction::add_reactance "SoluteReaction& add_reactance(const solute &solute, real
+stoichiometric_coefficient, real partial_order=-999)
+
+Use positive stoichiometric_coefficient for products and negative for
+educts. ";
+
+%feature("docstring")  cmf::water::SoluteRateReaction::get_flux "real
+get_flux(const SoluteStorage &solute_storage, const cmf::math::Time
+&t) const override
+
+Calculates the reactive flux from / to the given solute storage at
+time t. ";
+
+%feature("docstring")  cmf::water::SoluteRateReaction::is_compatible "virtual bool is_compatible(const SoluteStorage &solute_storage)
+
+Tests if the reaction is compatible to a solute storage. Returns true
+if not overwritten by a child class. ";
+
+%feature("docstring")  cmf::water::SoluteRateReaction::to_string "std::string to_string() const override ";
 
 
 // File: classcmf_1_1water_1_1_solute_reaction.xml
@@ -18060,9 +18137,8 @@ Checks if a constant flux between two nodes can be set.
 Returns true if the nodes are connected by an
 external_control_connection ";
 
-%feature("docstring")  cmf::water::clear_reactions_of_waterstorage "void
-cmf::water::clear_reactions_of_waterstorage(cmf::water::WaterStorage
-&waterstorage)
+%feature("docstring")  cmf::water::clear_reactions_of_waterstorage "void cmf::water::clear_reactions_of_waterstorage(std::shared_ptr<
+cmf::water::WaterStorage > waterstorage)
 
 Clear all reactions of a water storage. ";
 

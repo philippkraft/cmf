@@ -17,7 +17,7 @@ class Model(cmf.project):
             if i:
                 S0 = self.storages[i-1]
                 cmf.LinearStorageConnection(S0, S, 1/6.0, residual=0.0)
-                r = cmf.SoluteDiffusiveTransport(-0.1, S0[X], S[X])
+                r = cmf.SoluteDiffusiveTransport(24.0, S0[X], S[X])
                 S[X].reactions.append(r)
                 S0[X].reactions.append(r)
 
