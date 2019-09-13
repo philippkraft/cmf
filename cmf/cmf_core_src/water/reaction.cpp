@@ -118,7 +118,7 @@ bool Solute2ndOrderReaction::is_compatible(const SoluteStorage &solute_storage) 
 
 void cmf::water::attach_reactions_to_waterstorage(
         std::shared_ptr<cmf::water::WaterStorage> waterstorage,
-        const cmf::water::SoluteReactionList &reactions) {
+        const cmf::water::SoluteReactionList&reactions) {
     auto& p = waterstorage->get_project();
     for (auto& X: p.solutes) {
         auto& ss = waterstorage->operator[](X);
@@ -156,11 +156,6 @@ SoluteDiffusiveTransport::SoluteDiffusiveTransport(real alpha, const SoluteStora
 std::string SoluteDiffusiveTransport::to_string() const {
     return "Diffusive Transport between " + left.to_string() + " and " + right.to_string();
 }
-struct SolutePartialOrder {
-    int v; ///<stoichiometric_coefficient
-    real o;  ///< partial order
-};
-typedef std::map<solute, SolutePartialOrder> partial_order;
 
 
 

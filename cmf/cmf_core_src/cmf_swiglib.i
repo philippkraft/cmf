@@ -181,6 +181,17 @@ Included macros:
     	}
     }
 }
+%typemap(in) const LISTTYPE& (LISTTYPE temp_list) {
+    if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor, SWIG_POINTER_EXCEPTION) == -1) {
+        int conversion_errors = 0;
+        int res = iterable_to_list<ITEMTYPE, LISTTYPE>($input,$descriptor(ITEMTYPE*), temp_list, &conversion_errors);
+        if (SWIG_IsOK(res)) {
+    	    $1 = &temp_list;
+    	} else {
+    	    SWIG_exception_fail(SWIG_TypeError,"Only iterables can be converted to LISTTYPE");
+    	}
+    }
+}
 %typemap(in) LISTTYPE* (LISTTYPE temp_list) {
     if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor, SWIG_POINTER_EXCEPTION) == -1) {
         int conversion_errors = 0;
@@ -307,7 +318,7 @@ bool __contains__(const T& what) {
         size_t index = $self->index(what);
         return true;
     }
-    catch (const std::out_of_range& e)
+    catch (const std::out_of_range&)
     {
         return false;
     }

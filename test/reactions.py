@@ -29,7 +29,7 @@ class ReactionObjects(unittest.TestCase):
         """Test a cmf.SoluteRateReaction as constant source"""
         p, S = setup()
         A = p.solutes[0]
-        reaction = cmf.SoluteRateReaction(1.0).extend({A: (1, 0)})
+        reaction = cmf.SoluteRateReaction.constant_source(A, 1.0)
 
         S[A].reactions = [reaction]
         self.assertEqual(S[A].dxdt(t), 1.0, 'Change rate of solute does not equal reaction')
@@ -53,7 +53,7 @@ class ReactionObjects(unittest.TestCase):
         """Test cmf.SoluteRateReaction as linear decay"""
         p, S = setup()
         A = p.solutes[0]
-        reaction = cmf.SoluteRateReaction(1.0).extend({A: -1})
+        reaction = cmf.SoluteRateReaction.decay(A, 1.0)
         S[A].state = 1.0
         S[A].reactions = [reaction]
         self.assertEqual(S[A].dxdt(t), -1.0, 'Change rate of solute does not equal reaction')
@@ -80,7 +80,7 @@ class ReactionObjects(unittest.TestCase):
         """Test cmf.SoluteEquilibriumReaction"""
         p, S = setup()
         A, B = list(p.solutes)[:2]
-        reaction = cmf.SoluteRateReaction(1.0, 1.0).extend({A: -1, B: +1})
+        reaction = cmf.SoluteRateReaction(1.0, 1.0).update({A: -1, B: +1})
         S.volume = 1.0
         S[A].state = 1.0
         S[B].state = 0.0
@@ -121,11 +121,25 @@ class ReactionObjects(unittest.TestCase):
         self.assertEqual(S[B].dxdt(t), -1.0, 'dB/dt: Change rate of solute does not equal other Solute')
         self.assertEqual(S[C].dxdt(t), 1.0, 'Change rate of solute is changed by concentration of product')
 
-    def test_Reaction_07_rate_1st_order(self):
+    def test_Reaction_06_rate_2nd_order(self):
+        """Test cmf.Solute2ndOrderReaction"""
+        p, S = setup()
+        A, B, C = p.solutes[:]
+        reaction = cmf.SoluteRateReaction.multi({A: -1, B: -1, C: 2}, 1.0)
+        S.volume = 1.0
+        S[A].state = 0.5
+        S[B].state = 2.0
+        cmf.attach_reactions_to_waterstorage(S, [reaction])
+
+        self.assertEqual(S[A].dxdt(t), -1.0, 'dA/dt: Change rate of solute does not equal reaction')
+        self.assertEqual(S[B].dxdt(t), -1.0, 'dB/dt: Change rate of solute does not equal other Solute')
+        self.assertEqual(S[C].dxdt(t), 2.0, 'Change rate of solute is changed by concentration of product')
+
+    def test_Reaction_05_rate_1st_order(self):
         """Test cmf.SoluteRateReaction as 1st order reaction"""
         p, S = setup()
         A, B = p.solutes[:2]
-        reaction = cmf.SoluteRateReaction(1.0).extend({A: -1, B: 1})
+        reaction = cmf.SoluteRateReaction(1.0).update({A: -1, B: 1})
         S.volume = 1.0
         S[A].state = 1.0
         S[B].state = 0.0

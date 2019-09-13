@@ -4635,7 +4635,7 @@ SWIGINTERN bool cmf_List_Sl_cmf_water_SoluteReaction_ptr_Sg____contains__(cmf::L
         size_t index = self->index(what);
         return true;
     }
-    catch (const std::out_of_range& e)
+    catch (const std::out_of_range&)
     {
         return false;
     }
@@ -22315,7 +22315,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SoluteRateReaction_add_reactance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_SoluteRateReaction___add_reactance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::water::SoluteRateReaction *arg1 = (cmf::water::SoluteRateReaction *) 0 ;
   cmf::water::solute *arg2 = 0 ;
@@ -22339,12 +22339,12 @@ SWIGINTERN PyObject *_wrap_SoluteRateReaction_add_reactance(PyObject *SWIGUNUSED
     (char *)"self",  (char *)"solute",  (char *)"stoichiometric_coefficient",  (char *)"partial_order",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:SoluteRateReaction_add_reactance", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:SoluteRateReaction___add_reactance", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
   {
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteRateReaction_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoluteRateReaction_add_reactance" "', argument " "1"" of type '" "cmf::water::SoluteRateReaction *""'");
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoluteRateReaction___add_reactance" "', argument " "1"" of type '" "cmf::water::SoluteRateReaction *""'");
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::water::SoluteRateReaction > * >(argp1);
@@ -22357,21 +22357,21 @@ SWIGINTERN PyObject *_wrap_SoluteRateReaction_add_reactance(PyObject *SWIGUNUSED
   }
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SoluteRateReaction_add_reactance" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SoluteRateReaction___add_reactance" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SoluteRateReaction_add_reactance" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SoluteRateReaction___add_reactance" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
   }
   arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "SoluteRateReaction_add_reactance" "', argument " "3"" of type '" "real""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "SoluteRateReaction___add_reactance" "', argument " "3"" of type '" "real""'");
   } 
   arg3 = static_cast< real >(val3);
   if (obj3) {
     ecode4 = SWIG_AsVal_double(obj3, &val4);
     if (!SWIG_IsOK(ecode4)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "SoluteRateReaction_add_reactance" "', argument " "4"" of type '" "real""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "SoluteRateReaction___add_reactance" "', argument " "4"" of type '" "real""'");
     } 
     arg4 = static_cast< real >(val4);
   }
@@ -23515,60 +23515,6 @@ SWIGINTERN PyObject *SoluteDiffusiveTransport_swiginit(PyObject *SWIGUNUSEDPARM(
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_attach_reactions_to_waterstorage(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  std::shared_ptr< cmf::water::WaterStorage > arg1 ;
-  cmf::water::SoluteReactionList *arg2 = 0 ;
-  void *argp1 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"waterstorage",  (char *)"reactions",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:attach_reactions_to_waterstorage", kwnames, &obj0, &obj1)) SWIG_fail;
-  {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t,  0  | 0);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "attach_reactions_to_waterstorage" "', argument " "1"" of type '" "std::shared_ptr< cmf::water::WaterStorage >""'"); 
-    }  
-    if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "attach_reactions_to_waterstorage" "', argument " "1"" of type '" "std::shared_ptr< cmf::water::WaterStorage >""'");
-    } else {
-      std::shared_ptr< cmf::water::WaterStorage > * temp = reinterpret_cast< std::shared_ptr< cmf::water::WaterStorage > * >(argp1);
-      arg1 = *temp;
-      if (SWIG_IsNewObj(res1)) delete temp;
-    }
-  }
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__ListT_std__shared_ptrT_cmf__water__SoluteReaction_t_t,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "attach_reactions_to_waterstorage" "', argument " "2"" of type '" "cmf::water::SoluteReactionList const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "attach_reactions_to_waterstorage" "', argument " "2"" of type '" "cmf::water::SoluteReactionList const &""'"); 
-  }
-  arg2 = reinterpret_cast< cmf::water::SoluteReactionList * >(argp2);
-  {
-    try {
-      cmf::water::attach_reactions_to_waterstorage(arg1,(cmf::List< std::shared_ptr< cmf::water::SoluteReaction > > const &)*arg2);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown error");
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_clear_reactions_of_waterstorage(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   std::shared_ptr< cmf::water::WaterStorage > arg1 ;
@@ -24375,6 +24321,62 @@ SWIGINTERN PyObject *SoluteReactionList_swigregister(PyObject *SWIGUNUSEDPARM(se
 SWIGINTERN PyObject *SoluteReactionList_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
+
+SWIGINTERN PyObject *_wrap_attach_reactions_to_waterstorage(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  std::shared_ptr< cmf::water::WaterStorage > arg1 ;
+  cmf::water::SoluteReactionList *arg2 = 0 ;
+  void *argp1 ;
+  int res1 = 0 ;
+  cmf::List< cmf::water::SoluteReaction::ptr > temp_list2 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"waterstorage",  (char *)"reactions",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:attach_reactions_to_waterstorage", kwnames, &obj0, &obj1)) SWIG_fail;
+  {
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t,  0  | 0);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "attach_reactions_to_waterstorage" "', argument " "1"" of type '" "std::shared_ptr< cmf::water::WaterStorage >""'"); 
+    }  
+    if (!argp1) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "attach_reactions_to_waterstorage" "', argument " "1"" of type '" "std::shared_ptr< cmf::water::WaterStorage >""'");
+    } else {
+      std::shared_ptr< cmf::water::WaterStorage > * temp = reinterpret_cast< std::shared_ptr< cmf::water::WaterStorage > * >(argp1);
+      arg1 = *temp;
+      if (SWIG_IsNewObj(res1)) delete temp;
+    }
+  }
+  {
+    if (SWIG_ConvertPtr(obj1, (void **) &arg2, SWIGTYPE_p_cmf__ListT_std__shared_ptrT_cmf__water__SoluteReaction_t_t, SWIG_POINTER_EXCEPTION) == -1) {
+      int conversion_errors = 0;
+      int res = iterable_to_list<cmf::water::SoluteReaction::ptr, cmf::List<cmf::water::SoluteReaction::ptr>>(obj1,SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteReaction_t, temp_list2, &conversion_errors);
+      if (SWIG_IsOK(res)) {
+        arg2 = &temp_list2;
+      } else {
+        SWIG_exception_fail(SWIG_TypeError,"Only iterables can be converted to cmf::List<cmf::water::SoluteReaction::ptr>");
+      }
+    }
+  }
+  {
+    try {
+      attach_reactions_to_waterstorage(arg1,(cmf::List< std::shared_ptr< cmf::water::SoluteReaction > > const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown error");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
 
 SWIGINTERN PyObject *_wrap_SoluteStorage_set_adsorption(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
@@ -83621,8 +83623,8 @@ static PyMethodDef SwigMethods[] = {
 		"new_SoluteRateReaction(real kForward, real kBack=0.0) -> SoluteRateReaction\n"
 		"SoluteRateReaction(real kForward, real kBack=0.0) \n"
 		""},
-	 { "SoluteRateReaction_add_reactance", (PyCFunction)(void(*)(void))_wrap_SoluteRateReaction_add_reactance, METH_VARARGS|METH_KEYWORDS, "\n"
-		"SoluteRateReaction_add_reactance(SoluteRateReaction self, solute solute, real stoichiometric_coefficient, real partial_order=-999)\n"
+	 { "SoluteRateReaction___add_reactance", (PyCFunction)(void(*)(void))_wrap_SoluteRateReaction___add_reactance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"SoluteRateReaction___add_reactance(SoluteRateReaction self, solute solute, real stoichiometric_coefficient, real partial_order=-999)\n"
 		"SoluteReaction& add_reactance(const solute &solute, real\n"
 		"stoichiometric_coefficient, real partial_order=-999)\n"
 		"\n"
@@ -83675,14 +83677,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_SoluteDiffusiveTransport", _wrap_delete_SoluteDiffusiveTransport, METH_O, "delete_SoluteDiffusiveTransport(SoluteDiffusiveTransport self)"},
 	 { "SoluteDiffusiveTransport_swigregister", SoluteDiffusiveTransport_swigregister, METH_O, NULL},
 	 { "SoluteDiffusiveTransport_swiginit", SoluteDiffusiveTransport_swiginit, METH_VARARGS, NULL},
-	 { "attach_reactions_to_waterstorage", (PyCFunction)(void(*)(void))_wrap_attach_reactions_to_waterstorage, METH_VARARGS|METH_KEYWORDS, "\n"
-		"attach_reactions_to_waterstorage(std::shared_ptr< cmf::water::WaterStorage > waterstorage, SoluteReactionList reactions)\n"
-		"void cmf::water::attach_reactions_to_waterstorage(std::shared_ptr<\n"
-		"cmf::water::WaterStorage > waterstorage, const SoluteReactionList\n"
-		"&reactions)\n"
-		"\n"
-		"Attaches reactions to all solutes of a waterstorage. \n"
-		""},
 	 { "clear_reactions_of_waterstorage", (PyCFunction)(void(*)(void))_wrap_clear_reactions_of_waterstorage, METH_VARARGS|METH_KEYWORDS, "\n"
 		"clear_reactions_of_waterstorage(std::shared_ptr< cmf::water::WaterStorage > waterstorage)\n"
 		"void cmf::water::clear_reactions_of_waterstorage(std::shared_ptr<\n"
@@ -83736,6 +83730,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_SoluteReactionList", _wrap_delete_SoluteReactionList, METH_O, "delete_SoluteReactionList(SoluteReactionList self)"},
 	 { "SoluteReactionList_swigregister", SoluteReactionList_swigregister, METH_O, NULL},
 	 { "SoluteReactionList_swiginit", SoluteReactionList_swiginit, METH_VARARGS, NULL},
+	 { "attach_reactions_to_waterstorage", (PyCFunction)(void(*)(void))_wrap_attach_reactions_to_waterstorage, METH_VARARGS|METH_KEYWORDS, "attach_reactions_to_waterstorage(std::shared_ptr< cmf::water::WaterStorage > waterstorage, SoluteReactionList reactions)"},
 	 { "SoluteStorage_set_adsorption", (PyCFunction)(void(*)(void))_wrap_SoluteStorage_set_adsorption, METH_VARARGS|METH_KEYWORDS, "\n"
 		"SoluteStorage_set_adsorption(SoluteStorage self, Adsorption newadsorption, real m=-1)\n"
 		"void set_adsorption(const Adsorption &newadsorption, real m=-1) \n"
@@ -89677,8 +89672,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"new_SoluteRateReaction(real kForward, real kBack=0.0) -> SoluteRateReaction\n"
 		"SoluteRateReaction(real kForward, real kBack=0.0) \n"
 		""},
-	 { "SoluteRateReaction_add_reactance", (PyCFunction)(void(*)(void))_wrap_SoluteRateReaction_add_reactance, METH_VARARGS|METH_KEYWORDS, "\n"
-		"add_reactance(SoluteRateReaction self, solute solute, real stoichiometric_coefficient, real partial_order=-999)\n"
+	 { "SoluteRateReaction___add_reactance", (PyCFunction)(void(*)(void))_wrap_SoluteRateReaction___add_reactance, METH_VARARGS|METH_KEYWORDS, "\n"
+		"__add_reactance(SoluteRateReaction self, solute solute, real stoichiometric_coefficient, real partial_order=-999)\n"
 		"SoluteReaction& add_reactance(const solute &solute, real\n"
 		"stoichiometric_coefficient, real partial_order=-999)\n"
 		"\n"
@@ -89731,14 +89726,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_SoluteDiffusiveTransport", _wrap_delete_SoluteDiffusiveTransport, METH_O, "delete_SoluteDiffusiveTransport(SoluteDiffusiveTransport self)"},
 	 { "SoluteDiffusiveTransport_swigregister", SoluteDiffusiveTransport_swigregister, METH_O, NULL},
 	 { "SoluteDiffusiveTransport_swiginit", SoluteDiffusiveTransport_swiginit, METH_VARARGS, NULL},
-	 { "attach_reactions_to_waterstorage", (PyCFunction)(void(*)(void))_wrap_attach_reactions_to_waterstorage, METH_VARARGS|METH_KEYWORDS, "\n"
-		"attach_reactions_to_waterstorage(std::shared_ptr< cmf::water::WaterStorage > waterstorage, SoluteReactionList reactions)\n"
-		"void cmf::water::attach_reactions_to_waterstorage(std::shared_ptr<\n"
-		"cmf::water::WaterStorage > waterstorage, const SoluteReactionList\n"
-		"&reactions)\n"
-		"\n"
-		"Attaches reactions to all solutes of a waterstorage. \n"
-		""},
 	 { "clear_reactions_of_waterstorage", (PyCFunction)(void(*)(void))_wrap_clear_reactions_of_waterstorage, METH_VARARGS|METH_KEYWORDS, "\n"
 		"clear_reactions_of_waterstorage(std::shared_ptr< cmf::water::WaterStorage > waterstorage)\n"
 		"void cmf::water::clear_reactions_of_waterstorage(std::shared_ptr<\n"
@@ -89792,6 +89779,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_SoluteReactionList", _wrap_delete_SoluteReactionList, METH_O, "delete_SoluteReactionList(SoluteReactionList self)"},
 	 { "SoluteReactionList_swigregister", SoluteReactionList_swigregister, METH_O, NULL},
 	 { "SoluteReactionList_swiginit", SoluteReactionList_swiginit, METH_VARARGS, NULL},
+	 { "attach_reactions_to_waterstorage", (PyCFunction)(void(*)(void))_wrap_attach_reactions_to_waterstorage, METH_VARARGS|METH_KEYWORDS, "attach_reactions_to_waterstorage(std::shared_ptr< cmf::water::WaterStorage > waterstorage, SoluteReactionList reactions)"},
 	 { "SoluteStorage_set_adsorption", (PyCFunction)(void(*)(void))_wrap_SoluteStorage_set_adsorption, METH_VARARGS|METH_KEYWORDS, "\n"
 		"set_adsorption(SoluteStorage self, Adsorption newadsorption, real m=-1)\n"
 		"void set_adsorption(const Adsorption &newadsorption, real m=-1) \n"

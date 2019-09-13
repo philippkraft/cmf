@@ -96,7 +96,7 @@
 
 %feature("director") cmf::water::SoluteReaction;
 // %rename(__repr__) *::to_string();
-
+%rename(__add_reactance) cmf::water::SoluteRateReaction::add_reactance;
 %include "water/reaction.h"
 
 
@@ -112,18 +112,48 @@
 %iterable_to_list(cmf::List<cmf::water::SoluteReaction::ptr>,cmf::water::SoluteReaction::ptr);
 %template(SoluteReactionList) cmf::List<cmf::water::SoluteReaction::ptr>;
 
+void attach_reactions_to_waterstorage(
+        std::shared_ptr<cmf::water::WaterStorage> waterstorage,
+        const cmf::water::SoluteReactionList& reactions);
+
+
 %extend cmf::water::SoluteRateReaction {
     %pythoncode
     {
-        def extend(self, reactances):
+        def update(self, reactances):
             if any(not isinstance(s, solute) for s in reactances):
                 raise TypeError('All dict keys need to be cmf.solute objects')
             for s, value in reactances.items():
                 try:
-                    self.add_reactance(s, *value)
+                    self.__add_reactance(s, *value)
                 except TypeError:
-                    self.add_reactance(s, value)
+                    self.__add_reactance(s, value)
             return self
+
+        def append(self, solute, stoichiometric_coefficient, partial_order=None):
+            if partial_order is None:
+                self.__add_reactance(solute, stoichiometric_coefficient)
+            else:
+                self.__add_reactance(solute, stoichiometric_coefficient, partial_order)
+            return self
+
+        @classmethod
+        def decay(cls, solute, rate):
+            return cls(rate).append(solute, -1)
+
+        @classmethod
+        def constant_source(cls, solute, rate):
+            """
+            Creates a constant concentration source
+
+            @param solute: A cmf.solute
+            @param rate: The change rate of the concentration in mol/(m³ day)
+            """
+            return cls(rate).append(solute, 1, 0)
+
+        @classmethod
+        def multi(cls, reactances, k_forward, k_back=0.0):
+            return cls(k_forward, k_back).update(reactances)
     }
 }
 

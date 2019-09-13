@@ -254,17 +254,17 @@ namespace cmf {
         };
 
         typedef cmf::List<SoluteReaction::ptr> SoluteReactionList;
-
+#ifndef SWIG
         /// @ingroup Solutes
         /// @brief Attaches reactions to all solutes of a waterstorage.
         void attach_reactions_to_waterstorage(
                 std::shared_ptr<cmf::water::WaterStorage> waterstorage,
                 const SoluteReactionList& reactions);
+#endif
 
         /// @ingroup Solutes
         /// @brief Clear all reactions of a water storage
         void clear_reactions_of_waterstorage(std::shared_ptr<cmf::water::WaterStorage> waterstorage);
-
     }
 
 }
