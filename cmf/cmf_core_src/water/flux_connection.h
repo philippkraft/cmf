@@ -47,7 +47,6 @@ namespace cmf {
 			typedef std::weak_ptr<flux_node> weak_flux_node_ptr;
 		private:
 			friend class flux_node;
-			friend class flux_integrator;
 			static int nextconnectionid;
 			flux_connection(const flux_connection& copy):connection_id(nextconnectionid) {
 				throw std::runtime_error("Never copy construct a flux_connection");
@@ -58,7 +57,7 @@ namespace cmf {
 			real m_tracer_filter;
 			std::map < cmf::water::solute, real > m_tracer_filter_map;
 		protected:
-			virtual void NewNodes()=0;
+			virtual void NewNodes() {};
 			bool RecalcAlways;
 			virtual real calc_q(cmf::math::Time t) = 0;
 			real m_q; // Positive q means flux left to right
@@ -149,7 +148,7 @@ namespace cmf {
 		};
 
 		int replace_node(cmf::water::flux_node::ptr oldnode,cmf::water::flux_node::ptr newnode);
-		
+
 		/// A self sorting list of connections
 		class connection_list  
 		{

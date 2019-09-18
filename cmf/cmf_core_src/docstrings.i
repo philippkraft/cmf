@@ -13640,7 +13640,9 @@ E.g. solutes= solute_vector(\"dO18 dH2\") ";
 %feature("docstring")  cmf::water::solute_vector::end "const_iterator
 end() const ";
 
-%feature("docstring")  cmf::water::solute_vector::get_solute "cmf::water::solute* get_solute(int position) ";
+%feature("docstring")  cmf::water::solute_vector::find_by_name "cmf::water::solute find_by_name(const std::string &name) const ";
+
+%feature("docstring")  cmf::water::solute_vector::get_solute "cmf::water::solute get_solute(int position) ";
 
 %feature("docstring")  cmf::water::solute_vector::size "size_t size()
 const ";
@@ -13857,7 +13859,7 @@ C++ includes: reaction.h ";
 %feature("docstring")
 cmf::water::SoluteRateReaction::SoluteRateReaction "SoluteRateReaction(real kForward, real kBack=0.0) ";
 
-%feature("docstring")  cmf::water::SoluteRateReaction::add_reactance "SoluteReaction& add_reactance(const solute &solute, real
+%feature("docstring")  cmf::water::SoluteRateReaction::add_reactance "void add_reactance(const solute &solute, real
 stoichiometric_coefficient, real partial_order=-999)
 
 Use positive stoichiometric_coefficient for products and negative for
@@ -13870,7 +13872,7 @@ get_flux(const SoluteStorage &solute_storage, const cmf::math::Time
 Calculates the reactive flux from / to the given solute storage at
 time t. ";
 
-%feature("docstring")  cmf::water::SoluteRateReaction::is_compatible "virtual bool is_compatible(const SoluteStorage &solute_storage)
+%feature("docstring")  cmf::water::SoluteRateReaction::is_compatible "bool is_compatible(const SoluteStorage &solute_storage) override
 
 Tests if the reaction is compatible to a solute storage. Returns true
 if not overwritten by a child class. ";
@@ -15455,6 +15457,37 @@ typecode() const ";
 
 %feature("docstring")  cmf::river::SWATReachType::V "virtual double
 V(double h) const ";
+
+
+// File: class_swig_director___base_connection.xml
+%feature("docstring") SwigDirector_BaseConnection "";
+
+%feature("docstring")
+SwigDirector_BaseConnection::SwigDirector_BaseConnection "SwigDirector_BaseConnection(PyObject *self,
+cmf::water::WaterStorage::ptr left, cmf::water::flux_node::ptr right,
+std::string type) ";
+
+%feature("docstring")
+SwigDirector_BaseConnection::~SwigDirector_BaseConnection "virtual
+~SwigDirector_BaseConnection() ";
+
+%feature("docstring")  SwigDirector_BaseConnection::calc_q "virtual
+real calc_q(cmf::math::Time t) ";
+
+%feature("docstring")  SwigDirector_BaseConnection::NewNodes "virtual
+void NewNodes() ";
+
+%feature("docstring")  SwigDirector_BaseConnection::NewNodesSwigPublic
+"virtual void NewNodesSwigPublic() ";
+
+%feature("docstring")  SwigDirector_BaseConnection::short_string "virtual std::string short_string() const ";
+
+%feature("docstring")  SwigDirector_BaseConnection::swig_get_inner "bool swig_get_inner(const char *swig_protected_method_name) const ";
+
+%feature("docstring")  SwigDirector_BaseConnection::swig_set_inner "void swig_set_inner(const char *swig_protected_method_name, bool
+swig_val) const ";
+
+%feature("docstring")  SwigDirector_BaseConnection::to_string "virtual std::string to_string() const ";
 
 
 // File: class_swig_director___solute_reaction.xml

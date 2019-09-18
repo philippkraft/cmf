@@ -22,8 +22,6 @@
 %shared_ptr(cmf::water::WaterStorage);
 %shared_ptr(cmf::water::DirichletBoundary);
 %shared_ptr(cmf::water::NeumannBoundary);
-%shared_ptr(cmf::water::SystemBridge);
-
 %shared_ptr(cmf::water::waterbalance_integrator);
 %shared_ptr(cmf::water::flux_integrator);
 
@@ -84,6 +82,30 @@ namespace cmf{namespace water {class flux_connection;}}
     def __contains__(self,cmp):
         return cmp==self[0] or cmp==self[1]
 }}
+%{
+    namespace cmf { namespace water {
+        class BaseConnection: public flux_connection{
+            public:
+            BaseConnection(cmf::water::WaterStorage::ptr left, cmf::water::flux_node::ptr right, std::string type)
+            : flux_connection(left, right, type) {}
+            real calc_q(cmf::math::Time t) override    {
+                throw std::runtime_error("BaseConnection.calc_q needs to be overriden by child class");
+            }
+    };
+
+    }}
+%}
+
+%feature("director") cmf::water::BaseConnection;
+
+namespace cmf { namespace water {
+    class BaseConnection: public flux_connection{
+    public:
+        BaseConnection(cmf::water::WaterStorage::ptr left, cmf::water::flux_node::ptr right, std::string type);
+        virtual real calc_q(cmf::math::Time t);
+    };
+}}
+
 %extend cmf::water::connection_list {
     size_t __len__() const { return $self->size();}
     bool __contains__(const cmf::water::flux_connection::ptr& con) const { return $self->contains(con);}

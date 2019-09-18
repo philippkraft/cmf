@@ -1363,17 +1363,46 @@ class SoluteRateReaction(SoluteReaction):
         SoluteRateReaction(real kForward, real kBack=0.0) 
         """
         _cmf_core.SoluteRateReaction_swiginit(self, _cmf_core.new_SoluteRateReaction(*args, **kwargs))
-    add_reactance = _swig_new_instance_method(_cmf_core.SoluteRateReaction_add_reactance)
+    __add_reactance = _swig_new_instance_method(_cmf_core.SoluteRateReaction___add_reactance)
 
-    def extend(self, reactances):
+    def __repr__(self):
+        return self.to_string()
+
+
+    def update(self, reactances):
         if any(not isinstance(s, solute) for s in reactances):
             raise TypeError('All dict keys need to be cmf.solute objects')
         for s, value in reactances.items():
             try:
-                self.add_reactance(s, *value)
+                self.__add_reactance(s, *value)
             except TypeError:
-                self.add_reactance(s, value)
+                self.__add_reactance(s, value)
         return self
+
+    def append(self, solute, stoichiometric_coefficient, partial_order=None):
+        if partial_order is None:
+            self.__add_reactance(solute, stoichiometric_coefficient)
+        else:
+            self.__add_reactance(solute, stoichiometric_coefficient, partial_order)
+        return self
+
+    @classmethod
+    def decay(cls, solute, rate):
+        return cls(rate).append(solute, -1)
+
+    @classmethod
+    def constant_source(cls, solute, rate):
+        """
+        Creates a constant concentration source
+
+        @param solute: A cmf.solute
+        @param rate: The change rate of the concentration in mol/(m³ day)
+        """
+        return cls(rate).append(solute, 1, 0)
+
+    @classmethod
+    def multi(cls, reactances, k_forward, k_back=0.0):
+        return cls(k_forward, k_back).update(reactances)
 
     __swig_destroy__ = _cmf_core.delete_SoluteRateReaction
 
@@ -1523,7 +1552,6 @@ class SoluteDiffusiveTransport(SoluteReaction):
 # Register SoluteDiffusiveTransport in _cmf_core:
 _cmf_core.SoluteDiffusiveTransport_swigregister(SoluteDiffusiveTransport)
 
-attach_reactions_to_waterstorage = _cmf_core.attach_reactions_to_waterstorage
 clear_reactions_of_waterstorage = _cmf_core.clear_reactions_of_waterstorage
 class SoluteReactionList(object):
     r"""Proxy of C++ cmf::List< cmf::water::SoluteReaction::ptr > class."""
@@ -1560,6 +1588,7 @@ class SoluteReactionList(object):
 # Register SoluteReactionList in _cmf_core:
 _cmf_core.SoluteReactionList_swigregister(SoluteReactionList)
 
+attach_reactions_to_waterstorage = _cmf_core.attach_reactions_to_waterstorage
 class SoluteStorage(StateVariable):
     r"""
 
@@ -1769,6 +1798,30 @@ class connection_list(object):
 
 # Register connection_list in _cmf_core:
 _cmf_core.connection_list_swigregister(connection_list)
+
+class BaseConnection(flux_connection):
+    r"""Proxy of C++ cmf::water::BaseConnection class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        r"""__init__(BaseConnection self, cmf::water::WaterStorage::ptr left, cmf::water::flux_node::ptr right, std::string type) -> BaseConnection"""
+        if self.__class__ == BaseConnection:
+            _self = None
+        else:
+            _self = self
+        _cmf_core.BaseConnection_swiginit(self, _cmf_core.new_BaseConnection(_self, *args, **kwargs))
+    calc_q = _swig_new_instance_method(_cmf_core.BaseConnection_calc_q)
+    __swig_destroy__ = _cmf_core.delete_BaseConnection
+    def __disown__(self):
+        self.this.disown()
+        _cmf_core.disown_BaseConnection(self)
+        return weakref.proxy(self)
+    NewNodes = _swig_new_instance_method(_cmf_core.BaseConnection_NewNodes)
+
+# Register BaseConnection in _cmf_core:
+_cmf_core.BaseConnection_swigregister(BaseConnection)
 
 class linear_scale(object):
     r"""
