@@ -78114,7 +78114,15 @@ static PyMethodDef SwigMethods[] = {
 		"virtual void add_connected_states(cmf::math::StateVariable::list\n"
 		"&states) \n"
 		""},
-	 { "SoluteStorage_set_abs_errtol", (PyCFunction)(void(*)(void))_wrap_SoluteStorage_set_abs_errtol, METH_VARARGS|METH_KEYWORDS, "SoluteStorage_set_abs_errtol(SoluteStorage self, real scale)"},
+	 { "SoluteStorage_set_abs_errtol", (PyCFunction)(void(*)(void))_wrap_SoluteStorage_set_abs_errtol, METH_VARARGS|METH_KEYWORDS, "\n"
+		"SoluteStorage_set_abs_errtol(SoluteStorage self, real scale)\n"
+		"void set_abs_errtol(real scale)\n"
+		"\n"
+		"Sets a scaling factor for the absolute error tolerance of this storage\n"
+		"in terms of the absolute error tolerance of the owning waterstorage.\n"
+		"\n"
+		"The absolute error tolerance \n"
+		""},
 	 { "SoluteStorage_conc_set", _wrap_SoluteStorage_conc_set, METH_VARARGS, "SoluteStorage_conc_set(SoluteStorage self, real conc)"},
 	 { "SoluteStorage_conc_get", _wrap_SoluteStorage_conc_get, METH_O, "SoluteStorage_conc_get(SoluteStorage self) -> real"},
 	 { "delete_SoluteStorage", _wrap_delete_SoluteStorage, METH_O, "delete_SoluteStorage(SoluteStorage self)"},
@@ -83958,7 +83966,15 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"virtual void add_connected_states(cmf::math::StateVariable::list\n"
 		"&states) \n"
 		""},
-	 { "SoluteStorage_set_abs_errtol", (PyCFunction)(void(*)(void))_wrap_SoluteStorage_set_abs_errtol, METH_VARARGS|METH_KEYWORDS, "set_abs_errtol(SoluteStorage self, real scale)"},
+	 { "SoluteStorage_set_abs_errtol", (PyCFunction)(void(*)(void))_wrap_SoluteStorage_set_abs_errtol, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_abs_errtol(SoluteStorage self, real scale)\n"
+		"void set_abs_errtol(real scale)\n"
+		"\n"
+		"Sets a scaling factor for the absolute error tolerance of this storage\n"
+		"in terms of the absolute error tolerance of the owning waterstorage.\n"
+		"\n"
+		"The absolute error tolerance \n"
+		""},
 	 { "SoluteStorage_conc_set", _wrap_SoluteStorage_conc_set, METH_VARARGS, "SoluteStorage_conc_set(SoluteStorage self, real conc)"},
 	 { "SoluteStorage_conc_get", _wrap_SoluteStorage_conc_get, METH_O, "SoluteStorage_conc_get(SoluteStorage self) -> real"},
 	 { "delete_SoluteStorage", _wrap_delete_SoluteStorage, METH_O, "delete_SoluteStorage(SoluteStorage self)"},

@@ -13573,7 +13573,7 @@ dxdt(const cmf::math::Time &time)
 
 Returns the derivate of the state variable at time time. ";
 
-%feature("docstring")  cmf::water::SoluteStorage::get_abs_errtol "virtual real get_abs_errtol(real rel_errtol) const ";
+%feature("docstring")  cmf::water::SoluteStorage::get_abs_errtol "real get_abs_errtol(real rel_errtol) const override ";
 
 %feature("docstring")  cmf::water::SoluteStorage::get_conc "real
 get_conc() const
@@ -13593,6 +13593,13 @@ get the waterstorge of the solute storage ";
 %feature("docstring")  cmf::water::SoluteStorage::is_connected "virtual bool is_connected(const cmf::math::StateVariable &other) const
 
 Returns True if this solute storage is effected by another state. ";
+
+%feature("docstring")  cmf::water::SoluteStorage::set_abs_errtol "void set_abs_errtol(real scale)
+
+Sets a scaling factor for the absolute error tolerance of this storage
+in terms of the absolute error tolerance of the owning waterstorage.
+
+The absolute error tolerance ";
 
 %feature("docstring")  cmf::water::SoluteStorage::set_adsorption "void set_adsorption(const Adsorption &newadsorption, real m=-1) ";
 
@@ -17494,6 +17501,56 @@ the minimum height of any (possibly distant) upstream reach. ";
 cmf.timetools.datetime_to_cmf(date)
 
 Converts a python datetime to cmf.Time ";
+
+%feature("docstring")  cmf::timetools::pandas_series_to_timeseries "def cmf.timetools.pandas_series_to_timeseries(cls, series,
+regularize='warning') ";
+
+%feature("docstring")  cmf::timetools::timeseries___getstate__ "def
+cmf.timetools.timeseries___getstate__(self) ";
+
+%feature("docstring")  cmf::timetools::timeseries___setstate__ "def
+cmf.timetools.timeseries___setstate__(self, data) ";
+
+%feature("docstring")  cmf::timetools::timeseries_from_buffer "def
+cmf.timetools.timeseries_from_buffer(cls, buf) ";
+
+%feature("docstring")  cmf::timetools::timeseries_from_file "def
+cmf.timetools.timeseries_from_file(cls, f)
+
+Loads a timeseries saved with to_file from a file Description of the
+file layout: byte: 0   Number of (int64) 8   Begin of timeseries (in
+ms since 31.12.1899 00:00) (int64) 16  Step size of timeseries (in ms)
+(int64) 24  Interpolation power (int64) 32  First value of timeseries
+(float64) ";
+
+%feature("docstring")  cmf::timetools::timeseries_from_sequence "def
+cmf.timetools.timeseries_from_sequence(cls, begin, step, sequence,
+interpolation_mode=1) ";
+
+%feature("docstring")  cmf::timetools::timeseries_iter_time "def
+cmf.timetools.timeseries_iter_time(self)
+
+Returns an iterator to iterate over each timestep ";
+
+%feature("docstring")  cmf::timetools::timeseries_to_buffer "def
+cmf.timetools.timeseries_to_buffer(self)
+
+Returns a binary buffer filled with the data of self ";
+
+%feature("docstring")  cmf::timetools::timeseries_to_file "def
+cmf.timetools.timeseries_to_file(self, f)
+
+Saves a timeseries in a special binary format. The format consists of
+4 integers with 64 bit, indicating the milliseconds after the
+31.12.1899 00:00 of the beginning of the timeseries, the milliseconds
+of the time step, the interpolation power and the number of values.
+The following 64 bit floats, are the values of the timeseries ";
+
+%feature("docstring")  cmf::timetools::timeseries_to_pandas "def
+cmf.timetools.timeseries_to_pandas(self)
+
+Returns the timeseries as a pandas Series object :return: A
+pandas.Series object with the timesteps as index ";
 
 
 // File: namespacecmf_1_1upslope.xml
