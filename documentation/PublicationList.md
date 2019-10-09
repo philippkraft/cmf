@@ -20,7 +20,7 @@ If you are refering to cmf in a publication, please cite:
 ## Applications in peer reviewed journal articles
 
   - Mewes, B. and Schumann, A. H.: IPA (v1): a framework for agent-based modelling of soil water movement, 
-    Geosci. Model Dev., 11(6), 2175–2187, doi:10.5194/gmd-11-2175-2018, 2018.
+    Geosci. Model Dev., 11(6), 2175–2187, [doi:10.5194/gmd-11-2175-2018](https://doi.org/10.5194/gmd-11-2175-2018), 2018.
   - Jehn, F. U., Breuer, L., Houska, T., Bestian, K., and Kraft, P.: 
     Incremental model breakdown to assess the multi-hypotheses problem, 
     Hydrol. Earth Syst. Sci., 22, 4565-4581, 
