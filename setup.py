@@ -24,6 +24,7 @@ import os
 import io
 import re
 import time
+import glob
 
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
@@ -452,5 +453,6 @@ if __name__ == '__main__':
           classifiers=classifiers,
           cmdclass=dict(build_py=build_py,
                         build_ext=CmfBuildExt),
+          package_data={'':['*.h']}
           )
 
