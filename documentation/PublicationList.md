@@ -15,10 +15,18 @@ If you are refering to cmf in a publication, please cite:
   - Kraft, P. (2012), A hydrological programming language extension for
     integrated catchment models [online available](https://geb.uni-giessen.de/geb/volltexte/2012/8759/pdf/KraftPhilipp_2012_03_16.pdf)
   - Maier, N. (2018), A new method for spatio-temporally explicit predictions of groundwater, 
-    surface water and habitat interactions in riparian ecosystems [online available](http://geb.uni-giessen.de/geb/volltexte/2018/13746/pdf/MaierNadine_2018_09_21.pdf)
+    surface water and habitat interactions in riparian ecosystems [online available](https://geb.uni-giessen.de/geb/volltexte/2018/13746/pdf/MaierNadine_2018_09_21.pdf)
 
 ## Applications in peer reviewed journal articles
 
+  - Jehn, F. U., Chamorro, A., Houska, T. and Breuer, L.: 
+    Trade-offs between parameter constraints and model realism: a case study, 
+    Sci Rep, 9(1), 10729, 
+    doi:10.1038/s41598-019-46963-6, 2019.
+  - Weeser, B., Jacobs, S., Kraft, P., Rufino, M. C. and Breuer, L.: 
+    Rainfall‐Runoff Modeling Using Crowdsourced Water Level Data, 
+    Water Resour. Res., 2019WR025248, 
+    doi:10.1029/2019WR025248, 2019.
   - Gattringer, J. P., Maier, N., Breuer, L., Otte, A., Donath, T. W., Kraft, P., & Harvolk‐Schöning, S. (2019). 
     Modeling of rare flood meadow species distribution by a combined habitat‐surface water‐groundwater model. Ecohydrology, e2122. 
     https://doi.org/10.1002/eco.2122
