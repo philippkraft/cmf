@@ -19,17 +19,15 @@ If you are refering to cmf in a publication, please cite:
 
 ## Applications in peer reviewed journal articles
 
-  - Jehn, F. U., Chamorro, A., Houska, T. and Breuer, L.: 
-    Trade-offs between parameter constraints and model realism: a case study, 
-    Sci Rep, 9(1), 10729, 
-    doi:10.1038/s41598-019-46963-6, 2019.
-  - Weeser, B., Jacobs, S., Kraft, P., Rufino, M. C. and Breuer, L.: 
-    Rainfall‐Runoff Modeling Using Crowdsourced Water Level Data, 
-    Water Resour. Res., 2019WR025248, 
-    doi:10.1029/2019WR025248, 2019.
-  - Gattringer, J. P., Maier, N., Breuer, L., Otte, A., Donath, T. W., Kraft, P., & Harvolk‐Schöning, S. (2019). 
-    Modeling of rare flood meadow species distribution by a combined habitat‐surface water‐groundwater model. Ecohydrology, e2122. 
-    https://doi.org/10.1002/eco.2122
+  - Jehn, F. U., Chamorro, A., Houska, T., & Breuer, L. (2019). 
+    Trade-offs between parameter constraints and model realism: a case study. 
+    Scientific Reports, 9(1), 10729. https://doi.org/10.1038/s41598-019-46963-6
+  - Weeser, B., Jacobs, S., Kraft, P., Rufino, M. C., & Breuer, L. (2019). 
+    Rainfall‐Runoff Modeling Using Crowdsourced Water Level Data. 
+    Water Resources Research, 2019WR025248. https://doi.org/10.1029/2019WR025248
+  - Gattringer, J. P., Maier, N., Breuer, L., Otte, A., Donath, T. W., Kraft, P., & Harvolk‐Schöning, S. (2019).
+    Modeling of rare flood meadow species distribution by a combined habitat‐surface water‐groundwater model.
+    Ecohydrology, e2122. https://doi.org/10.1002/eco.2122
   - Kellner, J., Houska, T., Manderscheid, R., Weigel, H., Breuer, L., & Kraft, P. (2019).:
     Response of maize biomass and soil water fluxes on elevated \f$CO_2\f$ and drought – 
     from field experiments to process‐based simulations. 
