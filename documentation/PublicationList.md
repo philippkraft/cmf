@@ -19,26 +19,26 @@ If you are refering to cmf in a publication, please cite:
 
 ## Applications in peer reviewed journal articles
 
-  - Jehn, F. U., Chamorro, A., Houska, T., & Breuer, L. (2019). 
-    Trade-offs between parameter constraints and model realism: a case study. 
+  - Jehn, F. U., Chamorro, A., Houska, T., & Breuer, L. (2019).
+    Trade-offs between parameter constraints and model realism: a case study.
     Scientific Reports, 9(1), 10729. https://doi.org/10.1038/s41598-019-46963-6
-  - Weeser, B., Jacobs, S., Kraft, P., Rufino, M. C., & Breuer, L. (2019). 
-    Rainfall‐Runoff Modeling Using Crowdsourced Water Level Data. 
+  - Weeser, B., Jacobs, S., Kraft, P., Rufino, M. C., & Breuer, L. (2019).
+    Rainfall‐Runoff Modeling Using Crowdsourced Water Level Data.
     Water Resources Research, 2019WR025248. https://doi.org/10.1029/2019WR025248
   - Gattringer, J. P., Maier, N., Breuer, L., Otte, A., Donath, T. W., Kraft, P., & Harvolk‐Schöning, S. (2019).
     Modeling of rare flood meadow species distribution by a combined habitat‐surface water‐groundwater model.
     Ecohydrology, e2122. https://doi.org/10.1002/eco.2122
   - Kellner, J., Houska, T., Manderscheid, R., Weigel, H., Breuer, L., & Kraft, P. (2019).:
-    Response of maize biomass and soil water fluxes on elevated \f$CO_2\f$ and drought – 
-    from field experiments to process‐based simulations. 
+    Response of maize biomass and soil water fluxes on elevated \f$CO_2\f$ and drought –
+    from field experiments to process‐based simulations.
     Global Change Biology. https://doi.org/10.1111/gcb.14723
-  - Jehn, F. U., Breuer, L., Houska, T., Bestian, K., and Kraft, P.: 
+  - Jehn, F. U., Breuer, L., Houska, T., Bestian, K., and Kraft, P.:
     Incremental model breakdown to assess the multi-hypotheses problem, 
     Hydrol. Earth Syst. Sci., 22, 4565-4581, 
-    [doi:10.5194/hess-22-4565-2018](https://doi.org/10.5194/hess-22-4565-2018), 2018. 
+    [doi:10.5194/hess-22-4565-2018](https://doi.org/10.5194/hess-22-4565-2018), 2018.
   - Maier, N., Breuer, L., Chamorro A., Kraft, P., Houska, T.: Multi-Source 
     Uncertainty Analysis in Simulating Floodplain Inundation under Climate Change
-    Water 10(6), 809; [doi:10.3390/w1006080](https://www.mdpi.com/2073-4441/10/6/809) 2018 
+    Water 10(6), 809; [doi:10.3390/w1006080](https://www.mdpi.com/2073-4441/10/6/809) 2018
   - Maier, N., Breuer, L., Kraft, P.: Prediction and uncertainty
     analysis of a parsimonious floodplain surface water - groundwater
     interaction model, Water Resources Research,
@@ -72,20 +72,20 @@ If you are refering to cmf in a publication, please cite:
   - Windhorst, D., Kraft, P., Timbe, E., Frede, H. G., & Breuer, L.
     (2014). Stable water isotope tracing through hydrological models for
     disentangling runoff generation processes at the hillslope scale.
-    Hydrology and Earth System Sciences, 18(10), 4113-4127. 
+    Hydrology and Earth System Sciences, 18(10), 4113-4127.
     [doi:10.5194/hess-18-4113-2014](http://www.hydrol-earth-syst-sci.net/18/4113/2014/hess-18-4113-2014.pdf)
   - Houska, T., Multsch, S., Kraft, P., Frede, H.-G. and Breuer, L.:
     Monte Carlo-based calibration and uncertainty analysis of a coupled
     plant growth and hydrological model, Biogeosciences, 11(7),
-    2069–2082, [doi:10.5194/bg-11-2069-2014](https://doi.org/10.5194/bg-11-2069-2014), 2014. 
+    2069–2082, [doi:10.5194/bg-11-2069-2014](https://doi.org/10.5194/bg-11-2069-2014), 2014.
   - Haas, E., Klatt, S., Fröhlich, A., Kraft, P., Werner, C., Kiese, R.,
     Grote, R., Breuer, L., Butterbach-Bahl, K., 2012. LandscapeDNDC: a
     process model for simulation of biosphere–atmosphere–hydrosphere
-    exchange processes at site and regional scale. Landscape Ecol. 
+    exchange processes at site and regional scale. Landscape Ecol.
     [doi:10.1007/s10980-012-9772-x](https://doi.org/10.1007/s10980-012-9772-x)
   - Kraft, P., Multsch, S., Vaché, K.B., Frede, H.-G. Breuer, L. 2010.
     Using Python as a coupling platform for integrated catchment models.
-    Advances in Geosciences 27, 51-56. 
+    Advances in Geosciences 27, 51-56.
     [doi:10.5194/adgeo-27-51-2010](http://www.adv-geosci.net/27/51/2010/adgeo-27-51-2010.pdf)
   - Holländer, H.M., Blume, T., Bormann, H., Buytaert, W., Chirico,
     G.B., Exbrayat, J.F., Gustafsson, D., Hölzel, H., Kraft, P., Stamm,

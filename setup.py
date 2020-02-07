@@ -21,6 +21,7 @@
 from __future__ import print_function, division
 import sys
 import os
+import platform
 import io
 import re
 import time
@@ -235,9 +236,13 @@ def make_cmf_core():
 
         compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-deprecated', '-Wno-unused', '-Wno-sign-compare', '-ggdb',
                         '-std=c++11']
+        link_args = ['-ggdb']
+
         if sys.platform == 'darwin':
             compile_args += ["-stdlib=libc++"]
-        link_args = ['-ggdb']
+            if int(platform.mac_ver()[0].split(".")[1]) >= 14:
+                link_args += ["-stdlib=libc++", "-mmacosx-version-min=10.9"]
+
         libraries = []
 
         # Disable OpenMP on Mac see https://github.com/alejandrobll/py-sphviewer/issues/3
