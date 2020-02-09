@@ -31,7 +31,7 @@ from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import customize_compiler
 from distutils.command.build_py import build_py
 
-version = '1.6'
+version = '1.6.0'
 branchversion = version
 try:
     from pygit2 import Repository

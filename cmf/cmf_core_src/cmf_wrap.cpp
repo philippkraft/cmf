@@ -86608,23 +86608,82 @@ static PyMethodDef SwigMethods[] = {
 	 { "timeseries_swigregister", timeseries_swigregister, METH_O, NULL},
 	 { "timeseries_swiginit", timeseries_swiginit, METH_VARARGS, NULL},
 	 { "nash_sutcliffe", (PyCFunction)(void(*)(void))_wrap_nash_sutcliffe, METH_VARARGS|METH_KEYWORDS, "nash_sutcliffe(timeseries model, timeseries observation) -> double"},
-	 { "integratable_integrate", (PyCFunction)(void(*)(void))_wrap_integratable_integrate, METH_VARARGS|METH_KEYWORDS, "integratable_integrate(integratable self, Time t)"},
-	 { "integratable_reset", (PyCFunction)(void(*)(void))_wrap_integratable_reset, METH_VARARGS|METH_KEYWORDS, "integratable_reset(integratable self, Time t)"},
-	 { "integratable_sum", _wrap_integratable_sum, METH_O, "integratable_sum(integratable self) -> double"},
-	 { "integratable_avg", _wrap_integratable_avg, METH_O, "integratable_avg(integratable self) -> double"},
+	 { "integratable_integrate", (PyCFunction)(void(*)(void))_wrap_integratable_integrate, METH_VARARGS|METH_KEYWORDS, "\n"
+		"integratable_integrate(integratable self, Time t)\n"
+		"virtual\n"
+		"void integrate(Time t)=0\n"
+		"\n"
+		"Integrates the variable until time t. \n"
+		""},
+	 { "integratable_reset", (PyCFunction)(void(*)(void))_wrap_integratable_reset, METH_VARARGS|METH_KEYWORDS, "\n"
+		"integratable_reset(integratable self, Time t)\n"
+		"virtual void\n"
+		"reset(Time t)=0\n"
+		"\n"
+		"Sets the start time of the integral. \n"
+		""},
+	 { "integratable_sum", _wrap_integratable_sum, METH_O, "\n"
+		"integratable_sum(integratable self) -> double\n"
+		"virtual double\n"
+		"sum() const =0\n"
+		"\n"
+		"Get the integral from the last reset until the last call of integrate.\n"
+		"\n"
+		""},
+	 { "integratable_avg", _wrap_integratable_avg, METH_O, "\n"
+		"integratable_avg(integratable self) -> double\n"
+		"virtual double\n"
+		"avg() const =0\n"
+		"\n"
+		"Returns average of the integrated variable (eg. flux) from the last\n"
+		"reset until the last call of integrate. \n"
+		""},
 	 { "delete_integratable", _wrap_delete_integratable, METH_O, "delete_integratable(integratable self)"},
 	 { "integratable_swigregister", integratable_swigregister, METH_O, NULL},
-	 { "integratable_list_append", (PyCFunction)(void(*)(void))_wrap_integratable_list_append, METH_VARARGS|METH_KEYWORDS, "integratable_list_append(integratable_list self, cmf::math::integratable::ptr add)"},
-	 { "integratable_list_remove", (PyCFunction)(void(*)(void))_wrap_integratable_list_remove, METH_VARARGS|METH_KEYWORDS, "integratable_list_remove(integratable_list self, cmf::math::integratable::ptr rm)"},
+	 { "integratable_list_append", (PyCFunction)(void(*)(void))_wrap_integratable_list_append, METH_VARARGS|METH_KEYWORDS, "\n"
+		"integratable_list_append(integratable_list self, cmf::math::integratable::ptr add)\n"
+		"void\n"
+		"append(cmf::math::integratable::ptr add)\n"
+		"\n"
+		"Adds an integratable to the list. \n"
+		""},
+	 { "integratable_list_remove", (PyCFunction)(void(*)(void))_wrap_integratable_list_remove, METH_VARARGS|METH_KEYWORDS, "\n"
+		"integratable_list_remove(integratable_list self, cmf::math::integratable::ptr rm)\n"
+		"void\n"
+		"remove(cmf::math::integratable::ptr rm)\n"
+		"\n"
+		"Removes an integratable from the list. \n"
+		""},
 	 { "integratable_list___getitem", (PyCFunction)(void(*)(void))_wrap_integratable_list___getitem, METH_VARARGS|METH_KEYWORDS, "integratable_list___getitem(integratable_list self, int index) -> cmf::math::integratable::ptr"},
-	 { "integratable_list_size", _wrap_integratable_list_size, METH_O, "integratable_list_size(integratable_list self) -> size_t"},
-	 { "integratable_list_avg", _wrap_integratable_list_avg, METH_O, "integratable_list_avg(integratable_list self) -> cmf::math::num_array"},
-	 { "integratable_list_sum", _wrap_integratable_list_sum, METH_O, "integratable_list_sum(integratable_list self) -> cmf::math::num_array"},
-	 { "integratable_list_reset", (PyCFunction)(void(*)(void))_wrap_integratable_list_reset, METH_VARARGS|METH_KEYWORDS, "integratable_list_reset(integratable_list self, Time t)"},
-	 { "integratable_list_integrate", (PyCFunction)(void(*)(void))_wrap_integratable_list_integrate, METH_VARARGS|METH_KEYWORDS, "integratable_list_integrate(integratable_list self, Time t)"},
+	 { "integratable_list_size", _wrap_integratable_list_size, METH_O, "\n"
+		"integratable_list_size(integratable_list self) -> size_t\n"
+		"size_t\n"
+		"size() const\n"
+		"\n"
+		"Number of integratables in the list. \n"
+		""},
+	 { "integratable_list_avg", _wrap_integratable_list_avg, METH_O, "\n"
+		"integratable_list_avg(integratable_list self) -> cmf::math::num_array\n"
+		"cmf::math::num_array avg() const \n"
+		""},
+	 { "integratable_list_sum", _wrap_integratable_list_sum, METH_O, "\n"
+		"integratable_list_sum(integratable_list self) -> cmf::math::num_array\n"
+		"cmf::math::num_array sum() const \n"
+		""},
+	 { "integratable_list_reset", (PyCFunction)(void(*)(void))_wrap_integratable_list_reset, METH_VARARGS|METH_KEYWORDS, "\n"
+		"integratable_list_reset(integratable_list self, Time t)\n"
+		"void\n"
+		"reset(Time t) \n"
+		""},
+	 { "integratable_list_integrate", (PyCFunction)(void(*)(void))_wrap_integratable_list_integrate, METH_VARARGS|METH_KEYWORDS, "\n"
+		"integratable_list_integrate(integratable_list self, Time t)\n"
+		"void\n"
+		"integrate(Time t) \n"
+		""},
 	 { "new_integratable_list", _wrap_new_integratable_list, METH_VARARGS, "\n"
 		"integratable_list()\n"
 		"new_integratable_list(integratable_list for_copy) -> integratable_list\n"
+		"integratable_list(const integratable_list &for_copy) \n"
 		""},
 	 { "integratable_list___len__", _wrap_integratable_list___len__, METH_O, "integratable_list___len__(integratable_list self) -> size_t"},
 	 { "delete_integratable_list", _wrap_delete_integratable_list, METH_O, "delete_integratable_list(integratable_list self)"},
@@ -86653,17 +86712,43 @@ static PyMethodDef SwigMethods[] = {
 	 { "StateVariable_state_set", _wrap_StateVariable_state_set, METH_VARARGS, "StateVariable_state_set(StateVariable self, real state)"},
 	 { "StateVariable_state_get", _wrap_StateVariable_state_get, METH_O, "StateVariable_state_get(StateVariable self) -> real"},
 	 { "StateVariable_swigregister", StateVariable_swigregister, METH_O, NULL},
-	 { "StateVariableOwner_get_states", _wrap_StateVariableOwner_get_states, METH_O, "StateVariableOwner_get_states(StateVariableOwner self) -> StateVariableList"},
-	 { "delete_StateVariableOwner", _wrap_delete_StateVariableOwner, METH_O, "delete_StateVariableOwner(StateVariableOwner self)"},
+	 { "StateVariableOwner_get_states", _wrap_StateVariableOwner_get_states, METH_O, "\n"
+		"StateVariableOwner_get_states(StateVariableOwner self) -> StateVariableList\n"
+		"virtual StateVariableList get_states()=0\n"
+		"\n"
+		"Add the state variables, owned by an object derived from\n"
+		"StateVariableOwner, to the given vector. \n"
+		""},
+	 { "delete_StateVariableOwner", _wrap_delete_StateVariableOwner, METH_O, "\n"
+		"delete_StateVariableOwner(StateVariableOwner self)\n"
+		"virtual\n"
+		"~StateVariableOwner() \n"
+		""},
 	 { "StateVariableOwner_swigregister", StateVariableOwner_swigregister, METH_O, NULL},
-	 { "StateVariableList_append", (PyCFunction)(void(*)(void))_wrap_StateVariableList_append, METH_VARARGS|METH_KEYWORDS, "StateVariableList_append(StateVariableList self, cmf::math::StateVariable::ptr sv)"},
-	 { "StateVariableList_extend", (PyCFunction)(void(*)(void))_wrap_StateVariableList_extend, METH_VARARGS|METH_KEYWORDS, "StateVariableList_extend(StateVariableList self, StateVariableOwner svo)"},
+	 { "StateVariableList_append", (PyCFunction)(void(*)(void))_wrap_StateVariableList_append, METH_VARARGS|METH_KEYWORDS, "\n"
+		"StateVariableList_append(StateVariableList self, cmf::math::StateVariable::ptr sv)\n"
+		"void\n"
+		"append(StateVariable::ptr sv) \n"
+		""},
+	 { "StateVariableList_extend", (PyCFunction)(void(*)(void))_wrap_StateVariableList_extend, METH_VARARGS|METH_KEYWORDS, "\n"
+		"StateVariableList_extend(StateVariableList self, StateVariableOwner svo)\n"
+		"void\n"
+		"extend(StateVariableOwner &svo) \n"
+		""},
 	 { "StateVariableList___iadd__", _wrap_StateVariableList___iadd__, METH_VARARGS, "\n"
 		"StateVariableList___iadd__(StateVariableList self, StateVariableList food) -> StateVariableList\n"
 		"StateVariableList___iadd__(StateVariableList self, StateVariableOwner svo) -> StateVariableList\n"
 		""},
-	 { "StateVariableList_size", _wrap_StateVariableList_size, METH_O, "StateVariableList_size(StateVariableList self) -> size_t"},
-	 { "delete_StateVariableList", _wrap_delete_StateVariableList, METH_O, "delete_StateVariableList(StateVariableList self)"},
+	 { "StateVariableList_size", _wrap_StateVariableList_size, METH_O, "\n"
+		"StateVariableList_size(StateVariableList self) -> size_t\n"
+		"size_t\n"
+		"size() const \n"
+		""},
+	 { "delete_StateVariableList", _wrap_delete_StateVariableList, METH_O, "\n"
+		"delete_StateVariableList(StateVariableList self)\n"
+		"virtual\n"
+		"~StateVariableList() \n"
+		""},
 	 { "StateVariableList___len__", _wrap_StateVariableList___len__, METH_O, "StateVariableList___len__(StateVariableList self) -> size_t"},
 	 { "new_StateVariableList", _wrap_new_StateVariableList, METH_NOARGS, "new_StateVariableList() -> StateVariableList"},
 	 { "StateVariableList_swigregister", StateVariableList_swigregister, METH_O, NULL},
@@ -87031,11 +87116,33 @@ static PyMethodDef SwigMethods[] = {
 		"cmf::water::get_lower_node(flux_node::ptr node1, flux_node::ptr node2)\n"
 		"\n"
 		""},
-	 { "waterbalance_integrator_integration_t", _wrap_waterbalance_integrator_integration_t, METH_O, "waterbalance_integrator_integration_t(waterbalance_integrator self) -> Time"},
-	 { "waterbalance_integrator_t0", _wrap_waterbalance_integrator_t0, METH_O, "waterbalance_integrator_t0(waterbalance_integrator self) -> Time"},
-	 { "waterbalance_integrator___get_node", _wrap_waterbalance_integrator___get_node, METH_O, "waterbalance_integrator___get_node(waterbalance_integrator self) -> cmf::water::flux_node::ptr"},
-	 { "waterbalance_integrator___set_node", (PyCFunction)(void(*)(void))_wrap_waterbalance_integrator___set_node, METH_VARARGS|METH_KEYWORDS, "waterbalance_integrator___set_node(waterbalance_integrator self, cmf::water::flux_node::ptr node)"},
-	 { "new_waterbalance_integrator", (PyCFunction)(void(*)(void))_wrap_new_waterbalance_integrator, METH_VARARGS|METH_KEYWORDS, "new_waterbalance_integrator(cmf::water::flux_node::ptr node) -> waterbalance_integrator"},
+	 { "waterbalance_integrator_integration_t", _wrap_waterbalance_integrator_integration_t, METH_O, "\n"
+		"waterbalance_integrator_integration_t(waterbalance_integrator self) -> Time\n"
+		"cmf::math::Time\n"
+		"integration_t() const\n"
+		"\n"
+		"Returns the duration of the integration. \n"
+		""},
+	 { "waterbalance_integrator_t0", _wrap_waterbalance_integrator_t0, METH_O, "\n"
+		"waterbalance_integrator_t0(waterbalance_integrator self) -> Time\n"
+		"cmf::math::Time t0() const\n"
+		"\n"
+		"Returns the start time of the integration. \n"
+		""},
+	 { "waterbalance_integrator___get_node", _wrap_waterbalance_integrator___get_node, METH_O, "\n"
+		"waterbalance_integrator___get_node(waterbalance_integrator self) -> cmf::water::flux_node::ptr\n"
+		"flux_node::ptr get_node() const\n"
+		"\n"
+		"Returns the node of this integrator. \n"
+		""},
+	 { "waterbalance_integrator___set_node", (PyCFunction)(void(*)(void))_wrap_waterbalance_integrator___set_node, METH_VARARGS|METH_KEYWORDS, "\n"
+		"waterbalance_integrator___set_node(waterbalance_integrator self, cmf::water::flux_node::ptr node)\n"
+		"void set_node(cmf::water::flux_node::ptr node) \n"
+		""},
+	 { "new_waterbalance_integrator", (PyCFunction)(void(*)(void))_wrap_new_waterbalance_integrator, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_waterbalance_integrator(cmf::water::flux_node::ptr node) -> waterbalance_integrator\n"
+		"waterbalance_integrator(cmf::water::flux_node::ptr node) \n"
+		""},
 	 { "delete_waterbalance_integrator", _wrap_delete_waterbalance_integrator, METH_O, "delete_waterbalance_integrator(waterbalance_integrator self)"},
 	 { "waterbalance_integrator_swigregister", waterbalance_integrator_swigregister, METH_O, NULL},
 	 { "waterbalance_integrator_swiginit", waterbalance_integrator_swiginit, METH_VARARGS, NULL},
@@ -87121,7 +87228,11 @@ static PyMethodDef SwigMethods[] = {
 		"flux_connection_short_string(flux_connection self) -> std::string\n"
 		"virtual std::string short_string() const \n"
 		""},
-	 { "flux_connection_is_waterbalance_source", (PyCFunction)(void(*)(void))_wrap_flux_connection_is_waterbalance_source, METH_VARARGS|METH_KEYWORDS, "flux_connection_is_waterbalance_source(flux_connection self, flux_node inquirer) -> bool"},
+	 { "flux_connection_is_waterbalance_source", (PyCFunction)(void(*)(void))_wrap_flux_connection_is_waterbalance_source, METH_VARARGS|METH_KEYWORDS, "\n"
+		"flux_connection_is_waterbalance_source(flux_connection self, flux_node inquirer) -> bool\n"
+		"virtual bool\n"
+		"is_waterbalance_source(const flux_node &inquirer) \n"
+		""},
 	 { "delete_flux_connection", _wrap_delete_flux_connection, METH_O, "\n"
 		"delete_flux_connection(flux_connection self)\n"
 		"virtual ~flux_connection() \n"
@@ -87186,14 +87297,34 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_connection_list", _wrap_new_connection_list, METH_NOARGS, "new_connection_list() -> connection_list"},
 	 { "connection_list_swigregister", connection_list_swigregister, METH_O, NULL},
 	 { "connection_list_swiginit", connection_list_swiginit, METH_VARARGS, NULL},
-	 { "flux_integrator_integration_t", _wrap_flux_integrator_integration_t, METH_O, "flux_integrator_integration_t(flux_integrator self) -> Time"},
-	 { "flux_integrator_t0", _wrap_flux_integrator_t0, METH_O, "flux_integrator_t0(flux_integrator self) -> Time"},
+	 { "flux_integrator_integration_t", _wrap_flux_integrator_integration_t, METH_O, "\n"
+		"flux_integrator_integration_t(flux_integrator self) -> Time\n"
+		"cmf::math::Time integration_t() const\n"
+		"\n"
+		"Returns the duration of the integration. \n"
+		""},
+	 { "flux_integrator_t0", _wrap_flux_integrator_t0, METH_O, "\n"
+		"flux_integrator_t0(flux_integrator self) -> Time\n"
+		"cmf::math::Time t0() const\n"
+		"\n"
+		"Returns the start time of the integration. \n"
+		""},
 	 { "flux_integrator_invert_set", _wrap_flux_integrator_invert_set, METH_VARARGS, "flux_integrator_invert_set(flux_integrator self, bool invert)"},
 	 { "flux_integrator_invert_get", _wrap_flux_integrator_invert_get, METH_O, "flux_integrator_invert_get(flux_integrator self) -> bool"},
-	 { "flux_integrator_connection", _wrap_flux_integrator_connection, METH_O, "flux_integrator_connection(flux_integrator self) -> cmf::water::flux_connection::ptr"},
+	 { "flux_integrator_connection", _wrap_flux_integrator_connection, METH_O, "\n"
+		"flux_integrator_connection(flux_integrator self) -> cmf::water::flux_connection::ptr\n"
+		"flux_connection::ptr connection() const\n"
+		"\n"
+		"Returns the flux_connection. \n"
+		""},
 	 { "new_flux_integrator", _wrap_new_flux_integrator, METH_VARARGS, "\n"
 		"flux_integrator(flux_connection connection)\n"
 		"new_flux_integrator(cmf::water::flux_node::ptr left, cmf::water::flux_node::ptr right) -> flux_integrator\n"
+		"flux_integrator(cmf::water::flux_node::ptr left,\n"
+		"cmf::water::flux_node::ptr right)\n"
+		"\n"
+		"Creates a flux_integrator from the endpoints of a connection. Throws\n"
+		"if there is no connection between the endpoints. \n"
 		""},
 	 { "delete_flux_integrator", _wrap_delete_flux_integrator, METH_O, "delete_flux_integrator(flux_integrator self)"},
 	 { "flux_integrator_swigregister", flux_integrator_swigregister, METH_O, NULL},
@@ -87324,13 +87455,21 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_WaterStorage", _wrap_delete_WaterStorage, METH_O, "delete_WaterStorage(WaterStorage self)"},
 	 { "WaterStorage_swigregister", WaterStorage_swigregister, METH_O, NULL},
 	 { "WaterStorage_swiginit", WaterStorage_swiginit, METH_VARARGS, NULL},
-	 { "new_waterbalance_connection", (PyCFunction)(void(*)(void))_wrap_new_waterbalance_connection, METH_VARARGS|METH_KEYWORDS, "new_waterbalance_connection(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target) -> waterbalance_connection"},
+	 { "new_waterbalance_connection", (PyCFunction)(void(*)(void))_wrap_new_waterbalance_connection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_waterbalance_connection(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target) -> waterbalance_connection\n"
+		"waterbalance_connection(flux_node::ptr source, flux_node::ptr target)\n"
+		"\n"
+		""},
 	 { "delete_waterbalance_connection", _wrap_delete_waterbalance_connection, METH_O, "delete_waterbalance_connection(waterbalance_connection self)"},
 	 { "waterbalance_connection_swigregister", waterbalance_connection_swigregister, METH_O, NULL},
 	 { "waterbalance_connection_swiginit", waterbalance_connection_swiginit, METH_VARARGS, NULL},
 	 { "external_control_connection_flux_set", _wrap_external_control_connection_flux_set, METH_VARARGS, "external_control_connection_flux_set(external_control_connection self, real flux)"},
 	 { "external_control_connection_flux_get", _wrap_external_control_connection_flux_get, METH_O, "external_control_connection_flux_get(external_control_connection self) -> real"},
-	 { "new_external_control_connection", (PyCFunction)(void(*)(void))_wrap_new_external_control_connection, METH_VARARGS|METH_KEYWORDS, "new_external_control_connection(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target, real flux_value=0) -> external_control_connection"},
+	 { "new_external_control_connection", (PyCFunction)(void(*)(void))_wrap_new_external_control_connection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_external_control_connection(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target, real flux_value=0) -> external_control_connection\n"
+		"external_control_connection(flux_node::ptr source, flux_node::ptr\n"
+		"target, real flux_value=0) \n"
+		""},
 	 { "delete_external_control_connection", _wrap_delete_external_control_connection, METH_O, "delete_external_control_connection(external_control_connection self)"},
 	 { "external_control_connection_swigregister", external_control_connection_swigregister, METH_O, NULL},
 	 { "external_control_connection_swiginit", external_control_connection_swiginit, METH_VARARGS, NULL},
@@ -87361,7 +87500,40 @@ static PyMethodDef SwigMethods[] = {
 	 { "kinematic_wave_residual_get", _wrap_kinematic_wave_residual_get, METH_O, "kinematic_wave_residual_get(kinematic_wave self) -> real"},
 	 { "kinematic_wave_V0_set", _wrap_kinematic_wave_V0_set, METH_VARARGS, "kinematic_wave_V0_set(kinematic_wave self, real V0)"},
 	 { "kinematic_wave_V0_get", _wrap_kinematic_wave_V0_get, METH_O, "kinematic_wave_V0_get(kinematic_wave self) -> real"},
-	 { "new_kinematic_wave", (PyCFunction)(void(*)(void))_wrap_new_kinematic_wave, METH_VARARGS|METH_KEYWORDS, "new_kinematic_wave(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real residencetime, real exponent=1.0, real residual=0.0, real V0=1.0) -> kinematic_wave"},
+	 { "new_kinematic_wave", (PyCFunction)(void(*)(void))_wrap_new_kinematic_wave, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_kinematic_wave(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real residencetime, real exponent=1.0, real residual=0.0, real V0=1.0) -> kinematic_wave\n"
+		"kinematic_wave(WaterStorage::ptr source, flux_node::ptr target, real\n"
+		"residencetime, real exponent=1.0, real residual=0.0, real V0=1.0)\n"
+		"\n"
+		"Creates a kinematic wave connection.\n"
+		"\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}\n"
+		"    \\\\right)^\\\\beta} \n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"source:  Water storage from which the water flows out. Flux is a\n"
+		"function of source.volume\n"
+		"\n"
+		"target:  Target node (boundary condition or storage). Does not\n"
+		"influence the strength of the flow\n"
+		"\n"
+		"residencetime:   :math:`t_r [days]` The residence time of the water in this\n"
+		"storage\n"
+		"\n"
+		"exponent:   :math:`\\\\beta [-]` An empirical exponent to shape the flux\n"
+		"function (default = 1 (linear function))\n"
+		"\n"
+		"residual:   :math:`V_{residual} [m^3]` The volume of water not flowing out\n"
+		"(default = 0)\n"
+		"\n"
+		"V0:   :math:`V_0` The reference volume to scale the exponent \n"
+		""},
 	 { "delete_kinematic_wave", _wrap_delete_kinematic_wave, METH_O, "delete_kinematic_wave(kinematic_wave self)"},
 	 { "kinematic_wave_swigregister", kinematic_wave_swigregister, METH_O, NULL},
 	 { "kinematic_wave_swiginit", kinematic_wave_swiginit, METH_VARARGS, NULL},
@@ -87460,7 +87632,39 @@ static PyMethodDef SwigMethods[] = {
 	 { "ConstraintLinearStorageConnection_Vlmin_get", _wrap_ConstraintLinearStorageConnection_Vlmin_get, METH_O, "ConstraintLinearStorageConnection_Vlmin_get(ConstraintLinearStorageConnection self) -> real"},
 	 { "ConstraintLinearStorageConnection_Vrmax_set", _wrap_ConstraintLinearStorageConnection_Vrmax_set, METH_VARARGS, "ConstraintLinearStorageConnection_Vrmax_set(ConstraintLinearStorageConnection self, real Vrmax)"},
 	 { "ConstraintLinearStorageConnection_Vrmax_get", _wrap_ConstraintLinearStorageConnection_Vrmax_get, METH_O, "ConstraintLinearStorageConnection_Vrmax_get(ConstraintLinearStorageConnection self) -> real"},
-	 { "new_ConstraintLinearStorageConnection", (PyCFunction)(void(*)(void))_wrap_new_ConstraintLinearStorageConnection, METH_VARARGS|METH_KEYWORDS, "new_ConstraintLinearStorageConnection(cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real Vrmax=1.0) -> ConstraintLinearStorageConnection"},
+	 { "new_ConstraintLinearStorageConnection", (PyCFunction)(void(*)(void))_wrap_new_ConstraintLinearStorageConnection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ConstraintLinearStorageConnection(cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real Vrmax=1.0) -> ConstraintLinearStorageConnection\n"
+		"ConstraintLinearStorageConnection(WaterStorage::ptr source,\n"
+		"WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real\n"
+		"Vrmax=1.0)\n"
+		"\n"
+		"Creates a linear storage connection, constrained by the fill level of\n"
+		"the source \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V -\n"
+		"    V_{residual}}{V_0} \\\\right)^\\\\beta} \n"
+		"\n"
+		".\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"source:  Water storage from which the water flows out. Flux is a\n"
+		"function of source.volume\n"
+		"\n"
+		"target:  Target node (boundary condition or storage). Does not\n"
+		"influence the strength of the flow\n"
+		"\n"
+		"residencetime:   :math:`t_r [days]` The residence time of the water in this\n"
+		"storage\n"
+		"\n"
+		"Vlmin:   :math:`V_{l,min} [m^3]` The volume of water not flowing out\n"
+		"(default = 0)\n"
+		"\n"
+		"Vrmax:   :math:`V_{r,max}` Capacity of the target water storage in m3 \n"
+		""},
 	 { "delete_ConstraintLinearStorageConnection", _wrap_delete_ConstraintLinearStorageConnection, METH_O, "delete_ConstraintLinearStorageConnection(ConstraintLinearStorageConnection self)"},
 	 { "ConstraintLinearStorageConnection_swigregister", ConstraintLinearStorageConnection_swigregister, METH_O, NULL},
 	 { "ConstraintLinearStorageConnection_swiginit", ConstraintLinearStorageConnection_swiginit, METH_VARARGS, NULL},
@@ -87476,7 +87680,33 @@ static PyMethodDef SwigMethods[] = {
 	 { "bidirectional_kinematic_exchange_beta_suc_get", _wrap_bidirectional_kinematic_exchange_beta_suc_get, METH_O, "bidirectional_kinematic_exchange_beta_suc_get(bidirectional_kinematic_exchange self) -> real"},
 	 { "bidirectional_kinematic_exchange_beta_spill_set", _wrap_bidirectional_kinematic_exchange_beta_spill_set, METH_VARARGS, "bidirectional_kinematic_exchange_beta_spill_set(bidirectional_kinematic_exchange self, real beta_spill)"},
 	 { "bidirectional_kinematic_exchange_beta_spill_get", _wrap_bidirectional_kinematic_exchange_beta_spill_get, METH_O, "bidirectional_kinematic_exchange_beta_spill_get(bidirectional_kinematic_exchange self) -> real"},
-	 { "new_bidirectional_kinematic_exchange", (PyCFunction)(void(*)(void))_wrap_new_bidirectional_kinematic_exchange, METH_VARARGS|METH_KEYWORDS, "new_bidirectional_kinematic_exchange(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Vminspill, real Vmaxsuc, real qspill, real qsuc, real beta_spill, real beta_suc) -> bidirectional_kinematic_exchange"},
+	 { "new_bidirectional_kinematic_exchange", (PyCFunction)(void(*)(void))_wrap_new_bidirectional_kinematic_exchange, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_bidirectional_kinematic_exchange(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Vminspill, real Vmaxsuc, real qspill, real qsuc, real beta_spill, real beta_suc) -> bidirectional_kinematic_exchange\n"
+		"bidirectional_kinematic_exchange(WaterStorage::ptr source,\n"
+		"flux_node::ptr target, real Vminspill, real Vmaxsuc, real qspill, real\n"
+		"qsuc, real beta_spill, real beta_suc)\n"
+		"\n"
+		"Creates a kinematic wave connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"source:  Water storage from which the water flows out. Flux is a\n"
+		"function of source.volume\n"
+		"\n"
+		"target:  Target node (boundary condition or storage). Does not\n"
+		"influence the strength of the flow\n"
+		"\n"
+		"Vmaxsuc:  Suction starts below this threshold volume of source\n"
+		"\n"
+		"Vminspill:  Spilling starts above this threshold volume of source\n"
+		"\n"
+		"qspill:  Spill flow at 2*Vminspill in m3/day\n"
+		"\n"
+		"qsuc:  Suction flow at V=0 m3\n"
+		"\n"
+		"beta_suc:  beta_spill:  Exponent for spill / suction flow \n"
+		""},
 	 { "delete_bidirectional_kinematic_exchange", _wrap_delete_bidirectional_kinematic_exchange, METH_O, "delete_bidirectional_kinematic_exchange(bidirectional_kinematic_exchange self)"},
 	 { "bidirectional_kinematic_exchange_swigregister", bidirectional_kinematic_exchange_swigregister, METH_O, NULL},
 	 { "bidirectional_kinematic_exchange_swiginit", bidirectional_kinematic_exchange_swiginit, METH_VARARGS, NULL},
@@ -87492,7 +87722,45 @@ static PyMethodDef SwigMethods[] = {
 	 { "constraint_kinematic_wave_Vrmax_get", _wrap_constraint_kinematic_wave_Vrmax_get, METH_O, "constraint_kinematic_wave_Vrmax_get(constraint_kinematic_wave self) -> real"},
 	 { "constraint_kinematic_wave_gamma_set", _wrap_constraint_kinematic_wave_gamma_set, METH_VARARGS, "constraint_kinematic_wave_gamma_set(constraint_kinematic_wave self, real gamma)"},
 	 { "constraint_kinematic_wave_gamma_get", _wrap_constraint_kinematic_wave_gamma_get, METH_O, "constraint_kinematic_wave_gamma_get(constraint_kinematic_wave self) -> real"},
-	 { "new_constraint_kinematic_wave", (PyCFunction)(void(*)(void))_wrap_new_constraint_kinematic_wave, METH_VARARGS|METH_KEYWORDS, "new_constraint_kinematic_wave(cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real exponent=1.0, real residual=0.0, real V0=1.0, real Vrmax=1.0, real gamma=1.0) -> constraint_kinematic_wave"},
+	 { "new_constraint_kinematic_wave", (PyCFunction)(void(*)(void))_wrap_new_constraint_kinematic_wave, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_constraint_kinematic_wave(cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real exponent=1.0, real residual=0.0, real V0=1.0, real Vrmax=1.0, real gamma=1.0) -> constraint_kinematic_wave\n"
+		"constraint_kinematic_wave(WaterStorage::ptr source, WaterStorage::ptr\n"
+		"target, real residencetime=1.0, real exponent=1.0, real residual=0.0,\n"
+		"real V0=1.0, real Vrmax=1.0, real gamma=1.0)\n"
+		"\n"
+		"Creates a kinematic wave connection.\n"
+		"\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}\n"
+		"    \\\\right)^\\\\beta} \n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"source:  Water storage from which the water flows out. Flux is a\n"
+		"function of source.volume\n"
+		"\n"
+		"target:  Target node (boundary condition or storage). Does not\n"
+		"influence the strength of the flow\n"
+		"\n"
+		"residencetime:   :math:`t_r [days]` The residence time of the water in this\n"
+		"storage\n"
+		"\n"
+		"exponent:   :math:`\\\\beta [-]` An empirical exponent to shape the flux\n"
+		"function (default = 1 (linear function))\n"
+		"\n"
+		"residual:   :math:`V_{residual} [m^3]` The volume of water not flowing out\n"
+		"(default = 0)\n"
+		"\n"
+		"V0:   :math:`V_0` The reference volume to scale the exponent\n"
+		"\n"
+		"Vrmax:   :math:`V_{r,max}` Capacity of the target water storage in m3\n"
+		"\n"
+		"gamma:   :math:`\\\\gamma` Target capacity constriction curve shape \n"
+		""},
 	 { "delete_constraint_kinematic_wave", _wrap_delete_constraint_kinematic_wave, METH_O, "delete_constraint_kinematic_wave(constraint_kinematic_wave self)"},
 	 { "constraint_kinematic_wave_swigregister", constraint_kinematic_wave_swigregister, METH_O, NULL},
 	 { "constraint_kinematic_wave_swiginit", constraint_kinematic_wave_swiginit, METH_VARARGS, NULL},
@@ -87502,7 +87770,28 @@ static PyMethodDef SwigMethods[] = {
 	 { "TechnicalFlux_MinState_get", _wrap_TechnicalFlux_MinState_get, METH_O, "TechnicalFlux_MinState_get(TechnicalFlux self) -> real"},
 	 { "TechnicalFlux_FluxDecreaseTime_set", _wrap_TechnicalFlux_FluxDecreaseTime_set, METH_VARARGS, "TechnicalFlux_FluxDecreaseTime_set(TechnicalFlux self, Time FluxDecreaseTime)"},
 	 { "TechnicalFlux_FluxDecreaseTime_get", _wrap_TechnicalFlux_FluxDecreaseTime_get, METH_O, "TechnicalFlux_FluxDecreaseTime_get(TechnicalFlux self) -> Time"},
-	 { "new_TechnicalFlux", (PyCFunction)(void(*)(void))_wrap_new_TechnicalFlux, METH_VARARGS|METH_KEYWORDS, "new_TechnicalFlux(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real maximum_flux, real minimal_state=0, Time flux_decrease_time=h) -> TechnicalFlux"},
+	 { "new_TechnicalFlux", (PyCFunction)(void(*)(void))_wrap_new_TechnicalFlux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_TechnicalFlux(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real maximum_flux, real minimal_state=0, Time flux_decrease_time=h) -> TechnicalFlux\n"
+		"TechnicalFlux(cmf::water::WaterStorage::ptr source,\n"
+		"cmf::water::flux_node::ptr target, real maximum_flux, real\n"
+		"minimal_state=0, cmf::math::Time flux_decrease_time=cmf::math::h)\n"
+		"\n"
+		"Produces a constant but changeable flux from a source to a target, if\n"
+		"enough water is present in the source.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"source:  The source of the water\n"
+		"\n"
+		"target:  The target of the water\n"
+		"\n"
+		"maximum_flux:  The requested flux :math:`q_{0}`\n"
+		"\n"
+		"minimal_state:  Minimal volume of stored water in source\n"
+		"\n"
+		"flux_decrease_time:  ( cmf::math::Time) \n"
+		""},
 	 { "delete_TechnicalFlux", _wrap_delete_TechnicalFlux, METH_O, "delete_TechnicalFlux(TechnicalFlux self)"},
 	 { "TechnicalFlux_swigregister", TechnicalFlux_swigregister, METH_O, NULL},
 	 { "TechnicalFlux_swiginit", TechnicalFlux_swiginit, METH_VARARGS, NULL},
@@ -87512,7 +87801,27 @@ static PyMethodDef SwigMethods[] = {
 	 { "generic_gradient_connection_A_get", _wrap_generic_gradient_connection_A_get, METH_O, "generic_gradient_connection_A_get(generic_gradient_connection self) -> real"},
 	 { "generic_gradient_connection_d_set", _wrap_generic_gradient_connection_d_set, METH_VARARGS, "generic_gradient_connection_d_set(generic_gradient_connection self, real d)"},
 	 { "generic_gradient_connection_d_get", _wrap_generic_gradient_connection_d_get, METH_O, "generic_gradient_connection_d_get(generic_gradient_connection self) -> real"},
-	 { "new_generic_gradient_connection", (PyCFunction)(void(*)(void))_wrap_new_generic_gradient_connection, METH_VARARGS|METH_KEYWORDS, "new_generic_gradient_connection(cmf::water::WaterStorage::ptr left, cmf::water::WaterStorage::ptr right, real K, real d=1.0, real A=1.0) -> generic_gradient_connection"},
+	 { "new_generic_gradient_connection", (PyCFunction)(void(*)(void))_wrap_new_generic_gradient_connection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_generic_gradient_connection(cmf::water::WaterStorage::ptr left, cmf::water::WaterStorage::ptr right, real K, real d=1.0, real A=1.0) -> generic_gradient_connection\n"
+		"generic_gradient_connection(cmf::water::WaterStorage::ptr left,\n"
+		"cmf::water::WaterStorage::ptr right, real K, real d=1.0, real A=1.0)\n"
+		"\n"
+		"Creates a generic gradient based flux, if enough water is present in\n"
+		"the source.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  The left node of the connection\n"
+		"\n"
+		"right:  The right node of the connection\n"
+		"\n"
+		"K:  the conductivity of the connection in m/day\n"
+		"\n"
+		"d:  the topographic lenght of the connection in m\n"
+		"\n"
+		"A:  the area of the connection cross section in m2 \n"
+		""},
 	 { "delete_generic_gradient_connection", _wrap_delete_generic_gradient_connection, METH_O, "delete_generic_gradient_connection(generic_gradient_connection self)"},
 	 { "generic_gradient_connection_swigregister", generic_gradient_connection_swigregister, METH_O, NULL},
 	 { "generic_gradient_connection_swiginit", generic_gradient_connection_swiginit, METH_VARARGS, NULL},
@@ -87520,7 +87829,26 @@ static PyMethodDef SwigMethods[] = {
 	 { "statecontrol_connection_reaction_time_get", _wrap_statecontrol_connection_reaction_time_get, METH_O, "statecontrol_connection_reaction_time_get(statecontrol_connection self) -> Time"},
 	 { "statecontrol_connection_target_state_set", _wrap_statecontrol_connection_target_state_set, METH_VARARGS, "statecontrol_connection_target_state_set(statecontrol_connection self, real target_state)"},
 	 { "statecontrol_connection_target_state_get", _wrap_statecontrol_connection_target_state_get, METH_O, "statecontrol_connection_target_state_get(statecontrol_connection self) -> real"},
-	 { "new_statecontrol_connection", (PyCFunction)(void(*)(void))_wrap_new_statecontrol_connection, METH_VARARGS|METH_KEYWORDS, "new_statecontrol_connection(cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, real target_state, Time reaction_time) -> statecontrol_connection"},
+	 { "new_statecontrol_connection", (PyCFunction)(void(*)(void))_wrap_new_statecontrol_connection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_statecontrol_connection(cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, real target_state, Time reaction_time) -> statecontrol_connection\n"
+		"statecontrol_connection(cmf::water::WaterStorage::ptr\n"
+		"controlled_storage, cmf::water::flux_node::ptr other_end, real\n"
+		"target_state, cmf::math::Time reaction_time)\n"
+		"\n"
+		"Creates a flux connection to control the state of a storage.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"controlled_storage:  Water storage, to be controlled\n"
+		"\n"
+		"other_end:  source of missing water or target of excessive water\n"
+		"\n"
+		"target_state:  State the controlled storage should hold (\n"
+		":math:`h_{target}`)\n"
+		"\n"
+		"reaction_time:  Time to reach state ( :math:`t_c`) \n"
+		""},
 	 { "delete_statecontrol_connection", _wrap_delete_statecontrol_connection, METH_O, "delete_statecontrol_connection(statecontrol_connection self)"},
 	 { "statecontrol_connection_swigregister", statecontrol_connection_swigregister, METH_O, NULL},
 	 { "statecontrol_connection_swiginit", statecontrol_connection_swiginit, METH_VARARGS, NULL},
@@ -87742,15 +88070,55 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_NeumannBoundary_list", _wrap_delete_NeumannBoundary_list, METH_O, "delete_NeumannBoundary_list(NeumannBoundary_list self)"},
 	 { "NeumannBoundary_list_swigregister", NeumannBoundary_list_swigregister, METH_O, NULL},
 	 { "NeumannBoundary_list_swiginit", NeumannBoundary_list_swiginit, METH_VARARGS, NULL},
-	 { "SystemBridge_get_upper_node", _wrap_SystemBridge_get_upper_node, METH_O, "SystemBridge_get_upper_node(SystemBridge self) -> cmf::water::flux_node::ptr"},
-	 { "SystemBridge_get_lower_node", _wrap_SystemBridge_get_lower_node, METH_O, "SystemBridge_get_lower_node(SystemBridge self) -> cmf::water::flux_node::ptr"},
-	 { "SystemBridge_get_down_flux", _wrap_SystemBridge_get_down_flux, METH_O, "SystemBridge_get_down_flux(SystemBridge self) -> double"},
-	 { "SystemBridge_down_flux_integrator", _wrap_SystemBridge_down_flux_integrator, METH_O, "SystemBridge_down_flux_integrator(SystemBridge self) -> cmf::water::flux_integrator::ptr"},
+	 { "SystemBridge_get_upper_node", _wrap_SystemBridge_get_upper_node, METH_O, "\n"
+		"SystemBridge_get_upper_node(SystemBridge self) -> cmf::water::flux_node::ptr\n"
+		"flux_node::ptr get_upper_node() const\n"
+		"\n"
+		"Returns the upper node. \n"
+		""},
+	 { "SystemBridge_get_lower_node", _wrap_SystemBridge_get_lower_node, METH_O, "\n"
+		"SystemBridge_get_lower_node(SystemBridge self) -> cmf::water::flux_node::ptr\n"
+		"flux_node::ptr get_lower_node() const\n"
+		"\n"
+		"Returns the lower node. \n"
+		""},
+	 { "SystemBridge_get_down_flux", _wrap_SystemBridge_get_down_flux, METH_O, "\n"
+		"SystemBridge_get_down_flux(SystemBridge self) -> double\n"
+		"double get_down_flux() const\n"
+		"\n"
+		"Returns the currently integrated flux to the lower node. \n"
+		""},
+	 { "SystemBridge_down_flux_integrator", _wrap_SystemBridge_down_flux_integrator, METH_O, "\n"
+		"SystemBridge_down_flux_integrator(SystemBridge self) -> cmf::water::flux_integrator::ptr\n"
+		"flux_integrator::ptr down_flux_integrator() const \n"
+		""},
 	 { "delete_SystemBridge", _wrap_delete_SystemBridge, METH_O, "delete_SystemBridge(SystemBridge self)"},
 	 { "SystemBridge_swigregister", SystemBridge_swigregister, METH_O, NULL},
 	 { "delete_SystemBridgeConnection", _wrap_delete_SystemBridgeConnection, METH_O, "delete_SystemBridgeConnection(SystemBridgeConnection self)"},
 	 { "SystemBridgeConnection_swigregister", SystemBridgeConnection_swigregister, METH_O, NULL},
-	 { "system_bridge", (PyCFunction)(void(*)(void))_wrap_system_bridge, METH_VARARGS|METH_KEYWORDS, "system_bridge(project p, cmf::water::flux_node::ptr upper, cmf::water::flux_node::ptr lower) -> cmf::water::SystemBridge::ptr"},
+	 { "system_bridge", (PyCFunction)(void(*)(void))_wrap_system_bridge, METH_VARARGS|METH_KEYWORDS, "\n"
+		"system_bridge(project p, cmf::water::flux_node::ptr upper, cmf::water::flux_node::ptr lower) -> cmf::water::SystemBridge::ptr\n"
+		"SystemBridge::ptr\n"
+		"cmf::water::system_bridge(cmf::project &p, flux_node::ptr upper,\n"
+		"flux_node::ptr lower)\n"
+		"\n"
+		"Creates a SystemBridge object.\n"
+		"\n"
+		"This is an advanced feature for tuning of the calculation time.\n"
+		"\n"
+		"A SystemBridge can be used to replace an existing connection between\n"
+		"nodes. After installation, the two nodes can more safely be added to\n"
+		"different integrator systems. One node (called upper) is connected\n"
+		"with the system bridge with the connection formerly connecting the\n"
+		"nodes, the second node (called lower) is connected to the system\n"
+		"bridge with as a Neumann boundary condition. The flux equals the\n"
+		"average flux of the connection upper <-> SystemBridge. Therefore, the\n"
+		"system bridge must become an integratable of the integrator system the\n"
+		"upper node belongs to. Use as an upper system (system upper node is\n"
+		"belonging to) the faster reacting system. For the connection between\n"
+		"upper and SystemBridge, the SystemBridge reacts as an Dirichlet\n"
+		"boundary condition, providing the potential of the lower node. \n"
+		""},
 	 { "vapour_pressure", (PyCFunction)(void(*)(void))_wrap_vapour_pressure, METH_VARARGS|METH_KEYWORDS, "\n"
 		"vapour_pressure(double T) -> double\n"
 		"double\n"
@@ -88592,8 +88960,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "Cell_set_uptakestress", (PyCFunction)(void(*)(void))_wrap_Cell_set_uptakestress, METH_VARARGS|METH_KEYWORDS, "\n"
 		"Cell_set_uptakestress(Cell self, RootUptakeStressFunction stressfunction)\n"
 		"void\n"
-		"set_uptakestress(const cmf::upslope::ET::RootUptakeStressFunction\n"
-		"&stressfunction)\n"
+		"set_uptakestress(const ET::RootUptakeStressFunction &stressfunction)\n"
 		"\n"
 		"Uses the given WaterStressFunction for all stressedET like connections\n"
 		"to the transpiration target. \n"
@@ -90473,7 +90840,25 @@ static PyMethodDef SwigMethods[] = {
 	 { "RutterInterception_swiginit", RutterInterception_swiginit, METH_VARARGS, NULL},
 	 { "SimpleTindexSnowMelt_SnowMeltRate_set", _wrap_SimpleTindexSnowMelt_SnowMeltRate_set, METH_VARARGS, "SimpleTindexSnowMelt_SnowMeltRate_set(SimpleTindexSnowMelt self, real SnowMeltRate)"},
 	 { "SimpleTindexSnowMelt_SnowMeltRate_get", _wrap_SimpleTindexSnowMelt_SnowMeltRate_get, METH_O, "SimpleTindexSnowMelt_SnowMeltRate_get(SimpleTindexSnowMelt self) -> real"},
-	 { "new_SimpleTindexSnowMelt", (PyCFunction)(void(*)(void))_wrap_new_SimpleTindexSnowMelt, METH_VARARGS|METH_KEYWORDS, "new_SimpleTindexSnowMelt(cmf::water::WaterStorage::ptr snow, cmf::water::flux_node::ptr surface_water, Cell cell, real rate=7.0) -> SimpleTindexSnowMelt"},
+	 { "new_SimpleTindexSnowMelt", (PyCFunction)(void(*)(void))_wrap_new_SimpleTindexSnowMelt, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SimpleTindexSnowMelt(cmf::water::WaterStorage::ptr snow, cmf::water::flux_node::ptr surface_water, Cell cell, real rate=7.0) -> SimpleTindexSnowMelt\n"
+		"SimpleTindexSnowMelt(cmf::water::WaterStorage::ptr snow,\n"
+		"cmf::water::flux_node::ptr surface_water, cmf::upslope::Cell &cell,\n"
+		"real rate=7.0)\n"
+		"\n"
+		"Creates a new snow melt connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"snow:  Snow storage, usually cel.snow\n"
+		"\n"
+		"surface_water:  target of the melted water (usually cell.surfacewater)\n"
+		"\n"
+		"cell:  The cell, needed to get weather and area\n"
+		"\n"
+		"rate:  The rate of snow melt, given in mm/(degC day), default = 7.0 \n"
+		""},
 	 { "SimpleTindexSnowMelt_use_for_cell", (PyCFunction)(void(*)(void))_wrap_SimpleTindexSnowMelt_use_for_cell, METH_VARARGS|METH_KEYWORDS, "SimpleTindexSnowMelt_use_for_cell(Cell cell)"},
 	 { "delete_SimpleTindexSnowMelt", _wrap_delete_SimpleTindexSnowMelt, METH_O, "delete_SimpleTindexSnowMelt(SimpleTindexSnowMelt self)"},
 	 { "SimpleTindexSnowMelt_swigregister", SimpleTindexSnowMelt_swigregister, METH_O, NULL},
@@ -90540,7 +90925,22 @@ static PyMethodDef SwigMethods[] = {
 	 { "GreenAmptInfiltration_swiginit", GreenAmptInfiltration_swiginit, METH_VARARGS, NULL},
 	 { "SimpleInfiltration_W0_set", _wrap_SimpleInfiltration_W0_set, METH_VARARGS, "SimpleInfiltration_W0_set(SimpleInfiltration self, real W0)"},
 	 { "SimpleInfiltration_W0_get", _wrap_SimpleInfiltration_W0_get, METH_O, "SimpleInfiltration_W0_get(SimpleInfiltration self) -> real"},
-	 { "new_SimpleInfiltration", (PyCFunction)(void(*)(void))_wrap_new_SimpleInfiltration, METH_VARARGS|METH_KEYWORDS, "new_SimpleInfiltration(cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater, real W0=0.9) -> SimpleInfiltration"},
+	 { "new_SimpleInfiltration", (PyCFunction)(void(*)(void))_wrap_new_SimpleInfiltration, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SimpleInfiltration(cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater, real W0=0.9) -> SimpleInfiltration\n"
+		"SimpleInfiltration(cmf::upslope::SoilLayer::ptr soilwater,\n"
+		"cmf::water::flux_node::ptr surfacewater, real W0=0.9)\n"
+		"\n"
+		"Creates the connection between surfacewater and first soil layer.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"soilwater:  the infiltration target\n"
+		"\n"
+		"surfacewater:  the infiltration source\n"
+		"\n"
+		"W0:  the 50% saturation value \n"
+		""},
 	 { "SimpleInfiltration_use_for_cell", (PyCFunction)(void(*)(void))_wrap_SimpleInfiltration_use_for_cell, METH_VARARGS|METH_KEYWORDS, "SimpleInfiltration_use_for_cell(Cell c)"},
 	 { "delete_SimpleInfiltration", _wrap_delete_SimpleInfiltration, METH_O, "delete_SimpleInfiltration(SimpleInfiltration self)"},
 	 { "SimpleInfiltration_swigregister", SimpleInfiltration_swigregister, METH_O, NULL},
@@ -90566,7 +90966,11 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_Richards", _wrap_delete_Richards, METH_O, "delete_Richards(Richards self)"},
 	 { "Richards_swigregister", Richards_swigregister, METH_O, NULL},
 	 { "Richards_swiginit", Richards_swiginit, METH_VARARGS, NULL},
-	 { "new_SimplRichards", (PyCFunction)(void(*)(void))_wrap_new_SimplRichards, METH_VARARGS|METH_KEYWORDS, "new_SimplRichards(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> SimplRichards"},
+	 { "new_SimplRichards", (PyCFunction)(void(*)(void))_wrap_new_SimplRichards, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SimplRichards(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> SimplRichards\n"
+		"SimplRichards(cmf::upslope::SoilLayer::ptr left,\n"
+		"cmf::water::flux_node::ptr right) \n"
+		""},
 	 { "SimplRichards_use_for_cell", (PyCFunction)(void(*)(void))_wrap_SimplRichards_use_for_cell, METH_VARARGS|METH_KEYWORDS, "SimplRichards_use_for_cell(Cell cell, bool no_override=True)"},
 	 { "delete_SimplRichards", _wrap_delete_SimplRichards, METH_O, "delete_SimplRichards(SimplRichards self)"},
 	 { "SimplRichards_swigregister", SimplRichards_swigregister, METH_O, NULL},
@@ -90624,14 +91028,14 @@ static PyMethodDef SwigMethods[] = {
 	 { "RootUptakeStressFunction_Tact", (PyCFunction)(void(*)(void))_wrap_RootUptakeStressFunction_Tact, METH_VARARGS|METH_KEYWORDS, "\n"
 		"RootUptakeStressFunction_Tact(RootUptakeStressFunction self, SoilLayer soilLayer, real Tpot) -> real\n"
 		"virtual real\n"
-		"Tact(const cmf::upslope::SoilLayer *soillayer, real Tpot) const =0\n"
+		"Tact(const cmf::upslope::SoilLayer *soilLayer, real Tpot) const =0\n"
 		"\n"
 		"Calculates the water stress for a layer.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"soillayer:  The cmf::upslope::SoilLayer this stress function belongs\n"
+		"soilLayer:  The cmf::upslope::SoilLayer this stress function belongs\n"
 		"to\n"
 		"\n"
 		"Tpot:  Potential Transpiration in mm/day (for the full profile)\n"
@@ -91355,9 +91759,23 @@ static PyMethodDef SwigMethods[] = {
 	 { "project_swigregister", project_swigregister, METH_O, NULL},
 	 { "project_swiginit", project_swiginit, METH_VARARGS, NULL},
 	 { "Integrator___getitem__", (PyCFunction)(void(*)(void))_wrap_Integrator___getitem__, METH_VARARGS|METH_KEYWORDS, "Integrator___getitem__(Integrator self, int position) -> cmf::math::StateVariable::ptr"},
-	 { "Integrator_get_dxdt", (PyCFunction)(void(*)(void))_wrap_Integrator_get_dxdt, METH_VARARGS|METH_KEYWORDS, "Integrator_get_dxdt(Integrator self, Time time) -> cmf::math::num_array"},
-	 { "Integrator_add_states", (PyCFunction)(void(*)(void))_wrap_Integrator_add_states, METH_VARARGS|METH_KEYWORDS, "Integrator_add_states(Integrator self, StateVariableOwner stateOwner)"},
-	 { "Integrator_add_single_state", (PyCFunction)(void(*)(void))_wrap_Integrator_add_single_state, METH_VARARGS|METH_KEYWORDS, "Integrator_add_single_state(Integrator self, cmf::math::StateVariable::ptr state)"},
+	 { "Integrator_get_dxdt", (PyCFunction)(void(*)(void))_wrap_Integrator_get_dxdt, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Integrator_get_dxdt(Integrator self, Time time) -> cmf::math::num_array\n"
+		"cmf::math::num_array get_dxdt(Time time) const \n"
+		""},
+	 { "Integrator_add_states", (PyCFunction)(void(*)(void))_wrap_Integrator_add_states, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Integrator_add_states(Integrator self, StateVariableOwner stateOwner)\n"
+		"virtual\n"
+		"void add_states(cmf::math::StateVariableOwner &stateOwner)\n"
+		"\n"
+		"Add state variables from a StateVariableOwner. \n"
+		""},
+	 { "Integrator_add_single_state", (PyCFunction)(void(*)(void))_wrap_Integrator_add_single_state, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Integrator_add_single_state(Integrator self, cmf::math::StateVariable::ptr state)\n"
+		"virtual void add_single_state(cmf::math::StateVariable::ptr state)\n"
+		"\n"
+		"Adds a single state variable to the integrator. \n"
+		""},
 	 { "Integrator_integratables_set", _wrap_Integrator_integratables_set, METH_VARARGS, "Integrator_integratables_set(Integrator self, integratable_list integratables)"},
 	 { "Integrator_integratables_get", _wrap_Integrator_integratables_get, METH_O, "Integrator_integratables_get(Integrator self) -> integratable_list"},
 	 { "Integrator_reset_integratables_set", _wrap_Integrator_reset_integratables_set, METH_VARARGS, "Integrator_reset_integratables_set(Integrator self, bool reset_integratables)"},
@@ -91367,18 +91785,36 @@ static PyMethodDef SwigMethods[] = {
 	 { "Integrator_size", _wrap_Integrator_size, METH_O, "\n"
 		"Integrator_size(Integrator self) -> size_t\n"
 		"size_t size()\n"
-		"const \n"
+		"const\n"
+		"\n"
+		"returns the number of state variables \n"
 		""},
-	 { "Integrator_get_state", (PyCFunction)(void(*)(void))_wrap_Integrator_get_state, METH_VARARGS|METH_KEYWORDS, "Integrator_get_state(Integrator self, ptrdiff_t position) -> real"},
-	 { "Integrator_set_state", (PyCFunction)(void(*)(void))_wrap_Integrator_set_state, METH_VARARGS|METH_KEYWORDS, "Integrator_set_state(Integrator self, ptrdiff_t position, real newState)"},
+	 { "Integrator_get_state", (PyCFunction)(void(*)(void))_wrap_Integrator_get_state, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Integrator_get_state(Integrator self, ptrdiff_t position) -> real\n"
+		"real\n"
+		"get_state(ptrdiff_t position) const\n"
+		"\n"
+		"Returns the statevariable at position Simplifies the assessment of\n"
+		"state variables. \n"
+		""},
+	 { "Integrator_set_state", (PyCFunction)(void(*)(void))_wrap_Integrator_set_state, METH_VARARGS|METH_KEYWORDS, "\n"
+		"Integrator_set_state(Integrator self, ptrdiff_t position, real newState)\n"
+		"void\n"
+		"set_state(ptrdiff_t position, real newState)\n"
+		"\n"
+		"Simplifies the assessment of state variables. \n"
+		""},
 	 { "Integrator_get_states", _wrap_Integrator_get_states, METH_VARARGS, "\n"
 		"Integrator_get_states(Integrator self) -> cmf::math::num_array\n"
 		"Integrator_get_states(Integrator self) -> StateVariableList\n"
+		"StateVariableList get_states()\n"
+		"\n"
+		"gets the state variables of the integrator \n"
 		""},
 	 { "delete_Integrator", _wrap_delete_Integrator, METH_O, "\n"
 		"delete_Integrator(Integrator self)\n"
 		"virtual\n"
-		"~Integrator()=default \n"
+		"~Integrator() \n"
 		""},
 	 { "Integrator_get_t", _wrap_Integrator_get_t, METH_O, "\n"
 		"Integrator_get_t(Integrator self) -> Time\n"
@@ -91454,7 +91890,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "Integrator_swigregister", Integrator_swigregister, METH_O, NULL},
 	 { "BDF2_get_error_position", _wrap_BDF2_get_error_position, METH_O, "\n"
 		"BDF2_get_error_position(BDF2 self) -> int\n"
-		"ptrdiff_t\n"
+		"int\n"
 		"get_error_position() const\n"
 		"\n"
 		"Returns the position of the biggest error. \n"
@@ -91556,25 +91992,73 @@ static PyMethodDef SwigMethods[] = {
 	 { "CVodeIntegrator_MaxOrder_get", _wrap_CVodeIntegrator_MaxOrder_get, METH_O, "CVodeIntegrator_MaxOrder_get(CVodeIntegrator self) -> int"},
 	 { "CVodeIntegrator_max_step_set", _wrap_CVodeIntegrator_max_step_set, METH_VARARGS, "CVodeIntegrator_max_step_set(CVodeIntegrator self, Time max_step)"},
 	 { "CVodeIntegrator_max_step_get", _wrap_CVodeIntegrator_max_step_get, METH_O, "CVodeIntegrator_max_step_get(CVodeIntegrator self) -> Time"},
-	 { "CVodeIntegrator_get_order", _wrap_CVodeIntegrator_get_order, METH_O, "CVodeIntegrator_get_order(CVodeIntegrator self) -> int"},
-	 { "CVodeIntegrator_initialize", _wrap_CVodeIntegrator_initialize, METH_O, "CVodeIntegrator_initialize(CVodeIntegrator self)"},
-	 { "CVodeIntegrator_release", _wrap_CVodeIntegrator_release, METH_O, "CVodeIntegrator_release(CVodeIntegrator self)"},
+	 { "CVodeIntegrator_get_order", _wrap_CVodeIntegrator_get_order, METH_O, "\n"
+		"CVodeIntegrator_get_order(CVodeIntegrator self) -> int\n"
+		"int\n"
+		"get_order() const\n"
+		"\n"
+		"Returns the last order of the solver used, may be smaller than\n"
+		"MaxOrder due to the number of steps already taken or to fullfill\n"
+		"stability limit. \n"
+		""},
+	 { "CVodeIntegrator_initialize", _wrap_CVodeIntegrator_initialize, METH_O, "\n"
+		"CVodeIntegrator_initialize(CVodeIntegrator self)\n"
+		"void\n"
+		"initialize()\n"
+		"\n"
+		"Initializes the solver. Do not add or remove state variables after\n"
+		"initialization. The solver is automatically intialized when\n"
+		"integrating. \n"
+		""},
+	 { "CVodeIntegrator_release", _wrap_CVodeIntegrator_release, METH_O, "\n"
+		"CVodeIntegrator_release(CVodeIntegrator self)\n"
+		"void\n"
+		"release()\n"
+		"\n"
+		"Releases the internal solver. Call release before you add state\n"
+		"variables or to change properties. \n"
+		""},
 	 { "new_CVodeIntegrator", _wrap_new_CVodeIntegrator, METH_VARARGS, "\n"
 		"CVodeIntegrator(real epsilon=1e-9, char _preconditioner='R')\n"
 		"CVodeIntegrator(StateVariableOwner states, real epsilon=1e-9, char _preconditioner='R')\n"
 		"new_CVodeIntegrator(CVodeIntegrator templ) -> CVodeIntegrator\n"
+		"CVodeIntegrator(const CVodeIntegrator &templ)\n"
+		"\n"
+		"copy constructor, creates a new CVODE integrator similiar to the\n"
+		"given, but without statevariables \n"
 		""},
-	 { "CVodeIntegrator_get_error", _wrap_CVodeIntegrator_get_error, METH_O, "CVodeIntegrator_get_error(CVodeIntegrator self) -> cmf::math::num_array"},
-	 { "CVodeIntegrator_get_nonlinear_iterations", _wrap_CVodeIntegrator_get_nonlinear_iterations, METH_O, "CVodeIntegrator_get_nonlinear_iterations(CVodeIntegrator self) -> int"},
-	 { "CVodeIntegrator_get_rhsevals", _wrap_CVodeIntegrator_get_rhsevals, METH_O, "CVodeIntegrator_get_rhsevals(CVodeIntegrator self) -> int"},
+	 { "CVodeIntegrator_get_error", _wrap_CVodeIntegrator_get_error, METH_O, "\n"
+		"CVodeIntegrator_get_error(CVodeIntegrator self) -> cmf::math::num_array\n"
+		"cmf::math::num_array get_error() const\n"
+		"\n"
+		"Error vector of the integrator. \n"
+		""},
+	 { "CVodeIntegrator_get_nonlinear_iterations", _wrap_CVodeIntegrator_get_nonlinear_iterations, METH_O, "\n"
+		"CVodeIntegrator_get_nonlinear_iterations(CVodeIntegrator self) -> int\n"
+		"int\n"
+		"get_nonlinear_iterations() const\n"
+		"\n"
+		"Returns the number of non-linear iterations performed. Calls\n"
+		"CVodeGetNumNonlinSolvIters. \n"
+		""},
+	 { "CVodeIntegrator_get_rhsevals", _wrap_CVodeIntegrator_get_rhsevals, METH_O, "\n"
+		"CVodeIntegrator_get_rhsevals(CVodeIntegrator self) -> int\n"
+		"int\n"
+		"get_rhsevals() const\n"
+		"\n"
+		"Returns the number of evaluations of the right hand side of the ODE.\n"
+		"Calls CVodeGetNumRhsEvals. \n"
+		""},
 	 { "CVodeIntegrator_copy", _wrap_CVodeIntegrator_copy, METH_O, "\n"
 		"CVodeIntegrator_copy(CVodeIntegrator self) -> CVodeIntegrator\n"
-		"virtual\n"
-		"Integrator* copy() const =0\n"
+		"CVodeIntegrator* copy() const\n"
 		"\n"
 		"Polymorphic copy constructor. \n"
 		""},
-	 { "delete_CVodeIntegrator", _wrap_delete_CVodeIntegrator, METH_O, "delete_CVodeIntegrator(CVodeIntegrator self)"},
+	 { "delete_CVodeIntegrator", _wrap_delete_CVodeIntegrator, METH_O, "\n"
+		"delete_CVodeIntegrator(CVodeIntegrator self)\n"
+		"virtual ~CVodeIntegrator() \n"
+		""},
 	 { "CVodeIntegrator_swigregister", CVodeIntegrator_swigregister, METH_O, NULL},
 	 { "CVodeIntegrator_swiginit", CVodeIntegrator_swiginit, METH_VARARGS, NULL},
 	 { "MultiIntegrator_copy", _wrap_MultiIntegrator_copy, METH_O, "\n"
@@ -91584,7 +92068,14 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Polymorphic copy constructor. \n"
 		""},
-	 { "MultiIntegrator_add_states_to_integrator", (PyCFunction)(void(*)(void))_wrap_MultiIntegrator_add_states_to_integrator, METH_VARARGS|METH_KEYWORDS, "MultiIntegrator_add_states_to_integrator(MultiIntegrator self, StateVariableOwner stateOwner, int integrator_position)"},
+	 { "MultiIntegrator_add_states_to_integrator", (PyCFunction)(void(*)(void))_wrap_MultiIntegrator_add_states_to_integrator, METH_VARARGS|METH_KEYWORDS, "\n"
+		"MultiIntegrator_add_states_to_integrator(MultiIntegrator self, StateVariableOwner stateOwner, int integrator_position)\n"
+		"void\n"
+		"add_states_to_integrator(cmf::math::StateVariableOwner &stateOwner,\n"
+		"int integrator_position)\n"
+		"\n"
+		"Add state variables from a StateVariableOwner. \n"
+		""},
 	 { "new_MultiIntegrator", (PyCFunction)(void(*)(void))_wrap_new_MultiIntegrator, METH_VARARGS|METH_KEYWORDS, "\n"
 		"new_MultiIntegrator(Integrator template_integrator, int count) -> MultiIntegrator\n"
 		"MultiIntegrator(const cmf::math::Integrator &template_integrator, int\n"
@@ -91604,16 +92095,16 @@ static PyMethodDef SwigMethods[] = {
 	 { "MultiIntegrator_swiginit", MultiIntegrator_swiginit, METH_VARARGS, NULL},
 	 { "SoluteWaterIntegrator_copy", _wrap_SoluteWaterIntegrator_copy, METH_O, "\n"
 		"SoluteWaterIntegrator_copy(SoluteWaterIntegrator self) -> SoluteWaterIntegrator\n"
-		"cmf::math::SoluteWaterIntegrator* copy() const override\n"
+		"virtual cmf::math::SoluteWaterIntegrator* copy() const\n"
 		"\n"
 		"Polymorphic copy constructor. \n"
 		""},
 	 { "new_SoluteWaterIntegrator", _wrap_new_SoluteWaterIntegrator, METH_VARARGS, "\n"
 		"SoluteWaterIntegrator(solute_vector solutes, Integrator water_integrator, Integrator solute_integrator)\n"
 		"new_SoluteWaterIntegrator(solute_vector solutes, Integrator water_integrator, Integrator solute_integrator, StateVariableOwner states) -> SoluteWaterIntegrator\n"
-		"SoluteWaterIntegrator(const cmf::water::solute_vector &solutes, const\n"
+		"SoluteWaterIntegrator(cmf::water::solute_vector solutes, const\n"
 		"cmf::math::Integrator &water_integrator, const cmf::math::Integrator\n"
-		"&solute_integrator, const cmf::math::state_list &states)\n"
+		"&solute_integrator, cmf::math::StateVariableOwner &states)\n"
 		"\n"
 		"Creates a new SoluteWaterIntegrator.\n"
 		"\n"
@@ -91630,12 +92121,13 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"states:  States to be added to the integrators \n"
 		""},
-	 { "delete_SoluteWaterIntegrator", _wrap_delete_SoluteWaterIntegrator, METH_O, "delete_SoluteWaterIntegrator(SoluteWaterIntegrator self)"},
+	 { "delete_SoluteWaterIntegrator", _wrap_delete_SoluteWaterIntegrator, METH_O, "\n"
+		"delete_SoluteWaterIntegrator(SoluteWaterIntegrator self)\n"
+		"~SoluteWaterIntegrator() \n"
+		""},
 	 { "SoluteWaterIntegrator_to_string", _wrap_SoluteWaterIntegrator_to_string, METH_O, "\n"
 		"SoluteWaterIntegrator_to_string(SoluteWaterIntegrator self) -> std::string\n"
-		"std::string to_string() const override\n"
-		"\n"
-		"Desrcibes the iterator. \n"
+		"std::string to_string() const \n"
 		""},
 	 { "SoluteWaterIntegrator_swigregister", SoluteWaterIntegrator_swigregister, METH_O, NULL},
 	 { "SoluteWaterIntegrator_swiginit", SoluteWaterIntegrator_swiginit, METH_VARARGS, NULL},
@@ -92430,23 +92922,82 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "timeseries_swigregister", timeseries_swigregister, METH_O, NULL},
 	 { "timeseries_swiginit", timeseries_swiginit, METH_VARARGS, NULL},
 	 { "nash_sutcliffe", (PyCFunction)(void(*)(void))_wrap_nash_sutcliffe, METH_VARARGS|METH_KEYWORDS, "nash_sutcliffe(timeseries model, timeseries observation) -> double"},
-	 { "integratable_integrate", (PyCFunction)(void(*)(void))_wrap_integratable_integrate, METH_VARARGS|METH_KEYWORDS, "integrate(integratable self, Time t)"},
-	 { "integratable_reset", (PyCFunction)(void(*)(void))_wrap_integratable_reset, METH_VARARGS|METH_KEYWORDS, "reset(integratable self, Time t)"},
-	 { "integratable_sum", _wrap_integratable_sum, METH_O, "sum(integratable self) -> double"},
-	 { "integratable_avg", _wrap_integratable_avg, METH_O, "avg(integratable self) -> double"},
+	 { "integratable_integrate", (PyCFunction)(void(*)(void))_wrap_integratable_integrate, METH_VARARGS|METH_KEYWORDS, "\n"
+		"integrate(integratable self, Time t)\n"
+		"virtual\n"
+		"void integrate(Time t)=0\n"
+		"\n"
+		"Integrates the variable until time t. \n"
+		""},
+	 { "integratable_reset", (PyCFunction)(void(*)(void))_wrap_integratable_reset, METH_VARARGS|METH_KEYWORDS, "\n"
+		"reset(integratable self, Time t)\n"
+		"virtual void\n"
+		"reset(Time t)=0\n"
+		"\n"
+		"Sets the start time of the integral. \n"
+		""},
+	 { "integratable_sum", _wrap_integratable_sum, METH_O, "\n"
+		"sum(integratable self) -> double\n"
+		"virtual double\n"
+		"sum() const =0\n"
+		"\n"
+		"Get the integral from the last reset until the last call of integrate.\n"
+		"\n"
+		""},
+	 { "integratable_avg", _wrap_integratable_avg, METH_O, "\n"
+		"avg(integratable self) -> double\n"
+		"virtual double\n"
+		"avg() const =0\n"
+		"\n"
+		"Returns average of the integrated variable (eg. flux) from the last\n"
+		"reset until the last call of integrate. \n"
+		""},
 	 { "delete_integratable", _wrap_delete_integratable, METH_O, "delete_integratable(integratable self)"},
 	 { "integratable_swigregister", integratable_swigregister, METH_O, NULL},
-	 { "integratable_list_append", (PyCFunction)(void(*)(void))_wrap_integratable_list_append, METH_VARARGS|METH_KEYWORDS, "append(integratable_list self, cmf::math::integratable::ptr add)"},
-	 { "integratable_list_remove", (PyCFunction)(void(*)(void))_wrap_integratable_list_remove, METH_VARARGS|METH_KEYWORDS, "remove(integratable_list self, cmf::math::integratable::ptr rm)"},
+	 { "integratable_list_append", (PyCFunction)(void(*)(void))_wrap_integratable_list_append, METH_VARARGS|METH_KEYWORDS, "\n"
+		"append(integratable_list self, cmf::math::integratable::ptr add)\n"
+		"void\n"
+		"append(cmf::math::integratable::ptr add)\n"
+		"\n"
+		"Adds an integratable to the list. \n"
+		""},
+	 { "integratable_list_remove", (PyCFunction)(void(*)(void))_wrap_integratable_list_remove, METH_VARARGS|METH_KEYWORDS, "\n"
+		"remove(integratable_list self, cmf::math::integratable::ptr rm)\n"
+		"void\n"
+		"remove(cmf::math::integratable::ptr rm)\n"
+		"\n"
+		"Removes an integratable from the list. \n"
+		""},
 	 { "integratable_list___getitem", (PyCFunction)(void(*)(void))_wrap_integratable_list___getitem, METH_VARARGS|METH_KEYWORDS, "__getitem(integratable_list self, int index) -> cmf::math::integratable::ptr"},
-	 { "integratable_list_size", _wrap_integratable_list_size, METH_O, "size(integratable_list self) -> size_t"},
-	 { "integratable_list_avg", _wrap_integratable_list_avg, METH_O, "avg(integratable_list self) -> cmf::math::num_array"},
-	 { "integratable_list_sum", _wrap_integratable_list_sum, METH_O, "sum(integratable_list self) -> cmf::math::num_array"},
-	 { "integratable_list_reset", (PyCFunction)(void(*)(void))_wrap_integratable_list_reset, METH_VARARGS|METH_KEYWORDS, "reset(integratable_list self, Time t)"},
-	 { "integratable_list_integrate", (PyCFunction)(void(*)(void))_wrap_integratable_list_integrate, METH_VARARGS|METH_KEYWORDS, "integrate(integratable_list self, Time t)"},
+	 { "integratable_list_size", _wrap_integratable_list_size, METH_O, "\n"
+		"size(integratable_list self) -> size_t\n"
+		"size_t\n"
+		"size() const\n"
+		"\n"
+		"Number of integratables in the list. \n"
+		""},
+	 { "integratable_list_avg", _wrap_integratable_list_avg, METH_O, "\n"
+		"avg(integratable_list self) -> cmf::math::num_array\n"
+		"cmf::math::num_array avg() const \n"
+		""},
+	 { "integratable_list_sum", _wrap_integratable_list_sum, METH_O, "\n"
+		"sum(integratable_list self) -> cmf::math::num_array\n"
+		"cmf::math::num_array sum() const \n"
+		""},
+	 { "integratable_list_reset", (PyCFunction)(void(*)(void))_wrap_integratable_list_reset, METH_VARARGS|METH_KEYWORDS, "\n"
+		"reset(integratable_list self, Time t)\n"
+		"void\n"
+		"reset(Time t) \n"
+		""},
+	 { "integratable_list_integrate", (PyCFunction)(void(*)(void))_wrap_integratable_list_integrate, METH_VARARGS|METH_KEYWORDS, "\n"
+		"integrate(integratable_list self, Time t)\n"
+		"void\n"
+		"integrate(Time t) \n"
+		""},
 	 { "new_integratable_list", _wrap_new_integratable_list, METH_VARARGS, "\n"
 		"integratable_list()\n"
 		"new_integratable_list(integratable_list for_copy) -> integratable_list\n"
+		"integratable_list(const integratable_list &for_copy) \n"
 		""},
 	 { "integratable_list___len__", _wrap_integratable_list___len__, METH_O, "__len__(integratable_list self) -> size_t"},
 	 { "delete_integratable_list", _wrap_delete_integratable_list, METH_O, "delete_integratable_list(integratable_list self)"},
@@ -92475,17 +93026,43 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "StateVariable_state_set", _wrap_StateVariable_state_set, METH_VARARGS, "StateVariable_state_set(StateVariable self, real state)"},
 	 { "StateVariable_state_get", _wrap_StateVariable_state_get, METH_O, "StateVariable_state_get(StateVariable self) -> real"},
 	 { "StateVariable_swigregister", StateVariable_swigregister, METH_O, NULL},
-	 { "StateVariableOwner_get_states", _wrap_StateVariableOwner_get_states, METH_O, "get_states(StateVariableOwner self) -> StateVariableList"},
-	 { "delete_StateVariableOwner", _wrap_delete_StateVariableOwner, METH_O, "delete_StateVariableOwner(StateVariableOwner self)"},
+	 { "StateVariableOwner_get_states", _wrap_StateVariableOwner_get_states, METH_O, "\n"
+		"get_states(StateVariableOwner self) -> StateVariableList\n"
+		"virtual StateVariableList get_states()=0\n"
+		"\n"
+		"Add the state variables, owned by an object derived from\n"
+		"StateVariableOwner, to the given vector. \n"
+		""},
+	 { "delete_StateVariableOwner", _wrap_delete_StateVariableOwner, METH_O, "\n"
+		"delete_StateVariableOwner(StateVariableOwner self)\n"
+		"virtual\n"
+		"~StateVariableOwner() \n"
+		""},
 	 { "StateVariableOwner_swigregister", StateVariableOwner_swigregister, METH_O, NULL},
-	 { "StateVariableList_append", (PyCFunction)(void(*)(void))_wrap_StateVariableList_append, METH_VARARGS|METH_KEYWORDS, "append(StateVariableList self, cmf::math::StateVariable::ptr sv)"},
-	 { "StateVariableList_extend", (PyCFunction)(void(*)(void))_wrap_StateVariableList_extend, METH_VARARGS|METH_KEYWORDS, "extend(StateVariableList self, StateVariableOwner svo)"},
+	 { "StateVariableList_append", (PyCFunction)(void(*)(void))_wrap_StateVariableList_append, METH_VARARGS|METH_KEYWORDS, "\n"
+		"append(StateVariableList self, cmf::math::StateVariable::ptr sv)\n"
+		"void\n"
+		"append(StateVariable::ptr sv) \n"
+		""},
+	 { "StateVariableList_extend", (PyCFunction)(void(*)(void))_wrap_StateVariableList_extend, METH_VARARGS|METH_KEYWORDS, "\n"
+		"extend(StateVariableList self, StateVariableOwner svo)\n"
+		"void\n"
+		"extend(StateVariableOwner &svo) \n"
+		""},
 	 { "StateVariableList___iadd__", _wrap_StateVariableList___iadd__, METH_VARARGS, "\n"
 		"__iadd__(StateVariableList self, StateVariableList food) -> StateVariableList\n"
 		"__iadd__(StateVariableList self, StateVariableOwner svo) -> StateVariableList\n"
 		""},
-	 { "StateVariableList_size", _wrap_StateVariableList_size, METH_O, "size(StateVariableList self) -> size_t"},
-	 { "delete_StateVariableList", _wrap_delete_StateVariableList, METH_O, "delete_StateVariableList(StateVariableList self)"},
+	 { "StateVariableList_size", _wrap_StateVariableList_size, METH_O, "\n"
+		"size(StateVariableList self) -> size_t\n"
+		"size_t\n"
+		"size() const \n"
+		""},
+	 { "delete_StateVariableList", _wrap_delete_StateVariableList, METH_O, "\n"
+		"delete_StateVariableList(StateVariableList self)\n"
+		"virtual\n"
+		"~StateVariableList() \n"
+		""},
 	 { "StateVariableList___len__", _wrap_StateVariableList___len__, METH_O, "__len__(StateVariableList self) -> size_t"},
 	 { "new_StateVariableList", _wrap_new_StateVariableList, METH_NOARGS, "new_StateVariableList() -> StateVariableList"},
 	 { "StateVariableList_swigregister", StateVariableList_swigregister, METH_O, NULL},
@@ -92853,11 +93430,33 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"cmf::water::get_lower_node(flux_node::ptr node1, flux_node::ptr node2)\n"
 		"\n"
 		""},
-	 { "waterbalance_integrator_integration_t", _wrap_waterbalance_integrator_integration_t, METH_O, "integration_t(waterbalance_integrator self) -> Time"},
-	 { "waterbalance_integrator_t0", _wrap_waterbalance_integrator_t0, METH_O, "t0(waterbalance_integrator self) -> Time"},
-	 { "waterbalance_integrator___get_node", _wrap_waterbalance_integrator___get_node, METH_O, "__get_node(waterbalance_integrator self) -> cmf::water::flux_node::ptr"},
-	 { "waterbalance_integrator___set_node", (PyCFunction)(void(*)(void))_wrap_waterbalance_integrator___set_node, METH_VARARGS|METH_KEYWORDS, "__set_node(waterbalance_integrator self, cmf::water::flux_node::ptr node)"},
-	 { "new_waterbalance_integrator", (PyCFunction)(void(*)(void))_wrap_new_waterbalance_integrator, METH_VARARGS|METH_KEYWORDS, "new_waterbalance_integrator(cmf::water::flux_node::ptr node) -> waterbalance_integrator"},
+	 { "waterbalance_integrator_integration_t", _wrap_waterbalance_integrator_integration_t, METH_O, "\n"
+		"integration_t(waterbalance_integrator self) -> Time\n"
+		"cmf::math::Time\n"
+		"integration_t() const\n"
+		"\n"
+		"Returns the duration of the integration. \n"
+		""},
+	 { "waterbalance_integrator_t0", _wrap_waterbalance_integrator_t0, METH_O, "\n"
+		"t0(waterbalance_integrator self) -> Time\n"
+		"cmf::math::Time t0() const\n"
+		"\n"
+		"Returns the start time of the integration. \n"
+		""},
+	 { "waterbalance_integrator___get_node", _wrap_waterbalance_integrator___get_node, METH_O, "\n"
+		"__get_node(waterbalance_integrator self) -> cmf::water::flux_node::ptr\n"
+		"flux_node::ptr get_node() const\n"
+		"\n"
+		"Returns the node of this integrator. \n"
+		""},
+	 { "waterbalance_integrator___set_node", (PyCFunction)(void(*)(void))_wrap_waterbalance_integrator___set_node, METH_VARARGS|METH_KEYWORDS, "\n"
+		"__set_node(waterbalance_integrator self, cmf::water::flux_node::ptr node)\n"
+		"void set_node(cmf::water::flux_node::ptr node) \n"
+		""},
+	 { "new_waterbalance_integrator", (PyCFunction)(void(*)(void))_wrap_new_waterbalance_integrator, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_waterbalance_integrator(cmf::water::flux_node::ptr node) -> waterbalance_integrator\n"
+		"waterbalance_integrator(cmf::water::flux_node::ptr node) \n"
+		""},
 	 { "delete_waterbalance_integrator", _wrap_delete_waterbalance_integrator, METH_O, "delete_waterbalance_integrator(waterbalance_integrator self)"},
 	 { "waterbalance_integrator_swigregister", waterbalance_integrator_swigregister, METH_O, NULL},
 	 { "waterbalance_integrator_swiginit", waterbalance_integrator_swiginit, METH_VARARGS, NULL},
@@ -92943,7 +93542,11 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"short_string(flux_connection self) -> std::string\n"
 		"virtual std::string short_string() const \n"
 		""},
-	 { "flux_connection_is_waterbalance_source", (PyCFunction)(void(*)(void))_wrap_flux_connection_is_waterbalance_source, METH_VARARGS|METH_KEYWORDS, "is_waterbalance_source(flux_connection self, flux_node inquirer) -> bool"},
+	 { "flux_connection_is_waterbalance_source", (PyCFunction)(void(*)(void))_wrap_flux_connection_is_waterbalance_source, METH_VARARGS|METH_KEYWORDS, "\n"
+		"is_waterbalance_source(flux_connection self, flux_node inquirer) -> bool\n"
+		"virtual bool\n"
+		"is_waterbalance_source(const flux_node &inquirer) \n"
+		""},
 	 { "delete_flux_connection", _wrap_delete_flux_connection, METH_O, "\n"
 		"delete_flux_connection(flux_connection self)\n"
 		"virtual ~flux_connection() \n"
@@ -93008,14 +93611,34 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "new_connection_list", _wrap_new_connection_list, METH_NOARGS, "new_connection_list() -> connection_list"},
 	 { "connection_list_swigregister", connection_list_swigregister, METH_O, NULL},
 	 { "connection_list_swiginit", connection_list_swiginit, METH_VARARGS, NULL},
-	 { "flux_integrator_integration_t", _wrap_flux_integrator_integration_t, METH_O, "integration_t(flux_integrator self) -> Time"},
-	 { "flux_integrator_t0", _wrap_flux_integrator_t0, METH_O, "t0(flux_integrator self) -> Time"},
+	 { "flux_integrator_integration_t", _wrap_flux_integrator_integration_t, METH_O, "\n"
+		"integration_t(flux_integrator self) -> Time\n"
+		"cmf::math::Time integration_t() const\n"
+		"\n"
+		"Returns the duration of the integration. \n"
+		""},
+	 { "flux_integrator_t0", _wrap_flux_integrator_t0, METH_O, "\n"
+		"t0(flux_integrator self) -> Time\n"
+		"cmf::math::Time t0() const\n"
+		"\n"
+		"Returns the start time of the integration. \n"
+		""},
 	 { "flux_integrator_invert_set", _wrap_flux_integrator_invert_set, METH_VARARGS, "flux_integrator_invert_set(flux_integrator self, bool invert)"},
 	 { "flux_integrator_invert_get", _wrap_flux_integrator_invert_get, METH_O, "flux_integrator_invert_get(flux_integrator self) -> bool"},
-	 { "flux_integrator_connection", _wrap_flux_integrator_connection, METH_O, "connection(flux_integrator self) -> cmf::water::flux_connection::ptr"},
+	 { "flux_integrator_connection", _wrap_flux_integrator_connection, METH_O, "\n"
+		"connection(flux_integrator self) -> cmf::water::flux_connection::ptr\n"
+		"flux_connection::ptr connection() const\n"
+		"\n"
+		"Returns the flux_connection. \n"
+		""},
 	 { "new_flux_integrator", _wrap_new_flux_integrator, METH_VARARGS, "\n"
 		"flux_integrator(flux_connection connection)\n"
 		"new_flux_integrator(cmf::water::flux_node::ptr left, cmf::water::flux_node::ptr right) -> flux_integrator\n"
+		"flux_integrator(cmf::water::flux_node::ptr left,\n"
+		"cmf::water::flux_node::ptr right)\n"
+		"\n"
+		"Creates a flux_integrator from the endpoints of a connection. Throws\n"
+		"if there is no connection between the endpoints. \n"
 		""},
 	 { "delete_flux_integrator", _wrap_delete_flux_integrator, METH_O, "delete_flux_integrator(flux_integrator self)"},
 	 { "flux_integrator_swigregister", flux_integrator_swigregister, METH_O, NULL},
@@ -93146,13 +93769,21 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_WaterStorage", _wrap_delete_WaterStorage, METH_O, "delete_WaterStorage(WaterStorage self)"},
 	 { "WaterStorage_swigregister", WaterStorage_swigregister, METH_O, NULL},
 	 { "WaterStorage_swiginit", WaterStorage_swiginit, METH_VARARGS, NULL},
-	 { "new_waterbalance_connection", (PyCFunction)(void(*)(void))_wrap_new_waterbalance_connection, METH_VARARGS|METH_KEYWORDS, "new_waterbalance_connection(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target) -> waterbalance_connection"},
+	 { "new_waterbalance_connection", (PyCFunction)(void(*)(void))_wrap_new_waterbalance_connection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_waterbalance_connection(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target) -> waterbalance_connection\n"
+		"waterbalance_connection(flux_node::ptr source, flux_node::ptr target)\n"
+		"\n"
+		""},
 	 { "delete_waterbalance_connection", _wrap_delete_waterbalance_connection, METH_O, "delete_waterbalance_connection(waterbalance_connection self)"},
 	 { "waterbalance_connection_swigregister", waterbalance_connection_swigregister, METH_O, NULL},
 	 { "waterbalance_connection_swiginit", waterbalance_connection_swiginit, METH_VARARGS, NULL},
 	 { "external_control_connection_flux_set", _wrap_external_control_connection_flux_set, METH_VARARGS, "external_control_connection_flux_set(external_control_connection self, real flux)"},
 	 { "external_control_connection_flux_get", _wrap_external_control_connection_flux_get, METH_O, "external_control_connection_flux_get(external_control_connection self) -> real"},
-	 { "new_external_control_connection", (PyCFunction)(void(*)(void))_wrap_new_external_control_connection, METH_VARARGS|METH_KEYWORDS, "new_external_control_connection(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target, real flux_value=0) -> external_control_connection"},
+	 { "new_external_control_connection", (PyCFunction)(void(*)(void))_wrap_new_external_control_connection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_external_control_connection(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target, real flux_value=0) -> external_control_connection\n"
+		"external_control_connection(flux_node::ptr source, flux_node::ptr\n"
+		"target, real flux_value=0) \n"
+		""},
 	 { "delete_external_control_connection", _wrap_delete_external_control_connection, METH_O, "delete_external_control_connection(external_control_connection self)"},
 	 { "external_control_connection_swigregister", external_control_connection_swigregister, METH_O, NULL},
 	 { "external_control_connection_swiginit", external_control_connection_swiginit, METH_VARARGS, NULL},
@@ -93183,7 +93814,40 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "kinematic_wave_residual_get", _wrap_kinematic_wave_residual_get, METH_O, "kinematic_wave_residual_get(kinematic_wave self) -> real"},
 	 { "kinematic_wave_V0_set", _wrap_kinematic_wave_V0_set, METH_VARARGS, "kinematic_wave_V0_set(kinematic_wave self, real V0)"},
 	 { "kinematic_wave_V0_get", _wrap_kinematic_wave_V0_get, METH_O, "kinematic_wave_V0_get(kinematic_wave self) -> real"},
-	 { "new_kinematic_wave", (PyCFunction)(void(*)(void))_wrap_new_kinematic_wave, METH_VARARGS|METH_KEYWORDS, "new_kinematic_wave(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real residencetime, real exponent=1.0, real residual=0.0, real V0=1.0) -> kinematic_wave"},
+	 { "new_kinematic_wave", (PyCFunction)(void(*)(void))_wrap_new_kinematic_wave, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_kinematic_wave(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real residencetime, real exponent=1.0, real residual=0.0, real V0=1.0) -> kinematic_wave\n"
+		"kinematic_wave(WaterStorage::ptr source, flux_node::ptr target, real\n"
+		"residencetime, real exponent=1.0, real residual=0.0, real V0=1.0)\n"
+		"\n"
+		"Creates a kinematic wave connection.\n"
+		"\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}\n"
+		"    \\\\right)^\\\\beta} \n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"source:  Water storage from which the water flows out. Flux is a\n"
+		"function of source.volume\n"
+		"\n"
+		"target:  Target node (boundary condition or storage). Does not\n"
+		"influence the strength of the flow\n"
+		"\n"
+		"residencetime:   :math:`t_r [days]` The residence time of the water in this\n"
+		"storage\n"
+		"\n"
+		"exponent:   :math:`\\\\beta [-]` An empirical exponent to shape the flux\n"
+		"function (default = 1 (linear function))\n"
+		"\n"
+		"residual:   :math:`V_{residual} [m^3]` The volume of water not flowing out\n"
+		"(default = 0)\n"
+		"\n"
+		"V0:   :math:`V_0` The reference volume to scale the exponent \n"
+		""},
 	 { "delete_kinematic_wave", _wrap_delete_kinematic_wave, METH_O, "delete_kinematic_wave(kinematic_wave self)"},
 	 { "kinematic_wave_swigregister", kinematic_wave_swigregister, METH_O, NULL},
 	 { "kinematic_wave_swiginit", kinematic_wave_swiginit, METH_VARARGS, NULL},
@@ -93282,7 +93946,39 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ConstraintLinearStorageConnection_Vlmin_get", _wrap_ConstraintLinearStorageConnection_Vlmin_get, METH_O, "ConstraintLinearStorageConnection_Vlmin_get(ConstraintLinearStorageConnection self) -> real"},
 	 { "ConstraintLinearStorageConnection_Vrmax_set", _wrap_ConstraintLinearStorageConnection_Vrmax_set, METH_VARARGS, "ConstraintLinearStorageConnection_Vrmax_set(ConstraintLinearStorageConnection self, real Vrmax)"},
 	 { "ConstraintLinearStorageConnection_Vrmax_get", _wrap_ConstraintLinearStorageConnection_Vrmax_get, METH_O, "ConstraintLinearStorageConnection_Vrmax_get(ConstraintLinearStorageConnection self) -> real"},
-	 { "new_ConstraintLinearStorageConnection", (PyCFunction)(void(*)(void))_wrap_new_ConstraintLinearStorageConnection, METH_VARARGS|METH_KEYWORDS, "new_ConstraintLinearStorageConnection(cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real Vrmax=1.0) -> ConstraintLinearStorageConnection"},
+	 { "new_ConstraintLinearStorageConnection", (PyCFunction)(void(*)(void))_wrap_new_ConstraintLinearStorageConnection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_ConstraintLinearStorageConnection(cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real Vrmax=1.0) -> ConstraintLinearStorageConnection\n"
+		"ConstraintLinearStorageConnection(WaterStorage::ptr source,\n"
+		"WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real\n"
+		"Vrmax=1.0)\n"
+		"\n"
+		"Creates a linear storage connection, constrained by the fill level of\n"
+		"the source \n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V -\n"
+		"    V_{residual}}{V_0} \\\\right)^\\\\beta} \n"
+		"\n"
+		".\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"source:  Water storage from which the water flows out. Flux is a\n"
+		"function of source.volume\n"
+		"\n"
+		"target:  Target node (boundary condition or storage). Does not\n"
+		"influence the strength of the flow\n"
+		"\n"
+		"residencetime:   :math:`t_r [days]` The residence time of the water in this\n"
+		"storage\n"
+		"\n"
+		"Vlmin:   :math:`V_{l,min} [m^3]` The volume of water not flowing out\n"
+		"(default = 0)\n"
+		"\n"
+		"Vrmax:   :math:`V_{r,max}` Capacity of the target water storage in m3 \n"
+		""},
 	 { "delete_ConstraintLinearStorageConnection", _wrap_delete_ConstraintLinearStorageConnection, METH_O, "delete_ConstraintLinearStorageConnection(ConstraintLinearStorageConnection self)"},
 	 { "ConstraintLinearStorageConnection_swigregister", ConstraintLinearStorageConnection_swigregister, METH_O, NULL},
 	 { "ConstraintLinearStorageConnection_swiginit", ConstraintLinearStorageConnection_swiginit, METH_VARARGS, NULL},
@@ -93298,7 +93994,33 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "bidirectional_kinematic_exchange_beta_suc_get", _wrap_bidirectional_kinematic_exchange_beta_suc_get, METH_O, "bidirectional_kinematic_exchange_beta_suc_get(bidirectional_kinematic_exchange self) -> real"},
 	 { "bidirectional_kinematic_exchange_beta_spill_set", _wrap_bidirectional_kinematic_exchange_beta_spill_set, METH_VARARGS, "bidirectional_kinematic_exchange_beta_spill_set(bidirectional_kinematic_exchange self, real beta_spill)"},
 	 { "bidirectional_kinematic_exchange_beta_spill_get", _wrap_bidirectional_kinematic_exchange_beta_spill_get, METH_O, "bidirectional_kinematic_exchange_beta_spill_get(bidirectional_kinematic_exchange self) -> real"},
-	 { "new_bidirectional_kinematic_exchange", (PyCFunction)(void(*)(void))_wrap_new_bidirectional_kinematic_exchange, METH_VARARGS|METH_KEYWORDS, "new_bidirectional_kinematic_exchange(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Vminspill, real Vmaxsuc, real qspill, real qsuc, real beta_spill, real beta_suc) -> bidirectional_kinematic_exchange"},
+	 { "new_bidirectional_kinematic_exchange", (PyCFunction)(void(*)(void))_wrap_new_bidirectional_kinematic_exchange, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_bidirectional_kinematic_exchange(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Vminspill, real Vmaxsuc, real qspill, real qsuc, real beta_spill, real beta_suc) -> bidirectional_kinematic_exchange\n"
+		"bidirectional_kinematic_exchange(WaterStorage::ptr source,\n"
+		"flux_node::ptr target, real Vminspill, real Vmaxsuc, real qspill, real\n"
+		"qsuc, real beta_spill, real beta_suc)\n"
+		"\n"
+		"Creates a kinematic wave connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"source:  Water storage from which the water flows out. Flux is a\n"
+		"function of source.volume\n"
+		"\n"
+		"target:  Target node (boundary condition or storage). Does not\n"
+		"influence the strength of the flow\n"
+		"\n"
+		"Vmaxsuc:  Suction starts below this threshold volume of source\n"
+		"\n"
+		"Vminspill:  Spilling starts above this threshold volume of source\n"
+		"\n"
+		"qspill:  Spill flow at 2*Vminspill in m3/day\n"
+		"\n"
+		"qsuc:  Suction flow at V=0 m3\n"
+		"\n"
+		"beta_suc:  beta_spill:  Exponent for spill / suction flow \n"
+		""},
 	 { "delete_bidirectional_kinematic_exchange", _wrap_delete_bidirectional_kinematic_exchange, METH_O, "delete_bidirectional_kinematic_exchange(bidirectional_kinematic_exchange self)"},
 	 { "bidirectional_kinematic_exchange_swigregister", bidirectional_kinematic_exchange_swigregister, METH_O, NULL},
 	 { "bidirectional_kinematic_exchange_swiginit", bidirectional_kinematic_exchange_swiginit, METH_VARARGS, NULL},
@@ -93314,7 +94036,45 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "constraint_kinematic_wave_Vrmax_get", _wrap_constraint_kinematic_wave_Vrmax_get, METH_O, "constraint_kinematic_wave_Vrmax_get(constraint_kinematic_wave self) -> real"},
 	 { "constraint_kinematic_wave_gamma_set", _wrap_constraint_kinematic_wave_gamma_set, METH_VARARGS, "constraint_kinematic_wave_gamma_set(constraint_kinematic_wave self, real gamma)"},
 	 { "constraint_kinematic_wave_gamma_get", _wrap_constraint_kinematic_wave_gamma_get, METH_O, "constraint_kinematic_wave_gamma_get(constraint_kinematic_wave self) -> real"},
-	 { "new_constraint_kinematic_wave", (PyCFunction)(void(*)(void))_wrap_new_constraint_kinematic_wave, METH_VARARGS|METH_KEYWORDS, "new_constraint_kinematic_wave(cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real exponent=1.0, real residual=0.0, real V0=1.0, real Vrmax=1.0, real gamma=1.0) -> constraint_kinematic_wave"},
+	 { "new_constraint_kinematic_wave", (PyCFunction)(void(*)(void))_wrap_new_constraint_kinematic_wave, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_constraint_kinematic_wave(cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real exponent=1.0, real residual=0.0, real V0=1.0, real Vrmax=1.0, real gamma=1.0) -> constraint_kinematic_wave\n"
+		"constraint_kinematic_wave(WaterStorage::ptr source, WaterStorage::ptr\n"
+		"target, real residencetime=1.0, real exponent=1.0, real residual=0.0,\n"
+		"real V0=1.0, real Vrmax=1.0, real gamma=1.0)\n"
+		"\n"
+		"Creates a kinematic wave connection.\n"
+		"\n"
+		"\n"
+		"\n"
+		".. math::\n"
+		"\n"
+		"     q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}\n"
+		"    \\\\right)^\\\\beta} \n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"source:  Water storage from which the water flows out. Flux is a\n"
+		"function of source.volume\n"
+		"\n"
+		"target:  Target node (boundary condition or storage). Does not\n"
+		"influence the strength of the flow\n"
+		"\n"
+		"residencetime:   :math:`t_r [days]` The residence time of the water in this\n"
+		"storage\n"
+		"\n"
+		"exponent:   :math:`\\\\beta [-]` An empirical exponent to shape the flux\n"
+		"function (default = 1 (linear function))\n"
+		"\n"
+		"residual:   :math:`V_{residual} [m^3]` The volume of water not flowing out\n"
+		"(default = 0)\n"
+		"\n"
+		"V0:   :math:`V_0` The reference volume to scale the exponent\n"
+		"\n"
+		"Vrmax:   :math:`V_{r,max}` Capacity of the target water storage in m3\n"
+		"\n"
+		"gamma:   :math:`\\\\gamma` Target capacity constriction curve shape \n"
+		""},
 	 { "delete_constraint_kinematic_wave", _wrap_delete_constraint_kinematic_wave, METH_O, "delete_constraint_kinematic_wave(constraint_kinematic_wave self)"},
 	 { "constraint_kinematic_wave_swigregister", constraint_kinematic_wave_swigregister, METH_O, NULL},
 	 { "constraint_kinematic_wave_swiginit", constraint_kinematic_wave_swiginit, METH_VARARGS, NULL},
@@ -93324,7 +94084,28 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "TechnicalFlux_MinState_get", _wrap_TechnicalFlux_MinState_get, METH_O, "TechnicalFlux_MinState_get(TechnicalFlux self) -> real"},
 	 { "TechnicalFlux_FluxDecreaseTime_set", _wrap_TechnicalFlux_FluxDecreaseTime_set, METH_VARARGS, "TechnicalFlux_FluxDecreaseTime_set(TechnicalFlux self, Time FluxDecreaseTime)"},
 	 { "TechnicalFlux_FluxDecreaseTime_get", _wrap_TechnicalFlux_FluxDecreaseTime_get, METH_O, "TechnicalFlux_FluxDecreaseTime_get(TechnicalFlux self) -> Time"},
-	 { "new_TechnicalFlux", (PyCFunction)(void(*)(void))_wrap_new_TechnicalFlux, METH_VARARGS|METH_KEYWORDS, "new_TechnicalFlux(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real maximum_flux, real minimal_state=0, Time flux_decrease_time=h) -> TechnicalFlux"},
+	 { "new_TechnicalFlux", (PyCFunction)(void(*)(void))_wrap_new_TechnicalFlux, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_TechnicalFlux(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real maximum_flux, real minimal_state=0, Time flux_decrease_time=h) -> TechnicalFlux\n"
+		"TechnicalFlux(cmf::water::WaterStorage::ptr source,\n"
+		"cmf::water::flux_node::ptr target, real maximum_flux, real\n"
+		"minimal_state=0, cmf::math::Time flux_decrease_time=cmf::math::h)\n"
+		"\n"
+		"Produces a constant but changeable flux from a source to a target, if\n"
+		"enough water is present in the source.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"source:  The source of the water\n"
+		"\n"
+		"target:  The target of the water\n"
+		"\n"
+		"maximum_flux:  The requested flux :math:`q_{0}`\n"
+		"\n"
+		"minimal_state:  Minimal volume of stored water in source\n"
+		"\n"
+		"flux_decrease_time:  ( cmf::math::Time) \n"
+		""},
 	 { "delete_TechnicalFlux", _wrap_delete_TechnicalFlux, METH_O, "delete_TechnicalFlux(TechnicalFlux self)"},
 	 { "TechnicalFlux_swigregister", TechnicalFlux_swigregister, METH_O, NULL},
 	 { "TechnicalFlux_swiginit", TechnicalFlux_swiginit, METH_VARARGS, NULL},
@@ -93334,7 +94115,27 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "generic_gradient_connection_A_get", _wrap_generic_gradient_connection_A_get, METH_O, "generic_gradient_connection_A_get(generic_gradient_connection self) -> real"},
 	 { "generic_gradient_connection_d_set", _wrap_generic_gradient_connection_d_set, METH_VARARGS, "generic_gradient_connection_d_set(generic_gradient_connection self, real d)"},
 	 { "generic_gradient_connection_d_get", _wrap_generic_gradient_connection_d_get, METH_O, "generic_gradient_connection_d_get(generic_gradient_connection self) -> real"},
-	 { "new_generic_gradient_connection", (PyCFunction)(void(*)(void))_wrap_new_generic_gradient_connection, METH_VARARGS|METH_KEYWORDS, "new_generic_gradient_connection(cmf::water::WaterStorage::ptr left, cmf::water::WaterStorage::ptr right, real K, real d=1.0, real A=1.0) -> generic_gradient_connection"},
+	 { "new_generic_gradient_connection", (PyCFunction)(void(*)(void))_wrap_new_generic_gradient_connection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_generic_gradient_connection(cmf::water::WaterStorage::ptr left, cmf::water::WaterStorage::ptr right, real K, real d=1.0, real A=1.0) -> generic_gradient_connection\n"
+		"generic_gradient_connection(cmf::water::WaterStorage::ptr left,\n"
+		"cmf::water::WaterStorage::ptr right, real K, real d=1.0, real A=1.0)\n"
+		"\n"
+		"Creates a generic gradient based flux, if enough water is present in\n"
+		"the source.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  The left node of the connection\n"
+		"\n"
+		"right:  The right node of the connection\n"
+		"\n"
+		"K:  the conductivity of the connection in m/day\n"
+		"\n"
+		"d:  the topographic lenght of the connection in m\n"
+		"\n"
+		"A:  the area of the connection cross section in m2 \n"
+		""},
 	 { "delete_generic_gradient_connection", _wrap_delete_generic_gradient_connection, METH_O, "delete_generic_gradient_connection(generic_gradient_connection self)"},
 	 { "generic_gradient_connection_swigregister", generic_gradient_connection_swigregister, METH_O, NULL},
 	 { "generic_gradient_connection_swiginit", generic_gradient_connection_swiginit, METH_VARARGS, NULL},
@@ -93342,7 +94143,26 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "statecontrol_connection_reaction_time_get", _wrap_statecontrol_connection_reaction_time_get, METH_O, "statecontrol_connection_reaction_time_get(statecontrol_connection self) -> Time"},
 	 { "statecontrol_connection_target_state_set", _wrap_statecontrol_connection_target_state_set, METH_VARARGS, "statecontrol_connection_target_state_set(statecontrol_connection self, real target_state)"},
 	 { "statecontrol_connection_target_state_get", _wrap_statecontrol_connection_target_state_get, METH_O, "statecontrol_connection_target_state_get(statecontrol_connection self) -> real"},
-	 { "new_statecontrol_connection", (PyCFunction)(void(*)(void))_wrap_new_statecontrol_connection, METH_VARARGS|METH_KEYWORDS, "new_statecontrol_connection(cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, real target_state, Time reaction_time) -> statecontrol_connection"},
+	 { "new_statecontrol_connection", (PyCFunction)(void(*)(void))_wrap_new_statecontrol_connection, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_statecontrol_connection(cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, real target_state, Time reaction_time) -> statecontrol_connection\n"
+		"statecontrol_connection(cmf::water::WaterStorage::ptr\n"
+		"controlled_storage, cmf::water::flux_node::ptr other_end, real\n"
+		"target_state, cmf::math::Time reaction_time)\n"
+		"\n"
+		"Creates a flux connection to control the state of a storage.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"controlled_storage:  Water storage, to be controlled\n"
+		"\n"
+		"other_end:  source of missing water or target of excessive water\n"
+		"\n"
+		"target_state:  State the controlled storage should hold (\n"
+		":math:`h_{target}`)\n"
+		"\n"
+		"reaction_time:  Time to reach state ( :math:`t_c`) \n"
+		""},
 	 { "delete_statecontrol_connection", _wrap_delete_statecontrol_connection, METH_O, "delete_statecontrol_connection(statecontrol_connection self)"},
 	 { "statecontrol_connection_swigregister", statecontrol_connection_swigregister, METH_O, NULL},
 	 { "statecontrol_connection_swiginit", statecontrol_connection_swiginit, METH_VARARGS, NULL},
@@ -93564,15 +94384,55 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_NeumannBoundary_list", _wrap_delete_NeumannBoundary_list, METH_O, "delete_NeumannBoundary_list(NeumannBoundary_list self)"},
 	 { "NeumannBoundary_list_swigregister", NeumannBoundary_list_swigregister, METH_O, NULL},
 	 { "NeumannBoundary_list_swiginit", NeumannBoundary_list_swiginit, METH_VARARGS, NULL},
-	 { "SystemBridge_get_upper_node", _wrap_SystemBridge_get_upper_node, METH_O, "get_upper_node(SystemBridge self) -> cmf::water::flux_node::ptr"},
-	 { "SystemBridge_get_lower_node", _wrap_SystemBridge_get_lower_node, METH_O, "get_lower_node(SystemBridge self) -> cmf::water::flux_node::ptr"},
-	 { "SystemBridge_get_down_flux", _wrap_SystemBridge_get_down_flux, METH_O, "get_down_flux(SystemBridge self) -> double"},
-	 { "SystemBridge_down_flux_integrator", _wrap_SystemBridge_down_flux_integrator, METH_O, "down_flux_integrator(SystemBridge self) -> cmf::water::flux_integrator::ptr"},
+	 { "SystemBridge_get_upper_node", _wrap_SystemBridge_get_upper_node, METH_O, "\n"
+		"get_upper_node(SystemBridge self) -> cmf::water::flux_node::ptr\n"
+		"flux_node::ptr get_upper_node() const\n"
+		"\n"
+		"Returns the upper node. \n"
+		""},
+	 { "SystemBridge_get_lower_node", _wrap_SystemBridge_get_lower_node, METH_O, "\n"
+		"get_lower_node(SystemBridge self) -> cmf::water::flux_node::ptr\n"
+		"flux_node::ptr get_lower_node() const\n"
+		"\n"
+		"Returns the lower node. \n"
+		""},
+	 { "SystemBridge_get_down_flux", _wrap_SystemBridge_get_down_flux, METH_O, "\n"
+		"get_down_flux(SystemBridge self) -> double\n"
+		"double get_down_flux() const\n"
+		"\n"
+		"Returns the currently integrated flux to the lower node. \n"
+		""},
+	 { "SystemBridge_down_flux_integrator", _wrap_SystemBridge_down_flux_integrator, METH_O, "\n"
+		"down_flux_integrator(SystemBridge self) -> cmf::water::flux_integrator::ptr\n"
+		"flux_integrator::ptr down_flux_integrator() const \n"
+		""},
 	 { "delete_SystemBridge", _wrap_delete_SystemBridge, METH_O, "delete_SystemBridge(SystemBridge self)"},
 	 { "SystemBridge_swigregister", SystemBridge_swigregister, METH_O, NULL},
 	 { "delete_SystemBridgeConnection", _wrap_delete_SystemBridgeConnection, METH_O, "delete_SystemBridgeConnection(SystemBridgeConnection self)"},
 	 { "SystemBridgeConnection_swigregister", SystemBridgeConnection_swigregister, METH_O, NULL},
-	 { "system_bridge", (PyCFunction)(void(*)(void))_wrap_system_bridge, METH_VARARGS|METH_KEYWORDS, "system_bridge(project p, cmf::water::flux_node::ptr upper, cmf::water::flux_node::ptr lower) -> cmf::water::SystemBridge::ptr"},
+	 { "system_bridge", (PyCFunction)(void(*)(void))_wrap_system_bridge, METH_VARARGS|METH_KEYWORDS, "\n"
+		"system_bridge(project p, cmf::water::flux_node::ptr upper, cmf::water::flux_node::ptr lower) -> cmf::water::SystemBridge::ptr\n"
+		"SystemBridge::ptr\n"
+		"cmf::water::system_bridge(cmf::project &p, flux_node::ptr upper,\n"
+		"flux_node::ptr lower)\n"
+		"\n"
+		"Creates a SystemBridge object.\n"
+		"\n"
+		"This is an advanced feature for tuning of the calculation time.\n"
+		"\n"
+		"A SystemBridge can be used to replace an existing connection between\n"
+		"nodes. After installation, the two nodes can more safely be added to\n"
+		"different integrator systems. One node (called upper) is connected\n"
+		"with the system bridge with the connection formerly connecting the\n"
+		"nodes, the second node (called lower) is connected to the system\n"
+		"bridge with as a Neumann boundary condition. The flux equals the\n"
+		"average flux of the connection upper <-> SystemBridge. Therefore, the\n"
+		"system bridge must become an integratable of the integrator system the\n"
+		"upper node belongs to. Use as an upper system (system upper node is\n"
+		"belonging to) the faster reacting system. For the connection between\n"
+		"upper and SystemBridge, the SystemBridge reacts as an Dirichlet\n"
+		"boundary condition, providing the potential of the lower node. \n"
+		""},
 	 { "vapour_pressure", (PyCFunction)(void(*)(void))_wrap_vapour_pressure, METH_VARARGS|METH_KEYWORDS, "\n"
 		"vapour_pressure(double T) -> double\n"
 		"double\n"
@@ -94414,8 +95274,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Cell_set_uptakestress", (PyCFunction)(void(*)(void))_wrap_Cell_set_uptakestress, METH_VARARGS|METH_KEYWORDS, "\n"
 		"set_uptakestress(Cell self, RootUptakeStressFunction stressfunction)\n"
 		"void\n"
-		"set_uptakestress(const cmf::upslope::ET::RootUptakeStressFunction\n"
-		"&stressfunction)\n"
+		"set_uptakestress(const ET::RootUptakeStressFunction &stressfunction)\n"
 		"\n"
 		"Uses the given WaterStressFunction for all stressedET like connections\n"
 		"to the transpiration target. \n"
@@ -96295,7 +97154,25 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "RutterInterception_swiginit", RutterInterception_swiginit, METH_VARARGS, NULL},
 	 { "SimpleTindexSnowMelt_SnowMeltRate_set", _wrap_SimpleTindexSnowMelt_SnowMeltRate_set, METH_VARARGS, "SimpleTindexSnowMelt_SnowMeltRate_set(SimpleTindexSnowMelt self, real SnowMeltRate)"},
 	 { "SimpleTindexSnowMelt_SnowMeltRate_get", _wrap_SimpleTindexSnowMelt_SnowMeltRate_get, METH_O, "SimpleTindexSnowMelt_SnowMeltRate_get(SimpleTindexSnowMelt self) -> real"},
-	 { "new_SimpleTindexSnowMelt", (PyCFunction)(void(*)(void))_wrap_new_SimpleTindexSnowMelt, METH_VARARGS|METH_KEYWORDS, "new_SimpleTindexSnowMelt(cmf::water::WaterStorage::ptr snow, cmf::water::flux_node::ptr surface_water, Cell cell, real rate=7.0) -> SimpleTindexSnowMelt"},
+	 { "new_SimpleTindexSnowMelt", (PyCFunction)(void(*)(void))_wrap_new_SimpleTindexSnowMelt, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SimpleTindexSnowMelt(cmf::water::WaterStorage::ptr snow, cmf::water::flux_node::ptr surface_water, Cell cell, real rate=7.0) -> SimpleTindexSnowMelt\n"
+		"SimpleTindexSnowMelt(cmf::water::WaterStorage::ptr snow,\n"
+		"cmf::water::flux_node::ptr surface_water, cmf::upslope::Cell &cell,\n"
+		"real rate=7.0)\n"
+		"\n"
+		"Creates a new snow melt connection.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"snow:  Snow storage, usually cel.snow\n"
+		"\n"
+		"surface_water:  target of the melted water (usually cell.surfacewater)\n"
+		"\n"
+		"cell:  The cell, needed to get weather and area\n"
+		"\n"
+		"rate:  The rate of snow melt, given in mm/(degC day), default = 7.0 \n"
+		""},
 	 { "SimpleTindexSnowMelt_use_for_cell", (PyCFunction)(void(*)(void))_wrap_SimpleTindexSnowMelt_use_for_cell, METH_VARARGS|METH_KEYWORDS, "use_for_cell(Cell cell)"},
 	 { "delete_SimpleTindexSnowMelt", _wrap_delete_SimpleTindexSnowMelt, METH_O, "delete_SimpleTindexSnowMelt(SimpleTindexSnowMelt self)"},
 	 { "SimpleTindexSnowMelt_swigregister", SimpleTindexSnowMelt_swigregister, METH_O, NULL},
@@ -96362,7 +97239,22 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "GreenAmptInfiltration_swiginit", GreenAmptInfiltration_swiginit, METH_VARARGS, NULL},
 	 { "SimpleInfiltration_W0_set", _wrap_SimpleInfiltration_W0_set, METH_VARARGS, "SimpleInfiltration_W0_set(SimpleInfiltration self, real W0)"},
 	 { "SimpleInfiltration_W0_get", _wrap_SimpleInfiltration_W0_get, METH_O, "SimpleInfiltration_W0_get(SimpleInfiltration self) -> real"},
-	 { "new_SimpleInfiltration", (PyCFunction)(void(*)(void))_wrap_new_SimpleInfiltration, METH_VARARGS|METH_KEYWORDS, "new_SimpleInfiltration(cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater, real W0=0.9) -> SimpleInfiltration"},
+	 { "new_SimpleInfiltration", (PyCFunction)(void(*)(void))_wrap_new_SimpleInfiltration, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SimpleInfiltration(cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater, real W0=0.9) -> SimpleInfiltration\n"
+		"SimpleInfiltration(cmf::upslope::SoilLayer::ptr soilwater,\n"
+		"cmf::water::flux_node::ptr surfacewater, real W0=0.9)\n"
+		"\n"
+		"Creates the connection between surfacewater and first soil layer.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"soilwater:  the infiltration target\n"
+		"\n"
+		"surfacewater:  the infiltration source\n"
+		"\n"
+		"W0:  the 50% saturation value \n"
+		""},
 	 { "SimpleInfiltration_use_for_cell", (PyCFunction)(void(*)(void))_wrap_SimpleInfiltration_use_for_cell, METH_VARARGS|METH_KEYWORDS, "use_for_cell(Cell c)"},
 	 { "delete_SimpleInfiltration", _wrap_delete_SimpleInfiltration, METH_O, "delete_SimpleInfiltration(SimpleInfiltration self)"},
 	 { "SimpleInfiltration_swigregister", SimpleInfiltration_swigregister, METH_O, NULL},
@@ -96388,7 +97280,11 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_Richards", _wrap_delete_Richards, METH_O, "delete_Richards(Richards self)"},
 	 { "Richards_swigregister", Richards_swigregister, METH_O, NULL},
 	 { "Richards_swiginit", Richards_swiginit, METH_VARARGS, NULL},
-	 { "new_SimplRichards", (PyCFunction)(void(*)(void))_wrap_new_SimplRichards, METH_VARARGS|METH_KEYWORDS, "new_SimplRichards(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> SimplRichards"},
+	 { "new_SimplRichards", (PyCFunction)(void(*)(void))_wrap_new_SimplRichards, METH_VARARGS|METH_KEYWORDS, "\n"
+		"new_SimplRichards(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> SimplRichards\n"
+		"SimplRichards(cmf::upslope::SoilLayer::ptr left,\n"
+		"cmf::water::flux_node::ptr right) \n"
+		""},
 	 { "SimplRichards_use_for_cell", (PyCFunction)(void(*)(void))_wrap_SimplRichards_use_for_cell, METH_VARARGS|METH_KEYWORDS, "use_for_cell(Cell cell, bool no_override=True)"},
 	 { "delete_SimplRichards", _wrap_delete_SimplRichards, METH_O, "delete_SimplRichards(SimplRichards self)"},
 	 { "SimplRichards_swigregister", SimplRichards_swigregister, METH_O, NULL},
@@ -96446,14 +97342,14 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "RootUptakeStressFunction_Tact", (PyCFunction)(void(*)(void))_wrap_RootUptakeStressFunction_Tact, METH_VARARGS|METH_KEYWORDS, "\n"
 		"Tact(RootUptakeStressFunction self, SoilLayer soilLayer, real Tpot) -> real\n"
 		"virtual real\n"
-		"Tact(const cmf::upslope::SoilLayer *soillayer, real Tpot) const =0\n"
+		"Tact(const cmf::upslope::SoilLayer *soilLayer, real Tpot) const =0\n"
 		"\n"
 		"Calculates the water stress for a layer.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"soillayer:  The cmf::upslope::SoilLayer this stress function belongs\n"
+		"soilLayer:  The cmf::upslope::SoilLayer this stress function belongs\n"
 		"to\n"
 		"\n"
 		"Tpot:  Potential Transpiration in mm/day (for the full profile)\n"
@@ -97177,9 +98073,23 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "project_swigregister", project_swigregister, METH_O, NULL},
 	 { "project_swiginit", project_swiginit, METH_VARARGS, NULL},
 	 { "Integrator___getitem__", (PyCFunction)(void(*)(void))_wrap_Integrator___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(Integrator self, int position) -> cmf::math::StateVariable::ptr"},
-	 { "Integrator_get_dxdt", (PyCFunction)(void(*)(void))_wrap_Integrator_get_dxdt, METH_VARARGS|METH_KEYWORDS, "get_dxdt(Integrator self, Time time) -> cmf::math::num_array"},
-	 { "Integrator_add_states", (PyCFunction)(void(*)(void))_wrap_Integrator_add_states, METH_VARARGS|METH_KEYWORDS, "add_states(Integrator self, StateVariableOwner stateOwner)"},
-	 { "Integrator_add_single_state", (PyCFunction)(void(*)(void))_wrap_Integrator_add_single_state, METH_VARARGS|METH_KEYWORDS, "add_single_state(Integrator self, cmf::math::StateVariable::ptr state)"},
+	 { "Integrator_get_dxdt", (PyCFunction)(void(*)(void))_wrap_Integrator_get_dxdt, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_dxdt(Integrator self, Time time) -> cmf::math::num_array\n"
+		"cmf::math::num_array get_dxdt(Time time) const \n"
+		""},
+	 { "Integrator_add_states", (PyCFunction)(void(*)(void))_wrap_Integrator_add_states, METH_VARARGS|METH_KEYWORDS, "\n"
+		"add_states(Integrator self, StateVariableOwner stateOwner)\n"
+		"virtual\n"
+		"void add_states(cmf::math::StateVariableOwner &stateOwner)\n"
+		"\n"
+		"Add state variables from a StateVariableOwner. \n"
+		""},
+	 { "Integrator_add_single_state", (PyCFunction)(void(*)(void))_wrap_Integrator_add_single_state, METH_VARARGS|METH_KEYWORDS, "\n"
+		"add_single_state(Integrator self, cmf::math::StateVariable::ptr state)\n"
+		"virtual void add_single_state(cmf::math::StateVariable::ptr state)\n"
+		"\n"
+		"Adds a single state variable to the integrator. \n"
+		""},
 	 { "Integrator_integratables_set", _wrap_Integrator_integratables_set, METH_VARARGS, "Integrator_integratables_set(Integrator self, integratable_list integratables)"},
 	 { "Integrator_integratables_get", _wrap_Integrator_integratables_get, METH_O, "Integrator_integratables_get(Integrator self) -> integratable_list"},
 	 { "Integrator_reset_integratables_set", _wrap_Integrator_reset_integratables_set, METH_VARARGS, "Integrator_reset_integratables_set(Integrator self, bool reset_integratables)"},
@@ -97189,18 +98099,36 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Integrator_size", _wrap_Integrator_size, METH_O, "\n"
 		"size(Integrator self) -> size_t\n"
 		"size_t size()\n"
-		"const \n"
+		"const\n"
+		"\n"
+		"returns the number of state variables \n"
 		""},
-	 { "Integrator_get_state", (PyCFunction)(void(*)(void))_wrap_Integrator_get_state, METH_VARARGS|METH_KEYWORDS, "get_state(Integrator self, ptrdiff_t position) -> real"},
-	 { "Integrator_set_state", (PyCFunction)(void(*)(void))_wrap_Integrator_set_state, METH_VARARGS|METH_KEYWORDS, "set_state(Integrator self, ptrdiff_t position, real newState)"},
+	 { "Integrator_get_state", (PyCFunction)(void(*)(void))_wrap_Integrator_get_state, METH_VARARGS|METH_KEYWORDS, "\n"
+		"get_state(Integrator self, ptrdiff_t position) -> real\n"
+		"real\n"
+		"get_state(ptrdiff_t position) const\n"
+		"\n"
+		"Returns the statevariable at position Simplifies the assessment of\n"
+		"state variables. \n"
+		""},
+	 { "Integrator_set_state", (PyCFunction)(void(*)(void))_wrap_Integrator_set_state, METH_VARARGS|METH_KEYWORDS, "\n"
+		"set_state(Integrator self, ptrdiff_t position, real newState)\n"
+		"void\n"
+		"set_state(ptrdiff_t position, real newState)\n"
+		"\n"
+		"Simplifies the assessment of state variables. \n"
+		""},
 	 { "Integrator_get_states", _wrap_Integrator_get_states, METH_VARARGS, "\n"
 		"get_states(Integrator self) -> cmf::math::num_array\n"
 		"get_states(Integrator self) -> StateVariableList\n"
+		"StateVariableList get_states()\n"
+		"\n"
+		"gets the state variables of the integrator \n"
 		""},
 	 { "delete_Integrator", _wrap_delete_Integrator, METH_O, "\n"
 		"delete_Integrator(Integrator self)\n"
 		"virtual\n"
-		"~Integrator()=default \n"
+		"~Integrator() \n"
 		""},
 	 { "Integrator_get_t", _wrap_Integrator_get_t, METH_O, "\n"
 		"get_t(Integrator self) -> Time\n"
@@ -97276,7 +98204,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Integrator_swigregister", Integrator_swigregister, METH_O, NULL},
 	 { "BDF2_get_error_position", _wrap_BDF2_get_error_position, METH_O, "\n"
 		"get_error_position(BDF2 self) -> int\n"
-		"ptrdiff_t\n"
+		"int\n"
 		"get_error_position() const\n"
 		"\n"
 		"Returns the position of the biggest error. \n"
@@ -97378,25 +98306,73 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "CVodeIntegrator_MaxOrder_get", _wrap_CVodeIntegrator_MaxOrder_get, METH_O, "CVodeIntegrator_MaxOrder_get(CVodeIntegrator self) -> int"},
 	 { "CVodeIntegrator_max_step_set", _wrap_CVodeIntegrator_max_step_set, METH_VARARGS, "CVodeIntegrator_max_step_set(CVodeIntegrator self, Time max_step)"},
 	 { "CVodeIntegrator_max_step_get", _wrap_CVodeIntegrator_max_step_get, METH_O, "CVodeIntegrator_max_step_get(CVodeIntegrator self) -> Time"},
-	 { "CVodeIntegrator_get_order", _wrap_CVodeIntegrator_get_order, METH_O, "get_order(CVodeIntegrator self) -> int"},
-	 { "CVodeIntegrator_initialize", _wrap_CVodeIntegrator_initialize, METH_O, "initialize(CVodeIntegrator self)"},
-	 { "CVodeIntegrator_release", _wrap_CVodeIntegrator_release, METH_O, "release(CVodeIntegrator self)"},
+	 { "CVodeIntegrator_get_order", _wrap_CVodeIntegrator_get_order, METH_O, "\n"
+		"get_order(CVodeIntegrator self) -> int\n"
+		"int\n"
+		"get_order() const\n"
+		"\n"
+		"Returns the last order of the solver used, may be smaller than\n"
+		"MaxOrder due to the number of steps already taken or to fullfill\n"
+		"stability limit. \n"
+		""},
+	 { "CVodeIntegrator_initialize", _wrap_CVodeIntegrator_initialize, METH_O, "\n"
+		"initialize(CVodeIntegrator self)\n"
+		"void\n"
+		"initialize()\n"
+		"\n"
+		"Initializes the solver. Do not add or remove state variables after\n"
+		"initialization. The solver is automatically intialized when\n"
+		"integrating. \n"
+		""},
+	 { "CVodeIntegrator_release", _wrap_CVodeIntegrator_release, METH_O, "\n"
+		"release(CVodeIntegrator self)\n"
+		"void\n"
+		"release()\n"
+		"\n"
+		"Releases the internal solver. Call release before you add state\n"
+		"variables or to change properties. \n"
+		""},
 	 { "new_CVodeIntegrator", _wrap_new_CVodeIntegrator, METH_VARARGS, "\n"
 		"CVodeIntegrator(real epsilon=1e-9, char _preconditioner='R')\n"
 		"CVodeIntegrator(StateVariableOwner states, real epsilon=1e-9, char _preconditioner='R')\n"
 		"new_CVodeIntegrator(CVodeIntegrator templ) -> CVodeIntegrator\n"
+		"CVodeIntegrator(const CVodeIntegrator &templ)\n"
+		"\n"
+		"copy constructor, creates a new CVODE integrator similiar to the\n"
+		"given, but without statevariables \n"
 		""},
-	 { "CVodeIntegrator_get_error", _wrap_CVodeIntegrator_get_error, METH_O, "get_error(CVodeIntegrator self) -> cmf::math::num_array"},
-	 { "CVodeIntegrator_get_nonlinear_iterations", _wrap_CVodeIntegrator_get_nonlinear_iterations, METH_O, "get_nonlinear_iterations(CVodeIntegrator self) -> int"},
-	 { "CVodeIntegrator_get_rhsevals", _wrap_CVodeIntegrator_get_rhsevals, METH_O, "get_rhsevals(CVodeIntegrator self) -> int"},
+	 { "CVodeIntegrator_get_error", _wrap_CVodeIntegrator_get_error, METH_O, "\n"
+		"get_error(CVodeIntegrator self) -> cmf::math::num_array\n"
+		"cmf::math::num_array get_error() const\n"
+		"\n"
+		"Error vector of the integrator. \n"
+		""},
+	 { "CVodeIntegrator_get_nonlinear_iterations", _wrap_CVodeIntegrator_get_nonlinear_iterations, METH_O, "\n"
+		"get_nonlinear_iterations(CVodeIntegrator self) -> int\n"
+		"int\n"
+		"get_nonlinear_iterations() const\n"
+		"\n"
+		"Returns the number of non-linear iterations performed. Calls\n"
+		"CVodeGetNumNonlinSolvIters. \n"
+		""},
+	 { "CVodeIntegrator_get_rhsevals", _wrap_CVodeIntegrator_get_rhsevals, METH_O, "\n"
+		"get_rhsevals(CVodeIntegrator self) -> int\n"
+		"int\n"
+		"get_rhsevals() const\n"
+		"\n"
+		"Returns the number of evaluations of the right hand side of the ODE.\n"
+		"Calls CVodeGetNumRhsEvals. \n"
+		""},
 	 { "CVodeIntegrator_copy", _wrap_CVodeIntegrator_copy, METH_O, "\n"
 		"copy(CVodeIntegrator self) -> CVodeIntegrator\n"
-		"virtual\n"
-		"Integrator* copy() const =0\n"
+		"CVodeIntegrator* copy() const\n"
 		"\n"
 		"Polymorphic copy constructor. \n"
 		""},
-	 { "delete_CVodeIntegrator", _wrap_delete_CVodeIntegrator, METH_O, "delete_CVodeIntegrator(CVodeIntegrator self)"},
+	 { "delete_CVodeIntegrator", _wrap_delete_CVodeIntegrator, METH_O, "\n"
+		"delete_CVodeIntegrator(CVodeIntegrator self)\n"
+		"virtual ~CVodeIntegrator() \n"
+		""},
 	 { "CVodeIntegrator_swigregister", CVodeIntegrator_swigregister, METH_O, NULL},
 	 { "CVodeIntegrator_swiginit", CVodeIntegrator_swiginit, METH_VARARGS, NULL},
 	 { "MultiIntegrator_copy", _wrap_MultiIntegrator_copy, METH_O, "\n"
@@ -97406,7 +98382,14 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"\n"
 		"Polymorphic copy constructor. \n"
 		""},
-	 { "MultiIntegrator_add_states_to_integrator", (PyCFunction)(void(*)(void))_wrap_MultiIntegrator_add_states_to_integrator, METH_VARARGS|METH_KEYWORDS, "add_states_to_integrator(MultiIntegrator self, StateVariableOwner stateOwner, int integrator_position)"},
+	 { "MultiIntegrator_add_states_to_integrator", (PyCFunction)(void(*)(void))_wrap_MultiIntegrator_add_states_to_integrator, METH_VARARGS|METH_KEYWORDS, "\n"
+		"add_states_to_integrator(MultiIntegrator self, StateVariableOwner stateOwner, int integrator_position)\n"
+		"void\n"
+		"add_states_to_integrator(cmf::math::StateVariableOwner &stateOwner,\n"
+		"int integrator_position)\n"
+		"\n"
+		"Add state variables from a StateVariableOwner. \n"
+		""},
 	 { "new_MultiIntegrator", (PyCFunction)(void(*)(void))_wrap_new_MultiIntegrator, METH_VARARGS|METH_KEYWORDS, "\n"
 		"new_MultiIntegrator(Integrator template_integrator, int count) -> MultiIntegrator\n"
 		"MultiIntegrator(const cmf::math::Integrator &template_integrator, int\n"
@@ -97426,16 +98409,16 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "MultiIntegrator_swiginit", MultiIntegrator_swiginit, METH_VARARGS, NULL},
 	 { "SoluteWaterIntegrator_copy", _wrap_SoluteWaterIntegrator_copy, METH_O, "\n"
 		"copy(SoluteWaterIntegrator self) -> SoluteWaterIntegrator\n"
-		"cmf::math::SoluteWaterIntegrator* copy() const override\n"
+		"virtual cmf::math::SoluteWaterIntegrator* copy() const\n"
 		"\n"
 		"Polymorphic copy constructor. \n"
 		""},
 	 { "new_SoluteWaterIntegrator", _wrap_new_SoluteWaterIntegrator, METH_VARARGS, "\n"
 		"SoluteWaterIntegrator(solute_vector solutes, Integrator water_integrator, Integrator solute_integrator)\n"
 		"new_SoluteWaterIntegrator(solute_vector solutes, Integrator water_integrator, Integrator solute_integrator, StateVariableOwner states) -> SoluteWaterIntegrator\n"
-		"SoluteWaterIntegrator(const cmf::water::solute_vector &solutes, const\n"
+		"SoluteWaterIntegrator(cmf::water::solute_vector solutes, const\n"
 		"cmf::math::Integrator &water_integrator, const cmf::math::Integrator\n"
-		"&solute_integrator, const cmf::math::state_list &states)\n"
+		"&solute_integrator, cmf::math::StateVariableOwner &states)\n"
 		"\n"
 		"Creates a new SoluteWaterIntegrator.\n"
 		"\n"
@@ -97452,12 +98435,13 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"\n"
 		"states:  States to be added to the integrators \n"
 		""},
-	 { "delete_SoluteWaterIntegrator", _wrap_delete_SoluteWaterIntegrator, METH_O, "delete_SoluteWaterIntegrator(SoluteWaterIntegrator self)"},
+	 { "delete_SoluteWaterIntegrator", _wrap_delete_SoluteWaterIntegrator, METH_O, "\n"
+		"delete_SoluteWaterIntegrator(SoluteWaterIntegrator self)\n"
+		"~SoluteWaterIntegrator() \n"
+		""},
 	 { "SoluteWaterIntegrator_to_string", _wrap_SoluteWaterIntegrator_to_string, METH_O, "\n"
 		"to_string(SoluteWaterIntegrator self) -> std::string\n"
-		"std::string to_string() const override\n"
-		"\n"
-		"Desrcibes the iterator. \n"
+		"std::string to_string() const \n"
 		""},
 	 { "SoluteWaterIntegrator_swigregister", SoluteWaterIntegrator_swigregister, METH_O, NULL},
 	 { "SoluteWaterIntegrator_swiginit", SoluteWaterIntegrator_swiginit, METH_VARARGS, NULL},

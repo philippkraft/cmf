@@ -981,7 +981,22 @@ def timerange(start,end,step=day):
 
 
 class integratable(object):
-    r"""Proxy of C++ cmf::math::integratable class."""
+    r"""
+
+
+    integratable is a functionality for different classes for integrating
+    values over time.
+
+    Main usage of an integratable is the calculation of average fluxes
+    over time e.g. 
+
+    .. math::
+
+
+        \\int_{t_0}^{t_{end}}q\\left(t,V_i,V_j\\right)dt 
+
+    C++ includes: statevariable.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
 
@@ -998,7 +1013,15 @@ class integratable(object):
 _cmf_core.integratable_swigregister(integratable)
 
 class integratable_list(object):
-    r"""Proxy of C++ cmf::math::integratable_list class."""
+    r"""
+
+
+    A list of cmf::math::integratable objects.
+
+    Todo TODO: Complete collection interface (getitem with slicing etc.)
+
+    C++ includes: statevariable.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -1015,6 +1038,7 @@ class integratable_list(object):
         r"""
         __init__(integratable_list self) -> integratable_list
         __init__(integratable_list self, integratable_list for_copy) -> integratable_list
+        integratable_list(const integratable_list &for_copy) 
         """
         _cmf_core.integratable_list_swiginit(self, _cmf_core.new_integratable_list(*args))
     __len__ = _swig_new_instance_method(_cmf_core.integratable_list___len__)
@@ -1067,7 +1091,14 @@ class StateVariable(object):
 _cmf_core.StateVariable_swigregister(StateVariable)
 
 class StateVariableOwner(object):
-    r"""Proxy of C++ cmf::math::StateVariableOwner class."""
+    r"""
+
+
+    An abstract class, that owns one or more state variables, that can add
+    them to a vector of state variables in a certain order.
+
+    C++ includes: statevariable.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
 
@@ -1206,8 +1237,8 @@ class FreundlichAdsorbtion(Adsorption):
     r"""
 
 
-    BROKEN: This class calculates the adsorption equilibrium between
-    sorbat and sorbent using the Freundlich isotherme.
+    This class calculates the adsorption equilibrium between sorbat and
+    sorbent using the Freundlich isotherme.
 
     Freundlich isotherme:
 
@@ -1235,9 +1266,8 @@ class FreundlichAdsorbtion(Adsorption):
     calculate the free tracer mass. The eq. above can not be rearanged to
     get :math:`x_{free}` from :math:`x_{tot}`. Instead, the value is iterated
     usingregula falsi. If n is near to 1, using LinearAdsorption will
-    speed up your calculations.
-
-    The simplest physically based adsorption model by Langmuir (
+    speed up your calculations.Todo Check if an analytical solution is
+    available The simplest physically based adsorption model by Langmuir (
     LangmuirAdsorption) has also a analytical solution and is hence
     calculated faster then Freundlich.
 
@@ -1531,7 +1561,17 @@ count_node_references = _cmf_core.count_node_references
 get_higher_node = _cmf_core.get_higher_node
 get_lower_node = _cmf_core.get_lower_node
 class waterbalance_integrator(integratable):
-    r"""Proxy of C++ cmf::water::waterbalance_integrator class."""
+    r"""
+
+
+    The waterbalance_integrator is an integratable for precise output of
+    the average water balance of a flux_node over time.
+
+    It can be added to a solver (any cmf::math::Integrator), which is than
+    calling the integrate method at each substep.
+
+    C++ includes: flux_node.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -1541,7 +1581,10 @@ class waterbalance_integrator(integratable):
     __set_node = _swig_new_instance_method(_cmf_core.waterbalance_integrator___set_node)
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(waterbalance_integrator self, cmf::water::flux_node::ptr node) -> waterbalance_integrator"""
+        r"""
+        __init__(waterbalance_integrator self, cmf::water::flux_node::ptr node) -> waterbalance_integrator
+        waterbalance_integrator(cmf::water::flux_node::ptr node) 
+        """
         _cmf_core.waterbalance_integrator_swiginit(self, _cmf_core.new_waterbalance_integrator(*args, **kwargs))
 
     node = property(_cmf_core.waterbalance_integrator___get_node,
@@ -1651,7 +1694,17 @@ class connection_list(object):
 _cmf_core.connection_list_swigregister(connection_list)
 
 class flux_integrator(integratable):
-    r"""Proxy of C++ cmf::water::flux_integrator class."""
+    r"""
+
+
+    The flux_integrator is an integratable for precise output of average
+    fluxes over time.
+
+    It can be added to solver (any cmf::math::Integrator), which is then
+    calling the integrate method at each substep.
+
+    C++ includes: flux_connection.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -1664,6 +1717,11 @@ class flux_integrator(integratable):
         r"""
         __init__(flux_integrator self, flux_connection connection) -> flux_integrator
         __init__(flux_integrator self, cmf::water::flux_node::ptr left, cmf::water::flux_node::ptr right) -> flux_integrator
+        flux_integrator(cmf::water::flux_node::ptr left,
+        cmf::water::flux_node::ptr right)
+
+        Creates a flux_integrator from the endpoints of a connection. Throws
+        if there is no connection between the endpoints. 
         """
         _cmf_core.flux_integrator_swiginit(self, _cmf_core.new_flux_integrator(*args))
     __swig_destroy__ = _cmf_core.delete_flux_integrator
@@ -1876,13 +1934,34 @@ WaterStorage_cast = _cmf_core.WaterStorage_cast
 WaterStorage_create = _cmf_core.WaterStorage_create
 
 class waterbalance_connection(flux_connection):
-    r"""Proxy of C++ cmf::water::waterbalance_connection class."""
+    r"""
+
+
+    Routes the sum of all other fluxes to a target.
+
+
+
+    .. math::
+
+         q_{1,0} = \\sum_{i=2}^N{q_{1,i}(V_1,V_i,t)}
+
+    where:
+    :math:`q_{i,j}` is the flux between the two node i and j. Subscript 0 is the
+    right node, subscript 1 is the left node and 2..N are the nodes
+    connected to the left node, except for the right node
+
+    C++ includes: simple_connections.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(waterbalance_connection self, cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target) -> waterbalance_connection"""
+        r"""
+        __init__(waterbalance_connection self, cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target) -> waterbalance_connection
+        waterbalance_connection(flux_node::ptr source, flux_node::ptr target)
+
+        """
         _cmf_core.waterbalance_connection_swiginit(self, _cmf_core.new_waterbalance_connection(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_waterbalance_connection
 
@@ -1890,14 +1969,29 @@ class waterbalance_connection(flux_connection):
 _cmf_core.waterbalance_connection_swigregister(waterbalance_connection)
 
 class external_control_connection(flux_connection):
-    r"""Proxy of C++ cmf::water::external_control_connection class."""
+    r"""
+
+
+    Flux from one node to another, controlled by the user or an external
+    program, by changing the flux constant.
+
+    It is easy to create negative volumes in water storages with this
+    connection, which can be hazard to the solver, since most connections
+    rely on a positive volume in a storage. Handle with care!
+
+    C++ includes: simple_connections.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     flux = property(_cmf_core.external_control_connection_flux_get, _cmf_core.external_control_connection_flux_set, doc=r"""flux : real""")
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(external_control_connection self, cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target, real flux_value=0) -> external_control_connection"""
+        r"""
+        __init__(external_control_connection self, cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target, real flux_value=0) -> external_control_connection
+        external_control_connection(flux_node::ptr source, flux_node::ptr
+        target, real flux_value=0) 
+        """
         _cmf_core.external_control_connection_swiginit(self, _cmf_core.new_external_control_connection(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_external_control_connection
 
@@ -1907,7 +2001,38 @@ _cmf_core.external_control_connection_swigregister(external_control_connection)
 set_flux = _cmf_core.set_flux
 can_set_flux = _cmf_core.can_set_flux
 class kinematic_wave(flux_connection):
-    r"""Proxy of C++ cmf::water::kinematic_wave class."""
+    r"""
+
+
+    Calculates flux out of a storage as a linear function of its volume to
+    a power.
+
+    Deprecated  kinematic_wave is superseeded by LinearStorageConnection
+    and PowerLawConnection
+
+
+
+    .. math::
+
+         q = \\frac 1 {t_r} {\\left(\\frac{V - V_{residual}}{V_0}
+        \\right)^\\beta} 
+
+    where:  :math:`V_{residual} [m^3]` The volume of
+    water not flowing out (default = 0)
+
+    :math:`V_0` The reference volume to scale the exponent (default = 1m3/day)
+
+    :math:`\\beta` A parameter to shape the response curve. In case of
+    :math:`\\beta \\neq 1`, :math:`t_r` is not a residence time, but just a
+    parameter.
+
+    :math:`t_r [days]` The residence time of the water in this storage in days
+
+    WARNING:   :math:`\\beta < 0.5` may lead to numerical troubles and have a
+    dubious hydrological meaning. Please avoid.
+
+    C++ includes: simple_connections.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -1917,7 +2042,40 @@ class kinematic_wave(flux_connection):
     V0 = property(_cmf_core.kinematic_wave_V0_get, _cmf_core.kinematic_wave_V0_set, doc=r"""V0 : real""")
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(kinematic_wave self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real residencetime, real exponent=1.0, real residual=0.0, real V0=1.0) -> kinematic_wave"""
+        r"""
+        __init__(kinematic_wave self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real residencetime, real exponent=1.0, real residual=0.0, real V0=1.0) -> kinematic_wave
+        kinematic_wave(WaterStorage::ptr source, flux_node::ptr target, real
+        residencetime, real exponent=1.0, real residual=0.0, real V0=1.0)
+
+        Creates a kinematic wave connection.
+
+
+
+        .. math::
+
+             q = \\frac 1 {t_r} {\\left(\\frac{V - V_{residual}}{V_0}
+            \\right)^\\beta} 
+
+        Parameters:
+        -----------
+
+        source:  Water storage from which the water flows out. Flux is a
+        function of source.volume
+
+        target:  Target node (boundary condition or storage). Does not
+        influence the strength of the flow
+
+        residencetime:   :math:`t_r [days]` The residence time of the water in this
+        storage
+
+        exponent:   :math:`\\beta [-]` An empirical exponent to shape the flux
+        function (default = 1 (linear function))
+
+        residual:   :math:`V_{residual} [m^3]` The volume of water not flowing out
+        (default = 0)
+
+        V0:   :math:`V_0` The reference volume to scale the exponent 
+        """
         _cmf_core.kinematic_wave_swiginit(self, _cmf_core.new_kinematic_wave(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_kinematic_wave
 
@@ -2099,7 +2257,37 @@ class ExponentialDeclineConnection(flux_connection):
 _cmf_core.ExponentialDeclineConnection_swigregister(ExponentialDeclineConnection)
 
 class ConstraintLinearStorageConnection(flux_connection):
-    r"""Proxy of C++ cmf::water::ConstraintLinearStorageConnection class."""
+    r"""
+
+
+    Calculates flux out of a storage as a linear function of its volume,
+    constraint by the volume stored in the target storage.
+
+
+
+    .. math::
+
+         q = \\frac {1}{t_r} \\left({V_{l} - V_{l,min}}\\right)
+        \\cdot \\left(\\frac{V_{r,max}-V_{r}}{V_{r,max}}\\right)
+
+    where:  :math:`V_l` The actual volume stored by the left water storage
+
+    :math:`V_{l,min} [m^3]` The volume of water not flowing out (default = 0)
+
+    :math:`\\beta` A parameter to shape the response curve. In case of
+    :math:`\\beta \\neq 1`, :math:`t_r` is not a residence time, but just a
+    parameter.
+
+    :math:`t_r [days]` The residence time of the water in this storage in days
+
+    :math:`V_{r,max}` The capacity of the right water storage in m3
+
+    :math:`V_{r}` The actual volume of the right water storage
+
+    :math:`\\gamma` A shape parameter for the target capacity constriction
+
+    C++ includes: simple_connections.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -2108,7 +2296,39 @@ class ConstraintLinearStorageConnection(flux_connection):
     Vrmax = property(_cmf_core.ConstraintLinearStorageConnection_Vrmax_get, _cmf_core.ConstraintLinearStorageConnection_Vrmax_set, doc=r"""Vrmax : real""")
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(ConstraintLinearStorageConnection self, cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real Vrmax=1.0) -> ConstraintLinearStorageConnection"""
+        r"""
+        __init__(ConstraintLinearStorageConnection self, cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real Vrmax=1.0) -> ConstraintLinearStorageConnection
+        ConstraintLinearStorageConnection(WaterStorage::ptr source,
+        WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real
+        Vrmax=1.0)
+
+        Creates a linear storage connection, constrained by the fill level of
+        the source 
+
+        .. math::
+
+             q = \\frac 1 {t_r} {\\left(\\frac{V -
+            V_{residual}}{V_0} \\right)^\\beta} 
+
+        .
+
+        Parameters:
+        -----------
+
+        source:  Water storage from which the water flows out. Flux is a
+        function of source.volume
+
+        target:  Target node (boundary condition or storage). Does not
+        influence the strength of the flow
+
+        residencetime:   :math:`t_r [days]` The residence time of the water in this
+        storage
+
+        Vlmin:   :math:`V_{l,min} [m^3]` The volume of water not flowing out
+        (default = 0)
+
+        Vrmax:   :math:`V_{r,max}` Capacity of the target water storage in m3 
+        """
         _cmf_core.ConstraintLinearStorageConnection_swiginit(self, _cmf_core.new_ConstraintLinearStorageConnection(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_ConstraintLinearStorageConnection
 
@@ -2116,7 +2336,39 @@ class ConstraintLinearStorageConnection(flux_connection):
 _cmf_core.ConstraintLinearStorageConnection_swigregister(ConstraintLinearStorageConnection)
 
 class bidirectional_kinematic_exchange(flux_connection):
-    r"""Proxy of C++ cmf::water::bidirectional_kinematic_exchange class."""
+    r"""
+
+
+    A conceptual flux between two storages that can be positive as well as
+    negative.
+
+    The state of the right node is not monitored, hence negative volumes
+    of the right node can occur! Deprecated Behaviour unclear, will be
+    removed 
+
+    .. math::
+
+         q = q_{spill}^*-q_{suc}^* \\\\ q_{spill}^* =
+        q_{spill}
+        \\left(\\frac{V-V_{spill,min}}{V_{spill,min}}\\right)^{\\beta_{spill}}
+        \\\\ q_{suc}^* = q_{suc}
+        \\left(\\frac{V_{suc,max}-V}{V_{suc,max}}\\right)^{\\beta_{suc}}
+
+
+    where:  :math:`q` is the flow to the target
+
+    :math:`q_{spill}^*` is the actual spill flow to the target
+
+    :math:`q_{spill}` is the spill flow at :math:`V = 2V_{spill}`
+
+    :math:`q_{suc}^*` is the actual suction flow from the target
+
+    :math:`q_{suc}` is the sucked flow from the target when :math:`V=0.0`
+
+    :math:`\\beta` is a shape forming exponent for spill and suction flow.
+
+    C++ includes: simple_connections.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -2128,7 +2380,33 @@ class bidirectional_kinematic_exchange(flux_connection):
     beta_spill = property(_cmf_core.bidirectional_kinematic_exchange_beta_spill_get, _cmf_core.bidirectional_kinematic_exchange_beta_spill_set, doc=r"""beta_spill : real""")
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(bidirectional_kinematic_exchange self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Vminspill, real Vmaxsuc, real qspill, real qsuc, real beta_spill, real beta_suc) -> bidirectional_kinematic_exchange"""
+        r"""
+        __init__(bidirectional_kinematic_exchange self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Vminspill, real Vmaxsuc, real qspill, real qsuc, real beta_spill, real beta_suc) -> bidirectional_kinematic_exchange
+        bidirectional_kinematic_exchange(WaterStorage::ptr source,
+        flux_node::ptr target, real Vminspill, real Vmaxsuc, real qspill, real
+        qsuc, real beta_spill, real beta_suc)
+
+        Creates a kinematic wave connection.
+
+        Parameters:
+        -----------
+
+        source:  Water storage from which the water flows out. Flux is a
+        function of source.volume
+
+        target:  Target node (boundary condition or storage). Does not
+        influence the strength of the flow
+
+        Vmaxsuc:  Suction starts below this threshold volume of source
+
+        Vminspill:  Spilling starts above this threshold volume of source
+
+        qspill:  Spill flow at 2*Vminspill in m3/day
+
+        qsuc:  Suction flow at V=0 m3
+
+        beta_suc:  beta_spill:  Exponent for spill / suction flow 
+        """
         _cmf_core.bidirectional_kinematic_exchange_swiginit(self, _cmf_core.new_bidirectional_kinematic_exchange(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_bidirectional_kinematic_exchange
 
@@ -2136,7 +2414,41 @@ class bidirectional_kinematic_exchange(flux_connection):
 _cmf_core.bidirectional_kinematic_exchange_swigregister(bidirectional_kinematic_exchange)
 
 class constraint_kinematic_wave(flux_connection):
-    r"""Proxy of C++ cmf::water::constraint_kinematic_wave class."""
+    r"""
+
+
+    Calculates flux out of a storage as a linear function of its volume to
+    a power, constraint by the volume stored in the target storage.
+
+    Deprecated Will be replaced by ConstraintLinearStorageConnection,
+    without beta and gamma. 
+
+    .. math::
+
+         q = \\frac 1 {t_r}
+        {\\left(\\frac{V_{l} - V_{residual}}{V_0} \\right)^\\beta}
+        \\left(\\frac{V_{r,max}-V_{r}}{V_{r,max}}\\right)^\\gamma
+
+    where:  :math:`V_l` The actual volume stored by the left water storage
+
+    :math:`V_{residual} [m^3]` The volume of water not flowing out (default = 0)
+
+    :math:`V_0` The reference volume to scale the exponent (default = 1m3/day)
+
+    :math:`\\beta` A parameter to shape the response curve. In case of
+    :math:`\\beta \\neq 1`, :math:`t_r` is not a residence time, but just a
+    parameter.
+
+    :math:`t_r [days]` The residence time of the water in this storage in days
+
+    :math:`V_{r,max}` The capacity of the right water storage in m3
+
+    :math:`V_{r}` The actual volume of the right water storage
+
+    :math:`\\gamma` A shape parameter for the target capacity constriction
+
+    C++ includes: simple_connections.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -2148,7 +2460,45 @@ class constraint_kinematic_wave(flux_connection):
     gamma = property(_cmf_core.constraint_kinematic_wave_gamma_get, _cmf_core.constraint_kinematic_wave_gamma_set, doc=r"""gamma : real""")
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(constraint_kinematic_wave self, cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real exponent=1.0, real residual=0.0, real V0=1.0, real Vrmax=1.0, real gamma=1.0) -> constraint_kinematic_wave"""
+        r"""
+        __init__(constraint_kinematic_wave self, cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real exponent=1.0, real residual=0.0, real V0=1.0, real Vrmax=1.0, real gamma=1.0) -> constraint_kinematic_wave
+        constraint_kinematic_wave(WaterStorage::ptr source, WaterStorage::ptr
+        target, real residencetime=1.0, real exponent=1.0, real residual=0.0,
+        real V0=1.0, real Vrmax=1.0, real gamma=1.0)
+
+        Creates a kinematic wave connection.
+
+
+
+        .. math::
+
+             q = \\frac 1 {t_r} {\\left(\\frac{V - V_{residual}}{V_0}
+            \\right)^\\beta} 
+
+        Parameters:
+        -----------
+
+        source:  Water storage from which the water flows out. Flux is a
+        function of source.volume
+
+        target:  Target node (boundary condition or storage). Does not
+        influence the strength of the flow
+
+        residencetime:   :math:`t_r [days]` The residence time of the water in this
+        storage
+
+        exponent:   :math:`\\beta [-]` An empirical exponent to shape the flux
+        function (default = 1 (linear function))
+
+        residual:   :math:`V_{residual} [m^3]` The volume of water not flowing out
+        (default = 0)
+
+        V0:   :math:`V_0` The reference volume to scale the exponent
+
+        Vrmax:   :math:`V_{r,max}` Capacity of the target water storage in m3
+
+        gamma:   :math:`\\gamma` Target capacity constriction curve shape 
+        """
         _cmf_core.constraint_kinematic_wave_swiginit(self, _cmf_core.new_constraint_kinematic_wave(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_constraint_kinematic_wave
 
@@ -2156,7 +2506,26 @@ class constraint_kinematic_wave(flux_connection):
 _cmf_core.constraint_kinematic_wave_swigregister(constraint_kinematic_wave)
 
 class TechnicalFlux(flux_connection):
-    r"""Proxy of C++ cmf::water::TechnicalFlux class."""
+    r"""
+
+
+    Produces a constant but changeable flux from a source to a target, if
+    enough water is present in the source.
+
+
+
+    .. math::
+
+         q=\\begin{cases}0 & V_{source}\\le V_{min}\\\\ q_0
+        \\frac{V_{source} - V_{min}}{t_{decr} q_{0} - V_{min}} & V_{source}
+        \\le t_{decr} q_{0}\\\\ q_{0} & \\end{cases}
+
+    This is similar to a neumann boundary, however this is not a boundary
+    condition, but water is taken from the source (left) water storage and
+    limited by that water storage.
+
+    C++ includes: simple_connections.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -2165,7 +2534,28 @@ class TechnicalFlux(flux_connection):
     FluxDecreaseTime = property(_cmf_core.TechnicalFlux_FluxDecreaseTime_get, _cmf_core.TechnicalFlux_FluxDecreaseTime_set, doc=r"""FluxDecreaseTime : cmf::math::Time""")
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(TechnicalFlux self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real maximum_flux, real minimal_state=0, Time flux_decrease_time=h) -> TechnicalFlux"""
+        r"""
+        __init__(TechnicalFlux self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real maximum_flux, real minimal_state=0, Time flux_decrease_time=h) -> TechnicalFlux
+        TechnicalFlux(cmf::water::WaterStorage::ptr source,
+        cmf::water::flux_node::ptr target, real maximum_flux, real
+        minimal_state=0, cmf::math::Time flux_decrease_time=cmf::math::h)
+
+        Produces a constant but changeable flux from a source to a target, if
+        enough water is present in the source.
+
+        Parameters:
+        -----------
+
+        source:  The source of the water
+
+        target:  The target of the water
+
+        maximum_flux:  The requested flux :math:`q_{0}`
+
+        minimal_state:  Minimal volume of stored water in source
+
+        flux_decrease_time:  ( cmf::math::Time) 
+        """
         _cmf_core.TechnicalFlux_swiginit(self, _cmf_core.new_TechnicalFlux(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_TechnicalFlux
 
@@ -2173,7 +2563,34 @@ class TechnicalFlux(flux_connection):
 _cmf_core.TechnicalFlux_swigregister(TechnicalFlux)
 
 class generic_gradient_connection(flux_connection):
-    r"""Proxy of C++ cmf::water::generic_gradient_connection class."""
+    r"""
+
+
+    A generic node-to-node gradient based connection.
+
+    This connection is similar to the Darcy-connection, but there are no
+    restrictions concerning the type of nodes. However, the left side
+    needs to be a water storage 
+
+    .. math::
+
+         q = K A
+        \\frac{\\Psi_{l}-\\Psi_{r}}{d} 
+
+    where:  :math:`q`: the resulting
+    flux in :math:`m^3/day`
+
+    :math:`K`: the conductivity of the connection
+
+    :math:`A`: the area of the connection cross section
+
+    :math:`\\Psi`: The hydraulic head of the (l)eft, resp. (r)ight node of the
+    connection
+
+    :math:`d`: The topographic length of the connection in m
+
+    C++ includes: simple_connections.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -2182,7 +2599,27 @@ class generic_gradient_connection(flux_connection):
     d = property(_cmf_core.generic_gradient_connection_d_get, _cmf_core.generic_gradient_connection_d_set, doc=r"""d : real""")
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(generic_gradient_connection self, cmf::water::WaterStorage::ptr left, cmf::water::WaterStorage::ptr right, real K, real d=1.0, real A=1.0) -> generic_gradient_connection"""
+        r"""
+        __init__(generic_gradient_connection self, cmf::water::WaterStorage::ptr left, cmf::water::WaterStorage::ptr right, real K, real d=1.0, real A=1.0) -> generic_gradient_connection
+        generic_gradient_connection(cmf::water::WaterStorage::ptr left,
+        cmf::water::WaterStorage::ptr right, real K, real d=1.0, real A=1.0)
+
+        Creates a generic gradient based flux, if enough water is present in
+        the source.
+
+        Parameters:
+        -----------
+
+        left:  The left node of the connection
+
+        right:  The right node of the connection
+
+        K:  the conductivity of the connection in m/day
+
+        d:  the topographic lenght of the connection in m
+
+        A:  the area of the connection cross section in m2 
+        """
         _cmf_core.generic_gradient_connection_swiginit(self, _cmf_core.new_generic_gradient_connection(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_generic_gradient_connection
 
@@ -2190,7 +2627,29 @@ class generic_gradient_connection(flux_connection):
 _cmf_core.generic_gradient_connection_swigregister(generic_gradient_connection)
 
 class statecontrol_connection(flux_connection):
-    r"""Proxy of C++ cmf::water::statecontrol_connection class."""
+    r"""
+
+
+    Calculates a flux to or from a water storage to hold it's state at a
+    more or less constant level.
+
+
+
+    .. math::
+
+         q=\\frac{h_1 - h_{target}}{t_c [days]} 
+
+    where:  :math:`q` the
+    resulting flux in m3/day
+
+    :math:`h_1` the reference state
+
+    :math:`h_{target}` the state of the target (right) node
+
+    :math:`t_c` the time to reach the target state
+
+    C++ includes: simple_connections.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -2198,7 +2657,26 @@ class statecontrol_connection(flux_connection):
     target_state = property(_cmf_core.statecontrol_connection_target_state_get, _cmf_core.statecontrol_connection_target_state_set, doc=r"""target_state : real""")
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(statecontrol_connection self, cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, real target_state, Time reaction_time) -> statecontrol_connection"""
+        r"""
+        __init__(statecontrol_connection self, cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, real target_state, Time reaction_time) -> statecontrol_connection
+        statecontrol_connection(cmf::water::WaterStorage::ptr
+        controlled_storage, cmf::water::flux_node::ptr other_end, real
+        target_state, cmf::math::Time reaction_time)
+
+        Creates a flux connection to control the state of a storage.
+
+        Parameters:
+        -----------
+
+        controlled_storage:  Water storage, to be controlled
+
+        other_end:  source of missing water or target of excessive water
+
+        target_state:  State the controlled storage should hold (
+        :math:`h_{target}`)
+
+        reaction_time:  Time to reach state ( :math:`t_c`) 
+        """
         _cmf_core.statecontrol_connection_swiginit(self, _cmf_core.new_statecontrol_connection(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_statecontrol_connection
 
@@ -2349,7 +2827,33 @@ class NeumannBoundary_list(object):
 _cmf_core.NeumannBoundary_list_swigregister(NeumannBoundary_list)
 
 class SystemBridge(flux_node):
-    r"""Proxy of C++ cmf::water::SystemBridge class."""
+    r"""
+
+
+    A SystemBridge is an advanced feature for tuning of the calculation
+    time.
+
+    A SystemBridge can be used to replace an existing connection between
+    nodes. It is created using the system_bridge function. After
+    installation, the two nodes can more safely be added to different
+    integrator systems. One node (called upper) is connected with the
+    system bridge with the connection formerly connecting the nodes, the
+    second node (called lower) is connected to the system bridge with as a
+    Neumann boundary condition. The flux equals the average flux of the
+    connection upper <-> SystemBridge. Therefore, the downward flux needs
+    to be integrated over time by the solver the upper node belongs to.
+    Use as an upper system (system upper node is belonging to) the faster
+    reacting system. For the connection between upper and SystemBridge,
+    the SystemBridge reacts as an Dirichlet boundary condition, providing
+    the potential of the lower node.
+
+    The following example code creates a system bridge between the nodes
+    upper and lower. To integrate the flux over each timestep
+    automatically, the systembridge is added to the solver of upper, as an
+    integratable
+
+    C++ includes: system_bridge.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
 
@@ -2366,7 +2870,14 @@ class SystemBridge(flux_node):
 _cmf_core.SystemBridge_swigregister(SystemBridge)
 
 class SystemBridgeConnection(flux_connection):
-    r"""Proxy of C++ cmf::water::SystemBridgeConnection class."""
+    r"""
+
+
+    Connects a system bridge with its lower node. Is created automatically
+    when creating a SystemBridge.
+
+    C++ includes: system_bridge.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
 
@@ -5553,14 +6064,46 @@ _cmf_core.RutterInterception_swigregister(RutterInterception)
 RutterInterception_use_for_cell = _cmf_core.RutterInterception_use_for_cell
 
 class SimpleTindexSnowMelt(flux_connection):
-    r"""Proxy of C++ cmf::upslope::connections::SimpleTindexSnowMelt class."""
+    r"""
+
+
+    Calculates snow melt using a simple degree day method.
+
+
+
+    .. math::
+
+         q_{melt} [mm/day] = (T-T_{thres}) * r 
+
+    Usage:
+
+    C++ includes: surfacefluxes.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     SnowMeltRate = property(_cmf_core.SimpleTindexSnowMelt_SnowMeltRate_get, _cmf_core.SimpleTindexSnowMelt_SnowMeltRate_set, doc=r"""SnowMeltRate : real""")
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(SimpleTindexSnowMelt self, cmf::water::WaterStorage::ptr snow, cmf::water::flux_node::ptr surface_water, Cell cell, real rate=7.0) -> SimpleTindexSnowMelt"""
+        r"""
+        __init__(SimpleTindexSnowMelt self, cmf::water::WaterStorage::ptr snow, cmf::water::flux_node::ptr surface_water, Cell cell, real rate=7.0) -> SimpleTindexSnowMelt
+        SimpleTindexSnowMelt(cmf::water::WaterStorage::ptr snow,
+        cmf::water::flux_node::ptr surface_water, cmf::upslope::Cell &cell,
+        real rate=7.0)
+
+        Creates a new snow melt connection.
+
+        Parameters:
+        -----------
+
+        snow:  Snow storage, usually cel.snow
+
+        surface_water:  target of the melted water (usually cell.surfacewater)
+
+        cell:  The cell, needed to get weather and area
+
+        rate:  The rate of snow melt, given in mm/(degC day), default = 7.0 
+        """
         _cmf_core.SimpleTindexSnowMelt_swiginit(self, _cmf_core.new_SimpleTindexSnowMelt(*args, **kwargs))
     use_for_cell = _swig_new_static_method(_cmf_core.SimpleTindexSnowMelt_use_for_cell)
     __swig_destroy__ = _cmf_core.delete_SimpleTindexSnowMelt
@@ -5805,14 +6348,60 @@ _cmf_core.GreenAmptInfiltration_swigregister(GreenAmptInfiltration)
 GreenAmptInfiltration_use_for_cell = _cmf_core.GreenAmptInfiltration_use_for_cell
 
 class SimpleInfiltration(flux_connection):
-    r"""Proxy of C++ cmf::upslope::connections::SimpleInfiltration class."""
+    r"""
+
+
+    Connects the surfacewater and the most upper layer using a simplified
+    infiltration model suitable for conceptional models.
+
+
+
+    .. math::
+
+         q_{inf} = \\left(1-e_{sat}\\left(W, W_0\\right)\\right)
+        q_{inf,pot} 
+
+    where:  :math:`q_{inf}` Effective infiltration from
+    surface to first layer (soil)
+
+    :math:`e_{sat}(W, W_0)` Saturation excess, ranging from 0 (nowhere saturated
+    soil layer) to 1 (fully saturated). :math:`W` is the average wetness
+    calculated from the soil layer, :math:`W_0` is a parameter denoting the
+    wetness, where 50% of the layer is saturated using a sigmoidal
+    function:  :math:`e_{sat}(W_{soil}, W_0) = \\left(1+e^{-(W-W_0)0.2(1-W_0)}\\right)^{-1}`
+
+    :math:`q_{inf,pot}` is the potential infiltration, given by the incoming
+    fluxes limited by the saturated conductivity:  :math:`q_{inf,pot} = \\min(q_{in}, K_{sat} A)`  :math:`q_{in}` Sum of incoming fluxes to the
+    surfacewater in :math:`m^3/day`
+
+    :math:`K_{sat}` Saturated conductivity in :math:`m/day`
+
+    :math:`A` Cell area in :math:`m^2`
+
+    C++ includes: infiltration.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     W0 = property(_cmf_core.SimpleInfiltration_W0_get, _cmf_core.SimpleInfiltration_W0_set, doc=r"""W0 : real""")
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(SimpleInfiltration self, cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater, real W0=0.9) -> SimpleInfiltration"""
+        r"""
+        __init__(SimpleInfiltration self, cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater, real W0=0.9) -> SimpleInfiltration
+        SimpleInfiltration(cmf::upslope::SoilLayer::ptr soilwater,
+        cmf::water::flux_node::ptr surfacewater, real W0=0.9)
+
+        Creates the connection between surfacewater and first soil layer.
+
+        Parameters:
+        -----------
+
+        soilwater:  the infiltration target
+
+        surfacewater:  the infiltration source
+
+        W0:  the 50% saturation value 
+        """
         _cmf_core.SimpleInfiltration_swiginit(self, _cmf_core.new_SimpleInfiltration(*args, **kwargs))
     use_for_cell = _swig_new_static_method(_cmf_core.SimpleInfiltration_use_for_cell)
     __swig_destroy__ = _cmf_core.delete_SimpleInfiltration
@@ -5913,13 +6502,38 @@ _cmf_core.Richards_swigregister(Richards)
 Richards_use_for_cell = _cmf_core.Richards_use_for_cell
 
 class SimplRichards(flux_connection):
-    r"""Proxy of C++ cmf::upslope::connections::SimplRichards class."""
+    r"""
+
+
+    Calculates flow according to a simplified Richards equation.
+
+
+
+    .. math::
+
+         q_{Richards} &=& (K(\\theta) - K(\\theta_r))
+        A \\\\ 
+
+     where  :math:`d [m]` is the distance between
+    the two soil layers
+
+    :math:`K(\\theta)\\left[\\frac m{day}\\right]` is the geometric
+    mean conductivity (see SoilType::Kunsat)
+
+    :math:`A [m^2]` is the crosssectional area of the flux
+
+    C++ includes: Percolation.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(SimplRichards self, cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> SimplRichards"""
+        r"""
+        __init__(SimplRichards self, cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> SimplRichards
+        SimplRichards(cmf::upslope::SoilLayer::ptr left,
+        cmf::water::flux_node::ptr right) 
+        """
         _cmf_core.SimplRichards_swiginit(self, _cmf_core.new_SimplRichards(*args, **kwargs))
     use_for_cell = _swig_new_static_method(_cmf_core.SimplRichards_use_for_cell)
     __swig_destroy__ = _cmf_core.delete_SimplRichards
@@ -6335,8 +6949,6 @@ class PenmanMonteithET(stressedET):
         Windspeed in 2m above canopy } \\frac m s \\\\ r_s &=&
         \\frac{r_l}{LAI_{Active}} \\mbox{ (FAO 1998, Eq. 5/Box 5)}
         \\frac s m \\\\ && r_l=100 \\frac s m, LAI_{Active}=0.5 LAI
-
-
 
 
     C++ includes: ET.h 
@@ -6856,6 +7468,8 @@ class project(StateVariableOwner):
 
     The study area, holding all cells, outlets and streams.
 
+    Todo Describe tracers
+
     C++ includes: project.h 
     """
 
@@ -7223,7 +7837,15 @@ class RKFIntegrator(Integrator):
 _cmf_core.RKFIntegrator_swigregister(RKFIntegrator)
 
 class CVodeIntegrator(Integrator):
-    r"""Proxy of C++ cmf::math::CVodeIntegrator class."""
+    r"""
+
+
+    A wrapper class for the CVODE integrator from the SUNDIALS library.
+
+    https://computation.llnl.gov/casc/sundials/main.html
+
+    C++ includes: cvodeintegrator.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -7244,6 +7866,10 @@ class CVodeIntegrator(Integrator):
         __init__(CVodeIntegrator self, real epsilon=1e-9, char _preconditioner='R') -> CVodeIntegrator
         __init__(CVodeIntegrator self, StateVariableOwner states, real epsilon=1e-9, char _preconditioner='R') -> CVodeIntegrator
         __init__(CVodeIntegrator self, CVodeIntegrator templ) -> CVodeIntegrator
+        CVodeIntegrator(const CVodeIntegrator &templ)
+
+        copy constructor, creates a new CVODE integrator similiar to the
+        given, but without statevariables 
         """
         _cmf_core.CVodeIntegrator_swiginit(self, _cmf_core.new_CVodeIntegrator(*args))
     get_error = _swig_new_instance_method(_cmf_core.CVodeIntegrator_get_error)
@@ -7313,9 +7939,9 @@ class SoluteWaterIntegrator(Integrator):
         r"""
         __init__(SoluteWaterIntegrator self, solute_vector solutes, Integrator water_integrator, Integrator solute_integrator) -> SoluteWaterIntegrator
         __init__(SoluteWaterIntegrator self, solute_vector solutes, Integrator water_integrator, Integrator solute_integrator, StateVariableOwner states) -> SoluteWaterIntegrator
-        SoluteWaterIntegrator(const cmf::water::solute_vector &solutes, const
+        SoluteWaterIntegrator(cmf::water::solute_vector solutes, const
         cmf::math::Integrator &water_integrator, const cmf::math::Integrator
-        &solute_integrator, const cmf::math::state_list &states)
+        &solute_integrator, cmf::math::StateVariableOwner &states)
 
         Creates a new SoluteWaterIntegrator.
 
