@@ -94,7 +94,7 @@ real cmf::upslope::connections::SimpleInfiltration::calc_q( cmf::math::Time t )
 	for(connection_list::const_iterator it = swcons.begin();it!=swcons.end();++it) {
 		flux_connection::ptr con = *it;
 		// Include only non-waterbalance connections and not this
-		if (con->type!="waterbalance connection" && con.get()!=this) {
+		if (!con->is_waterbalance_source(*surfacewater) && con.get()!=this) {
 			// Sum only incoming fluxes
 			influxes += std::max(0.0, con->q(*surfacewater,t));
 		}

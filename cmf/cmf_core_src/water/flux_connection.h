@@ -145,6 +145,9 @@ namespace cmf {
 			/// @param _type Type of the flux connection
 			flux_connection(flux_node::ptr left,flux_node::ptr right,std::string _type);
 
+			virtual bool is_waterbalance_source(const flux_node& inquirer) {
+			    return false;
+			}
 			virtual ~flux_connection();
 		};
 

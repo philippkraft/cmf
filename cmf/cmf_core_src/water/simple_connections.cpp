@@ -211,3 +211,6 @@ cmf::water::waterbalance_connection::waterbalance_connection(flux_node::ptr sour
 	*/
 	RecalcAlways = true;
 }
+ bool cmf::water::waterbalance_connection::is_waterbalance_source(const cmf::water::flux_node& inquirer) {
+    return &inquirer == left_node().get();
+}

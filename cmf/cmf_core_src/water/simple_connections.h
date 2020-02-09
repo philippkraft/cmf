@@ -27,7 +27,9 @@ namespace cmf {
 			void NewNodes() {}
 		public:
 			waterbalance_connection(flux_node::ptr source, flux_node::ptr target);
-		};
+            virtual bool is_waterbalance_source(const flux_node& inquirer);
+
+        };
 
 		/// @ingroup connections
 		/// @brief Flux from one node to another, controlled by the user or an external program, 
