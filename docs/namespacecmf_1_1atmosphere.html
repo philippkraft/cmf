@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">1.6.0</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -159,9 +159,16 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aff4f90d5cded28b714cd55dec1f63fa1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecmf_1_1atmosphere.html#aff4f90d5cded28b714cd55dec1f63fa1">global_radiation</a> (<a class="el" href="classcmf_1_1math_1_1_time.html">cmf::math::Time</a> t, double height, double sunshine_fraction, double longitude=8, double latitude=51, double time_zone=1, bool daily=0)</td></tr>
-<tr class="memdesc:aff4f90d5cded28b714cd55dec1f63fa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the global radiation in MJ/(m2 day) from the sun position and the sunshine fraction.  <a href="#aff4f90d5cded28b714cd55dec1f63fa1">More...</a><br /></td></tr>
-<tr class="separator:aff4f90d5cded28b714cd55dec1f63fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd8811d8d8e9193002dadb388840b2bf"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecmf_1_1atmosphere.html#acd8811d8d8e9193002dadb388840b2bf">extraterrestrial_radiation</a> (<a class="el" href="classcmf_1_1math_1_1_time.html">cmf::math::Time</a> t, double longitude=8, double latitude=51, double time_zone=1, bool daily=false)</td></tr>
+<tr class="memdesc:acd8811d8d8e9193002dadb388840b2bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the global radiation in MJ/(m2 day) from the sun position and the sunshine fraction.  <a href="#acd8811d8d8e9193002dadb388840b2bf">More...</a><br /></td></tr>
+<tr class="separator:acd8811d8d8e9193002dadb388840b2bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40fd39bada873db167a21f7b93025910"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecmf_1_1atmosphere.html#a40fd39bada873db167a21f7b93025910">global_radiation</a> (double Ra, double height, double sunshine_fraction)</td></tr>
+<tr class="memdesc:a40fd39bada873db167a21f7b93025910"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the global radiation in MJ/(m2 day) from the sun position and the sunshine fraction.  <a href="#a40fd39bada873db167a21f7b93025910">More...</a><br /></td></tr>
+<tr class="separator:a40fd39bada873db167a21f7b93025910"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ae6c1ca34bbe2998d611b111e71b182"><td class="memItemLeft" align="right" valign="top"><a id="a8ae6c1ca34bbe2998d611b111e71b182"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecmf_1_1atmosphere.html#a8ae6c1ca34bbe2998d611b111e71b182">MJ_to_watts</a> (double MJ)</td></tr>
+<tr class="memdesc:a8ae6c1ca34bbe2998d611b111e71b182"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transforms an energy flux from MJ/day to W. <br /></td></tr>
+<tr class="separator:a8ae6c1ca34bbe2998d611b111e71b182"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f673a9a9e1bdfcfb3a070f12523d617"><td class="memItemLeft" align="right" valign="top"><a id="a1f673a9a9e1bdfcfb3a070f12523d617"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecmf_1_1atmosphere.html#a1f673a9a9e1bdfcfb3a070f12523d617">Pressure</a> (double height)</td></tr>
 <tr class="memdesc:a1f673a9a9e1bdfcfb3a070f12523d617"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the average air pressure for a height (m a.s.l.) <br /></td></tr>
@@ -175,31 +182,23 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="na
 <tr class="memitem:a8b1a755602d1db8f0d4c86cd566ba59a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecmf_1_1atmosphere.html#a8b1a755602d1db8f0d4c86cd566ba59a">vpd_from_rH</a> (double T, double rH)</td></tr>
 <tr class="memdesc:a8b1a755602d1db8f0d4c86cd566ba59a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the vapor pressure deficit in Pa for temperature T [degC] and rel.  <a href="#a8b1a755602d1db8f0d4c86cd566ba59a">More...</a><br /></td></tr>
 <tr class="separator:a8b1a755602d1db8f0d4c86cd566ba59a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6253ad3617fe72ced74361501a78461a"><td class="memItemLeft" align="right" valign="top"><a id="a6253ad3617fe72ced74361501a78461a"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecmf_1_1atmosphere.html#a6253ad3617fe72ced74361501a78461a">watts_to_MJ</a> (double Watts)</td></tr>
+<tr class="memdesc:a6253ad3617fe72ced74361501a78461a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transforms an energy flux from W to MJ/day. <br /></td></tr>
+<tr class="separator:a6253ad3617fe72ced74361501a78461a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="aff4f90d5cded28b714cd55dec1f63fa1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aff4f90d5cded28b714cd55dec1f63fa1">&#9670;&nbsp;</a></span>global_radiation()</h2>
+<a id="acd8811d8d8e9193002dadb388840b2bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd8811d8d8e9193002dadb388840b2bf">&#9670;&nbsp;</a></span>extraterrestrial_radiation()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double cmf::atmosphere::global_radiation </td>
+          <td class="memname">double cmf::atmosphere::extraterrestrial_radiation </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classcmf_1_1math_1_1_time.html">cmf::math::Time</a>&#160;</td>
           <td class="paramname"><em>t</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>height</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>sunshine_fraction</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -223,7 +222,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="na
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>daily</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>daily</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -237,8 +236,6 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="na
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">t</td><td>actual time step </td></tr>
-    <tr><td class="paramname">height</td><td>Height above sea level </td></tr>
-    <tr><td class="paramname">sunshine_fraction</td><td>Fraction of sunshine hours per potential sunshine duration in h/h </td></tr>
     <tr><td class="paramname">longitude,latitude</td><td>Geographical position in degree. Latitude is only taken into acount for subdaily calculation </td></tr>
     <tr><td class="paramname">time_zone</td><td>Offset by timezone from GMT, eg. central Europe=1 US west coast = -8 </td></tr>
     <tr><td class="paramname">daily</td><td>If true, the average radiation for the whole day is given (therefore latitude and time zone ignored), otherwise the average of the current hour is returned</td></tr>
@@ -246,10 +243,71 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="na
   </dd>
 </dl>
 <p>The calculation of the global radiation follows <a href="http://www.fao.org/docrep/X0490E/x0490e07.htm#radiation">http://www.fao.org/docrep/X0490E/x0490e07.htm#radiation</a>.</p>
-<p>The following formula is used: </p><p class="formulaDsp">
-\begin{eqnarray*} \phi &amp;=&amp; \frac{(\mbox{geogr. Latitude})^\circ \pi}{180^\circ} \mbox{ Latitude in }rad \\ \delta &amp;=&amp; 0.409 \sin\left(\frac{2\pi}{365}DOY - 1.39\right) \mbox{ Declination, DOY is day of year}\\ \omega_s &amp;=&amp; \arccos(-\tan\phi\tan\delta) \mbox{ Sunset angle} \\ G_{sc} &amp;=&amp; 0.0802 \frac{MJ}{m^2min} \mbox{Solar constant} \\ d_r &amp;=&amp; 1+0.033 \cos\left(\frac{2\pi}{365}DOY\right) \mbox{Inverse relative distance Earth-Sun} \\ b &amp;=&amp; \frac{2\pi(DOY-81)}{364}\\ S_c &amp;=&amp; 0.1645\sin(2b)-0.1255\cos(b)-0.025\sin(b) \mbox{ Seasonal correction for solar time} \\ \omega &amp;=&amp; \frac {\pi} {12} \left(t_h+\frac{(\mbox{geogr. Longitude})^\circ}{15}-\mbox{Timezone}+S_c-12\right) \mbox{ solar time in }rad \\ \mbox{If daily} \\ R_a &amp;=&amp; \frac{24\ 60}{\pi}G_{sc}\ d_r \left(\omega_s \sin\phi \sin\delta + \cos\phi \cos\delta \sin\omega_s\right) \mbox{Extraterrestrial radiation } \frac{MJ}{m^2 day} \\ \mbox{If hourly} \\ R_a &amp;=&amp; \frac{12\ 24\ 60}{\pi}G_{sc}\ d_r \left(\left(\omega^+ -\omega^-\right) \sin\phi \sin\delta + \cos\phi \cos\delta \left(\sin\omega^+ - \sin\omega^-\right)\right) \\ &amp;&amp; \omega^+,\omega^- = \omega \pm\frac{\pi}{24} \\ \frac n N &amp;=&amp; \mbox{Fractional sunshine duration} \\ R_s &amp;=&amp; \left(0.25+\left(0.5+2\ 10^{-5}z\right)\frac{n}{N}\right)R_a \mbox{Global radiation in }\frac{MJ}{m^2 day} \\ &amp;&amp; z=\mbox{Height a.s.l. in }m \\ \end{eqnarray*}
-</p>
- 
+<p>The following formula is used:</p><ul>
+<li>\( \phi\) Latitude in \(rad\)</li>
+<li>\( \delta = 0.409 \sin\left(\frac{2\pi}{365}DOY - 1.39\right)\) Declination, DOY is day of year</li>
+<li>\( \omega_s = \arccos(-\tan\phi\tan\delta) \) Sunset angle</li>
+<li>\( G_{sc} = 0.0802 \frac{MJ}{m^2min} \) Solar constant</li>
+<li>\( d_r = 1+0.033 \cos\left(\frac{2\pi}{365}DOY\right) \) Inverse relative distance Earth-Sun</li>
+<li>\( b = \frac{2\pi(DOY-81)}{364}\)</li>
+<li>\( S_c = 0.1645\sin(2b)-0.1255\cos(b)-0.025\sin(b) \) Seasonal correction for solar time</li>
+<li>\( \omega = \frac {\pi} {12} \left(t_h+\frac{(\mbox{geogr. Longitude})^\circ}{15^\circ}-\mbox{Timezone}+S_c-12\right) \) solar time in \(rad\)</li>
+<li>If daily: \( R_a = \frac{24\ 60}{\pi}G_{sc}\ d_r \left(\omega_s \sin\phi \sin\delta + \cos\phi \cos\delta \sin\omega_s\right) \)</li>
+<li>If sub daily: \( R_a = \frac{12\ 24\ 60}{\pi}G_{sc}\ d_r \left(\left(\omega^+ -\omega^-\right) \sin\phi \sin\delta + \cos\phi \cos\delta \left(\sin\omega^+ - \sin\omega^-\right)\right) \)</li>
+<li>\( \omega^+,\omega^- = \omega \pm\frac{\pi}{24} \) </li>
+</ul>
+
+</div>
+</div>
+<a id="a40fd39bada873db167a21f7b93025910"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40fd39bada873db167a21f7b93025910">&#9670;&nbsp;</a></span>global_radiation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double cmf::atmosphere::global_radiation </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>Ra</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>sunshine_fraction</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates the global radiation in MJ/(m2 day) from the sun position and the sunshine fraction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Ra</td><td>extra terrestrial radiation </td></tr>
+    <tr><td class="paramname">height</td><td>Height above sea level </td></tr>
+    <tr><td class="paramname">sunshine_fraction</td><td>Fraction of sunshine hours per potential sunshine duration in h/h</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The calculation of the global radiation follows <a href="http://www.fao.org/docrep/X0490E/x0490e07.htm#radiation">http://www.fao.org/docrep/X0490E/x0490e07.htm#radiation</a>.</p>
+<p>The following formula is used:</p><ul>
+<li>\(R_a(t, \phi, \lambda)\) Extraterrestrial radiation (<a class="el" href="namespacecmf_1_1atmosphere.html#acd8811d8d8e9193002dadb388840b2bf">cmf::atmosphere::extraterrestrial_radiation</a>) \(\frac{MJ}{m^2 day}\)</li>
+<li>\(\frac n N\) Fractional sunshine duration</li>
+<li>\(R_s = \left(0.25+\left(0.5+2\ 10^{-5}z\right)\frac{n}{N}\right)R_a \) Global radiation in \(\frac{MJ}{m^2 day}\)</li>
+<li>\(z\): Height a.s.l. in m </li>
+</ul>
+
 </div>
 </div>
 <a id="a75a6a972f5f34e00c717645a890e22ef"></a>
@@ -368,7 +426,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="na
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:27</td>
+<td>Generated: Sun Feb 9 2020 15:17:02</td>
 </tr></table>
 </small></address>
 </body>

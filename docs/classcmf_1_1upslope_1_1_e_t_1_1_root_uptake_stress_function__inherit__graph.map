@@ -1,0 +1,5 @@
+<map id="RootUptakeStressFunction" name="RootUptakeStressFunction">
+<area shape="rect" id="node2" href="$classcmf_1_1upslope_1_1_e_t_1_1_content_stress.html" title="A simple water content based stress model based on Feddes (1978) " alt="" coords="5,80,111,107"/>
+<area shape="rect" id="node3" href="$classcmf_1_1upslope_1_1_e_t_1_1_suction_stress.html" title="The classical suction depending transpiration Stress curve after Feddes. " alt="" coords="135,80,239,107"/>
+<area shape="rect" id="node4" href="$classcmf_1_1upslope_1_1_e_t_1_1_volume_stress.html" title="A WaterStressFunction based on the stored water volume of a layer. " alt="" coords="263,80,367,107"/>
+</map>

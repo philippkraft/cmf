@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">1.6.0</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -239,6 +239,9 @@ char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 cmf::math::StateVariableList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1_water_storage.html#a630ff0c86cdfcab272faf1aefb76ab9a">get_states</a> ()</td></tr>
 <tr class="memdesc:a630ff0c86cdfcab272faf1aefb76ab9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the state variables, owned by an object derived from StateVariableOwner, to the given vector. <br /></td></tr>
 <tr class="separator:a630ff0c86cdfcab272faf1aefb76ab9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7ad76afe33bd5393581a12b7ea8b747"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html#aa7ad76afe33bd5393581a12b7ea8b747">get_Tact</a> (double Tpot)</td></tr>
+<tr class="memdesc:aa7ad76afe33bd5393581a12b7ea8b747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a factor to indicate the draught stress to be multiplied with ETpot.  <a href="#aa7ad76afe33bd5393581a12b7ea8b747">More...</a><br /></td></tr>
+<tr class="separator:aa7ad76afe33bd5393581a12b7ea8b747"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a696ccf458e7402c896812ee224e6a796"><td class="memItemLeft" align="right" valign="top"><a id="a696ccf458e7402c896812ee224e6a796"></a>
 virtual real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html#a696ccf458e7402c896812ee224e6a796">get_theta</a> () const</td></tr>
 <tr class="memdesc:a696ccf458e7402c896812ee224e6a796"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the actual volumetric water content of the water storage. <br /></td></tr>
@@ -273,6 +276,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html#a6dacff6b3dfe19051e9495a8b8782b5d">set_potential</a> (real waterhead)</td></tr>
 <tr class="memdesc:a6dacff6b3dfe19051e9495a8b8782b5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the potential of this soil water storage. <br /></td></tr>
 <tr class="separator:a6dacff6b3dfe19051e9495a8b8782b5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a953f04742e7a75736a47ec64ac39cb05"><td class="memItemLeft" align="right" valign="top"><a id="a953f04742e7a75736a47ec64ac39cb05"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html#a953f04742e7a75736a47ec64ac39cb05">set_root_uptake_stress_function</a> (const <a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stress_function.html">cmf::upslope::ET::RootUptakeStressFunction</a> &amp;stressfunction)</td></tr>
+<tr class="memdesc:a953f04742e7a75736a47ec64ac39cb05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the root uptake stress function. <br /></td></tr>
+<tr class="separator:a953f04742e7a75736a47ec64ac39cb05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a652e6997fe0ab85c45edea45cbb1684c"><td class="memItemLeft" align="right" valign="top"><a id="a652e6997fe0ab85c45edea45cbb1684c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html#a652e6997fe0ab85c45edea45cbb1684c">set_rootfraction</a> (real rootfraction)</td></tr>
 <tr class="memdesc:a652e6997fe0ab85c45edea45cbb1684c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the root fraction in this layer explicitly. <br /></td></tr>
@@ -348,6 +355,10 @@ Protected Attributes</h2></td></tr>
 std::unique_ptr&lt; <a class="el" href="classcmf_1_1upslope_1_1_retention_curve.html">cmf::upslope::RetentionCurve</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html#a95712d52a9c5dcc9517aadae70f16f0c">m_retentioncurve</a></td></tr>
 <tr class="memdesc:a95712d52a9c5dcc9517aadae70f16f0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The retention curve of the soil layer. <br /></td></tr>
 <tr class="separator:a95712d52a9c5dcc9517aadae70f16f0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5842f24490f7418573b14084886c2eb0"><td class="memItemLeft" align="right" valign="top"><a id="a5842f24490f7418573b14084886c2eb0"></a>
+std::unique_ptr&lt; <a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stress_function.html">cmf::upslope::ET::RootUptakeStressFunction</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html#a5842f24490f7418573b14084886c2eb0">m_uptakefunction</a></td></tr>
+<tr class="memdesc:a5842f24490f7418573b14084886c2eb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The uptake stress function of the soil layer. <br /></td></tr>
+<tr class="separator:a5842f24490f7418573b14084886c2eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a51f9631247f8af683e55240e94b74e57"></a>
@@ -408,6 +419,27 @@ std::unique_ptr&lt; <a class="el" href="classcmf_1_1upslope_1_1_retention_curve.
 \[ \Psi_G=h \]
 </p>
  
+</div>
+</div>
+<a id="aa7ad76afe33bd5393581a12b7ea8b747"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7ad76afe33bd5393581a12b7ea8b747">&#9670;&nbsp;</a></span>get_Tact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double get_Tact </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>Tpot</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a factor to indicate the draught stress to be multiplied with ETpot. </p>
+<p>1 = no stress, 0 = no uptake possible </p>
+
 </div>
 </div>
 <a id="ad4e4534513b31d5a3596b072ad4cd42f"></a>
@@ -518,7 +550,7 @@ std::unique_ptr&lt; <a class="el" href="classcmf_1_1upslope_1_1_retention_curve.
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:30</td>
+<td>Generated: Sun Feb 9 2020 15:17:04</td>
 </tr></table>
 </small></address>
 </body>

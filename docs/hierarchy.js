@@ -56,6 +56,7 @@ var hierarchy =
       [ "stressedET", "classcmf_1_1upslope_1_1_e_t_1_1stressed_e_t.html", [
         [ "constantETpot", "classcmf_1_1upslope_1_1_e_t_1_1constant_e_tpot.html", null ],
         [ "HargreaveET", "classcmf_1_1upslope_1_1_e_t_1_1_hargreave_e_t.html", null ],
+        [ "OudinET", "classcmf_1_1upslope_1_1_e_t_1_1_oudin_e_t.html", null ],
         [ "PenmanMonteithET", "classcmf_1_1upslope_1_1_e_t_1_1_penman_monteith_e_t.html", null ],
         [ "PriestleyTaylorET", "classcmf_1_1upslope_1_1_e_t_1_1_priestley_taylor_e_t.html", null ],
         [ "timeseriesETpot", "classcmf_1_1upslope_1_1_e_t_1_1timeseries_e_tpot.html", null ],
@@ -162,7 +163,7 @@ var hierarchy =
       [ "LinearRetention", "classcmf_1_1upslope_1_1_linear_retention.html", null ],
       [ "VanGenuchtenMualem", "classcmf_1_1upslope_1_1_van_genuchten_mualem.html", null ]
     ] ],
-    [ "RootUptakeStessFunction", "classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stess_function.html", [
+    [ "RootUptakeStressFunction", "classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stress_function.html", [
       [ "ContentStress", "classcmf_1_1upslope_1_1_e_t_1_1_content_stress.html", null ],
       [ "SuctionStress", "classcmf_1_1upslope_1_1_e_t_1_1_suction_stress.html", null ],
       [ "VolumeStress", "classcmf_1_1upslope_1_1_e_t_1_1_volume_stress.html", null ]

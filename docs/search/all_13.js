@@ -1,6 +1,7 @@
 var searchData=
 [
   ['recommended_20software_20environment',['Recommended Software Environment',['../cmf_recommended_software_environment.html',1,'index']]],
+  ['ra',['Ra',['../structcmf_1_1atmosphere_1_1_weather.html#a05a4ebda8a9a5f8d72f6b2a462c0c6bd',1,'cmf::atmosphere::Weather']]],
   ['raa',['RAA',['../classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html#ae425f7dc0506c59557e5650a94b6c11e',1,'cmf::upslope::ET::ShuttleworthWallace']]],
   ['rac',['RAC',['../classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html#a58c5e740c5cdc57e1662508220c240df',1,'cmf::upslope::ET::ShuttleworthWallace']]],
   ['rainfall',['Rainfall',['../classcmf_1_1upslope_1_1connections_1_1_rainfall.html',1,'Rainfall'],['../classcmf_1_1upslope_1_1connections_1_1_rainfall.html#a8fca3ae0dab3bd8eb877a534f6b7234f',1,'cmf::upslope::connections::Rainfall::Rainfall()']]],
@@ -50,7 +51,7 @@ var searchData=
   ['rootdepth',['RootDepth',['../classcmf_1_1upslope_1_1vegetation_1_1_vegetation.html#a05d6717ca4751f0d526d661584592abf',1,'cmf::upslope::vegetation::Vegetation']]],
   ['rootfraction',['RootFraction',['../classcmf_1_1upslope_1_1vegetation_1_1_vegetation.html#a5a5bb167d84933ff53b5fa82aa47b770',1,'cmf::upslope::vegetation::Vegetation']]],
   ['rootlength',['RootLength',['../classcmf_1_1upslope_1_1vegetation_1_1_vegetation.html#afa928020d842096e3ad7a9d6a0a28ec6',1,'cmf::upslope::vegetation::Vegetation']]],
-  ['rootuptakestessfunction',['RootUptakeStessFunction',['../classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stess_function.html',1,'cmf::upslope::ET']]],
+  ['rootuptakestressfunction',['RootUptakeStressFunction',['../classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stress_function.html',1,'cmf::upslope::ET']]],
   ['rs',['Rs',['../classcmf_1_1atmosphere_1_1_meteo_station.html#a9b229a1c5fb6b866942013ed731474f7',1,'cmf::atmosphere::MeteoStation::Rs()'],['../structcmf_1_1atmosphere_1_1_weather.html#ad64417a28c816d614e4501b01ca36a46',1,'cmf::atmosphere::Weather::Rs()']]],
   ['rsc',['RSC',['../classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html#ab4598d320141994a2f8d3c3b989c774b',1,'cmf::upslope::ET::ShuttleworthWallace']]],
   ['rss',['RSS',['../classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html#a57962795da335aebadd3fce2f1ece1ce',1,'cmf::upslope::ET::ShuttleworthWallace']]],

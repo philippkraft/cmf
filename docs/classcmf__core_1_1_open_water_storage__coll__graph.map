@@ -1,0 +1,5 @@
+<map id="OpenWaterStorage" name="OpenWaterStorage">
+<area shape="rect" id="node2" href="$classcmf__core_1_1_water_storage.html" title="WaterStorage" alt="" coords="60,80,163,107"/>
+<area shape="rect" id="node3" href="$classcmf__core_1_1_state_variable.html" title="StateVariable" alt="" coords="5,5,105,32"/>
+<area shape="rect" id="node4" href="$classcmf__core_1_1flux__node.html" title="flux_node" alt="" coords="130,5,207,32"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="SoluteReaction" name="SoluteReaction">
+<area shape="rect" id="node2" href="$classcmf_1_1water_1_1_solute1st_order_reaction.html" title="A solute reaction of 1st order kinetics (linear decline to product) A&#45;&gt;B. " alt="" coords="177,5,337,32"/>
+<area shape="rect" id="node3" href="$classcmf_1_1water_1_1_solute2nd_order_reaction.html" title="A solute reaction of 2nd order kinetics A + B &#45;&gt; C. " alt="" coords="176,56,339,83"/>
+<area shape="rect" id="node4" href="$classcmf_1_1water_1_1_solute_constant_flux_reaction.html" title="Adds a constant flux to the solute storage. " alt="" coords="164,107,351,133"/>
+<area shape="rect" id="node5" href="$classcmf_1_1water_1_1_solute_decay_reaction.html" title="Adds a linear decay to solute storages. " alt="" coords="184,157,331,184"/>
+<area shape="rect" id="node6" href="$classcmf_1_1water_1_1_solute_diffusive_transport.html" title="Calculates a diffusive flux between solute storages. " alt="" coords="177,208,337,235"/>
+<area shape="rect" id="node7" href="$classcmf_1_1water_1_1_solute_equilibrium_reaction.html" title="An equilibrium reaction between two solutes A&lt;&#45;&gt;B. " alt="" coords="170,259,345,285"/>
+<area shape="rect" id="node8" href="$classcmf_1_1water_1_1_solute_rate_reaction.html" title="A general solute reaction system to describe multi&#45;species kinetics with a power law. " alt="" coords="189,309,326,336"/>
+</map>

@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.1</div>
+  <div id="projectnumber">1.6.0</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('classcmf_1_1upslope_1_1_e_t_1_1_volume
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classcmf_1_1upslope_1_1_e_t_1_1_volume_stress__inherit__graph.png" border="0" usemap="#_volume_stress_inherit__map" alt="Inheritance graph"/></div>
 <map name="_volume_stress_inherit__map" id="_volume_stress_inherit__map">
-<area shape="rect" id="node2" href="classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stess_function.html" title="An abstract class to calculate the actual transpiration from potential transpiration. " alt="" coords="5,5,180,32"/>
+<area shape="rect" id="node2" href="classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stress_function.html" title="An abstract class to calculate the actual transpiration from potential transpiration. " alt="" coords="5,5,184,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -122,9 +122,7 @@ $(document).ready(function(){initNavTree('classcmf_1_1upslope_1_1_e_t_1_1_volume
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classcmf_1_1upslope_1_1_e_t_1_1_volume_stress__coll__graph.png" border="0" usemap="#_volume_stress_coll__map" alt="Collaboration graph"/></div>
 <map name="_volume_stress_coll__map" id="_volume_stress_coll__map">
-<area shape="rect" id="node2" href="classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stess_function.html" title="An abstract class to calculate the actual transpiration from potential transpiration. " alt="" coords="5,171,180,197"/>
-<area shape="rect" id="node3" href="classcmf_1_1upslope_1_1_e_t_1_1stressed_e_t.html" title="An abstract base class for ET Methods with a WaterStressFunction. " alt="" coords="49,81,137,108"/>
-<area shape="rect" id="node4" href="classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="37,5,149,32"/>
+<area shape="rect" id="node2" href="classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stress_function.html" title="An abstract class to calculate the actual transpiration from potential transpiration. " alt="" coords="5,5,184,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -140,9 +138,9 @@ Public Member Functions</h2></td></tr>
 <a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_volume_stress.html">cmf::upslope::ET::VolumeStress</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_volume_stress.html#a74510c66c4f872b2d17d618e6a743d01">copy</a> () const</td></tr>
 <tr class="memdesc:a74510c66c4f872b2d17d618e6a743d01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new copy of this wetness. <br /></td></tr>
 <tr class="separator:a74510c66c4f872b2d17d618e6a743d01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51dbdfb0383766d162cab03ae07dff69"><td class="memItemLeft" align="right" valign="top">real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_volume_stress.html#a51dbdfb0383766d162cab03ae07dff69">Tact</a> (const <a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1stressed_e_t.html">stressedET</a> *connection, real Tpot) const</td></tr>
-<tr class="memdesc:a51dbdfb0383766d162cab03ae07dff69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the water stress for a layer.  <a href="#a51dbdfb0383766d162cab03ae07dff69">More...</a><br /></td></tr>
-<tr class="separator:a51dbdfb0383766d162cab03ae07dff69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4a021be8d18bb5f73b79ce71044820e"><td class="memItemLeft" align="right" valign="top">virtual real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_volume_stress.html#ac4a021be8d18bb5f73b79ce71044820e">Tact</a> (const <a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html">cmf::upslope::SoilLayer</a> *soilLayer, real Tpot) const</td></tr>
+<tr class="memdesc:ac4a021be8d18bb5f73b79ce71044820e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the water stress for a layer.  <a href="#ac4a021be8d18bb5f73b79ce71044820e">More...</a><br /></td></tr>
+<tr class="separator:ac4a021be8d18bb5f73b79ce71044820e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -194,8 +192,8 @@ real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a51dbdfb0383766d162cab03ae07dff69"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51dbdfb0383766d162cab03ae07dff69">&#9670;&nbsp;</a></span>Tact()</h2>
+<a id="ac4a021be8d18bb5f73b79ce71044820e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4a021be8d18bb5f73b79ce71044820e">&#9670;&nbsp;</a></span>Tact()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -204,10 +202,10 @@ real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">real Tact </td>
+          <td class="memname">virtual real Tact </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1stressed_e_t.html">stressedET</a> *&#160;</td>
-          <td class="paramname"><em>connection</em>, </td>
+          <td class="paramtype">const <a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html">cmf::upslope::SoilLayer</a> *&#160;</td>
+          <td class="paramname"><em>soilLayer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -231,14 +229,14 @@ real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Calculates the water stress for a layer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">connection</td><td>The <a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1stressed_e_t.html" title="An abstract base class for ET Methods with a WaterStressFunction. ">stressedET</a> connection this stress function belongs to </td></tr>
+    <tr><td class="paramname">soilLayer</td><td>The <a class="el" href="classcmf_1_1upslope_1_1_soil_layer.html" title="A representation of a SoilLayer. ">cmf::upslope::SoilLayer</a> this stress function belongs to </td></tr>
     <tr><td class="paramname">Tpot</td><td>Potential Transpiration in mm/day (for the full profile) </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Actual flux from layer in m3/day </dd></dl>
 
-<p>Implements <a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stess_function.html#ac8d3e20498f425015e95a6caaa42e59f">RootUptakeStessFunction</a>.</p>
+<p>Implements <a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stress_function.html#a0cc1888534b2d1101dc3e6b2d5b7e91e">RootUptakeStressFunction</a>.</p>
 
 </div>
 </div>
@@ -250,7 +248,7 @@ real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Thu Dec 20 2018 09:20:33</td>
+<td>Generated: Sun Feb 9 2020 15:17:05</td>
 </tr></table>
 </small></address>
 </body>

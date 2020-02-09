@@ -1,0 +1,10 @@
+<map id="WaterStorage" name="WaterStorage">
+<area shape="rect" id="node4" href="$classcmf__core_1_1aquifer.html" title="aquifer" alt="" coords="5,155,65,181"/>
+<area shape="rect" id="node5" href="$classcmf__core_1_1_macro_pore.html" title="MacroPore" alt="" coords="90,155,175,181"/>
+<area shape="rect" id="node6" href="$classcmf__core_1_1_open_water_storage.html" title="OpenWaterStorage" alt="" coords="199,155,333,181"/>
+<area shape="rect" id="node9" href="$classcmf__core_1_1_soil_layer.html" title="SoilLayer" alt="" coords="357,155,433,181"/>
+<area shape="rect" id="node2" href="$classcmf__core_1_1_state_variable.html" title="StateVariable" alt="" coords="93,5,193,32"/>
+<area shape="rect" id="node3" href="$classcmf__core_1_1flux__node.html" title="flux_node" alt="" coords="218,5,295,32"/>
+<area shape="rect" id="node7" href="$classcmf__core_1_1_reach.html" title="Reach" alt="" coords="185,229,243,256"/>
+<area shape="rect" id="node8" href="$classcmf__core_1_1_surface_water.html" title="SurfaceWater" alt="" coords="267,229,369,256"/>
+</map>

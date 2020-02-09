@@ -10,7 +10,6 @@ var classcmf_1_1upslope_1_1_e_t_1_1timeseries_e_tpot =
     [ "q", "classcmf_1_1upslope_1_1_e_t_1_1timeseries_e_tpot.html#a2cf1a197d5e389c8da4df31b4e8ae112", null ],
     [ "refresh", "classcmf_1_1upslope_1_1_e_t_1_1timeseries_e_tpot.html#a61a28d902eac9e4a2ffacaba4ad7d70c", null ],
     [ "right_node", "classcmf_1_1upslope_1_1_e_t_1_1timeseries_e_tpot.html#ac62da234b5e528b9783dd4dcd81f5f47", null ],
-    [ "set_stressfunction", "classcmf_1_1upslope_1_1_e_t_1_1timeseries_e_tpot.html#a6caef9415c11054ab25f0c79e6093a94", null ],
     [ "set_tracer_filter", "classcmf_1_1upslope_1_1_e_t_1_1timeseries_e_tpot.html#a5edf702b615e8af8d847ecd63d13eb25", null ],
     [ "type", "classcmf_1_1upslope_1_1_e_t_1_1timeseries_e_tpot.html#ab42edbb29efb41e4c3e0de59be4e4cf7", null ]
 ];
