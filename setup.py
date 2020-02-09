@@ -43,15 +43,6 @@ except:
 
 print('cmf', branchversion)
 
-# Try to import numpy, if it fails we have a problem
-try:
-    # Import a function to get a path to the include directories of numpy
-    # noinspection PyPackageRequirements
-    from numpy import get_include as get_numpy_include
-except ImportError:
-    raise RuntimeError("For building and running of cmf an installation of numpy is needed")
-
-
 swig = False
 openmp = False
 
@@ -96,12 +87,27 @@ class CmfBuildExt(build_ext):
         print(count, 'old style static methods removed from', len(classes), 'classes')
         return cmf_core_py
 
+    def add_numpy_include(self):
+        # Try to import numpy, if it fails we have a problem
+        try:
+            # Import a function to get a path to the include directories of numpy
+            # noinspection PyPackageRequirements
+            from numpy import get_include as get_numpy_include
+        except ImportError:
+            raise RuntimeError("For building and running of cmf an installation of numpy is needed")
+
+        for ext in self.extensions:
+            ext.include_dirs += [get_numpy_include()]
+
     def build_extensions(self):
         customize_compiler(self.compiler)
         try:
             self.compiler.compiler_so.remove("-Wstrict-prototypes")
         except (AttributeError, ValueError):
             pass
+
+        self.add_numpy_include()
+
         build_ext.build_extensions(self)
 
         if swig:
@@ -210,8 +216,6 @@ def make_cmf_core():
     libraries = None
     # Include CVODE
     include_dirs = [os.path.join(*'cmf/cmf_core_src/math/integrators/sundials_cvode/include'.split('/'))]
-    # Include numpy
-    include_dirs += [get_numpy_include()]
 
     # Platform specific stuff, alternative is to subclass build_ext command as in:
     # https://stackoverflow.com/a/5192738/3032680
@@ -295,21 +299,21 @@ if __name__ == '__main__':
         'Topic :: Scientific/Engineering',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ]
-
-    setup(name='cmf',
-          version=version,
-          license='GPLv3+',
-          ext_modules=ext,
-          packages=['cmf', 'cmf.draw', 'cmf.geometry'],
-          python_requires='>=2.7',
-          keywords='hydrology catchment simulation toolbox',
-          author='Philipp Kraft',
-          author_email="philipp.kraft@umwelt.uni-giessen.de",
-          url="https://www.uni-giessen.de/hydro/download",
-          description=description,
-          long_description=long_description,
-          classifiers=classifiers,
-          cmdclass=dict(build_py=build_py,
-                        build_ext=CmfBuildExt),
-          )
+setup(name='cmf',
+      version=version,
+      license='GPLv3+',
+      ext_modules=ext,
+      packages=['cmf', 'cmf.draw', 'cmf.geometry'],
+      python_requires='>=2.7',
+      install_requires='numpy>=1.11.1',
+      keywords='hydrology catchment simulation toolbox',
+      author='Philipp Kraft',
+      author_email="philipp.kraft@umwelt.uni-giessen.de",
+      url="https://philippkraft.github.io/cmf",
+      description=description,
+      long_description=long_description,
+      classifiers=classifiers,
+      cmdclass=dict(build_py=build_py,
+                    build_ext=CmfBuildExt),
+      )
 
