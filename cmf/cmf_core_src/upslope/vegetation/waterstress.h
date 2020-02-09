@@ -18,7 +18,7 @@ namespace cmf {
 			public:
 				/// Calculates the water stress for a layer
 				///
-				/// @param soillayer The cmf::upslope::SoilLayer this stress function belongs to
+				/// @param soilLayer The cmf::upslope::SoilLayer this stress function belongs to
 				/// @param Tpot Potential Transpiration in mm/day (for the full profile)
 				/// @returns Actual flux from layer in m3/day
 				virtual real Tact(const cmf::upslope::SoilLayer* soilLayer, real Tpot) const = 0;

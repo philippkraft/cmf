@@ -1,13 +1,28 @@
 
 // File: index.xml
 
-// File: structcmf_1_1___options.xml
-%feature("docstring") cmf::_Options "
+// File: struct___dls_mat.xml
+%feature("docstring") _DlsMat "";
 
-Holds global options for specific cmf behaviour, accessbile via
-cmf.options.
 
-C++ includes: project.h ";
+// File: struct__generic___n___vector.xml
+%feature("docstring") _generic_N_Vector "";
+
+
+// File: struct__generic___n___vector___ops.xml
+%feature("docstring") _generic_N_Vector_Ops "";
+
+
+// File: struct___n___vector_content___parallel.xml
+%feature("docstring") _N_VectorContent_Parallel "";
+
+
+// File: struct___n___vector_content___serial.xml
+%feature("docstring") _N_VectorContent_Serial "";
+
+
+// File: struct___spgmr_mem_rec.xml
+%feature("docstring") _SpgmrMemRec "";
 
 
 // File: classcmf_1_1water_1_1_adsorption.xml
@@ -188,9 +203,6 @@ porosity:  Porosity of the aquifer
 K:  Conductivity of the aquifer in m/day. If the conductivity should
 be anisotropic, change the x,y and z values of the member K ";
 
-%feature("docstring")  cmf::upslope::aquifer::add_connected_states "virtual void add_connected_states(cmf::math::StateVariable::list
-&states) ";
-
 %feature("docstring")  cmf::upslope::aquifer::conc "real conc(const
 cmf::water::solute &_Solute) const
 
@@ -198,7 +210,6 @@ Returns the concentration of the given solute. ";
 
 %feature("docstring")  cmf::upslope::aquifer::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute) const
-override
 
 Returns the current WaterQuality (concentration of all solutes) ";
 
@@ -257,8 +268,8 @@ Takes account for anisotropy
 
 ";
 
-%feature("docstring")  cmf::upslope::aquifer::get_potential "real
-get_potential(cmf::math::Time t=cmf::math::never) const override
+%feature("docstring")  cmf::upslope::aquifer::get_potential "virtual
+real get_potential() const
 
 Returns the water potential of the node in m waterhead.
 
@@ -270,9 +281,7 @@ The base class water storage always returns the height of the location
 Returns the project, this node is part of. ";
 
 %feature("docstring")  cmf::upslope::aquifer::get_state "real
-get_state() const
-
-Returns the current state of the variable. ";
+get_state() const ";
 
 %feature("docstring")
 cmf::upslope::aquifer::get_state_variable_content "char
@@ -280,6 +289,11 @@ get_state_variable_content() const
 
 A character indicating the integrated variable (either 'V' for Volume
 or 'h' for head) ";
+
+%feature("docstring")  cmf::upslope::aquifer::get_states "cmf::math::StateVariableList get_states()
+
+Add the state variables, owned by an object derived from
+StateVariableOwner, to the given vector. ";
 
 %feature("docstring")  cmf::upslope::aquifer::get_top_height "real
 get_top_height() const
@@ -291,13 +305,8 @@ real get_volume() const
 
 Returns the volume of water in this storage in m3 ";
 
-%feature("docstring")  cmf::upslope::aquifer::is_connected "virtual
-bool is_connected(const cmf::math::StateVariable &other) const
-
-Returns True if this waterstorage is effected by another state. ";
-
-%feature("docstring")  cmf::upslope::aquifer::is_storage "bool
-is_storage() const override
+%feature("docstring")  cmf::upslope::aquifer::is_storage "virtual
+bool is_storage() const
 
 Returns true, since this is a storage. ";
 
@@ -312,9 +321,7 @@ void set_potential(real new_potential)
 Sets the potential of this flux node. ";
 
 %feature("docstring")  cmf::upslope::aquifer::set_state "void
-set_state(real newState)
-
-Gives access to the state variable. ";
+set_state(real newState) ";
 
 %feature("docstring")
 cmf::upslope::aquifer::set_state_variable_content "void
@@ -426,6 +433,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
+%feature("docstring")
+cmf::upslope::aquifer_Darcy::is_waterbalance_source "virtual bool
+is_waterbalance_source(const flux_node &inquirer) ";
+
 %feature("docstring")  cmf::upslope::aquifer_Darcy::kill_me "bool
 kill_me()
 
@@ -514,6 +525,9 @@ get_tracer_filter(solute S)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::connections::BaseMacroFlow::is_waterbalance_source "virtual bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")
 cmf::upslope::connections::BaseMacroFlow::kill_me "bool kill_me()
@@ -637,9 +651,8 @@ epsilon:  relative error tolerance per time step (default=1e-9)
 
 tStepMin:  minimum time step (default=10s) ";
 
-%feature("docstring")  cmf::math::BDF2::BDF2 "BDF2(const
-cmf::math::state_list &states, real epsilon=1e-9, cmf::math::Time
-tStepMin=cmf::math::timespan(10))
+%feature("docstring")  cmf::math::BDF2::BDF2 "BDF2(cmf::math::StateVariableOwner &states, real epsilon=1e-9,
+cmf::math::Time tStepMin=cmf::math::timespan(10))
 
 Constructs a new Gears_var_Step.
 
@@ -662,18 +675,88 @@ Parameters:
 
 templ:  Template to be used to construct a BDF2 method ";
 
-%feature("docstring")  cmf::math::BDF2::copy "Integrator* copy()
-const override
+%feature("docstring")  cmf::math::BDF2::add_single_state "virtual
+void add_single_state(cmf::math::StateVariable::ptr state)
+
+Adds a single state variable to the integrator. ";
+
+%feature("docstring")  cmf::math::BDF2::add_states "void
+add_states(cmf::math::StateVariableOwner &stateOwner)
+
+Add state variables from a StateVariableOwner. ";
+
+%feature("docstring")  cmf::math::BDF2::add_values_to_states "void
+add_values_to_states(const num_array &operands)
+
+Adds the values in operands to the current states. ";
+
+%feature("docstring")  cmf::math::BDF2::copy "virtual Integrator*
+copy() const
 
 Polymorphic copy constructor. ";
 
-%feature("docstring")  cmf::math::BDF2::get_error_position "ptrdiff_t
+%feature("docstring")  cmf::math::BDF2::copy_dxdt "void
+copy_dxdt(Time time, num_array &destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to a numeric vector using
+use_OpenMP.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Vector to be overwritten by the results
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::BDF2::copy_dxdt "void
+copy_dxdt(Time time, real *destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to an preallocated c
+array.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Allocated c array
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::BDF2::copy_states "void
+copy_states(num_array &destination) const
+
+Copies the states to a numeric vector using use_OpenMP. ";
+
+%feature("docstring")  cmf::math::BDF2::copy_states "void
+copy_states(real *destination) const ";
+
+%feature("docstring")  cmf::math::BDF2::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
+
+%feature("docstring")  cmf::math::BDF2::get_error_position "int
 get_error_position() const
 
 Returns the position of the biggest error. ";
 
+%feature("docstring")  cmf::math::BDF2::get_state "real
+get_state(ptrdiff_t position) const
+
+Returns the statevariable at position Simplifies the assessment of
+state variables. ";
+
+%feature("docstring")  cmf::math::BDF2::get_states "cmf::math::num_array get_states() const ";
+
+%feature("docstring")  cmf::math::BDF2::get_states "StateVariableList
+get_states()
+
+gets the state variables of the integrator ";
+
 %feature("docstring")  cmf::math::BDF2::integrate "int
-integrate(cmf::math::Time MaxTime, cmf::math::Time TimeStep) override
+integrate(cmf::math::Time MaxTime, cmf::math::Time TimeStep)
 
 Integrates the vector of state variables.
 
@@ -699,19 +782,183 @@ can be given
 
 TimeStep:  Takes the proposed timestep, ignored by this solver ";
 
-%feature("docstring")  cmf::math::BDF2::reset "void reset() override
+%feature("docstring")  cmf::math::BDF2::reset "virtual void reset()
 
 Resets any saved history (for multistep methods) ";
 
-%feature("docstring")  cmf::math::BDF2::set_system "void
-set_system(const state_list &states) ";
+%feature("docstring")  cmf::math::BDF2::set_state "void
+set_state(ptrdiff_t position, real newState)
 
-%feature("docstring")  cmf::math::BDF2::size "size_t size() const ";
+Simplifies the assessment of state variables. ";
 
-%feature("docstring")  cmf::math::BDF2::to_string "std::string
-to_string() const override
+%feature("docstring")  cmf::math::BDF2::set_states "void
+set_states(const num_array &newStates)
 
-Desrcibes the iterator. ";
+Copies the new states to the actual states. ";
+
+%feature("docstring")  cmf::math::BDF2::set_states "void
+set_states(real *newStates) ";
+
+%feature("docstring")  cmf::math::BDF2::size "size_t size() const
+
+returns the number of state variables ";
+
+
+// File: classcmf_1_1water_1_1bidirectional__kinematic__exchange.xml
+%feature("docstring") cmf::water::bidirectional_kinematic_exchange "
+
+A conceptual flux between two storages that can be positive as well as
+negative.
+
+The state of the right node is not monitored, hence negative volumes
+of the right node can occur! Deprecated Behaviour unclear, will be
+removed 
+
+.. math::
+
+     q = q_{spill}^*-q_{suc}^* \\\\\\\\ q_{spill}^* =
+    q_{spill}
+    \\\\left(\\\\frac{V-V_{spill,min}}{V_{spill,min}}\\\\right)^{\\\\beta_{spill}}
+    \\\\\\\\ q_{suc}^* = q_{suc}
+    \\\\left(\\\\frac{V_{suc,max}-V}{V_{suc,max}}\\\\right)^{\\\\beta_{suc}}
+    
+
+where:  :math:`q` is the flow to the target
+
+:math:`q_{spill}^*` is the actual spill flow to the target
+
+:math:`q_{spill}` is the spill flow at :math:`V = 2V_{spill}`
+
+:math:`q_{suc}^*` is the actual suction flow from the target
+
+:math:`q_{suc}` is the sucked flow from the target when :math:`V=0.0`
+
+:math:`\\\\beta` is a shape forming exponent for spill and suction flow.
+
+C++ includes: simple_connections.h ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::bidirectional_kinematic_exchange
+"bidirectional_kinematic_exchange(WaterStorage::ptr source,
+flux_node::ptr target, real Vminspill, real Vmaxsuc, real qspill, real
+qsuc, real beta_spill, real beta_suc)
+
+Creates a kinematic wave connection.
+
+Parameters:
+-----------
+
+source:  Water storage from which the water flows out. Flux is a
+function of source.volume
+
+target:  Target node (boundary condition or storage). Does not
+influence the strength of the flow
+
+Vmaxsuc:  Suction starts below this threshold volume of source
+
+Vminspill:  Spilling starts above this threshold volume of source
+
+qspill:  Spill flow at 2*Vminspill in m3/day
+
+qsuc:  Suction flow at V=0 m3
+
+beta_suc:  beta_spill:  Exponent for spill / suction flow ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::get_ptr "ptr get_ptr()
+const ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::get_target "flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::get_tracer_filter "real
+get_tracer_filter(solute S)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::is_waterbalance_source "virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::kill_me "bool kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::left_node "flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::water::bidirectional_kinematic_exchange::q
+"real q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::right_node "flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::set_tracer_filter "void
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::set_tracer_filter "void
+set_tracer_filter(solute S, real value) ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::short_string "virtual
+std::string short_string() const ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1math_1_1root__finding_1_1_bisect.xml
@@ -1002,6 +1249,9 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
+cmf::upslope::connections::CanopyOverflow::is_waterbalance_source "virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")
 cmf::upslope::connections::CanopyOverflow::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
@@ -1106,6 +1356,9 @@ get_tracer_filter(solute S)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::ET::CanopyStorageEvaporation::is_waterbalance_source "virtual bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")
 cmf::upslope::ET::CanopyStorageEvaporation::kill_me "bool kill_me()
@@ -1258,8 +1511,7 @@ Changes the current source of rainfall. ";
 Returns the current source for rainfall. ";
 
 %feature("docstring")  cmf::upslope::Cell::set_uptakestress "void
-set_uptakestress(const cmf::upslope::ET::RootUptakeStressFunction
-&stressfunction)
+set_uptakestress(const ET::RootUptakeStressFunction &stressfunction)
 
 Uses the given WaterStressFunction for all stressedET like connections
 to the transpiration target. ";
@@ -1445,6 +1697,11 @@ Returns the lower boundary of the lowest layer in m. ";
 %feature("docstring")  cmf::upslope::Cell::Cell "Cell(double x,
 double y, double z, double area, cmf::project &_project) ";
 
+%feature("docstring")  cmf::upslope::Cell::get_states "cmf::math::StateVariableList get_states()
+
+Add the state variables, owned by an object derived from
+StateVariableOwner, to the given vector. ";
+
 %feature("docstring")  cmf::upslope::Cell::to_string "std::string
 to_string() const ";
 
@@ -1526,6 +1783,11 @@ Returns the cell with the lowest height. ";
 
 %feature("docstring")  cmf::upslope::cell_vector::get_slice "cell_vector get_slice(ptrdiff_t start, ptrdiff_t end, ptrdiff_t
 step=1) ";
+
+%feature("docstring")  cmf::upslope::cell_vector::get_states "cmf::math::StateVariableList get_states()
+
+Add the state variables, owned by an object derived from
+StateVariableOwner, to the given vector. ";
 
 %feature("docstring")  cmf::upslope::cell_vector::pop "Cell& pop()
 
@@ -1762,146 +2024,6 @@ const ";
 V(double h) const ";
 
 
-// File: classcmf_1_1upslope_1_1connections_1_1_conceptual_infiltration.xml
-%feature("docstring")
-cmf::upslope::connections::ConceptualInfiltration "
-
-Connects the surfacewater and the most upper layer using a simplified
-infiltration model suitable for conceptional models.
-
-
-
-.. math::
-
-     q_{inf} = \\\\left(1-e_{sat}\\\\left(W, W_0\\\\right)\\\\right)
-    q_{inf,pot} 
-
-where:  :math:`q_{inf}` Effective infiltration from
-surface to first layer (soil)
-
-:math:`e_{sat}(W, W_0)` Saturation excess, ranging from 0 (nowhere saturated
-soil layer) to 1 (fully saturated). :math:`W` is the average wetness
-calculated from the soil layer, :math:`W_0` is a parameter denoting the
-wetness, where 50% of the layer is saturated using a sigmoidal
-function:  :math:`e_{sat}(W_{soil}, W_0) = \\\\left(1+e^{-(W-W_0)0.2(1-W_0)}\\\\right)^{-1}`
-
-:math:`q_{inf,pot}` is the potential infiltration, given by the incoming
-fluxes limited by the saturated conductivity:  :math:`q_{inf,pot} = \\\\min(q_{in}, K_{sat} A)`  :math:`q_{in}` Sum of incoming fluxes to the
-surfacewater in :math:`m^3/day`
-
-:math:`K_{sat}` Saturated conductivity in :math:`m/day`
-
-:math:`A` Cell area in :math:`m^2`
-
-C++ includes: infiltration.h ";
-
-%feature("docstring")
-cmf::upslope::connections::ConceptualInfiltration::ConceptualInfiltration
-"ConceptualInfiltration(cmf::upslope::SoilLayer::ptr soilwater,
-cmf::water::flux_node::ptr surfacewater, real W0=0.9)
-
-Creates the connection between surfacewater and first soil layer.
-
-Parameters:
------------
-
-soilwater:  the infiltration target
-
-surfacewater:  the infiltration source
-
-W0:  the 50% saturation value ";
-
-%feature("docstring")
-cmf::upslope::connections::ConceptualInfiltration::conc "real
-conc(cmf::math::Time t, const cmf::water::solute &_Solute)
-
-Returns the concentration of the flux.
-
-If not overridden, it returns the concentration of the source of the
-flux (direction depending) ";
-
-%feature("docstring")
-cmf::upslope::connections::ConceptualInfiltration::exchange_target "void exchange_target(flux_node::ptr oldtarget, flux_node::ptr
-newTarget) ";
-
-%feature("docstring")
-cmf::upslope::connections::ConceptualInfiltration::get_ptr "ptr
-get_ptr() const ";
-
-%feature("docstring")
-cmf::upslope::connections::ConceptualInfiltration::get_target "flux_node::ptr get_target(const flux_node &inquirer)
-
-Returns the other end of a connection than the asking end. ";
-
-%feature("docstring")
-cmf::upslope::connections::ConceptualInfiltration::get_target "flux_node::ptr get_target(int index) const
-
-With index 0, the left node is returned, with index 1 the right node
-of the connection. ";
-
-%feature("docstring")
-cmf::upslope::connections::ConceptualInfiltration::get_tracer_filter "real get_tracer_filter()
-
-A value ranging from 0 to 1 to filter tracers out of the water flux.
-
-1.0 is no filter and 0.0 means no solute is crossing this connection
-";
-
-%feature("docstring")
-cmf::upslope::connections::ConceptualInfiltration::get_tracer_filter "real get_tracer_filter(solute S)
-
-A value ranging from 0 to 1 to filter tracers out of the water flux.
-";
-
-%feature("docstring")
-cmf::upslope::connections::ConceptualInfiltration::kill_me "bool
-kill_me()
-
-Deregisters this connection from its nodes. Returns true if only one
-reference is left. ";
-
-%feature("docstring")
-cmf::upslope::connections::ConceptualInfiltration::left_node "flux_node::ptr left_node() const
-
-Returns the left node of this connection. ";
-
-%feature("docstring")
-cmf::upslope::connections::ConceptualInfiltration::q "real q(const
-flux_node &inquirer, cmf::math::Time t)
-
-Returns the current flux through a connection. Negative signs mean out
-of the inquirer, positive are inflows to the inquirer. ";
-
-%feature("docstring")
-cmf::upslope::connections::ConceptualInfiltration::refresh "void
-refresh(cmf::math::Time t)
-
-Performes a new calculation of the flux. ";
-
-%feature("docstring")
-cmf::upslope::connections::ConceptualInfiltration::right_node "flux_node::ptr right_node() const
-
-returns the right node of this connection ";
-
-%feature("docstring")
-cmf::upslope::connections::ConceptualInfiltration::set_tracer_filter "void set_tracer_filter(real value)
-
-A value ranging from 0 to 1 to filter tracers out of the water flux.
-
-1.0 is no filter and 0.0 means no solute is crossing this connection
-";
-
-%feature("docstring")
-cmf::upslope::connections::ConceptualInfiltration::set_tracer_filter "void set_tracer_filter(solute S, real value) ";
-
-%feature("docstring")
-cmf::upslope::connections::ConceptualInfiltration::short_string "virtual std::string short_string() const ";
-
-%feature("docstring")
-cmf::upslope::connections::ConceptualInfiltration::to_string "virtual
-std::string to_string() const ";
-
-
 // File: classcmf_1_1upslope_1_1conductable.xml
 %feature("docstring") cmf::upslope::conductable "
 
@@ -2022,6 +2144,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 
 %feature("docstring")  cmf::upslope::ET::constantETpot::GetETpot "real GetETpot(cmf::math::Time t) const ";
 
+%feature("docstring")
+cmf::upslope::ET::constantETpot::is_waterbalance_source "virtual bool
+is_waterbalance_source(const flux_node &inquirer) ";
+
 %feature("docstring")  cmf::upslope::ET::constantETpot::kill_me "bool
 kill_me()
 
@@ -2063,121 +2189,6 @@ set_tracer_filter(solute S, real value) ";
 %feature("docstring")  cmf::upslope::ET::constantETpot::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::ET::constantETpot::to_string "virtual std::string to_string() const ";
-
-
-// File: classcmf_1_1water_1_1_constant_flux.xml
-%feature("docstring") cmf::water::ConstantFlux "
-
-Produces a constant but changeable flux from a source to a target, if
-enough water is present in the source.
-
-
-
-.. math::
-
-     q=\\\\begin{cases}0 & V_{source}\\\\le V_{min}\\\\\\\\ q_0
-    \\\\frac{V_{source} - V_{min}}{t_{decr} q_{0} - V_{min}} & V_{source}
-    \\\\le t_{decr} q_{0}\\\\\\\\ q_{0} & \\\\end{cases}
-
-This is similar to a neumann boundary, however this is not a boundary
-condition, but water is taken from the source (left) water storage and
-limited by that water storage.
-
-C++ includes: simple_connections.h ";
-
-%feature("docstring")  cmf::water::ConstantFlux::ConstantFlux "ConstantFlux(cmf::water::WaterStorage::ptr source,
-cmf::water::flux_node::ptr target, real maximum_flux, real
-minimal_state=0, cmf::math::Time flux_decrease_time=cmf::math::h)
-
-Produces a constant but changeable flux from a source to a target, if
-enough water is present in the source.
-
-Parameters:
------------
-
-source:  The source of the water
-
-target:  The target of the water
-
-maximum_flux:  The requested flux :math:`q_{0} [\\\\frac{m^3}{day}]`
-
-minimal_state:  Minimal volume of stored water in source in :math:`[m^3]`
-
-flux_decrease_time:  ( cmf::math::Time) ";
-
-%feature("docstring")  cmf::water::ConstantFlux::conc "real
-conc(cmf::math::Time t, const cmf::water::solute &_Solute)
-
-Returns the concentration of the flux.
-
-If not overridden, it returns the concentration of the source of the
-flux (direction depending) ";
-
-%feature("docstring")  cmf::water::ConstantFlux::exchange_target "void exchange_target(flux_node::ptr oldtarget, flux_node::ptr
-newTarget) ";
-
-%feature("docstring")  cmf::water::ConstantFlux::get_ptr "ptr
-get_ptr() const ";
-
-%feature("docstring")  cmf::water::ConstantFlux::get_target "flux_node::ptr get_target(const flux_node &inquirer)
-
-Returns the other end of a connection than the asking end. ";
-
-%feature("docstring")  cmf::water::ConstantFlux::get_target "flux_node::ptr get_target(int index) const
-
-With index 0, the left node is returned, with index 1 the right node
-of the connection. ";
-
-%feature("docstring")  cmf::water::ConstantFlux::get_tracer_filter "real get_tracer_filter()
-
-A value ranging from 0 to 1 to filter tracers out of the water flux.
-
-1.0 is no filter and 0.0 means no solute is crossing this connection
-";
-
-%feature("docstring")  cmf::water::ConstantFlux::get_tracer_filter "real get_tracer_filter(solute S)
-
-A value ranging from 0 to 1 to filter tracers out of the water flux.
-";
-
-%feature("docstring")  cmf::water::ConstantFlux::kill_me "bool
-kill_me()
-
-Deregisters this connection from its nodes. Returns true if only one
-reference is left. ";
-
-%feature("docstring")  cmf::water::ConstantFlux::left_node "flux_node::ptr left_node() const
-
-Returns the left node of this connection. ";
-
-%feature("docstring")  cmf::water::ConstantFlux::q "real q(const
-flux_node &inquirer, cmf::math::Time t)
-
-Returns the current flux through a connection. Negative signs mean out
-of the inquirer, positive are inflows to the inquirer. ";
-
-%feature("docstring")  cmf::water::ConstantFlux::refresh "void
-refresh(cmf::math::Time t)
-
-Performes a new calculation of the flux. ";
-
-%feature("docstring")  cmf::water::ConstantFlux::right_node "flux_node::ptr right_node() const
-
-returns the right node of this connection ";
-
-%feature("docstring")  cmf::water::ConstantFlux::set_tracer_filter "void set_tracer_filter(real value)
-
-A value ranging from 0 to 1 to filter tracers out of the water flux.
-
-1.0 is no filter and 0.0 means no solute is crossing this connection
-";
-
-%feature("docstring")  cmf::water::ConstantFlux::set_tracer_filter "void set_tracer_filter(solute S, real value) ";
-
-%feature("docstring")  cmf::water::ConstantFlux::short_string "virtual std::string short_string() const ";
-
-%feature("docstring")  cmf::water::ConstantFlux::to_string "virtual
-std::string to_string() const ";
 
 
 // File: classcmf_1_1atmosphere_1_1_constant_meteorology.xml
@@ -2285,7 +2296,7 @@ Returns the actual rainfall intensity in mm/day. ";
 
 %feature("docstring")
 cmf::atmosphere::ConstantRainSource::get_potential "virtual real
-get_potential(cmf::math::Time=cmf::math::never) const
+get_potential() const
 
 Returns the water potential of the node in m waterhead.
 
@@ -2354,74 +2365,108 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
-// File: classcmf_1_1water_1_1_constant_state_flux.xml
-%feature("docstring") cmf::water::ConstantStateFlux "
+// File: classcmf_1_1water_1_1constraint__kinematic__wave.xml
+%feature("docstring") cmf::water::constraint_kinematic_wave "
 
-Calculates a flux to or from a water storage to hold it's state at a
-more or less constant level.
+Calculates flux out of a storage as a linear function of its volume to
+a power, constraint by the volume stored in the target storage.
+
+Deprecated Will be replaced by ConstraintLinearStorageConnection,
+without beta and gamma. 
+
+.. math::
+
+     q = \\\\frac 1 {t_r}
+    {\\\\left(\\\\frac{V_{l} - V_{residual}}{V_0} \\\\right)^\\\\beta}
+    \\\\left(\\\\frac{V_{r,max}-V_{r}}{V_{r,max}}\\\\right)^\\\\gamma
+
+where:  :math:`V_l` The actual volume stored by the left water storage
+
+:math:`V_{residual} [m^3]` The volume of water not flowing out (default = 0)
+
+:math:`V_0` The reference volume to scale the exponent (default = 1m3/day)
+
+:math:`\\\\beta` A parameter to shape the response curve. In case of
+:math:`\\\\beta \\\\neq 1`, :math:`t_r` is not a residence time, but just a
+parameter.
+
+:math:`t_r [days]` The residence time of the water in this storage in days
+
+:math:`V_{r,max}` The capacity of the right water storage in m3
+
+:math:`V_{r}` The actual volume of the right water storage
+
+:math:`\\\\gamma` A shape parameter for the target capacity constriction
+
+C++ includes: simple_connections.h ";
+
+%feature("docstring")
+cmf::water::constraint_kinematic_wave::constraint_kinematic_wave "constraint_kinematic_wave(WaterStorage::ptr source, WaterStorage::ptr
+target, real residencetime=1.0, real exponent=1.0, real residual=0.0,
+real V0=1.0, real Vrmax=1.0, real gamma=1.0)
+
+Creates a kinematic wave connection.
 
 
 
 .. math::
 
-     q=\\\\frac{h_1 - h_{target}}{t_c [days]} 
-
-where:  :math:`q` the
-resulting flux in m3/day
-
-:math:`h_1` the reference state
-
-:math:`h_{target}` the state of the target (right) node
-
-:math:`t_c` the time to reach the target state
-
-C++ includes: simple_connections.h ";
-
-%feature("docstring")
-cmf::water::ConstantStateFlux::ConstantStateFlux "ConstantStateFlux(cmf::water::WaterStorage::ptr controlled_storage,
-cmf::water::flux_node::ptr other_end, real target_state,
-cmf::math::Time reaction_time)
-
-Creates a flux connection to control the state of a storage.
+     q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}
+    \\\\right)^\\\\beta} 
 
 Parameters:
 -----------
 
-controlled_storage:  Water storage, to be controlled
+source:  Water storage from which the water flows out. Flux is a
+function of source.volume
 
-other_end:  source of missing water or target of excessive water
+target:  Target node (boundary condition or storage). Does not
+influence the strength of the flow
 
-target_state:  State the controlled storage should hold (
-:math:`h_{target}`)
+residencetime:   :math:`t_r [days]` The residence time of the water in this
+storage
 
-reaction_time:  Time to reach state ( :math:`t_c`) ";
+exponent:   :math:`\\\\beta [-]` An empirical exponent to shape the flux
+function (default = 1 (linear function))
 
-%feature("docstring")  cmf::water::ConstantStateFlux::conc "real
-conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+residual:   :math:`V_{residual} [m^3]` The volume of water not flowing out
+(default = 0)
+
+V0:   :math:`V_0` The reference volume to scale the exponent
+
+Vrmax:   :math:`V_{r,max}` Capacity of the target water storage in m3
+
+gamma:   :math:`\\\\gamma` Target capacity constriction curve shape ";
+
+%feature("docstring")  cmf::water::constraint_kinematic_wave::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
 Returns the concentration of the flux.
 
 If not overridden, it returns the concentration of the source of the
 flux (direction depending) ";
 
-%feature("docstring")  cmf::water::ConstantStateFlux::exchange_target
-"void exchange_target(flux_node::ptr oldtarget, flux_node::ptr
-newTarget) ";
+%feature("docstring")
+cmf::water::constraint_kinematic_wave::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 
-%feature("docstring")  cmf::water::ConstantStateFlux::get_ptr "ptr
-get_ptr() const ";
+%feature("docstring")  cmf::water::constraint_kinematic_wave::get_ptr
+"ptr get_ptr() const ";
 
-%feature("docstring")  cmf::water::ConstantStateFlux::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+%feature("docstring")
+cmf::water::constraint_kinematic_wave::get_target "flux_node::ptr
+get_target(const flux_node &inquirer)
 
 Returns the other end of a connection than the asking end. ";
 
-%feature("docstring")  cmf::water::ConstantStateFlux::get_target "flux_node::ptr get_target(int index) const
+%feature("docstring")
+cmf::water::constraint_kinematic_wave::get_target "flux_node::ptr
+get_target(int index) const
 
 With index 0, the left node is returned, with index 1 the right node
 of the connection. ";
 
 %feature("docstring")
-cmf::water::ConstantStateFlux::get_tracer_filter "real
+cmf::water::constraint_kinematic_wave::get_tracer_filter "real
 get_tracer_filter()
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
@@ -2430,39 +2475,46 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::water::ConstantStateFlux::get_tracer_filter "real
+cmf::water::constraint_kinematic_wave::get_tracer_filter "real
 get_tracer_filter(solute S)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
-%feature("docstring")  cmf::water::ConstantStateFlux::kill_me "bool
-kill_me()
+%feature("docstring")
+cmf::water::constraint_kinematic_wave::is_waterbalance_source "virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")  cmf::water::constraint_kinematic_wave::kill_me
+"bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
 
-%feature("docstring")  cmf::water::ConstantStateFlux::left_node "flux_node::ptr left_node() const
+%feature("docstring")
+cmf::water::constraint_kinematic_wave::left_node "flux_node::ptr
+left_node() const
 
 Returns the left node of this connection. ";
 
-%feature("docstring")  cmf::water::ConstantStateFlux::q "real q(const
-flux_node &inquirer, cmf::math::Time t)
+%feature("docstring")  cmf::water::constraint_kinematic_wave::q "real
+q(const flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
-%feature("docstring")  cmf::water::ConstantStateFlux::refresh "void
-refresh(cmf::math::Time t)
+%feature("docstring")  cmf::water::constraint_kinematic_wave::refresh
+"void refresh(cmf::math::Time t)
 
 Performes a new calculation of the flux. ";
 
-%feature("docstring")  cmf::water::ConstantStateFlux::right_node "flux_node::ptr right_node() const
+%feature("docstring")
+cmf::water::constraint_kinematic_wave::right_node "flux_node::ptr
+right_node() const
 
 returns the right node of this connection ";
 
 %feature("docstring")
-cmf::water::ConstantStateFlux::set_tracer_filter "void
+cmf::water::constraint_kinematic_wave::set_tracer_filter "void
 set_tracer_filter(real value)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
@@ -2471,16 +2523,20 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::water::ConstantStateFlux::set_tracer_filter "void
+cmf::water::constraint_kinematic_wave::set_tracer_filter "void
 set_tracer_filter(solute S, real value) ";
 
-%feature("docstring")  cmf::water::ConstantStateFlux::short_string "virtual std::string short_string() const ";
+%feature("docstring")
+cmf::water::constraint_kinematic_wave::short_string "virtual
+std::string short_string() const ";
 
-%feature("docstring")  cmf::water::ConstantStateFlux::to_string "virtual std::string to_string() const ";
+%feature("docstring")
+cmf::water::constraint_kinematic_wave::to_string "virtual std::string
+to_string() const ";
 
 
-// File: classcmf_1_1water_1_1_constraint_linear_storage_flux.xml
-%feature("docstring") cmf::water::ConstraintLinearStorageFlux "
+// File: classcmf_1_1water_1_1_constraint_linear_storage_connection.xml
+%feature("docstring") cmf::water::ConstraintLinearStorageConnection "
 
 Calculates flux out of a storage as a linear function of its volume,
 constraint by the volume stored in the target storage.
@@ -2511,7 +2567,8 @@ parameter.
 C++ includes: simple_connections.h ";
 
 %feature("docstring")
-cmf::water::ConstraintLinearStorageFlux::ConstraintLinearStorageFlux "ConstraintLinearStorageFlux(WaterStorage::ptr source,
+cmf::water::ConstraintLinearStorageConnection::ConstraintLinearStorageConnection
+"ConstraintLinearStorageConnection(WaterStorage::ptr source,
 WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real
 Vrmax=1.0)
 
@@ -2542,7 +2599,9 @@ Vlmin:   :math:`V_{l,min} [m^3]` The volume of water not flowing out
 
 Vrmax:   :math:`V_{r,max}` Capacity of the target water storage in m3 ";
 
-%feature("docstring")  cmf::water::ConstraintLinearStorageFlux::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
 Returns the concentration of the flux.
 
@@ -2550,29 +2609,26 @@ If not overridden, it returns the concentration of the source of the
 flux (direction depending) ";
 
 %feature("docstring")
-cmf::water::ConstraintLinearStorageFlux::exchange_target "void
+cmf::water::ConstraintLinearStorageConnection::exchange_target "void
 exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 
 %feature("docstring")
-cmf::water::ConstraintLinearStorageFlux::get_ptr "ptr get_ptr() const
-";
+cmf::water::ConstraintLinearStorageConnection::get_ptr "ptr get_ptr()
+const ";
 
 %feature("docstring")
-cmf::water::ConstraintLinearStorageFlux::get_target "flux_node::ptr
-get_target(const flux_node &inquirer)
+cmf::water::ConstraintLinearStorageConnection::get_target "flux_node::ptr get_target(const flux_node &inquirer)
 
 Returns the other end of a connection than the asking end. ";
 
 %feature("docstring")
-cmf::water::ConstraintLinearStorageFlux::get_target "flux_node::ptr
-get_target(int index) const
+cmf::water::ConstraintLinearStorageConnection::get_target "flux_node::ptr get_target(int index) const
 
 With index 0, the left node is returned, with index 1 the right node
 of the connection. ";
 
 %feature("docstring")
-cmf::water::ConstraintLinearStorageFlux::get_tracer_filter "real
-get_tracer_filter()
+cmf::water::ConstraintLinearStorageConnection::get_tracer_filter "real get_tracer_filter()
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 
@@ -2580,44 +2636,47 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::water::ConstraintLinearStorageFlux::get_tracer_filter "real
-get_tracer_filter(solute S)
+cmf::water::ConstraintLinearStorageConnection::get_tracer_filter "real get_tracer_filter(solute S)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::water::ConstraintLinearStorageFlux::kill_me "bool kill_me()
+cmf::water::ConstraintLinearStorageConnection::is_waterbalance_source
+"virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::kill_me "bool
+kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
 
 %feature("docstring")
-cmf::water::ConstraintLinearStorageFlux::left_node "flux_node::ptr
-left_node() const
+cmf::water::ConstraintLinearStorageConnection::left_node "flux_node::ptr left_node() const
 
 Returns the left node of this connection. ";
 
-%feature("docstring")  cmf::water::ConstraintLinearStorageFlux::q "real q(const flux_node &inquirer, cmf::math::Time t)
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::q "real q(const
+flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
 %feature("docstring")
-cmf::water::ConstraintLinearStorageFlux::refresh "void
+cmf::water::ConstraintLinearStorageConnection::refresh "void
 refresh(cmf::math::Time t)
 
 Performes a new calculation of the flux. ";
 
 %feature("docstring")
-cmf::water::ConstraintLinearStorageFlux::right_node "flux_node::ptr
-right_node() const
+cmf::water::ConstraintLinearStorageConnection::right_node "flux_node::ptr right_node() const
 
 returns the right node of this connection ";
 
 %feature("docstring")
-cmf::water::ConstraintLinearStorageFlux::set_tracer_filter "void
-set_tracer_filter(real value)
+cmf::water::ConstraintLinearStorageConnection::set_tracer_filter "void set_tracer_filter(real value)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 
@@ -2625,15 +2684,14 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::water::ConstraintLinearStorageFlux::set_tracer_filter "void
-set_tracer_filter(solute S, real value) ";
+cmf::water::ConstraintLinearStorageConnection::set_tracer_filter "void set_tracer_filter(solute S, real value) ";
 
 %feature("docstring")
-cmf::water::ConstraintLinearStorageFlux::short_string "virtual
+cmf::water::ConstraintLinearStorageConnection::short_string "virtual
 std::string short_string() const ";
 
 %feature("docstring")
-cmf::water::ConstraintLinearStorageFlux::to_string "virtual
+cmf::water::ConstraintLinearStorageConnection::to_string "virtual
 std::string to_string() const ";
 
 
@@ -2674,14 +2732,14 @@ Water/vol Soil and wilting point theta_w. ";
 Creates a new copy of this wetness. ";
 
 %feature("docstring")  cmf::upslope::ET::ContentStress::Tact "virtual
-real Tact(const cmf::upslope::SoilLayer *soillayer, real Tpot) const
+real Tact(const cmf::upslope::SoilLayer *soilLayer, real Tpot) const
 
 Calculates the water stress for a layer.
 
 Parameters:
 -----------
 
-soillayer:  The cmf::upslope::SoilLayer this stress function belongs
+soilLayer:  The cmf::upslope::SoilLayer this stress function belongs
 to
 
 Tpot:  Potential Transpiration in mm/day (for the full profile)
@@ -2819,37 +2877,52 @@ generate() ";
 const ";
 
 
-// File: classcmf_1_1math_1_1_c_vode_adams.xml
-%feature("docstring") cmf::math::CVodeAdams "
+// File: struct_c_v_band_prec_data_rec.xml
+%feature("docstring") CVBandPrecDataRec "";
 
-Explizit multistep solver using CVode.
 
-C++ includes: cvode.h ";
+// File: struct_c_v_b_b_d_prec_data_rec.xml
+%feature("docstring") CVBBDPrecDataRec "";
+
+
+// File: struct_c_v_diag_mem_rec.xml
+%feature("docstring") CVDiagMemRec "";
+
+
+// File: struct_c_v_dls_mem_rec.xml
+%feature("docstring") CVDlsMemRec "";
+
+
+// File: classcmf_1_1math_1_1_c_vode_integrator.xml
+%feature("docstring") cmf::math::CVodeIntegrator "
+
+A wrapper class for the CVODE integrator from the SUNDIALS library.
+
+https://computation.llnl.gov/casc/sundials/main.html
+
+C++ includes: cvodeintegrator.h ";
 
 /*  Accuracy parameters  */
 
 /*  model time  */
 
-%feature("docstring")  cmf::math::CVodeAdams::get_t "cmf::math::Time
-get_t() const
+%feature("docstring")  cmf::math::CVodeIntegrator::get_t "cmf::math::Time get_t() const
 
 Returns the current model time. ";
 
-%feature("docstring")  cmf::math::CVodeAdams::set_t "void
+%feature("docstring")  cmf::math::CVodeIntegrator::set_t "void
 set_t(cmf::math::Time val)
 
 Sets the current model time. ";
 
-%feature("docstring")  cmf::math::CVodeAdams::get_dt "cmf::math::Time
-get_dt() const
+%feature("docstring")  cmf::math::CVodeIntegrator::get_dt "cmf::math::Time get_dt() const
 
 Returns the last time step. ";
 
 /*  Integrate  */
 
-%feature("docstring")  cmf::math::CVodeAdams::integrate_until "void
-integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool
-reset=false)
+%feature("docstring")  cmf::math::CVodeIntegrator::integrate_until "void integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(),
+bool reset=false)
 
 Integrates the vector of state variables until t_max.
 
@@ -2862,40 +2935,145 @@ dt:   Time step (may be omitted)
 
 reset:  If true, solver is reseted before integration starts ";
 
-%feature("docstring")  cmf::math::CVodeAdams::CVodeAdams "CVodeAdams(real epsilon=1e-9) ";
+%feature("docstring")  cmf::math::CVodeIntegrator::CVodeIntegrator "CVodeIntegrator(real epsilon=1e-9, char _preconditioner='R')
 
-%feature("docstring")  cmf::math::CVodeAdams::CVodeAdams "CVodeAdams(const cmf::math::state_list &states, real epsilon=1e-9) ";
+Create a new CVODE integrator.
 
-%feature("docstring")  cmf::math::CVodeAdams::_get_jacobian "virtual
-cmf::math::num_array _get_jacobian() const
+Parameters:
+-----------
 
-Returns a continuous 1D array representing the Jacobian columns
-concatenated.
+epsilon:  relative and absolute error tolerance
 
-In Python, get_jacobian returns the Jacobian as a 2D array ";
+_preconditioner:  [R]ight, [L]eft, [B]oth side Krylov preconditioner
+or [N]o preconditioner ";
 
-%feature("docstring")  cmf::math::CVodeAdams::copy "cmf::math::CVodeAdams* copy() const override
+%feature("docstring")  cmf::math::CVodeIntegrator::CVodeIntegrator "CVodeIntegrator(cmf::math::StateVariableOwner &states, real
+epsilon=1e-9, char _preconditioner='R')
 
-Returns a copy of the solver. ";
+Create a new CVODE integrator.
 
-%feature("docstring")  cmf::math::CVodeAdams::get_error "cmf::math::num_array get_error() const
+Parameters:
+-----------
+
+states:  State variables to be added to the integrator
+
+epsilon:  relative and absolute error tolerance
+
+_preconditioner:  [R]ight, [L]eft, [B]oth side Krylov preconditioner
+or [N]o preconditioner ";
+
+%feature("docstring")  cmf::math::CVodeIntegrator::CVodeIntegrator "CVodeIntegrator(const CVodeIntegrator &templ)
+
+copy constructor, creates a new CVODE integrator similiar to the
+given, but without statevariables ";
+
+%feature("docstring")  cmf::math::CVodeIntegrator::~CVodeIntegrator "virtual ~CVodeIntegrator() ";
+
+%feature("docstring")  cmf::math::CVodeIntegrator::add_single_state "virtual void add_single_state(cmf::math::StateVariable::ptr state)
+
+Adds a single state variable to the integrator. ";
+
+%feature("docstring")  cmf::math::CVodeIntegrator::add_states "virtual void add_states(cmf::math::StateVariableOwner &stateOwner)
+
+Add state variables from a StateVariableOwner. ";
+
+%feature("docstring")
+cmf::math::CVodeIntegrator::add_values_to_states "void
+add_values_to_states(const num_array &operands)
+
+Adds the values in operands to the current states. ";
+
+%feature("docstring")  cmf::math::CVodeIntegrator::copy "CVodeIntegrator* copy() const
+
+Polymorphic copy constructor. ";
+
+%feature("docstring")  cmf::math::CVodeIntegrator::copy_dxdt "void
+copy_dxdt(Time time, num_array &destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to a numeric vector using
+use_OpenMP.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Vector to be overwritten by the results
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::CVodeIntegrator::copy_dxdt "void
+copy_dxdt(Time time, real *destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to an preallocated c
+array.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Allocated c array
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::CVodeIntegrator::copy_states "void
+copy_states(num_array &destination) const
+
+Copies the states to a numeric vector using use_OpenMP. ";
+
+%feature("docstring")  cmf::math::CVodeIntegrator::copy_states "void
+copy_states(real *destination) const ";
+
+%feature("docstring")  cmf::math::CVodeIntegrator::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
+
+%feature("docstring")  cmf::math::CVodeIntegrator::get_error "cmf::math::num_array get_error() const
 
 Error vector of the integrator. ";
 
-%feature("docstring")  cmf::math::CVodeAdams::get_info "CVodeInfo
-get_info() const
+%feature("docstring")
+cmf::math::CVodeIntegrator::get_nonlinear_iterations "int
+get_nonlinear_iterations() const
 
-Returns the current solver statistics. ";
+Returns the number of non-linear iterations performed. Calls
+CVodeGetNumNonlinSolvIters. ";
 
-%feature("docstring")  cmf::math::CVodeAdams::initialize "int
+%feature("docstring")  cmf::math::CVodeIntegrator::get_order "int
+get_order() const
+
+Returns the last order of the solver used, may be smaller than
+MaxOrder due to the number of steps already taken or to fullfill
+stability limit. ";
+
+%feature("docstring")  cmf::math::CVodeIntegrator::get_rhsevals "int
+get_rhsevals() const
+
+Returns the number of evaluations of the right hand side of the ODE.
+Calls CVodeGetNumRhsEvals. ";
+
+%feature("docstring")  cmf::math::CVodeIntegrator::get_state "real
+get_state(ptrdiff_t position) const
+
+Returns the statevariable at position Simplifies the assessment of
+state variables. ";
+
+%feature("docstring")  cmf::math::CVodeIntegrator::get_states "cmf::math::num_array get_states() const ";
+
+%feature("docstring")  cmf::math::CVodeIntegrator::get_states "StateVariableList get_states()
+
+gets the state variables of the integrator ";
+
+%feature("docstring")  cmf::math::CVodeIntegrator::initialize "void
 initialize()
 
-Initialize the internal memory.
+Initializes the solver. Do not add or remove state variables after
+initialization. The solver is automatically intialized when
+integrating. ";
 
-Automatically called, when one starts to integrate ";
-
-%feature("docstring")  cmf::math::CVodeAdams::integrate "virtual int
-integrate(cmf::math::Time t_max, cmf::math::Time dt)
+%feature("docstring")  cmf::math::CVodeIntegrator::integrate "virtual
+int integrate(cmf::math::Time t_max, cmf::math::Time dt)
 
 Integrates the vector of state variables.
 
@@ -2910,740 +3088,44 @@ dt:  Takes the proposed time step, and changes it into the effectively
 used time step according to the local stiffness of the problem and
 MaxTime ";
 
-%feature("docstring")  cmf::math::CVodeAdams::reset "virtual void
-reset()
+%feature("docstring")  cmf::math::CVodeIntegrator::release "void
+release()
 
-Resets the history of the multispte solver and overwrites the internal
-state cache. ";
+Releases the internal solver. Call release before you add state
+variables or to change properties. ";
 
-%feature("docstring")  cmf::math::CVodeAdams::set_error_msg "void
-set_error_msg(std::string error)
+%feature("docstring")  cmf::math::CVodeIntegrator::reset "virtual
+void reset()
 
-Sets an error message. ";
+Resets the multi-step integrator. External changes to the state
+variables get recognized by the solver. Parameter changes of solver
+are ignored. ";
 
-%feature("docstring")  cmf::math::CVodeAdams::set_system "void
-set_system(const state_list &states) ";
+%feature("docstring")  cmf::math::CVodeIntegrator::set_state "void
+set_state(ptrdiff_t position, real newState)
 
-%feature("docstring")  cmf::math::CVodeAdams::size "size_t size()
-const ";
+Simplifies the assessment of state variables. ";
 
-%feature("docstring")  cmf::math::CVodeAdams::to_string "std::string
-to_string() const override
+%feature("docstring")  cmf::math::CVodeIntegrator::set_states "void
+set_states(const num_array &newStates)
 
-Returns a string representation of the solver. ";
+Copies the new states to the actual states. ";
 
+%feature("docstring")  cmf::math::CVodeIntegrator::set_states "void
+set_states(real *newStates) ";
 
-// File: classcmf_1_1math_1_1_c_vode_banded.xml
-%feature("docstring") cmf::math::CVodeBanded "
+%feature("docstring")  cmf::math::CVodeIntegrator::size "size_t
+size() const
 
-implicit BDF CVode solver with a banded Jacobian approximation
+returns the number of state variables ";
 
-C++ includes: cvode.h ";
 
-/*  Accuracy parameters  */
+// File: struct_c_vode_mem_rec.xml
+%feature("docstring") CVodeMemRec "";
 
-/*  model time  */
 
-%feature("docstring")  cmf::math::CVodeBanded::get_t "cmf::math::Time
-get_t() const
-
-Returns the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::set_t "void
-set_t(cmf::math::Time val)
-
-Sets the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::get_dt "cmf::math::Time get_dt() const
-
-Returns the last time step. ";
-
-/*  Integrate  */
-
-%feature("docstring")  cmf::math::CVodeBanded::integrate_until "void
-integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool
-reset=false)
-
-Integrates the vector of state variables until t_max.
-
-Parameters:
------------
-
-t_max:   Time, the solver should run to
-
-dt:   Time step (may be omitted)
-
-reset:  If true, solver is reseted before integration starts ";
-
-%feature("docstring")  cmf::math::CVodeBanded::CVodeBanded "CVodeBanded(real epsilon=1e-9, int w=5) ";
-
-%feature("docstring")  cmf::math::CVodeBanded::CVodeBanded "CVodeBanded(const cmf::math::state_list &states, real epsilon=1e-9,
-int w=5) ";
-
-%feature("docstring")  cmf::math::CVodeBanded::_get_jacobian "virtual
-cmf::math::num_array _get_jacobian() const
-
-Returns a continuous 1D array representing the Jacobian columns
-concatenated.
-
-In Python, get_jacobian returns the Jacobian as a 2D array ";
-
-%feature("docstring")  cmf::math::CVodeBanded::copy "cmf::math::CVodeBanded* copy() const override
-
-Returns a copy of the solver. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::get_error "cmf::math::num_array get_error() const
-
-Error vector of the integrator. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::get_info "CVodeInfo
-get_info() const
-
-Returns the current solver statistics. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::initialize "int
-initialize()
-
-Initialize the internal memory.
-
-Automatically called, when one starts to integrate ";
-
-%feature("docstring")  cmf::math::CVodeBanded::integrate "virtual int
-integrate(cmf::math::Time t_max, cmf::math::Time dt)
-
-Integrates the vector of state variables.
-
-Parameters:
------------
-
-t_max:  To stop the model (if running in a model framework) at time
-steps of value exchange e.g. full hours, the next value exchange time
-can be given
-
-dt:  Takes the proposed time step, and changes it into the effectively
-used time step according to the local stiffness of the problem and
-MaxTime ";
-
-%feature("docstring")  cmf::math::CVodeBanded::reset "virtual void
-reset()
-
-Resets the history of the multispte solver and overwrites the internal
-state cache. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::set_error_msg "void
-set_error_msg(std::string error)
-
-Sets an error message. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::set_system "void
-set_system(const state_list &states) ";
-
-%feature("docstring")  cmf::math::CVodeBanded::size "size_t size()
-const ";
-
-%feature("docstring")  cmf::math::CVodeBanded::to_string "std::string
-to_string() const override
-
-Returns a string representation of the solver. ";
-
-
-// File: classcmf_1_1math_1_1_c_vode_base.xml
-%feature("docstring") cmf::math::CVodeBase "
-
-Abstract base class for different modes of the CVode solver.
-
-Initantiate one of the child classes to gain different modes of the
-CVode solver
-
-C++ includes: cvode.h ";
-
-/*  Accuracy parameters  */
-
-/*  model time  */
-
-%feature("docstring")  cmf::math::CVodeBase::get_t "cmf::math::Time
-get_t() const
-
-Returns the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeBase::set_t "void
-set_t(cmf::math::Time val)
-
-Sets the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeBase::get_dt "cmf::math::Time
-get_dt() const
-
-Returns the last time step. ";
-
-/*  Integrate  */
-
-%feature("docstring")  cmf::math::CVodeBase::integrate_until "void
-integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool
-reset=false)
-
-Integrates the vector of state variables until t_max.
-
-Parameters:
------------
-
-t_max:   Time, the solver should run to
-
-dt:   Time step (may be omitted)
-
-reset:  If true, solver is reseted before integration starts ";
-
-%feature("docstring")  cmf::math::CVodeBase::~CVodeBase "~CVodeBase()
-override ";
-
-%feature("docstring")  cmf::math::CVodeBase::_get_jacobian "virtual
-cmf::math::num_array _get_jacobian() const
-
-Returns a continuous 1D array representing the Jacobian columns
-concatenated.
-
-In Python, get_jacobian returns the Jacobian as a 2D array ";
-
-%feature("docstring")  cmf::math::CVodeBase::copy "CVodeBase* copy()
-const override=0
-
-Returns a copy of the solver. ";
-
-%feature("docstring")  cmf::math::CVodeBase::get_error "cmf::math::num_array get_error() const
-
-Error vector of the integrator. ";
-
-%feature("docstring")  cmf::math::CVodeBase::get_info "CVodeInfo
-get_info() const
-
-Returns the current solver statistics. ";
-
-%feature("docstring")  cmf::math::CVodeBase::initialize "int
-initialize()
-
-Initialize the internal memory.
-
-Automatically called, when one starts to integrate ";
-
-%feature("docstring")  cmf::math::CVodeBase::integrate "virtual int
-integrate(cmf::math::Time t_max, cmf::math::Time dt)
-
-Integrates the vector of state variables.
-
-Parameters:
------------
-
-t_max:  To stop the model (if running in a model framework) at time
-steps of value exchange e.g. full hours, the next value exchange time
-can be given
-
-dt:  Takes the proposed time step, and changes it into the effectively
-used time step according to the local stiffness of the problem and
-MaxTime ";
-
-%feature("docstring")  cmf::math::CVodeBase::reset "virtual void
-reset()
-
-Resets the history of the multispte solver and overwrites the internal
-state cache. ";
-
-%feature("docstring")  cmf::math::CVodeBase::set_error_msg "void
-set_error_msg(std::string error)
-
-Sets an error message. ";
-
-%feature("docstring")  cmf::math::CVodeBase::set_system "void
-set_system(const state_list &states) ";
-
-%feature("docstring")  cmf::math::CVodeBase::size "size_t size()
-const ";
-
-%feature("docstring")  cmf::math::CVodeBase::to_string "std::string
-to_string() const override=0
-
-Returns a string representation of the solver. ";
-
-
-// File: classcmf_1_1math_1_1_c_vode_dense.xml
-%feature("docstring") cmf::math::CVodeDense "
-
-implicit BDF CVode solver with full Jacobian approximation
-
-Use this solver for small but stiff systems (<20 state variables)
-
-The solver calculates for each step the full Jacobian matrix of the
-system using a difference quotient approximation of the real Jacobian
-
-C++ includes: cvode.h ";
-
-/*  Accuracy parameters  */
-
-/*  model time  */
-
-%feature("docstring")  cmf::math::CVodeDense::get_t "cmf::math::Time
-get_t() const
-
-Returns the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeDense::set_t "void
-set_t(cmf::math::Time val)
-
-Sets the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeDense::get_dt "cmf::math::Time
-get_dt() const
-
-Returns the last time step. ";
-
-/*  Integrate  */
-
-%feature("docstring")  cmf::math::CVodeDense::integrate_until "void
-integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool
-reset=false)
-
-Integrates the vector of state variables until t_max.
-
-Parameters:
------------
-
-t_max:   Time, the solver should run to
-
-dt:   Time step (may be omitted)
-
-reset:  If true, solver is reseted before integration starts ";
-
-%feature("docstring")  cmf::math::CVodeDense::CVodeDense "CVodeDense(const cmf::math::state_list &states, real epsilon=1e-9)
-
-Creates a new implicit dense CVode solver. ";
-
-%feature("docstring")  cmf::math::CVodeDense::CVodeDense "CVodeDense(real epsilon=1e-9) ";
-
-%feature("docstring")  cmf::math::CVodeDense::_get_jacobian "cmf::math::num_array _get_jacobian() const override
-
-Returns a continuous 1D array representing the Jacobian columns
-concatenated.
-
-In Python, get_jacobian returns the Jacobian as a 2D array ";
-
-%feature("docstring")  cmf::math::CVodeDense::copy "cmf::math::CVodeDense* copy() const override
-
-Returns a copy of the solver. ";
-
-%feature("docstring")  cmf::math::CVodeDense::get_error "cmf::math::num_array get_error() const
-
-Error vector of the integrator. ";
-
-%feature("docstring")  cmf::math::CVodeDense::get_info "CVodeInfo
-get_info() const
-
-Returns the current solver statistics. ";
-
-%feature("docstring")  cmf::math::CVodeDense::initialize "int
-initialize()
-
-Initialize the internal memory.
-
-Automatically called, when one starts to integrate ";
-
-%feature("docstring")  cmf::math::CVodeDense::integrate "virtual int
-integrate(cmf::math::Time t_max, cmf::math::Time dt)
-
-Integrates the vector of state variables.
-
-Parameters:
------------
-
-t_max:  To stop the model (if running in a model framework) at time
-steps of value exchange e.g. full hours, the next value exchange time
-can be given
-
-dt:  Takes the proposed time step, and changes it into the effectively
-used time step according to the local stiffness of the problem and
-MaxTime ";
-
-%feature("docstring")  cmf::math::CVodeDense::reset "virtual void
-reset()
-
-Resets the history of the multispte solver and overwrites the internal
-state cache. ";
-
-%feature("docstring")  cmf::math::CVodeDense::set_error_msg "void
-set_error_msg(std::string error)
-
-Sets an error message. ";
-
-%feature("docstring")  cmf::math::CVodeDense::set_system "void
-set_system(const state_list &states) ";
-
-%feature("docstring")  cmf::math::CVodeDense::size "size_t size()
-const ";
-
-%feature("docstring")  cmf::math::CVodeDense::to_string "std::string
-to_string() const override
-
-Returns a string representation of the solver. ";
-
-
-// File: classcmf_1_1math_1_1_c_vode_diag.xml
-%feature("docstring") cmf::math::CVodeDiag "
-
-implicit BDF CVode solver with a one line diagonal Jacobian
-approximation
-
-C++ includes: cvode.h ";
-
-/*  Accuracy parameters  */
-
-/*  model time  */
-
-%feature("docstring")  cmf::math::CVodeDiag::get_t "cmf::math::Time
-get_t() const
-
-Returns the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::set_t "void
-set_t(cmf::math::Time val)
-
-Sets the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::get_dt "cmf::math::Time
-get_dt() const
-
-Returns the last time step. ";
-
-/*  Integrate  */
-
-%feature("docstring")  cmf::math::CVodeDiag::integrate_until "void
-integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool
-reset=false)
-
-Integrates the vector of state variables until t_max.
-
-Parameters:
------------
-
-t_max:   Time, the solver should run to
-
-dt:   Time step (may be omitted)
-
-reset:  If true, solver is reseted before integration starts ";
-
-%feature("docstring")  cmf::math::CVodeDiag::CVodeDiag "CVodeDiag(const cmf::math::state_list &states, real epsilon=1e-9) ";
-
-%feature("docstring")  cmf::math::CVodeDiag::CVodeDiag "CVodeDiag(real epsilon=1e-9) ";
-
-%feature("docstring")  cmf::math::CVodeDiag::_get_jacobian "virtual
-cmf::math::num_array _get_jacobian() const
-
-Returns a continuous 1D array representing the Jacobian columns
-concatenated.
-
-In Python, get_jacobian returns the Jacobian as a 2D array ";
-
-%feature("docstring")  cmf::math::CVodeDiag::copy "cmf::math::CVodeDiag* copy() const
-
-Returns a copy of the solver. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::get_error "cmf::math::num_array get_error() const
-
-Error vector of the integrator. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::get_info "CVodeInfo
-get_info() const
-
-Returns the current solver statistics. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::initialize "int
-initialize()
-
-Initialize the internal memory.
-
-Automatically called, when one starts to integrate ";
-
-%feature("docstring")  cmf::math::CVodeDiag::integrate "virtual int
-integrate(cmf::math::Time t_max, cmf::math::Time dt)
-
-Integrates the vector of state variables.
-
-Parameters:
------------
-
-t_max:  To stop the model (if running in a model framework) at time
-steps of value exchange e.g. full hours, the next value exchange time
-can be given
-
-dt:  Takes the proposed time step, and changes it into the effectively
-used time step according to the local stiffness of the problem and
-MaxTime ";
-
-%feature("docstring")  cmf::math::CVodeDiag::reset "virtual void
-reset()
-
-Resets the history of the multispte solver and overwrites the internal
-state cache. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::set_error_msg "void
-set_error_msg(std::string error)
-
-Sets an error message. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::set_system "void
-set_system(const state_list &states) ";
-
-%feature("docstring")  cmf::math::CVodeDiag::size "size_t size()
-const ";
-
-%feature("docstring")  cmf::math::CVodeDiag::to_string "std::string
-to_string() const
-
-Returns a string representation of the solver. ";
-
-
-// File: structcmf_1_1math_1_1_c_vode_info.xml
-%feature("docstring") cmf::math::CVodeInfo "
-
-Reports the current state of a CVode solver.
-
-C++ includes: cvode.h ";
-
-%feature("docstring")  cmf::math::CVodeInfo::to_string "std::string
-to_string() const ";
-
-
-// File: classcmf_1_1math_1_1_c_vode_k_l_u.xml
-%feature("docstring") cmf::math::CVodeKLU "";
-
-/*  model time  */
-
-%feature("docstring")  cmf::math::CVodeKLU::get_t "cmf::math::Time
-get_t() const
-
-Returns the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeKLU::set_t "void
-set_t(cmf::math::Time val)
-
-Sets the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeKLU::get_dt "cmf::math::Time
-get_dt() const
-
-Returns the last time step. ";
-
-/*  Integrate  */
-
-%feature("docstring")  cmf::math::CVodeKLU::integrate_until "void
-integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool
-reset=false)
-
-Integrates the vector of state variables until t_max.
-
-Parameters:
------------
-
-t_max:   Time, the solver should run to
-
-dt:   Time step (may be omitted)
-
-reset:  If true, solver is reseted before integration starts ";
-
-/*  Accuracy parameters  */
-
-%feature("docstring")  cmf::math::CVodeKLU::CVodeKLU "CVodeKLU(real
-epsilon=1e-9) ";
-
-%feature("docstring")  cmf::math::CVodeKLU::CVodeKLU "CVodeKLU(const
-cmf::math::state_list &states, real epsilon=1e-9) ";
-
-%feature("docstring")  cmf::math::CVodeKLU::_get_jacobian "virtual
-cmf::math::num_array _get_jacobian() const ";
-
-%feature("docstring")  cmf::math::CVodeKLU::copy "cmf::math::CVodeKLU* copy() const override ";
-
-%feature("docstring")  cmf::math::CVodeKLU::get_error "cmf::math::num_array get_error() const
-
-Error vector of the integrator. ";
-
-%feature("docstring")  cmf::math::CVodeKLU::get_info "CVodeInfo
-get_info() const
-
-Returns the current solver statistics. ";
-
-%feature("docstring")  cmf::math::CVodeKLU::initialize "int
-initialize()
-
-Initialize the internal memory.
-
-Automatically called, when one starts to integrate ";
-
-%feature("docstring")  cmf::math::CVodeKLU::integrate "virtual int
-integrate(cmf::math::Time t_max, cmf::math::Time dt)
-
-Integrates the vector of state variables.
-
-Parameters:
------------
-
-t_max:  To stop the model (if running in a model framework) at time
-steps of value exchange e.g. full hours, the next value exchange time
-can be given
-
-dt:  Takes the proposed time step, and changes it into the effectively
-used time step according to the local stiffness of the problem and
-MaxTime ";
-
-%feature("docstring")  cmf::math::CVodeKLU::reset "virtual void
-reset()
-
-Resets the history of the multispte solver and overwrites the internal
-state cache. ";
-
-%feature("docstring")  cmf::math::CVodeKLU::set_error_msg "void
-set_error_msg(std::string error)
-
-Sets an error message. ";
-
-%feature("docstring")  cmf::math::CVodeKLU::set_system "void
-set_system(const state_list &states) ";
-
-%feature("docstring")  cmf::math::CVodeKLU::size "size_t size() const
-";
-
-%feature("docstring")  cmf::math::CVodeKLU::to_string "std::string
-to_string() const ";
-
-
-// File: classcmf_1_1math_1_1_c_vode_krylov.xml
-%feature("docstring") cmf::math::CVodeKrylov "
-
-implicit BDF CVode solver with a Krylov preconditioner
-
-C++ includes: cvode.h ";
-
-/*  Accuracy parameters  */
-
-/*  model time  */
-
-%feature("docstring")  cmf::math::CVodeKrylov::get_t "cmf::math::Time
-get_t() const
-
-Returns the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::set_t "void
-set_t(cmf::math::Time val)
-
-Sets the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::get_dt "cmf::math::Time get_dt() const
-
-Returns the last time step. ";
-
-/*  Integrate  */
-
-%feature("docstring")  cmf::math::CVodeKrylov::integrate_until "void
-integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool
-reset=false)
-
-Integrates the vector of state variables until t_max.
-
-Parameters:
------------
-
-t_max:   Time, the solver should run to
-
-dt:   Time step (may be omitted)
-
-reset:  If true, solver is reseted before integration starts ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::CVodeKrylov "CVodeKrylov(const cmf::math::state_list &states, real epsilon=1e-9,
-int w=5, char p='L') ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::CVodeKrylov "CVodeKrylov(real epsilon=1e-9, int w=5, char p='L') ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::_get_jacobian "virtual
-cmf::math::num_array _get_jacobian() const
-
-Returns a continuous 1D array representing the Jacobian columns
-concatenated.
-
-In Python, get_jacobian returns the Jacobian as a 2D array ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::copy "cmf::math::CVodeKrylov* copy() const
-
-Returns a copy of the solver. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::get_error "cmf::math::num_array get_error() const
-
-Error vector of the integrator. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::get_info "CVodeInfo
-get_info() const
-
-Returns the current solver statistics. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::initialize "int
-initialize()
-
-Initialize the internal memory.
-
-Automatically called, when one starts to integrate ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::integrate "virtual int
-integrate(cmf::math::Time t_max, cmf::math::Time dt)
-
-Integrates the vector of state variables.
-
-Parameters:
------------
-
-t_max:  To stop the model (if running in a model framework) at time
-steps of value exchange e.g. full hours, the next value exchange time
-can be given
-
-dt:  Takes the proposed time step, and changes it into the effectively
-used time step according to the local stiffness of the problem and
-MaxTime ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::reset "virtual void
-reset()
-
-Resets the history of the multispte solver and overwrites the internal
-state cache. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::set_error_msg "void
-set_error_msg(std::string error)
-
-Sets an error message. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::set_system "void
-set_system(const state_list &states) ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::size "size_t size()
-const ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::to_string "std::string
-to_string() const
-
-Returns a string representation of the solver. ";
-
-
-// File: structcmf_1_1math_1_1_c_vode_options.xml
-%feature("docstring") cmf::math::CVodeOptions "
-
-A set of options for all CVode3 solver.
-
-Negative numbers indicate that this option stays on the default value.
-For the meaning of the options see CVODE-UD, section 4.5.6
-
-See Hindmarsh, A., Serban, R. and Reynolds, D.: User Documentation for
-cvode v3.1.0, 2017, UCRL-SM-208108
-
-Usage example: >>>solver = CVodeDens(p, 1e-9)
->>>solver.options.max_order = 2
-
-C++ includes: cvode.h ";
-
-%feature("docstring")  cmf::math::CVodeOptions::CVodeOptions "CVodeOptions() ";
+// File: struct_c_v_spils_mem_rec.xml
+%feature("docstring") CVSpilsMemRec "";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_darcy.xml
@@ -3713,6 +3195,10 @@ get_tracer_filter(solute S)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::connections::Darcy::is_waterbalance_source "virtual
+bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")  cmf::upslope::connections::Darcy::kill_me "bool kill_me()
 
@@ -3833,6 +3319,9 @@ get_tracer_filter(solute S)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::connections::DarcyKinematic::is_waterbalance_source "virtual bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")
 cmf::upslope::connections::DarcyKinematic::kill_me "bool kill_me()
@@ -4006,6 +3495,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
+cmf::upslope::connections::DiffusiveMacroMicroExchange::is_waterbalance_source
+"virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")
 cmf::upslope::connections::DiffusiveMacroMicroExchange::kill_me "bool
 kill_me()
 
@@ -4168,6 +3661,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
+cmf::upslope::connections::DiffusiveSurfaceRunoff::is_waterbalance_source
+"virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")
 cmf::upslope::connections::DiffusiveSurfaceRunoff::kill_me "bool
 kill_me()
 
@@ -4260,7 +3757,7 @@ Returns the sum of all flux vectors. ";
 %feature("docstring")  cmf::water::DirichletBoundary::get_connections
 "cmf::water::connection_list get_connections() const ";
 
-%feature("docstring")  cmf::water::DirichletBoundary::get_potential "real get_potential(cmf::math::Time t=cmf::math::never) const override
+%feature("docstring")  cmf::water::DirichletBoundary::get_potential "real get_potential() const
 
 Returns the water potential of the node in m waterhead.
 
@@ -4298,13 +3795,7 @@ Remove the connection. ";
 %feature("docstring")  cmf::water::DirichletBoundary::set_conc "virtual void set_conc(const cmf::water::solute &_Solute, double value)
 ";
 
-%feature("docstring")
-cmf::water::DirichletBoundary::set_dynamic_potential "void
-set_dynamic_potential(cmf::math::timeseries ts)
-
-Sets the potential of the boundary condition as a timeseries. ";
-
-%feature("docstring")  cmf::water::DirichletBoundary::set_potential "void set_potential(real new_potential) override
+%feature("docstring")  cmf::water::DirichletBoundary::set_potential "void set_potential(real new_potential)
 
 Sets the potential of this flux node. ";
 
@@ -4380,6 +3871,10 @@ cmf::upslope::connections::EnergyBudgetSnowMelt::get_tracer_filter "real get_tra
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::connections::EnergyBudgetSnowMelt::is_waterbalance_source
+"virtual bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")
 cmf::upslope::connections::EnergyBudgetSnowMelt::kill_me "bool
@@ -4477,7 +3972,7 @@ dt:   Time step (may be omitted)
 reset:  If true, solver is reseted before integration starts ";
 
 %feature("docstring")
-cmf::math::ExplicitEuler_fixed::ExplicitEuler_fixed "ExplicitEuler_fixed(const cmf::math::state_list &states)
+cmf::math::ExplicitEuler_fixed::ExplicitEuler_fixed "ExplicitEuler_fixed(StateVariableOwner &states)
 
 Constructs a new ExplicitEuler_fixed from a pointer to a vector of
 state variables.
@@ -4503,10 +3998,75 @@ copy constructor ";
 cmf::math::ExplicitEuler_fixed::~ExplicitEuler_fixed "virtual
 ~ExplicitEuler_fixed() ";
 
+%feature("docstring")
+cmf::math::ExplicitEuler_fixed::add_single_state "virtual void
+add_single_state(cmf::math::StateVariable::ptr state)
+
+Adds a single state variable to the integrator. ";
+
+%feature("docstring")  cmf::math::ExplicitEuler_fixed::add_states "void add_states(cmf::math::StateVariableOwner &stateOwner)
+
+Add state variables from a StateVariableOwner. ";
+
+%feature("docstring")
+cmf::math::ExplicitEuler_fixed::add_values_to_states "void
+add_values_to_states(const num_array &operands)
+
+Adds the values in operands to the current states. ";
+
 %feature("docstring")  cmf::math::ExplicitEuler_fixed::copy "virtual
 Integrator* copy() const
 
 Polymorphic copy constructor. ";
+
+%feature("docstring")  cmf::math::ExplicitEuler_fixed::copy_dxdt "void copy_dxdt(Time time, num_array &destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to a numeric vector using
+use_OpenMP.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Vector to be overwritten by the results
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::ExplicitEuler_fixed::copy_dxdt "void copy_dxdt(Time time, real *destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to an preallocated c
+array.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Allocated c array
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::ExplicitEuler_fixed::copy_states "void copy_states(num_array &destination) const
+
+Copies the states to a numeric vector using use_OpenMP. ";
+
+%feature("docstring")  cmf::math::ExplicitEuler_fixed::copy_states "void copy_states(real *destination) const ";
+
+%feature("docstring")  cmf::math::ExplicitEuler_fixed::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
+
+%feature("docstring")  cmf::math::ExplicitEuler_fixed::get_state "real get_state(ptrdiff_t position) const
+
+Returns the statevariable at position Simplifies the assessment of
+state variables. ";
+
+%feature("docstring")  cmf::math::ExplicitEuler_fixed::get_states "cmf::math::num_array get_states() const ";
+
+%feature("docstring")  cmf::math::ExplicitEuler_fixed::get_states "StateVariableList get_states()
+
+gets the state variables of the integrator ";
 
 %feature("docstring")  cmf::math::ExplicitEuler_fixed::integrate "int
 integrate(cmf::math::Time MaxTime, cmf::math::Time TimeStep)
@@ -4522,14 +4082,20 @@ value exchange time can be given
 
 TimeStep:  Takes the proposed time step ";
 
-%feature("docstring")  cmf::math::ExplicitEuler_fixed::set_system "void set_system(const state_list &states) ";
+%feature("docstring")  cmf::math::ExplicitEuler_fixed::set_state "void set_state(ptrdiff_t position, real newState)
+
+Simplifies the assessment of state variables. ";
+
+%feature("docstring")  cmf::math::ExplicitEuler_fixed::set_states "void set_states(const num_array &newStates)
+
+Copies the new states to the actual states. ";
+
+%feature("docstring")  cmf::math::ExplicitEuler_fixed::set_states "void set_states(real *newStates) ";
 
 %feature("docstring")  cmf::math::ExplicitEuler_fixed::size "size_t
-size() const ";
+size() const
 
-%feature("docstring")  cmf::math::ExplicitEuler_fixed::to_string "std::string to_string() const override
-
-Desrcibes the iterator. ";
+returns the number of state variables ";
 
 
 // File: classcmf_1_1water_1_1_exponential_decline_connection.xml
@@ -4598,6 +4164,9 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
+cmf::water::ExponentialDeclineConnection::is_waterbalance_source "virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")
 cmf::water::ExponentialDeclineConnection::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
@@ -4648,8 +4217,8 @@ cmf::water::ExponentialDeclineConnection::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf_1_1water_1_1_externally_controlled_flux.xml
-%feature("docstring") cmf::water::ExternallyControlledFlux "
+// File: classcmf_1_1water_1_1external__control__connection.xml
+%feature("docstring") cmf::water::external_control_connection "
 
 Flux from one node to another, controlled by the user or an external
 program, by changing the flux constant.
@@ -4661,10 +4230,10 @@ rely on a positive volume in a storage. Handle with care!
 C++ includes: simple_connections.h ";
 
 %feature("docstring")
-cmf::water::ExternallyControlledFlux::ExternallyControlledFlux "ExternallyControlledFlux(flux_node::ptr source, flux_node::ptr target,
-real flux_value=0) ";
+cmf::water::external_control_connection::external_control_connection "external_control_connection(flux_node::ptr source, flux_node::ptr
+target, real flux_value=0) ";
 
-%feature("docstring")  cmf::water::ExternallyControlledFlux::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+%feature("docstring")  cmf::water::external_control_connection::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
 Returns the concentration of the flux.
 
@@ -4672,26 +4241,28 @@ If not overridden, it returns the concentration of the source of the
 flux (direction depending) ";
 
 %feature("docstring")
-cmf::water::ExternallyControlledFlux::exchange_target "void
+cmf::water::external_control_connection::exchange_target "void
 exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 
-%feature("docstring")  cmf::water::ExternallyControlledFlux::get_ptr "ptr get_ptr() const ";
+%feature("docstring")
+cmf::water::external_control_connection::get_ptr "ptr get_ptr() const
+";
 
 %feature("docstring")
-cmf::water::ExternallyControlledFlux::get_target "flux_node::ptr
+cmf::water::external_control_connection::get_target "flux_node::ptr
 get_target(const flux_node &inquirer)
 
 Returns the other end of a connection than the asking end. ";
 
 %feature("docstring")
-cmf::water::ExternallyControlledFlux::get_target "flux_node::ptr
+cmf::water::external_control_connection::get_target "flux_node::ptr
 get_target(int index) const
 
 With index 0, the left node is returned, with index 1 the right node
 of the connection. ";
 
 %feature("docstring")
-cmf::water::ExternallyControlledFlux::get_tracer_filter "real
+cmf::water::external_control_connection::get_tracer_filter "real
 get_tracer_filter()
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
@@ -4700,40 +4271,46 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::water::ExternallyControlledFlux::get_tracer_filter "real
+cmf::water::external_control_connection::get_tracer_filter "real
 get_tracer_filter(solute S)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
-%feature("docstring")  cmf::water::ExternallyControlledFlux::kill_me "bool kill_me()
+%feature("docstring")
+cmf::water::external_control_connection::is_waterbalance_source "virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")
+cmf::water::external_control_connection::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
 
-%feature("docstring")  cmf::water::ExternallyControlledFlux::left_node
-"flux_node::ptr left_node() const
+%feature("docstring")
+cmf::water::external_control_connection::left_node "flux_node::ptr
+left_node() const
 
 Returns the left node of this connection. ";
 
-%feature("docstring")  cmf::water::ExternallyControlledFlux::q "real
-q(const flux_node &inquirer, cmf::math::Time t)
+%feature("docstring")  cmf::water::external_control_connection::q "real q(const flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
-%feature("docstring")  cmf::water::ExternallyControlledFlux::refresh "void refresh(cmf::math::Time t)
+%feature("docstring")
+cmf::water::external_control_connection::refresh "void
+refresh(cmf::math::Time t)
 
 Performes a new calculation of the flux. ";
 
 %feature("docstring")
-cmf::water::ExternallyControlledFlux::right_node "flux_node::ptr
+cmf::water::external_control_connection::right_node "flux_node::ptr
 right_node() const
 
 returns the right node of this connection ";
 
 %feature("docstring")
-cmf::water::ExternallyControlledFlux::set_tracer_filter "void
+cmf::water::external_control_connection::set_tracer_filter "void
 set_tracer_filter(real value)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
@@ -4742,15 +4319,16 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::water::ExternallyControlledFlux::set_tracer_filter "void
+cmf::water::external_control_connection::set_tracer_filter "void
 set_tracer_filter(solute S, real value) ";
 
 %feature("docstring")
-cmf::water::ExternallyControlledFlux::short_string "virtual
+cmf::water::external_control_connection::short_string "virtual
 std::string short_string() const ";
 
-%feature("docstring")  cmf::water::ExternallyControlledFlux::to_string
-"virtual std::string to_string() const ";
+%feature("docstring")
+cmf::water::external_control_connection::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1fit__retention__curve_1_1_fit_brooks_corey.xml
@@ -4879,6 +4457,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
+%feature("docstring")
+cmf::water::flux_connection::is_waterbalance_source "virtual bool
+is_waterbalance_source(const flux_node &inquirer) ";
+
 %feature("docstring")  cmf::water::flux_connection::kill_me "bool
 kill_me()
 
@@ -4918,6 +4500,62 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 %feature("docstring")  cmf::water::flux_connection::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::water::flux_connection::to_string "virtual std::string to_string() const ";
+
+
+// File: classcmf_1_1water_1_1flux__integrator.xml
+%feature("docstring") cmf::water::flux_integrator "
+
+The flux_integrator is an integratable for precise output of average
+fluxes over time.
+
+It can be added to solver (any cmf::math::Integrator), which is then
+calling the integrate method at each substep.
+
+C++ includes: flux_connection.h ";
+
+%feature("docstring")  cmf::water::flux_integrator::flux_integrator "flux_integrator(cmf::water::flux_connection &connection)
+
+Creates a flux_integrator from an connection. ";
+
+%feature("docstring")  cmf::water::flux_integrator::flux_integrator "flux_integrator(cmf::water::flux_node::ptr left,
+cmf::water::flux_node::ptr right)
+
+Creates a flux_integrator from the endpoints of a connection. Throws
+if there is no connection between the endpoints. ";
+
+%feature("docstring")  cmf::water::flux_integrator::avg "double avg()
+const
+
+Returns the average flux of the integration time in m3/day. ";
+
+%feature("docstring")  cmf::water::flux_integrator::connection "flux_connection::ptr connection() const
+
+Returns the flux_connection. ";
+
+%feature("docstring")  cmf::water::flux_integrator::integrate "void
+integrate(cmf::math::Time until)
+
+Integrates the flux a timestep further. Note: until is an absolute
+time. If until is before t0, the integration is initilized again. ";
+
+%feature("docstring")  cmf::water::flux_integrator::integration_t "cmf::math::Time integration_t() const
+
+Returns the duration of the integration. ";
+
+%feature("docstring")  cmf::water::flux_integrator::reset "void
+reset(cmf::math::Time t)
+
+Initializes the integration. ";
+
+%feature("docstring")  cmf::water::flux_integrator::sum "double sum()
+const
+
+Returns the amount of water along this connection in the integration
+time in m3. ";
+
+%feature("docstring")  cmf::water::flux_integrator::t0 "cmf::math::Time t0() const
+
+Returns the start time of the integration. ";
 
 
 // File: classcmf_1_1water_1_1flux__node.xml
@@ -4967,7 +4605,7 @@ Returns the sum of all flux vectors. ";
 %feature("docstring")  cmf::water::flux_node::get_connections "cmf::water::connection_list get_connections() const ";
 
 %feature("docstring")  cmf::water::flux_node::get_potential "virtual
-real get_potential(cmf::math::Time=cmf::math::never) const
+real get_potential() const
 
 Returns the water potential of the node in m waterhead.
 
@@ -5121,6 +4759,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
+cmf::upslope::connections::FreeDrainagePercolation::is_waterbalance_source
+"virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")
 cmf::upslope::connections::FreeDrainagePercolation::kill_me "bool
 kill_me()
 
@@ -5173,8 +4815,8 @@ cmf::upslope::connections::FreeDrainagePercolation::to_string "virtual std::stri
 // File: classcmf_1_1water_1_1_freundlich_adsorbtion.xml
 %feature("docstring") cmf::water::FreundlichAdsorbtion "
 
-BROKEN: This class calculates the adsorption equilibrium between
-sorbat and sorbent using the Freundlich isotherme.
+This class calculates the adsorption equilibrium between sorbat and
+sorbent using the Freundlich isotherme.
 
 Freundlich isotherme:
 
@@ -5202,9 +4844,8 @@ CMF stores in a solute storage the total mass of a tracer and needs to
 calculate the free tracer mass. The eq. above can not be rearanged to
 get :math:`x_{free}` from :math:`x_{tot}`. Instead, the value is iterated
 usingregula falsi. If n is near to 1, using LinearAdsorption will
-speed up your calculations.
-
-The simplest physically based adsorption model by Langmuir (
+speed up your calculations.Todo Check if an analytical solution is
+available The simplest physically based adsorption model by Langmuir (
 LangmuirAdsorption) has also a analytical solution and is hence
 calculated faster then Freundlich.
 
@@ -5270,6 +4911,152 @@ V:   :math:`V m^3` the water volume in the storage
 :math:`x_t` the total mass of the tracer ";
 
 
+// File: classcmf_1_1water_1_1generic__gradient__connection.xml
+%feature("docstring") cmf::water::generic_gradient_connection "
+
+A generic node-to-node gradient based connection.
+
+This connection is similar to the Darcy-connection, but there are no
+restrictions concerning the type of nodes. However, the left side
+needs to be a water storage 
+
+.. math::
+
+     q = K A
+    \\\\frac{\\\\Psi_{l}-\\\\Psi_{r}}{d} 
+
+where:  :math:`q`: the resulting
+flux in :math:`m^3/day`
+
+:math:`K`: the conductivity of the connection
+
+:math:`A`: the area of the connection cross section
+
+:math:`\\\\Psi`: The hydraulic head of the (l)eft, resp. (r)ight node of the
+connection
+
+:math:`d`: The topographic length of the connection in m
+
+C++ includes: simple_connections.h ";
+
+%feature("docstring")
+cmf::water::generic_gradient_connection::generic_gradient_connection "generic_gradient_connection(cmf::water::WaterStorage::ptr left,
+cmf::water::WaterStorage::ptr right, real K, real d=1.0, real A=1.0)
+
+Creates a generic gradient based flux, if enough water is present in
+the source.
+
+Parameters:
+-----------
+
+left:  The left node of the connection
+
+right:  The right node of the connection
+
+K:  the conductivity of the connection in m/day
+
+d:  the topographic lenght of the connection in m
+
+A:  the area of the connection cross section in m2 ";
+
+%feature("docstring")  cmf::water::generic_gradient_connection::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::water::generic_gradient_connection::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")
+cmf::water::generic_gradient_connection::get_ptr "ptr get_ptr() const
+";
+
+%feature("docstring")
+cmf::water::generic_gradient_connection::get_target "flux_node::ptr
+get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::water::generic_gradient_connection::get_target "flux_node::ptr
+get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::water::generic_gradient_connection::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::water::generic_gradient_connection::get_tracer_filter "real
+get_tracer_filter(solute S)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+";
+
+%feature("docstring")
+cmf::water::generic_gradient_connection::is_waterbalance_source "virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")
+cmf::water::generic_gradient_connection::kill_me "bool kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::water::generic_gradient_connection::left_node "flux_node::ptr
+left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::water::generic_gradient_connection::q "real q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::water::generic_gradient_connection::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::water::generic_gradient_connection::right_node "flux_node::ptr
+right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::water::generic_gradient_connection::set_tracer_filter "void
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::water::generic_gradient_connection::set_tracer_filter "void
+set_tracer_filter(solute S, real value) ";
+
+%feature("docstring")
+cmf::water::generic_gradient_connection::short_string "virtual
+std::string short_string() const ";
+
+%feature("docstring")
+cmf::water::generic_gradient_connection::to_string "virtual
+std::string to_string() const ";
+
+
 // File: classcmf_1_1upslope_1_1connections_1_1_gradient_macro_flow.xml
 %feature("docstring") cmf::upslope::connections::GradientMacroFlow "
 
@@ -5333,6 +5120,9 @@ get_tracer_filter(solute S)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroFlow::is_waterbalance_source "virtual bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")
 cmf::upslope::connections::GradientMacroFlow::kill_me "bool kill_me()
@@ -5460,6 +5250,10 @@ cmf::upslope::connections::GradientMacroMicroExchange::get_tracer_filter
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroMicroExchange::is_waterbalance_source
+"virtual bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")
 cmf::upslope::connections::GradientMacroMicroExchange::kill_me "bool
@@ -5632,6 +5426,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
+cmf::upslope::connections::GreenAmptInfiltration::is_waterbalance_source
+"virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")
 cmf::upslope::connections::GreenAmptInfiltration::kill_me "bool
 kill_me()
 
@@ -5771,6 +5569,10 @@ get_tracer_filter(solute S)
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
+%feature("docstring")
+cmf::upslope::ET::HargreaveET::is_waterbalance_source "virtual bool
+is_waterbalance_source(const flux_node &inquirer) ";
+
 %feature("docstring")  cmf::upslope::ET::HargreaveET::kill_me "bool
 kill_me()
 
@@ -5840,6 +5642,11 @@ Sets the current model time. ";
 
 Returns the last time step. ";
 
+%feature("docstring")  cmf::math::HeunIntegrator::reset "virtual void
+reset()
+
+Resets any saved history (for multistep methods) ";
+
 /*  Integrate  */
 
 %feature("docstring")  cmf::math::HeunIntegrator::integrate_until "void integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(),
@@ -5856,7 +5663,7 @@ dt:   Time step (may be omitted)
 
 reset:  If true, solver is reseted before integration starts ";
 
-%feature("docstring")  cmf::math::HeunIntegrator::HeunIntegrator "HeunIntegrator(const cmf::math::state_list &states, real Alpha=0.5)
+%feature("docstring")  cmf::math::HeunIntegrator::HeunIntegrator "HeunIntegrator(StateVariableOwner &states, real Alpha=0.5)
 
 Constructs a new PredictCorrectSimple from a pointer to a vector of
 state variables.
@@ -5873,7 +5680,7 @@ Alpha:  Weight factor :math:`\\\\alpha` to weight :math:`f(y^n)` and :math:`f(y^
 
 %feature("docstring")  cmf::math::HeunIntegrator::HeunIntegrator "HeunIntegrator(real Alpha=0.5)
 
-Constructs a new Heun integrator.
+Constructs a new PredictCorrectSimple.
 
 Parameters:
 -----------
@@ -5887,10 +5694,78 @@ copy constructor ";
 
 %feature("docstring")  cmf::math::HeunIntegrator::~HeunIntegrator "virtual ~HeunIntegrator() ";
 
+%feature("docstring")  cmf::math::HeunIntegrator::add_single_state "virtual void add_single_state(cmf::math::StateVariable::ptr state)
+
+Adds a single state variable to the integrator. ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::add_states "void
+add_states(cmf::math::StateVariableOwner &stateOwner)
+
+Add state variables from a StateVariableOwner. ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::add_values_to_states
+"void add_values_to_states(const num_array &operands)
+
+Adds the values in operands to the current states. ";
+
 %feature("docstring")  cmf::math::HeunIntegrator::copy "virtual
 Integrator* copy() const
 
 Polymorphic copy constructor. ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::copy_dxdt "void
+copy_dxdt(Time time, num_array &destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to a numeric vector using
+use_OpenMP.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Vector to be overwritten by the results
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::copy_dxdt "void
+copy_dxdt(Time time, real *destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to an preallocated c
+array.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Allocated c array
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::copy_states "void
+copy_states(num_array &destination) const
+
+Copies the states to a numeric vector using use_OpenMP. ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::copy_states "void
+copy_states(real *destination) const ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::get_state "real
+get_state(ptrdiff_t position) const
+
+Returns the statevariable at position Simplifies the assessment of
+state variables. ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::get_states "cmf::math::num_array get_states() const ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::get_states "StateVariableList get_states()
+
+gets the state variables of the integrator ";
 
 %feature("docstring")  cmf::math::HeunIntegrator::integrate "int
 integrate(cmf::math::Time MaxTime, cmf::math::Time TimeStep)
@@ -5906,20 +5781,23 @@ value exchange time can be given
 
 TimeStep:  Takes the proposed time step ";
 
-%feature("docstring")  cmf::math::HeunIntegrator::reset "void reset()
-override
+%feature("docstring")  cmf::math::HeunIntegrator::set_state "void
+set_state(ptrdiff_t position, real newState)
 
-Resets any saved history (for multistep methods) ";
+Simplifies the assessment of state variables. ";
 
-%feature("docstring")  cmf::math::HeunIntegrator::set_system "void
-set_system(const state_list &states) ";
+%feature("docstring")  cmf::math::HeunIntegrator::set_states "void
+set_states(const num_array &newStates)
+
+Copies the new states to the actual states. ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::set_states "void
+set_states(real *newStates) ";
 
 %feature("docstring")  cmf::math::HeunIntegrator::size "size_t size()
-const ";
+const
 
-%feature("docstring")  cmf::math::HeunIntegrator::to_string "std::string to_string() const override
-
-Desrcibes the iterator. ";
+returns the number of state variables ";
 
 
 // File: classcmf_1_1draw_1_1hillplot_1_1_hill_plot.xml
@@ -6161,7 +6039,7 @@ Returns the sum of all flux vectors. ";
 
 Returns the actual rainfall intensity in mm/day. ";
 
-%feature("docstring")  cmf::atmosphere::IDWRainfall::get_potential "virtual real get_potential(cmf::math::Time=cmf::math::never) const
+%feature("docstring")  cmf::atmosphere::IDWRainfall::get_potential "virtual real get_potential() const
 
 Returns the water potential of the node in m waterhead.
 
@@ -6241,6 +6119,11 @@ Sets the current model time. ";
 
 Returns the last time step. ";
 
+%feature("docstring")  cmf::math::ImplicitEuler::reset "virtual void
+reset()
+
+Resets any saved history (for multistep methods) ";
+
 /*  Integrate  */
 
 %feature("docstring")  cmf::math::ImplicitEuler::integrate_until "void integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(),
@@ -6257,7 +6140,7 @@ dt:   Time step (may be omitted)
 
 reset:  If true, solver is reseted before integration starts ";
 
-%feature("docstring")  cmf::math::ImplicitEuler::ImplicitEuler "ImplicitEuler(const cmf::math::state_list &states, real epsilon=1e-9,
+%feature("docstring")  cmf::math::ImplicitEuler::ImplicitEuler "ImplicitEuler(StateVariableOwner &states, real epsilon=1e-9,
 cmf::math::Time tStepMin=cmf::math::timespan(10))
 
 Constructs a new FixPointImplicitEuler from a pointer to a vector of
@@ -6290,10 +6173,78 @@ tStepMin:  minimum time step (default=10s) ";
 
 copy constructor ";
 
+%feature("docstring")  cmf::math::ImplicitEuler::add_single_state "virtual void add_single_state(cmf::math::StateVariable::ptr state)
+
+Adds a single state variable to the integrator. ";
+
+%feature("docstring")  cmf::math::ImplicitEuler::add_states "void
+add_states(cmf::math::StateVariableOwner &stateOwner)
+
+Add state variables from a StateVariableOwner. ";
+
+%feature("docstring")  cmf::math::ImplicitEuler::add_values_to_states
+"void add_values_to_states(const num_array &operands)
+
+Adds the values in operands to the current states. ";
+
 %feature("docstring")  cmf::math::ImplicitEuler::copy "virtual
 Integrator* copy() const
 
 Polymorphic copy constructor. ";
+
+%feature("docstring")  cmf::math::ImplicitEuler::copy_dxdt "void
+copy_dxdt(Time time, num_array &destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to a numeric vector using
+use_OpenMP.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Vector to be overwritten by the results
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::ImplicitEuler::copy_dxdt "void
+copy_dxdt(Time time, real *destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to an preallocated c
+array.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Allocated c array
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::ImplicitEuler::copy_states "void
+copy_states(num_array &destination) const
+
+Copies the states to a numeric vector using use_OpenMP. ";
+
+%feature("docstring")  cmf::math::ImplicitEuler::copy_states "void
+copy_states(real *destination) const ";
+
+%feature("docstring")  cmf::math::ImplicitEuler::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
+
+%feature("docstring")  cmf::math::ImplicitEuler::get_state "real
+get_state(ptrdiff_t position) const
+
+Returns the statevariable at position Simplifies the assessment of
+state variables. ";
+
+%feature("docstring")  cmf::math::ImplicitEuler::get_states "cmf::math::num_array get_states() const ";
+
+%feature("docstring")  cmf::math::ImplicitEuler::get_states "StateVariableList get_states()
+
+gets the state variables of the integrator ";
 
 %feature("docstring")  cmf::math::ImplicitEuler::integrate "int
 integrate(cmf::math::Time MaxTime, cmf::math::Time TimeStep)
@@ -6311,20 +6262,103 @@ TimeStep:  Takes the proposed timestep, and changes it into the
 effictivly used timestep according to the local stiffness of the
 problem and MaxTime ";
 
-%feature("docstring")  cmf::math::ImplicitEuler::reset "void reset()
-override
+%feature("docstring")  cmf::math::ImplicitEuler::set_state "void
+set_state(ptrdiff_t position, real newState)
 
-Resets any saved history (for multistep methods) ";
+Simplifies the assessment of state variables. ";
 
-%feature("docstring")  cmf::math::ImplicitEuler::set_system "void
-set_system(const state_list &states) ";
+%feature("docstring")  cmf::math::ImplicitEuler::set_states "void
+set_states(const num_array &newStates)
+
+Copies the new states to the actual states. ";
+
+%feature("docstring")  cmf::math::ImplicitEuler::set_states "void
+set_states(real *newStates) ";
 
 %feature("docstring")  cmf::math::ImplicitEuler::size "size_t size()
-const ";
+const
 
-%feature("docstring")  cmf::math::ImplicitEuler::to_string "std::string to_string() const override
+returns the number of state variables ";
 
-Desrcibes the iterator. ";
+
+// File: classcmf_1_1math_1_1integratable.xml
+%feature("docstring") cmf::math::integratable "
+
+integratable is a functionality for different classes for integrating
+values over time.
+
+Main usage of an integratable is the calculation of average fluxes
+over time e.g. 
+
+.. math::
+
+    
+    \\\\int_{t_0}^{t_{end}}q\\\\left(t,V_i,V_j\\\\right)dt 
+
+C++ includes: statevariable.h ";
+
+%feature("docstring")  cmf::math::integratable::avg "virtual double
+avg() const =0
+
+Returns average of the integrated variable (eg. flux) from the last
+reset until the last call of integrate. ";
+
+%feature("docstring")  cmf::math::integratable::integrate "virtual
+void integrate(Time t)=0
+
+Integrates the variable until time t. ";
+
+%feature("docstring")  cmf::math::integratable::reset "virtual void
+reset(Time t)=0
+
+Sets the start time of the integral. ";
+
+%feature("docstring")  cmf::math::integratable::sum "virtual double
+sum() const =0
+
+Get the integral from the last reset until the last call of integrate.
+";
+
+
+// File: classcmf_1_1math_1_1integratable__list.xml
+%feature("docstring") cmf::math::integratable_list "
+
+A list of cmf::math::integratable objects.
+
+Todo TODO: Complete collection interface (getitem with slicing etc.)
+
+C++ includes: statevariable.h ";
+
+%feature("docstring")  cmf::math::integratable_list::integratable_list
+"integratable_list() ";
+
+%feature("docstring")  cmf::math::integratable_list::integratable_list
+"integratable_list(const integratable_list &for_copy) ";
+
+%feature("docstring")  cmf::math::integratable_list::append "void
+append(cmf::math::integratable::ptr add)
+
+Adds an integratable to the list. ";
+
+%feature("docstring")  cmf::math::integratable_list::avg "cmf::math::num_array avg() const ";
+
+%feature("docstring")  cmf::math::integratable_list::integrate "void
+integrate(Time t) ";
+
+%feature("docstring")  cmf::math::integratable_list::remove "void
+remove(cmf::math::integratable::ptr rm)
+
+Removes an integratable from the list. ";
+
+%feature("docstring")  cmf::math::integratable_list::reset "void
+reset(Time t) ";
+
+%feature("docstring")  cmf::math::integratable_list::size "size_t
+size() const
+
+Number of integratables in the list. ";
+
+%feature("docstring")  cmf::math::integratable_list::sum "cmf::math::num_array sum() const ";
 
 
 // File: classcmf_1_1math_1_1_integrator.xml
@@ -6373,7 +6407,8 @@ Parameters:
 
 epsilon:  relative error tolerance per time step (default=1e-9) ";
 
-%feature("docstring")  cmf::math::Integrator::Integrator "Integrator(const state_list &states, real epsilon=1e-9) ";
+%feature("docstring")  cmf::math::Integrator::Integrator "Integrator(cmf::math::StateVariableOwner &states, real epsilon=1e-9)
+";
 
 %feature("docstring")  cmf::math::Integrator::Integrator "Integrator(const cmf::math::Integrator &other) ";
 
@@ -6416,18 +6451,92 @@ dt:   Time step (may be omitted)
 reset:  If true, solver is reseted before integration starts ";
 
 %feature("docstring")  cmf::math::Integrator::~Integrator "virtual
-~Integrator()=default ";
+~Integrator() ";
 
-%feature("docstring")  cmf::math::Integrator::set_system "void
-set_system(const state_list &states) ";
+%feature("docstring")  cmf::math::Integrator::add_single_state "virtual void add_single_state(cmf::math::StateVariable::ptr state)
+
+Adds a single state variable to the integrator. ";
+
+%feature("docstring")  cmf::math::Integrator::add_states "virtual
+void add_states(cmf::math::StateVariableOwner &stateOwner)
+
+Add state variables from a StateVariableOwner. ";
+
+%feature("docstring")  cmf::math::Integrator::add_values_to_states "void add_values_to_states(const num_array &operands)
+
+Adds the values in operands to the current states. ";
+
+%feature("docstring")  cmf::math::Integrator::copy_dxdt "void
+copy_dxdt(Time time, num_array &destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to a numeric vector using
+use_OpenMP.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Vector to be overwritten by the results
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::Integrator::copy_dxdt "void
+copy_dxdt(Time time, real *destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to an preallocated c
+array.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Allocated c array
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::Integrator::copy_states "void
+copy_states(num_array &destination) const
+
+Copies the states to a numeric vector using use_OpenMP. ";
+
+%feature("docstring")  cmf::math::Integrator::copy_states "void
+copy_states(real *destination) const ";
+
+%feature("docstring")  cmf::math::Integrator::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
+
+%feature("docstring")  cmf::math::Integrator::get_state "real
+get_state(ptrdiff_t position) const
+
+Returns the statevariable at position Simplifies the assessment of
+state variables. ";
+
+%feature("docstring")  cmf::math::Integrator::get_states "cmf::math::num_array get_states() const ";
+
+%feature("docstring")  cmf::math::Integrator::get_states "StateVariableList get_states()
+
+gets the state variables of the integrator ";
+
+%feature("docstring")  cmf::math::Integrator::set_state "void
+set_state(ptrdiff_t position, real newState)
+
+Simplifies the assessment of state variables. ";
+
+%feature("docstring")  cmf::math::Integrator::set_states "void
+set_states(const num_array &newStates)
+
+Copies the new states to the actual states. ";
+
+%feature("docstring")  cmf::math::Integrator::set_states "void
+set_states(real *newStates) ";
 
 %feature("docstring")  cmf::math::Integrator::size "size_t size()
-const ";
+const
 
-%feature("docstring")  cmf::math::Integrator::to_string "virtual
-std::string to_string() const =0
-
-Desrcibes the iterator. ";
+returns the number of state variables ";
 
 
 // File: classcmf_1_1math_1_1root__finding_1_1iteration__error.xml
@@ -6600,6 +6709,9 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
+cmf::upslope::connections::JarvisMacroFlow::is_waterbalance_source "virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")
 cmf::upslope::connections::JarvisMacroFlow::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
@@ -6646,6 +6758,149 @@ std::string short_string() const ";
 
 %feature("docstring")
 cmf::upslope::connections::JarvisMacroFlow::to_string "virtual
+std::string to_string() const ";
+
+
+// File: classcmf_1_1water_1_1kinematic__wave.xml
+%feature("docstring") cmf::water::kinematic_wave "
+
+Calculates flux out of a storage as a linear function of its volume to
+a power.
+
+Deprecated  kinematic_wave is superseeded by LinearStorageConnection
+and PowerLawConnection
+
+
+
+.. math::
+
+     q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}
+    \\\\right)^\\\\beta} 
+
+where:  :math:`V_{residual} [m^3]` The volume of
+water not flowing out (default = 0)
+
+:math:`V_0` The reference volume to scale the exponent (default = 1m3/day)
+
+:math:`\\\\beta` A parameter to shape the response curve. In case of
+:math:`\\\\beta \\\\neq 1`, :math:`t_r` is not a residence time, but just a
+parameter.
+
+:math:`t_r [days]` The residence time of the water in this storage in days
+
+WARNING:   :math:`\\\\beta < 0.5` may lead to numerical troubles and have a
+dubious hydrological meaning. Please avoid.
+
+C++ includes: simple_connections.h ";
+
+%feature("docstring")  cmf::water::kinematic_wave::kinematic_wave "kinematic_wave(WaterStorage::ptr source, flux_node::ptr target, real
+residencetime, real exponent=1.0, real residual=0.0, real V0=1.0)
+
+Creates a kinematic wave connection.
+
+
+
+.. math::
+
+     q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}
+    \\\\right)^\\\\beta} 
+
+Parameters:
+-----------
+
+source:  Water storage from which the water flows out. Flux is a
+function of source.volume
+
+target:  Target node (boundary condition or storage). Does not
+influence the strength of the flow
+
+residencetime:   :math:`t_r [days]` The residence time of the water in this
+storage
+
+exponent:   :math:`\\\\beta [-]` An empirical exponent to shape the flux
+function (default = 1 (linear function))
+
+residual:   :math:`V_{residual} [m^3]` The volume of water not flowing out
+(default = 0)
+
+V0:   :math:`V_0` The reference volume to scale the exponent ";
+
+%feature("docstring")  cmf::water::kinematic_wave::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")  cmf::water::kinematic_wave::exchange_target "void exchange_target(flux_node::ptr oldtarget, flux_node::ptr
+newTarget) ";
+
+%feature("docstring")  cmf::water::kinematic_wave::get_ptr "ptr
+get_ptr() const ";
+
+%feature("docstring")  cmf::water::kinematic_wave::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")  cmf::water::kinematic_wave::get_target "flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")  cmf::water::kinematic_wave::get_tracer_filter "real get_tracer_filter()
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")  cmf::water::kinematic_wave::get_tracer_filter "real get_tracer_filter(solute S)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+";
+
+%feature("docstring")
+cmf::water::kinematic_wave::is_waterbalance_source "virtual bool
+is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")  cmf::water::kinematic_wave::kill_me "bool
+kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")  cmf::water::kinematic_wave::left_node "flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::water::kinematic_wave::q "real q(const
+flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::water::kinematic_wave::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")  cmf::water::kinematic_wave::right_node "flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")  cmf::water::kinematic_wave::set_tracer_filter "void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")  cmf::water::kinematic_wave::set_tracer_filter "void set_tracer_filter(solute S, real value) ";
+
+%feature("docstring")  cmf::water::kinematic_wave::short_string "virtual std::string short_string() const ";
+
+%feature("docstring")  cmf::water::kinematic_wave::to_string "virtual
 std::string to_string() const ";
 
 
@@ -6735,6 +6990,10 @@ cmf::upslope::connections::KinematicMacroFlow::get_tracer_filter "real get_trace
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::connections::KinematicMacroFlow::is_waterbalance_source
+"virtual bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")
 cmf::upslope::connections::KinematicMacroFlow::kill_me "bool
@@ -6897,6 +7156,10 @@ cmf::upslope::connections::KinematicSurfaceRunoff::get_tracer_filter "real get_t
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::connections::KinematicSurfaceRunoff::is_waterbalance_source
+"virtual bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")
 cmf::upslope::connections::KinematicSurfaceRunoff::kill_me "bool
@@ -7081,6 +7344,10 @@ cmf::upslope::connections::lateral_sub_surface_flux::get_tracer_filter
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::connections::lateral_sub_surface_flux::is_waterbalance_source
+"virtual bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")
 cmf::upslope::connections::lateral_sub_surface_flux::kill_me "bool
@@ -7391,6 +7658,9 @@ get_tracer_filter(solute S)
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
+%feature("docstring")
+cmf::upslope::connections::LayerBypass::is_waterbalance_source "virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
 %feature("docstring")  cmf::upslope::connections::LayerBypass::K "real K(real w)
 
 the actual crack conductivity
@@ -7544,131 +7814,6 @@ xf:   :math:`x_f` the dissolved tracer mass in the storage
 V:   :math:`V m^3` the water volume in the storage
 
 :math:`x_t` the total mass of the tracer ";
-
-
-// File: classcmf_1_1water_1_1_linear_gradient_flux.xml
-%feature("docstring") cmf::water::LinearGradientFlux "
-
-A generic node-to-node gradient based connection.
-
-This connection is similar to the Darcy-connection, but there are no
-restrictions concerning the type of nodes. However, the left side
-needs to be a water storage 
-
-.. math::
-
-     q = Q_1 \\\\nabla \\\\Psi 
-
-where:  :math:`q`: the resulting flux in :math:`m^3/day`
-
-:math:`Q_1`: Flux over the connection for a unity gradient ( :math:`\\\\nabla \\\\Psi = 1`) in :math:`\\\\frac{m^3}{day}`
-
-:math:`\\\\nabla \\\\Psi = \\\\frac{\\\\Psi_{l}-\\\\Psi_{r}}{d}`: The
-hydraulic gradient of the (l)eft, resp. (r)ight node of the connection
-
-:math:`d`: The topographic length of the connection in m
-
-C++ includes: simple_connections.h ";
-
-%feature("docstring")
-cmf::water::LinearGradientFlux::LinearGradientFlux "LinearGradientFlux(cmf::water::flux_node::ptr left,
-cmf::water::flux_node::ptr right, real Q1, real d=-1.0)
-
-Creates a generic gradient based flux, if enough water is present in
-the source.
-
-Parameters:
------------
-
-left:  The left node of the connection
-
-right:  The right node of the connection
-
-Q1:  Flux over the connection for a unity gradient ( :math:`\\\\nabla \\\\Psi = 1`) in :math:`\\\\frac{m^3}{day}`
-
-d:  the topographic lenght of the connection in m ";
-
-%feature("docstring")  cmf::water::LinearGradientFlux::conc "real
-conc(cmf::math::Time t, const cmf::water::solute &_Solute)
-
-Returns the concentration of the flux.
-
-If not overridden, it returns the concentration of the source of the
-flux (direction depending) ";
-
-%feature("docstring")  cmf::water::LinearGradientFlux::exchange_target
-"void exchange_target(flux_node::ptr oldtarget, flux_node::ptr
-newTarget) ";
-
-%feature("docstring")  cmf::water::LinearGradientFlux::get_ptr "ptr
-get_ptr() const ";
-
-%feature("docstring")  cmf::water::LinearGradientFlux::get_target "flux_node::ptr get_target(const flux_node &inquirer)
-
-Returns the other end of a connection than the asking end. ";
-
-%feature("docstring")  cmf::water::LinearGradientFlux::get_target "flux_node::ptr get_target(int index) const
-
-With index 0, the left node is returned, with index 1 the right node
-of the connection. ";
-
-%feature("docstring")
-cmf::water::LinearGradientFlux::get_tracer_filter "real
-get_tracer_filter()
-
-A value ranging from 0 to 1 to filter tracers out of the water flux.
-
-1.0 is no filter and 0.0 means no solute is crossing this connection
-";
-
-%feature("docstring")
-cmf::water::LinearGradientFlux::get_tracer_filter "real
-get_tracer_filter(solute S)
-
-A value ranging from 0 to 1 to filter tracers out of the water flux.
-";
-
-%feature("docstring")  cmf::water::LinearGradientFlux::kill_me "bool
-kill_me()
-
-Deregisters this connection from its nodes. Returns true if only one
-reference is left. ";
-
-%feature("docstring")  cmf::water::LinearGradientFlux::left_node "flux_node::ptr left_node() const
-
-Returns the left node of this connection. ";
-
-%feature("docstring")  cmf::water::LinearGradientFlux::q "real
-q(const flux_node &inquirer, cmf::math::Time t)
-
-Returns the current flux through a connection. Negative signs mean out
-of the inquirer, positive are inflows to the inquirer. ";
-
-%feature("docstring")  cmf::water::LinearGradientFlux::refresh "void
-refresh(cmf::math::Time t)
-
-Performes a new calculation of the flux. ";
-
-%feature("docstring")  cmf::water::LinearGradientFlux::right_node "flux_node::ptr right_node() const
-
-returns the right node of this connection ";
-
-%feature("docstring")
-cmf::water::LinearGradientFlux::set_tracer_filter "void
-set_tracer_filter(real value)
-
-A value ranging from 0 to 1 to filter tracers out of the water flux.
-
-1.0 is no filter and 0.0 means no solute is crossing this connection
-";
-
-%feature("docstring")
-cmf::water::LinearGradientFlux::set_tracer_filter "void
-set_tracer_filter(solute S, real value) ";
-
-%feature("docstring")  cmf::water::LinearGradientFlux::short_string "virtual std::string short_string() const ";
-
-%feature("docstring")  cmf::water::LinearGradientFlux::to_string "virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_linear_retention.xml
@@ -7877,6 +8022,10 @@ get_tracer_filter(solute S)
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
+%feature("docstring")
+cmf::water::LinearStorageConnection::is_waterbalance_source "virtual
+bool is_waterbalance_source(const flux_node &inquirer) ";
+
 %feature("docstring")  cmf::water::LinearStorageConnection::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
@@ -7940,9 +8089,8 @@ cmf::atmosphere::log_wind_profile::~log_wind_profile "virtual
 ~log_wind_profile() ";
 
 %feature("docstring")
-cmf::atmosphere::log_wind_profile::get_aerodynamic_resistance "void
-get_aerodynamic_resistance(double &r_ag, double &r_ac, cmf::math::Time
-t) const final
+cmf::atmosphere::log_wind_profile::get_aerodynamic_resistance "virtual void get_aerodynamic_resistance(double &r_ag, double &r_ac,
+cmf::math::Time t) const
 
 aerodynamic resistance from ground to atmosphere (r_ag) and from
 canopy to atmosphere (r_ac) ";
@@ -8041,6 +8189,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
+cmf::upslope::connections::MACROlikeMacroMicroExchange::is_waterbalance_source
+"virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")
 cmf::upslope::connections::MACROlikeMacroMicroExchange::kill_me "bool
 kill_me()
 
@@ -8130,9 +8282,6 @@ Returns true if the node has no water. ";
 %feature("docstring")  cmf::upslope::MacroPore::to_string "virtual
 std::string to_string() const ";
 
-%feature("docstring")  cmf::upslope::MacroPore::add_connected_states "virtual void add_connected_states(cmf::math::StateVariable::list
-&states) ";
-
 %feature("docstring")  cmf::upslope::MacroPore::conc "real conc(const
 cmf::water::solute &_Solute) const
 
@@ -8140,7 +8289,6 @@ Returns the concentration of the given solute. ";
 
 %feature("docstring")  cmf::upslope::MacroPore::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute) const
-override
 
 Returns the current WaterQuality (concentration of all solutes) ";
 
@@ -8276,7 +8424,7 @@ The fraction of the macro pores in m3/m3. This adds to the porosity of
 the layer. ";
 
 %feature("docstring")  cmf::upslope::MacroPore::get_potential "real
-get_potential(cmf::math::Time t=cmf::math::never) const
+get_potential() const
 
 Returns the actual water level in the macropore in m above reference.
 ";
@@ -8286,9 +8434,7 @@ Returns the actual water level in the macropore in m above reference.
 Returns the project, this node is part of. ";
 
 %feature("docstring")  cmf::upslope::MacroPore::get_state "real
-get_state() const
-
-Returns the current state of the variable. ";
+get_state() const ";
 
 %feature("docstring")
 cmf::upslope::MacroPore::get_state_variable_content "char
@@ -8297,18 +8443,18 @@ get_state_variable_content() const
 A character indicating the integrated variable (either 'V' for Volume
 or 'h' for head) ";
 
+%feature("docstring")  cmf::upslope::MacroPore::get_states "cmf::math::StateVariableList get_states()
+
+Add the state variables, owned by an object derived from
+StateVariableOwner, to the given vector. ";
+
 %feature("docstring")  cmf::upslope::MacroPore::get_volume "real
 get_volume() const
 
 Returns the actual stored volume in this macropore in m3. ";
 
-%feature("docstring")  cmf::upslope::MacroPore::is_connected "virtual
-bool is_connected(const cmf::math::StateVariable &other) const
-
-Returns True if this waterstorage is effected by another state. ";
-
-%feature("docstring")  cmf::upslope::MacroPore::is_storage "bool
-is_storage() const override
+%feature("docstring")  cmf::upslope::MacroPore::is_storage "virtual
+bool is_storage() const
 
 Returns true, since this is a storage. ";
 
@@ -8323,9 +8469,7 @@ Sets the water level in the macropore. Be aware of not setting it
 below the lower boundary. ";
 
 %feature("docstring")  cmf::upslope::MacroPore::set_state "void
-set_state(real newState)
-
-Gives access to the state variable. ";
+set_state(real newState) ";
 
 %feature("docstring")
 cmf::upslope::MacroPore::set_state_variable_content "void
@@ -8446,6 +8590,8 @@ get_tracer_filter(solute S)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")  cmf::river::Manning::is_waterbalance_source "virtual bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")  cmf::river::Manning::kill_me "bool kill_me()
 
@@ -8570,6 +8716,10 @@ get_tracer_filter(solute S)
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
+%feature("docstring")
+cmf::river::Manning_Diffusive::is_waterbalance_source "virtual bool
+is_waterbalance_source(const flux_node &inquirer) ";
+
 %feature("docstring")  cmf::river::Manning_Diffusive::kill_me "bool
 kill_me()
 
@@ -8690,6 +8840,10 @@ get_tracer_filter(solute S)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::river::Manning_Kinematic::is_waterbalance_source "virtual bool
+is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")  cmf::river::Manning_Kinematic::kill_me "bool
 kill_me()
@@ -8850,6 +9004,10 @@ cmf::upslope::connections::MatrixInfiltration::get_tracer_filter "real get_trace
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::connections::MatrixInfiltration::is_waterbalance_source
+"virtual bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")
 cmf::upslope::connections::MatrixInfiltration::kill_me "bool
@@ -9312,10 +9470,87 @@ template_integrator:  Template for the integrators
 
 count:  Number of integrators ";
 
+%feature("docstring")  cmf::math::MultiIntegrator::add_single_state "virtual void add_single_state(cmf::math::StateVariable::ptr state)
+
+Adds a single state variable to the integrator. ";
+
+%feature("docstring")  cmf::math::MultiIntegrator::add_states "void
+add_states(cmf::math::StateVariableOwner &stateOwner)
+
+Only there to override Integrator::AddStatesFromOwner. Throws an
+exception. Use add_states_to_integrator instead. ";
+
+%feature("docstring")
+cmf::math::MultiIntegrator::add_states_to_integrator "void
+add_states_to_integrator(cmf::math::StateVariableOwner &stateOwner,
+int integrator_position)
+
+Add state variables from a StateVariableOwner. ";
+
+%feature("docstring")
+cmf::math::MultiIntegrator::add_values_to_states "void
+add_values_to_states(const num_array &operands)
+
+Adds the values in operands to the current states. ";
+
 %feature("docstring")  cmf::math::MultiIntegrator::copy "virtual
 cmf::math::MultiIntegrator* copy() const
 
 Polymorphic copy constructor. ";
+
+%feature("docstring")  cmf::math::MultiIntegrator::copy_dxdt "void
+copy_dxdt(Time time, num_array &destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to a numeric vector using
+use_OpenMP.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Vector to be overwritten by the results
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::MultiIntegrator::copy_dxdt "void
+copy_dxdt(Time time, real *destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to an preallocated c
+array.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Allocated c array
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::MultiIntegrator::copy_states "void
+copy_states(num_array &destination) const
+
+Copies the states to a numeric vector using use_OpenMP. ";
+
+%feature("docstring")  cmf::math::MultiIntegrator::copy_states "void
+copy_states(real *destination) const ";
+
+%feature("docstring")  cmf::math::MultiIntegrator::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
+
+%feature("docstring")  cmf::math::MultiIntegrator::get_state "real
+get_state(ptrdiff_t position) const
+
+Returns the statevariable at position Simplifies the assessment of
+state variables. ";
+
+%feature("docstring")  cmf::math::MultiIntegrator::get_states "cmf::math::num_array get_states() const ";
+
+%feature("docstring")  cmf::math::MultiIntegrator::get_states "StateVariableList get_states()
+
+gets the state variables of the integrator ";
 
 %feature("docstring")  cmf::math::MultiIntegrator::integrate "int
 integrate(cmf::math::Time t_max, cmf::math::Time dt)
@@ -9338,15 +9573,23 @@ void reset()
 
 Resets the integrator. ";
 
-%feature("docstring")  cmf::math::MultiIntegrator::set_system "void
-set_system(const state_list &states) ";
+%feature("docstring")  cmf::math::MultiIntegrator::set_state "void
+set_state(ptrdiff_t position, real newState)
+
+Simplifies the assessment of state variables. ";
+
+%feature("docstring")  cmf::math::MultiIntegrator::set_states "void
+set_states(const num_array &newStates)
+
+Copies the new states to the actual states. ";
+
+%feature("docstring")  cmf::math::MultiIntegrator::set_states "void
+set_states(real *newStates) ";
 
 %feature("docstring")  cmf::math::MultiIntegrator::size "size_t
-size() const ";
+size() const
 
-%feature("docstring")  cmf::math::MultiIntegrator::to_string "std::string to_string() const override
-
-Desrcibes the iterator. ";
+returns the number of state variables ";
 
 
 // File: classcmf_1_1maps_1_1_nearest_neighbor_map.xml
@@ -9477,7 +9720,7 @@ Returns the sum of all flux vectors. ";
 
 The timeseries of the boundary flux. ";
 
-%feature("docstring")  cmf::water::NeumannBoundary::get_potential "virtual real get_potential(cmf::math::Time=cmf::math::never) const
+%feature("docstring")  cmf::water::NeumannBoundary::get_potential "virtual real get_potential() const
 
 Returns the water potential of the node in m waterhead.
 
@@ -9684,6 +9927,9 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
+%feature("docstring")  cmf::water::NeumannFlux::is_waterbalance_source
+"virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
 %feature("docstring")  cmf::water::NeumannFlux::kill_me "bool
 kill_me()
 
@@ -9806,10 +10052,13 @@ Replaces slow Python code like: ";
 
 Returns the positions of the nodes. ";
 
-%feature("docstring")  cmf::water::node_list::get_potentials "cmf::math::num_array get_potentials(cmf::math::Time
-t=cmf::math::never)
+%feature("docstring")  cmf::water::node_list::get_potentials "cmf::math::num_array get_potentials()
 
 Returns the potential of the nodes. ";
+
+%feature("docstring")  cmf::water::node_list::get_states "cmf::math::StateVariableList get_states()
+
+Implements StateVariableOwner. ";
 
 %feature("docstring")  cmf::water::node_list::getslice "node_list
 getslice(ptrdiff_t begin, ptrdiff_t end, ptrdiff_t step=1) const
@@ -10007,89 +10256,6 @@ const ";
 %feature("docstring")  cmf::math::num_array::sum "real sum() const ";
 
 
-// File: classcmf_1_1math_1_1_o_d_esystem.xml
-%feature("docstring") cmf::math::ODEsystem "";
-
-%feature("docstring")  cmf::math::ODEsystem::ODEsystem "ODEsystem(const cmf::math::ODEsystem &for_copy) ";
-
-%feature("docstring")  cmf::math::ODEsystem::ODEsystem "ODEsystem()=default ";
-
-%feature("docstring")  cmf::math::ODEsystem::ODEsystem "ODEsystem(const cmf::math::state_list &for_copy, int use_OpenMP=-1) ";
-
-%feature("docstring")  cmf::math::ODEsystem::~ODEsystem "~ODEsystem()=default ";
-
-%feature("docstring")  cmf::math::ODEsystem::add_values_to_states "void add_values_to_states(const num_array &operands)
-
-Adds the values in operands to the current states. ";
-
-%feature("docstring")  cmf::math::ODEsystem::begin "state_list::iterator begin() ";
-
-%feature("docstring")  cmf::math::ODEsystem::begin "state_list::const_iterator begin() const ";
-
-%feature("docstring")  cmf::math::ODEsystem::copy_dxdt "void
-copy_dxdt(Time time, num_array &destination, real factor=1) const
-
-Copies the derivatives at time step \"time\" to a numeric vector using
-use_OpenMP.
-
-Parameters:
------------
-
-time:   Time at which the derivatives should be calculated
-
-destination:  Vector to be overwritten by the results
-
-factor:  A factor that is multiplied to the derivate (e.g. unit
-conversion or integration length) ";
-
-%feature("docstring")  cmf::math::ODEsystem::copy_dxdt "void
-copy_dxdt(Time time, real *destination, real factor=1) const
-
-Copies the derivatives at time step \"time\" to an preallocated c
-array.
-
-Parameters:
------------
-
-time:   Time at which the derivatives should be calculated
-
-destination:  Allocated c array
-
-factor:  A factor that is multiplied to the derivate (e.g. unit
-conversion or integration length) ";
-
-%feature("docstring")  cmf::math::ODEsystem::copy_states "void
-copy_states(num_array &destination) const ";
-
-%feature("docstring")  cmf::math::ODEsystem::copy_states "void
-copy_states(real *destination) const ";
-
-%feature("docstring")  cmf::math::ODEsystem::end "state_list::iterator end() ";
-
-%feature("docstring")  cmf::math::ODEsystem::end "state_list::const_iterator end() const ";
-
-%feature("docstring")  cmf::math::ODEsystem::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
-
-%feature("docstring")  cmf::math::ODEsystem::get_state_value "real
-get_state_value(ptrdiff_t index) const ";
-
-%feature("docstring")  cmf::math::ODEsystem::get_state_values "cmf::math::num_array get_state_values() const ";
-
-%feature("docstring")  cmf::math::ODEsystem::set_state_value "void
-set_state_value(ptrdiff_t index, real value) const ";
-
-%feature("docstring")  cmf::math::ODEsystem::set_states "void
-set_states(const num_array &newStates)
-
-Copies the new states to the actual states. ";
-
-%feature("docstring")  cmf::math::ODEsystem::set_states "void
-set_states(real *newStates) ";
-
-%feature("docstring")  cmf::math::ODEsystem::size "size_t size()
-const ";
-
-
 // File: classcmf_1_1river_1_1_open_water_storage.xml
 %feature("docstring") cmf::river::OpenWaterStorage "
 
@@ -10115,10 +10281,6 @@ the fluxes ";
 Returns true if the node has no water. ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::to_string "virtual std::string to_string() const ";
-
-%feature("docstring")
-cmf::river::OpenWaterStorage::add_connected_states "virtual void
-add_connected_states(cmf::math::StateVariable::list &states) ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &solute) const
@@ -10174,7 +10336,7 @@ IVolumeHeightFunction& get_height_function() const
 
 The functional relation between volume, depth and exposed area. ";
 
-%feature("docstring")  cmf::river::OpenWaterStorage::get_potential "real get_potential(cmf::math::Time t=cmf::math::never) const override
+%feature("docstring")  cmf::river::OpenWaterStorage::get_potential "virtual real get_potential() const
 
 Returns the water potential of the node in m waterhead.
 
@@ -10186,9 +10348,7 @@ The base class water storage always returns the height of the location
 Returns the project, this node is part of. ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::get_state "real
-get_state() const
-
-Returns the current state of the variable. ";
+get_state() const ";
 
 %feature("docstring")
 cmf::river::OpenWaterStorage::get_state_variable_content "char
@@ -10197,16 +10357,16 @@ get_state_variable_content() const
 A character indicating the integrated variable (either 'V' for Volume
 or 'h' for head) ";
 
+%feature("docstring")  cmf::river::OpenWaterStorage::get_states "cmf::math::StateVariableList get_states()
+
+Add the state variables, owned by an object derived from
+StateVariableOwner, to the given vector. ";
+
 %feature("docstring")  cmf::river::OpenWaterStorage::get_volume "virtual real get_volume() const
 
 Returns the volume of water in this storage in m3 ";
 
-%feature("docstring")  cmf::river::OpenWaterStorage::is_connected "virtual bool is_connected(const cmf::math::StateVariable &other) const
-
-Returns True if this waterstorage is effected by another state. ";
-
-%feature("docstring")  cmf::river::OpenWaterStorage::is_storage "bool
-is_storage() const override
+%feature("docstring")  cmf::river::OpenWaterStorage::is_storage "virtual bool is_storage() const
 
 Returns true, since this is a storage. ";
 
@@ -10222,14 +10382,12 @@ set_depth(real new_depth) ";
 cmf::river::OpenWaterStorage::set_height_function "virtual void
 set_height_function(const IVolumeHeightFunction &val) ";
 
-%feature("docstring")  cmf::river::OpenWaterStorage::set_potential "void set_potential(real newpotential) override
+%feature("docstring")  cmf::river::OpenWaterStorage::set_potential "virtual void set_potential(real newpotential)
 
 Sets the potential of this flux node. ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::set_state "void
-set_state(real newState)
-
-Gives access to the state variable. ";
+set_state(real newState) ";
 
 %feature("docstring")
 cmf::river::OpenWaterStorage::set_state_variable_content "void
@@ -10331,6 +10489,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
+%feature("docstring")
+cmf::upslope::ET::OudinET::is_waterbalance_source "virtual bool
+is_waterbalance_source(const flux_node &inquirer) ";
+
 %feature("docstring")  cmf::upslope::ET::OudinET::kill_me "bool
 kill_me()
 
@@ -10423,6 +10585,10 @@ get_tracer_filter(solute S)
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
+%feature("docstring")
+cmf::upslope::ET::PenmanEvaporation::is_waterbalance_source "virtual
+bool is_waterbalance_source(const flux_node &inquirer) ";
+
 %feature("docstring")  cmf::upslope::ET::PenmanEvaporation::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
@@ -10512,8 +10678,6 @@ Governing equations:
     \\\\frac s m \\\\\\\\ && r_l=100 \\\\frac s m, LAI_{Active}=0.5 LAI
     
 
-
-
 C++ includes: ET.h ";
 
 %feature("docstring")
@@ -10564,6 +10728,10 @@ get_tracer_filter(solute S)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::ET::PenmanMonteithET::is_waterbalance_source "virtual
+bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")  cmf::upslope::ET::PenmanMonteithET::kill_me "bool kill_me()
 
@@ -10953,6 +11121,10 @@ get_tracer_filter(solute S)
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
+%feature("docstring")
+cmf::water::PowerLawConnection::is_waterbalance_source "virtual bool
+is_waterbalance_source(const flux_node &inquirer) ";
+
 %feature("docstring")  cmf::water::PowerLawConnection::kill_me "bool
 kill_me()
 
@@ -10994,6 +11166,13 @@ set_tracer_filter(solute S, real value) ";
 %feature("docstring")  cmf::water::PowerLawConnection::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::water::PowerLawConnection::to_string "virtual std::string to_string() const ";
+
+
+// File: classcmf_1_1math_1_1precalculatable.xml
+%feature("docstring") cmf::math::precalculatable "";
+
+%feature("docstring")  cmf::math::precalculatable::do_action "virtual
+void do_action(Time t, bool use_OpenMP=true)=0 ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_priestley_taylor_e_t.xml
@@ -11072,6 +11251,10 @@ get_tracer_filter(solute S)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::ET::PriestleyTaylorET::is_waterbalance_source "virtual
+bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")  cmf::upslope::ET::PriestleyTaylorET::kill_me "bool kill_me()
 
@@ -11154,6 +11337,8 @@ h, double slope) const ";
 
 The study area, holding all cells, outlets and streams.
 
+Todo Describe tracers
+
 C++ includes: project.h ";
 
 %feature("docstring")  cmf::project::project "project(std::string
@@ -11186,6 +11371,11 @@ Returns the node from the project nodes at index. ";
 %feature("docstring")  cmf::project::get_reach "cmf::river::Reach::ptr get_reach(ptrdiff_t index)
 
 Returns the reach at index. ";
+
+%feature("docstring")  cmf::project::get_states "cmf::math::StateVariableList get_states()
+
+Returns all state variables of the project. Mostly for internal use.
+";
 
 %feature("docstring")  cmf::project::get_storages "cmf::water::node_list get_storages()
 
@@ -11567,6 +11757,10 @@ get_tracer_filter(solute S)
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
+%feature("docstring")
+cmf::upslope::connections::Rainfall::is_waterbalance_source "virtual
+bool is_waterbalance_source(const flux_node &inquirer) ";
+
 %feature("docstring")  cmf::upslope::connections::Rainfall::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
@@ -11719,7 +11913,7 @@ Returns the rainfall intensity in mm/day at time t. ";
 
 %feature("docstring")
 cmf::atmosphere::RainfallStationReference::get_potential "virtual
-real get_potential(cmf::math::Time=cmf::math::never) const
+real get_potential() const
 
 Returns the water potential of the node in m waterhead.
 
@@ -11825,7 +12019,7 @@ Returns the sum of all flux vectors. ";
 
 Returns the actual rainfall intensity in mm/day. ";
 
-%feature("docstring")  cmf::atmosphere::RainSource::get_potential "virtual real get_potential(cmf::math::Time=cmf::math::never) const
+%feature("docstring")  cmf::atmosphere::RainSource::get_potential "virtual real get_potential() const
 
 Returns the water potential of the node in m waterhead.
 
@@ -11911,9 +12105,6 @@ Returns true if the node has no water. ";
 std::string to_string() const ";
 
 %feature("docstring")  cmf::river::Reach::~Reach "virtual ~Reach() ";
-
-%feature("docstring")  cmf::river::Reach::add_connected_states "virtual void add_connected_states(cmf::math::StateVariable::list
-&states) ";
 
 %feature("docstring")  cmf::river::Reach::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &solute) const
@@ -12007,8 +12198,8 @@ get_length() const
 
 Returns the length of the reach. ";
 
-%feature("docstring")  cmf::river::Reach::get_potential "real
-get_potential(cmf::math::Time t=cmf::math::never) const override
+%feature("docstring")  cmf::river::Reach::get_potential "virtual real
+get_potential() const
 
 Returns the water potential of the node in m waterhead.
 
@@ -12030,14 +12221,17 @@ Returns the channel shape. ";
 Returns the reach most downstream from this reach. ";
 
 %feature("docstring")  cmf::river::Reach::get_state "real get_state()
-const
-
-Returns the current state of the variable. ";
+const ";
 
 %feature("docstring")  cmf::river::Reach::get_state_variable_content "char get_state_variable_content() const
 
 A character indicating the integrated variable (either 'V' for Volume
 or 'h' for head) ";
+
+%feature("docstring")  cmf::river::Reach::get_states "cmf::math::StateVariableList get_states()
+
+Add the state variables, owned by an object derived from
+StateVariableOwner, to the given vector. ";
 
 %feature("docstring")  cmf::river::Reach::get_upstream "ptr
 get_upstream(int index) const
@@ -12054,13 +12248,8 @@ const
 
 Returns the average width of the reach. ";
 
-%feature("docstring")  cmf::river::Reach::is_connected "virtual bool
-is_connected(const cmf::math::StateVariable &other) const
-
-Returns True if this waterstorage is effected by another state. ";
-
-%feature("docstring")  cmf::river::Reach::is_storage "bool
-is_storage() const override
+%feature("docstring")  cmf::river::Reach::is_storage "virtual bool
+is_storage() const
 
 Returns true, since this is a storage. ";
 
@@ -12099,15 +12288,13 @@ set_outlet(cmf::water::flux_node::ptr outlet)
 
 Connects the reach to an outlet, e.g. a boundary condition. ";
 
-%feature("docstring")  cmf::river::Reach::set_potential "void
-set_potential(real newpotential) override
+%feature("docstring")  cmf::river::Reach::set_potential "virtual void
+set_potential(real newpotential)
 
 Sets the potential of this flux node. ";
 
 %feature("docstring")  cmf::river::Reach::set_state "void
-set_state(real newState)
-
-Gives access to the state variable. ";
+set_state(real newState) ";
 
 %feature("docstring")  cmf::river::Reach::set_state_variable_content "void set_state_variable_content(char content)
 
@@ -12487,6 +12674,10 @@ get_tracer_filter(solute S)
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
+%feature("docstring")
+cmf::upslope::connections::Richards::is_waterbalance_source "virtual
+bool is_waterbalance_source(const flux_node &inquirer) ";
+
 %feature("docstring")  cmf::upslope::connections::Richards::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
@@ -12622,6 +12813,9 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
+cmf::upslope::connections::Richards_lateral::is_waterbalance_source "virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")
 cmf::upslope::connections::Richards_lateral::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
@@ -12696,6 +12890,11 @@ Sets the current model time. ";
 
 Returns the last time step. ";
 
+%feature("docstring")  cmf::math::RKFIntegrator::reset "virtual void
+reset()
+
+Resets any saved history (for multistep methods) ";
+
 /*  Integrate  */
 
 %feature("docstring")  cmf::math::RKFIntegrator::integrate_until "void integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(),
@@ -12712,7 +12911,7 @@ dt:   Time step (may be omitted)
 
 reset:  If true, solver is reseted before integration starts ";
 
-%feature("docstring")  cmf::math::RKFIntegrator::RKFIntegrator "RKFIntegrator(const cmf::math::state_list &states, real epsilon=1e-9,
+%feature("docstring")  cmf::math::RKFIntegrator::RKFIntegrator "RKFIntegrator(StateVariableOwner &states, real epsilon=1e-9,
 cmf::math::Time dt_min=cmf::math::timespan(1000))
 
 Constructs a new RKFIntegrator from a pointer to a vector of state
@@ -12741,10 +12940,78 @@ epsilon:  relative error tolerance per time step (default=1e-9)
 
 dt_min:  minimum time step (default=1s) ";
 
+%feature("docstring")  cmf::math::RKFIntegrator::add_single_state "virtual void add_single_state(cmf::math::StateVariable::ptr state)
+
+Adds a single state variable to the integrator. ";
+
+%feature("docstring")  cmf::math::RKFIntegrator::add_states "void
+add_states(cmf::math::StateVariableOwner &stateOwner)
+
+Adds states from an StateVariableOwner. ";
+
+%feature("docstring")  cmf::math::RKFIntegrator::add_values_to_states
+"void add_values_to_states(const num_array &operands)
+
+Adds the values in operands to the current states. ";
+
 %feature("docstring")  cmf::math::RKFIntegrator::copy "virtual
 Integrator* copy() const
 
 Polymorphic copy constructor. ";
+
+%feature("docstring")  cmf::math::RKFIntegrator::copy_dxdt "void
+copy_dxdt(Time time, num_array &destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to a numeric vector using
+use_OpenMP.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Vector to be overwritten by the results
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::RKFIntegrator::copy_dxdt "void
+copy_dxdt(Time time, real *destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to an preallocated c
+array.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Allocated c array
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::RKFIntegrator::copy_states "void
+copy_states(num_array &destination) const
+
+Copies the states to a numeric vector using use_OpenMP. ";
+
+%feature("docstring")  cmf::math::RKFIntegrator::copy_states "void
+copy_states(real *destination) const ";
+
+%feature("docstring")  cmf::math::RKFIntegrator::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
+
+%feature("docstring")  cmf::math::RKFIntegrator::get_state "real
+get_state(ptrdiff_t position) const
+
+Returns the statevariable at position Simplifies the assessment of
+state variables. ";
+
+%feature("docstring")  cmf::math::RKFIntegrator::get_states "cmf::math::num_array get_states() const ";
+
+%feature("docstring")  cmf::math::RKFIntegrator::get_states "StateVariableList get_states()
+
+gets the state variables of the integrator ";
 
 %feature("docstring")  cmf::math::RKFIntegrator::integrate "int
 integrate(cmf::math::Time MaxTime, cmf::math::Time TimeStep)
@@ -12762,20 +13029,23 @@ TimeStep:  Takes the proposed timestep, and changes it into the
 effictivly used timestep according to the local stiffness of the
 problem and MaxTime ";
 
-%feature("docstring")  cmf::math::RKFIntegrator::reset "void reset()
-override
+%feature("docstring")  cmf::math::RKFIntegrator::set_state "void
+set_state(ptrdiff_t position, real newState)
 
-Resets any saved history (for multistep methods) ";
+Simplifies the assessment of state variables. ";
 
-%feature("docstring")  cmf::math::RKFIntegrator::set_system "void
-set_system(const state_list &states) ";
+%feature("docstring")  cmf::math::RKFIntegrator::set_states "void
+set_states(const num_array &newStates)
+
+Copies the new states to the actual states. ";
+
+%feature("docstring")  cmf::math::RKFIntegrator::set_states "void
+set_states(real *newStates) ";
 
 %feature("docstring")  cmf::math::RKFIntegrator::size "size_t size()
-const ";
+const
 
-%feature("docstring")  cmf::math::RKFIntegrator::to_string "std::string to_string() const override
-
-Desrcibes the iterator. ";
+returns the number of state variables ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stress_function.xml
@@ -12801,14 +13071,14 @@ Creates a new copy of this wetness. ";
 
 %feature("docstring")
 cmf::upslope::ET::RootUptakeStressFunction::Tact "virtual real
-Tact(const cmf::upslope::SoilLayer *soillayer, real Tpot) const =0
+Tact(const cmf::upslope::SoilLayer *soilLayer, real Tpot) const =0
 
 Calculates the water stress for a layer.
 
 Parameters:
 -----------
 
-soillayer:  The cmf::upslope::SoilLayer this stress function belongs
+soilLayer:  The cmf::upslope::SoilLayer this stress function belongs
 to
 
 Tpot:  Potential Transpiration in mm/day (for the full profile)
@@ -12910,6 +13180,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
+cmf::upslope::connections::RutterInterception::is_waterbalance_source
+"virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")
 cmf::upslope::connections::RutterInterception::kill_me "bool
 kill_me()
 
@@ -12957,6 +13231,43 @@ std::string short_string() const ";
 %feature("docstring")
 cmf::upslope::connections::RutterInterception::to_string "virtual
 std::string to_string() const ";
+
+
+// File: classcmf_1_1geos__shapereader_1_1_shapefile.xml
+%feature("docstring") cmf::geos_shapereader::Shapefile "
+
+The shapefile class, create it from a .shp file  The shapefile class
+implements most of the sequence protocol Usage:
+shp=Shapefile('theshapes.shp') # Load the shape file
+print(shp[0].shape.area)        # Print area of shape
+print(shp[0].Name)              # Prints the name of the shape,
+assuming theshapes.dbf has a field 'Name' ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::__init__ "def __init__(self, filename, coordinatedigits=12)
+
+Loads a shapefile from a filename ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::__getitem__ "def __getitem__(self, index) ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::__iter__ "def __iter__(self) ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::__len__ "def
+__len__(self) ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::readheader "def readheader(self, f)
+
+reads the header of a shape file (see ESRI Shapefile Whitepaper
+http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf) ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::readrecord "def readrecord(self, f, coordinatedigits)
+
+Reads a record from the shapefile see:
+http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::shapes "def
+shapes(self)
+
+Returns a list of shapes ";
 
 
 // File: classcmf_1_1draw_1_1shapemap_1_1_shape_map.xml
@@ -13075,6 +13386,149 @@ transp_from_layer(cmf::upslope::SoilLayer::ptr sl, cmf::math::Time t)
 "sign_error(const std::string &msg) ";
 
 
+// File: classcmf_1_1upslope_1_1connections_1_1_simple_infiltration.xml
+%feature("docstring") cmf::upslope::connections::SimpleInfiltration "
+
+Connects the surfacewater and the most upper layer using a simplified
+infiltration model suitable for conceptional models.
+
+
+
+.. math::
+
+     q_{inf} = \\\\left(1-e_{sat}\\\\left(W, W_0\\\\right)\\\\right)
+    q_{inf,pot} 
+
+where:  :math:`q_{inf}` Effective infiltration from
+surface to first layer (soil)
+
+:math:`e_{sat}(W, W_0)` Saturation excess, ranging from 0 (nowhere saturated
+soil layer) to 1 (fully saturated). :math:`W` is the average wetness
+calculated from the soil layer, :math:`W_0` is a parameter denoting the
+wetness, where 50% of the layer is saturated using a sigmoidal
+function:  :math:`e_{sat}(W_{soil}, W_0) = \\\\left(1+e^{-(W-W_0)0.2(1-W_0)}\\\\right)^{-1}`
+
+:math:`q_{inf,pot}` is the potential infiltration, given by the incoming
+fluxes limited by the saturated conductivity:  :math:`q_{inf,pot} = \\\\min(q_{in}, K_{sat} A)`  :math:`q_{in}` Sum of incoming fluxes to the
+surfacewater in :math:`m^3/day`
+
+:math:`K_{sat}` Saturated conductivity in :math:`m/day`
+
+:math:`A` Cell area in :math:`m^2`
+
+C++ includes: infiltration.h ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::SimpleInfiltration "SimpleInfiltration(cmf::upslope::SoilLayer::ptr soilwater,
+cmf::water::flux_node::ptr surfacewater, real W0=0.9)
+
+Creates the connection between surfacewater and first soil layer.
+
+Parameters:
+-----------
+
+soilwater:  the infiltration target
+
+surfacewater:  the infiltration source
+
+W0:  the 50% saturation value ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::get_ptr "ptr get_ptr()
+const ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::get_target "flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::get_tracer_filter "real get_tracer_filter()
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::get_tracer_filter "real get_tracer_filter(solute S)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::is_waterbalance_source
+"virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::kill_me "bool
+kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::left_node "flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::q "real q(const
+flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::right_node "flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::set_tracer_filter "void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::set_tracer_filter "void set_tracer_filter(solute S, real value) ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::short_string "virtual
+std::string short_string() const ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::to_string "virtual
+std::string to_string() const ";
+
+
 // File: classcmf_1_1maps_1_1_simple_quad_tree.xml
 %feature("docstring") cmf::maps::SimpleQuadTree "";
 
@@ -13086,6 +13540,261 @@ add_object(self, object, bounds) ";
 
 %feature("docstring")  cmf::maps::SimpleQuadTree::get_objects "def
 get_objects(self, bounds) ";
+
+
+// File: classcmf_1_1upslope_1_1connections_1_1_simple_tindex_snow_melt.xml
+%feature("docstring") cmf::upslope::connections::SimpleTindexSnowMelt
+"
+
+Calculates snow melt using a simple degree day method.
+
+
+
+.. math::
+
+     q_{melt} [mm/day] = (T-T_{thres}) * r 
+
+Usage:
+
+C++ includes: surfacefluxes.h ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::SimpleTindexSnowMelt
+"SimpleTindexSnowMelt(cmf::water::WaterStorage::ptr snow,
+cmf::water::flux_node::ptr surface_water, cmf::upslope::Cell &cell,
+real rate=7.0)
+
+Creates a new snow melt connection.
+
+Parameters:
+-----------
+
+snow:  Snow storage, usually cel.snow
+
+surface_water:  target of the melted water (usually cell.surfacewater)
+
+cell:  The cell, needed to get weather and area
+
+rate:  The rate of snow melt, given in mm/(degC day), default = 7.0 ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::exchange_target "void exchange_target(flux_node::ptr oldtarget, flux_node::ptr
+newTarget) ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::get_ptr "ptr
+get_ptr() const ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::get_target "flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::get_tracer_filter "real get_tracer_filter()
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::get_tracer_filter "real get_tracer_filter(solute S)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::is_waterbalance_source
+"virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::kill_me "bool
+kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::left_node "flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::q "real q(const
+flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::right_node "flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::set_tracer_filter "void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::set_tracer_filter "void set_tracer_filter(solute S, real value) ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::short_string "virtual std::string short_string() const ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::to_string "virtual
+std::string to_string() const ";
+
+
+// File: classcmf_1_1upslope_1_1connections_1_1_simpl_richards.xml
+%feature("docstring") cmf::upslope::connections::SimplRichards "
+
+Calculates flow according to a simplified Richards equation.
+
+
+
+.. math::
+
+     q_{Richards} &=& (K(\\\\theta) - K(\\\\theta_r))
+    A \\\\\\\\ 
+
+ where  :math:`d [m]` is the distance between
+the two soil layers
+
+:math:`K(\\\\theta)\\\\left[\\\\frac m{day}\\\\right]` is the geometric
+mean conductivity (see SoilType::Kunsat)
+
+:math:`A [m^2]` is the crosssectional area of the flux
+
+C++ includes: Percolation.h ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::SimplRichards "SimplRichards(cmf::upslope::SoilLayer::ptr left,
+cmf::water::flux_node::ptr right) ";
+
+%feature("docstring")  cmf::upslope::connections::SimplRichards::conc
+"real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::get_ptr "ptr get_ptr()
+const ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::get_target "flux_node::ptr
+get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::get_target "flux_node::ptr
+get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::get_tracer_filter "real
+get_tracer_filter(solute S)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::is_waterbalance_source "virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::kill_me "bool kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::left_node "flux_node::ptr
+left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::upslope::connections::SimplRichards::q "real q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::right_node "flux_node::ptr
+right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::set_tracer_filter "void
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::set_tracer_filter "void
+set_tracer_filter(solute S, real value) ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::short_string "virtual
+std::string short_string() const ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_snowfall.xml
@@ -13138,6 +13847,10 @@ get_tracer_filter(solute S)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::connections::Snowfall::is_waterbalance_source "virtual
+bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")  cmf::upslope::connections::Snowfall::kill_me "bool kill_me()
 
@@ -13211,9 +13924,6 @@ Returns true if the node has no water. ";
 %feature("docstring")  cmf::upslope::SoilLayer::to_string "virtual
 std::string to_string() const ";
 
-%feature("docstring")  cmf::upslope::SoilLayer::add_connected_states "virtual void add_connected_states(cmf::math::StateVariable::list
-&states) ";
-
 %feature("docstring")  cmf::upslope::SoilLayer::conc "real conc(const
 cmf::water::solute &_Solute) const
 
@@ -13221,7 +13931,6 @@ Returns the concentration of the given solute. ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute) const
-override
 
 Returns the current WaterQuality (concentration of all solutes) ";
 
@@ -13333,8 +14042,7 @@ get_porosity() const
 
 Returns the mean porosity in the layer. ";
 
-%feature("docstring")  cmf::upslope::SoilLayer::get_potential "real
-get_potential(cmf::math::Time t=cmf::math::never) const override
+%feature("docstring")  cmf::upslope::SoilLayer::get_potential "virtual real get_potential() const
 
 Returns the total potential in m 
 
@@ -13372,9 +14080,7 @@ cmf::upslope::RetentionCurve& get_soil() const
 Returns the soil properties of the water storage. ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::get_state "real
-get_state() const
-
-Returns the current state of the variable. ";
+get_state() const ";
 
 %feature("docstring")
 cmf::upslope::SoilLayer::get_state_variable_content "char
@@ -13382,6 +14088,11 @@ get_state_variable_content() const
 
 A character indicating the integrated variable (either 'V' for Volume
 or 'h' for head) ";
+
+%feature("docstring")  cmf::upslope::SoilLayer::get_states "cmf::math::StateVariableList get_states()
+
+Add the state variables, owned by an object derived from
+StateVariableOwner, to the given vector. ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::get_Tact "double
 get_Tact(double Tpot)
@@ -13416,13 +14127,8 @@ real get_wetness() const
 
 Returns the wetness of the soil :math:`\\\\frac{V_{H_2O}}{V_{pores}}`. ";
 
-%feature("docstring")  cmf::upslope::SoilLayer::is_connected "virtual
-bool is_connected(const cmf::math::StateVariable &other) const
-
-Returns True if this waterstorage is effected by another state. ";
-
-%feature("docstring")  cmf::upslope::SoilLayer::is_storage "bool
-is_storage() const override
+%feature("docstring")  cmf::upslope::SoilLayer::is_storage "virtual
+bool is_storage() const
 
 Returns true, since this is a storage. ";
 
@@ -13456,9 +14162,7 @@ Sets the root fraction in this layer explicitly. ";
 void set_soil(const cmf::upslope::RetentionCurve &r_curve) ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::set_state "void
-set_state(real newState)
-
-Gives access to the state variable. ";
+set_state(real newState) ";
 
 %feature("docstring")
 cmf::upslope::SoilLayer::set_state_variable_content "void
@@ -13564,16 +14268,12 @@ The derivative function is given by:
 
 C++ includes: SoluteStorage.h ";
 
-%feature("docstring")  cmf::water::SoluteStorage::add_connected_states
-"virtual void add_connected_states(cmf::math::StateVariable::list
-&states) ";
-
 %feature("docstring")  cmf::water::SoluteStorage::dxdt "virtual real
 dxdt(const cmf::math::Time &time)
 
 Returns the derivate of the state variable at time time. ";
 
-%feature("docstring")  cmf::water::SoluteStorage::get_abs_errtol "real get_abs_errtol(real rel_errtol) const override ";
+%feature("docstring")  cmf::water::SoluteStorage::get_abs_errtol "virtual real get_abs_errtol(real rel_errtol) const ";
 
 %feature("docstring")  cmf::water::SoluteStorage::get_conc "real
 get_conc() const
@@ -13584,22 +14284,6 @@ Returns the concentration of the solute. ";
 get_state() const
 
 Returns the current state of the variable. ";
-
-%feature("docstring")  cmf::water::SoluteStorage::get_water "const
-WaterStorage& get_water() const
-
-get the waterstorge of the solute storage ";
-
-%feature("docstring")  cmf::water::SoluteStorage::is_connected "virtual bool is_connected(const cmf::math::StateVariable &other) const
-
-Returns True if this solute storage is effected by another state. ";
-
-%feature("docstring")  cmf::water::SoluteStorage::set_abs_errtol "void set_abs_errtol(real scale)
-
-Sets a scaling factor for the absolute error tolerance of this storage
-in terms of the absolute error tolerance of the owning waterstorage.
-
-The absolute error tolerance ";
 
 %feature("docstring")  cmf::water::SoluteStorage::set_adsorption "void set_adsorption(const Adsorption &newadsorption, real m=-1) ";
 
@@ -13720,9 +14404,9 @@ solute_integrator:  Template for the integrator of soluteStorage state
 variables ";
 
 %feature("docstring")
-cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator "SoluteWaterIntegrator(const cmf::water::solute_vector &solutes, const
+cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator "SoluteWaterIntegrator(cmf::water::solute_vector solutes, const
 cmf::math::Integrator &water_integrator, const cmf::math::Integrator
-&solute_integrator, const cmf::math::state_list &states)
+&solute_integrator, cmf::math::StateVariableOwner &states)
 
 Creates a new SoluteWaterIntegrator.
 
@@ -13739,67 +14423,253 @@ variables
 
 states:  States to be added to the integrators ";
 
-%feature("docstring")  cmf::math::SoluteWaterIntegrator::copy "cmf::math::SoluteWaterIntegrator* copy() const override
+%feature("docstring")
+cmf::math::SoluteWaterIntegrator::~SoluteWaterIntegrator "~SoluteWaterIntegrator() ";
+
+%feature("docstring")
+cmf::math::SoluteWaterIntegrator::add_single_state "virtual void
+add_single_state(cmf::math::StateVariable::ptr state)
+
+Adds a single state variable to the integrator. ";
+
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::add_states "void add_states(cmf::math::StateVariableOwner &stateOwner)
+
+Add state variables from a StateVariableOwner. ";
+
+%feature("docstring")
+cmf::math::SoluteWaterIntegrator::add_values_to_states "void
+add_values_to_states(const num_array &operands)
+
+Adds the values in operands to the current states. ";
+
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::copy "virtual cmf::math::SoluteWaterIntegrator* copy() const
 
 Polymorphic copy constructor. ";
 
-%feature("docstring")  cmf::math::SoluteWaterIntegrator::integrate "int integrate(cmf::math::Time t_max, cmf::math::Time dt) override
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::copy_dxdt "void copy_dxdt(Time time, num_array &destination, real factor=1) const
 
-Add state variables from a cmf::math::state_list. ";
+Copies the derivatives at time step \"time\" to a numeric vector using
+use_OpenMP.
 
-%feature("docstring")  cmf::math::SoluteWaterIntegrator::reset "void
-reset() override
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Vector to be overwritten by the results
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::copy_dxdt "void copy_dxdt(Time time, real *destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to an preallocated c
+array.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Allocated c array
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::copy_states "void copy_states(num_array &destination) const
+
+Copies the states to a numeric vector using use_OpenMP. ";
+
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::copy_states "void copy_states(real *destination) const ";
+
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
+
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::get_state "real get_state(ptrdiff_t position) const
+
+Returns the statevariable at position Simplifies the assessment of
+state variables. ";
+
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::get_states "cmf::math::num_array get_states() const ";
+
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::get_states "StateVariableList get_states()
+
+gets the state variables of the integrator ";
+
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::integrate "int integrate(cmf::math::Time t_max, cmf::math::Time dt)
+
+Integrates the vector of state variables.
+
+Parameters:
+-----------
+
+t_max:  To stop the model (if running in a model framework) at time
+steps of value exchange e.g. full hours, the next value exchange time
+can be given
+
+dt:  Takes the proposed time step, and changes it into the effectively
+used time step according to the local stiffness of the problem and
+MaxTime ";
+
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::reset "virtual void reset()
 
 Resets the integrators (only needed for multistep methods) ";
 
-%feature("docstring")  cmf::math::SoluteWaterIntegrator::set_system "void set_system(const state_list &states) ";
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::set_state "void set_state(ptrdiff_t position, real newState)
+
+Simplifies the assessment of state variables. ";
+
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::set_states "void set_states(const num_array &newStates)
+
+Copies the new states to the actual states. ";
+
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::set_states "void set_states(real *newStates) ";
 
 %feature("docstring")  cmf::math::SoluteWaterIntegrator::size "size_t
-size() const ";
+size() const
 
-%feature("docstring")  cmf::math::SoluteWaterIntegrator::to_string "std::string to_string() const override
+returns the number of state variables ";
 
-Desrcibes the iterator. ";
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::to_string "std::string to_string() const ";
 
 
-// File: structcmf_1_1math_1_1sparse__structure.xml
-%feature("docstring") cmf::math::sparse_structure "";
+// File: struct_spbcg_mem_rec.xml
+%feature("docstring") SpbcgMemRec "";
 
-%feature("docstring")  cmf::math::sparse_structure::sparse_structure "sparse_structure()
 
-Creates the sparse row compressed structure from states variable list.
+// File: struct_sptfqmr_mem_rec.xml
+%feature("docstring") SptfqmrMemRec "";
+
+
+// File: classcmf_1_1water_1_1statecontrol__connection.xml
+%feature("docstring") cmf::water::statecontrol_connection "
+
+Calculates a flux to or from a water storage to hold it's state at a
+more or less constant level.
+
+
+
+.. math::
+
+     q=\\\\frac{h_1 - h_{target}}{t_c [days]} 
+
+where:  :math:`q` the
+resulting flux in m3/day
+
+:math:`h_1` the reference state
+
+:math:`h_{target}` the state of the target (right) node
+
+:math:`t_c` the time to reach the target state
+
+C++ includes: simple_connections.h ";
+
+%feature("docstring")
+cmf::water::statecontrol_connection::statecontrol_connection "statecontrol_connection(cmf::water::WaterStorage::ptr
+controlled_storage, cmf::water::flux_node::ptr other_end, real
+target_state, cmf::math::Time reaction_time)
+
+Creates a flux connection to control the state of a storage.
+
+Parameters:
+-----------
+
+controlled_storage:  Water storage, to be controlled
+
+other_end:  source of missing water or target of excessive water
+
+target_state:  State the controlled storage should hold (
+:math:`h_{target}`)
+
+reaction_time:  Time to reach state ( :math:`t_c`) ";
+
+%feature("docstring")  cmf::water::statecontrol_connection::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::water::statecontrol_connection::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")  cmf::water::statecontrol_connection::get_ptr "ptr get_ptr() const ";
+
+%feature("docstring")  cmf::water::statecontrol_connection::get_target
+"flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")  cmf::water::statecontrol_connection::get_target
+"flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::water::statecontrol_connection::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
 ";
 
-%feature("docstring")  cmf::math::sparse_structure::generate "size_t
-generate(const cmf::math::state_list &states) ";
+%feature("docstring")
+cmf::water::statecontrol_connection::get_tracer_filter "real
+get_tracer_filter(solute S)
 
-
-// File: classcmf_1_1math_1_1state__list.xml
-%feature("docstring") cmf::math::state_list "";
-
-%feature("docstring")  cmf::math::state_list::state_list "state_list() ";
-
-%feature("docstring")  cmf::math::state_list::state_list "state_list(const state_list &other) ";
-
-%feature("docstring")  cmf::math::state_list::append "void
-append(StateVariable::ptr sv) ";
-
-%feature("docstring")  cmf::math::state_list::begin "iterator begin()
+A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
-%feature("docstring")  cmf::math::state_list::begin "const_iterator
-begin() const ";
+%feature("docstring")
+cmf::water::statecontrol_connection::is_waterbalance_source "virtual
+bool is_waterbalance_source(const flux_node &inquirer) ";
 
-%feature("docstring")  cmf::math::state_list::end "iterator end() ";
+%feature("docstring")  cmf::water::statecontrol_connection::kill_me "bool kill_me()
 
-%feature("docstring")  cmf::math::state_list::end "const_iterator
-end() const ";
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
 
-%feature("docstring")  cmf::math::state_list::extend "state_list&
-extend(const state_list &svl) ";
+%feature("docstring")  cmf::water::statecontrol_connection::left_node
+"flux_node::ptr left_node() const
 
-%feature("docstring")  cmf::math::state_list::size "size_t size()
-const ";
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::water::statecontrol_connection::q "real
+q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::water::statecontrol_connection::refresh "void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")  cmf::water::statecontrol_connection::right_node
+"flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::water::statecontrol_connection::set_tracer_filter "void
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::water::statecontrol_connection::set_tracer_filter "void
+set_tracer_filter(solute S, real value) ";
+
+%feature("docstring")
+cmf::water::statecontrol_connection::short_string "virtual
+std::string short_string() const ";
+
+%feature("docstring")  cmf::water::statecontrol_connection::to_string
+"virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1math_1_1_state_variable.xml
@@ -13817,9 +14687,6 @@ ctor ";
 
 %feature("docstring")  cmf::math::StateVariable::~StateVariable "virtual ~StateVariable() ";
 
-%feature("docstring")  cmf::math::StateVariable::add_connected_states
-"virtual void add_connected_states(list &states) ";
-
 %feature("docstring")  cmf::math::StateVariable::dxdt "virtual real
 dxdt(const cmf::math::Time &time)=0
 
@@ -13832,9 +14699,6 @@ get_state() const
 
 Returns the current state of the variable. ";
 
-%feature("docstring")  cmf::math::StateVariable::is_connected "virtual bool is_connected(const cmf::math::StateVariable &other) const
-";
-
 %feature("docstring")  cmf::math::StateVariable::set_state "void
 set_state(real newState)
 
@@ -13844,35 +14708,74 @@ Gives access to the state variable. ";
 std::string to_string() const =0 ";
 
 
-// File: classcmf_1_1timetools_1_1_stop_watch.xml
-%feature("docstring") cmf::timetools::StopWatch "
+// File: classcmf_1_1math_1_1_state_variable_list.xml
+%feature("docstring") cmf::math::StateVariableList "";
+
+%feature("docstring")
+cmf::math::StateVariableList::~StateVariableList "virtual
+~StateVariableList() ";
+
+%feature("docstring")  cmf::math::StateVariableList::append "void
+append(StateVariable::ptr sv) ";
+
+%feature("docstring")  cmf::math::StateVariableList::begin "state_vector::iterator begin() ";
+
+%feature("docstring")  cmf::math::StateVariableList::begin "state_vector::const_iterator begin() const ";
+
+%feature("docstring")  cmf::math::StateVariableList::end "state_vector::iterator end() ";
+
+%feature("docstring")  cmf::math::StateVariableList::end "state_vector::const_iterator end() const ";
+
+%feature("docstring")  cmf::math::StateVariableList::extend "void
+extend(StateVariableOwner &svo) ";
+
+%feature("docstring")  cmf::math::StateVariableList::get_states "StateVariableList get_states() ";
+
+%feature("docstring")  cmf::math::StateVariableList::size "size_t
+size() const ";
+
+
+// File: classcmf_1_1math_1_1_state_variable_owner.xml
+%feature("docstring") cmf::math::StateVariableOwner "
+
+An abstract class, that owns one or more state variables, that can add
+them to a vector of state variables in a certain order.
+
+C++ includes: statevariable.h ";
+
+%feature("docstring")
+cmf::math::StateVariableOwner::~StateVariableOwner "virtual
+~StateVariableOwner() ";
+
+%feature("docstring")  cmf::math::StateVariableOwner::get_states "virtual StateVariableList get_states()=0
+
+Add the state variables, owned by an object derived from
+StateVariableOwner, to the given vector. ";
+
+
+// File: classcmf_1_1stopwatch_1_1_stop_watch.xml
+%feature("docstring") cmf::stopwatch::StopWatch "
 
 A stopwatch to estimated the total time of a process    Creating a
-StopWatch: >>>stopwatch=StopWatch(start, stop) Start and end are
+StopWatch: >>>stopwatch=StopWatch(start,stop)  Start and end are
 indicators to describe the progress of a process.  Start is the
 indicator value at the beginning of the process. As default they are
-0.0 and 1.0.  Starting the StopWatch again: >>>stopwatch.restart()
+0.0 and 1.0.  Starting the StopWatch again: >>>stopwatch.start()
 Getting the elapsed time, the total time and the remaining time of the
-process in seconds: >>>elapsed, total, remaining = stopwatch(progress)
+process in seconds: >>>elapsed,total,remaining = stopwatch(progress)
 Where progress is a process progress indicator matching start and stop
 Example: stopwatch=StopWatch(0,10) for i in range(10): time.sleep(1)
 print('elapsed = %0.2fs, total= %0.2fs, remaining = %0.2fs' %
 stopwatch(i+1)) ";
 
-%feature("docstring")  cmf::timetools::StopWatch::__init__ "def
+%feature("docstring")  cmf::stopwatch::StopWatch::__init__ "def
 __init__(self, start=0.0, stop=1.0) ";
 
-%feature("docstring")  cmf::timetools::StopWatch::__call__ "def
-__call__(self, progress)
+%feature("docstring")  cmf::stopwatch::StopWatch::__call__ "def
+__call__(self, progress) ";
 
-Returns the progress in wall clock time :param progress: The current
-position in the stopwatch :return: A 3-tuple of elapsed, total and
-remaining seconds of the task ";
-
-%feature("docstring")  cmf::timetools::StopWatch::restart "def
-restart(self)
-
-Restarts the stopwatch ";
+%feature("docstring")  cmf::stopwatch::StopWatch::start "def
+start(self) ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1stressed_e_t.xml
@@ -13923,6 +14826,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::ET::stressedET::is_waterbalance_source "virtual bool
+is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")  cmf::upslope::ET::stressedET::kill_me "bool
 kill_me()
@@ -14029,14 +14936,14 @@ Creates a new suction stress function. ";
 Creates a new copy of this wetness. ";
 
 %feature("docstring")  cmf::upslope::ET::SuctionStress::Tact "virtual
-real Tact(const cmf::upslope::SoilLayer *soillayer, real Tpot) const
+real Tact(const cmf::upslope::SoilLayer *soilLayer, real Tpot) const
 
 Calculates the water stress for a layer.
 
 Parameters:
 -----------
 
-soillayer:  The cmf::upslope::SoilLayer this stress function belongs
+soilLayer:  The cmf::upslope::SoilLayer this stress function belongs
 to
 
 Tpot:  Potential Transpiration in mm/day (for the full profile)
@@ -14073,10 +14980,6 @@ Returns true if the node has no water. ";
 
 %feature("docstring")  cmf::upslope::SurfaceWater::to_string "virtual
 std::string to_string() const ";
-
-%feature("docstring")
-cmf::upslope::SurfaceWater::add_connected_states "virtual void
-add_connected_states(cmf::math::StateVariable::list &states) ";
 
 %feature("docstring")  cmf::upslope::SurfaceWater::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &solute) const
@@ -14148,7 +15051,7 @@ get Manning roughness (n) of the surface
 
 From Python use this as a property: ";
 
-%feature("docstring")  cmf::upslope::SurfaceWater::get_potential "real get_potential(cmf::math::Time t=cmf::math::never) const override
+%feature("docstring")  cmf::upslope::SurfaceWater::get_potential "virtual real get_potential() const
 
 Returns the water potential of the node in m waterhead.
 
@@ -14166,9 +15069,7 @@ Get water depth at which runoff starts.
 From Python use this as a property: ";
 
 %feature("docstring")  cmf::upslope::SurfaceWater::get_state "real
-get_state() const
-
-Returns the current state of the variable. ";
+get_state() const ";
 
 %feature("docstring")
 cmf::upslope::SurfaceWater::get_state_variable_content "char
@@ -14177,16 +15078,16 @@ get_state_variable_content() const
 A character indicating the integrated variable (either 'V' for Volume
 or 'h' for head) ";
 
+%feature("docstring")  cmf::upslope::SurfaceWater::get_states "cmf::math::StateVariableList get_states()
+
+Add the state variables, owned by an object derived from
+StateVariableOwner, to the given vector. ";
+
 %feature("docstring")  cmf::upslope::SurfaceWater::get_volume "virtual real get_volume() const
 
 Returns the volume of water in this storage in m3 ";
 
-%feature("docstring")  cmf::upslope::SurfaceWater::is_connected "virtual bool is_connected(const cmf::math::StateVariable &other) const
-
-Returns True if this waterstorage is effected by another state. ";
-
-%feature("docstring")  cmf::upslope::SurfaceWater::is_storage "bool
-is_storage() const override
+%feature("docstring")  cmf::upslope::SurfaceWater::is_storage "virtual bool is_storage() const
 
 Returns true, since this is a storage. ";
 
@@ -14211,7 +15112,7 @@ set Manning roughness (n) of the surface
 
 From Python use this as a property: ";
 
-%feature("docstring")  cmf::upslope::SurfaceWater::set_potential "void set_potential(real newpotential) override
+%feature("docstring")  cmf::upslope::SurfaceWater::set_potential "virtual void set_potential(real newpotential)
 
 Sets the potential of this flux node. ";
 
@@ -14222,9 +15123,7 @@ Set water depth at which runoff starts.
 From Python use this as a property: ";
 
 %feature("docstring")  cmf::upslope::SurfaceWater::set_state "void
-set_state(real newState)
-
-Gives access to the state variable. ";
+set_state(real newState) ";
 
 %feature("docstring")
 cmf::upslope::SurfaceWater::set_state_variable_content "void
@@ -14320,6 +15219,9 @@ get_tracer_filter(solute S)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::ET::SW_evap_from_canopy::is_waterbalance_source "virtual bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")  cmf::upslope::ET::SW_evap_from_canopy::kill_me
 "bool kill_me()
@@ -14426,6 +15328,10 @@ get_tracer_filter(solute S)
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
+%feature("docstring")
+cmf::upslope::ET::SW_evap_from_layer::is_waterbalance_source "virtual
+bool is_waterbalance_source(const flux_node &inquirer) ";
+
 %feature("docstring")  cmf::upslope::ET::SW_evap_from_layer::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
@@ -14524,6 +15430,10 @@ get_tracer_filter(solute S)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::ET::SW_evap_from_snow::is_waterbalance_source "virtual
+bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")  cmf::upslope::ET::SW_evap_from_snow::kill_me "bool kill_me()
 
@@ -14629,6 +15539,9 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
+cmf::upslope::ET::SW_evap_from_surfacewater::is_waterbalance_source "virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")
 cmf::upslope::ET::SW_evap_from_surfacewater::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
@@ -14730,6 +15643,10 @@ get_tracer_filter(solute S)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::ET::SW_transpiration::is_waterbalance_source "virtual
+bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")  cmf::upslope::ET::SW_transpiration::kill_me "bool kill_me()
 
@@ -14841,6 +15758,9 @@ get_tracer_filter(solute S)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::connections::SWATPercolation::is_waterbalance_source "virtual bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")
 cmf::upslope::connections::SWATPercolation::kill_me "bool kill_me()
@@ -15085,41 +16005,140 @@ typecode() const ";
 V(double h) const ";
 
 
-// File: classcmf_1_1upslope_1_1connections_1_1_temp_index_snow_melt.xml
-%feature("docstring") cmf::upslope::connections::TempIndexSnowMelt "
+// File: classcmf_1_1water_1_1_system_bridge.xml
+%feature("docstring") cmf::water::SystemBridge "
 
-Calculates snow melt using a simple degree day method.
+A SystemBridge is an advanced feature for tuning of the calculation
+time.
 
+A SystemBridge can be used to replace an existing connection between
+nodes. It is created using the system_bridge function. After
+installation, the two nodes can more safely be added to different
+integrator systems. One node (called upper) is connected with the
+system bridge with the connection formerly connecting the nodes, the
+second node (called lower) is connected to the system bridge with as a
+Neumann boundary condition. The flux equals the average flux of the
+connection upper <-> SystemBridge. Therefore, the downward flux needs
+to be integrated over time by the solver the upper node belongs to.
+Use as an upper system (system upper node is belonging to) the faster
+reacting system. For the connection between upper and SystemBridge,
+the SystemBridge reacts as an Dirichlet boundary condition, providing
+the potential of the lower node.
 
+The following example code creates a system bridge between the nodes
+upper and lower. To integrate the flux over each timestep
+automatically, the systembridge is added to the solver of upper, as an
+integratable
 
-.. math::
+C++ includes: system_bridge.h ";
 
-     q_{melt} [mm/day] = (T-T_{thres}) * r 
+%feature("docstring")  cmf::water::SystemBridge::conc "virtual real
+conc(cmf::math::Time t, const cmf::water::solute &Solute) const
 
-Usage:
+Returns the water quality of the flux_node, if it is not overridden
+this is the mix of the incoming fluxes. ";
 
-C++ includes: surfacefluxes.h ";
+%feature("docstring")  cmf::water::SystemBridge::connection_to "cmf::water::flux_connection* connection_to(const cmf::water::flux_node
+&target)
 
-%feature("docstring")
-cmf::upslope::connections::TempIndexSnowMelt::TempIndexSnowMelt "TempIndexSnowMelt(cmf::water::WaterStorage::ptr snow,
-cmf::water::flux_node::ptr surface_water, cmf::upslope::Cell &cell,
-real rate=7.0)
+Returns the connection between this and target. ";
 
-Creates a new snow melt connection.
+%feature("docstring")  cmf::water::SystemBridge::down_flux_integrator
+"flux_integrator::ptr down_flux_integrator() const ";
+
+%feature("docstring")  cmf::water::SystemBridge::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
+cmf::math::Time t) ";
+
+%feature("docstring")  cmf::water::SystemBridge::flux_to "real
+flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
+
+Returns the actual flux between this and target (positive sign means
+\"from this into target\") ";
+
+%feature("docstring")  cmf::water::SystemBridge::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
+
+Returns the sum of all flux vectors. ";
+
+%feature("docstring")  cmf::water::SystemBridge::get_connections "cmf::water::connection_list get_connections() const ";
+
+%feature("docstring")  cmf::water::SystemBridge::get_down_flux "double get_down_flux() const
+
+Returns the currently integrated flux to the lower node. ";
+
+%feature("docstring")  cmf::water::SystemBridge::get_lower_node "flux_node::ptr get_lower_node() const
+
+Returns the lower node. ";
+
+%feature("docstring")  cmf::water::SystemBridge::get_potential "double get_potential() const
+
+Returns the water potential of the node in m waterhead.
+
+The base class water storage always returns the height of the location
+";
+
+%feature("docstring")  cmf::water::SystemBridge::get_project "cmf::project& get_project() const
+
+Returns the project, this node is part of. ";
+
+%feature("docstring")  cmf::water::SystemBridge::get_upper_node "flux_node::ptr get_upper_node() const
+
+Returns the upper node. ";
+
+%feature("docstring")  cmf::water::SystemBridge::is_empty "virtual
+double is_empty() const
+
+Returns true if the node has no water. ";
+
+%feature("docstring")  cmf::water::SystemBridge::is_storage "virtual
+bool is_storage() const
+
+true, if this is a waterstorage ";
+
+%feature("docstring")  cmf::water::SystemBridge::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t)
+
+Pure flux_nodes do not influence fluxes, therefore no recalculation of
+fluxes is required by flux_node.
+
+WaterStorage overrides this, since state changes require an update of
+the fluxes ";
+
+%feature("docstring")  cmf::water::SystemBridge::remove_connection "bool remove_connection(cmf::water::flux_node::ptr To)
+
+Remove the connection. ";
+
+%feature("docstring")  cmf::water::SystemBridge::set_potential "virtual void set_potential(real new_potential)
+
+Sets the potential of this flux node. ";
+
+%feature("docstring")  cmf::water::SystemBridge::to_string "virtual
+std::string to_string() const ";
+
+%feature("docstring")  cmf::water::SystemBridge::waterbalance "real
+waterbalance(cmf::math::Time t, const flux_connection *Without=0)
+const
+
+Returns the sum of all fluxes (positive and negative) at time t.
+
+Single fluxes can be excluded from the calculation
 
 Parameters:
 -----------
 
-snow:  Snow storage, usually cel.snow
+t:  Time of the query
 
-surface_water:  target of the melted water (usually cell.surfacewater)
+Without:  A flux_connection that is excluded from the waterbalance
+(e.g. to prevent closed circuits) ";
 
-cell:  The cell, needed to get weather and area
 
-rate:  The rate of snow melt, given in mm/(degC day), default = 7.0 ";
+// File: classcmf_1_1water_1_1_system_bridge_connection.xml
+%feature("docstring") cmf::water::SystemBridgeConnection "
 
-%feature("docstring")
-cmf::upslope::connections::TempIndexSnowMelt::conc "real
+Connects a system bridge with its lower node. Is created automatically
+when creating a SystemBridge.
+
+C++ includes: system_bridge.h ";
+
+%feature("docstring")  cmf::water::SystemBridgeConnection::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
 Returns the concentration of the flux.
@@ -15128,26 +16147,24 @@ If not overridden, it returns the concentration of the source of the
 flux (direction depending) ";
 
 %feature("docstring")
-cmf::upslope::connections::TempIndexSnowMelt::exchange_target "void
+cmf::water::SystemBridgeConnection::exchange_target "void
 exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 
-%feature("docstring")
-cmf::upslope::connections::TempIndexSnowMelt::get_ptr "ptr get_ptr()
-const ";
+%feature("docstring")  cmf::water::SystemBridgeConnection::get_ptr "ptr get_ptr() const ";
 
-%feature("docstring")
-cmf::upslope::connections::TempIndexSnowMelt::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+%feature("docstring")  cmf::water::SystemBridgeConnection::get_target
+"flux_node::ptr get_target(const flux_node &inquirer)
 
 Returns the other end of a connection than the asking end. ";
 
-%feature("docstring")
-cmf::upslope::connections::TempIndexSnowMelt::get_target "flux_node::ptr get_target(int index) const
+%feature("docstring")  cmf::water::SystemBridgeConnection::get_target
+"flux_node::ptr get_target(int index) const
 
 With index 0, the left node is returned, with index 1 the right node
 of the connection. ";
 
 %feature("docstring")
-cmf::upslope::connections::TempIndexSnowMelt::get_tracer_filter "real
+cmf::water::SystemBridgeConnection::get_tracer_filter "real
 get_tracer_filter()
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
@@ -15156,42 +16173,42 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::TempIndexSnowMelt::get_tracer_filter "real
+cmf::water::SystemBridgeConnection::get_tracer_filter "real
 get_tracer_filter(solute S)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::TempIndexSnowMelt::kill_me "bool kill_me()
+cmf::water::SystemBridgeConnection::is_waterbalance_source "virtual
+bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")  cmf::water::SystemBridgeConnection::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
 
-%feature("docstring")
-cmf::upslope::connections::TempIndexSnowMelt::left_node "flux_node::ptr left_node() const
+%feature("docstring")  cmf::water::SystemBridgeConnection::left_node "flux_node::ptr left_node() const
 
 Returns the left node of this connection. ";
 
-%feature("docstring")  cmf::upslope::connections::TempIndexSnowMelt::q
-"real q(const flux_node &inquirer, cmf::math::Time t)
+%feature("docstring")  cmf::water::SystemBridgeConnection::q "real
+q(const flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
-%feature("docstring")
-cmf::upslope::connections::TempIndexSnowMelt::refresh "void
-refresh(cmf::math::Time t)
+%feature("docstring")  cmf::water::SystemBridgeConnection::refresh "void refresh(cmf::math::Time t)
 
 Performes a new calculation of the flux. ";
 
-%feature("docstring")
-cmf::upslope::connections::TempIndexSnowMelt::right_node "flux_node::ptr right_node() const
+%feature("docstring")  cmf::water::SystemBridgeConnection::right_node
+"flux_node::ptr right_node() const
 
 returns the right node of this connection ";
 
 %feature("docstring")
-cmf::upslope::connections::TempIndexSnowMelt::set_tracer_filter "void
+cmf::water::SystemBridgeConnection::set_tracer_filter "void
 set_tracer_filter(real value)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
@@ -15200,15 +16217,132 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::TempIndexSnowMelt::set_tracer_filter "void
+cmf::water::SystemBridgeConnection::set_tracer_filter "void
 set_tracer_filter(solute S, real value) ";
 
 %feature("docstring")
-cmf::upslope::connections::TempIndexSnowMelt::short_string "virtual
-std::string short_string() const ";
+cmf::water::SystemBridgeConnection::short_string "virtual std::string
+short_string() const ";
+
+%feature("docstring")  cmf::water::SystemBridgeConnection::to_string "virtual std::string to_string() const ";
+
+
+// File: classcmf_1_1water_1_1_technical_flux.xml
+%feature("docstring") cmf::water::TechnicalFlux "
+
+Produces a constant but changeable flux from a source to a target, if
+enough water is present in the source.
+
+
+
+.. math::
+
+     q=\\\\begin{cases}0 & V_{source}\\\\le V_{min}\\\\\\\\ q_0
+    \\\\frac{V_{source} - V_{min}}{t_{decr} q_{0} - V_{min}} & V_{source}
+    \\\\le t_{decr} q_{0}\\\\\\\\ q_{0} & \\\\end{cases}
+
+This is similar to a neumann boundary, however this is not a boundary
+condition, but water is taken from the source (left) water storage and
+limited by that water storage.
+
+C++ includes: simple_connections.h ";
+
+%feature("docstring")  cmf::water::TechnicalFlux::TechnicalFlux "TechnicalFlux(cmf::water::WaterStorage::ptr source,
+cmf::water::flux_node::ptr target, real maximum_flux, real
+minimal_state=0, cmf::math::Time flux_decrease_time=cmf::math::h)
+
+Produces a constant but changeable flux from a source to a target, if
+enough water is present in the source.
+
+Parameters:
+-----------
+
+source:  The source of the water
+
+target:  The target of the water
+
+maximum_flux:  The requested flux :math:`q_{0}`
+
+minimal_state:  Minimal volume of stored water in source
+
+flux_decrease_time:  ( cmf::math::Time) ";
+
+%feature("docstring")  cmf::water::TechnicalFlux::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")  cmf::water::TechnicalFlux::exchange_target "void exchange_target(flux_node::ptr oldtarget, flux_node::ptr
+newTarget) ";
+
+%feature("docstring")  cmf::water::TechnicalFlux::get_ptr "ptr
+get_ptr() const ";
+
+%feature("docstring")  cmf::water::TechnicalFlux::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")  cmf::water::TechnicalFlux::get_target "flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")  cmf::water::TechnicalFlux::get_tracer_filter "real get_tracer_filter()
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")  cmf::water::TechnicalFlux::get_tracer_filter "real get_tracer_filter(solute S)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+";
 
 %feature("docstring")
-cmf::upslope::connections::TempIndexSnowMelt::to_string "virtual
+cmf::water::TechnicalFlux::is_waterbalance_source "virtual bool
+is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")  cmf::water::TechnicalFlux::kill_me "bool
+kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")  cmf::water::TechnicalFlux::left_node "flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::water::TechnicalFlux::q "real q(const
+flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::water::TechnicalFlux::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")  cmf::water::TechnicalFlux::right_node "flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")  cmf::water::TechnicalFlux::set_tracer_filter "void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")  cmf::water::TechnicalFlux::set_tracer_filter "void set_tracer_filter(solute S, real value) ";
+
+%feature("docstring")  cmf::water::TechnicalFlux::short_string "virtual std::string short_string() const ";
+
+%feature("docstring")  cmf::water::TechnicalFlux::to_string "virtual
 std::string to_string() const ";
 
 
@@ -15358,30 +16492,6 @@ times_in(const Time &t1) const
 Returns the number of times this is included in t1. ";
 
 /*  Boolean Operators  */
-
-%feature("docstring")  cmf::math::Time::long_time_if_zero "cmf::math::Time long_time_if_zero() const ";
-
-
-// File: classcmf_1_1timetools_1_1timerange.xml
-%feature("docstring") cmf::timetools::timerange "
-
-Creates a generator of cmf.Time, similar to the Python range function
-";
-
-%feature("docstring")  cmf::timetools::timerange::__init__ "def
-__init__(self, start, stop, step=day) ";
-
-%feature("docstring")  cmf::timetools::timerange::__getitem__ "def
-__getitem__(self, item) ";
-
-%feature("docstring")  cmf::timetools::timerange::__iter__ "def
-__iter__(self) ";
-
-%feature("docstring")  cmf::timetools::timerange::__len__ "def
-__len__(self) ";
-
-%feature("docstring")  cmf::timetools::timerange::__repr__ "def
-__repr__(self) ";
 
 
 // File: classcmf_1_1math_1_1timeseries.xml
@@ -15643,6 +16753,10 @@ get_tracer_filter(solute S)
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
+%feature("docstring")
+cmf::upslope::ET::timeseriesETpot::is_waterbalance_source "virtual
+bool is_waterbalance_source(const flux_node &inquirer) ";
+
 %feature("docstring")  cmf::upslope::ET::timeseriesETpot::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
@@ -15732,7 +16846,7 @@ Returns the actual rainfall intensity in mm/day. ";
 
 %feature("docstring")
 cmf::atmosphere::TimeseriesRainSource::get_potential "virtual real
-get_potential(cmf::math::Time=cmf::math::never) const
+get_potential() const
 
 Returns the water potential of the node in m waterhead.
 
@@ -15892,6 +17006,9 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
+cmf::upslope::connections::TOPModelFlow::is_waterbalance_source "virtual bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")
 cmf::upslope::connections::TOPModelFlow::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
@@ -16030,6 +17147,10 @@ cmf::upslope::connections::TopographicGradientDarcy::get_tracer_filter
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::connections::TopographicGradientDarcy::is_waterbalance_source
+"virtual bool is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")
 cmf::upslope::connections::TopographicGradientDarcy::kill_me "bool
@@ -16323,6 +17444,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
+
+%feature("docstring")
+cmf::upslope::ET::TurcET::is_waterbalance_source "virtual bool
+is_waterbalance_source(const flux_node &inquirer) ";
 
 %feature("docstring")  cmf::upslope::ET::TurcET::kill_me "bool
 kill_me()
@@ -16729,14 +17854,14 @@ V0:  Water content in :math:`m^3` with full stress ( ET=0.0) ";
 Creates a new copy of this wetness. ";
 
 %feature("docstring")  cmf::upslope::ET::VolumeStress::Tact "virtual
-real Tact(const cmf::upslope::SoilLayer *soillayer, real Tpot) const
+real Tact(const cmf::upslope::SoilLayer *soilLayer, real Tpot) const
 
 Calculates the water stress for a layer.
 
 Parameters:
 -----------
 
-soillayer:  The cmf::upslope::SoilLayer this stress function belongs
+soilLayer:  The cmf::upslope::SoilLayer this stress function belongs
 to
 
 Tpot:  Potential Transpiration in mm/day (for the full profile)
@@ -16746,8 +17871,8 @@ Actual flux from layer in m3/day ";
 %feature("docstring")  cmf::upslope::ET::VolumeStress::to_string "std::string to_string() const ";
 
 
-// File: classcmf_1_1water_1_1_waterbalance_flux.xml
-%feature("docstring") cmf::water::WaterbalanceFlux "
+// File: classcmf_1_1water_1_1waterbalance__connection.xml
+%feature("docstring") cmf::water::waterbalance_connection "
 
 Routes the sum of all other fluxes to a target.
 
@@ -16764,85 +17889,148 @@ connected to the left node, except for the right node
 
 C++ includes: simple_connections.h ";
 
-%feature("docstring")  cmf::water::WaterbalanceFlux::WaterbalanceFlux
-"WaterbalanceFlux(flux_node::ptr source, flux_node::ptr target) ";
+%feature("docstring")
+cmf::water::waterbalance_connection::waterbalance_connection "waterbalance_connection(flux_node::ptr source, flux_node::ptr target)
+";
 
-%feature("docstring")  cmf::water::WaterbalanceFlux::conc "real
-conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+%feature("docstring")  cmf::water::waterbalance_connection::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
 Returns the concentration of the flux.
 
 If not overridden, it returns the concentration of the source of the
 flux (direction depending) ";
 
-%feature("docstring")  cmf::water::WaterbalanceFlux::exchange_target "void exchange_target(flux_node::ptr oldtarget, flux_node::ptr
-newTarget) ";
+%feature("docstring")
+cmf::water::waterbalance_connection::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 
-%feature("docstring")  cmf::water::WaterbalanceFlux::get_ptr "ptr
-get_ptr() const ";
+%feature("docstring")  cmf::water::waterbalance_connection::get_ptr "ptr get_ptr() const ";
 
-%feature("docstring")  cmf::water::WaterbalanceFlux::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+%feature("docstring")  cmf::water::waterbalance_connection::get_target
+"flux_node::ptr get_target(const flux_node &inquirer)
 
 Returns the other end of a connection than the asking end. ";
 
-%feature("docstring")  cmf::water::WaterbalanceFlux::get_target "flux_node::ptr get_target(int index) const
+%feature("docstring")  cmf::water::waterbalance_connection::get_target
+"flux_node::ptr get_target(int index) const
 
 With index 0, the left node is returned, with index 1 the right node
 of the connection. ";
 
-%feature("docstring")  cmf::water::WaterbalanceFlux::get_tracer_filter
-"real get_tracer_filter()
+%feature("docstring")
+cmf::water::waterbalance_connection::get_tracer_filter "real
+get_tracer_filter()
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 
 1.0 is no filter and 0.0 means no solute is crossing this connection
 ";
 
-%feature("docstring")  cmf::water::WaterbalanceFlux::get_tracer_filter
-"real get_tracer_filter(solute S)
+%feature("docstring")
+cmf::water::waterbalance_connection::get_tracer_filter "real
+get_tracer_filter(solute S)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
-%feature("docstring")  cmf::water::WaterbalanceFlux::kill_me "bool
-kill_me()
+%feature("docstring")
+cmf::water::waterbalance_connection::is_waterbalance_source "virtual
+bool is_waterbalance_source(const flux_node &inquirer) ";
+
+%feature("docstring")  cmf::water::waterbalance_connection::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
 
-%feature("docstring")  cmf::water::WaterbalanceFlux::left_node "flux_node::ptr left_node() const
+%feature("docstring")  cmf::water::waterbalance_connection::left_node
+"flux_node::ptr left_node() const
 
 Returns the left node of this connection. ";
 
-%feature("docstring")  cmf::water::WaterbalanceFlux::q "real q(const
-flux_node &inquirer, cmf::math::Time t)
+%feature("docstring")  cmf::water::waterbalance_connection::q "real
+q(const flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
-%feature("docstring")  cmf::water::WaterbalanceFlux::refresh "void
-refresh(cmf::math::Time t)
+%feature("docstring")  cmf::water::waterbalance_connection::refresh "void refresh(cmf::math::Time t)
 
 Performes a new calculation of the flux. ";
 
-%feature("docstring")  cmf::water::WaterbalanceFlux::right_node "flux_node::ptr right_node() const
+%feature("docstring")  cmf::water::waterbalance_connection::right_node
+"flux_node::ptr right_node() const
 
 returns the right node of this connection ";
 
-%feature("docstring")  cmf::water::WaterbalanceFlux::set_tracer_filter
-"void set_tracer_filter(real value)
+%feature("docstring")
+cmf::water::waterbalance_connection::set_tracer_filter "void
+set_tracer_filter(real value)
 
 A value ranging from 0 to 1 to filter tracers out of the water flux.
 
 1.0 is no filter and 0.0 means no solute is crossing this connection
 ";
 
-%feature("docstring")  cmf::water::WaterbalanceFlux::set_tracer_filter
-"void set_tracer_filter(solute S, real value) ";
+%feature("docstring")
+cmf::water::waterbalance_connection::set_tracer_filter "void
+set_tracer_filter(solute S, real value) ";
 
-%feature("docstring")  cmf::water::WaterbalanceFlux::short_string "virtual std::string short_string() const ";
+%feature("docstring")
+cmf::water::waterbalance_connection::short_string "virtual
+std::string short_string() const ";
 
-%feature("docstring")  cmf::water::WaterbalanceFlux::to_string "virtual std::string to_string() const ";
+%feature("docstring")  cmf::water::waterbalance_connection::to_string
+"virtual std::string to_string() const ";
+
+
+// File: classcmf_1_1water_1_1waterbalance__integrator.xml
+%feature("docstring") cmf::water::waterbalance_integrator "
+
+The waterbalance_integrator is an integratable for precise output of
+the average water balance of a flux_node over time.
+
+It can be added to a solver (any cmf::math::Integrator), which is than
+calling the integrate method at each substep.
+
+C++ includes: flux_node.h ";
+
+%feature("docstring")
+cmf::water::waterbalance_integrator::waterbalance_integrator "waterbalance_integrator(cmf::water::flux_node::ptr node) ";
+
+%feature("docstring")  cmf::water::waterbalance_integrator::avg "double avg() const
+
+Returns the average flux over the integration time in m3/day. ";
+
+%feature("docstring")  cmf::water::waterbalance_integrator::get_node "flux_node::ptr get_node() const
+
+Returns the node of this integrator. ";
+
+%feature("docstring")  cmf::water::waterbalance_integrator::integrate
+"void integrate(cmf::math::Time until)
+
+Integrates the flux a timestep further. Note: until is an absolut
+time. If until is before t0, the integration is initilized again. ";
+
+%feature("docstring")
+cmf::water::waterbalance_integrator::integration_t "cmf::math::Time
+integration_t() const
+
+Returns the duration of the integration. ";
+
+%feature("docstring")  cmf::water::waterbalance_integrator::reset "void reset(cmf::math::Time t)
+
+Initializes the integration. ";
+
+%feature("docstring")  cmf::water::waterbalance_integrator::set_node "void set_node(cmf::water::flux_node::ptr node) ";
+
+%feature("docstring")  cmf::water::waterbalance_integrator::sum "double sum() const
+
+Returns the total absolute waterbalance of the node in integration
+time [m3]. ";
+
+%feature("docstring")  cmf::water::waterbalance_integrator::t0 "cmf::math::Time t0() const
+
+Returns the start time of the integration. ";
 
 
 // File: classcmf_1_1water_1_1_water_storage.xml
@@ -16902,10 +18090,6 @@ InitialState:  Initial water content in m3
 scale:  A kind of \"standard size\" in m3 of the water storage to
 scale tolerances, default 1m3 ";
 
-%feature("docstring")  cmf::water::WaterStorage::add_connected_states
-"virtual void add_connected_states(cmf::math::StateVariable::list
-&states) ";
-
 %feature("docstring")  cmf::water::WaterStorage::conc "real
 conc(const cmf::water::solute &_Solute) const
 
@@ -16913,7 +18097,6 @@ Returns the concentration of the given solute. ";
 
 %feature("docstring")  cmf::water::WaterStorage::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute) const
-override
 
 Returns the current WaterQuality (concentration of all solutes) ";
 
@@ -16949,8 +18132,7 @@ Returns the sum of all flux vectors. ";
 
 %feature("docstring")  cmf::water::WaterStorage::get_connections "cmf::water::connection_list get_connections() const ";
 
-%feature("docstring")  cmf::water::WaterStorage::get_potential "real
-get_potential(cmf::math::Time t=cmf::math::never) const override
+%feature("docstring")  cmf::water::WaterStorage::get_potential "virtual real get_potential() const
 
 Returns the water potential of the node in m waterhead.
 
@@ -16962,9 +18144,7 @@ The base class water storage always returns the height of the location
 Returns the project, this node is part of. ";
 
 %feature("docstring")  cmf::water::WaterStorage::get_state "real
-get_state() const
-
-Returns the current state of the variable. ";
+get_state() const ";
 
 %feature("docstring")
 cmf::water::WaterStorage::get_state_variable_content "char
@@ -16973,17 +18153,18 @@ get_state_variable_content() const
 A character indicating the integrated variable (either 'V' for Volume
 or 'h' for head) ";
 
+%feature("docstring")  cmf::water::WaterStorage::get_states "cmf::math::StateVariableList get_states()
+
+Add the state variables, owned by an object derived from
+StateVariableOwner, to the given vector. ";
+
 %feature("docstring")  cmf::water::WaterStorage::get_volume "virtual
 real get_volume() const
 
 Returns the volume of water in this storage in m3 ";
 
-%feature("docstring")  cmf::water::WaterStorage::is_connected "virtual bool is_connected(const cmf::math::StateVariable &other) const
-
-Returns True if this waterstorage is effected by another state. ";
-
-%feature("docstring")  cmf::water::WaterStorage::is_storage "bool
-is_storage() const override
+%feature("docstring")  cmf::water::WaterStorage::is_storage "virtual
+bool is_storage() const
 
 Returns true, since this is a storage. ";
 
@@ -16991,15 +18172,12 @@ Returns true, since this is a storage. ";
 
 Remove the connection. ";
 
-%feature("docstring")  cmf::water::WaterStorage::set_potential "void
-set_potential(real newpotential) override
+%feature("docstring")  cmf::water::WaterStorage::set_potential "virtual void set_potential(real newpotential)
 
 Sets the potential of this flux node. ";
 
 %feature("docstring")  cmf::water::WaterStorage::set_state "void
-set_state(real newState)
-
-Gives access to the state variable. ";
+set_state(real newState) ";
 
 %feature("docstring")
 cmf::water::WaterStorage::set_state_variable_content "void
@@ -17295,21 +18473,6 @@ cmf::atmosphere::watts_to_MJ(double Watts)
 Transforms an energy flux from W to MJ/day. ";
 
 
-// File: namespacecmf_1_1convert__1__to__2.xml
-%feature("docstring")  cmf::convert_1_to_2::convert_1_to_2 "def
-cmf.convert_1_to_2.convert_1_to_2(stream_in=sys.stdin,
-stream_out=sys.stdout, fn='') ";
-
-%feature("docstring")  cmf::convert_1_to_2::get_pattern "def
-cmf.convert_1_to_2.get_pattern() ";
-
-%feature("docstring")  cmf::convert_1_to_2::regex_escape "def
-cmf.convert_1_to_2.regex_escape(seq) ";
-
-%feature("docstring")  cmf::convert_1_to_2::repl_or_warn "def
-cmf.convert_1_to_2.repl_or_warn";
-
-
 // File: namespacecmf_1_1describe.xml
 %feature("docstring")  cmf::describe::describe "def
 cmf.describe.describe(cmfobject, out=None)
@@ -17422,6 +18585,9 @@ warnings :return: ";
 // File: namespacecmf_1_1geometry_1_1qtree.xml
 
 
+// File: namespacecmf_1_1geos__shapereader.xml
+
+
 // File: namespacecmf_1_1jacobian.xml
 %feature("docstring")  cmf::jacobian::connected_states "def
 cmf.jacobian.connected_states(states)
@@ -17496,61 +18662,7 @@ Reaches with a bottom higher than any upstream reach are lowered to
 the minimum height of any (possibly distant) upstream reach. ";
 
 
-// File: namespacecmf_1_1timetools.xml
-%feature("docstring")  cmf::timetools::datetime_to_cmf "def
-cmf.timetools.datetime_to_cmf(date)
-
-Converts a python datetime to cmf.Time ";
-
-%feature("docstring")  cmf::timetools::pandas_series_to_timeseries "def cmf.timetools.pandas_series_to_timeseries(cls, series,
-regularize='warning') ";
-
-%feature("docstring")  cmf::timetools::timeseries___getstate__ "def
-cmf.timetools.timeseries___getstate__(self) ";
-
-%feature("docstring")  cmf::timetools::timeseries___setstate__ "def
-cmf.timetools.timeseries___setstate__(self, data) ";
-
-%feature("docstring")  cmf::timetools::timeseries_from_buffer "def
-cmf.timetools.timeseries_from_buffer(cls, buf) ";
-
-%feature("docstring")  cmf::timetools::timeseries_from_file "def
-cmf.timetools.timeseries_from_file(cls, f)
-
-Loads a timeseries saved with to_file from a file Description of the
-file layout: byte: 0   Number of (int64) 8   Begin of timeseries (in
-ms since 31.12.1899 00:00) (int64) 16  Step size of timeseries (in ms)
-(int64) 24  Interpolation power (int64) 32  First value of timeseries
-(float64) ";
-
-%feature("docstring")  cmf::timetools::timeseries_from_sequence "def
-cmf.timetools.timeseries_from_sequence(cls, begin, step, sequence,
-interpolation_mode=1) ";
-
-%feature("docstring")  cmf::timetools::timeseries_iter_time "def
-cmf.timetools.timeseries_iter_time(self)
-
-Returns an iterator to iterate over each timestep ";
-
-%feature("docstring")  cmf::timetools::timeseries_to_buffer "def
-cmf.timetools.timeseries_to_buffer(self)
-
-Returns a binary buffer filled with the data of self ";
-
-%feature("docstring")  cmf::timetools::timeseries_to_file "def
-cmf.timetools.timeseries_to_file(self, f)
-
-Saves a timeseries in a special binary format. The format consists of
-4 integers with 64 bit, indicating the milliseconds after the
-31.12.1899 00:00 of the beginning of the timeseries, the milliseconds
-of the time step, the interpolation power and the number of values.
-The following 64 bit floats, are the values of the timeseries ";
-
-%feature("docstring")  cmf::timetools::timeseries_to_pandas "def
-cmf.timetools.timeseries_to_pandas(self)
-
-Returns the timeseries as a pandas Series object :return: A
-pandas.Series object with the timesteps as index ";
+// File: namespacecmf_1_1stopwatch.xml
 
 
 // File: namespacecmf_1_1upslope.xml
@@ -17756,14 +18868,36 @@ real flux_value)
 Sets a constant flux between two nodes, if an
 external_control_connection exists. ";
 
+%feature("docstring")  cmf::water::system_bridge "SystemBridge::ptr
+cmf::water::system_bridge(cmf::project &p, flux_node::ptr upper,
+flux_node::ptr lower)
+
+Creates a SystemBridge object.
+
+This is an advanced feature for tuning of the calculation time.
+
+A SystemBridge can be used to replace an existing connection between
+nodes. After installation, the two nodes can more safely be added to
+different integrator systems. One node (called upper) is connected
+with the system bridge with the connection formerly connecting the
+nodes, the second node (called lower) is connected to the system
+bridge with as a Neumann boundary condition. The flux equals the
+average flux of the connection upper <-> SystemBridge. Therefore, the
+system bridge must become an integratable of the integrator system the
+upper node belongs to. Use as an upper system (system upper node is
+belonging to) the faster reacting system. For the connection between
+upper and SystemBridge, the SystemBridge reacts as an Dirichlet
+boundary condition, providing the potential of the lower node. ";
+
 
 // File: namespacecmf__core.xml
 
 
 // File: namespacestd.xml
+%feature("docstring")  std::isfinite "bool std::isfinite(double v) ";
 
-
-// File: namespacetextwrap.xml
+%feature("docstring")  std::to_string "std::string std::to_string(T
+val) ";
 
 
 // File: ____init_____8py.xml
@@ -17784,13 +18918,16 @@ external_control_connection exists. ";
 // File: _weather_8h.xml
 
 
+// File: cmfmemory_8h.xml
+
+
 // File: geometry_8h.xml
 
 
 // File: bdf2_8h.xml
 
 
-// File: cvode_8h.xml
+// File: cvodeintegrator_8h.xml
 
 
 // File: explicit__euler_8h.xml
@@ -17808,6 +18945,924 @@ external_control_connection exists. ";
 // File: _r_k_fintegrator_8h.xml
 
 
+// File: cvode_8h.xml
+%feature("docstring")  CVode "SUNDIALS_EXPORT int CVode(void
+*cvode_mem, realtype tout, N_Vector yout, realtype *tret, int itask)
+";
+
+%feature("docstring")  CVodeCreate "SUNDIALS_EXPORT void*
+CVodeCreate(int lmm, int iter) ";
+
+%feature("docstring")  CVodeFree "SUNDIALS_EXPORT void CVodeFree(void
+**cvode_mem) ";
+
+%feature("docstring")  CVodeGetActualInitStep "SUNDIALS_EXPORT int
+CVodeGetActualInitStep(void *cvode_mem, realtype *hinused) ";
+
+%feature("docstring")  CVodeGetCurrentOrder "SUNDIALS_EXPORT int
+CVodeGetCurrentOrder(void *cvode_mem, int *qcur) ";
+
+%feature("docstring")  CVodeGetCurrentStep "SUNDIALS_EXPORT int
+CVodeGetCurrentStep(void *cvode_mem, realtype *hcur) ";
+
+%feature("docstring")  CVodeGetCurrentTime "SUNDIALS_EXPORT int
+CVodeGetCurrentTime(void *cvode_mem, realtype *tcur) ";
+
+%feature("docstring")  CVodeGetDky "SUNDIALS_EXPORT int
+CVodeGetDky(void *cvode_mem, realtype t, int k, N_Vector dky) ";
+
+%feature("docstring")  CVodeGetErrWeights "SUNDIALS_EXPORT int
+CVodeGetErrWeights(void *cvode_mem, N_Vector eweight) ";
+
+%feature("docstring")  CVodeGetEstLocalErrors "SUNDIALS_EXPORT int
+CVodeGetEstLocalErrors(void *cvode_mem, N_Vector ele) ";
+
+%feature("docstring")  CVodeGetIntegratorStats "SUNDIALS_EXPORT int
+CVodeGetIntegratorStats(void *cvode_mem, long int *nsteps, long int
+*nfevals, long int *nlinsetups, long int *netfails, int *qlast, int
+*qcur, realtype *hinused, realtype *hlast, realtype *hcur, realtype
+*tcur) ";
+
+%feature("docstring")  CVodeGetLastOrder "SUNDIALS_EXPORT int
+CVodeGetLastOrder(void *cvode_mem, int *qlast) ";
+
+%feature("docstring")  CVodeGetLastStep "SUNDIALS_EXPORT int
+CVodeGetLastStep(void *cvode_mem, realtype *hlast) ";
+
+%feature("docstring")  CVodeGetNonlinSolvStats "SUNDIALS_EXPORT int
+CVodeGetNonlinSolvStats(void *cvode_mem, long int *nniters, long int
+*nncfails) ";
+
+%feature("docstring")  CVodeGetNumErrTestFails "SUNDIALS_EXPORT int
+CVodeGetNumErrTestFails(void *cvode_mem, long int *netfails) ";
+
+%feature("docstring")  CVodeGetNumGEvals "SUNDIALS_EXPORT int
+CVodeGetNumGEvals(void *cvode_mem, long int *ngevals) ";
+
+%feature("docstring")  CVodeGetNumLinSolvSetups "SUNDIALS_EXPORT int
+CVodeGetNumLinSolvSetups(void *cvode_mem, long int *nlinsetups) ";
+
+%feature("docstring")  CVodeGetNumNonlinSolvConvFails "SUNDIALS_EXPORT int CVodeGetNumNonlinSolvConvFails(void *cvode_mem,
+long int *nncfails) ";
+
+%feature("docstring")  CVodeGetNumNonlinSolvIters "SUNDIALS_EXPORT
+int CVodeGetNumNonlinSolvIters(void *cvode_mem, long int *nniters) ";
+
+%feature("docstring")  CVodeGetNumRhsEvals "SUNDIALS_EXPORT int
+CVodeGetNumRhsEvals(void *cvode_mem, long int *nfevals) ";
+
+%feature("docstring")  CVodeGetNumStabLimOrderReds "SUNDIALS_EXPORT
+int CVodeGetNumStabLimOrderReds(void *cvode_mem, long int *nslred) ";
+
+%feature("docstring")  CVodeGetNumSteps "SUNDIALS_EXPORT int
+CVodeGetNumSteps(void *cvode_mem, long int *nsteps) ";
+
+%feature("docstring")  CVodeGetReturnFlagName "SUNDIALS_EXPORT char*
+CVodeGetReturnFlagName(int flag) ";
+
+%feature("docstring")  CVodeGetRootInfo "SUNDIALS_EXPORT int
+CVodeGetRootInfo(void *cvode_mem, int *rootsfound) ";
+
+%feature("docstring")  CVodeGetTolScaleFactor "SUNDIALS_EXPORT int
+CVodeGetTolScaleFactor(void *cvode_mem, realtype *tolsfac) ";
+
+%feature("docstring")  CVodeGetWorkSpace "SUNDIALS_EXPORT int
+CVodeGetWorkSpace(void *cvode_mem, long int *lenrw, long int *leniw)
+";
+
+%feature("docstring")  CVodeInit "SUNDIALS_EXPORT int CVodeInit(void
+*cvode_mem, CVRhsFn f, realtype t0, N_Vector y0) ";
+
+%feature("docstring")  CVodeReInit "SUNDIALS_EXPORT int
+CVodeReInit(void *cvode_mem, realtype t0, N_Vector y0) ";
+
+%feature("docstring")  CVodeRootInit "SUNDIALS_EXPORT int
+CVodeRootInit(void *cvode_mem, int nrtfn, CVRootFn g) ";
+
+%feature("docstring")  CVodeSetErrFile "SUNDIALS_EXPORT int
+CVodeSetErrFile(void *cvode_mem, FILE *errfp) ";
+
+%feature("docstring")  CVodeSetErrHandlerFn "SUNDIALS_EXPORT int
+CVodeSetErrHandlerFn(void *cvode_mem, CVErrHandlerFn ehfun, void
+*eh_data) ";
+
+%feature("docstring")  CVodeSetInitStep "SUNDIALS_EXPORT int
+CVodeSetInitStep(void *cvode_mem, realtype hin) ";
+
+%feature("docstring")  CVodeSetIterType "SUNDIALS_EXPORT int
+CVodeSetIterType(void *cvode_mem, int iter) ";
+
+%feature("docstring")  CVodeSetMaxConvFails "SUNDIALS_EXPORT int
+CVodeSetMaxConvFails(void *cvode_mem, int maxncf) ";
+
+%feature("docstring")  CVodeSetMaxErrTestFails "SUNDIALS_EXPORT int
+CVodeSetMaxErrTestFails(void *cvode_mem, int maxnef) ";
+
+%feature("docstring")  CVodeSetMaxHnilWarns "SUNDIALS_EXPORT int
+CVodeSetMaxHnilWarns(void *cvode_mem, int mxhnil) ";
+
+%feature("docstring")  CVodeSetMaxNonlinIters "SUNDIALS_EXPORT int
+CVodeSetMaxNonlinIters(void *cvode_mem, int maxcor) ";
+
+%feature("docstring")  CVodeSetMaxNumSteps "SUNDIALS_EXPORT int
+CVodeSetMaxNumSteps(void *cvode_mem, long int mxsteps) ";
+
+%feature("docstring")  CVodeSetMaxOrd "SUNDIALS_EXPORT int
+CVodeSetMaxOrd(void *cvode_mem, int maxord) ";
+
+%feature("docstring")  CVodeSetMaxStep "SUNDIALS_EXPORT int
+CVodeSetMaxStep(void *cvode_mem, realtype hmax) ";
+
+%feature("docstring")  CVodeSetMinStep "SUNDIALS_EXPORT int
+CVodeSetMinStep(void *cvode_mem, realtype hmin) ";
+
+%feature("docstring")  CVodeSetNoInactiveRootWarn "SUNDIALS_EXPORT
+int CVodeSetNoInactiveRootWarn(void *cvode_mem) ";
+
+%feature("docstring")  CVodeSetNonlinConvCoef "SUNDIALS_EXPORT int
+CVodeSetNonlinConvCoef(void *cvode_mem, realtype nlscoef) ";
+
+%feature("docstring")  CVodeSetRootDirection "SUNDIALS_EXPORT int
+CVodeSetRootDirection(void *cvode_mem, int *rootdir) ";
+
+%feature("docstring")  CVodeSetStabLimDet "SUNDIALS_EXPORT int
+CVodeSetStabLimDet(void *cvode_mem, booleantype stldet) ";
+
+%feature("docstring")  CVodeSetStopTime "SUNDIALS_EXPORT int
+CVodeSetStopTime(void *cvode_mem, realtype tstop) ";
+
+%feature("docstring")  CVodeSetUserData "SUNDIALS_EXPORT int
+CVodeSetUserData(void *cvode_mem, void *user_data) ";
+
+%feature("docstring")  CVodeSStolerances "SUNDIALS_EXPORT int
+CVodeSStolerances(void *cvode_mem, realtype reltol, realtype abstol)
+";
+
+%feature("docstring")  CVodeSVtolerances "SUNDIALS_EXPORT int
+CVodeSVtolerances(void *cvode_mem, realtype reltol, N_Vector abstol)
+";
+
+%feature("docstring")  CVodeWFtolerances "SUNDIALS_EXPORT int
+CVodeWFtolerances(void *cvode_mem, CVEwtFn efun) ";
+
+
+// File: cvode__band_8h.xml
+%feature("docstring")  CVBand "SUNDIALS_EXPORT int CVBand(void
+*cvode_mem, int N, int mupper, int mlower) ";
+
+
+// File: cvode__bandpre_8h.xml
+%feature("docstring")  CVBandPrecGetNumRhsEvals "SUNDIALS_EXPORT int
+CVBandPrecGetNumRhsEvals(void *cvode_mem, long int *nfevalsBP) ";
+
+%feature("docstring")  CVBandPrecGetWorkSpace "SUNDIALS_EXPORT int
+CVBandPrecGetWorkSpace(void *cvode_mem, long int *lenrwLS, long int
+*leniwLS) ";
+
+%feature("docstring")  CVBandPrecInit "SUNDIALS_EXPORT int
+CVBandPrecInit(void *cvode_mem, int N, int mu, int ml) ";
+
+
+// File: cvode__bbdpre_8h.xml
+%feature("docstring")  CVBBDPrecGetNumGfnEvals "SUNDIALS_EXPORT int
+CVBBDPrecGetNumGfnEvals(void *cvode_mem, long int *ngevalsBBDP) ";
+
+%feature("docstring")  CVBBDPrecGetWorkSpace "SUNDIALS_EXPORT int
+CVBBDPrecGetWorkSpace(void *cvode_mem, long int *lenrwLS, long int
+*leniwLS) ";
+
+%feature("docstring")  CVBBDPrecInit "SUNDIALS_EXPORT int
+CVBBDPrecInit(void *cvode_mem, int Nlocal, int mudq, int mldq, int
+mukeep, int mlkeep, realtype dqrely, CVLocalFn gloc, CVCommFn cfn) ";
+
+%feature("docstring")  CVBBDPrecReInit "SUNDIALS_EXPORT int
+CVBBDPrecReInit(void *cvode_mem, int mudq, int mldq, realtype dqrely)
+";
+
+
+// File: cvode__dense_8h.xml
+%feature("docstring")  CVDense "SUNDIALS_EXPORT int CVDense(void
+*cvode_mem, int N) ";
+
+
+// File: cvode__diag_8h.xml
+%feature("docstring")  CVDiag "SUNDIALS_EXPORT int CVDiag(void
+*cvode_mem) ";
+
+%feature("docstring")  CVDiagGetLastFlag "SUNDIALS_EXPORT int
+CVDiagGetLastFlag(void *cvode_mem, int *flag) ";
+
+%feature("docstring")  CVDiagGetNumRhsEvals "SUNDIALS_EXPORT int
+CVDiagGetNumRhsEvals(void *cvode_mem, long int *nfevalsLS) ";
+
+%feature("docstring")  CVDiagGetReturnFlagName "SUNDIALS_EXPORT char*
+CVDiagGetReturnFlagName(int flag) ";
+
+%feature("docstring")  CVDiagGetWorkSpace "SUNDIALS_EXPORT int
+CVDiagGetWorkSpace(void *cvode_mem, long int *lenrwLS, long int
+*leniwLS) ";
+
+
+// File: cvode__direct_8h.xml
+%feature("docstring")  CVDlsGetLastFlag "SUNDIALS_EXPORT int
+CVDlsGetLastFlag(void *cvode_mem, int *flag) ";
+
+%feature("docstring")  CVDlsGetNumJacEvals "SUNDIALS_EXPORT int
+CVDlsGetNumJacEvals(void *cvode_mem, long int *njevals) ";
+
+%feature("docstring")  CVDlsGetNumRhsEvals "SUNDIALS_EXPORT int
+CVDlsGetNumRhsEvals(void *cvode_mem, long int *nfevalsLS) ";
+
+%feature("docstring")  CVDlsGetReturnFlagName "SUNDIALS_EXPORT char*
+CVDlsGetReturnFlagName(int flag) ";
+
+%feature("docstring")  CVDlsGetWorkSpace "SUNDIALS_EXPORT int
+CVDlsGetWorkSpace(void *cvode_mem, long int *lenrwLS, long int
+*leniwLS) ";
+
+%feature("docstring")  CVDlsSetBandJacFn "SUNDIALS_EXPORT int
+CVDlsSetBandJacFn(void *cvode_mem, CVDlsBandJacFn jac) ";
+
+%feature("docstring")  CVDlsSetDenseJacFn "SUNDIALS_EXPORT int
+CVDlsSetDenseJacFn(void *cvode_mem, CVDlsDenseJacFn jac) ";
+
+
+// File: cvode__spbcgs_8h.xml
+%feature("docstring")  CVSpbcg "SUNDIALS_EXPORT int CVSpbcg(void
+*cvode_mem, int pretype, int maxl) ";
+
+
+// File: cvode__spgmr_8h.xml
+%feature("docstring")  CVSpgmr "SUNDIALS_EXPORT int CVSpgmr(void
+*cvode_mem, int pretype, int maxl) ";
+
+
+// File: cvode__spils_8h.xml
+%feature("docstring")  CVSpilsGetLastFlag "SUNDIALS_EXPORT int
+CVSpilsGetLastFlag(void *cvode_mem, int *flag) ";
+
+%feature("docstring")  CVSpilsGetNumConvFails "SUNDIALS_EXPORT int
+CVSpilsGetNumConvFails(void *cvode_mem, long int *nlcfails) ";
+
+%feature("docstring")  CVSpilsGetNumJtimesEvals "SUNDIALS_EXPORT int
+CVSpilsGetNumJtimesEvals(void *cvode_mem, long int *njvevals) ";
+
+%feature("docstring")  CVSpilsGetNumLinIters "SUNDIALS_EXPORT int
+CVSpilsGetNumLinIters(void *cvode_mem, long int *nliters) ";
+
+%feature("docstring")  CVSpilsGetNumPrecEvals "SUNDIALS_EXPORT int
+CVSpilsGetNumPrecEvals(void *cvode_mem, long int *npevals) ";
+
+%feature("docstring")  CVSpilsGetNumPrecSolves "SUNDIALS_EXPORT int
+CVSpilsGetNumPrecSolves(void *cvode_mem, long int *npsolves) ";
+
+%feature("docstring")  CVSpilsGetNumRhsEvals "SUNDIALS_EXPORT int
+CVSpilsGetNumRhsEvals(void *cvode_mem, long int *nfevalsLS) ";
+
+%feature("docstring")  CVSpilsGetReturnFlagName "SUNDIALS_EXPORT
+char* CVSpilsGetReturnFlagName(int flag) ";
+
+%feature("docstring")  CVSpilsGetWorkSpace "SUNDIALS_EXPORT int
+CVSpilsGetWorkSpace(void *cvode_mem, long int *lenrwLS, long int
+*leniwLS) ";
+
+%feature("docstring")  CVSpilsSetEpsLin "SUNDIALS_EXPORT int
+CVSpilsSetEpsLin(void *cvode_mem, realtype eplifac) ";
+
+%feature("docstring")  CVSpilsSetGSType "SUNDIALS_EXPORT int
+CVSpilsSetGSType(void *cvode_mem, int gstype) ";
+
+%feature("docstring")  CVSpilsSetJacTimesVecFn "SUNDIALS_EXPORT int
+CVSpilsSetJacTimesVecFn(void *cvode_mem, CVSpilsJacTimesVecFn jtv) ";
+
+%feature("docstring")  CVSpilsSetMaxl "SUNDIALS_EXPORT int
+CVSpilsSetMaxl(void *cvode_mem, int maxl) ";
+
+%feature("docstring")  CVSpilsSetPreconditioner "SUNDIALS_EXPORT int
+CVSpilsSetPreconditioner(void *cvode_mem, CVSpilsPrecSetupFn pset,
+CVSpilsPrecSolveFn psolve) ";
+
+%feature("docstring")  CVSpilsSetPrecType "SUNDIALS_EXPORT int
+CVSpilsSetPrecType(void *cvode_mem, int pretype) ";
+
+
+// File: cvode__sptfqmr_8h.xml
+%feature("docstring")  CVSptfqmr "SUNDIALS_EXPORT int CVSptfqmr(void
+*cvode_mem, int pretype, int maxl) ";
+
+
+// File: nvector__parallel_8h.xml
+%feature("docstring")  N_VAbs_Parallel "SUNDIALS_EXPORT void
+N_VAbs_Parallel(N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VAddConst_Parallel "SUNDIALS_EXPORT void
+N_VAddConst_Parallel(N_Vector x, realtype b, N_Vector z) ";
+
+%feature("docstring")  N_VClone_Parallel "SUNDIALS_EXPORT N_Vector
+N_VClone_Parallel(N_Vector w) ";
+
+%feature("docstring")  N_VCloneEmpty_Parallel "SUNDIALS_EXPORT
+N_Vector N_VCloneEmpty_Parallel(N_Vector w) ";
+
+%feature("docstring")  N_VCloneVectorArray_Parallel "SUNDIALS_EXPORT
+N_Vector* N_VCloneVectorArray_Parallel(int count, N_Vector w) ";
+
+%feature("docstring")  N_VCloneVectorArrayEmpty_Parallel "SUNDIALS_EXPORT N_Vector* N_VCloneVectorArrayEmpty_Parallel(int count,
+N_Vector w) ";
+
+%feature("docstring")  N_VCompare_Parallel "SUNDIALS_EXPORT void
+N_VCompare_Parallel(realtype c, N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VConst_Parallel "SUNDIALS_EXPORT void
+N_VConst_Parallel(realtype c, N_Vector z) ";
+
+%feature("docstring")  N_VConstrMask_Parallel "SUNDIALS_EXPORT
+booleantype N_VConstrMask_Parallel(N_Vector c, N_Vector x, N_Vector m)
+";
+
+%feature("docstring")  N_VDestroy_Parallel "SUNDIALS_EXPORT void
+N_VDestroy_Parallel(N_Vector v) ";
+
+%feature("docstring")  N_VDestroyVectorArray_Parallel "SUNDIALS_EXPORT void N_VDestroyVectorArray_Parallel(N_Vector *vs, int
+count) ";
+
+%feature("docstring")  N_VDiv_Parallel "SUNDIALS_EXPORT void
+N_VDiv_Parallel(N_Vector x, N_Vector y, N_Vector z) ";
+
+%feature("docstring")  N_VDotProd_Parallel "SUNDIALS_EXPORT realtype
+N_VDotProd_Parallel(N_Vector x, N_Vector y) ";
+
+%feature("docstring")  N_VGetArrayPointer_Parallel "SUNDIALS_EXPORT
+realtype* N_VGetArrayPointer_Parallel(N_Vector v) ";
+
+%feature("docstring")  N_VInv_Parallel "SUNDIALS_EXPORT void
+N_VInv_Parallel(N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VInvTest_Parallel "SUNDIALS_EXPORT
+booleantype N_VInvTest_Parallel(N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VL1Norm_Parallel "SUNDIALS_EXPORT realtype
+N_VL1Norm_Parallel(N_Vector x) ";
+
+%feature("docstring")  N_VLinearSum_Parallel "SUNDIALS_EXPORT void
+N_VLinearSum_Parallel(realtype a, N_Vector x, realtype b, N_Vector y,
+N_Vector z) ";
+
+%feature("docstring")  N_VMake_Parallel "SUNDIALS_EXPORT N_Vector
+N_VMake_Parallel(MPI_Comm comm, long int local_length, long int
+global_length, realtype *v_data) ";
+
+%feature("docstring")  N_VMaxNorm_Parallel "SUNDIALS_EXPORT realtype
+N_VMaxNorm_Parallel(N_Vector x) ";
+
+%feature("docstring")  N_VMin_Parallel "SUNDIALS_EXPORT realtype
+N_VMin_Parallel(N_Vector x) ";
+
+%feature("docstring")  N_VMinQuotient_Parallel "SUNDIALS_EXPORT
+realtype N_VMinQuotient_Parallel(N_Vector num, N_Vector denom) ";
+
+%feature("docstring")  N_VNew_Parallel "SUNDIALS_EXPORT N_Vector
+N_VNew_Parallel(MPI_Comm comm, long int local_length, long int
+global_length) ";
+
+%feature("docstring")  N_VNewEmpty_Parallel "SUNDIALS_EXPORT N_Vector
+N_VNewEmpty_Parallel(MPI_Comm comm, long int local_length, long int
+global_length) ";
+
+%feature("docstring")  N_VPrint_Parallel "SUNDIALS_EXPORT void
+N_VPrint_Parallel(N_Vector v) ";
+
+%feature("docstring")  N_VProd_Parallel "SUNDIALS_EXPORT void
+N_VProd_Parallel(N_Vector x, N_Vector y, N_Vector z) ";
+
+%feature("docstring")  N_VScale_Parallel "SUNDIALS_EXPORT void
+N_VScale_Parallel(realtype c, N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VSetArrayPointer_Parallel "SUNDIALS_EXPORT
+void N_VSetArrayPointer_Parallel(realtype *v_data, N_Vector v) ";
+
+%feature("docstring")  N_VSpace_Parallel "SUNDIALS_EXPORT void
+N_VSpace_Parallel(N_Vector v, long int *lrw, long int *liw) ";
+
+%feature("docstring")  N_VWL2Norm_Parallel "SUNDIALS_EXPORT realtype
+N_VWL2Norm_Parallel(N_Vector x, N_Vector w) ";
+
+%feature("docstring")  N_VWrmsNorm_Parallel "SUNDIALS_EXPORT realtype
+N_VWrmsNorm_Parallel(N_Vector x, N_Vector w) ";
+
+%feature("docstring")  N_VWrmsNormMask_Parallel "SUNDIALS_EXPORT
+realtype N_VWrmsNormMask_Parallel(N_Vector x, N_Vector w, N_Vector id)
+";
+
+
+// File: nvector__serial_8h.xml
+%feature("docstring")  N_VAbs_Serial "SUNDIALS_EXPORT void
+N_VAbs_Serial(N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VAddConst_Serial "SUNDIALS_EXPORT void
+N_VAddConst_Serial(N_Vector x, realtype b, N_Vector z) ";
+
+%feature("docstring")  N_VClone_Serial "SUNDIALS_EXPORT N_Vector
+N_VClone_Serial(N_Vector w) ";
+
+%feature("docstring")  N_VCloneEmpty_Serial "SUNDIALS_EXPORT N_Vector
+N_VCloneEmpty_Serial(N_Vector w) ";
+
+%feature("docstring")  N_VCloneVectorArray_Serial "SUNDIALS_EXPORT
+N_Vector* N_VCloneVectorArray_Serial(int count, N_Vector w) ";
+
+%feature("docstring")  N_VCloneVectorArrayEmpty_Serial "SUNDIALS_EXPORT N_Vector* N_VCloneVectorArrayEmpty_Serial(int count,
+N_Vector w) ";
+
+%feature("docstring")  N_VCompare_Serial "SUNDIALS_EXPORT void
+N_VCompare_Serial(realtype c, N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VConst_Serial "SUNDIALS_EXPORT void
+N_VConst_Serial(realtype c, N_Vector z) ";
+
+%feature("docstring")  N_VConstrMask_Serial "SUNDIALS_EXPORT
+booleantype N_VConstrMask_Serial(N_Vector c, N_Vector x, N_Vector m)
+";
+
+%feature("docstring")  N_VDestroy_Serial "SUNDIALS_EXPORT void
+N_VDestroy_Serial(N_Vector v) ";
+
+%feature("docstring")  N_VDestroyVectorArray_Serial "SUNDIALS_EXPORT
+void N_VDestroyVectorArray_Serial(N_Vector *vs, int count) ";
+
+%feature("docstring")  N_VDiv_Serial "SUNDIALS_EXPORT void
+N_VDiv_Serial(N_Vector x, N_Vector y, N_Vector z) ";
+
+%feature("docstring")  N_VDotProd_Serial "SUNDIALS_EXPORT realtype
+N_VDotProd_Serial(N_Vector x, N_Vector y) ";
+
+%feature("docstring")  N_VGetArrayPointer_Serial "SUNDIALS_EXPORT
+realtype* N_VGetArrayPointer_Serial(N_Vector v) ";
+
+%feature("docstring")  N_VInv_Serial "SUNDIALS_EXPORT void
+N_VInv_Serial(N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VInvTest_Serial "SUNDIALS_EXPORT booleantype
+N_VInvTest_Serial(N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VL1Norm_Serial "SUNDIALS_EXPORT realtype
+N_VL1Norm_Serial(N_Vector x) ";
+
+%feature("docstring")  N_VLinearSum_Serial "SUNDIALS_EXPORT void
+N_VLinearSum_Serial(realtype a, N_Vector x, realtype b, N_Vector y,
+N_Vector z) ";
+
+%feature("docstring")  N_VMake_Serial "SUNDIALS_EXPORT N_Vector
+N_VMake_Serial(long int vec_length, realtype *v_data) ";
+
+%feature("docstring")  N_VMaxNorm_Serial "SUNDIALS_EXPORT realtype
+N_VMaxNorm_Serial(N_Vector x) ";
+
+%feature("docstring")  N_VMin_Serial "SUNDIALS_EXPORT realtype
+N_VMin_Serial(N_Vector x) ";
+
+%feature("docstring")  N_VMinQuotient_Serial "SUNDIALS_EXPORT
+realtype N_VMinQuotient_Serial(N_Vector num, N_Vector denom) ";
+
+%feature("docstring")  N_VNew_Serial "SUNDIALS_EXPORT N_Vector
+N_VNew_Serial(long int vec_length) ";
+
+%feature("docstring")  N_VNewEmpty_Serial "SUNDIALS_EXPORT N_Vector
+N_VNewEmpty_Serial(long int vec_length) ";
+
+%feature("docstring")  N_VPrint_Serial "SUNDIALS_EXPORT void
+N_VPrint_Serial(N_Vector v) ";
+
+%feature("docstring")  N_VProd_Serial "SUNDIALS_EXPORT void
+N_VProd_Serial(N_Vector x, N_Vector y, N_Vector z) ";
+
+%feature("docstring")  N_VScale_Serial "SUNDIALS_EXPORT void
+N_VScale_Serial(realtype c, N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VSetArrayPointer_Serial "SUNDIALS_EXPORT
+void N_VSetArrayPointer_Serial(realtype *v_data, N_Vector v) ";
+
+%feature("docstring")  N_VSpace_Serial "SUNDIALS_EXPORT void
+N_VSpace_Serial(N_Vector v, long int *lrw, long int *liw) ";
+
+%feature("docstring")  N_VWL2Norm_Serial "SUNDIALS_EXPORT realtype
+N_VWL2Norm_Serial(N_Vector x, N_Vector w) ";
+
+%feature("docstring")  N_VWrmsNorm_Serial "SUNDIALS_EXPORT realtype
+N_VWrmsNorm_Serial(N_Vector x, N_Vector w) ";
+
+%feature("docstring")  N_VWrmsNormMask_Serial "SUNDIALS_EXPORT
+realtype N_VWrmsNormMask_Serial(N_Vector x, N_Vector w, N_Vector id)
+";
+
+
+// File: sundials__band_8h.xml
+%feature("docstring")  bandAddIdentity "SUNDIALS_EXPORT void
+bandAddIdentity(realtype **a, int n, int smu) ";
+
+%feature("docstring")  BandCopy "SUNDIALS_EXPORT void BandCopy(DlsMat
+A, DlsMat B, int copymu, int copyml) ";
+
+%feature("docstring")  bandCopy "SUNDIALS_EXPORT void
+bandCopy(realtype **a, realtype **b, int n, int a_smu, int b_smu, int
+copymu, int copyml) ";
+
+%feature("docstring")  BandGBTRF "SUNDIALS_EXPORT int
+BandGBTRF(DlsMat A, int *p) ";
+
+%feature("docstring")  bandGBTRF "SUNDIALS_EXPORT int
+bandGBTRF(realtype **a, int n, int mu, int ml, int smu, int *p) ";
+
+%feature("docstring")  BandGBTRS "SUNDIALS_EXPORT void
+BandGBTRS(DlsMat A, int *p, realtype *b) ";
+
+%feature("docstring")  bandGBTRS "SUNDIALS_EXPORT void
+bandGBTRS(realtype **a, int n, int smu, int ml, int *p, realtype *b)
+";
+
+%feature("docstring")  BandScale "SUNDIALS_EXPORT void
+BandScale(realtype c, DlsMat A) ";
+
+%feature("docstring")  bandScale "SUNDIALS_EXPORT void
+bandScale(realtype c, realtype **a, int n, int mu, int ml, int smu) ";
+
+
+// File: sundials__config_8h.xml
+
+
+// File: sundials__dense_8h.xml
+%feature("docstring")  denseAddIdentity "SUNDIALS_EXPORT void
+denseAddIdentity(realtype **a, int n) ";
+
+%feature("docstring")  DenseCopy "SUNDIALS_EXPORT void
+DenseCopy(DlsMat A, DlsMat B) ";
+
+%feature("docstring")  denseCopy "SUNDIALS_EXPORT void
+denseCopy(realtype **a, realtype **b, int m, int n) ";
+
+%feature("docstring")  DenseGEQRF "SUNDIALS_EXPORT int
+DenseGEQRF(DlsMat A, realtype *beta, realtype *wrk) ";
+
+%feature("docstring")  denseGEQRF "SUNDIALS_EXPORT int
+denseGEQRF(realtype **a, int m, int n, realtype *beta, realtype *v) ";
+
+%feature("docstring")  DenseGETRF "SUNDIALS_EXPORT int
+DenseGETRF(DlsMat A, int *p) ";
+
+%feature("docstring")  denseGETRF "SUNDIALS_EXPORT int
+denseGETRF(realtype **a, int m, int n, int *p) ";
+
+%feature("docstring")  DenseGETRS "SUNDIALS_EXPORT void
+DenseGETRS(DlsMat A, int *p, realtype *b) ";
+
+%feature("docstring")  denseGETRS "SUNDIALS_EXPORT void
+denseGETRS(realtype **a, int n, int *p, realtype *b) ";
+
+%feature("docstring")  DenseORMQR "SUNDIALS_EXPORT int
+DenseORMQR(DlsMat A, realtype *beta, realtype *vn, realtype *vm,
+realtype *wrk) ";
+
+%feature("docstring")  denseORMQR "SUNDIALS_EXPORT int
+denseORMQR(realtype **a, int m, int n, realtype *beta, realtype *v,
+realtype *w, realtype *wrk) ";
+
+%feature("docstring")  DensePOTRF "SUNDIALS_EXPORT int
+DensePOTRF(DlsMat A) ";
+
+%feature("docstring")  densePOTRF "SUNDIALS_EXPORT int
+densePOTRF(realtype **a, int m) ";
+
+%feature("docstring")  DensePOTRS "SUNDIALS_EXPORT void
+DensePOTRS(DlsMat A, realtype *b) ";
+
+%feature("docstring")  densePOTRS "SUNDIALS_EXPORT void
+densePOTRS(realtype **a, int m, realtype *b) ";
+
+%feature("docstring")  DenseScale "SUNDIALS_EXPORT void
+DenseScale(realtype c, DlsMat A) ";
+
+%feature("docstring")  denseScale "SUNDIALS_EXPORT void
+denseScale(realtype c, realtype **a, int m, int n) ";
+
+
+// File: sundials__direct_8h.xml
+%feature("docstring")  AddIdentity "SUNDIALS_EXPORT void
+AddIdentity(DlsMat A) ";
+
+%feature("docstring")  DestroyArray "SUNDIALS_EXPORT void
+DestroyArray(void *p) ";
+
+%feature("docstring")  destroyArray "SUNDIALS_EXPORT void
+destroyArray(void *v) ";
+
+%feature("docstring")  DestroyMat "SUNDIALS_EXPORT void
+DestroyMat(DlsMat A) ";
+
+%feature("docstring")  destroyMat "SUNDIALS_EXPORT void
+destroyMat(realtype **a) ";
+
+%feature("docstring")  NewBandMat "SUNDIALS_EXPORT DlsMat
+NewBandMat(int N, int mu, int ml, int smu) ";
+
+%feature("docstring")  newBandMat "SUNDIALS_EXPORT realtype**
+newBandMat(int n, int smu, int ml) ";
+
+%feature("docstring")  NewDenseMat "SUNDIALS_EXPORT DlsMat
+NewDenseMat(int M, int N) ";
+
+%feature("docstring")  newDenseMat "SUNDIALS_EXPORT realtype**
+newDenseMat(int m, int n) ";
+
+%feature("docstring")  NewIntArray "SUNDIALS_EXPORT int*
+NewIntArray(int N) ";
+
+%feature("docstring")  newIntArray "SUNDIALS_EXPORT int*
+newIntArray(int n) ";
+
+%feature("docstring")  NewRealArray "SUNDIALS_EXPORT realtype*
+NewRealArray(int N) ";
+
+%feature("docstring")  newRealArray "SUNDIALS_EXPORT realtype*
+newRealArray(int m) ";
+
+%feature("docstring")  PrintMat "SUNDIALS_EXPORT void PrintMat(DlsMat
+A) ";
+
+%feature("docstring")  SetToZero "SUNDIALS_EXPORT void
+SetToZero(DlsMat A) ";
+
+
+// File: sundials__fnvector_8h.xml
+
+
+// File: sundials__iterative_8h.xml
+%feature("docstring")  ClassicalGS "SUNDIALS_EXPORT int
+ClassicalGS(N_Vector *v, realtype **h, int k, int p, realtype
+*new_vk_norm, N_Vector temp, realtype *s) ";
+
+%feature("docstring")  ModifiedGS "SUNDIALS_EXPORT int
+ModifiedGS(N_Vector *v, realtype **h, int k, int p, realtype
+*new_vk_norm) ";
+
+%feature("docstring")  QRfact "SUNDIALS_EXPORT int QRfact(int n,
+realtype **h, realtype *q, int job) ";
+
+%feature("docstring")  QRsol "SUNDIALS_EXPORT int QRsol(int n,
+realtype **h, realtype *q, realtype *b) ";
+
+
+// File: sundials__lapack_8h.xml
+%feature("docstring")  dcopy_f77 "void dcopy_f77(int *n, const double
+*x, const int *inc_x, double *y, const int *inc_y) ";
+
+%feature("docstring")  dgbtrf_f77 "void dgbtrf_f77(const int *m,
+const int *n, const int *kl, const int *ku, double *ab, int *ldab, int
+*ipiv, int *info) ";
+
+%feature("docstring")  dgbtrs_f77 "void dgbtrs_f77(const char *trans,
+const int *n, const int *kl, const int *ku, const int *nrhs, double
+*ab, const int *ldab, int *ipiv, double *b, const int *ldb, int *info,
+int len_trans) ";
+
+%feature("docstring")  dgemv_f77 "void dgemv_f77(const char *trans,
+int *m, int *n, const double *alpha, const double *a, int *lda, const
+double *x, int *inc_x, const double *beta, double *y, int *inc_y, int
+len_trans) ";
+
+%feature("docstring")  dgeqp3_f77 "void dgeqp3_f77(const int *m,
+const int *n, double *a, const int *lda, int *jpvt, double *tau,
+double *work, const int *lwork, int *info) ";
+
+%feature("docstring")  dgeqrf_f77 "void dgeqrf_f77(const int *m,
+const int *n, double *a, const int *lda, double *tau, double *work,
+const int *lwork, int *info) ";
+
+%feature("docstring")  dgetrf_f77 "void dgetrf_f77(const int *m,
+const int *n, double *a, int *lda, int *ipiv, int *info) ";
+
+%feature("docstring")  dgetrs_f77 "void dgetrs_f77(const char *trans,
+const int *n, const int *nrhs, double *a, const int *lda, int *ipiv,
+double *b, const int *ldb, int *info, int len_trans) ";
+
+%feature("docstring")  dormqr_f77 "void dormqr_f77(const char *side,
+const char *trans, const int *m, const int *n, const int *k, double
+*a, const int *lda, double *tau, double *c, const int *ldc, double
+*work, const int *lwork, int *info, int len_side, int len_trans) ";
+
+%feature("docstring")  dpotrf_f77 "void dpotrf_f77(const char *uplo,
+const int *n, double *a, int *lda, int *info, int len_uplo) ";
+
+%feature("docstring")  dpotrs_f77 "void dpotrs_f77(const char *uplo,
+const int *n, const int *nrhs, double *a, const int *lda, double *b,
+const int *ldb, int *info, int len_uplo) ";
+
+%feature("docstring")  dscal_f77 "void dscal_f77(int *n, const double
+*alpha, double *x, const int *inc_x) ";
+
+%feature("docstring")  dsyrk_f77 "void dsyrk_f77(const char *uplo,
+const char *trans, const int *n, const int *k, const double *alpha,
+const double *a, const int *lda, const double *beta, const double *c,
+const int *ldc, int len_uplo, int len_trans) ";
+
+%feature("docstring")  dtrsv_f77 "void dtrsv_f77(const char *uplo,
+const char *trans, const char *diag, const int *n, const double *a,
+const int *lda, double *x, const int *inc_x, int len_uplo, int
+len_trans, int len_diag) ";
+
+
+// File: sundials__math_8h.xml
+%feature("docstring")  RAbs "SUNDIALS_EXPORT realtype RAbs(realtype
+x) ";
+
+%feature("docstring")  RExp "SUNDIALS_EXPORT realtype RExp(realtype
+x) ";
+
+%feature("docstring")  RPowerI "SUNDIALS_EXPORT realtype
+RPowerI(realtype base, int exponent) ";
+
+%feature("docstring")  RPowerR "SUNDIALS_EXPORT realtype
+RPowerR(realtype base, realtype exponent) ";
+
+%feature("docstring")  RSqrt "SUNDIALS_EXPORT realtype RSqrt(realtype
+x) ";
+
+
+// File: sundials__nvector_8h.xml
+%feature("docstring")  N_VAbs "SUNDIALS_EXPORT void N_VAbs(N_Vector
+x, N_Vector z) ";
+
+%feature("docstring")  N_VAddConst "SUNDIALS_EXPORT void
+N_VAddConst(N_Vector x, realtype b, N_Vector z) ";
+
+%feature("docstring")  N_VClone "SUNDIALS_EXPORT N_Vector
+N_VClone(N_Vector w) ";
+
+%feature("docstring")  N_VCloneEmpty "SUNDIALS_EXPORT N_Vector
+N_VCloneEmpty(N_Vector w) ";
+
+%feature("docstring")  N_VCloneEmptyVectorArray "SUNDIALS_EXPORT
+N_Vector* N_VCloneEmptyVectorArray(int count, N_Vector w) ";
+
+%feature("docstring")  N_VCloneVectorArray "SUNDIALS_EXPORT N_Vector*
+N_VCloneVectorArray(int count, N_Vector w) ";
+
+%feature("docstring")  N_VCompare "SUNDIALS_EXPORT void
+N_VCompare(realtype c, N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VConst "SUNDIALS_EXPORT void
+N_VConst(realtype c, N_Vector z) ";
+
+%feature("docstring")  N_VConstrMask "SUNDIALS_EXPORT booleantype
+N_VConstrMask(N_Vector c, N_Vector x, N_Vector m) ";
+
+%feature("docstring")  N_VDestroy "SUNDIALS_EXPORT void
+N_VDestroy(N_Vector v) ";
+
+%feature("docstring")  N_VDestroyVectorArray "SUNDIALS_EXPORT void
+N_VDestroyVectorArray(N_Vector *vs, int count) ";
+
+%feature("docstring")  N_VDiv "SUNDIALS_EXPORT void N_VDiv(N_Vector
+x, N_Vector y, N_Vector z) ";
+
+%feature("docstring")  N_VDotProd "SUNDIALS_EXPORT realtype
+N_VDotProd(N_Vector x, N_Vector y) ";
+
+%feature("docstring")  N_VGetArrayPointer "SUNDIALS_EXPORT realtype*
+N_VGetArrayPointer(N_Vector v) ";
+
+%feature("docstring")  N_VInv "SUNDIALS_EXPORT void N_VInv(N_Vector
+x, N_Vector z) ";
+
+%feature("docstring")  N_VInvTest "SUNDIALS_EXPORT booleantype
+N_VInvTest(N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VL1Norm "SUNDIALS_EXPORT realtype
+N_VL1Norm(N_Vector x) ";
+
+%feature("docstring")  N_VLinearSum "SUNDIALS_EXPORT void
+N_VLinearSum(realtype a, N_Vector x, realtype b, N_Vector y, N_Vector
+z) ";
+
+%feature("docstring")  N_VMaxNorm "SUNDIALS_EXPORT realtype
+N_VMaxNorm(N_Vector x) ";
+
+%feature("docstring")  N_VMin "SUNDIALS_EXPORT realtype
+N_VMin(N_Vector x) ";
+
+%feature("docstring")  N_VMinQuotient "SUNDIALS_EXPORT realtype
+N_VMinQuotient(N_Vector num, N_Vector denom) ";
+
+%feature("docstring")  N_VProd "SUNDIALS_EXPORT void N_VProd(N_Vector
+x, N_Vector y, N_Vector z) ";
+
+%feature("docstring")  N_VScale "SUNDIALS_EXPORT void
+N_VScale(realtype c, N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VSetArrayPointer "SUNDIALS_EXPORT void
+N_VSetArrayPointer(realtype *v_data, N_Vector v) ";
+
+%feature("docstring")  N_VSpace "SUNDIALS_EXPORT void
+N_VSpace(N_Vector v, long int *lrw, long int *liw) ";
+
+%feature("docstring")  N_VWL2Norm "SUNDIALS_EXPORT realtype
+N_VWL2Norm(N_Vector x, N_Vector w) ";
+
+%feature("docstring")  N_VWrmsNorm "SUNDIALS_EXPORT realtype
+N_VWrmsNorm(N_Vector x, N_Vector w) ";
+
+%feature("docstring")  N_VWrmsNormMask "SUNDIALS_EXPORT realtype
+N_VWrmsNormMask(N_Vector x, N_Vector w, N_Vector id) ";
+
+
+// File: sundials__spbcgs_8h.xml
+%feature("docstring")  SpbcgFree "SUNDIALS_EXPORT void
+SpbcgFree(SpbcgMem mem) ";
+
+%feature("docstring")  SpbcgMalloc "SUNDIALS_EXPORT SpbcgMem
+SpbcgMalloc(int l_max, N_Vector vec_tmpl) ";
+
+%feature("docstring")  SpbcgSolve "SUNDIALS_EXPORT int
+SpbcgSolve(SpbcgMem mem, void *A_data, N_Vector x, N_Vector b, int
+pretype, realtype delta, void *P_data, N_Vector sx, N_Vector sb,
+ATimesFn atimes, PSolveFn psolve, realtype *res_norm, int *nli, int
+*nps) ";
+
+
+// File: sundials__spgmr_8h.xml
+%feature("docstring")  SpgmrFree "SUNDIALS_EXPORT void
+SpgmrFree(SpgmrMem mem) ";
+
+%feature("docstring")  SpgmrMalloc "SUNDIALS_EXPORT SpgmrMem
+SpgmrMalloc(int l_max, N_Vector vec_tmpl) ";
+
+%feature("docstring")  SpgmrSolve "SUNDIALS_EXPORT int
+SpgmrSolve(SpgmrMem mem, void *A_data, N_Vector x, N_Vector b, int
+pretype, int gstype, realtype delta, int max_restarts, void *P_data,
+N_Vector s1, N_Vector s2, ATimesFn atimes, PSolveFn psolve, realtype
+*res_norm, int *nli, int *nps) ";
+
+
+// File: sundials__sptfqmr_8h.xml
+%feature("docstring")  SptfqmrFree "SUNDIALS_EXPORT void
+SptfqmrFree(SptfqmrMem mem) ";
+
+%feature("docstring")  SptfqmrMalloc "SUNDIALS_EXPORT SptfqmrMem
+SptfqmrMalloc(int l_max, N_Vector vec_tmpl) ";
+
+%feature("docstring")  SptfqmrSolve "SUNDIALS_EXPORT int
+SptfqmrSolve(SptfqmrMem mem, void *A_data, N_Vector x, N_Vector b, int
+pretype, realtype delta, void *P_data, N_Vector sx, N_Vector sb,
+ATimesFn atimes, PSolveFn psolve, realtype *res_norm, int *nli, int
+*nps) ";
+
+
+// File: sundials__types_8h.xml
+
+
+// File: cvode__bandpre__impl_8h.xml
+
+
+// File: cvode__bbdpre__impl_8h.xml
+
+
+// File: cvode__diag__impl_8h.xml
+
+
+// File: cvode__direct__impl_8h.xml
+%feature("docstring")  cvDlsBandDQJac "int cvDlsBandDQJac(int N, int
+mupper, int mlower, realtype t, N_Vector y, N_Vector fy, DlsMat Jac,
+void *data, N_Vector tmp1, N_Vector tmp2, N_Vector tmp3) ";
+
+%feature("docstring")  cvDlsDenseDQJac "int cvDlsDenseDQJac(int N,
+realtype t, N_Vector y, N_Vector fy, DlsMat Jac, void *data, N_Vector
+tmp1, N_Vector tmp2, N_Vector tmp3) ";
+
+
+// File: cvode__impl_8h.xml
+%feature("docstring")  CVErrHandler "void CVErrHandler(int
+error_code, const char *module, const char *function, char *msg, void
+*data) ";
+
+%feature("docstring")  CVEwtSet "int CVEwtSet(N_Vector ycur, N_Vector
+weight, void *data) ";
+
+%feature("docstring")  CVProcessError "void CVProcessError(CVodeMem
+cv_mem, int error_code, const char *module, const char *fname, const
+char *msgfmt,...) ";
+
+
+// File: cvode__spils__impl_8h.xml
+%feature("docstring")  CVSpilsAtimes "int CVSpilsAtimes(void *cv_mem,
+N_Vector v, N_Vector z) ";
+
+%feature("docstring")  CVSpilsDQJtimes "int CVSpilsDQJtimes(N_Vector
+v, N_Vector Jv, realtype t, N_Vector y, N_Vector fy, void *data,
+N_Vector work) ";
+
+%feature("docstring")  CVSpilsPSolve "int CVSpilsPSolve(void *cv_mem,
+N_Vector r, N_Vector z, int lr) ";
+
+
 // File: _water_solute_integrator_8h.xml
 
 
@@ -17815,9 +19870,6 @@ external_control_connection exists. ";
 
 
 // File: num__array_8h.xml
-
-
-// File: odesystem_8h.xml
 
 
 // File: real_8h.xml
@@ -17862,9 +19914,6 @@ ymax=1) ";
 
 
 // File: root__finding_8h.xml
-
-
-// File: sparse__struct_8h.xml
 
 
 // File: spline_8h.xml
@@ -17981,10 +20030,10 @@ ymax=1) ";
 // File: _solute_storage_8h.xml
 
 
+// File: system__bridge_8h.xml
+
+
 // File: _water_storage_8h.xml
-
-
-// File: convert__1__to__2_8py.xml
 
 
 // File: describe_8py.xml
@@ -18011,13 +20060,16 @@ ymax=1) ";
 // File: qtree_8py.xml
 
 
+// File: geos__shapereader_8py.xml
+
+
 // File: jacobian_8py.xml
 
 
 // File: maps_8py.xml
 
 
-// File: timetools_8py.xml
+// File: stopwatch_8py.xml
 
 
 // File: _cmf_introduction_8md.xml
@@ -18036,9 +20088,6 @@ ymax=1) ";
 
 
 // File: overview_8md.xml
-
-
-// File: ems-2011-paper_8md.xml
 
 
 // File: _finite_volume_method_8md.xml
@@ -18239,9 +20288,6 @@ ymax=1) ";
 // File: contrib_issues.xml
 
 
-// File: ems2011.xml
-
-
 // File: finite_volume_method.xml
 
 
@@ -18398,10 +20444,19 @@ ymax=1) ";
 // File: dir_276c0bb4402aea34a5542f6741d7a1ee.xml
 
 
+// File: dir_b27729de313f47365c1def7a853e5f37.xml
+
+
 // File: dir_e99589850f294dbf4b725494ab1c642e.xml
 
 
 // File: dir_12788de71013d9dcf17a564ce1b123ce.xml
+
+
+// File: dir_3f1ba486f713b268e033cb12ab59a41b.xml
+
+
+// File: dir_42143f02bfda25d481ccd197ad2e57b1.xml
 
 
 // File: dir_6e764f1be992d70f16adadc29c086796.xml
@@ -18410,10 +20465,22 @@ ymax=1) ";
 // File: dir_fb2b4d745793dfd5bb69790f90a5a545.xml
 
 
+// File: dir_8fa323148029007c36ebe07b605c3d71.xml
+
+
 // File: dir_707fbb85f5f5a03168ae42ef8ba0d65d.xml
 
 
 // File: dir_73a48ad96f7ed71bd28db957498e0435.xml
+
+
+// File: dir_682d55a973b4a7ac7b2d19556610a569.xml
+
+
+// File: dir_96a140aa3db6477b947f608f4a8a5cf4.xml
+
+
+// File: dir_15491d5ac9c000f99465febddd8f8d93.xml
 
 
 // File: dir_8d4c975dc4db6fbc37636ae91790b381.xml

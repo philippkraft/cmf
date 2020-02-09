@@ -23,14 +23,14 @@ If you are refering to cmf in a publication, please cite:
     Trade-offs between parameter constraints and model realism: a case study.
     Scientific Reports, 9(1), 10729. https://doi.org/10.1038/s41598-019-46963-6
   - Weeser, B., Jacobs, S., Kraft, P., Rufino, M. C., & Breuer, L. (2019).
-    Rainfall‐Runoff Modeling Using Crowdsourced Water Level Data.
+    Rainfall-Runoff Modeling Using Crowdsourced Water Level Data.
     Water Resources Research, 2019WR025248. https://doi.org/10.1029/2019WR025248
-  - Gattringer, J. P., Maier, N., Breuer, L., Otte, A., Donath, T. W., Kraft, P., & Harvolk‐Schöning, S. (2019).
-    Modeling of rare flood meadow species distribution by a combined habitat‐surface water‐groundwater model.
+  - Gattringer, J. P., Maier, N., Breuer, L., Otte, A., Donath, T. W., Kraft, P., & Harvolk-Schöning, S. (2019).
+    Modeling of rare flood meadow species distribution by a combined habitat-surface water-groundwater model.
     Ecohydrology, e2122. https://doi.org/10.1002/eco.2122
   - Kellner, J., Houska, T., Manderscheid, R., Weigel, H., Breuer, L., & Kraft, P. (2019).:
     Response of maize biomass and soil water fluxes on elevated \f$CO_2\f$ and drought –
-    from field experiments to process‐based simulations.
+    from field experiments to process-based simulations.
     Global Change Biology. https://doi.org/10.1111/gcb.14723
   - Jehn, F. U., Breuer, L., Houska, T., Bestian, K., and Kraft, P.:
     Incremental model breakdown to assess the multi-hypotheses problem, 

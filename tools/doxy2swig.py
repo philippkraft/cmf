@@ -70,7 +70,11 @@ class Doxy2SWIG:
         """
         f = my_open_read(src)
         self.my_dir = os.path.dirname(f.name)
-        self.xmldoc = minidom.parse(f).documentElement
+        try:
+            self.xmldoc = minidom.parse(f).documentElement
+        except UnicodeDecodeError:
+            sys.stderr.write(f'Error while reading {src}')
+            raise
         f.close()
 
         self.pieces = []

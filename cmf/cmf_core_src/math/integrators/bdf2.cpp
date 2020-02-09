@@ -115,7 +115,7 @@ void cmf::math::BDF2::Gear2newState(real h)
 		for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
-			// x_(n+1) = (p+1)�x_(n) - p�x_(n-1) + h (p+1) dxdt
+			// x_(n+1) = (p+1) x_(n) - p x_(n-1) + h (p+1) dxdt
 			state_i  =        dxdt[i]; 
 			state_i *= h_p1;
 			state_i += p1_2 * pastStates(0)[i];
@@ -129,7 +129,7 @@ void cmf::math::BDF2::Gear2newState(real h)
 		for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
-			// x_(n+1) = (p+1)�x_(n) - p�x_(n-1) + h (p+1) dxdt
+			// x_(n+1) = (p+1) x_(n) - p x_(n-1) + h (p+1) dxdt
 			state_i  =        dxdt[i]; 
 			state_i *= h_p1;
 			state_i += p1_2 * pastStates(0)[i];

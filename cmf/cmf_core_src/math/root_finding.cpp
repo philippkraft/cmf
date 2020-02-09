@@ -1,4 +1,3 @@
-﻿
 #include "root_finding.h"
 #include <cmath>
 #include <stdexcept>

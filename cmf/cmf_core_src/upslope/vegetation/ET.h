@@ -53,10 +53,10 @@ namespace cmf {
 		namespace ET {
 
 
-			/// Returns the potential ET after Penman-Monteith using some simplifications for a given Radiation balance, 
+			/// Returns the potential ET after Penman-Monteith using some simplifications for a given Radiation balance,
 			/// aerodynamic and surface resistances, and a vapor pressure deficit
 			///
-			/// \f[ ET = \frac{\Delta R_n}{\lambda \Delta + \gamma + \gamma \frac{r_s}{r_a}} 
+			/// \f[ ET = \frac{\Delta R_n}{\lambda \Delta + \gamma + \gamma \frac{r_s}{r_a}}
 			/// + \frac{c_p\rho_a}{\Delta + \gamma + \gamma \frac{r_s}{r_a}} \frac{e_s - e_a}{r_a} \f]
 			/// where
 			///  - \f$ ET \f$ is the evapotranspiration in \f$\frac{kg}{m^2 day}\approx \frac{mm}{day}\f$
@@ -66,24 +66,24 @@ namespace cmf {
 			///  - \f$ r_a \left[\frac s m\right] \f$ is the aerodynamic resistance
 			///  - \f$ \gamma = 0.067 \left[\frac{kPa}{k}\right] \f$ is the psychrometer constant
 			///  - \f$ e_s - e_a \left[kPa\right]\f$ is the vapor pressure deficit
-			/// 
+			///
 			/// @param Rn Radiation balance in \f$ \frac{MJ}{m^2 day} \f$
 			/// @param ra Aerodynamic resistance in \f$ \frac s m \f$
 			/// @param rs Surface resistance in \f$ \frac s m \f$, is 0 for free water
 			/// @param T Actual Temperature in \f$ ^\circ C \f$
 			/// @param vap_press_deficit Deficit of vapor pressure \f$ kPa \f$
 			real PenmanMonteith(real Rn,real ra,real rs,real T,real vap_press_deficit);
-			
-			
-			/// Returns the potential ET after Penman-Monteith using some simplifications for a weather and a vegetation object. 
+
+
+			/// Returns the potential ET after Penman-Monteith using some simplifications for a weather and a vegetation object.
 			/// aerodynamic and surface resistances, and a vapor pressure deficit
 			///
 			/// @param A Current weather
 			/// @param veg Vegetation data
 			/// @param h Height above sea level in m (for air pressure estimation)
 			real PenmanMonteith(cmf::atmosphere::Weather A,const cmf::upslope::vegetation::Vegetation & veg,double h);
-			
-			
+
+
 			/// @ingroup ET
 			/// @brief An abstract base class for ET Methods with a WaterStressFunction
 			class stressedET : public cmf::water::flux_connection {
@@ -103,12 +103,12 @@ namespace cmf {
 				}
 
 			};
-			
+
 			/// @ingroup ET
 			/// @brief A constant evapotranspiration
 			///
 			/// Uses a constant measured or elsewhere modelled ETpot. Actual Evapotranspiration is calculated
-			/// from rootdepth and actual matrix potential in the layers using Tact. The value of ETpot can be 
+			/// from rootdepth and actual matrix potential in the layers using Tact. The value of ETpot can be
 			/// changed during runtime
 			class constantETpot : public stressedET {
 			protected:
@@ -116,8 +116,8 @@ namespace cmf {
 			public:
 				real ETpot_value;
 				real GetETpot(cmf::math::Time t) const {return ETpot_value;}
-				constantETpot(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target,double constantETpot_value) 
-					: stressedET(source,ET_target,"Constant get_evaporation"),ETpot_value(constantETpot_value)	
+				constantETpot(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target,double constantETpot_value)
+					: stressedET(source,ET_target,"Constant get_evaporation"),ETpot_value(constantETpot_value)
 				{
 				}
 				virtual real ETpot(cmf::math::Time t) const {
@@ -128,7 +128,7 @@ namespace cmf {
 			/// @brief A timeseries driven evapotranspiration
 			///
 			/// Uses a timeseries of measured or elsewhere modelled ETpot. Actual Evapotranspiration is calculated
-			/// from rootdepth and actual matrix potential in the layers using Tact. The value of ETpot can be 
+			/// from rootdepth and actual matrix potential in the layers using Tact. The value of ETpot can be
 			/// changed during runtime
 			class timeseriesETpot: public stressedET {
 			protected:
@@ -146,7 +146,7 @@ namespace cmf {
 			/// Calculates the potential evapotranspiration according to FAO(1998)
 			///
 			/// Governing equations:
-			/// \f{eqnarray*}
+			/// \f[
 			/// \lambda ET &=& \frac{\Delta\left(R_n - G\right)+\rho_a c_p \frac{e_s - e_a}{r_a}}{\Delta + \gamma\left(1+\frac{r_s}{r_a}\right)} \mbox{ FAO 1998, Eq. 3} \\
 			/// \mbox{With:} \\
 			/// \Delta &=& 4098 \frac{0.6108 e^{17.27 T}}{(T+237.3)^2} \frac{kPa}{^\circ C} \mbox{	(FAO 1998, Eq. 13)}	\\
@@ -170,7 +170,7 @@ namespace cmf {
 			/// u_2 &=& \mbox{ Windspeed in 2m above canopy } \frac m s \\
 			/// r_s &=& \frac{r_l}{LAI_{Active}} \mbox{ (FAO 1998, Eq. 5/Box 5)} \frac s m \\
 			/// && r_l=100 \frac s m, LAI_{Active}=0.5 LAI
-			/// \f}
+			/// \f]
 			class PenmanMonteithET : public stressedET {
 
 			protected:
@@ -178,7 +178,7 @@ namespace cmf {
 			public:
 
 				bool daily;
-				PenmanMonteithET(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target) 
+				PenmanMonteithET(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target)
 					: stressedET(source,ET_target,"Penman Monteith transpiration") {
 				}
 				static real r_s(const cmf::upslope::vegetation::Vegetation & veg) ;
@@ -228,7 +228,7 @@ namespace cmf {
 			/// - \f$ \gamma = 0.4039 \sin(DOY\frac{2 \pi}{365}  - 1.405) \f$ solar declination (radians)
 			/// - \f$ \Phi\f$ geographic latitude (radians)
 			///
-			/// @see SAMANI, Zohrab. [Estimating solar radiation and evapotranspiration using minimum climatological data.][1] 
+			/// @see SAMANI, Zohrab. [Estimating solar radiation and evapotranspiration using minimum climatological data.][1]
 			/// _Journal of Irrigation and Drainage Engineering,_ 2000, 126. Jg., Nr. 4, S. 265-267.
 			///
 			/// Crop specific potential evapotranspiration is scaled by LAI: \f$ ET_{pot} = ET_{rc} \frac{LAI}{2.88}\f$.
@@ -253,7 +253,7 @@ namespace cmf {
 			/// This ETpot formula is a generalization of two older approaches by introducing
 			/// parameters to shape the dependency of ETpot from temperature and extraterrestrial radiation
 			///
-			/// \f$ \lambda ET_{pot} = R_{a} \cdot \frac{T_{a} + K_2}{K_1}
+			/// \f$ \lambda ET_{pot} = R_{a} \cdot \frac{T_{a} + K_2}{K_1}\f$
 			///
 			/// Oudin et al (2005) found an optimum for \f$K_1=100, K_2=5\f$.
 			/// The origin of this formula lays in Jensen & Haise (1963) with \f$K_1=40, K_2=0\f$
@@ -293,7 +293,7 @@ namespace cmf {
 			protected:
 				real calc_q(cmf::math::Time t);
 			public:
-				TurcET(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target) 
+				TurcET(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target)
 					: stressedET(source,ET_target,"TurcET") {
 				}
 				/// @brief Connects all soil layers with the transpiration node of the cell

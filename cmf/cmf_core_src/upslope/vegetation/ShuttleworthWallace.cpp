@@ -374,8 +374,8 @@ double WNDADJ(double ZA, double DISP, double Z0, double FETCH, double ZW, double
 
 
 ///input
-///   TMAX       maximum temperature for the day, �C
-///   TMIN       minimum temperature for the day, �C
+///   TMAX       maximum temperature for the day, degC
+///   TMIN       minimum temperature for the day, degC
 ///   DAYLEN     daylength in fraction of day
 ///   I0HDAY     potential insolation on horizontal, MJ m-2 d-1
 ///   EA         vapor pressure for the day, kPa
@@ -390,9 +390,9 @@ double WNDADJ(double ZA, double DISP, double Z0, double FETCH, double ZW, double
 ///   SOLRAD     solar radiation for the day, horizontal surface, MJ/m2
 ///output
 ///   SOLRADC    corrected solar radiation for the day, horizontal surface, MJ/m2
-///   TA         mean temperature for the day, �C
-///   TADTM      average daytime temperature, �C
-///   TANTM      average nighttime temperature, �C
+///   TA         mean temperature for the day, degC
+///   TADTM      average daytime temperature, degC
+///   TANTM      average nighttime temperature, degC
 ///   UA         average wind speed for the day at reference height, m/s
 ///   UADTM      average wind speed for daytime at ZA, m/s
 ///   UANTM      average wind speed for nighttime at ZA, m/s
@@ -725,8 +725,8 @@ void TBYLAYER(ptrdiff_t J,double PTR, double DISPC,
 ///   NN                wind/diffusivity extinction coefficient
 ///   RHOTP             ratio of total leaf area to projected area
 ///   SAI               stem area index, m2/m2
-///   TA                mean  temperature for the day at reference height, �C
-///   TSNOW             snowpack temperature (isothermal assumed), �C
+///   TA                mean  temperature for the day at reference height, degC
+///   TSNOW             snowpack temperature (isothermal assumed), degC
 ///   UA                average wind speed for the day at reference height, m/s
 ///   Z0                roughness parameter, m
 ///   Z0C               roughness parameter for closed canopy of HEIGHT, m
