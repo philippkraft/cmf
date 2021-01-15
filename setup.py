@@ -30,7 +30,7 @@ from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import customize_compiler
 from distutils.command.build_py import build_py
 
-version = '2.0.0b4'
+version = '2.0.0b5'
 
 branchversion = version
 try:
@@ -429,9 +429,9 @@ if __name__ == '__main__':
         'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Programming Language :: C++',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Topic :: Scientific/Engineering',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ]
@@ -441,7 +441,7 @@ if __name__ == '__main__':
           license='GPLv3+',
           ext_modules=ext,
           packages=['cmf', 'cmf.draw', 'cmf.geometry'],
-          python_requires='>=3.5',
+          python_requires='>=3.7',
           install_requires='numpy>=1.11.1',
           keywords='hydrology catchment simulation toolbox',
           author='Philipp Kraft',

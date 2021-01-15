@@ -1,5 +1,12 @@
 @echo off
-REM Gets and makes the dependencies for the new sparese CVodeIntegrator
+REM Gets and makes the dependencies for the new sparse CVodeIntegrator
+REM Check if run nmake is in the path
+(
+    nmake /? >NUL 2>NUL
+) || (
+    echo NMAKE.exe not found, are you running a Visual Studio Developer Command Prompt?
+    exit /b 1
+)
 
 SET CMFDIR=%~dp0..
 echo CMFDIR= %CMFDIR%
