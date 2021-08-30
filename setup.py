@@ -29,7 +29,8 @@ from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import customize_compiler
 from distutils.command.build_py import build_py
-
+import logging
+logging.basicConfig(level=logging.DEBUG)
 version = '2.0.0b5'
 
 branchversion = version
@@ -61,7 +62,7 @@ class StaticLibrary:
         self.build_script_name = build_script
         self.build_always = build_always
 
-    def __str__(self):
+    def __repr__(self):
         return self.libs[0] + ' - library'
 
     def as_win32(self):
@@ -113,6 +114,7 @@ class StaticLibrary:
 
     def build(self):
         import subprocess as sp
+        logging.debug(f'StaticLibrary.build({self})')
         cwd = os.path.dirname(__file__)
         if os.name == 'nt':
             script_ext = '.bat'
@@ -194,6 +196,7 @@ class CmfBuildExt(build_ext):
             ext.include_dirs += [get_numpy_include()]
 
     def build_libraries(self):
+        logging.debug('build_libraries()' + str(static_libraries))
         for sl in static_libraries:
             if not sl.exists():
                 print(sl, 'get downloaded and installed')
@@ -215,6 +218,7 @@ class CmfBuildExt(build_ext):
 
 
     def build_extensions(self):
+        logging.debug('build_extensions()')
         customize_compiler(self.compiler)
 
         try:
@@ -250,6 +254,8 @@ def updateversion():
         cmf/__init__.py: set __version__ constant
         Doxyfile: set PROJECT_NUMBER
     """
+    logging.debug('updateversion()')
+
     try:
         module_code = open('cmf/__init__.py').readlines()
     except IOError:
@@ -338,7 +344,7 @@ def make_cmf_core():
      - include dirs
      - extra compiler flags
     """
-
+    logging.debug('make_cmf_core()')
     # Include numpy
     include_dirs = []
     library_dirs = []
