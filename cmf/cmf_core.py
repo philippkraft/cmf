@@ -423,7 +423,6 @@ class Time(object):
 
 # Register Time in _cmf_core:
 _cmf_core.Time_swigregister(Time)
-__compiledate__ = cvar.__compiledate__
 Pi = cvar.Pi
 
 class Date(object):
@@ -2012,6 +2011,7 @@ class node_list(object):
     global_water_balance = _swig_new_instance_method(_cmf_core.node_list_global_water_balance)
     water_balance = _swig_new_instance_method(_cmf_core.node_list_water_balance)
     conc = _swig_new_instance_method(_cmf_core.node_list_conc)
+    set_solute_source = _swig_new_instance_method(_cmf_core.node_list_set_solute_source)
     get_fluxes_to = _swig_new_instance_method(_cmf_core.node_list_get_fluxes_to)
     get_fluxes3d_to = _swig_new_instance_method(_cmf_core.node_list_get_fluxes3d_to)
     get_fluxes3d = _swig_new_instance_method(_cmf_core.node_list_get_fluxes3d)

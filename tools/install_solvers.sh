@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-export CLAGS="-fPIC"
+export CFLAGS="-fPIC"
 export CXXFLAGS="-fPIC"
 
 CWD=$PWD
