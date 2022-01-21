@@ -9,7 +9,7 @@ echo "CMFDIR="$CMFDIR
 export CFLAGS="-fPIC"
 export CXXFLAGS="-fPIC"
 
-BUILDDIR=$CMFDIR/build/extern
+BUILDDIR=$CMFDIR/build/extern-linux
 echo "BUILDDIR="$BUILDDIR
 
 mkdir -p $BUILDDIR
