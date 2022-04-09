@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# This file should be used in a manylinux container to build several binaries
 # Explain usage if no /io directory exists (which mounts on proper docker usage the current directory)
 [[ -d "/io" ]] || echo "Run in manylinux container:\ndocker run -ti -v $(pwd):/io quay.io/pypa/manylinux2014_x86_64 /bin/bash /io/cmf2/tools/docker-build.sh"
 
@@ -17,6 +18,7 @@ function repair_wheel {
 
 export CFLAGS="-fPIC"
 export CXXFLAGS="-fPIC"
+CMFDIR=/io/cmf
 export MAKEFLAGS="-j$(nproc)"
 
 CMFDIR=/io/cmf2
@@ -25,7 +27,7 @@ TOOLDIR=$CMFDIR/tools
 
 # Install solvers
 SOLVERBUILDDIR=$CMFDIR/build/extern
-# rm -rf $SOLVERBUILDDIR
+rm -rf $SOLVERBUILDDIR
 cmake -S ${TOOLDIR} -B ${SOLVERBUILDDIR} -DCMAKE_BUILD_TYPE=Release
 make -C ${SOLVERBUILDDIR}
 
