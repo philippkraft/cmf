@@ -4593,6 +4593,19 @@ class DiffusiveSurfaceRunoff(flux_connection):
 _cmf_core.DiffusiveSurfaceRunoff_swigregister(DiffusiveSurfaceRunoff)
 DiffusiveSurfaceRunoff.cell_connector = _cmf_core.cvar.DiffusiveSurfaceRunoff_cell_connector
 
+class DiffusiveSurfaceRunoffVariableN(flux_connection):
+    r"""Proxy of C++ cmf::upslope::connections::DiffusiveSurfaceRunoffVariableN class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _cmf_core.delete_DiffusiveSurfaceRunoffVariableN
+
+# Register DiffusiveSurfaceRunoffVariableN in _cmf_core:
+_cmf_core.DiffusiveSurfaceRunoffVariableN_swigregister(DiffusiveSurfaceRunoffVariableN)
+
 class aquifer(WaterStorage, conductable):
     r"""
 

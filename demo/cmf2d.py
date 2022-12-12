@@ -9,7 +9,7 @@ import cmf
 import numpy as np
 from argparse import ArgumentParser
 from datetime import datetime, timedelta
-
+from matplotlib import cm
 try:
     import pylab
     import cmf.draw
@@ -176,7 +176,7 @@ def run(p, outlet, until, dt=cmf.day):
     outflow = cmf.timeseries(solver.t, dt)
     for t in solver.run(solver.t, solver.t + until, dt):
         outflow.add(outlet(t))
-        print("%20s - %6.1f l/day" % (t, outlet(t) * 1e3))
+        print("%20s - %6.1f l/day - %6.2f Wetness" % (t, outlet(t) * 1e3, p.cells[0].layers[0].Wetness))
     return outflow, solver.info
 
 
@@ -186,12 +186,12 @@ def animate(p, outlet, until, dt=cmf.day):
 
     solver = cmf.CVodeKrylov(p, 1e-9)
     solver.t = cmf.Time(1, 1, 1980)
-    hp = HillPlot(p, solver.t)
+    hp = HillPlot(p, solver.t, cmap=cm.viridis_r)
     hp.scale = 1000
 
     def integration():
         for t in solver.run(solver.t, solver.t + until, dt):
-            print(t)
+            print("%20s - %6.1f l/day - %6.2f Wetness" % (t, outlet(t) * 1e3, p.cells[0].layers[0].wetness))
             yield t
 
     anim = hp.get_animator(integration)
