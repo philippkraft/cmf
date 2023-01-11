@@ -68,6 +68,30 @@ void DiffusiveSurfaceRunoff::connect_cells( cmf::upslope::Cell& cell1,cmf::upslo
 	}
 
 }
+/// Returns the square root of the gradient with singularity prevention
+///
+/// \param grad Gradient in m/m
+/// \return sign(grad) * sqrt(grad) but with a flatted singularity at grad = 0
+real sqrt_slope(real grad) {
+
+    const real s_sqrt = sign(grad) * sqrt(std::abs(grad));
+    // linear slope width is a value in which slope range the slope should be altered
+    // to prevent a singularity in dq/ds
+    if (cmf::options.diffusive_slope_singularity_protection > 0.0) {
+        // Only a shortcut for faster writing
+        const real &s0 = cmf::options.diffusive_slope_singularity_protection;
+        // Weight of linear part
+        real w_lin = exp(-square((grad / s0)));
+        // linear part using the slope at s0/4
+        real s_lin = grad / (2. * sqrt(s0 / 4));
+        // Weighted sum of sqrt(s) and a*s
+        return w_lin * s_lin + (1 - w_lin) * s_sqrt;
+    } else {
+        return s_sqrt;
+
+    }
+
+}
 
 real DiffusiveSurfaceRunoff::calc_q( cmf::math::Time t )
 {
@@ -101,21 +125,9 @@ real DiffusiveSurfaceRunoff::calc_q( cmf::math::Time t )
 	// Get slope
 	real grad = dPsi/m_distance;
 
-	// Get signed square root for 
-	real s_sqrt = sign(grad) * sqrt(std::abs(grad));
+	// Get signed square root for gradient
+	real s_sqrt = sqrt_slope(grad);
 
-	// linear slope width is a value in which slope range the slope should be altered
-	// to prevent a singularity in dq/ds
-	if (cmf::options.diffusive_slope_singularity_protection > 0.0) {
-        // Only a shortcut for faster writing
-		const real & s0 = cmf::options.diffusive_slope_singularity_protection;
-        // Weight of linear part
-		real w_lin = exp(-square((grad/s0)));
-        // linear part using the slope at s0/4
-        real s_lin =grad/(2.*sqrt(s0/4));
-        // Weighted sum of sqrt(s) and a*s
-		s_sqrt = w_lin * s_lin + (1-w_lin) * s_sqrt;
-	}
 
 	return prevent_negative_volume(m_flowwidth * pow(d,5/3.) * s_sqrt/left->get_nManning() * 86400.);
 }
@@ -126,3 +138,4 @@ void DiffusiveSurfaceRunoff::NewNodes()
 	wright = SurfaceWater::cast(right_node());
 	owright=OpenWaterStorage::cast(right_node());
 }
+

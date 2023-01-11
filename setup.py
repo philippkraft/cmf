@@ -29,21 +29,8 @@ from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import customize_compiler
 from distutils.command.build_py import build_py
-
-version = '2.0.0b3'
-
-branchversion = version
-try:
-    from pygit2 import Repository
-    head = Repository('.').head.shorthand
-    if head != 'master':
-        branchversion = version + '.' + head
-except:
-    Repository = None
-
-print('cmf', branchversion)
-
-
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 swig = False
 openmp = False
@@ -61,8 +48,8 @@ class StaticLibrary:
         self.build_script_name = build_script
         self.build_always = build_always
 
-    def __str__(self):
-        return self.libs[0] + ' - library'
+    def __repr__(self):
+        return self.libs[0] + '-library'
 
     def as_win32(self):
         checked_libs = []
@@ -76,19 +63,27 @@ class StaticLibrary:
         return [self.libpath], reversed(checked_libs), []
 
     def as_posix(self):
-        # Move static libraries to extra_objects (with path) to ensure static linking in posix systems
-        if os.path.exists(self.libpath):
-            libpath = self.libpath
-        elif os.path.exists(self.libpath + '64'):
-            libpath = self.libpath + '64'
-        else:
-            raise FileNotFoundError("Can't find static library directory" + self.libpath)
+        def get_posix_path_to_lib(libname):
+            def lib_to_path(libpath, libname):
+                p = libpath + '/' + f'lib{libname}.a'
+                if os.path.exists(p):
+                    return p
+                else:
+                    return None
 
-        libfiles = ['{}/lib{}.a'.format(libpath, l) for l in self.libs]
-        for lf in libfiles:
-            if not os.path.exists(lf):
-                raise FileNotFoundError("Can't find static library " + lf)
-        return [], [], libfiles
+            def raise_if_none(path_to_lib):
+                if path_to_lib:
+                    return path_to_lib
+                else:
+                    raise FileNotFoundError(f"Can't find static library {libname} in {self.libpath}[64]")
+
+            return raise_if_none(
+                lib_to_path(self.libpath, libname) or
+                lib_to_path(self.libpath + '64', libname)
+            )
+
+        # Move static libraries to extra_objects (with path) to ensure static linking in posix systems
+        return [], [], [get_posix_path_to_lib(l) for l in self.libs]
 
     def exists(self):
         try:
@@ -113,6 +108,7 @@ class StaticLibrary:
 
     def build(self):
         import subprocess as sp
+        logging.debug(f'StaticLibrary.build({self})')
         cwd = os.path.dirname(__file__)
         if os.name == 'nt':
             script_ext = '.bat'
@@ -194,6 +190,7 @@ class CmfBuildExt(build_ext):
             ext.include_dirs += [get_numpy_include()]
 
     def build_libraries(self):
+        logging.debug('build_libraries()' + str(static_libraries))
         for sl in static_libraries:
             if not sl.exists():
                 print(sl, 'get downloaded and installed')
@@ -215,6 +212,7 @@ class CmfBuildExt(build_ext):
 
 
     def build_extensions(self):
+        logging.debug('build_extensions()')
         customize_compiler(self.compiler)
 
         try:
@@ -250,19 +248,10 @@ def updateversion():
         cmf/__init__.py: set __version__ constant
         Doxyfile: set PROJECT_NUMBER
     """
-    try:
-        module_code = open('cmf/__init__.py').readlines()
-    except IOError:
-        pass
-    else:
-        fout = open('cmf/__init__.py', 'w')
-        for line in module_code:
-            if line.startswith('__version__'):
-                fout.write("__version__ = '{}'\n".format(branchversion))
-            elif line.startswith('__compiletime__'):
-                fout.write("__compiletime__ = '{}'\n".format(time.ctime()))
-            else:
-                fout.write(line)
+    logging.debug('updateversion()')
+    with open('cmf/__init__.py') as initfile:
+        t = initfile.read()
+        version = re.search('__version__ ?= ?\'(.*?)\'', t).group(1)
     try:
         doxycode = open('tools/Doxyfile').readlines()
     except IOError:
@@ -274,7 +263,7 @@ def updateversion():
                 fout.write("PROJECT_NUMBER         = {}\n".format(version))
             else:
                 fout.write(line)
-
+    return version
 
 def pop_arg(arg):
     """
@@ -338,7 +327,7 @@ def make_cmf_core():
      - include dirs
      - extra compiler flags
     """
-
+    logging.debug('make_cmf_core()')
     # Include numpy
     include_dirs = []
     library_dirs = []
@@ -388,14 +377,11 @@ def make_cmf_core():
 
     # Get the source files
     cmf_files = [] #  get_source_files()
-    if not any('cmf_core' in sl.libs for sl in static_libraries):
-        print('search source files')
-        cmf_files += get_source_files()
 
     if swig:
         # Adding cmf.i when build_ext should perform the swig call
         cmf_files.append("cmf/cmf_core_src/cmf.i")
-        swig_opts = ['-c++', '-w512', '-w511', '-O', '-keyword', '-castmode', '-modern']
+        swig_opts = ['-c++', '-w512', '-w511', '-O', '-keyword', '-castmode']
 
     else:
         # Else use what we have there
@@ -416,7 +402,7 @@ def make_cmf_core():
 
 
 if __name__ == '__main__':
-    updateversion()
+    version = updateversion()
     openmp = not pop_arg('noopenmp')
     swig = pop_arg('swig')
     debug = not pop_arg('nodebug')
@@ -429,9 +415,9 @@ if __name__ == '__main__':
         'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Programming Language :: C++',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Topic :: Scientific/Engineering',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ]
@@ -441,8 +427,8 @@ if __name__ == '__main__':
           license='GPLv3+',
           ext_modules=ext,
           packages=['cmf', 'cmf.draw', 'cmf.geometry'],
-          python_requires='>=3.5',
-          install_requires='numpy>=1.11.1',
+          python_requires='>=3.7',
+          install_requires=['numpy>=1.11.1', 'cmake>3.1.0'],
           keywords='hydrology catchment simulation toolbox',
           author='Philipp Kraft',
           author_email="philipp.kraft@umwelt.uni-giessen.de",

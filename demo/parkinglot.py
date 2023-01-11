@@ -39,7 +39,7 @@ for c in p:
     c.add_layer(0.1, cmf.VanGenuchtenMualem(Ksat=0.005))
     c.install_connection(cmf.GreenAmptInfiltration)
 
-cmf.DiffusiveSurfaceRunoff.set_linear_slope(1e-4)
+# cmf.DiffusiveSurfaceRunoff.set_linear_slope(1e-4)
 cmf.connect_cells_with_flux(p, cmf.DiffusiveSurfaceRunoff)
 outlet = p.NewOutlet('outlet', -length, 0, -slope * length)
 
@@ -67,7 +67,7 @@ def getpot():
 # %%
 fig, ax = plt.subplots()
 img = ax.imshow(getdepth(), cmap=plt.cm.Blues, aspect='equal',
-                vmin=0.0, vmax=0.01, origin='bottom', interpolation='nearest',
+                vmin=0.0, vmax=0.01, origin='lower', interpolation='nearest',
                 extent=(-length / 2, (size[0] - .5) * length, -length / 2, length * (size[1] - .5)))
 fluxdir = cmf.cell_flux_directions(p, solver.t)
 pos = cmf.cell_positions(p.cells)
