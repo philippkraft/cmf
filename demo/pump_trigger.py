@@ -10,9 +10,9 @@ class SchmittTriggerSourceConnection:
     It is similar to the SchmittTriggerTargetConnection,
     but that is triggered by the state of the target.
 
-    If the volume of the water source is greater then the upper regulation level,
+    If th source is greater then the upper regulation level,
     the flux is switched on, if the level is smaller then the lower
-    regulation level, it is switched off. Between those levels, the
+    regulation level, it is swie volume of the watertched off. Between those levels, the
     flux stays in the same state as before.
 
     A trigger where the flow is turned on if the source has more than
