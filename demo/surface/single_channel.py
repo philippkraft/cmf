@@ -201,11 +201,10 @@ def main(n_reaches, totlength, slope, upper_boundary_flow, solutes='', diffusive
 
 if __name__ == '__main__':
     l_per_s = 86.4  #  m³/day
-    cmf.set_parallel_threads(1)
 
-    for i in range(1, 10):
-        result = main(2 ** i, 1024, 0.001, 10 * l_per_s, solutes='X')
+    for i in range(0, 6):
+        cmf.set_parallel_threads(2**i)
+        result = main(512, 1024, 0.001, 10 * l_per_s, solutes='X')
         print(2 ** i)
-        pd.DataFrame([result], index=[i]).to_hdf('data/single_channel.h5', 'table', append=True)
-    df = pd.read_hdf('data/single_channel.h5', 'table')
-    print(df)
+        pd.DataFrame([result], index=[i]).to_hdf('data/single_channel_speedup.h5', 'table', append=True)
+    print('done')

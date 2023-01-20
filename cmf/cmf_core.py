@@ -69,7 +69,7 @@ import weakref
 class SwigPyIterator(object):
     r"""Proxy of C++ swig::SwigPyIterator class."""
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
 
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined - class is abstract")
@@ -1131,7 +1131,7 @@ class SoluteReaction(object):
     C++ includes: reaction.h 
     """
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     get_flux = _swig_new_instance_method(_cmf_core.SoluteReaction_get_flux)
     __call__ = _swig_new_instance_method(_cmf_core.SoluteReaction___call__)
@@ -1172,7 +1172,7 @@ class SoluteConstantFluxReaction(SoluteReaction):
     C++ includes: reaction.h 
     """
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     flux = property(_cmf_core.SoluteConstantFluxReaction_flux_get, _cmf_core.SoluteConstantFluxReaction_flux_set, doc=r"""flux : real""")
 
@@ -1205,7 +1205,7 @@ class SoluteDecayReaction(SoluteReaction):
     C++ includes: reaction.h 
     """
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     decay = property(_cmf_core.SoluteDecayReaction_decay_get, _cmf_core.SoluteDecayReaction_decay_set, doc=r"""decay : real""")
 
@@ -1246,7 +1246,7 @@ class SoluteEquilibriumReaction(SoluteReaction):
     C++ includes: reaction.h 
     """
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     A = property(_cmf_core.SoluteEquilibriumReaction_A_get, _cmf_core.SoluteEquilibriumReaction_A_set, doc=r"""A : cmf::water::solute""")
     B = property(_cmf_core.SoluteEquilibriumReaction_B_get, _cmf_core.SoluteEquilibriumReaction_B_set, doc=r"""B : cmf::water::solute""")
@@ -1322,7 +1322,7 @@ class SoluteRateReaction(SoluteReaction):
     C++ includes: reaction.h 
     """
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     k_forward = property(_cmf_core.SoluteRateReaction_k_forward_get, _cmf_core.SoluteRateReaction_k_forward_set, doc=r"""k_forward : real""")
     k_back = property(_cmf_core.SoluteRateReaction_k_back_get, _cmf_core.SoluteRateReaction_k_back_set, doc=r"""k_back : real""")
@@ -1333,17 +1333,46 @@ class SoluteRateReaction(SoluteReaction):
         SoluteRateReaction(real kForward, real kBack=0.0) 
         """
         _cmf_core.SoluteRateReaction_swiginit(self, _cmf_core.new_SoluteRateReaction(*args, **kwargs))
-    add_reactance = _swig_new_instance_method(_cmf_core.SoluteRateReaction_add_reactance)
+    __add_reactance = _swig_new_instance_method(_cmf_core.SoluteRateReaction___add_reactance)
 
-    def extend(self, reactances):
+    def __repr__(self):
+        return self.to_string()
+
+
+    def update(self, reactances):
         if any(not isinstance(s, solute) for s in reactances):
             raise TypeError('All dict keys need to be cmf.solute objects')
         for s, value in reactances.items():
             try:
-                self.add_reactance(s, *value)
+                self.__add_reactance(s, *value)
             except TypeError:
-                self.add_reactance(s, value)
+                self.__add_reactance(s, value)
         return self
+
+    def append(self, solute, stoichiometric_coefficient, partial_order=None):
+        if partial_order is None:
+            self.__add_reactance(solute, stoichiometric_coefficient)
+        else:
+            self.__add_reactance(solute, stoichiometric_coefficient, partial_order)
+        return self
+
+    @classmethod
+    def decay(cls, solute, rate):
+        return cls(rate).append(solute, -1)
+
+    @classmethod
+    def constant_source(cls, solute, rate):
+        """
+        Creates a constant concentration source
+
+        @param solute: A cmf.solute
+        @param rate: The change rate of the concentration in mol/(m³ day)
+        """
+        return cls(rate).append(solute, 1, 0)
+
+    @classmethod
+    def multi(cls, reactances, k_forward, k_back=0.0):
+        return cls(k_forward, k_back).update(reactances)
 
     __swig_destroy__ = _cmf_core.delete_SoluteRateReaction
 
@@ -1374,7 +1403,7 @@ class Solute1stOrderReaction(SoluteReaction):
     C++ includes: reaction.h 
     """
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     A = property(_cmf_core.Solute1stOrderReaction_A_get, _cmf_core.Solute1stOrderReaction_A_set, doc=r"""A : cmf::water::solute""")
     B = property(_cmf_core.Solute1stOrderReaction_B_get, _cmf_core.Solute1stOrderReaction_B_set, doc=r"""B : cmf::water::solute""")
@@ -1420,7 +1449,7 @@ class Solute2ndOrderReaction(SoluteReaction):
     C++ includes: reaction.h 
     """
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     A = property(_cmf_core.Solute2ndOrderReaction_A_get, _cmf_core.Solute2ndOrderReaction_A_set, doc=r"""A : cmf::water::solute""")
     B = property(_cmf_core.Solute2ndOrderReaction_B_get, _cmf_core.Solute2ndOrderReaction_B_set, doc=r"""B : cmf::water::solute""")
@@ -1471,7 +1500,7 @@ class SoluteDiffusiveTransport(SoluteReaction):
     C++ includes: reaction.h 
     """
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     alpha = property(_cmf_core.SoluteDiffusiveTransport_alpha_get, _cmf_core.SoluteDiffusiveTransport_alpha_set, doc=r"""alpha : real""")
     left = property(_cmf_core.SoluteDiffusiveTransport_left_get, doc=r"""left : r.q(const).cmf::water::SoluteStorage""")
@@ -1493,12 +1522,11 @@ class SoluteDiffusiveTransport(SoluteReaction):
 # Register SoluteDiffusiveTransport in _cmf_core:
 _cmf_core.SoluteDiffusiveTransport_swigregister(SoluteDiffusiveTransport)
 
-attach_reactions_to_waterstorage = _cmf_core.attach_reactions_to_waterstorage
 clear_reactions_of_waterstorage = _cmf_core.clear_reactions_of_waterstorage
 class SoluteReactionList(object):
     r"""Proxy of C++ cmf::List< cmf::water::SoluteReaction::ptr > class."""
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     append = _swig_new_instance_method(_cmf_core.SoluteReactionList_append)
     extend = _swig_new_instance_method(_cmf_core.SoluteReactionList_extend)
@@ -1530,6 +1558,7 @@ class SoluteReactionList(object):
 # Register SoluteReactionList in _cmf_core:
 _cmf_core.SoluteReactionList_swigregister(SoluteReactionList)
 
+attach_reactions_to_waterstorage = _cmf_core.attach_reactions_to_waterstorage
 class SoluteStorage(StateVariable):
     r"""
 
@@ -5056,19 +5085,6 @@ class DiffusiveSurfaceRunoff(flux_connection):
 # Register DiffusiveSurfaceRunoff in _cmf_core:
 _cmf_core.DiffusiveSurfaceRunoff_swigregister(DiffusiveSurfaceRunoff)
 DiffusiveSurfaceRunoff.cell_connector = _cmf_core.cvar.DiffusiveSurfaceRunoff_cell_connector
-
-class DiffusiveSurfaceRunoffVariableN(flux_connection):
-    r"""Proxy of C++ cmf::upslope::connections::DiffusiveSurfaceRunoffVariableN class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
-    __repr__ = _swig_repr
-    __swig_destroy__ = _cmf_core.delete_DiffusiveSurfaceRunoffVariableN
-
-# Register DiffusiveSurfaceRunoffVariableN in _cmf_core:
-_cmf_core.DiffusiveSurfaceRunoffVariableN_swigregister(DiffusiveSurfaceRunoffVariableN)
 
 class aquifer(WaterStorage, conductable):
     r"""

@@ -21,6 +21,7 @@
 
 #include <string>
 #include <limits>
+#include <cstddef>
 typedef double real;
 #ifndef SWIG
 const real REAL_MAX = std::numeric_limits<real>::max();
