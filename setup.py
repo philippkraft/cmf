@@ -133,7 +133,7 @@ static_libraries = [
                   build_script='install_solvers'),
     StaticLibrary('cmf/cmf_core_src', 'lib/lib',
                   'cmf_core',
-                  build_script='install_cmf_core', build_always=True),
+                  build_script='install_cmf_core', build_always=False),
 ]
 
 

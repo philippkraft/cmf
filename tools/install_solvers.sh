@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
-export CFLAGS="-fPIC"
-export CXXFLAGS="-fPIC"
 
 CWD=$PWD
 TOOLDIR=$(dirname $0)
+TOOLDIR=$(python3 $TOOLDIR/abspath.py $TOOLDIR)
+echo "TOOLDIR="$TOOLDIR
+CMFDIR=$(python3 $TOOLDIR/abspath.py $TOOLDIR/..)
+echo "CMFDIR="$CMFDIR
+export CFLAGS="-fPIC"
+export CXXFLAGS="-fPIC"
 
-BUILDDIR=$TOOLDIR/../build/extern
+BUILDDIR=$CMFDIR/build/extern-linux
 echo "BUILDDIR="$BUILDDIR
 
 cmake -S ${TOOLDIR} -B ${BUILDDIR} -DCMAKE_BUILD_TYPE=Release

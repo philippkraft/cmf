@@ -15,8 +15,7 @@ __pycache__/
 *.VC.opendb
 
 # Distribution / packaging
-.Python
-build/
+.Pythonbuild/
 develop-eggs/
 dist/
 downloads/
@@ -100,3 +99,5 @@ cmake-build-*/
 *.sbn
 *.sbx
 nohup.out
+/demo/results/
+/build/
