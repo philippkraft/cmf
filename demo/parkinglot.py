@@ -21,7 +21,7 @@ for j in range(size[1]):
         z = (x + y) * slope + offset
 
         c = p.NewCell(x, y, z, length ** 2)
-        # Store cells with position in dictionary        
+        # Store cells with position in dictionary
         cells[i, j] = c
         # Set up topology (4 Neighbors)
         if i:
@@ -36,10 +36,10 @@ for c in p:
     # c.surfacewater.depth = 0.002
     # Asphalt        
     c.surfacewater.nManning = 0.015
-    c.add_layer(0.1, cmf.VanGenuchtenMualem(Ksat=0.005))
-    c.install_connection(cmf.GreenAmptInfiltration)
+    # c.add_layer(0.1, cmf.VanGenuchtenMualem(Ksat=0.005))
+    # c.install_connection(cmf.GreenAmptInfiltration)
 
-cmf.DiffusiveSurfaceRunoff.set_linear_slope(1e-4)
+# cmf.DiffusiveSurfaceRunoff.set_linear_slope(1e-4)
 cmf.connect_cells_with_flux(p, cmf.DiffusiveSurfaceRunoff)
 outlet = p.NewOutlet('outlet', -length, 0, -slope * length)
 
@@ -67,7 +67,7 @@ def getpot():
 # %%
 fig, ax = plt.subplots()
 img = ax.imshow(getdepth(), cmap=plt.cm.Blues, aspect='equal',
-                vmin=0.0, vmax=0.01, origin='bottom', interpolation='nearest',
+                vmin=0.0, vmax=0.01, origin='lower', interpolation='nearest',
                 extent=(-length / 2, (size[0] - .5) * length, -length / 2, length * (size[1] - .5)))
 fluxdir = cmf.cell_flux_directions(p, solver.t)
 pos = cmf.cell_positions(p.cells)
@@ -106,3 +106,20 @@ plt.sca(ax2)
 plt.plot(qout)
 plt.show()
 # %%
+
+
+def detachment(v, Ri, canopy_height):
+    """
+    This function calculates the sediment detachtment rate in
+
+    v: flow velocity in m/s
+
+    """
+
+    return (v ** 2 + Ri * v/2) / canopy_height
+
+import numpy as np
+from matplotlib import plot, show
+v = np.arange(0, 10, 0.01)
+plot(v, detachment(v, 5, 8))
+show()

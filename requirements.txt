@@ -2,4 +2,4 @@ numpy>=1.14
 wheel
 scipy>=1.0
 cmake>=3.13.0
-# shapely>=1.5.0
+shapely>=1.5.0
