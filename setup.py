@@ -31,7 +31,7 @@ from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import customize_compiler
 from distutils.command.build_py import build_py
 
-version = '2.0.0b6.flux_connection_director'
+version = '2.0.0b8'
 
 branchversion = version
 try:
@@ -396,7 +396,7 @@ def make_cmf_core():
     if swig:
         # Adding cmf.i when build_ext should perform the swig call
         cmf_files.append("cmf/cmf_core_src/cmf.i")
-        swig_opts = ['-c++', '-w512', '-w511', '-O', '-keyword', '-castmode', '-modern']
+        swig_opts = ['-c++', '-w512', '-w511', '-O', '-keyword', '-castmode']
 
     else:
         # Else use what we have there
@@ -430,9 +430,10 @@ if __name__ == '__main__':
         'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Programming Language :: C++',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
         'Topic :: Scientific/Engineering',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ]

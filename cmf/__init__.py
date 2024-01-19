@@ -22,7 +22,7 @@ from .describe import describe
 from .timetools import StopWatch, datetime_to_cmf, timerange
 
 
-__version__ = '2.0.0b7'
+__version__ = '2.0.0b8'
 
 from .cmf_core import connect_cells_with_flux as __ccwf
 
