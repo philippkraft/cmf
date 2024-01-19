@@ -1,3 +1,5 @@
 <map id="DiffusiveSurfaceRunoff" name="DiffusiveSurfaceRunoff">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="24,5,136,32"/>
+<area shape="rect" id="Node000001" title="A connection to route water from a SurfaceWater storage to another node following the gradient of the..." alt="" coords="5,80,154,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="24,5,135,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,48,82,80,77,80,77,48"/>
 </map>

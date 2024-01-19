@@ -124,8 +124,8 @@ def _describe_timeseries(ts):
         return ('{count} values from {start:%Y-%m-%d} to {end:%Y-%m-%d} step '
                 '{step}, min/mean/max  {min:0.5g} / {mean:0.5g} / {max:0.5g}'
                 .format(count=len(ts),
-                        start=ts.begin.AsPython(),
-                        end=ts.end.AsPython(),
+                        start=ts.begin,
+                        end=ts.end,
                         step=ts.step,
                         min=ts.min(),
                         mean=ts.mean(),

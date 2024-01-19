@@ -19,11 +19,10 @@
 from __future__ import print_function, division, absolute_import
 from .cmf_core import *
 from .describe import describe
-from .stopwatch import StopWatch
+from .timetools import StopWatch, datetime_to_cmf, timerange
 
 
-__version__ = '1.6.0'
-__compiletime__ = 'Sun Feb  9 15:16:49 2020'
+__version__ = '2.0.0b10'
 
 from .cmf_core import connect_cells_with_flux as __ccwf
 

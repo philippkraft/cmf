@@ -23,7 +23,7 @@
 #include "../math/num_array.h"
 #include "../atmosphere/meteorology.h"
 #include "../math/statevariable.h"
-#include "../geometry/geometry.h"
+#include "../math/geometry.h"
 #include "../water/flux_connection.h"
 #include "cell_vector.h"
 namespace cmf {

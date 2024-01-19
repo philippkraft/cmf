@@ -1,5 +1,7 @@
 <map id="ExplicitEuler_fixed" name="ExplicitEuler_fixed">
-<area shape="rect" id="node2" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator. " alt="" coords="46,109,122,136"/>
-<area shape="rect" id="node3" href="$classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times. " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node4" href="$classcmf_1_1math_1_1integratable__list.html" title="A list of cmf::math::integratable objects. " alt="" coords="81,5,194,32"/>
+<area shape="rect" id="Node000001" title="An explicit Euler integrator, with a fixed time step." alt="" coords="5,188,134,215"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator." alt="" coords="32,112,107,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,154,72,188,67,188,67,154"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times." alt="" coords="45,5,94,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="72,47,72,112,67,112,67,47"/>
 </map>

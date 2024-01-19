@@ -1,4 +1,7 @@
 <map id="CVodeBanded" name="CVodeBanded">
-<area shape="rect" id="node2" href="$classcmf_1_1math_1_1_c_vode_base.html" title="Abstract base class for different modes of the CVode solver. " alt="" coords="13,80,103,107"/>
-<area shape="rect" id="node3" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator. " alt="" coords="20,5,96,32"/>
+<area shape="rect" id="Node000001" title="implicit BDF CVode solver with a banded Jacobian approximation" alt="" coords="5,155,110,181"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1math_1_1_c_vode_base.html" title="Abstract base class for different modes of the CVode solver." alt="" coords="12,80,103,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,122,60,154,55,154,55,122"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator." alt="" coords="20,5,95,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="60,48,60,80,55,80,55,48"/>
 </map>

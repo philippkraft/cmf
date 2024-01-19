@@ -5,32 +5,28 @@
 #include "math/integrators/explicit_euler.h"
 #include "math/integrators/implicit_euler.h"
 #include "math/integrators/RKFintegrator.h"
-#include "math/integrators/cvodeintegrator.h"
+#include "math/integrators/cvode.h"
 #include "math/integrators/multiintegrator.h"
 #include "math/integrators/WaterSoluteIntegrator.h"
 %}
 
-%attribute(cmf::math::CVode,int,order,get_order);
-%rename(__getitem__) cmf::math::Integrator::operator[];
-%state_downcast(cmf::math::StateVariable::ptr cmf::math::Integrator::operator[])
+%rename(__getitem) cmf::math::Integrator::operator[];
+%state_downcast(cmf::math::StateVariable::ptr cmf::math::Integrator::operator[]);
 
 %include "math/integrators/integrator.h"
 %include "math/integrators/bdf2.h"
 %include "math/integrators/explicit_euler.h"
 %include "math/integrators/implicit_euler.h"
 %include "math/integrators/RKFintegrator.h"
-%include "math/integrators/cvodeintegrator.h"
+%include "math/integrators/cvode.h"
 %include "math/integrators/multiintegrator.h"
 %include "math/integrators/WaterSoluteIntegrator.h"
 
 
 %extend__repr__(cmf::math::Integrator);
-
+%extend_pysequence(cmf::math::Integrator);
 %extend cmf::math::Integrator { 
-    size_t __len__() {
-        return $self->size();
-    }
-%pythoncode {
+    %pythoncode {
     t = property(get_t,set_t,doc="Sets the actual time of the solution")
     dt = property(get_dt,doc="Get the current time step of the solver")
     def __call__(self, t, dt=None, reset=False):
@@ -54,12 +50,11 @@
         cmf.Time
             The new time stamp
         """
-        if dt is None:
-            dt = Time()
         if t < self.t:
-            self.integrate_until(self.t+t, dt, reset=reset)
-        else:
-            self.integrate_until(t, dt, reset=reset)
+            t += self.t
+        if dt is None:
+            dt = t - self.t
+        self.integrate_until(t, dt, reset=reset)
         return self.t
 
     def run(self, start=None, end=None, step=day*1, max_errors=0, reset=False):
@@ -97,7 +92,7 @@
         cmf.Time
              the actual timestep
         """
-        import logging
+        from logging import warning
         if not start is None:
             self.t = start
         if end is None:
@@ -106,12 +101,24 @@
         t = self.t
         while self.t < end:
             try:
-                t = self(self.t+step, reset=reset)
+                t = self(self.t+step, step, reset=reset)
             except Exception as e:
                 if len(errors) < max_errors:
                     errors.append((t, e))
                     self.reset()
-                    logging.warning(str(t) + ': ' + str(e))
+                    warning(str(t) + ': ' + str(e))
+                else:
+                    raise
             yield t
 }
+}
+
+%extend__repr__(cmf::math::CVodeInfo);
+
+%extend cmf::math::CVodeBase {
+    %pythoncode {
+    def get_jacobian(self):
+        return self._get_jacobian().reshape((self.size(), self.size()), order='F')
+    info = property(get_info)
+    }
 }

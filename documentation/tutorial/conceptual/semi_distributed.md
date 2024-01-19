@@ -156,7 +156,7 @@ class ScalingTester:
 
         :return: Simulated discharge
         """
-        solver = cmf.CVodeIntegrator(self.project, 1e-9)
+        solver = cmf.CVodeKrylov(self.project, 1e-9)
 
         # Result timeseries
         res_q = cmf.timeseries(self.begin, cmf.day)
@@ -249,7 +249,7 @@ class CellTemplate:
                                beta=par.beta_L2_out)
 
         # Snow
-        cmf.SimpleTindexSnowMelt(c.snow, c.layers[0], c,
+        cmf.TempIndexSnowMelt(c.snow, c.layers[0], c,
                                  rate=par.snow_meltrate)
         cmf.Weather.set_snow_threshold(par.snow_melt_temp)
 

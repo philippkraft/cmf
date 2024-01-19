@@ -1,6 +1,11 @@
 <map id="CVodeAdams" name="CVodeAdams">
-<area shape="rect" id="node2" href="$classcmf_1_1math_1_1_c_vode_base.html" title="Abstract base class for different modes of the CVode solver. " alt="" coords="85,199,175,225"/>
-<area shape="rect" id="node3" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator. " alt="" coords="5,109,81,136"/>
-<area shape="rect" id="node4" href="$classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times. " alt="" coords="18,5,69,32"/>
-<area shape="rect" id="node5" href="$structcmf_1_1math_1_1_c_vode_options.html" title="A set of options for all CVode3 solver. " alt="" coords="106,109,213,136"/>
+<area shape="rect" id="Node000001" title="Explizit multistep solver using CVode." alt="" coords="50,279,151,305"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1math_1_1_c_vode_base.html" title="Abstract base class for different modes of the CVode solver." alt="" coords="55,203,146,229"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,244,103,278,98,278,98,244"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator." alt="" coords="5,112,81,139"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="62,150,94,201,90,204,57,153"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times." alt="" coords="18,5,68,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="46,47,46,112,40,112,40,47"/>
+<area shape="rect" id="Node000005" href="$structcmf_1_1math_1_1_c_vode_options.html" title="A set of options for all CVode3 solver." alt="" coords="105,112,210,139"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="144,153,111,204,106,201,139,150"/>
 </map>

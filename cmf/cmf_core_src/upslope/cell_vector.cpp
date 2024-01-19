@@ -13,13 +13,6 @@ cell_iterator cell_vector::end()
 	return m_cells.end();
 }
 
-cmf::math::StateVariableList cell_vector::get_states()
-{
-	cmf::math::StateVariableList q;
-	for(cell_vector::iterator it = begin(); it != end(); ++it)
-		q.extend(*it);
-	return q;
-}
 
 cmf::upslope::cell_const_iterator cmf::upslope::cell_vector::begin() const
 {

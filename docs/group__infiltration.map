@@ -1,3 +1,4 @@
 <map id="Infiltration" name="Infiltration">
-<area shape="rect" id="node2" href="$group__connections.html" title="The connections between the nodes (boundary conditions, storages) of the water network. " alt="" coords="5,5,127,32"/>
+<area shape="rect" id="Node000002" href="$group__connections.html" title=" " alt="" coords="5,5,126,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="174,5,250,32"/>
 </map>

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['windows_20installation',['Windows installation',['../cmf_install_windows.html',1,'cmfInstall']]],
-  ['what_20you_20need_20to_20know_20for_20using_20cmf',['What you need to know for using cmf',['../cmf_tut_need_to_know.html',1,'gettingstarted']]]
+  ['query_20fluxes_20and_20states_0',['Query fluxes and states',['../cmf_tut_fluxes.html',1,'gettingstarted']]]
 ];

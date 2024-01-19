@@ -1,3 +1,5 @@
 <map id="SoluteDiffusiveTransport" name="SoluteDiffusiveTransport">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1_solute_reaction.html" title="Abstract class for a solute reaction. " alt="" coords="30,5,141,32"/>
+<area shape="rect" id="Node000001" title="Calculates a diffusive flux between solute storages." alt="" coords="5,80,165,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1_solute_reaction.html" title="Abstract class for a solute reaction." alt="" coords="30,5,140,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,48,88,80,82,80,82,48"/>
 </map>

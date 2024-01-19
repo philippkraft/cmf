@@ -1,2 +1,4 @@
-recursive-include cmf *.h *.i *.dox *.png *.txt
+recursive-include cmf *.h *.i *.txt
+prune cmf/cmf_core_src/cmake-build*
+recursive-include tools install_*.bat install_*.sh *.txt *.py
 include *.rst

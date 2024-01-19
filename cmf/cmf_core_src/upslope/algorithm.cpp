@@ -294,7 +294,7 @@ cmf::math::num_array cmf::upslope::cell2cellflux( Cell& source,Cell& target,cmf:
 }
 
 
-inline bool isstream(Topology& t,double area_threshold) {
+ bool isstream(Topology& t,double area_threshold) {
 	return t.ContributingArea()>area_threshold;
 }
 

@@ -1,3 +1,5 @@
 <map id="SoluteEquilibriumReaction" name="SoluteEquilibriumReaction">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1_solute_reaction.html" title="Abstract class for a solute reaction. " alt="" coords="37,5,148,32"/>
+<area shape="rect" id="Node000001" title="An equilibrium reaction between two solutes A&lt;&#45;&gt;B." alt="" coords="5,80,179,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1_solute_reaction.html" title="Abstract class for a solute reaction." alt="" coords="37,5,147,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,48,95,80,89,80,89,48"/>
 </map>

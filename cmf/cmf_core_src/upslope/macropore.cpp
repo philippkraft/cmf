@@ -43,13 +43,13 @@ real cmf::upslope::MacroPore::volume_to_head( real volume ) const
 	return (l->get_gravitational_potential()- l->get_thickness()) + fill;
 }
 
-real cmf::upslope::MacroPore::get_potential() const
+real cmf::upslope::MacroPore::get_potential(cmf::math::Time t) const
 {
-	if (get_state_variable_content()=='h') {
-		return this->get_state();
-	} else {
-		return volume_to_head(this->get_state());
-	}
+    if (get_state_variable_content()=='h') {
+        return this->get_state();
+    } else {
+        return volume_to_head(this->get_state());
+    }
 }
 
 real cmf::upslope::MacroPore::get_volume() const
@@ -148,8 +148,8 @@ real cmf::upslope::connections::GradientMacroFlow::calc_q( cmf::math::Time t )
 
 	real
 		distance = fabs(Mp1->get_layer()->position.z - right_node()->position.z),
-		Psi_t1=Mp1->get_potential(),
-		Psi_t2=right_node()->get_potential(),
+		Psi_t1=Mp1->get_potential(t),
+		Psi_t2=right_node()->get_potential(t),
 		gradient=(Psi_t1-Psi_t2)/distance,
 		K=0.0;
 	point direction =  Mp1->get_layer()->position - right_node()->position;

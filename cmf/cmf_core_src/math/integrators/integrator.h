@@ -21,8 +21,10 @@
 
 #include "../num_array.h"
 #include "../statevariable.h"
+#include "../odesystem.h"
 #include "../real.h"
 #include <stdexcept>
+
 namespace cmf {
 	namespace math {
 		/// Base class for any kind of integrator
@@ -33,106 +35,34 @@ namespace cmf {
 		/// Please provide a custom copy constructor
 		class Integrator
 		{
-		protected:
-			typedef std::vector<StateVariable::ptr> state_vector;
-			state_vector m_States;
-
-			/// Copies the states to a numeric vector using use_OpenMP
-		public:
 #ifndef SWIG
-			void copy_states(num_array & destination) const;
-			void copy_states(real * destination) const;
-			/// Copies the new states to the actual states
-			void set_states(const num_array & newStates) ;
-			void set_states(real * newStates);
-			/// Copies the derivatives at time step "time" to a numeric vector using use_OpenMP
-			/// @param time Time at which the derivatives should be calculated
-			/// @param destination Vector to be overwritten by the results
-			/// @param factor A factor that is multiplied to the derivate (e.g. unit conversion or integration length)
-			void copy_dxdt(Time time,num_array & destination, real factor=1) const;
-			/// Copies the derivatives at time step "time" to an preallocated c array
-			/// @param time Time at which the derivatives should be calculated
-			/// @param destination Allocated c array
-			/// @param factor A factor that is multiplied to the derivate (e.g. unit conversion or integration length)
-			void copy_dxdt(Time time,real * destination,real factor=1) const;
-			
-			/// Adds the values in operands to the current states
-			void add_values_to_states(const num_array& operands);
-
+		private:
+			ODEsystem m_system;
+		protected:
+			const ODEsystem& get_system() const;
+			ODEsystem& get_system();
 #endif
-			StateVariable::ptr operator[](int position) {
-				if (position < 0) position += m_States.size();
-				if (position < m_States.size()) return m_States[position];
-				throw std::out_of_range("state not in integrator");
-			}
-			cmf::math::num_array get_dxdt(Time time) const 
-			{
-				num_array result(this->size());
-				copy_dxdt(time,result);
-				return result;
-			}
-			cmf::math::num_array get_states() const 
-			{
-				num_array result(this->size());
-				copy_states(result);
-				return result;
-			}
 
-			/// Add state variables from a StateVariableOwner
-			virtual void add_states(cmf::math::StateVariableOwner& stateOwner) {
-				StateVariableList sq = stateOwner.get_states();
-				m_States.insert(m_States.end(),sq.begin(),sq.end());
-			}
-			/// Adds a single state variable to the integrator
-			virtual void add_single_state(cmf::math::StateVariable::ptr state) {
-				m_States.push_back(state);
-			}
-			
-			/// Public access to integratables
-			integratable_list integratables;
-			/// If true, the integratables of this solver are reset
-			bool reset_integratables;
+		public:
 
+			virtual ~Integrator() = default;
 
+			void set_system(const state_list& states);
 
+			size_t size() const;
 
-			//@}
-			/// if true (default), OpenMP is used calculate the right hand side function f(y,t) in parallel
-			bool use_OpenMP;
+			cmf::math::StateVariable::ptr operator[](ptrdiff_t index) const;
 
-			/// returns the number of state variables
-			size_t size() const
-			{
-				return m_States.size();
-			}
-			/// Returns the statevariable at position
-			/// Simplifies the assessment of state variables
-			real get_state(ptrdiff_t position) const
-			{
-				return m_States[position]->get_state();
-			}
-			/// Simplifies the assessment of state variables
-			void set_state(ptrdiff_t position,real newState)
-			{
-				m_States[position]->set_state(newState);
-			}
-			/// gets the state variables of the integrator
-			StateVariableList get_states() {
-				StateVariableList q;
-				for(state_vector::const_iterator it = m_States.begin(); it != m_States.end(); ++it)
-				{
-				    q.append(*it);
-				}
-				return q;
-			}
-			virtual ~Integrator() {}
-			
+            explicit operator cmf::math::state_list();
+
+            /// Desrcibes the iterator
+            virtual std::string to_string() const = 0;
 
 		protected:
-		///@name Accuracy parameters
+			///@name Accuracy parameters
 			//@{
 			///Tolerable error
-			const real Epsilon;
+			const real Epsilon=1e-9;
 			//@}
 			/// @name model time
 			//@{
@@ -140,18 +70,8 @@ namespace cmf {
 			cmf::math::Time m_t;
 			/// last time step of the solver
 			cmf::math::Time m_dt;
-			/// Protected function to adjust the step width for stability reasons
-			void AdjustTimestep(cmf::math::Time& TimeStep,cmf::math::Time MaxTime)
-			{
-				//We should not step over the maximum time
-				if ( MaxTime - m_t <= TimeStep) 
-					TimeStep = MaxTime-m_t;
-				//If the max time is reached at the next time step, we should lower the timestep, to avoid a too short timestep on the next call
-				else if	((MaxTime - m_t) < TimeStep*2.0) 
-					TimeStep = (MaxTime - m_t) * 0.5;
-			}
 			//number of iterations
-			int m_Iterations;
+			int m_Iterations=0;
 		public:
 			///Returns the current model time
 			cmf::math::Time get_t() const { return m_t; }
@@ -167,20 +87,10 @@ namespace cmf {
 
 			/// Constructs a new Integrator with a new own state vector
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
-			Integrator(real epsilon=1e-9) 
-				: m_States(), Epsilon(epsilon),m_dt(day),m_t(day),
-				  use_OpenMP(true), reset_integratables(true)
-			{}
-			Integrator(cmf::math::StateVariableOwner& states,real epsilon=1e-9)
-				: m_States(),Epsilon(epsilon),m_dt(day),m_t(day*0),
-				  use_OpenMP(true), reset_integratables(true)
-			{
-				this->add_states(states);
-			}
-			Integrator(const cmf::math::Integrator& other) 
-				: m_States(), Epsilon(other.Epsilon), m_dt(other.m_dt), m_t(other.m_t), 
-				  reset_integratables(other.reset_integratables), use_OpenMP(other.use_OpenMP)
-			{}
+			explicit Integrator(real epsilon=1e-9);
+
+			explicit Integrator(const state_list &states, real epsilon = 1e-9);
+			Integrator(const cmf::math::Integrator& other);
 			/// Polymorphic copy constructor
 			virtual Integrator * copy() const=0;
 			//@}
@@ -201,7 +111,5 @@ namespace cmf {
 		};
 	}
 }
-#ifdef SWIG
-#endif
 
 #endif // Integrator_h__

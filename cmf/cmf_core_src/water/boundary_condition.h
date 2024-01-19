@@ -57,7 +57,7 @@ namespace cmf {
 		class DirichletBoundary : public cmf::water::flux_node
 		{
 		protected:
-			real m_Potential;
+			cmf::math::timeseries m_Potential;
 			typedef std::map<solute,real> conc_map;
 			conc_map m_concentration;
 		public:
@@ -65,14 +65,13 @@ namespace cmf {
 #ifndef SWIG
 			operator ptr() {return std::static_pointer_cast<DirichletBoundary>(shared_from_this());}
 #endif
-			real get_potential() const
+			real get_potential(cmf::math::Time t=cmf::math::never) const override;
+			void set_potential(real new_potential) override
 			{
-				return m_Potential;
+				m_Potential = cmf::math::timeseries::from_scalar(new_potential);
 			}
-			void set_potential(real new_potential)
-			{
-				m_Potential=new_potential;
-			}
+			/// Sets the potential of the boundary condition as a timeseries
+			void set_dynamic_potential(cmf::math::timeseries ts);
 			virtual void set_conc(const cmf::water::solute& _Solute, double value);
 			virtual real conc(cmf::math::Time t, const cmf::water::solute& _Solute) const;
 			bool is_source;
@@ -82,7 +81,7 @@ namespace cmf {
 			}
 			bool RecalcFluxes(cmf::math::Time t) const
 			{
-				return 1;
+			    return 1;
 			}
 			DirichletBoundary(cmf::project& _p,real potential,cmf::geometry::point Location=cmf::geometry::point());
 			

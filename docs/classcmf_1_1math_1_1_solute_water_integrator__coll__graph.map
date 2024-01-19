@@ -1,6 +1,9 @@
 <map id="SoluteWaterIntegrator" name="SoluteWaterIntegrator">
-<area shape="rect" id="node2" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator. " alt="" coords="46,109,122,136"/>
-<area shape="rect" id="node3" href="$classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times. " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node4" href="$classcmf_1_1math_1_1integratable__list.html" title="A list of cmf::math::integratable objects. " alt="" coords="81,5,194,32"/>
-<area shape="rect" id="node5" href="$classcmf_1_1water_1_1solute__vector.html" title="Manages the solutes of the model. " alt="" coords="196,109,295,136"/>
+<area shape="rect" id="Node000001" title="A SoluteWaterIntegrator implements the cmf::math::Integrator interface, but consists of two independe..." alt="" coords="24,203,171,229"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator." alt="" coords="5,112,81,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="61,151,92,201,88,203,57,154"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times." alt="" coords="18,5,68,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="46,47,46,112,40,112,40,47"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1water_1_1solute__vector.html" title="Manages the solutes of the model." alt="" coords="105,112,202,139"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="140,153,108,204,103,201,135,150"/>
 </map>

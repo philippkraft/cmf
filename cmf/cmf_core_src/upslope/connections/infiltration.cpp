@@ -27,9 +27,9 @@ real cmf::upslope::connections::MatrixInfiltration::calc_q( cmf::math::Time t )
 	cmf::upslope::Cell& cell=soilwater->cell;
 	real
 		// get_potential of the surface water				
-		Pot_surf = surfacewater->get_potential(),
+		Pot_surf = surfacewater->get_potential(t),
 		// get_potential of the soil water
-		Pot_soil = soilwater->get_potential(),
+		Pot_soil = soilwater->get_potential(t),
 		// Gradient surface->soil
 		gradient = (Pot_surf-Pot_soil)/(0.5*soilwater->get_thickness()),								
 		// Conductivity in m/day
@@ -79,7 +79,7 @@ real cmf::upslope::connections::GreenAmptInfiltration::calc_q( cmf::math::Time t
 }
 
 
-real cmf::upslope::connections::SimpleInfiltration::calc_q( cmf::math::Time t )
+real cmf::upslope::connections::ConceptualInfiltration::calc_q( cmf::math::Time t )
 {
 	using namespace cmf::water;
 	using namespace cmf::upslope;
@@ -94,7 +94,7 @@ real cmf::upslope::connections::SimpleInfiltration::calc_q( cmf::math::Time t )
 	for(connection_list::const_iterator it = swcons.begin();it!=swcons.end();++it) {
 		flux_connection::ptr con = *it;
 		// Include only non-waterbalance connections and not this
-		if (!con->is_waterbalance_source(*surfacewater) && con.get()!=this) {
+		if (con->type!="waterbalance connection" && con.get()!=this) {
 			// Sum only incoming fluxes
 			influxes += std::max(0.0, con->q(*surfacewater,t));
 		}
@@ -108,7 +108,7 @@ real cmf::upslope::connections::SimpleInfiltration::calc_q( cmf::math::Time t )
 	return potinf * f_full;
 }
 
-cmf::upslope::connections::SimpleInfiltration::SimpleInfiltration( cmf::upslope::SoilLayer::ptr soilwater,cmf::water::flux_node::ptr surfacewater,real Wfull/*=0.9*/ ) : flux_connection(surfacewater,soilwater,"simple infiltration"),W0(Wfull)
+cmf::upslope::connections::ConceptualInfiltration::ConceptualInfiltration( cmf::upslope::SoilLayer::ptr soilwater,cmf::water::flux_node::ptr surfacewater,real Wfull/*=0.9*/ ) : flux_connection(surfacewater,soilwater,"simple infiltration"),W0(Wfull)
 {
 	NewNodes();
 }

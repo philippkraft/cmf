@@ -119,7 +119,7 @@ SoilLayer::ptr Cell::add_layer(real lowerboundary)
 	layer->set_root_uptake_stress_function(cmf::upslope::ET::VolumeStress(0.1 * C, 0.0 * C));
 
 	if (m_Layers.size() == 0) {// if this is the first layer, create a connection to surfacewater
-		new cmf::water::waterbalance_connection(get_surfacewater(),layer);
+		new cmf::water::WaterbalanceFlux(get_surfacewater(),layer);
 	} else  { // if it is not the first layer, make a double ended list of the layers
 		m_Layers[-1]->m_lower = SoilLayer::weak_ptr(layer);
 		layer->m_upper = SoilLayer::weak_ptr(m_Layers[-1]);
@@ -300,13 +300,13 @@ void Cell::set_rain_source( cmf::atmosphere::RainSource::ptr new_source )
 	m_rainfall = new_source;
 }
 
-cmf::math::StateVariableList Cell::get_states()
+Cell::operator cmf::math::state_list()
 {
-	cmf::math::StateVariableList q;
+	cmf::math::state_list q;
 	for (size_t i = 0; i < storage_count() ; ++i)
-		q.extend(*get_storage(i));
+		q += *get_storage(i);
 	for (size_t i = 0; i < layer_count() ; ++i)
-		q.extend(*get_layer(i));
+		q += *get_layer(i);
 	return q;
 }
 
@@ -390,9 +390,8 @@ double Cell::get_soildepth() const
 void cmf::upslope::Cell::set_uptakestress( const ET::RootUptakeStressFunction& stressfunction )
 {
 	// Traverse all connection of transpiration
-	for(layer_list::iterator it=m_Layers.begin();it!=m_Layers.end();++it) {
-		SoilLayer& sl = **it;
-		sl.set_root_uptake_stress_function(stressfunction);
+	for(auto& sl : m_Layers) {
+		sl->set_root_uptake_stress_function(stressfunction);
 	}
 }
 

@@ -99,41 +99,6 @@ namespace cmf {
 			};
 
 			/// @ingroup perc
-			/// Calculates flow according to a simplified Richards equation
-			///
-			/// \f{eqnarray*}
-			/// q_{Richards} &=& (K(\theta) - K(\theta_r)) A \\
-			/// \f}
-			/// where
-			/// - \f$ d [m]\f$ is the distance between the two soil layers
-			/// - \f$ K(\theta)\left[\frac m{day}\right]\f$ is the geometric mean conductivity (see SoilType::Kunsat)
-			/// - \f$ A [m^2]\f$ is the crosssectional area of the flux
-			class SimplRichards : public cmf::water::flux_connection {
-			protected:
-				std::weak_ptr<cmf::upslope::SoilLayer> sw1,sw2;
-				void NewNodes()
-				{
-					sw1=cmf::upslope::SoilLayer::cast(left_node());
-					sw2=cmf::upslope::SoilLayer::cast(right_node());
-				}
-
-				virtual real calc_q(cmf::math::Time t) ;
-			public:
-
-				SimplRichards(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right)
-					: flux_connection(left,right,"Richards eq.")
-				{
-					NewNodes();
-				}
-				/// @brief Connects all layers of the cell with the SimplRichards equation. 
-				/// 
-				/// Connects all layers of the cell with the SimplRichards equation. If no_override=true (default), then only unconnected 
-				/// layers will be connected. Existing connections will be replaced by SimplRichards otherwise
-				static void use_for_cell(cmf::upslope::Cell & cell,bool no_override=true);
-			};
-
-
-			/// @ingroup perc
 			/// Calculates a free drainage (unit gradient) from a layer to somewhere else
 			///
 			/// \f[ q = K(\theta) A\f]

@@ -12,16 +12,11 @@ bin/
 *.vcxproj.user
 *.sdf
 .vs/
-tools/Debug*
-tools/Release*
-tools/suitesparse*
-tools/sundials*
 
 *.VC.opendb
 
 # Distribution / packaging
-.Python
-build/
+.Pythonbuild/
 develop-eggs/
 dist/
 downloads/
@@ -29,11 +24,13 @@ eggs/
 .eggs/
 lib/
 lib64/
+bin/
 parts/
 sdist/
 var/
 wheels/
 doxy/
+venv-py*/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -102,4 +99,6 @@ cmake-build-*/
 *.cpg
 *.sbn
 *.sbx
-/demo/Ksmx-1-Ksmp-10-MP0.05.png
+nohup.out
+/demo/results/
+/build/

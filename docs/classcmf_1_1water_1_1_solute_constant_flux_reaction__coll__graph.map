@@ -1,3 +1,5 @@
 <map id="SoluteConstantFluxReaction" name="SoluteConstantFluxReaction">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1_solute_reaction.html" title="Abstract class for a solute reaction. " alt="" coords="43,5,154,32"/>
+<area shape="rect" id="Node000001" title="Adds a constant flux to the solute storage." alt="" coords="5,80,192,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1_solute_reaction.html" title="Abstract class for a solute reaction." alt="" coords="44,5,153,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,48,101,80,96,80,96,48"/>
 </map>

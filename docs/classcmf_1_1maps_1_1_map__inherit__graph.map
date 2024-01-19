@@ -1,4 +1,7 @@
 <map id="Map" name="Map">
-<area shape="rect" id="node2" href="$classcmf_1_1maps_1_1_nearest_neighbor_map.html" title="NearestNeighborMap" alt="" coords="5,80,148,107"/>
-<area shape="rect" id="node3" href="$classcmf_1_1maps_1_1_polygon_map.html" title="PolygonMap" alt="" coords="172,80,267,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="124,5,170,32"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1maps_1_1_nearest_neighbor_map.html" title=" " alt="" coords="5,80,148,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,45,91,81,87,78,122,41"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1maps_1_1_polygon_map.html" title=" " alt="" coords="171,80,265,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="172,41,208,78,204,81,168,45"/>
 </map>

@@ -70,11 +70,7 @@ for the linear case
 
 Due to the different meanings of parameters between the linear and
 non-linear case, cmf provides now 2 distinct connections for the linear
-and the non-linear case. Earlier versions (<1.0.4) provide only one,
-now deprecated connection type called
-[kinematic_wave](@ref cmf::water::kinematic_wave). In a transition
-period, this connector is still used in some tutorials, but for clarity
-the new connections should be used.
+and the non-linear case. 
 
 ## LinearStorageConnection
 
@@ -125,8 +121,7 @@ reasonable. The standard beta for the "real" kinematic wave from the
 Manning-Strickler equation for sheet flow in @f$\frac 5 3@f$. If you
 find a real world usage for @f$\beta<1@f$, please inform the authors
 of cmf. However, if @f$\beta<0.3@f$ it is reported, that numerical
-instabilities will arise, even when using the
-[CVodeIntegrator](@ref cmf::math::CVodeIntegrator)
+instabilities will arise.
 
 ![](PowerLawConnection.png)
 

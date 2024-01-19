@@ -18,18 +18,16 @@
 //   
 #include "implicit_euler.h"
 #include <iostream>
+#include <algorithm>
 #ifdef _OPENMP
 #include <omp.h>
 #endif
 using namespace std;
-cmf::math::ImplicitEuler::ImplicitEuler(StateVariableOwner& states, 
+cmf::math::ImplicitEuler::ImplicitEuler(const cmf::math::state_list & states,
 										real epsilon/*=1e-9*/,
 										cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) 
 : Integrator(states,epsilon),dt_min(tStepMin)
 {
-	oldStates      = num_array(ptrdiff_t(m_States.size()),0);
-	compareStates  = num_array(ptrdiff_t(m_States.size()),0);
-	dxdt           = num_array(ptrdiff_t(m_States.size()),0);
 	set_abstol();
 }
 cmf::math::ImplicitEuler::ImplicitEuler( real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) : 
@@ -46,12 +44,13 @@ cmf::math::ImplicitEuler::ImplicitEuler( const cmf::math::Integrator& forCopy)
 real cmf::math::ImplicitEuler::error_exceedance( const num_array& compare,ptrdiff_t * biggest_error_position/*=0 */ )
 {
 	real res=1;
+	ODEsystem& system = get_system();
 #pragma omp parallel for shared(res)
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; i++)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(system.size()) ; i++)
 	{
-		real error=fabs(compare[i]-get_state(i));
+		real error=fabs(compare[i]-system.get_state_value(i));
 		// Calculate absolute error tolerance as: abstol + |(x_p+x_(n+1))/2|*epsilon
-		real errortol=abstol[i] + fabs(get_state(i))*Epsilon;
+		real errortol=abstol[i] + fabs(system.get_state_value(i))*Epsilon;
 		if (error/errortol>res)
 #pragma omp critical
 		{
@@ -66,38 +65,38 @@ real cmf::math::ImplicitEuler::error_exceedance( const num_array& compare,ptrdif
 	return res;
 }
 
-void cmf::math::ImplicitEuler::add_states( cmf::math::StateVariableOwner& stateOwner ) 
-{
-	Integrator::add_states(stateOwner);
-	oldStates.resize(ptrdiff_t(m_States.size()));
-	compareStates.resize(ptrdiff_t(m_States.size()));
-	dxdt.resize(ptrdiff_t(m_States.size()));
-	set_abstol();
-}
 
 void cmf::math::ImplicitEuler::set_abstol()
 {
-	abstol.resize(ptrdiff_t(m_States.size()));
-	for (ptrdiff_t i = 0; i < m_States.size(); ++i)
-		abstol[i] = m_States[i]->get_abs_errtol(Epsilon * 1e-3);
+	ODEsystem& system = get_system();
+	size_t size = system.size();
+
+	oldStates.resize(ptrdiff_t(size));
+	compareStates.resize(ptrdiff_t(size));
+	dxdt.resize(ptrdiff_t(size));
+	abstol.resize(ptrdiff_t(size));
+	for (size_t i = 0; i < size; ++i)
+		abstol[i] = system[i]->get_abs_errtol(Epsilon * 1e-3);
 
 }
 
+
 int cmf::math::ImplicitEuler::integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep)
 {
-	if (m_States.size()==0)
+	ODEsystem& system = get_system();
+	size_t size = system.size();
+	if (size==0)
 		throw std::out_of_range("No states to integrate!");
-
-	// h is standard name in numeric for time step size
-	Time h=MaxTime-get_t();
-	// Don't stretch the current timestep more the 4 times the last timestep
-	if (h > this->get_dt() * 2) 
-	{
-		h=this->get_dt() * 2;
+	else if (size != dxdt.size() || size != oldStates.size() || size != compareStates.size()) {
+		set_abstol();
 	}
 
+	// h is standard name in numeric for time step size
+
+	Time h = std::min({ MaxTime - m_t, TimeStep.long_time_if_zero(), (m_dt * 2).long_time_if_zero() });
+
 	// Copies the actual states to the history as x_(n)
-	copy_states(oldStates);
+	system.copy_states(oldStates);
 	// Count the iterations
 	ptrdiff_t iter=0;
 	
@@ -109,9 +108,9 @@ int cmf::math::ImplicitEuler::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 	do 
 	{
 		// Remember the current state for convergence criterion
-		copy_states(compareStates);
+		system.copy_states(compareStates);
 		// Get derivatives at t(n+1) * h[d]
-		copy_dxdt(this->get_t() + h,dxdt);
+		system.copy_dxdt(m_t + h,dxdt);
 		// Updates the state variables with the new states, according to the current order
 		Gear1newState(h.AsDays());
 
@@ -137,7 +136,7 @@ int cmf::math::ImplicitEuler::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 				throw std::runtime_error("No convergence with a time step > minimal time step");
 			}
 			// Restore states
-			set_states(oldStates);
+			system.set_states(oldStates);
 			iter=0;
 			err_ex=REAL_MAX/2;
 			old_err_ex=REAL_MAX;
@@ -148,38 +147,47 @@ int cmf::math::ImplicitEuler::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 
 	m_dt=h;
 
-	set_t(get_t() + h);
+	m_t += h;
 	return int(iter);
 }
 
 void cmf::math::ImplicitEuler::Gear1newState( real h )
 {
 	real state_i;
-	if (use_OpenMP)
+	if (get_system().use_OpenMP > 1)
 	{
 #pragma omp parallel for private(state_i)
-		for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; i++)
+		for (ptrdiff_t i = 0; i < ptrdiff_t(get_system().size()) ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
 			// x_n+1 = x_(n) + h dxdt
 			state_i  =       dxdt[i]; 
 			state_i *= h; 
 			state_i +=       oldStates[i];
-			set_state(i, state_i);
+			get_system().set_state_value(i, state_i);
 		}
 	}
 	else
 	{
-		for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; i++)
+		for (ptrdiff_t i = 0; i < ptrdiff_t(get_system().size()) ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
 			// x_n+1 = x_(n) + h dxdt
 			state_i  =       dxdt[i]; 
 			state_i *= h; 
 			state_i +=       oldStates[i];
-			set_state(i, state_i);
+			get_system().set_state_value(i, state_i);
 		}
 
 	}
 
+}
+
+cmf::math::Integrator *cmf::math::ImplicitEuler::copy() const {
+	return new ImplicitEuler(*this);
+}
+
+void cmf::math::ImplicitEuler::reset() {
+	set_abstol();
+	Integrator::reset();
 }

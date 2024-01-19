@@ -1,4 +1,7 @@
 <map id="TopographicGradientDarcy" name="TopographicGradientDarcy">
-<area shape="rect" id="node2" href="$classcmf_1_1upslope_1_1connections_1_1lateral__sub__surface__flux.html" title="An abstract base class for lateral subsurface fluxes. " alt="" coords="12,80,173,107"/>
-<area shape="rect" id="node3" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="37,5,149,32"/>
+<area shape="rect" id="Node000001" title="Calculates the lateral flow using the topographic gradient." alt="" coords="5,155,180,181"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1upslope_1_1connections_1_1lateral__sub__surface__flux.html" title="An abstract base class for lateral subsurface fluxes." alt="" coords="12,80,173,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,122,95,154,90,154,90,122"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="37,5,148,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,48,95,80,90,80,90,48"/>
 </map>

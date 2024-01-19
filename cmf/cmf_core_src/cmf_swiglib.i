@@ -56,14 +56,14 @@ Included macros:
     //%ignore owner::getter ;
     #if #setter==""
         %extend owner { %pythoncode {
-        name = property(_cmf_core. ## owner_short ##___## getter)
+        name = property(fget=_cmf_core. ## owner_short ##___## getter)
         }}
     #else
         %rename(__ ## setter) owner::setter;
         //%ignore owner::setter;
         %extend owner { %pythoncode {
-        name = property(_cmf_core. ## owner_short ##___## getter,
-                        _cmf_core. ## owner_short ##___## setter)
+        name = property(fget=_cmf_core. ## owner_short ##___## getter,
+                        fset=_cmf_core. ## owner_short ##___## setter)
         }}
     #endif
 %enddef
@@ -110,7 +110,7 @@ Included macros:
 %enddef      
 
 %define %state_downcast(Method)
-//Downcast to all children of cmf::water::flux_node
+//Downcast to all children of cmf::math::StateVariable
 %_state_downcast(Method,
    cmf::water::WaterStorage, cmf::water::SoluteStorage
 )
@@ -122,7 +122,7 @@ Included macros:
 
 %define %extend__repr__(TYPE) 
 %extend TYPE { %pythoncode {
-    def __repr__(self): 
+    def __repr__(self):
         return self.to_string()
 }}
 %enddef
@@ -131,7 +131,7 @@ Included macros:
 // %iterable_to_list(LISTTYPE,ITEMTYPE) typemap system. Puts a function template into the header for general usage
 // Function to convert an iterable to a list type (class with append function). For use in typemaps
     template<typename _item_type, typename _Ty> 
-    int iterable_to_list(PyObject* iterable,swig_type_info* _item_descriptor, _Ty& temp_list) {
+    int iterable_to_list(PyObject* iterable,swig_type_info* _item_descriptor, _Ty& temp_list, int * cannot_convert=0) {
     	PyObject* iter = PyObject_GetIter(iterable);
         if (iter == 0) {
             // no iterator
@@ -143,7 +143,9 @@ Included macros:
 		    int is_ok = SWIG_ConvertPtr(py_item, (void**)&item, _item_descriptor, SWIG_POINTER_EXCEPTION);
 		    if (is_ok == 0 && item != 0 ) { 
 			    temp_list.append(*item);
-		    }
+		    } else if (cannot_convert) {
+             ++(*cannot_convert);
+          }
 		    Py_DECREF(py_item);
 	    }
 	    Py_DECREF(iter);
@@ -170,7 +172,8 @@ Included macros:
 %define %iterable_to_list(LISTTYPE,ITEMTYPE)
 %typemap(in) LISTTYPE& (LISTTYPE temp_list) {
     if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor, SWIG_POINTER_EXCEPTION) == -1) {
-        int res = iterable_to_list<ITEMTYPE, LISTTYPE>($input,$descriptor(ITEMTYPE*), temp_list);
+        int conversion_errors = 0;
+        int res = iterable_to_list<ITEMTYPE, LISTTYPE>($input,$descriptor(ITEMTYPE*), temp_list, &conversion_errors);
         if (SWIG_IsOK(res)) {
     	    $1 = &temp_list;
     	} else {
@@ -178,7 +181,151 @@ Included macros:
     	}
     }
 }
+%typemap(in) const LISTTYPE& (LISTTYPE temp_list) {
+    if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor, SWIG_POINTER_EXCEPTION) == -1) {
+        int conversion_errors = 0;
+        int res = iterable_to_list<ITEMTYPE, LISTTYPE>($input,$descriptor(ITEMTYPE*), temp_list, &conversion_errors);
+        if (SWIG_IsOK(res)) {
+    	    $1 = &temp_list;
+    	} else {
+    	    SWIG_exception_fail(SWIG_TypeError,"Only iterables can be converted to LISTTYPE");
+    	}
+    }
+}
+%typemap(in) LISTTYPE* (LISTTYPE temp_list) {
+    if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor, SWIG_POINTER_EXCEPTION) == -1) {
+        int conversion_errors = 0;
+        int res = iterable_to_list<ITEMTYPE, LISTTYPE>($input,$descriptor(ITEMTYPE*), temp_list, &conversion_errors);
+        if (SWIG_IsOK(res)) {
+            $1 = &temp_list;
+        } else {
+            SWIG_exception_fail(SWIG_TypeError,"Only iterables can be converted to LISTTYPE");
+        }
+    }
+}
+
 %typemap(typecheck,precedence=0) LISTTYPE& {
 	$1 = is_listtype_or_iterable($input,$1_descriptor);
+}
+%enddef
+
+
+%{
+    template<typename _listtype>
+    int list_getitem_from_index(const _listtype& source, PyObject* item, _listtype& target) {
+        PyObject* iter = PyObject_GetIter(item);
+        if (iter) {
+            while (PyObject* py_item = PyIter_Next(iter)) {
+                Py_ssize_t index = PyLong_AsSsize_t(py_item);
+                Py_DECREF(py_item);
+                if (PyErr_Occurred()) return 0;
+                target.append(source[index]);
+            }
+            Py_DECREF(iter);
+            return 1;
+        } else {
+            PyErr_Clear();
+        }
+        if (PySlice_Check(item)) {
+            Py_ssize_t start, stop, step;
+            PySlice_GetIndices(item, source.size(), &start, &stop, &step);
+            for (Py_ssize_t i=start; i<stop; i+=step) {
+                target.append(source[i]);
+            }
+            return 1;
+        }
+        else if (PyLong_Check(item)) {
+            Py_ssize_t i = PyLong_AsSsize_t(item);
+            target.append(source[i]);
+            return 1;
+        }
+        else {
+            SWIG_Error(SWIG_ValueError, "Index for item assessment must be either int, sequence or slice");
+            return 0;
+        }
+        
+        
+    }
+%}
+
+%define %extend_pysequence(LISTTYPE)
+%extend LISTTYPE {
+    size_t __len__() const {
+        return $self->size();
+    }
+    %pythoncode {
+    def __iter__(self):
+        for i in range(len(self)):
+            yield self[i]
+
+    def __getitem__(self, index):
+
+        if isinstance(index,slice):
+            res = type(self)()
+            for i in range(*index.indices(len(self))):
+                res.append(self.__getitem(i))
+            return res
+        else:
+            try:
+                it=iter(index)
+                res = type(self)()
+                for o in it:
+                    res.append(self.__getitem(o))
+                return res
+            except:
+                return self.__getitem(index)
+
+}}
+%enddef
+
+%define %extend_getitem(LISTTYPE,ITEMTYPE)
+%extend LISTTYPE {
+PyObject* __getitem__(PyObject* item){
+    auto* result = new LISTTYPE<ITEMTYPE>();
+    int res=list_getitem_from_index(*$self, item, *result);
+    if (res == 0 || result->size() == 0) {
+        delete result;
+        Py_RETURN_NONE;
+    }
+    if (result->size() == 1) {
+        ITEMTYPE obj = (*result)[0];
+        delete result;
+        return SWIG_NewPointerObj(
+            new ITEMTYPE(obj),
+            $descriptor(ITEMTYPE*),
+            SWIG_POINTER_OWN);
+    }
+    else  {
+        return SWIG_NewPointerObj(
+            result, 
+            $descriptor(LISTTYPE<ITEMTYPE>*),
+            SWIG_POINTER_OWN);
+    }
+}
+void __setitem__(long long index, T& item) {
+    (*$self)[index] = item;
+}
+void __delitem__(long long index) {
+    $self->remove_at(index);
+}
+long long __len__(){
+    return $self->size();
+}
+
+bool __contains__(const T& what) {
+    try
+    {
+        size_t index = $self->index(what);
+        return true;
+    }
+    catch (const std::out_of_range&)
+    {
+        return false;
+    }
+}
+%pythoncode {
+    def __repr__(self):
+        return type(self).__name__ + '([' + ', '.join(repr(obj) for obj in self) + '])'
+}
 }
 %enddef

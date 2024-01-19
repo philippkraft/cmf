@@ -62,7 +62,7 @@ W1.volume = 1.0
 
 Getting fluxes is a little bit more complicated than getting states:
 Some fluxes depend only on the state of the connected water storages,
-like `kinematic_wave`, some on time, like the
+like `LinearStorageConnection`, some on time, like the
 [NeumannBoundary](@ref cmf::water::NeumannBoundary)
 and some on both. Since the storages / nodes do not know, what time we
 have (this is a property of the solver) you need to give the time into
@@ -175,7 +175,7 @@ over time leads to numerical errors.
 
 If you need the exact waterbalance, you can create another waterstorage
 and connect the boundary condition with an
-[waterbalance_connection](@ref cmf::water::waterbalance_connection)
+[WaterbalanceFlux](@ref cmf::water::WaterbalanceFlux)
 
 ## Inspect your hydrological network
 

@@ -1,3 +1,5 @@
 <map id="ShuttleworthWallace" name="ShuttleworthWallace">
-<area shape="rect" id="node2" href="$classcmf_1_1atmosphere_1_1aerodynamic__resistance.html" title="Abstract class. Child classes can be used to calculate aerodynamic resistances against turbulent heat..." alt="" coords="5,5,168,32"/>
+<area shape="rect" id="Node000001" title="Calculates the sum of soil evaporation and transpiration according to Shuttleworth &amp; Wallace 1985,..." alt="" coords="16,80,157,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1atmosphere_1_1aerodynamic__resistance.html" title="Abstract class. Child classes can be used to calculate aerodynamic resistances against turbulent heat..." alt="" coords="5,5,168,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,48,89,80,84,80,84,48"/>
 </map>

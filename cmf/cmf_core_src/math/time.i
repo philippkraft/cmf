@@ -26,7 +26,7 @@
 %pythoncode
 {
 import datetime
-import struct
+
 }
 %init %{
 PyDateTime_IMPORT;
@@ -180,31 +180,26 @@ static bool check_time(PyObject* dt) {
             return self.AsDate().to_string()
         else:
             return self.to_string()
-    
+
     def __nonzero__(self):
         return self.is_not_0()
-    
+
     def __rmul__(self,other):
         return self*other
-    
+
     def __radd__(self,other):
         return self + other
-    
-    def AsPython(self):
-        """Deprecated function name, use as_datetime as equivalent"""
-        d=self.AsDate()
-        return datetime.datetime(d.year, d.month, d.day, d.hour, d.minute, d.second, d.ms*1000)
-    
+
     def __getstate__(self):
         return self.AsMilliseconds()
-    
+
     def __setstate__(self, data):
         self.__init__(data)
-    
+
     def as_datetime(self):
         d=self.AsDate()
         return datetime.datetime(d.year,d.month,d.day,d.hour,d.minute,d.second,d.ms*1000)
-    
+
     def as_timedelta(self):
         return datetime.timedelta(milliseconds=self.AsMilliseconds())
 
@@ -215,6 +210,9 @@ static bool check_time(PyObject* dt) {
     minute = property(lambda self: self.AsDate().minute)
     second = property(lambda self: self.AsDate().second)
     ms     = property(lambda self: self.AsDate().ms)
+
+    def __format__(self, fmt):
+        return self.as_datetime().__format__(fmt)
     }
 }
 
@@ -223,19 +221,19 @@ static bool check_time(PyObject* dt) {
     {
     def __repr__(self):
         return self.to_string()
-    
+
     def __getstate__(self):
         return Date.ToTime().__getstate__()
-    
+
     def __setstate__(self, data):
-        t = cmf.Time(data)
+        t = Time(data)
         self.__init__(t)
-    
-    def AsPython(self):
-        return datetime.datetime(self.year,self.month,self.day,self.hour,self.minute,self.second,self.ms*1000)
 
     def as_datetime(self):
         return datetime.datetime(self.year,self.month,self.day,self.hour,self.minute,self.second,self.ms*1000)
+
+    def __format__(self, fmt):
+        return self.as_datetime().__format__(fmt)
     }
 }
 
@@ -285,15 +283,6 @@ static bool check_time(PyObject* dt) {
         for i in range(self.size()):
             yield self.get_i(i)
 
-    def interpolate(self,begin,end,step):
-        """ Returns a generator returning the interpolated values at the timesteps """
-        if step>self.step():
-            ts=self.reduce_avg(begin,step)
-        else:
-            ts=self
-        for t in timerange(step,end,step):
-            yield ts[t]
-
     def __radd__(self,other):
         return self + other
 
@@ -310,101 +299,7 @@ static bool check_time(PyObject* dt) {
         res*=other
         return res
 
-    def iter_time(self):
-        """
-        Returns an iterator to iterate over each timestep
-        """
-        for i in range(len(self)):
-            yield self.begin + self.step * i
-
-    def to_buffer(self):
-        """Returns a binary buffer filled with the data of self"""
-        return struct.pack('qqqq{}d'.format(self.size()), self.size(), self.begin.AsMilliseconds(),self.step.AsMilliseconds(),self.interpolationpower(), *self)
-
-    def to_file(self,f):
-        """ Saves a timeseries in a special binary format.
-        The format consists of 4 integers with 64 bit, indicating the milliseconds after the 31.12.1899 00:00 of the beginning of the timeseries, the milliseconds of the time step,
-        the interpolation power and the number of values. The following 64 bit floats, are the values of the timeseries
-        """
-        if isinstance(f,str):
-            f=open(f,'wb')
-        elif not hasattr(f,'write'):
-            raise TypeError("The file f must be either an object providing a write method, like a file, or a valid file name")
-        f.write(self.to_buffer())
-
-    def __getstate__(self):
-        return dict(size=len(self),
-                    begin=self.begin.AsMilliseconds(),
-                    step=self.step.AsMilliseconds(),
-                    interpolationpower=self.interpolationpower(),
-                    values=self.as_array()
-                    )
-
-    def __setstate__(self, data):
-        begin = ms * data['begin']
-        step = ms * data['step']
-        self.__init__(begin, step, data['interpolationpower'])
-        self.extend(data['values'])
-
-    def to_pandas(self):
-        """
-        Returns the timeseries as a pandas Series object
-        :return: A pandas.Series object with the timesteps as index
-        """
-        import pandas as pd
-        import numpy as np
-
-        return pd.Series(data=self.as_array(),index=(t.AsPython() for t in self.iter_time()))
-        
-    @classmethod
-    def from_sequence(cls, begin, step, sequence, interpolation_mode=1):
-        res=cls(begin,step,interpolation_mode)
-        res.extend(sequence)
-        return res
-        
-    @classmethod
-    def from_buffer(cls,buf):
-        import numpy as np
-        header_length=struct.calcsize('qqqq') 
-        header=struct.unpack('qqqq',buf[:header_length])
-        res=cls(header[1]*ms,header[2]*ms,header[3])
-        res.extend(np.fromstring(buf[header_length:], dtype=float))
-        return res
-
-    @classmethod
-    def from_file(cls,f):
-        """ Loads a timeseries saved with to_file from a file 
-        Description of the file layout:
-        byte: 
-        0   Number of (int64)
-        8   Begin of timeseries (in ms since 31.12.1899 00:00) (int64)
-        16  Step size of timeseries (in ms) (int64)
-        24  Interpolation power (int64)
-        32  First value of timeseries (float64)
-        """
-        if isinstance(f,str):
-            f=open(f,'rb')
-        elif not hasattr(f,'read'):
-            raise TypeError("The file f must either implement a 'read' method, like a file, or must be a vild file name")
-        header_length=struct.calcsize('qqqq') 
-        header=struct.unpack('qqqq',f.read(header_length))
-        res=cls(header[1]*ms,header[2]*ms,header[3])
-        res.extend(struct.unpack('%id' % header[0],f.read(-1)))
-        return res
     }
     
-
-}
-        
-
-%pythoncode {
-def AsCMFtime(date):
-    """Converts a python datetime to cmf.Time"""
-    return Time(date.day, date.month, date.year, date.hour, date.minute, date.second, date.microsecond / 1000)
-
-def timerange(start,end,step=day):
-    """Creates a generator of cmf.Time, similar to the Python range function"""
-    for x in range(0, int((end - start) / step)):
-        yield start + step * x
 
 }

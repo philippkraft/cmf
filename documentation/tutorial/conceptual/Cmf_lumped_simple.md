@@ -147,7 +147,7 @@ is sufficient.
 
         param = spotpy.parameter.Uniform
         # define all parameters and their range
-        self.params = [param("tr", 1., 500), 
+        self.params = [param("Q0", 1., 500), 
                        param("beta",0.3, 5.),                        
                        param("ETV1", 0., 200), 
                        param("fEVT0", 0., 1)]
@@ -232,8 +232,8 @@ this.
 
     def setparameters(self, **params):
         # Flux from soil to outlet (interflow)
-        cmf.kinematic_wave(self.cell.layers[0], self.outlet,
-                           params["tr"], exponent=params["beta"])
+        cmf.PowerLawConnection(self.cell.layers[0], self.outlet,  
+                             params["Q0"], V0=500, exponent=params["beta"])
         # Adjustment of the evapotranspiration
         self.cell.set_uptakestress(cmf.VolumeStress(params["ETV1"],                                                     params["ETV1"]] * params["fEVT0"))
 ~~~~~~~~~~
@@ -250,7 +250,7 @@ differential equations.
             # create the solver, tell him which project it should solve and what its 
             # maximal error should be
             #print(cmf.describe(self.project))
-            solver = cmf.CVodeIntegrator(self.project, 1e-8)
+            solver = cmf.CVodeDense(self.project, 1e-8)
             # create an list to save all discharge data
             discharge = []
             # let the solver run for the given timeperiode (this may take some time)

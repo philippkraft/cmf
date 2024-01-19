@@ -29,7 +29,7 @@ using namespace cmf::upslope;
 // Actual volumetric water content of the soil (m3 H2O/m3 get_soil)
 // Actual conductivity
 // total get_potential
-real SoilLayer::get_potential() const
+real SoilLayer::get_potential(cmf::math::Time t) const
 {
 	return m_wet.h;
 }

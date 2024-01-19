@@ -10,5 +10,6 @@ class CheckEnvironment(unittest.TestCase):
         path = sys.path
         self.assertNotIn('.', path, 'Local directory is part of the path')
 
+
 if __name__ == '__main__':
     unittest.main()

@@ -67,13 +67,12 @@ consider starting with a less complex one.
 ~~~~~~~~~~{.py}
 
 # define all parameters
-# tr_S = Residence time of the water in the soil
-tr_soil = 150
+Q0 = 3
+V0 = 450 
 # ETV1 = the Volume that defines that the evaporation is lowered because of not enough water
 ETV1 = 100
 # fETV0 = factor the ET is multiplied with when water is low
 fETV0 = 0.5
-# beta = Exponent that changes the form of the flux from the soil
 beta = 1.4
 ~~~~~~~~~~
 
@@ -87,7 +86,7 @@ For simplicity we stick here to the kinematic wave.
 
 
 # Flux from soil to outlet (interflow)
-cmf.kinematic_wave(c.layers[0],outlet,tr, exponent=beta)        
+cmf.PowerLawConnection(c.layers[0],outlet,Q0, V0, beta) 
 ~~~~~~~~~~
 
 
@@ -174,7 +173,7 @@ the CVode Integrator. But you can use other solvers as well.
 
 # create the solver, tell him which project it should solve and what its 
 # maximal error should be
-solver = cmf.CVodeIntegrator(p, 1e-8)
+solver = cmf.CVodeKrylov(p, 1e-8)
 # create an list to save all discharge data
 discharge = []
 # let the solver run for the given timeperiode (this may take some time)

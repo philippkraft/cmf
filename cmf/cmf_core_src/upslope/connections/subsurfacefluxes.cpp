@@ -16,9 +16,10 @@
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
+#include "../../project.h"
 #include "subsurfacefluxes.h"
 #include "../../math/real.h"
-#include "../../geometry/geometry.h"
+#include "../../math/geometry.h"
 using namespace cmf::water;
 using namespace cmf::upslope;
 using namespace cmf::geometry;
@@ -41,10 +42,6 @@ void connections::Richards_lateral::connect_cells( Cell & cell1,Cell & cell2,ptr
 				}	}	}
 	}
 }
-bool baseflow=false;
-void connections::Richards_lateral::usebaseflow(bool use) {
-	baseflow = use;
-}
 real connections::Richards_lateral::calc_q( cmf::math::Time t )
 {
 	SoilLayer::ptr 
@@ -55,7 +52,7 @@ real connections::Richards_lateral::calc_q( cmf::math::Time t )
 	point direction=left_node()->position - right_node()->position;
 	real
 		Psi_t1=l1->get_potential(),
-		Psi_t2=right_node()->get_potential(),
+		Psi_t2=right_node()->get_potential(t),
 		gradient=(Psi_t1-Psi_t2)/distance,
 		K1=l1->get_K(direction),K2=0.0,
 		K=0.0, Ksat =.0;
@@ -76,7 +73,7 @@ real connections::Richards_lateral::calc_q( cmf::math::Time t )
 		Ksat = l1->get_Ksat();
 	}
 	real r_flow = K * gradient * flow_width * flow_thickness;
-	if (baseflow) {
+	if (cmf::options.richards_lateral_base_flow) {
 		double ft = flow_thickness + l1->get_matrix_potential();
 		if (l2) ft = std::max(flow_thickness + l2->get_matrix_potential(),ft);
 		ft = minmax(ft,0,flow_thickness);
@@ -110,8 +107,8 @@ real connections::Darcy::calc_q( cmf::math::Time t )
 		l2=sw2.lock();
 	// Calculate the gradient
 	real
-		Psi_t1 = left_node()->get_potential(),
-		Psi_t2 = right_node()->get_potential(),
+		Psi_t1 = left_node()->get_potential(t),
+		Psi_t2 = right_node()->get_potential(t),
 		gradient=(Psi_t1-Psi_t2)/distance;
 
 
@@ -166,7 +163,7 @@ real connections::TopographicGradientDarcy::calc_q( cmf::math::Time t )
 		flow_thick=mean(flow_thick1,flow_thick2),
 		// Topographic gradient
 		Psi_t1=l1->cell.z,
-		Psi_t2=l2 ? l2->cell.z : right_node()->get_potential(),
+		Psi_t2=l2 ? l2->cell.z : right_node()->get_potential(t),
 		gradient=(Psi_t1-Psi_t2)/distance,
 		// Transmissivity
 		T1 = l1->get_Ksat() *  (l1->get_lower_boundary() - (l1->get_lower_boundary()-flow_thick1)),
@@ -203,7 +200,7 @@ real connections::DarcyKinematic::calc_q( cmf::math::Time t )
 		K = source->get_K(),
 		// Topographic gradient
 		Psi_t1=l1->cell.z,
-		Psi_t2=l2 ? l2->cell.z : right_node()->get_potential(),
+		Psi_t2=l2 ? l2->cell.z : right_node()->get_potential(t),
 		gradient=(Psi_t1-Psi_t2)/distance,
 		flow=K*source->get_thickness()*flow_width*gradient;
 	return prevent_negative_volume(flow);

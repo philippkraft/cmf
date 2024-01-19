@@ -12,6 +12,5 @@ var classcmf_1_1river_1_1_manning___diffusive =
     [ "refresh", "classcmf_1_1river_1_1_manning___diffusive.html#a61a28d902eac9e4a2ffacaba4ad7d70c", null ],
     [ "right_node", "classcmf_1_1river_1_1_manning___diffusive.html#ac62da234b5e528b9783dd4dcd81f5f47", null ],
     [ "set_tracer_filter", "classcmf_1_1river_1_1_manning___diffusive.html#a5edf702b615e8af8d847ecd63d13eb25", null ],
-    [ "linear_slope_width", "classcmf_1_1river_1_1_manning___diffusive.html#ab43a4255644589afb5b99032aab46812", null ],
     [ "type", "classcmf_1_1river_1_1_manning___diffusive.html#ab42edbb29efb41e4c3e0de59be4e4cf7", null ]
 ];

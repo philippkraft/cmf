@@ -1,5 +1,9 @@
 <map id="RootUptakeStressFunction" name="RootUptakeStressFunction">
-<area shape="rect" id="node2" href="$classcmf_1_1upslope_1_1_e_t_1_1_content_stress.html" title="A simple water content based stress model based on Feddes (1978) " alt="" coords="5,80,111,107"/>
-<area shape="rect" id="node3" href="$classcmf_1_1upslope_1_1_e_t_1_1_suction_stress.html" title="The classical suction depending transpiration Stress curve after Feddes. " alt="" coords="135,80,239,107"/>
-<area shape="rect" id="node4" href="$classcmf_1_1upslope_1_1_e_t_1_1_volume_stress.html" title="A WaterStressFunction based on the stored water volume of a layer. " alt="" coords="263,80,367,107"/>
+<area shape="rect" id="Node000001" title="An abstract class to calculate the actual transpiration from potential transpiration." alt="" coords="97,5,274,32"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1upslope_1_1_e_t_1_1_content_stress.html" title="A simple water content based stress model based on Feddes (1978)" alt="" coords="5,80,110,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,42,81,82,79,77,149,38"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1upslope_1_1_e_t_1_1_suction_stress.html" title="The classical suction depending transpiration Stress curve after Feddes." alt="" coords="134,80,237,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="188,48,188,80,183,80,183,48"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1upslope_1_1_e_t_1_1_volume_stress.html" title="A WaterStressFunction based on the stored water volume of a layer." alt="" coords="262,80,365,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="222,38,292,77,290,82,220,42"/>
 </map>

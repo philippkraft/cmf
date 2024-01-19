@@ -1,4 +1,7 @@
 <map id="Channel" name="Channel">
-<area shape="rect" id="node2" href="$classcmf_1_1river_1_1_i_channel.html" title="Structure for the description of structural parameters of a reach Abstract base class for different I..." alt="" coords="47,80,119,107"/>
-<area shape="rect" id="node3" href="$classcmf_1_1river_1_1_i_volume_height_function.html" title="Volume height relations are functional objects, which return a height and a crosssectional area of a ..." alt="" coords="5,5,161,32"/>
+<area shape="rect" id="Node000001" title="A wrapper for channel geometries." alt="" coords="49,155,117,181"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1river_1_1_i_channel.html" title="Structure for the description of structural parameters of a reach Abstract base class for different I..." alt="" coords="47,80,119,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,122,86,154,80,154,80,122"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1river_1_1_i_volume_height_function.html" title="Volume height relations are functional objects, which return a height and a crosssectional area of a ..." alt="" coords="5,5,161,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="86,48,86,80,80,80,80,48"/>
 </map>

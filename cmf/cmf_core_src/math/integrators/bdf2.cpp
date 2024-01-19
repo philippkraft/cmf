@@ -22,9 +22,7 @@
 #include <omp.h>
 #endif
 #include <iostream>
-// Just a macro to compare two values
-#define min(a,get_b) (((a)<(get_b)) ? (a) : (get_b))
-
+#include <algorithm>
 
 // Creates a new Integrator w/o states
 cmf::math::BDF2::BDF2( real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=Time::Seconds(10)*/) 
@@ -33,6 +31,7 @@ cmf::math::BDF2::BDF2( real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=Time::Se
 	// Assessing multistep functions
 	calc_newState[0] = &cmf::math::BDF2::Gear1newState; // impl. Euler
 	calc_newState[1] = &cmf::math::BDF2::Gear2newState; // 2nd order Gear
+	reset();
 }
 
 cmf::math::BDF2::BDF2( const Integrator& templ) :
@@ -42,57 +41,47 @@ cmf::math::Integrator(templ),order(1),stepNo(0), error_position(-1),max_order(2)
 	// Assessing multistep functions
 	calc_newState[0] = &cmf::math::BDF2::Gear1newState; // impl. Euler
 	calc_newState[1] = &cmf::math::BDF2::Gear2newState; // 2nd order Gear
+	reset();
 }
 
-cmf::math::BDF2::BDF2( cmf::math::StateVariableOwner& states, real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=Time::Milliseconds(10)*/ )
- : Integrator(states,epsilon), order(1),stepNo(0), dt_min(tStepMin), error_position(-1),max_order(2)
+cmf::math::BDF2::BDF2(const cmf::math::state_list &states, real epsilon/*=1e-9*/,
+                      cmf::math::Time tStepMin/*=Time::Milliseconds(10)*/ )
+ : Integrator(states, epsilon), order(1),stepNo(0), dt_min(tStepMin), error_position(-1),max_order(2)
 {
 	// Assessing multistep functions
 	calc_newState[0] = &cmf::math::BDF2::Gear1newState; // impl. Euler
 	calc_newState[1] = &cmf::math::BDF2::Gear2newState; // 2nd order Gear
-
+	reset();
 }
-// Adds states to the vector of states
-void cmf::math::BDF2::add_states( cmf::math::StateVariableOwner& stateOwner )
-{
-	// Call base class function
-	Integrator::add_states(stateOwner);
-	// Resize helper vectors (convergence check,derivatives and history)
-	compareStates.resize(size());
-	dxdt.resize(size());
-	for (int i = 0; i < 2 ; i++)
-		pastStatesArray[i].resize(size());
-}
-
 
 // Gear formulas
 // First order: newState = statevector + h*dxdt (impl. Euler)
 void cmf::math::BDF2::Gear1newState( real h )
 {
 	real state_i;
-	if (use_OpenMP)
+	if (get_system().use_OpenMP > 1)
 	{
 #pragma omp parallel for private(state_i)
-		for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; i++)
+		for (ptrdiff_t i = 0; i < ptrdiff_t(get_system().size()) ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
 			// x_n+1 = x_(n) + h dxdt
 			state_i  =       dxdt[i]; 
 			state_i *= h; 
 			state_i +=       pastStates(0)[i];
-			set_state(i, state_i);
+			get_system().set_state_value(i, state_i);
 		}
 	}
 	else
 	{
-		for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; i++)
+		for (ptrdiff_t i = 0; i < ptrdiff_t(get_system().size()) ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
 			// x_n+1 = x_(n) + h dxdt
 			state_i  =       dxdt[i]; 
 			state_i *= h; 
 			state_i +=       pastStates(0)[i];
-			set_state(i, state_i);
+			get_system().set_state_value(i, state_i);
 		}
 
 	}
@@ -109,54 +98,48 @@ void cmf::math::BDF2::Gear2newState(real h)
 		h_p1 = h * p1,
 		p1_2 = p1 * p1,
 		p_2  = p * p;
-	if (use_OpenMP)
+	if (get_system().use_OpenMP > 1)
 	{
 	#pragma omp parallel for private(state_i)
-		for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; i++)
+		for (ptrdiff_t i = 0; i < ptrdiff_t(get_system().size()) ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
-			// x_(n+1) = (p+1) x_(n) - p x_(n-1) + h (p+1) dxdt
+			// x_(n+1) = (p+1)�x_(n) - p�x_(n-1) + h (p+1) dxdt
 			state_i  =        dxdt[i]; 
 			state_i *= h_p1;
 			state_i += p1_2 * pastStates(0)[i];
 			state_i -= p_2  * pastStates(1)[i];
 			state_i /= 1.0 + 2.0*p;
-			set_state(i, state_i);
+			get_system().set_state_value(i, state_i);
 		}
 	}
 	else
 	{
-		for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; i++)
+		for (ptrdiff_t i = 0; i < ptrdiff_t(get_system().size()) ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
-			// x_(n+1) = (p+1) x_(n) - p x_(n-1) + h (p+1) dxdt
+			// x_(n+1) = (p+1)�x_(n) - p�x_(n-1) + h (p+1) dxdt
 			state_i  =        dxdt[i]; 
 			state_i *= h_p1;
 			state_i += p1_2 * pastStates(0)[i];
 			state_i -= p_2  * pastStates(1)[i];
 			state_i /= 1.0 + 2.0*p;
-			set_state(i, state_i);
+			get_system().set_state_value(i, state_i);
 		}
 	}
 
 }
-void cmf::math::BDF2::set_abstol()
-{
-	abstol.resize(ptrdiff_t(m_States.size()));
-	for (ptrdiff_t i = 0; i < m_States.size(); ++i)
-		abstol[i] = m_States[i]->get_abs_errtol(Epsilon * 1e-3);
 
-}
-
-real cmf::math::BDF2::error_exceedance( const num_array& compare,int * biggest_error_position/*=0 */ )
+real cmf::math::BDF2::error_excedance( const num_array& compare,ptrdiff_t * biggest_error_position/*=0 */ )
 {
 	real res=0;
 #pragma omp parallel for shared(res)
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; i++)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(get_system().size()) ; i++)
 	{
-		real error=fabs(compare[i]-get_state(i));
+		real v = get_system().get_state_value(i);
+		real error=fabs(compare[i]-v);
 		// Calculate absolute error tolerance as: epsilon + |(x_p+x_(n+1))/2|*epsilon
-		real errortol=Epsilon + fabs(get_state(i))*Epsilon;
+		real errortol=Epsilon + fabs(v)*Epsilon;
 		if (error/errortol>res)
 #pragma omp critical
 		{
@@ -174,18 +157,14 @@ real cmf::math::BDF2::error_exceedance( const num_array& compare,int * biggest_e
 
 int cmf::math::BDF2::integrate( cmf::math::Time MaxTime,cmf::math::Time timestep )
 {
-	if (m_States.size()==0)
+
+	if (get_system().size() == 0)
 		throw std::out_of_range("No states to integrate!");
 	// h is standard name in numeric for time step size
-	Time h=MaxTime-get_t();
-	// Don't stretch the current timestep more the 2 times the last timestep
-	if (h>get_dt()*2) 
-	{
-		h=get_dt()*2;
-	}
+	Time h = std::min({ MaxTime - m_t, timestep.long_time_if_zero(), (m_dt * 2).long_time_if_zero() });
 
 	// Copies the actual states to the history as x_(n)
-	copy_states(pastStates(0));
+	get_system().copy_states(pastStates(0));
 	// Count the iterations
 	int iter=0;
 	real old_err_ex=REAL_MAX;
@@ -194,15 +173,15 @@ int cmf::math::BDF2::integrate( cmf::math::Time MaxTime,cmf::math::Time timestep
 	do 
 	{
 		// Remember the current state for convergence criterion
-		copy_states(compareStates);
+		get_system().copy_states(compareStates);
 		// Get derivatives at t(n+1)
-		copy_dxdt(this->get_t() + h,dxdt);
+		get_system().copy_dxdt(this->get_t() + h,dxdt);
 		// Updates the state variables with the new states, according to the current order
 		(this->*(calc_newState[order-1]))(h.AsDays());
 
 
 		old_err_ex=err_ex;
-		err_ex=error_exceedance(compareStates,&error_position);
+		err_ex=error_excedance(compareStates, &error_position);
 
 
 		// Count number of iterations
@@ -223,7 +202,7 @@ int cmf::math::BDF2::integrate( cmf::math::Time MaxTime,cmf::math::Time timestep
 				throw std::runtime_error("No convergence with a time step > minimal time step");
 			}
 			// Restore states
-			set_states(pastStates(0));
+			get_system().set_states(pastStates(0));
 
 			iter=0;
 			err_ex=REAL_MAX/2;
@@ -243,6 +222,27 @@ int cmf::math::BDF2::integrate( cmf::math::Time MaxTime,cmf::math::Time timestep
 	++stepNo;
 	set_t(get_t() + h);
 	return iter;
+}
+
+void cmf::math::BDF2::reset() {
+	order=1;
+	stepNo = 0;
+	ptrdiff_t size = get_system().size();
+	if (size != pastStates(0).size() ||
+		size != pastStates(1).size() ||
+		size != compareStates.size() ||
+		size != dxdt.size()) {
+
+		pastStates(0).resize(size);
+		pastStates(1).resize(size);
+		compareStates.resize(size);
+		dxdt.resize(size);
+	}
+	abstol.resize(ptrdiff_t(get_system().size()));
+	ODEsystem& system = get_system();
+	for (size_t i = 0; i < get_system().size(); ++i)
+		abstol[i] = system[i]->get_abs_errtol(Epsilon * 1e-3);
+
 }
 
 #undef max

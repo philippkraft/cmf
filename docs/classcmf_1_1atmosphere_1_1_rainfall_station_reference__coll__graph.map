@@ -1,5 +1,9 @@
 <map id="RainfallStationReference" name="RainfallStationReference">
-<area shape="rect" id="node2" href="$classcmf_1_1atmosphere_1_1_rain_source.html" title="An abstract class for different types of rainfall sources. " alt="" coords="42,171,131,197"/>
-<area shape="rect" id="node3" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="48,95,125,121"/>
-<area shape="rect" id="node4" href="$classcmf_1_1geometry_1_1point.html" title="2D&#45;Point Class. " alt="" coords="61,5,112,32"/>
+<area shape="rect" id="Node000001" title="References a single RainfallStation to provide rainfall intensity data." alt="" coords="5,248,168,275"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1atmosphere_1_1_rain_source.html" title="An abstract class for different types of rainfall sources." alt="" coords="42,172,131,199"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,214,89,248,84,248,84,214"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes." alt="" coords="48,96,125,123"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="89,138,89,172,84,172,84,138"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1geometry_1_1point.html" title="2D&#45;Point Class." alt="" coords="62,5,111,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="89,48,89,95,84,95,84,48"/>
 </map>

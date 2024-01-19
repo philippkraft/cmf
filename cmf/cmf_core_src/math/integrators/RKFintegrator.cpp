@@ -21,11 +21,13 @@
 #include <omp.h>
 #endif
 using namespace std;
-cmf::math::RKFIntegrator::RKFIntegrator(StateVariableOwner& states, real epsilon/*=1e-9*/,cmf::math::Time _dt_min/*=10.0/(3600.0*24.0)*/ ) : 
-Integrator(states,epsilon),oldStates(m_States.size()),dt_min(_dt_min)
+cmf::math::RKFIntegrator::RKFIntegrator(const cmf::math::state_list & states, real epsilon/*=1e-9*/,
+                                        cmf::math::Time dt_min/*=10.0/(3600.0*24.0)*/ ) :
+Integrator(states,epsilon),oldStates(states.size()),dt_min(dt_min)
 {	
+	size_t size = get_system().size();
 	for (int i = 0; i < 6 ; i++)
-		kValues[i]= num_array(size());
+		kValues[i]= num_array(size);
 }
 cmf::math::RKFIntegrator::RKFIntegrator( real epsilon/*=1e-9*/,cmf::math::Time _dt_min/*=10.0/(3600.0*24.0)*/ ) : 
 Integrator(epsilon), dt_min(_dt_min)
@@ -38,25 +40,18 @@ cmf::math::RKFIntegrator::RKFIntegrator( const cmf::math::RKFIntegrator& forCopy
 {
 	
 }
-void cmf::math::RKFIntegrator::add_states( cmf::math::StateVariableOwner& stateOwner )
-{
-	Integrator::add_states(stateOwner);
-	oldStates.resize(size());
-	for (int i = 0; i < 6 ; i++)
-		kValues[i].resize(size());
-}
-	const real 
-// Runge-Kutta-Fehlberg formula of 4-th order
-cmf::math::RKFIntegrator::c[6] = { 0.0, 1.0/4.0,  3.0/8.0,  12.0/13.0,  1.0,  1.0/2.0 },
-// Runge-Kutta-Fehlberg weights of the k-Values
-cmf::math::RKFIntegrator::A[6][5] = { 
-	{  0.0,            0.0,           0.0,            0.0,            0.0       },
-	{  1.0/4.0,        0.0,           0.0,            0.0,            0.0       },
-	{  3.0/32.0,       9.0/32.0,      0.0,            0.0,            0.0       },
-	{  1932.0/2197.0, -7200.0/2197.0, 7296.0/2197.0,  0.0,            0.0       },
-	{  439.0/216.0,   -8.0,           3680.0/513.0,  -845.0/4104.0,   0.0       },
-	{ -8.0/27.0,       2.0,          -3544.0/2565.0,  1859.0/4104.0, -11.0/40.0 }
-},
+	const real
+		// Runge-Kutta-Fehlberg formula of 4-th order
+		cmf::math::RKFIntegrator::c[6] = { 0.0, 1.0/4.0,  3.0/8.0,  12.0/13.0,  1.0,  1.0/2.0 },
+		// Runge-Kutta-Fehlberg weights of the k-Values
+		cmf::math::RKFIntegrator::A[6][5] = {
+			{  0.0,            0.0,           0.0,            0.0,            0.0       },
+			{  1.0/4.0,        0.0,           0.0,            0.0,            0.0       },
+			{  3.0/32.0,       9.0/32.0,      0.0,            0.0,            0.0       },
+			{  1932.0/2197.0, -7200.0/2197.0, 7296.0/2197.0,  0.0,            0.0       },
+			{  439.0/216.0,   -8.0,           3680.0/513.0,  -845.0/4104.0,   0.0       },
+			{ -8.0/27.0,       2.0,          -3544.0/2565.0,  1859.0/4104.0, -11.0/40.0 }
+		},
 // weight of intermediate solutions for the end solution (RK5)
 cmf::math::RKFIntegrator::b5[6] = { 16.0/135.0, 0.0, 6656.0/12825.0, 28561.0/56430.0, -9.0/50.0, 2.0/55.0 },
 // local error term
@@ -66,8 +61,13 @@ cmf::math::RKFIntegrator::e[6] = { -1.0/360.0,  0.0, 128.0/4275.0, 2197.0/75240.
 
 int cmf::math::RKFIntegrator::integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep)
 {
-	if (m_States.size()==0)
+	ODEsystem& system = get_system();
+	size_t size = system.size();
+	if (size==0)
 		throw std::out_of_range("No states to integrate!");
+	else if (oldStates.size() != size) {
+		reset();
+	}
 
 	if (TimeStep<dt_min)
 		TimeStep=dt_min;
@@ -78,9 +78,9 @@ int cmf::math::RKFIntegrator::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 		m_dt = MaxTime - m_t;
 		//Calculate new states with an eulerian step : x(t+h) = x(t) + timeStep * dx/dt
 		// Copy derivates multipied with time step to dxdt
-		copy_dxdt(get_t(),kValues[0],TimeStep.AsDays());
+		system.copy_dxdt(get_t(),kValues[0],TimeStep.AsDays());
 		// Update time step with delta x
-		add_values_to_states(kValues[0]);
+		system.add_values_to_states(kValues[0]);
 
 		//Step to MaxTime
 		m_t = MaxTime;
@@ -90,7 +90,7 @@ int cmf::math::RKFIntegrator::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 	//Trying the complete timestep
 	//Adjust the timestep to avoid the eularian solution above
 	AdjustTimestep(TimeStep,MaxTime);
-	copy_states(oldStates);
+	system.copy_states(oldStates);
 
 
 	//h is the normal name of the variable TimeStep
@@ -104,8 +104,8 @@ int cmf::math::RKFIntegrator::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 	{
 		error=0;
 		//Calculate k[0] (the current derivate)	
-		
-		copy_dxdt(m_t,k(0));
+
+		system.copy_dxdt(m_t,k(0));
 
 		//For each higher order of the Runge-Kutta integrator
 		for (int order = 1; order <= 5 ; order++)
@@ -114,7 +114,7 @@ int cmf::math::RKFIntegrator::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 			real kSum=0;
 			int m;
 #pragma omp parallel for private(kSum,m) firstprivate(order)
-			for (int i = 0; i < size() ; i++)
+			for (int i = 0; i < system.size() ; i++)
 			{
 				//Weighted sum of k-values
 				//Sum up the k-Values weighted by the j'th row
@@ -123,11 +123,11 @@ int cmf::math::RKFIntegrator::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 					kSum += A[order][m] * k(order,i);
 
 				//Update the state value for that order, to calculate the next k value
-				set_state(i,kSum * h.AsDays() + oldStates[i]); 
+				system.set_state_value(i,kSum * h.AsDays() + oldStates[i]);
 			} //Done with system equations
 			const Time subTimestep = m_t + h * c[order];
 			//For each differential equation of the system, calculate the derivate from the new state
-			copy_dxdt(subTimestep,k(order));
+			system.copy_dxdt(subTimestep,k(order));
 		} // next order
 
 		//Sum up the k - Values to obtain the final state for the 5th order RK-solution
@@ -136,7 +136,7 @@ int cmf::math::RKFIntegrator::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 			real kSum=0;
 			real localError=0;
 #pragma omp parallel for private(kSum,localError) shared(error)
-		for (int i = 0; i < size() ; i++)
+		for (int i = 0; i < system.size() ; i++)
 		{
 			kSum=0;
 			localError=0;
@@ -149,7 +149,7 @@ int cmf::math::RKFIntegrator::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 			//Get the absolute of the local error
 			localError = fabs(localError);
 			//Update the state value for that order
-			set_state(i,kSum * h.AsDays() + oldStates[i]);
+			system.set_state_value(i, kSum * h.AsDays() + oldStates[i]);
 			//Calculates the local error weighted with h
 			if (localError>error)
 			{
@@ -181,7 +181,7 @@ int cmf::math::RKFIntegrator::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 		if (error > Epsilon && Loops<100 && TimeStep>dt_min)
 		{
 			//Reset the states to the old states, and try again with the new time step
-			set_states(oldStates);
+			system.set_states(oldStates);
 		}
 		//In case of a good solution or if no solution after 100 tries is found, we exit the trying
 	} while (error > Epsilon && Loops<100 && TimeStep>dt_min);
@@ -193,6 +193,14 @@ int cmf::math::RKFIntegrator::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 	++m_Iterations;
 	return Loops;
 
+}
+
+void cmf::math::RKFIntegrator::reset() {
+	Integrator::reset();
+	size_t size = get_system().size();
+	oldStates.resize(size);
+	for (int i = 0; i < 6 ; i++)
+		kValues[i].resize(size);
 }
 
 

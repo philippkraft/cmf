@@ -1,10 +1,18 @@
 <map id="SoilLayer" name="SoilLayer">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water. " alt="" coords="171,184,273,211"/>
-<area shape="rect" id="node3" href="$classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable. " alt="" coords="5,95,105,121"/>
-<area shape="rect" id="node4" href="$classcmf_1_1math_1_1_state_variable_owner.html" title="An abstract class, that owns one or more state variables, that can add them to a vector of state vari..." alt="" coords="232,95,369,121"/>
-<area shape="rect" id="node8" href="$classcmf_1_1upslope_1_1_cell.html" title="This class is the basic landscape object. " alt="" coords="400,184,444,211"/>
-<area shape="rect" id="node5" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="130,95,207,121"/>
-<area shape="rect" id="node6" href="$classcmf_1_1geometry_1_1point.html" title="2D&#45;Point Class. " alt="" coords="386,5,437,32"/>
-<area shape="rect" id="node7" href="$classcmf_1_1upslope_1_1conductable.html" title="An abstract interface for all classes providing a conductivity (e.g. " alt="" coords="553,184,645,211"/>
-<area shape="rect" id="node9" href="$classcmf_1_1upslope_1_1vegetation_1_1_vegetation.html" title="Holds the vegetation parameters for the calculation of ET and fractionating rainfall. Not every ET method uses all parameters. " alt="" coords="393,95,477,121"/>
+<area shape="rect" id="Node000001" title="A representation of a SoilLayer." alt="" coords="246,277,321,304"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water." alt="" coords="104,187,205,213"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="183,221,225,251,263,275,260,279,222,256,180,225"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable." alt="" coords="106,96,205,123"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="158,138,157,186,152,186,152,138"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes." alt="" coords="5,96,82,123"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="73,130,140,184,137,188,69,135"/>
+<area shape="rect" id="Node000005" href="$classcmf_1_1geometry_1_1point.html" title="2D&#45;Point Class." alt="" coords="119,5,168,32"/>
+<area shape="poly" id="edge8_Node000001_Node000005" title=" " alt="" coords="172,41,197,65,219,95,244,145,263,197,284,276,279,277,258,198,240,147,215,97,193,69,169,44"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="119,45,60,97,56,93,116,41"/>
+<area shape="rect" id="Node000006" href="$classcmf_1_1upslope_1_1conductable.html" title="An abstract interface for all classes providing a conductivity (e.g." alt="" coords="279,187,371,213"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="315,229,292,278,287,276,310,226"/>
+<area shape="rect" id="Node000007" href="$classcmf_1_1upslope_1_1_cell.html" title="This class is the basic landscape object." alt="" coords="395,187,439,213"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="386,225,304,279,301,275,383,220"/>
+<area shape="rect" id="Node000008" href="$classcmf_1_1upslope_1_1vegetation_1_1_vegetation.html" title="Holds the vegetation parameters for the calculation of ET and fractionating rainfall...." alt="" coords="375,96,459,123"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="420,138,420,186,414,186,414,138"/>
 </map>

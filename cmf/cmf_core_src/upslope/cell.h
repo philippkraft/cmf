@@ -20,7 +20,7 @@
 #define cell_h__
 #include "../atmosphere/meteorology.h"
 #include "../atmosphere/precipitation.h"
-#include "../geometry/geometry.h"
+#include "../math/geometry.h"
 #include "../water/flux_connection.h"
 #include "vegetation/StructVegetation.h"
 #include "../water/WaterStorage.h"
@@ -28,7 +28,7 @@
 #include "Soil/RetentionCurve.h"
 #include "SoilLayer.h"
 #include "layer_list.h"
-#include "../cmfmemory.h"
+#include <memory>
 #include <map>
 #include <vector>
 #include <set>
@@ -47,8 +47,6 @@ namespace cmf {
 			class RootUptakeStressFunction;
 		}
 		typedef void (*connectorfunction)(cmf::upslope::Cell&,cmf::upslope::Cell&,ptrdiff_t);
-		typedef void (*internal_connector)(cmf::upslope::Cell&);
-		typedef std::shared_ptr<SoilLayer> layer_ptr;
 		class SurfaceWater;
 		typedef std::shared_ptr<SurfaceWater> surfacewater_ptr;
 
@@ -71,7 +69,7 @@ namespace cmf {
 
 		/// This class is the basic landscape object. It is the owner of water storages, and the upper and lower boundary conditions 
 		/// of the system (rainfall, atmospheric vapor, deep groundwater)
-		class Cell : public cmf::math::StateVariableOwner {
+		class Cell {
 			Cell(const Cell& cpy);
 			friend class project;
 			/// @name Location
@@ -167,7 +165,7 @@ namespace cmf {
 				return m_rainfall;
 			}
 			/// Uses the given WaterStressFunction for all stressedET like connections to the transpiration target
-			void set_uptakestress(const ET::RootUptakeStressFunction& stressfunction);
+			void set_uptakestress(const cmf::upslope::ET::RootUptakeStressFunction& stressfunction);
 			/*
 			/// Experimental feature: Gets a cell owned boundary node, eg. groundwater, or Neumannboundary
 			/// This should replace get_evaporation, get_transpiration etc.
@@ -326,7 +324,7 @@ namespace cmf {
 			Cell(double x,double y,double z,double area,cmf::project & _project);
 			std::string to_string() const;
 			//@}
-			cmf::math::StateVariableList get_states();
+            explicit operator cmf::math::state_list();
 		};
 
 		

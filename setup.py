@@ -18,20 +18,21 @@
 #   
 
 # This file can build and install cmf
-from __future__ import print_function, division
+
 import sys
 import os
-import platform
 import io
 import re
 import time
+import glob
 
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import customize_compiler
 from distutils.command.build_py import build_py
 
-version = '1.6.0'
+version = '2.0.0b10'
+
 branchversion = version
 try:
     from pygit2 import Repository
@@ -43,8 +44,102 @@ except:
 
 print('cmf', branchversion)
 
+
+
 swig = False
 openmp = False
+debug = False
+
+class StaticLibrary:
+    """
+    A wrapper to build and link static libraries to an extension
+    """
+    def __init__(self, includepath, libpath, *libs, build_script=None, build_always=False):
+        self.includepath = includepath
+        self.libpath = libpath
+        self.libs = libs
+        self.to_lists = self.as_win32 if sys.platform == 'win32' else self.as_posix
+        self.build_script_name = build_script
+        self.build_always = build_always
+
+    def __str__(self):
+        return self.libs[0] + ' - library'
+
+    def as_win32(self):
+        checked_libs = []
+        for lib in self.libs:
+            if os.path.exists(os.path.join(self.libpath, lib + '.lib')):
+                checked_libs.append(lib)
+            elif os.path.exists(os.path.join(self.libpath, 'lib' + lib + '.lib')):
+                checked_libs.append('lib' + lib)
+            else:
+                raise FileNotFoundError("Can't find static library " + os.path.join(self.libpath, lib))
+        return [self.libpath], reversed(checked_libs), []
+
+    def as_posix(self):
+        # Move static libraries to extra_objects (with path) to ensure static linking in posix systems
+        if os.path.exists(self.libpath):
+            libpath = self.libpath
+        elif os.path.exists(self.libpath + '64'):
+            libpath = self.libpath + '64'
+        else:
+            raise FileNotFoundError("Can't find static library directory" + self.libpath)
+
+        libfiles = ['{}/lib{}.a'.format(libpath, l) for l in self.libs]
+        for lf in libfiles:
+            if not os.path.exists(lf):
+                raise FileNotFoundError("Can't find static library " + lf)
+        return [], [], libfiles
+
+    def exists(self):
+        try:
+            self.to_lists()
+        except FileNotFoundError:
+            return False
+        else:
+            return True
+
+    @staticmethod
+    def extend_if_not_exists(items, target):
+        for item in items:
+            if item and item not in target:
+                target.append(item)
+
+    def extend(self, include_dirs, library_dirs, libraries, extra_objects):
+        self.extend_if_not_exists([self.includepath], include_dirs)
+        path, libs, extra_obj = self.to_lists()
+        self.extend_if_not_exists(path, library_dirs)
+        libraries += libs
+        extra_objects += extra_obj
+
+    def build(self):
+        import subprocess as sp
+        cwd = os.path.dirname(__file__)
+        if os.name == 'nt':
+            script_ext = '.bat'
+        elif os.name == 'posix':
+            script_ext = '.sh'
+        else:
+            raise RuntimeError('OS must be nt or posix')
+        script = os.path.join(cwd, 'tools', self.build_script_name + script_ext)
+        if not os.path.exists(script):
+            raise FileNotFoundError('{} not found, cannot build {} from source'
+                                    .format(os.path.relpath(script, cwd), self))
+        sp.run(script, check=True)
+
+
+static_libraries = [
+
+    StaticLibrary('lib/include/suitesparse', 'lib/lib',
+                  'klu', 'amd', 'btf', 'colamd', 'suitesparseconfig',
+                  build_script='install_solvers'),
+    StaticLibrary('lib/include', 'lib/lib',
+                  'sundials_cvode', 'sundials_sunlinsolklu',
+                  build_script='install_solvers'),
+    StaticLibrary('cmf/cmf_core_src', 'lib/lib',
+                  'cmf_core',
+                  build_script='install_cmf_core', build_always=True),
+]
 
 
 class CmfBuildExt(build_ext):
@@ -99,14 +194,37 @@ class CmfBuildExt(build_ext):
         for ext in self.extensions:
             ext.include_dirs += [get_numpy_include()]
 
+    def build_libraries(self):
+        for sl in static_libraries:
+            if not sl.exists():
+                print(sl, 'get downloaded and installed')
+
+        for sl in static_libraries:
+            if not sl.exists() or sl.build_always:
+                sl.build()
+
+        cmf_core = self.extensions[-1]
+
+        for sl in reversed(static_libraries):
+            sl.extend(cmf_core.include_dirs, cmf_core.library_dirs,
+                      cmf_core.libraries, cmf_core.extra_objects)
+
+        print('libraries:', ' '.join(cmf_core.libraries))
+        print('library_dirs:', ' '.join(cmf_core.library_dirs))
+        print('include_dirs:', ' '.join(cmf_core.include_dirs))
+        print('extra_objects:', ' '.join(cmf_core.extra_objects))
+
+
     def build_extensions(self):
         customize_compiler(self.compiler)
+
         try:
             self.compiler.compiler_so.remove("-Wstrict-prototypes")
         except (AttributeError, ValueError):
             pass
 
         self.add_numpy_include()
+        self.build_libraries()
 
         build_ext.build_extensions(self)
 
@@ -189,21 +307,29 @@ def is_source_file(fn, include_headerfiles=False):
     """
     fn = fn.lower()
     res = (
-        (fn.endswith('.cpp') and 'apps' not in fn)
-        or (include_headerfiles and fn.split('.')[-1] not in ('.h', '.hpp'))
+            fn.endswith('.cpp') or
+            (include_headerfiles and fn[-2:] == '.h')
     )
     return res
 
 
-def get_source_files(include_headerfiles=False):
-    cmf_files = []
-    for root, _dirs, files in os.walk(os.path.join('cmf', 'cmf_core_src')):
-        if 'debug' not in os.path.basename(root):
-            cmf_files.extend(
-                os.path.join(root, f)
-                for f in files
-                if is_source_file(os.path.join(root, f), include_headerfiles) and f != 'cmf_wrap.cpp')
-    return cmf_files
+def get_source_files(include_headerfiles=False, path='cmf/cmf_core_src'):
+
+    result = []
+
+    def ignore(fn):
+        return ('cmake-build' in fn or
+                fn.startswith('.') or
+                fn == 'apps' or
+                fn == 'cmf_wrap.cpp')
+
+    for fn in os.listdir(path):
+        fullname = os.path.normpath(os.path.join(path, fn))
+        if is_source_file(fullname, include_headerfiles) and not ignore(fn):
+            result.append(fullname)
+        if os.path.isdir(fullname) and not ignore(fn):
+            result.extend(get_source_files(include_headerfiles, fullname))
+    return result
 
 
 def make_cmf_core():
@@ -213,42 +339,48 @@ def make_cmf_core():
      - include dirs
      - extra compiler flags
     """
-    libraries = None
-    # Include CVODE
-    include_dirs = [os.path.join(*'cmf/cmf_core_src/math/integrators/sundials_cvode/include'.split('/'))]
+
+    # Include numpy
+    include_dirs = []
+    library_dirs = []
+    libraries = []
+    extra_objects = []
+    link_args = []
 
     # Platform specific stuff, alternative is to subclass build_ext command as in:
     # https://stackoverflow.com/a/5192738/3032680
     if sys.platform == 'win32':
 
-        # Only include boost if VS2008 compiler is used, else we use C++ 11
-        if sys.version_info.major == 2:
-            boost_path = os.environ.get('BOOSTDIR', r"..\boost_1_41_0")
-            include_dirs += [boost_path, boost_path + r"\boost\tr1"]
-
         compile_args = ["/EHsc",
                         r'/Fd"build\vc90.pdb"',
                         "/D_SCL_SECURE_NO_WARNINGS",
                         "/D_CRT_SECURE_NO_WARNINGS",
+                        "/wd4244",
                         "/MP"
                         ]
         if openmp:
             compile_args.append("/openmp")
-        link_args = ["/DEBUG"]
+
+        if debug:
+            link_args = ["/DEBUG"]
+
 
     else:
 
-        compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-deprecated', '-Wno-unused', '-Wno-sign-compare', '-ggdb',
-                        '-std=c++11']
-        link_args = ['-ggdb']
+        compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-unused','-fPIC',
+                        '-Wno-sign-compare', '-std=c++11', '-march=native', '-mtune=native', '-pipe']
+        if debug:
+            compile_args += ['-ggdb']
 
         if sys.platform == 'darwin':
-            compile_args += ["-stdlib=libc++"]
-            if int(platform.mac_ver()[0].split(".")[1]) >= 14:
-                link_args += ["-stdlib=libc++", "-mmacosx-version-min=10.9"]
+            compile_args += ['-stdlib=libc++']
 
-        libraries = []
+        link_args = []
+        if debug:
+            link_args += ['-ggdb']
 
+
+        # Add OpenMP support
         # Disable OpenMP on Mac see https://github.com/alejandrobll/py-sphviewer/issues/3
         if openmp and not sys.platform == 'darwin':
             compile_args.append('-fopenmp')
@@ -256,21 +388,27 @@ def make_cmf_core():
             libraries.append('gomp')
 
     # Get the source files
-    cmf_files = get_source_files()
+    cmf_files = [] #  get_source_files()
+    if not any('cmf_core' in sl.libs for sl in static_libraries):
+        print('search source files')
+        cmf_files += get_source_files()
 
     if swig:
         # Adding cmf.i when build_ext should perform the swig call
         cmf_files.append("cmf/cmf_core_src/cmf.i")
-        swig_opts = ['-c++', '-Wextra', '-w512', '-w511', '-O', '-keyword', '-castmode', '-modern']
+        swig_opts = ['-c++', '-w512', '-w511', '-O', '-keyword', '-castmode']
 
     else:
         # Else use what we have there
         cmf_files.append("cmf/cmf_core_src/cmf_wrap.cpp")
         swig_opts = []
+
     cmf_core = Extension('cmf._cmf_core',
                          sources=cmf_files,
                          libraries=libraries,
+                         library_dirs=library_dirs,
                          include_dirs=include_dirs,
+                         extra_objects=extra_objects,
                          extra_compile_args=compile_args,
                          extra_link_args=link_args,
                          swig_opts=swig_opts
@@ -282,6 +420,7 @@ if __name__ == '__main__':
     updateversion()
     openmp = not pop_arg('noopenmp')
     swig = pop_arg('swig')
+    debug = not pop_arg('nodebug')
     ext = [make_cmf_core()]
     description = 'Catchment Modelling Framework - A hydrological modelling toolkit'
     long_description = io.open('README.rst', encoding='utf-8').read()
@@ -290,30 +429,31 @@ if __name__ == '__main__':
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Programming Language :: C++',
-        'Programming Language :: C',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
         'Topic :: Scientific/Engineering',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ]
-setup(name='cmf',
-      version=version,
-      license='GPLv3+',
-      ext_modules=ext,
-      packages=['cmf', 'cmf.draw', 'cmf.geometry'],
-      python_requires='>=2.7',
-      install_requires='numpy>=1.11.1',
-      keywords='hydrology catchment simulation toolbox',
-      author='Philipp Kraft',
-      author_email="philipp.kraft@umwelt.uni-giessen.de",
-      url="https://philippkraft.github.io/cmf",
-      description=description,
-      long_description=long_description,
-      classifiers=classifiers,
-      cmdclass=dict(build_py=build_py,
-                    build_ext=CmfBuildExt),
-      )
+
+    setup(name='cmf',
+          version=version,
+          license='GPLv3+',
+          ext_modules=ext,
+          packages=['cmf', 'cmf.draw', 'cmf.geometry'],
+          python_requires='>=3.5',
+          install_requires='numpy>=1.11.1',
+          keywords='hydrology catchment simulation toolbox',
+          author='Philipp Kraft',
+          author_email="philipp.kraft@umwelt.uni-giessen.de",
+          url="https://www.uni-giessen.de/hydro/download",
+          description=description,
+          long_description=long_description,
+          classifiers=classifiers,
+          cmdclass=dict(build_py=build_py,
+                        build_ext=CmfBuildExt),
+          package_data={'':['*.h']}
+          )
 

@@ -23,7 +23,7 @@ Add a layer, a outlet and a connection
 
 l1 = c.add_layer(1)
 out = p.NewOutlet("out", 0, 0,0)
-cmf.kinematic_wave(l1, out, 1)
+cmf.LinearStorageConnection(l1, out, 1)
 ~~~~~~~~~~~~~
 
 Now we can let CMF describe the whole model or parts of it.

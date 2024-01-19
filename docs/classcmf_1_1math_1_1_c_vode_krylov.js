@@ -1,7 +1,7 @@
 var classcmf_1_1math_1_1_c_vode_krylov =
 [
     [ "_get_jacobian", "classcmf_1_1math_1_1_c_vode_krylov.html#a329c6c34f9bef9aaac6b75d1fea4b619", null ],
-    [ "copy", "classcmf_1_1math_1_1_c_vode_krylov.html#af9713cec5382f4625387943392e1e23a", null ],
+    [ "copy", "classcmf_1_1math_1_1_c_vode_krylov.html#a0fc71fcd0760ff3c69dfa81725131a08", null ],
     [ "get_dt", "classcmf_1_1math_1_1_c_vode_krylov.html#a72c9cc274dd9fe96b60f2ce8ac1db6cb", null ],
     [ "get_error", "classcmf_1_1math_1_1_c_vode_krylov.html#aa27c9e2abdc2bad33560d1efec23c554", null ],
     [ "get_info", "classcmf_1_1math_1_1_c_vode_krylov.html#adb8030931242fb21735a64323701fb5e", null ],

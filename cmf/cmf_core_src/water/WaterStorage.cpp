@@ -119,9 +119,58 @@ real cmf::water::WaterStorage::dxdt( const cmf::math::Time& time )
 		return dVdt;
 }
 
-cmf::math::StateVariableList cmf::water::WaterStorage::get_states() 
+bool cmf::water::WaterStorage::is_connected(const StateVariable & other) const
 {
-	cmf::math::StateVariableList q;
+	const WaterStorage* other_ws = dynamic_cast<const WaterStorage *>(&other);
+	
+	if (other_ws) { // If the test state is also a water storage
+		// identical storages are connected
+		if (other_ws == this) return true;
+		// else test if we have any connection to it
+		connection_list con_list = this->get_connections();
+		for (auto con : con_list) {
+			if (con->get_target(*other_ws)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	const SoluteStorage* other_ss = dynamic_cast<const SoluteStorage *>(&other);
+	if (other_ss) {
+		return this->is_connected(other_ss->get_water());
+	}
+	else {
+		throw std::logic_error("Test for connection of a statevariable that is neither solute nor water storage");
+	}
+}
+
+void cmf::water::WaterStorage::add_connected_states(cmf::math::StateVariable::list& states) {
+	// Add this	
+	states.push_back(this);
+	// Add my solute storages
+	for (auto ss : m_Concentrations) {
+		states.push_back(ss.get());
+	}
+
+	// Add my connected water storages and their solutes
+	connection_list con_list = this->get_connections();
+	for (auto& con : con_list) {
+		// Get the other side of the connection and cast it to a water storage
+		WaterStorage::ptr other_ws = WaterStorage::cast(con->get_target(*this));
+		if (other_ws) {
+			states.push_back(other_ws.get());
+			for (auto ss : other_ws->m_Concentrations) {
+				states.push_back(ss.get());
+			}
+		}
+	}
+}
+
+
+cmf::water::WaterStorage::operator cmf::math::state_list()
+{
+	cmf::math::state_list q;
 	q.append(cmf::water::WaterStorage::ptr(*this));
 	for(SoluteStorageMap::const_iterator it = m_Concentrations.begin(); it != m_Concentrations.end(); ++it)
 	{
@@ -129,4 +178,43 @@ cmf::math::StateVariableList cmf::water::WaterStorage::get_states()
 	}
 	return q;
 }
+
+void WaterStorage::set_volume(real newwatercontent) {
+    if (get_state_variable_content()=='h')
+        set_state(volume_to_head(newwatercontent));
+    else
+        set_state(newwatercontent);
+}
+
+void WaterStorage::set_potential(real newpotential) {
+    if (get_state_variable_content()=='h')
+        set_state(newpotential);
+    else
+        set_state(head_to_volume(newpotential));
+}
+
+real WaterStorage::get_potential(cmf::math::Time t) const {
+    if (get_state_variable_content()=='h')
+        return get_state();
+    else
+        return volume_to_head(get_state());
+}
+
+real WaterStorage::get_volume() const {
+    if (get_state_variable_content()=='h')
+        return head_to_volume(get_state());
+    else
+        return get_state();
+
+}
+
+void WaterStorage::conc(const cmf::water::solute &_Solute, real NewConcetration) {
+    Solute(_Solute).set_conc(NewConcetration);
+}
+
+real WaterStorage::conc(cmf::math::Time t, const cmf::water::solute &_Solute) const {
+    return conc(_Solute);
+}
+
+bool WaterStorage::is_storage() const {return true;}
 

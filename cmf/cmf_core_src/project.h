@@ -18,12 +18,12 @@
 //   
 #ifndef project_h__
 #define project_h__
-#include "cmfmemory.h"
+#include <memory>
 #include <vector>
 #include <set>
 #include "atmosphere/meteorology.h"
 #include "atmosphere/precipitation.h"
-#include "geometry/geometry.h"
+#include "math/geometry.h"
 #include "upslope/cell.h"
 #include "reach/Reach.h"
 #include "upslope/Soil/RetentionCurve.h"
@@ -31,11 +31,25 @@
 #include "upslope/cell_vector.h"
 /// The main namespace of the model framework. Contains the other namespaces and the project class
 namespace cmf {
-	class bc_iterator;
+    /// Holds global options for specific cmf behaviour, accessbile via cmf.options
+    struct _Options {
+        /// @brief Protects diffusive Saint-Venant equation from numerical problems for slope ≃ 0
+        ///
+        /// For diffusive St. Venant equations, near to zero, the driving force is sqrt(|h1-h2|).
+        /// For h1 ≃ h2, the sensitivity of the flow has a singularity. To avoid this
+        /// near to the slope zero the driver is overrriden by |h1-h2|. "Near" is defined by this constant.
+        double diffusive_slope_singularity_protection=1e-4;
+
+        /// @brief Allows the cmf::upslope::connections::Richards_lateral connection for faster flow in lower regions.
+        bool richards_lateral_base_flow=false;
+
+    };
+
+    /// The global options storage
+    extern _Options options;
 
 	/// @brief The study area, holding all cells, outlets and streams
-	/// \todo Describe tracers
-	class project	: public cmf::math::StateVariableOwner
+	class project
 	{
 	private:
 		friend class cmf::upslope::Cell;
@@ -45,8 +59,6 @@ namespace cmf {
 		size_t add_node(cmf::water::flux_node::ptr node);
 
 	public:
-        /// @brief Returns all state variables of the project. Mostly for internal use.
-		cmf::math::StateVariableList get_states(); 
 		/// @brief Removes a node from the repository.
 		///
 		/// Removes a node (boundary condition or water storage) from the node repository
@@ -205,8 +217,9 @@ namespace cmf {
 		
 		/// Returns a list of all storages of this project
 		cmf::water::node_list get_storages();
+        operator cmf::math::state_list();
 #ifndef SWIG
-		cmf::upslope::Cell& operator[](ptrdiff_t index) {
+        cmf::upslope::Cell& operator[](ptrdiff_t index) {
 			return this->get_cell(index);
 		}
 #endif

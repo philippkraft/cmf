@@ -133,9 +133,10 @@ namespace cmf {
 			private:
 				static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,ptrdiff_t dummy);
 				std::weak_ptr<cmf::upslope::SurfaceWater> wleft;
+                real m_distance, m_flowwidth;
+            protected:
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes();
-				real m_distance, m_flowwidth;
 			public:
 				/// Creates a KinematicSurfaceRunoff between a SurfaceWater (left) with another (right) node.
 				///
@@ -187,12 +188,11 @@ namespace cmf {
 				std::weak_ptr<cmf::upslope::SurfaceWater> wleft;
 				std::weak_ptr<cmf::river::OpenWaterStorage> owright;
 				std::weak_ptr<cmf::upslope::SurfaceWater> wright;
-				virtual real calc_q(cmf::math::Time t);
-				void NewNodes();
 				real m_distance, m_flowwidth;
-			public:
-				static void set_linear_slope(real width);
-				static real get_linear_slope();
+            protected:
+                real calc_q(cmf::math::Time t) override;
+                void NewNodes() override;
+            public:
 				DiffusiveSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left,cmf::water::flux_node::ptr right,real flowwidth,real distance=-1)
 					: flux_connection(left,right,"Diffusive surface runoff"), m_distance(distance), m_flowwidth(flowwidth) {
 

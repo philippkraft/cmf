@@ -1,3 +1,5 @@
 <map id="PenmanEvaporation" name="PenmanEvaporation">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="18,5,130,32"/>
+<area shape="rect" id="Node000001" title="Calculates evaporation from an open water body." alt="" coords="5,80,142,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="18,5,129,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,48,76,80,71,80,71,48"/>
 </map>

@@ -1,10 +1,11 @@
-@page simple_infiltration Infiltration in a lumped model
+@page simple_infiltration Infiltration in a conceptual model
 
 As lumped models are a quite abstract realisation of a catchment, often
 a simplified kinematic wave approach is used to connect storages.
 Kinematic waves are sufficient for many different flux connections, but
 can lead to problems when trying to model infiltration. One way to model
-the infiltration in CMF is the [SimpleInfiltration](@ref cmf::upslope::connections::SimpleInfiltration)
+the infiltration in CMF is the 
+[ConceptualInfiltration](@ref cmf::upslope::connections::ConceptualInfiltration)
 approach.
 
 ## Hydrological concept
@@ -111,7 +112,7 @@ For small scales with a sharp surface runoff response, one might choose
 values, down to @f$W_{1/2}\approx 0.5@f$. The response is shown in the
 figure below.
 
-![](CmfTutSimpleInfiltration.png)
+![](CmfTutConceptualInfiltration.png)
 
 The left figure shows the relative infiltration flux @f$\frac
 {Q_{inf}}{\sum I}@f$ in terms of the wetness @f$V/C@f$ for
@@ -150,7 +151,7 @@ l=c.add_layer(1)
 
 ~~~~~~~~~~{.py}
 
-cmf.SimpleInfiltration(c.layers[0], c.surfacewater, W0=0.9)
+cmf.ConceptualInfiltration(c.layers[0], c.surfacewater, W0=0.9)
 
 # adjust the saturated conductivity in m/day.
 l.soil.Ksat = 1.0 # 1000 mm/day infiltration capacity - quite a lot, but not extreme

@@ -1,9 +1,17 @@
 <map id="SoluteReaction" name="SoluteReaction">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1_solute1st_order_reaction.html" title="A solute reaction of 1st order kinetics (linear decline to product) A&#45;&gt;B. " alt="" coords="177,5,337,32"/>
-<area shape="rect" id="node3" href="$classcmf_1_1water_1_1_solute2nd_order_reaction.html" title="A solute reaction of 2nd order kinetics A + B &#45;&gt; C. " alt="" coords="176,56,339,83"/>
-<area shape="rect" id="node4" href="$classcmf_1_1water_1_1_solute_constant_flux_reaction.html" title="Adds a constant flux to the solute storage. " alt="" coords="164,107,351,133"/>
-<area shape="rect" id="node5" href="$classcmf_1_1water_1_1_solute_decay_reaction.html" title="Adds a linear decay to solute storages. " alt="" coords="184,157,331,184"/>
-<area shape="rect" id="node6" href="$classcmf_1_1water_1_1_solute_diffusive_transport.html" title="Calculates a diffusive flux between solute storages. " alt="" coords="177,208,337,235"/>
-<area shape="rect" id="node7" href="$classcmf_1_1water_1_1_solute_equilibrium_reaction.html" title="An equilibrium reaction between two solutes A&lt;&#45;&gt;B. " alt="" coords="170,259,345,285"/>
-<area shape="rect" id="node8" href="$classcmf_1_1water_1_1_solute_rate_reaction.html" title="A general solute reaction system to describe multi&#45;species kinetics with a power law. " alt="" coords="189,309,326,336"/>
+<area shape="rect" id="Node000001" title="Abstract class for a solute reaction." alt="" coords="5,157,115,184"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1_solute1st_order_reaction.html" title="A solute reaction of 1st order kinetics (linear decline to product) A&#45;&gt;B." alt="" coords="176,5,336,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,142,109,91,133,64,161,42,184,30,186,35,164,46,137,68,113,94,78,145"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1water_1_1_solute2nd_order_reaction.html" title="A solute reaction of 2nd order kinetics A + B &#45;&gt; C." alt="" coords="175,56,337,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="86,145,120,117,161,92,191,81,193,86,164,97,123,122,89,149"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1water_1_1_solute_constant_flux_reaction.html" title="Adds a constant flux to the solute storage." alt="" coords="163,107,349,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="129,150,201,131,202,137,130,155"/>
+<area shape="rect" id="Node000005" href="$classcmf_1_1water_1_1_solute_decay_reaction.html" title="Adds a linear decay to solute storages." alt="" coords="183,157,329,184"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="130,168,182,168,182,173,130,173"/>
+<area shape="rect" id="Node000006" href="$classcmf_1_1water_1_1_solute_diffusive_transport.html" title="Calculates a diffusive flux between solute storages." alt="" coords="176,208,336,235"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="130,186,202,205,201,210,129,191"/>
+<area shape="rect" id="Node000007" href="$classcmf_1_1water_1_1_solute_equilibrium_reaction.html" title="An equilibrium reaction between two solutes A&lt;&#45;&gt;B." alt="" coords="169,259,343,285"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="89,192,123,220,164,244,193,256,191,261,161,249,120,224,86,197"/>
+<area shape="rect" id="Node000008" href="$classcmf_1_1water_1_1_solute_rate_reaction.html" title="A general solute reaction system to describe multi&#45;species kinetics with a power law." alt="" coords="188,309,324,336"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="78,196,113,247,137,273,164,295,188,307,186,312,161,300,133,277,109,250,74,199"/>
 </map>

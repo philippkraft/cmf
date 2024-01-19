@@ -1,6 +1,7 @@
 
 from __future__ import unicode_literals, print_function, absolute_import, division
 
+from shapely.geometry import shape
 from shapely.wkb import loads as __load_wkb
 from shapely.geos import WKBReadingError as WKBReadingError
 from time import time
@@ -47,6 +48,7 @@ def create_cell(project, polygon, height, id=None, with_surfacewater=True):
     """
 
     # Get the center
+    polygon = shape(polygon)
     center = polygon.centroid.x, polygon.centroid.y, height
     # Create the cell
     c = project.NewCell(*center, area=polygon.area, with_surfacewater=with_surfacewater)

@@ -1,33 +1,22 @@
 var namespacecmf =
 [
     [ "atmosphere", "namespacecmf_1_1atmosphere.html", "namespacecmf_1_1atmosphere" ],
-    [ "draw", null, [
-      [ "cellmap", "namespacecmf_1_1draw_1_1cellmap.html", "namespacecmf_1_1draw_1_1cellmap" ],
-      [ "hillplot", null, [
-        [ "HillPlot", "classcmf_1_1draw_1_1hillplot_1_1_hill_plot.html", "classcmf_1_1draw_1_1hillplot_1_1_hill_plot" ]
-      ] ],
-      [ "shapemap", null, [
-        [ "ShapeMap", "classcmf_1_1draw_1_1shapemap_1_1_shape_map.html", null ]
-      ] ]
+    [ "convert_1_to_2", "namespacecmf_1_1convert__1__to__2.html", null ],
+    [ "describe", "namespacecmf_1_1describe.html", [
+      [ "_describe_timeseries", "namespacecmf_1_1describe.html#a7c6e550c8db4c86a65adafc1ef325f13", null ],
+      [ "describe", "namespacecmf_1_1describe.html#a011e15c6840eaef850a1c3d6c13586db", null ]
+    ] ],
+    [ "fit_retention_curve", "namespacecmf_1_1fit__retention__curve.html", [
+      [ "fit_bc", "namespacecmf_1_1fit__retention__curve.html#aab5e5a09f59dc8eb5b3cee227ae8ae1c", null ],
+      [ "fit_vgm", "namespacecmf_1_1fit__retention__curve.html#ac70846e8f24fbdf592ac1ba503e86c3e", null ]
     ] ],
     [ "geometry", "namespacecmf_1_1geometry.html", "namespacecmf_1_1geometry" ],
-    [ "geos_shapereader", null, [
-      [ "Shapefile", "classcmf_1_1geos__shapereader_1_1_shapefile.html", "classcmf_1_1geos__shapereader_1_1_shapefile" ]
-    ] ],
-    [ "jacobian", null, [
-      [ "Jacobian", "classcmf_1_1jacobian_1_1_jacobian.html", "classcmf_1_1jacobian_1_1_jacobian" ]
-    ] ],
-    [ "maps", null, [
-      [ "Map", "classcmf_1_1maps_1_1_map.html", "classcmf_1_1maps_1_1_map" ],
-      [ "NearestNeighborMap", "classcmf_1_1maps_1_1_nearest_neighbor_map.html", "classcmf_1_1maps_1_1_nearest_neighbor_map" ],
-      [ "PolygonMap", "classcmf_1_1maps_1_1_polygon_map.html", null ]
-    ] ],
     [ "math", "namespacecmf_1_1math.html", "namespacecmf_1_1math" ],
     [ "river", "namespacecmf_1_1river.html", "namespacecmf_1_1river" ],
-    [ "stopwatch", null, [
-      [ "StopWatch", "classcmf_1_1stopwatch_1_1_stop_watch.html", null ]
-    ] ],
     [ "upslope", "namespacecmf_1_1upslope.html", "namespacecmf_1_1upslope" ],
     [ "water", "namespacecmf_1_1water.html", "namespacecmf_1_1water" ],
-    [ "project", "classcmf_1_1project.html", "classcmf_1_1project" ]
+    [ "_Options", "structcmf_1_1___options.html", "structcmf_1_1___options" ],
+    [ "project", "classcmf_1_1project.html", "classcmf_1_1project" ],
+    [ "connect_cells_with_flux", "namespacecmf.html#ab4c483a2823be1189ba949bd25b2cbdf", null ],
+    [ "options", "namespacecmf.html#ac8bdf46fd71392d6bfbdb23bb48caf11", null ]
 ];

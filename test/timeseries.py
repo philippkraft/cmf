@@ -2,7 +2,7 @@ import cmf
 import unittest
 import pickle
 import datetime
-
+import time
 
 class TimeTest(unittest.TestCase):
 
@@ -45,8 +45,9 @@ class TimeTest(unittest.TestCase):
         self.assertEqual(self.t2.as_timedelta(), td)
 
     def test_time_from_datetime(self):
-        self.assertEqual(cmf.AsCMFtime(datetime.datetime(2018, 1, 2, 12, 13, 59)),
+        self.assertEqual(cmf.datetime_to_cmf(datetime.datetime(2018, 1, 2, 12, 13, 59)),
                          self.t2)
+
 
 
 class TimeseriesTest(unittest.TestCase):
@@ -83,3 +84,78 @@ class TimeseriesTest(unittest.TestCase):
             self.assertEqual(ots[t], nts[t])
 
 
+class TimeRangeTest(unittest.TestCase):
+
+    def setUp(self):
+        self.begin = cmf.Time(1, 1, 2012)
+        self.end = cmf.Time(2, 1, 2012)
+        self.step = cmf.h
+        self.tr = cmf.timerange(self.begin, self.end, self.step)
+
+    def test_timerange_len(self):
+        self.assertEqual(len(self.tr), 24)
+
+    def test_timerange_getitem_begin(self):
+        self.assertEqual(self.tr[0], self.begin)
+
+    def test_timerange_getitem_end(self):
+        self.assertEqual(self.tr[-1], self.end - self.step)
+
+    def test_timerange_iter(self):
+        ltr = list(self.tr)
+        self.assertEqual(ltr[0], self.tr.start)
+        self.assertEqual(len(ltr), len(self.tr))
+        self.assertEqual(ltr[-1], self.tr[-1])
+
+    def test_timeseries_getitem_slice(self):
+
+        self.assertEqual(
+            list(self.tr[1:-1:2]),
+            list(self.tr)[1:-1:2]
+        )
+
+    def test_timeseries_getitem_sequence(self):
+        items = 1, 5, 8, 3
+        self.assertEqual(
+            self.tr[items],
+            [self.tr[i] for i in items]
+        )
+
+
+class StopWatchTest(unittest.TestCase):
+    def test_stopwatch_int(self):
+        sw = cmf.StopWatch(0, 100)
+        time.sleep(0.1)
+        elapsed, total, remain = sw(50)
+        self.assertGreater(0.15, elapsed, 'Elapsed to big')
+        self.assertGreater(elapsed, 0.05, 'Elapsed to small')
+        self.assertAlmostEqual(elapsed * 2, total, 1, 'Total estimated time at 50% not double of current time')
+
+    def test_stopwatch_restart(self):
+        sw = cmf.StopWatch(0, 100)
+        time.sleep(0.1)
+        elapsed, total, remain = sw(50)
+        self.assertGreater(elapsed, 0.05, 'Elapsed to small')
+        sw.restart()
+        elapsed, total, remain = sw(50)
+        self.assertGreater(0.05, elapsed, 'Elapsed to big after restart')
+
+    def test_stopwatch_float(self):
+        sw = cmf.StopWatch(0., 1.)
+        time.sleep(0.1)
+        elapsed, total, remain = sw(0.5)
+        self.assertGreater(0.15, elapsed, 'Elapsed to big')
+        self.assertGreater(elapsed, 0.05, 'Elapsed to small')
+        self.assertAlmostEqual(elapsed * 2, total, 1, 'Total estimated at 50% not double of current time')
+
+    def test_stopwatch_cmftime(self):
+        sw = cmf.StopWatch(cmf.day * 0, cmf.day * 2)
+        time.sleep(0.1)
+        elapsed, total, remain = sw(cmf.day)
+        self.assertGreater(0.15, elapsed, 'Elapsed to big')
+        self.assertGreater(elapsed, 0.05, 'Elapsed to small')
+        self.assertAlmostEqual(elapsed * 2, total, 1, 'Total estimated at 50% not double of current time')
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=100)

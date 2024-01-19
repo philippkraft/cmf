@@ -26,13 +26,6 @@
 // Include typemaps for STL
 %include "std_string.i"
 %include "std_vector.i"
-
-namespace std {
-   %template(vector_int) vector<int>;
-   %template(vector_double) vector<double>;
-   %template(vector_size_t) vector<size_t>;
-};
-
 // enable exception support
 %include "exception.i"
 %exception {
@@ -42,15 +35,17 @@ namespace std {
         SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
         SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (...) {
+        SWIG_exception(SWIG_RuntimeError, "unknown error");
     }
-    
 }
+
 %include "attribute.i"
 
 /* #define SWIG_SHARED_PTR_SUBNAMESPACE */
 %include <std_shared_ptr.i>
 %{
-	#include "cmfmemory.h"
+	#include <memory>
 %}
 %include "cmf_swiglib.i"
 
@@ -68,13 +63,21 @@ std::string pyrepr(PyObject* o) {
 %}
 
 // Start my Module
-%module cmf_core
+%module(directors="1") cmf_core
 %include "math/num_array.i"
-%include "geometry/geometry.i"
+%include "math/geometry.i"
 %include "math/time.i"
 
 %include "math/ODEsystem.i"
 
+%ignore *::operator[];
+%{
+    #include "list.h"
+%}
+%include "list.h"
+%extend_getitem(cmf::List, T);
+
+%include "water/solute.i"
 %include "water/water.i"
 %include "atmosphere/meteorology.i"
 %include "upslope/cell.i"
@@ -121,6 +124,7 @@ std::string pyrepr(PyObject* o) {
 %include "upslope/connections/Percolation.h"
 %include "upslope/vegetation/waterstress.h"
 
+%shared_ptr(cmf::atmosphere::log_wind_profile);
 %include "upslope/vegetation/ET.h"
 
 %shared_ptr(cmf::upslope::ET::ShuttleworthWallace);
@@ -130,12 +134,5 @@ std::string pyrepr(PyObject* o) {
 
 %include "math/integrator.i"
 
-
-%pythoncode {
-    ConstantFlux = TechnicalFlux
-    ConstantStateFlux = statecontrol_connection
-    WaterBalanceFlux = waterbalance_connection
-    ConceptualInfiltration = SimpleInfiltration
-}
 
 

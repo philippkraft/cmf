@@ -1,3 +1,5 @@
 <map id="ExternallyControlledFlux" name="ExternallyControlledFlux">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="31,5,143,32"/>
+<area shape="rect" id="Node000001" title="Flux from one node to another, controlled by the user or an external program, by changing the flux co..." alt="" coords="5,80,168,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="31,5,142,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,48,89,80,84,80,84,48"/>
 </map>

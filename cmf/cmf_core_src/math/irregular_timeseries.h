@@ -24,7 +24,7 @@
 #include <algorithm>
 #include <iostream>
 #include "time.h"
-#include "../cmfmemory.h"
+#include <memory>
 namespace cmf {
 	namespace math {
 		///	A timeseries is a list of values, equally distributed over time. To create one,

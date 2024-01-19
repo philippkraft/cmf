@@ -24,7 +24,7 @@
 
 int cmf::math::MultiIntegrator::integrate( cmf::math::Time MaxTime,cmf::math::Time TimeStep )
 {
-	if (use_OpenMP)
+	if (get_system().use_OpenMP)
 	{
 #pragma omp parallel for
 		for (int i = 0; i < (int)m_integrators.size() ; ++i)
@@ -34,11 +34,21 @@ int cmf::math::MultiIntegrator::integrate( cmf::math::Time MaxTime,cmf::math::Ti
 	}
 	else
 	{
-		for(integ_vector::iterator it = m_integrators.begin(); it != m_integrators.end(); ++it)
+		for(const auto& integ: m_integrators)
 		{
-			(**it).integrate_until(MaxTime,TimeStep);
+			integ->integrate_until(MaxTime,TimeStep);
 		}
 	}
 	m_t=MaxTime;
 	return 1;
+}
+
+std::string cmf::math::MultiIntegrator::to_string() const {
+    std::string res("MultiIntegrator(size=");
+    res += std::to_string(size());
+    for (auto& integ: m_integrators) {
+        res += "," + integ->to_string();
+    }
+    res += ")";
+    return res;
 }

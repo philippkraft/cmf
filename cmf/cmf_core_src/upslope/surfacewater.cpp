@@ -1,4 +1,5 @@
 #include <limits>
+#include "project.h"
 #include "surfacewater.h"
 #include "cell.h"
 #include "Topology.h"
@@ -67,14 +68,31 @@ void DiffusiveSurfaceRunoff::connect_cells( cmf::upslope::Cell& cell1,cmf::upslo
 	}
 
 }
-real linear_slope_width = 0.0;
-void DiffusiveSurfaceRunoff::set_linear_slope(real width) {
-	if (width>=0.0)
-		linear_slope_width = width;
+/// Returns the square root of the gradient with singularity prevention
+///
+/// \param grad Gradient in m/m
+/// \return sign(grad) * sqrt(grad) but with a flatted singularity at grad = 0
+real sqrt_slope(real grad) {
+
+    const real s_sqrt = sign(grad) * sqrt(std::abs(grad));
+    // linear slope width is a value in which slope range the slope should be altered
+    // to prevent a singularity in dq/ds
+    if (cmf::options.diffusive_slope_singularity_protection > 0.0) {
+        // Only a shortcut for faster writing
+        const real &s0 = cmf::options.diffusive_slope_singularity_protection;
+        // Weight of linear part
+        real w_lin = exp(-square((grad / s0)));
+        // linear part using the slope at s0/4
+        real s_lin = grad / (2. * sqrt(s0 / 4));
+        // Weighted sum of sqrt(s) and a*s
+        return w_lin * s_lin + (1 - w_lin) * s_sqrt;
+    } else {
+        return s_sqrt;
+
+    }
+
 }
-real DiffusiveSurfaceRunoff::get_linear_slope() {
-	return linear_slope_width;
-}
+
 real DiffusiveSurfaceRunoff::calc_q( cmf::math::Time t )
 {
 	SurfaceWater::ptr left = wleft.lock();
@@ -86,13 +104,13 @@ real DiffusiveSurfaceRunoff::calc_q( cmf::math::Time t )
 	real dl = std::max(left->get_depth() - left->get_puddledepth(),0.0);
 
 	// Depth of right node. 
-	real dr = 0.0;
+	real dr;
 	if (sright.get()) { 
 		// For surfacewater: Use depth over puddledepth 
 		dr = sright->get_depth() - sright->get_puddledepth();
 	} else if (oright.get()) { 
 		// For other openwaterstorage: Use depth over surface of left node
-		dr = oright->get_potential() - left->position.z;
+		dr = oright->get_potential(t) - left->position.z;
 	} else {	
 		// For other node: Use left depth
 		dr = dl;
@@ -102,27 +120,14 @@ real DiffusiveSurfaceRunoff::calc_q( cmf::math::Time t )
 	// Use mean of left and right depth as intermediate flow depth
 	real d = mean(dl,dr);
 	//  Get potential difference
-	real dPsi = left->get_potential() - nright->get_potential();
+	real dPsi = left->get_potential(t) - nright->get_potential(t);
 	
 	// Get slope
 	real grad = dPsi/m_distance;
 
-	// Get signed square root for 
-	real s_sqrt = sign(grad) * sqrt(std::abs(grad));
+	// Get signed square root for gradient
+	real s_sqrt = sqrt_slope(grad);
 
-	// linear slope width is a value in which slope range the slope should be altered
-	// to prevent a singularity in dq/ds
-	if (linear_slope_width>0.0) {
-		real
-			// Only a shortcut for faster writing
-			s0 = linear_slope_width,
-			// Weight of linear part
-			w_lin = exp(-square((grad/s0))),
-			// linear part using the slope at s0/4 
-			s_lin =grad/(2.*sqrt(s0/4));
-			// Weighted sum of sqrt(s) and a*s
-		s_sqrt = w_lin * s_lin + (1-w_lin) * s_sqrt;
-	}
 
 	return prevent_negative_volume(m_flowwidth * pow(d,5/3.) * s_sqrt/left->get_nManning() * 86400.);
 }
@@ -133,3 +138,4 @@ void DiffusiveSurfaceRunoff::NewNodes()
 	wright = SurfaceWater::cast(right_node());
 	owright=OpenWaterStorage::cast(right_node());
 }
+

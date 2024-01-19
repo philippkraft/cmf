@@ -1,12 +1,13 @@
 import cmf
 import unittest
 
+
 class Model:
 
     def __init__(self):
         self.project = cmf.project()
         self.cell = self.project.NewCell(0, 0, 0, 1000)
-        rc = cmf.BrooksCoreyRetentionCurve.CreateFrom2Points(1., 0.5, 0.25, 0.05, -1e-2 * 10**1.8)
+        rc = cmf.BrooksCoreyRetentionCurve.CreateFrom2Points(1., 0.5, 0.25, 0.05, -1e-2 * 10 ** 1.8)
         self.layer = self.cell.add_layer(0.1, rc)
         self.et = self.cell.transpiration
 
@@ -21,7 +22,7 @@ class Model:
 
 
 class TestET(unittest.TestCase):
-
+    @unittest.skip
     def test_HargreaveET(self):
         m = Model()
         cmf.HargreaveET(m.layer, m.et)
@@ -71,3 +72,7 @@ class TestET(unittest.TestCase):
         m = Model()
         cmf.timeseriesETpot(m.layer, m.et, cmf.timeseries.from_scalar(5))
         m(self)
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=100)

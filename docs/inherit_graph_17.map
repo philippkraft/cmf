@@ -1,3 +1,23 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classcmf_1_1upslope_1_1connections_1_1_kinematic_macro_flow.html" title="Linear storage based flux from macro pore to macro pore. " alt="" coords="5,5,148,32"/>
+<area shape="rect" id="Node000000" href="$classcmf_1_1river_1_1_i_volume_height_function.html" title="Volume height relations are functional objects, which return a height and a crosssectional area of a ..." alt="" coords="5,208,161,235"/>
+<area shape="rect" id="Node000001" href="$classcmf_1_1river_1_1_i_channel.html" title="Structure for the description of structural parameters of a reach Abstract base class for different I..." alt="" coords="251,157,322,184"/>
+<area shape="poly" id="edge91_Node000000_Node000001" title=" " alt="" coords="154,201,249,177,251,182,155,206"/>
+<area shape="rect" id="Node000009" href="$classcmf_1_1river_1_1_prism.html" title="the height of a volume in a Prism with a defined base area" alt="" coords="259,208,314,235"/>
+<area shape="poly" id="edge99_Node000000_Node000009" title=" " alt="" coords="176,219,258,219,258,224,176,224"/>
+<area shape="rect" id="Node000010" href="$classcmf_1_1river_1_1volume__height__function.html" title="A wrapper class for volume / height functional relations." alt="" coords="209,259,364,285"/>
+<area shape="poly" id="edge100_Node000000_Node000010" title=" " alt="" coords="155,236,230,255,229,261,154,242"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1river_1_1_channel.html" title="A wrapper for channel geometries." alt="" coords="446,5,514,32"/>
+<area shape="poly" id="edge92_Node000001_Node000002" title=" " alt="" coords="305,143,350,93,379,66,411,42,444,26,447,31,413,46,382,70,354,96,309,147"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1river_1_1_cross_section_reach.html" title="Structure for the description of reaches with a freely defined cross section." alt="" coords="412,56,548,83"/>
+<area shape="poly" id="edge93_Node000001_Node000003" title=" " alt="" coords="319,146,362,119,411,92,437,81,439,86,413,97,364,124,322,151"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1river_1_1_mean_channel.html" title="A combination of two channel geometries." alt="" coords="430,107,530,133"/>
+<area shape="poly" id="edge94_Node000001_Node000004" title=" " alt="" coords="336,155,429,131,430,136,338,160"/>
+<area shape="rect" id="Node000005" href="$classcmf_1_1river_1_1_pipe_reach.html" title="Describes the geometry of a closed pipe." alt="" coords="438,157,522,184"/>
+<area shape="poly" id="edge95_Node000001_Node000005" title=" " alt="" coords="337,168,437,168,437,173,337,173"/>
+<area shape="rect" id="Node000006" href="$classcmf_1_1river_1_1_rectangular_reach.html" title="Describes a IChannel with a rectangular crosssection." alt="" coords="417,208,544,235"/>
+<area shape="poly" id="edge96_Node000001_Node000006" title=" " alt="" coords="338,181,427,205,425,210,336,186"/>
+<area shape="rect" id="Node000007" href="$classcmf_1_1river_1_1_s_w_a_t_reach_type.html" title="Structure for the description of structural parameters of a reach." alt="" coords="418,259,542,285"/>
+<area shape="poly" id="edge97_Node000001_Node000007" title=" " alt="" coords="338,181,365,194,381,207,390,220,399,232,414,244,435,256,432,260,410,249,395,236,386,223,377,210,363,198,336,185"/>
+<area shape="rect" id="Node000008" href="$classcmf_1_1river_1_1_triangular_reach.html" title="Structure for the description of reaches with a triangular cross section." alt="" coords="423,309,537,336"/>
+<area shape="poly" id="edge98_Node000001_Node000008" title=" " alt="" coords="339,178,366,194,377,207,385,220,391,246,397,271,403,283,414,295,430,307,427,311,410,299,399,286,392,273,386,247,380,222,373,210,362,198,336,183"/>
 </map>

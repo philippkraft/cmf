@@ -1,3 +1,5 @@
 <map id="MatrixInfiltration" name="MatrixInfiltration">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="6,5,118,32"/>
+<area shape="rect" id="Node000001" title="Connects the surfacewater and the most upper layer using a Richards equation like infiltration model." alt="" coords="5,80,118,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="6,5,117,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,48,64,80,59,80,59,48"/>
 </map>

@@ -207,26 +207,3 @@ cmf::water::flux_node::ptr cmf::water::get_lower_node( cmf::water::flux_node::pt
 	return node1->position.z >= node2->position.z ? node2 : node1;
 }
 
-void cmf::water::waterbalance_integrator::integrate( cmf::math::Time until )
-{
-	if (_node.expired()) {
-		throw std::runtime_error("Connection for "+_name+" does not exist any more");
-	}
-	cmf::math::Time dt = until-_t;
-	if (until<_t) {
-		reset(until);
-		return;
-	}
-	_t=until;
-	flux_node::ptr node = _node.lock();
-	_sum += node->water_balance_without_refresh() * dt.AsDays();
-
-}
-
-double cmf::water::waterbalance_integrator::avg() const
-{
-	if (_t>_start_time)
-		return _sum/(_t-_start_time).AsDays();
-	else
-		return 0.0;
-}

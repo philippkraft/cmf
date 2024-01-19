@@ -67,7 +67,7 @@ is simple:
 
 ~~~~~~~~~~~~~{.py}
 
-solver = cmf.CVodeIntegrator(p, 1e-9)
+solver = cmf.CVodeKrylov(p, 1e-9)
 print(solver.size())
 ~~~~~~~~~~~~~
 
@@ -109,7 +109,7 @@ whole system.
 ~~~~~~~~~~~~~{.py}
 
 # Template for the water solver
-wsolver = cmf.CVodeIntegrator(p,1e-9)
+wsolver = cmf.CVodeKrylov(p,1e-9)
 # Template for the solute solver
 ssolver = cmf.ImplicitEuler(p,1e-9)
 # Creating the SWI, the storage objects of the project are internally assigned to the correct solver

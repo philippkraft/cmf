@@ -1,4 +1,5 @@
 <map id="Integrator" name="Integrator">
-<area shape="rect" id="node2" href="$classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times. " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node3" href="$classcmf_1_1math_1_1integratable__list.html" title="A list of cmf::math::integratable objects. " alt="" coords="81,5,194,32"/>
+<area shape="rect" id="Node000001" title="Base class for any kind of integrator." alt="" coords="5,112,81,139"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times." alt="" coords="18,5,68,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="46,47,46,112,40,112,40,47"/>
 </map>

@@ -20,10 +20,10 @@
 #define collections_h__
 #include "flux_node.h"
 #include "boundary_condition.h"
-#include "../geometry/geometry.h"
+#include "../math/geometry.h"
 #include "../math/num_array.h"
 namespace cmf {
-	namespace water {
+    namespace water {
 
 		/// @brief A collection of nodes for fast access of the waterbalance
 		///
@@ -31,7 +31,7 @@ namespace cmf {
 		/// To accelerate data access, one can use the node_list object
 		///
 		/// @todo Add a get_volume / set_volume function pair, to complement get_potential / set_potential
-		class node_list	: public cmf::math::StateVariableOwner
+		class node_list
 		{
 		private:
 
@@ -73,7 +73,7 @@ namespace cmf {
 			node_list getslice(ptrdiff_t begin,ptrdiff_t end,ptrdiff_t step=1) const;
 
 			/// @brief Implements StateVariableOwner
-			cmf::math::StateVariableList get_states();
+			operator cmf::math::state_list();
 			/// @brief Adds a flux node to the list
 			void append(flux_node::ptr node);
 			/// @brief Removes a flux node from the list, returns true if successful
@@ -86,7 +86,7 @@ namespace cmf {
 			ptrdiff_t set_potentials(const cmf::math::num_array& potentials);
 			
 			/// @brief Returns the potential of the nodes
-			cmf::math::num_array get_potentials();
+            cmf::math::num_array get_potentials(cmf::math::Time t=cmf::math::never);
             
 
 			/// @brief Returns the sum of the water balances of the nodes
@@ -114,8 +114,6 @@ namespace cmf {
 			/// @brief Returns an array holding the concentration of all the flux nodes for the given solute
 			cmf::math::num_array conc(cmf::math::Time t, const cmf::water::solute& _Solute) const;
 			
-			/// @brief Sets the source flux of a solute storage associated  with a node (node has to be a water storage)
-			ptrdiff_t set_solute_source(const cmf::water::solute& _Solute, cmf::math::num_array source_fluxes);
 
 			/// @brief A fast method to perform flux queries as a batch. The node lists left and right should have the same length.
 			///

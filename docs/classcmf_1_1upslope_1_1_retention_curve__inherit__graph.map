@@ -1,5 +1,9 @@
 <map id="RetentionCurve" name="RetentionCurve">
-<area shape="rect" id="node2" href="$classcmf_1_1upslope_1_1_brooks_corey_retention_curve.html" title="Provides the use of the Brooks&#45;Corey retention curve. " alt="" coords="5,80,189,107"/>
-<area shape="rect" id="node3" href="$classcmf_1_1upslope_1_1_linear_retention.html" title="The linear retention curve provides a simple linear relationship between storage and head..." alt="" coords="213,80,325,107"/>
-<area shape="rect" id="node4" href="$classcmf_1_1upslope_1_1_van_genuchten_mualem.html" title="Provides the use of the Van Genuchten &#45; Mualem retention curve (Van Genuchten 1980) ..." alt="" coords="349,80,504,107"/>
+<area shape="rect" id="Node000001" title="Abstract base class for different types of retention curves." alt="" coords="215,5,323,32"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1upslope_1_1_brooks_corey_retention_curve.html" title="Provides the use of the Brooks&#45;Corey retention curve." alt="" coords="5,80,189,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,41,128,82,126,77,224,36"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1upslope_1_1_linear_retention.html" title="The linear retention curve provides a simple linear relationship between storage and head." alt="" coords="213,80,325,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="272,48,272,80,266,80,266,48"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1upslope_1_1_van_genuchten_mualem.html" title="Provides the use of the Van Genuchten &#45; Mualem retention curve (Van Genuchten 1980)" alt="" coords="348,80,502,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="311,36,399,77,396,82,309,41"/>
 </map>

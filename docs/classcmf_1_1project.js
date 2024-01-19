@@ -1,13 +1,12 @@
 var classcmf_1_1project =
 [
     [ "project", "classcmf_1_1project.html#a07a16dbd5f36bfa5371d964c95722179", null ],
-    [ "get_cell", "classcmf_1_1project.html#aeea72e1433697510338110a40ba44445", null ],
-    [ "get_cells", "classcmf_1_1project.html#abe710944d27310cb8e904d33e8be0533", null ],
+    [ "get_cell", "classcmf_1_1project.html#acb5a464a9133e950630bb59f56c1ea7a", null ],
+    [ "get_cells", "classcmf_1_1project.html#ab78030739a0bcc360b59b71771b13aa9", null ],
     [ "get_node", "classcmf_1_1project.html#a1058c15183b0b1f90b8d8f945674b087", null ],
     [ "get_reach", "classcmf_1_1project.html#af73f27aff5f0af8f59e4da5dcaeae378", null ],
-    [ "get_states", "classcmf_1_1project.html#a630ff0c86cdfcab272faf1aefb76ab9a", null ],
     [ "get_storages", "classcmf_1_1project.html#a9ca28921f3700300cdc93947432113bf", null ],
-    [ "NewCell", "classcmf_1_1project.html#aa4310fe69c635f5b8e22e807458fa4fa", null ],
+    [ "NewCell", "classcmf_1_1project.html#a328378dadbf2fb97822e854a188f73ef", null ],
     [ "NewNeumannBoundary", "classcmf_1_1project.html#a6820cd7d62e83a66fd46f2c7d3a29906", null ],
     [ "NewOpenStorage", "classcmf_1_1project.html#a8048704d6ef8a6bf580000a43ad69fb6", null ],
     [ "NewOutlet", "classcmf_1_1project.html#a57c8b67893694d81ac55713bbf73f449", null ],

@@ -28,7 +28,7 @@
 #include "SoluteStorage.h"
 #include "flux_node.h"
 #include "flux_connection.h"
-#include "../cmfmemory.h"
+#include <memory>
 
 namespace cmf {
 	namespace water {
@@ -47,7 +47,7 @@ namespace cmf {
 		/// \f}
 		///
 		/// @todo Check the head based state mode 
-		class WaterStorage : public cmf::math::StateVariable,public cmf::math::StateVariableOwner,public cmf::water::flux_node
+		class WaterStorage : public cmf::math::StateVariable, public cmf::water::flux_node
 		{
 		public:
 			typedef std::shared_ptr<cmf::water::WaterStorage> ptr;
@@ -62,19 +62,23 @@ namespace cmf {
 			SoluteStorageMap m_Concentrations;
 			void initializeSoluteStorages(const cmf::water::solute_vector& solutes);
 
-
 		protected:
 			virtual real head_to_volume(real head) const;
 			virtual real volume_to_head(real volume) const;
 	
 		public:
 			/// @brief A character indicating the integrated variable (either 'V' for Volume or 'h' for head)
-			inline char get_state_variable_content() const {return m_state_variable_content;}
+			 char get_state_variable_content() const {return m_state_variable_content;}
 			/// @brief A character indicating the integrated variable (either 'V' for Volume or 'h' for head)
 			void set_state_variable_content(char content);
 			/// @brief Returns true, since this is a storage
-			virtual bool is_storage() const {return true;}
-			cmf::math::StateVariableList get_states();
+			bool is_storage() const override;
+			/// @brief Returns True if this waterstorage is effected by another state
+			virtual bool is_connected(const cmf::math::StateVariable& other) const;
+#ifndef SWIG
+			virtual void add_connected_states(cmf::math::StateVariable::list& states);
+            operator cmf::math::state_list();
+#endif
 			/// @brief creates a water storage (abstract class)
 			/// @param project The project the waterstorage belongs to
 			/// @param Name Name of the water storage
@@ -101,52 +105,17 @@ namespace cmf {
 			/// @brief Returns the concentration of the given solute
 			real conc(const cmf::water::solute& _Solute) const;
 			/// @brief Returns the current WaterQuality (concentration of all solutes)
-			real conc(cmf::math::Time t,const cmf::water::solute& _Solute) const
-			{
-				return conc(_Solute);
-			}
+			real conc(cmf::math::Time t,const cmf::water::solute& _Solute) const override;
 			/// @brief Sets a new concentration
-			void conc(const cmf::water::solute& _Solute,real NewConcetration)
-			{
-				Solute(_Solute).set_conc(NewConcetration);
-			}
+			void conc(const cmf::water::solute& _Solute,real NewConcetration);
 			/// @brief Returns the volume of water in this storage in m<sup>3</sup>
-			virtual real get_volume() const {
-				if (get_state_variable_content()=='h')
-					return head_to_volume(get_state());
-				else
-					return get_state();
-
-			}
-			virtual real get_potential() const	{
-				if (get_state_variable_content()=='h')
-					return get_state();
-				else
-					return volume_to_head(get_state());
-			}
+			virtual real get_volume() const;
+			real get_potential(cmf::math::Time t = cmf::math::never) const override;
 
 			/// @brief Sets the volume of water in this storage in m<sup>3</sup>
-			virtual void set_volume(real newwatercontent)	{
-				if (get_state_variable_content()=='h')
-					set_state(volume_to_head(newwatercontent));
-				else
-					set_state(newwatercontent);
-			}
-			virtual void set_potential(real newpotential) {
-				if (get_state_variable_content()=='h')
-					set_state(newpotential);
-				else
-					set_state(head_to_volume(newpotential));
-			}
+			virtual void set_volume(real newwatercontent);
+			void set_potential(real newpotential) override;
 			virtual real dxdt(const cmf::math::Time& time);
-			real get_state() const
-			{
-				return cmf::math::StateVariable::get_state();
-			}
-			void set_state(real newState)
-			{
-				cmf::math::StateVariable::set_state(newState);
-			}
 			///@name Overrides of flux_node
 			//@{
 			virtual bool RecalcFluxes(cmf::math::Time t) {

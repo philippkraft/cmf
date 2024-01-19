@@ -5,6 +5,7 @@
     <tab type="usergroup" visible="yes" title="Tutorial" intro="" url="@ref tutorial">
       <tab type="user" visible="yes" title="Tutorial" url="@ref tutorial"/>
       <tab type="user" visible="yes" title="Publications" url="@ref publicationList"/>
+      <tab type="user" visible="yes" title="Original Publication" url="@ref ems2011"/>
     </tab>
     <tab type="usergroup" visible="yes" title="API Documentation" intro="">
       <tab type="modules" visible="yes" title="" intro="API by topic"/>

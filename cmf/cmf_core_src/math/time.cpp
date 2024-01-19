@@ -104,6 +104,12 @@ cmf::math::Time& cmf::math::Time::operator=( const cmf::math::Time& other )
 	this->m_time_in_ms = other.m_time_in_ms;
 	return *this;
 }
+
+cmf::math::Time cmf::math::Time::long_time_if_zero() const {
+    if (is_not_0()) return *this;
+    else return cmf::math::year * 1000;
+}
+
 std::string cmf::math::Date::to_string()
 {
 	std::stringstream str;

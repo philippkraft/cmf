@@ -1,3 +1,5 @@
 <map id="NeumannBoundary" name="NeumannBoundary">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="33,5,110,32"/>
+<area shape="rect" id="Node000001" title="A Neumann boundary condition (constant flux boundary condition)" alt="" coords="5,80,137,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes." alt="" coords="33,5,109,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,48,74,80,68,80,68,48"/>
 </map>

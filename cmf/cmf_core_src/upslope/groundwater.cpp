@@ -1,13 +1,13 @@
 #include "groundwater.h"
 #include "../project.h"
 #include "algorithm.h"
-inline real cmf::upslope::aquifer::volume_to_head( real volume ) const
+ real cmf::upslope::aquifer::volume_to_head( real volume ) const
 {
 	real fill = volume/(porosity * area);
 	return get_base_height() + fill;
 }
 
-inline real cmf::upslope::aquifer::head_to_volume( real head ) const
+ real cmf::upslope::aquifer::head_to_volume( real head ) const
 {
 	real fill = head - get_base_height();
 	return fill * area * porosity;
@@ -71,12 +71,12 @@ real cmf::upslope::aquifer_Darcy::calc_q( cmf::math::Time t )
 	using namespace cmf::geometry;
 	point d = left_node()->position - right_node()->position;
 	real 
-		gradient = (left_node()->get_potential() - right_node()->get_potential())/d.length(),
+		gradient = (left_node()->get_potential(t) - right_node()->get_potential(t))/d.length(),
 		K1 = gw1->get_K(d),
 		K2 = gw2 ? gw2->get_K(d) : K1,		
 		K = harmonic_mean(K1,K2),
-		h1 = gw1->get_potential() - gw1->get_base_height(),
-		h2 = gw2 ? gw2->get_potential() - gw2->get_base_height() : h1,
+		h1 = gw1->get_potential(t) - gw1->get_base_height(),
+		h2 = gw2 ? gw2->get_potential(t) - gw2->get_base_height() : h1,
 		h = mean(h1,h2),
 		v = K * gradient,
 		q = h * flux_width * v;

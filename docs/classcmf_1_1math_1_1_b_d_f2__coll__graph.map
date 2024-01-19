@@ -1,5 +1,7 @@
 <map id="BDF2" name="BDF2">
-<area shape="rect" id="node2" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator. " alt="" coords="46,109,122,136"/>
-<area shape="rect" id="node3" href="$classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times. " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node4" href="$classcmf_1_1math_1_1integratable__list.html" title="A list of cmf::math::integratable objects. " alt="" coords="81,5,194,32"/>
+<area shape="rect" id="Node000001" title="An order 2 BDF&#45;Method with fixed&#45;point iteration and variable step size." alt="" coords="16,188,70,215"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator." alt="" coords="5,112,81,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="46,154,46,188,40,188,40,154"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times." alt="" coords="18,5,68,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="46,47,46,112,40,112,40,47"/>
 </map>

@@ -1,4 +1,7 @@
 <map id="conductable" name="conductable">
-<area shape="rect" id="node2" href="$classcmf_1_1upslope_1_1aquifer.html" title="A class to represent large groundwater storages, not bounded to the usual horizontal discretization s..." alt="" coords="5,80,65,107"/>
-<area shape="rect" id="node3" href="$classcmf_1_1upslope_1_1_soil_layer.html" title="A representation of a SoilLayer. " alt="" coords="89,80,165,107"/>
+<area shape="rect" id="Node000001" title="An abstract interface for all classes providing a conductivity (e.g." alt="" coords="43,5,134,32"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1upslope_1_1_soil_layer.html" title="A representation of a SoilLayer." alt="" coords="5,80,81,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,47,53,81,49,78,70,44"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1upslope_1_1aquifer.html" title="A class to represent large groundwater storages, not bounded to the usual horizontal discretization s..." alt="" coords="105,80,165,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="107,44,129,78,125,81,102,47"/>
 </map>

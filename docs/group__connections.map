@@ -1,8 +1,9 @@
 <map id="Flux connections" name="Flux connections">
-<area shape="rect" id="node1" href="$group__latflux.html" title="lateral subsurface\l fluxes" alt="" coords="200,5,324,47"/>
-<area shape="rect" id="node2" href="$group___e_t.html" title="Evapotranspiration" alt="" coords="198,71,326,98"/>
-<area shape="rect" id="node3" href="$group__perc.html" title="Percolation" alt="" coords="219,122,305,149"/>
-<area shape="rect" id="node4" href="$group__surfacefluxes.html" title="Connections for local\l aboveground fluxes" alt="" coords="191,173,333,215"/>
-<area shape="rect" id="node5" href="$group__manning.html" title="Surface water connections" alt="" coords="175,239,349,266"/>
-<area shape="rect" id="node6" href="$group__infiltration.html" title="Infiltration" alt="" coords="223,290,301,317"/>
+<area shape="rect" id="Node000003" href="$group___e_t.html" title=" " alt="" coords="197,5,325,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,144,126,171"/>
+<area shape="rect" id="Node000004" href="$group__infiltration.html" title=" " alt="" coords="223,56,299,83"/>
+<area shape="rect" id="Node000007" href="$group__latflux.html" title=" " alt="" coords="199,107,323,149"/>
+<area shape="rect" id="Node000006" href="$group__manning.html" title=" " alt="" coords="174,173,348,200"/>
+<area shape="rect" id="Node000005" href="$group__perc.html" title=" " alt="" coords="218,224,304,251"/>
+<area shape="rect" id="Node000002" href="$group__surfacefluxes.html" title=" " alt="" coords="190,275,332,317"/>
 </map>

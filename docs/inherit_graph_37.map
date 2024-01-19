@@ -1,3 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structcmf_1_1water_1_1solute.html" title="A structure to identify a solute. " alt="" coords="5,5,63,32"/>
+<area shape="rect" id="Node000000" href="$classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stress_function.html" title="An abstract class to calculate the actual transpiration from potential transpiration." alt="" coords="5,56,183,83"/>
+<area shape="rect" id="Node000001" href="$classcmf_1_1upslope_1_1_e_t_1_1_content_stress.html" title="A simple water content based stress model based on Feddes (1978)" alt="" coords="231,5,335,32"/>
+<area shape="poly" id="edge109_Node000000_Node000001" title=" " alt="" coords="161,49,230,30,231,35,162,54"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1upslope_1_1_e_t_1_1_suction_stress.html" title="The classical suction depending transpiration Stress curve after Feddes." alt="" coords="231,56,335,83"/>
+<area shape="poly" id="edge110_Node000000_Node000002" title=" " alt="" coords="198,67,231,67,231,72,198,72"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1upslope_1_1_e_t_1_1_volume_stress.html" title="A WaterStressFunction based on the stored water volume of a layer." alt="" coords="231,107,335,133"/>
+<area shape="poly" id="edge111_Node000000_Node000003" title=" " alt="" coords="162,85,232,104,230,109,161,90"/>
 </map>

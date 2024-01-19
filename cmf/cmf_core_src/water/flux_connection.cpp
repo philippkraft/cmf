@@ -140,62 +140,19 @@ real flux_connection::get_tracer_filter(solute S) {
 	return specific_filter * m_tracer_filter;
 }
 
-
-// returns the average flux over the timestep
-double cmf::water::flux_integrator::avg() const
-{
-	// if variable is already integrated
-	if (_t>_start_time) 
-		return _sum/(_t-_start_time).AsDays();
-	else // else return zero...
-		return 0.0;
-}
-
-cmf::water::flux_integrator::flux_integrator( cmf::water::flux_connection& connection ) 
-	:	_connection(connection.weak_this), 
-		_sum(0.0), _t(cmf::math::year*5000), 
-		_name(connection.to_string()+ " (Integrator)"), invert(false)
-{}
-
-flux_integrator::flux_integrator( flux_node::ptr left, flux_node::ptr right )
-: 	_sum(0.0), _t(cmf::math::year*5000)
-{
-	flux_connection* con = left->connection_to(*right);
-	if (con) {
-		_connection = con->weak_this;
-		_name = con->to_string() + " (Integrator)";
-		invert = con->left_node() == right;
-	} else 
-		throw std::runtime_error("Can't create flux_integrator between " + left->Name + " and " + right->Name + ". No connection.");
-}
-
-void cmf::water::flux_integrator::reset( cmf::math::Time t )
-{
-	_start_time = t;
-	_t=_start_time;
-	_sum=0.0;
-}
-
-flux_connection::ptr cmf::water::flux_integrator::connection() const
-{
-	return _connection.lock();
-}
-
-
-
 int cmf::water::replace_node(flux_node::ptr oldnode,flux_node::ptr newnode)
 {
-	int changes=0;
-	if (oldnode && newnode) {
-		newnode->position=oldnode->position;
-		newnode->Name=oldnode->Name;
-		connection_list cons=oldnode->get_connections();
-		for(connection_list::iterator it = cons.begin(); it != cons.end(); ++it) {
-			++changes;
-			(**it).exchange_target(oldnode,newnode);
-		}
-	}
-	return changes;
+    int changes=0;
+    if (oldnode && newnode) {
+        newnode->position=oldnode->position;
+        newnode->Name=oldnode->Name;
+        connection_list cons=oldnode->get_connections();
+        for(connection_list::iterator it = cons.begin(); it != cons.end(); ++it) {
+            ++changes;
+            (**it).exchange_target(oldnode,newnode);
+        }
+    }
+    return changes;
 
 }
 
@@ -205,7 +162,7 @@ int cmf::water::replace_node(flux_node::ptr oldnode,flux_node::ptr newnode)
 #endif
 
 
-inline bool connection_less(const flux_connection::ptr& con1,const flux_connection::ptr& con2) {
+ bool connection_less(const flux_connection::ptr& con1,const flux_connection::ptr& con2) {
 	const int 
 		con1_left  = con1->left_node()->node_id, 
 		con2_left  = con2->left_node()->node_id, 
@@ -260,26 +217,4 @@ bool cmf::water::connection_list::remove(flux_connection::ptr connection )
 	} else return false;
 }
 
-
-void cmf::water::flux_integrator::integrate( cmf::math::Time until )
-{
-	/* If connection is expired, throw error */
-	if (_connection.expired()) {
-		throw std::runtime_error("Connection for "+_name+" does not exist any more");
-	} else if /* end time is before current time, reset the integration*/ (until<_t) {	
-		reset(until);
-	} else /* integrate */ {
-		// get timestep length
-		cmf::math::Time dt = until-_t;
-		// get the connection
-		flux_connection::ptr con = _connection.lock();
-		// add flux in timestep to current sum
-		if (invert)
-			_sum -= con->m_q * dt.AsDays();
-		else
-			_sum += con->m_q * dt.AsDays();
-		// set new current time
-		_t=until;
-	}
-}
 

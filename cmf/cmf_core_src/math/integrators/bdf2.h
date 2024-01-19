@@ -63,9 +63,6 @@ namespace cmf {
 			/// Absolute error tolerance
 			num_array abstol;
 
-			// Refreshes the absolute tolerance vector
-			void set_abstol();
-
 			//@}
 
 
@@ -79,42 +76,41 @@ namespace cmf {
 			void Gear2newState(real h);
 
 			//@}
-			real error_exceedance( const num_array& compare,int * biggest_error_position=0);
-			int error_position;
+			real error_excedance( const num_array& compare,ptrdiff_t * biggest_error_position=0);
+			ptrdiff_t error_position;
 		public:
 
-			/// Add state variables from a StateVariableOwner
-			void add_states(cmf::math::StateVariableOwner& stateOwner);
 			/// Returns the position of the biggest error
-			int get_error_position() const
+			ptrdiff_t get_error_position() const
 			{
 				return error_position;
 			}
 			/// Maximum order, can be 1 (implicit euler) or 2 (BDF2)
 			int max_order;
-			virtual void reset() {
-				order=1;
-				stepNo = 0;
-			}
+			void reset() override;
 
 			/// Constructs a new BDF2 integrator
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
 			/// @param tStepMin minimum time step (default=10s)
-			BDF2(real epsilon=1e-9,cmf::math::Time tStepMin=cmf::math::timespan(10));
+			explicit BDF2(real epsilon=1e-9,cmf::math::Time tStepMin=cmf::math::timespan(10));
 			/// Constructs a new Gears_var_Step
 			/// @param states States to be added to the solver
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
 			/// @param tStepMin minimum time step (default=10s)
-			BDF2(cmf::math::StateVariableOwner& states, real epsilon=1e-9,cmf::math::Time tStepMin=cmf::math::timespan(10));
+            explicit BDF2(const cmf::math::state_list &states, real epsilon = 1e-9,
+                    cmf::math::Time tStepMin = cmf::math::timespan(10));
 			
 			/// Constructs a new BDF2 integrator
 			/// @param templ Template to be used to construct a BDF2 method
-			BDF2(const Integrator & templ);
-			virtual Integrator * copy() const
+			explicit BDF2(const Integrator & templ);
+			Integrator * copy() const override
 			{
 				BDF2* newBDF2 = new BDF2(*this);
 				newBDF2->max_order = max_order;
 				return newBDF2;
+			}
+			std::string to_string() const override {
+			    return std::string("BDF2(size=") + std::to_string(size()) + std::string(")");
 			}
 
 
@@ -130,7 +126,7 @@ namespace cmf {
 			///  - If too many iterations are needed, or the error is rising, repeat iteration with \f$ h_{n+1} = \frac{h_{n+1}}{2} \f$
 			/// @param MaxTime To stop the model (if running in a model framework) at time steps of value exchange e.g. full hours, the next value exchange time can be given
 			/// @param TimeStep Takes the proposed timestep, ignored by this solver
-			int integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep);
+			int integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep) override;
 		};
 	}
 }

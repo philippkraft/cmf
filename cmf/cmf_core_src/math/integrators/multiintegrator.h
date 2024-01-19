@@ -19,7 +19,7 @@
 #ifndef MultiIntegrator_h__
 #define MultiIntegrator_h__
 #include "integrator.h"
-#include "../../cmfmemory.h"
+#include <memory>
 namespace cmf {
 	namespace math {
 		/// The MultiIntegrator is a wrapper for a bunch integrators. The states of the integrators should not have direct connections over integrator boundaries
@@ -35,24 +35,15 @@ namespace cmf {
 			{
 				return new MultiIntegrator(*m_template,int(m_integrators.size()));
 			}
-			/// Resets the integrator
+            std::string to_string() const override;
+
+            /// Resets the integrator
 			virtual void reset()
 			{
 				for(integ_vector::iterator it = m_integrators.begin(); it != m_integrators.end(); ++it)
 				{
 				    (**it).set_t(m_t);
 				}
-			}
-			/// Only there to override Integrator::AddStatesFromOwner. Throws an exception. Use add_states_to_integrator instead
-			void add_states(cmf::math::StateVariableOwner& stateOwner)
-			{
-				throw std::runtime_error("States can only be added to one integrator of the multi integrator. Use add_state_to_integrator");
-			}
-			/// Add state variables from a StateVariableOwner
-			void add_states_to_integrator(cmf::math::StateVariableOwner& stateOwner, int integrator_position)
-			{
-				integ_ptr& integ=m_integrators.at(integrator_position<0 ? m_integrators.size()-integrator_position : integrator_position);
-				integ->add_states(stateOwner);
 			}
 			/// Creates a new MultiIntegrator
 			/// @param template_integrator Template for the integrators

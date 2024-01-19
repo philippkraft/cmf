@@ -25,17 +25,19 @@
 #include <omp.h>
 #endif
 #include <algorithm>
-cmf::project::project(std::string solutenames) :	solutes(solutenames)
+
+cmf::_Options cmf::options;
+
+cmf::project::project(std::string solutenames)
+:	solutes(solutenames)
 {
 }
 
 cmf::project::~project()
 {
-	for(cmf::upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
-		delete it.ptr();
+	for(auto& cell: m_cells)
+		delete &cell;
 }
-
-
 
 
 cmf::river::Reach::ptr cmf::project::get_reach( ptrdiff_t index )
@@ -51,23 +53,21 @@ cmf::water::node_list cmf::project::get_storages()
 	using namespace std;
 
 	node_list res;
-	map<Cell*, Reach::ptr> reaches;
-	for(vector<Reach::ptr>::iterator r_it = m_reaches.begin(); r_it != m_reaches.end(); ++r_it)
+	for(const auto& reach: m_reaches)
 	{
-		Reach::ptr reach=*r_it;
 		res.append(reach);
 	}
 
-	for(cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
+	for(const auto& cell: m_cells)
 	{
-		for (size_t i = 0; i < it->storage_count() ; ++i)
-			res.append(it->get_storage(i));
-		for (size_t i = 0; i < it->layer_count() ; ++i)
-			res.append(it->get_layer(i));
+		for (size_t i = 0; i < cell.storage_count() ; ++i)
+			res.append(cell.get_storage(i));
+		for (size_t i = 0; i < cell.layer_count() ; ++i)
+			res.append(cell.get_layer(i));
 	}
-	for(node_list::iterator it = m_nodes.begin(); it != m_nodes.end(); ++it)
+	for(const auto& node: m_nodes)
 	{
-		WaterStorage::ptr ws = WaterStorage::cast(*it);
+		WaterStorage::ptr ws = WaterStorage::cast(node);
 		if (ws) res.append(ws);
 	}
 	return res;
@@ -76,54 +76,42 @@ cmf::water::node_list cmf::project::get_storages()
 
 void cmf::project::use_IDW_meteo( double z_weight/*=0*/,double power/*=2*/ )
 {
-	for(upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
+	for(auto& cell: m_cells)
 	{
-		cmf::atmosphere::IDW_Meteorology meteo(it->get_position(),this->meteo_stations,z_weight,power);
-		it->set_meteorology(meteo);
+		cmf::atmosphere::IDW_Meteorology meteo(cell.get_position(),this->meteo_stations,z_weight,power);
+		cell.set_meteorology(meteo);
 	}
 }
 
 void cmf::project::use_nearest_meteo( double z_weight/*=0*/ )
 {
-	for(upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
+	for(auto& cell: m_cells)
 	{	
-		it->set_meteorology(this->meteo_stations.reference_to_nearest(it->get_position(),z_weight));
+		cell.set_meteorology(this->meteo_stations.reference_to_nearest(cell.get_position(),z_weight));
 	}
 
 }
 
 void cmf::project::use_IDW_rainfall( double z_weight/*=0*/,double power/*=2*/ )
 {
-	for(upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
+	for(auto& cell: m_cells)
 	{
-		cmf::atmosphere::IDWRainfall::ptr rs = cmf::atmosphere::IDWRainfall::create(*this,it->get_position(),z_weight,power);
-		it->set_rain_source(rs);
+		cmf::atmosphere::IDWRainfall::ptr rs = cmf::atmosphere::IDWRainfall::create(*this,cell.get_position(),z_weight,power);
+		cell.set_rain_source(rs);
 	}
 }
 
 void cmf::project::use_nearest_rainfall( double z_weight/*=0*/ )
 {
-	for(upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
-		it->set_rain_source(cmf::atmosphere::RainfallStationReference::from_nearest_station(*this,it->get_position(),z_weight));
+	for(auto& cell: m_cells)
+		cell.set_rain_source(cmf::atmosphere::RainfallStationReference::from_nearest_station(*this,cell.get_position(),z_weight));
 }
 
-cmf::math::StateVariableList cmf::project::get_states()
+cmf::project::operator cmf::math::state_list()
 {
 	using namespace cmf::math;
 	using namespace cmf::water;
-	StateVariableList q;
-// 	for (node_list::iterator n_it = m_nodes.begin();n_it!=m_nodes.end();++n_it) {
-// 		WaterStorage::ptr storage = WaterStorage::cast(*n_it);
-// 		q.extend(*storage);
-// 	}	
-	for(std::vector<cmf::river::Reach::ptr>::iterator r_it = m_reaches.begin(); r_it != m_reaches.end(); ++r_it)
-		q.extend(**r_it);
-
-	for(cmf::upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
-		q.extend(*it);
-	q.extend(m_nodes);
-
-	return q;
+	return cmf::math::state_list(this->get_storages());
 
 }
 
@@ -139,7 +127,7 @@ size_t cmf::project::remove_node( cmf::water::flux_node::ptr node )
 	return m_nodes.size();
 }
 
-cmf::water::WaterStorage::ptr cmf::project::NewStorage( std::string Name,double x, double y, double z )
+cmf::water::WaterStorage::ptr cmf::project::NewStorage( std::string Name, double x, double y, double z )
 {
 	cmf::water::WaterStorage::ptr s = cmf::water::WaterStorage::create(*this);
 	s->position = cmf::geometry::point(x,y,z);
@@ -148,7 +136,7 @@ cmf::water::WaterStorage::ptr cmf::project::NewStorage( std::string Name,double 
 	return s;
 }
 
-cmf::river::OpenWaterStorage::ptr cmf::project::NewOpenStorage( std::string Name,double x, double y, double z,double area )
+cmf::river::OpenWaterStorage::ptr cmf::project::NewOpenStorage( std::string Name, double x, double y, double z,double area )
 {
 	cmf::river::OpenWaterStorage::ptr os = cmf::river::OpenWaterStorage::create(*this,area);
 	os->position = cmf::geometry::point(x,y,z);

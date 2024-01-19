@@ -1,3 +1,5 @@
 <map id="WaterbalanceFlux" name="WaterbalanceFlux">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="13,5,125,32"/>
+<area shape="rect" id="Node000001" title="Routes the sum of all other fluxes to a target." alt="" coords="5,80,132,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="13,5,124,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,48,71,80,66,80,66,48"/>
 </map>

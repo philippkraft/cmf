@@ -1,3 +1,5 @@
 <map id="volume_height_function" name="volume_height_function">
-<area shape="rect" id="node2" href="$classcmf_1_1river_1_1_i_volume_height_function.html" title="Volume height relations are functional objects, which return a height and a crosssectional area of a ..." alt="" coords="5,5,161,32"/>
+<area shape="rect" id="Node000001" title="A wrapper class for volume / height functional relations." alt="" coords="5,80,161,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1river_1_1_i_volume_height_function.html" title="Volume height relations are functional objects, which return a height and a crosssectional area of a ..." alt="" coords="5,5,161,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,48,86,80,80,80,80,48"/>
 </map>

@@ -2,7 +2,7 @@ var classcmf_1_1math_1_1_c_vode_dense =
 [
     [ "CVodeDense", "classcmf_1_1math_1_1_c_vode_dense.html#ad886a090d5321aa09af1278e17726fd2", null ],
     [ "_get_jacobian", "classcmf_1_1math_1_1_c_vode_dense.html#ae1b37935b0fd45c5bbca4b8b463a958c", null ],
-    [ "copy", "classcmf_1_1math_1_1_c_vode_dense.html#a8f945cea2d1d879c0373e8e98c1a0c13", null ],
+    [ "copy", "classcmf_1_1math_1_1_c_vode_dense.html#a6de02de72d39aac68ff5a2d27c322789", null ],
     [ "get_dt", "classcmf_1_1math_1_1_c_vode_dense.html#a72c9cc274dd9fe96b60f2ce8ac1db6cb", null ],
     [ "get_error", "classcmf_1_1math_1_1_c_vode_dense.html#aa27c9e2abdc2bad33560d1efec23c554", null ],
     [ "get_info", "classcmf_1_1math_1_1_c_vode_dense.html#adb8030931242fb21735a64323701fb5e", null ],

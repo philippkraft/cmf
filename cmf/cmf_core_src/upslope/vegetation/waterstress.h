@@ -21,7 +21,7 @@ namespace cmf {
 				/// @param soilLayer The cmf::upslope::SoilLayer this stress function belongs to
 				/// @param Tpot Potential Transpiration in mm/day (for the full profile)
 				/// @returns Actual flux from layer in m3/day
-				virtual real Tact(const cmf::upslope::SoilLayer* soilLayer, real Tpot) const = 0;
+				virtual real Tact(const cmf::upslope::SoilLayer* soillayer, real Tpot) const = 0;
 				/// Creates a new copy of this wetness
 				virtual cmf::upslope::ET::RootUptakeStressFunction* copy() const = 0;
 				virtual std::string to_string() const = 0;
@@ -50,7 +50,7 @@ namespace cmf {
 			private:
 				real fT(real potential) const;
 			public:
-				virtual real Tact(const cmf::upslope::SoilLayer* soilLayer, real Tpot) const;
+				virtual real Tact(const cmf::upslope::SoilLayer* soillayer, real Tpot) const;
 				real 
 					P0, ///< Above this pressure, ET=0.0 due to saturation (typical value: 0.0m)
 					P1, ///< Between P0 and P1 ET raises linear from 0.0 to ETpot (typical value: -0.1m)
@@ -89,7 +89,7 @@ namespace cmf {
 			public:
 				real theta_d;
 				real theta_w;
-				virtual real Tact(const cmf::upslope::SoilLayer* soilLayer, real Tpot) const;
+				virtual real Tact(const cmf::upslope::SoilLayer* soillayer, real Tpot) const;
 				cmf::upslope::ET::ContentStress* copy() const;
 				std::string to_string() const {
 					return "water content based stress (Feddes 1978)";
@@ -110,7 +110,7 @@ namespace cmf {
 				real 
 					V1, ///< Upper volume threshold in \f$m^3\f$. If the layer contains more water than V1, ET=ETpot
 					V0; ///< Lower volume threshold in \f$m^3\f$. If the layer contains less water than V0, ET=0.0
-				virtual real Tact(const cmf::upslope::SoilLayer* soilLayer, real Tpot) const;
+				virtual real Tact(const cmf::upslope::SoilLayer* soillayer, real Tpot) const;
 
 				/// Creates a new water stress function for water volume
 				///

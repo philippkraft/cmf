@@ -32,7 +32,7 @@ real mean(real a,real b)
 }
 real geo_mean(real a,real b)
 {
-	return sqrt(fabs(a*b));
+	return std::sqrt(std::abs(a*b));
 }
 real harmonic_mean(real a,real b)
 {
@@ -61,5 +61,6 @@ real piecewise_linear(real x,real xmin,real xmax,real ymin/*=0*/,real ymax/*=1*/
 }
 real boltzmann(real x,real x_half,real tau)
 {
-	return 1.0/(1.0+exp(-(x-x_half)/tau));
+	return 1.0/(1.0 + std::exp(-(x-x_half)/tau));
 }
+

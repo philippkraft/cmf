@@ -15,5 +15,13 @@ var namespacecmf_1_1atmosphere =
     [ "RainfallStationReference", "classcmf_1_1atmosphere_1_1_rainfall_station_reference.html", "classcmf_1_1atmosphere_1_1_rainfall_station_reference" ],
     [ "RainSource", "classcmf_1_1atmosphere_1_1_rain_source.html", "classcmf_1_1atmosphere_1_1_rain_source" ],
     [ "TimeseriesRainSource", "classcmf_1_1atmosphere_1_1_timeseries_rain_source.html", "classcmf_1_1atmosphere_1_1_timeseries_rain_source" ],
-    [ "Weather", "structcmf_1_1atmosphere_1_1_weather.html", "structcmf_1_1atmosphere_1_1_weather" ]
+    [ "Weather", "structcmf_1_1atmosphere_1_1_weather.html", "structcmf_1_1atmosphere_1_1_weather" ],
+    [ "extraterrestrial_radiation", "namespacecmf_1_1atmosphere.html#a3bc722b312e7b85e55e19633c7e010ea", null ],
+    [ "global_radiation", "namespacecmf_1_1atmosphere.html#a87be4f3fe912e2850b95ee9ddfe2aeaa", null ],
+    [ "MJ_to_watts", "namespacecmf_1_1atmosphere.html#a3974d0ab2be7108101f7fe9d366f0092", null ],
+    [ "Pressure", "namespacecmf_1_1atmosphere.html#a76330df2368016e7a8186ce286cbf34f", null ],
+    [ "rH_from_vpd", "namespacecmf_1_1atmosphere.html#a0d06cdd5567e9b03c2da4004915a09e7", null ],
+    [ "vapour_pressure", "namespacecmf_1_1atmosphere.html#a5a2a18d0809197d947135e0e37008c0b", null ],
+    [ "vpd_from_rH", "namespacecmf_1_1atmosphere.html#a767aa53c317a0f1a0a8788f2ad5a2686", null ],
+    [ "watts_to_MJ", "namespacecmf_1_1atmosphere.html#aa27e5a19c8a8c30f69c1ee5298f515db", null ]
 ];

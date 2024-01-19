@@ -64,14 +64,10 @@ namespace cmf {
 		{
 		protected:
 
-			virtual real get_slope(cmf::water::flux_node::ptr lnode, cmf::water::flux_node::ptr rnode, real d)=0;
+			virtual real get_sqrt_slope(cmf::math::Time t, cmf::water::flux_node::ptr lnode, cmf::water::flux_node::ptr rnode, real d) =0;
 			std::weak_ptr<cmf::river::OpenWaterStorage> w1,w2;
 			virtual real calc_q(cmf::math::Time t);
-			void NewNodes()
-			{
-				w1=cmf::river::OpenWaterStorage::cast(left_node());
-				w2=cmf::river::OpenWaterStorage::cast(right_node());
-			}
+			void NewNodes();
 			Manning(cmf::river::OpenWaterStorage::ptr left,cmf::water::flux_node::ptr right,
 				const cmf::river::IVolumeHeightFunction& reachtype,bool diffusive_wave)
 				: flux_connection(left,right,diffusive_wave ? "Manning (diff. wave)" : "Manning (kin. wave)"),	flux_geometry(reachtype), is_diffusive_wave(diffusive_wave) {
@@ -104,17 +100,20 @@ namespace cmf {
 		class Manning_Diffusive: public Manning
 		{
 		protected:
-			virtual real get_slope(cmf::water::flux_node::ptr lnode, cmf::water::flux_node::ptr rnode, real d);
+			real get_sqrt_slope(
+			        cmf::math::Time t,
+			        cmf::water::flux_node::ptr lnode,
+			        cmf::water::flux_node::ptr rnode,
+			        real d) override;
 		public:
 			typedef std::shared_ptr<Manning_Diffusive> ptr;
-			/// A parameter to linearize the dependency of q on slope during levelling out
-			real linear_slope_width;
+
 			/// Creates a diffusive wave connection between to open water storages.
 			///
 			/// @param left,right The nodes to be connected by the diffusive wave. Left needs to be an open water storage
 			/// @param reachtype The channel geometry
 			Manning_Diffusive(cmf::river::OpenWaterStorage::ptr left,cmf::water::flux_node::ptr right,const cmf::river::IChannel& reachtype)
-				: Manning(left,right,reachtype,true), linear_slope_width(0.0)
+				: Manning(left,right,reachtype,true)
 			{			}
 		};
 
@@ -135,7 +134,8 @@ namespace cmf {
 		class Manning_Kinematic: public Manning
 		{
 		protected:
-			virtual real get_slope(cmf::water::flux_node::ptr lnode, cmf::water::flux_node::ptr rnode, real d);
+			virtual real
+            get_sqrt_slope(cmf::math::Time t, cmf::water::flux_node::ptr lnode, cmf::water::flux_node::ptr rnode, real d);
 		public:
 			typedef std::shared_ptr<Manning_Kinematic> ptr;
 			/// Creates a kinematic wave connection between to open water storages.

@@ -1,4 +1,0 @@
-<map id="integratable" name="integratable">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1flux__integrator.html" title="The flux_integrator is an integratable for precise output of average fluxes over time. " alt="" coords="5,80,108,107"/>
-<area shape="rect" id="node3" href="$classcmf_1_1water_1_1waterbalance__integrator.html" title="The waterbalance_integrator is an integratable for precise output of the average water balance of a f..." alt="" coords="132,80,291,107"/>
-</map>

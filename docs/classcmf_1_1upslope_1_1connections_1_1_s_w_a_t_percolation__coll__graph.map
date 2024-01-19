@@ -1,3 +1,5 @@
 <map id="SWATPercolation" name="SWATPercolation">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="12,5,124,32"/>
+<area shape="rect" id="Node000001" title="A tipping bucket percolation approach similar to the approach in SWAT." alt="" coords="5,80,130,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="12,5,123,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="70,48,70,80,65,80,65,48"/>
 </map>

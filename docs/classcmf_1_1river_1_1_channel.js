@@ -11,6 +11,6 @@ var classcmf_1_1river_1_1_channel =
     [ "get_length", "classcmf_1_1river_1_1_channel.html#afddbd3f73a461c586b97957636f15121", null ],
     [ "get_wetted_perimeter", "classcmf_1_1river_1_1_channel.html#a3aa71e9e402476de26f66d84d37223ab", null ],
     [ "h", "classcmf_1_1river_1_1_channel.html#ac3b2458c419145d8a34e23b507439a03", null ],
-    [ "operator=", "classcmf_1_1river_1_1_channel.html#a7d5a9e97e57403567aeff193a15d6b00", null ],
+    [ "operator=", "classcmf_1_1river_1_1_channel.html#abc2e211684dc7b4bc13e2303016829a8", null ],
     [ "qManning", "classcmf_1_1river_1_1_channel.html#a5845f21a59b704153bd0c3eeb1868301", null ]
 ];

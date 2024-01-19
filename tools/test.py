@@ -8,6 +8,9 @@ import unittest
 import os
 import sys
 
+import cmf
+print('CMF v' + cmf.__version__)
+
 sys.path = [p for p in sys.path if p not in ('', '.', 'cmf')]
 
 loader = unittest.TestLoader()
@@ -17,6 +20,6 @@ print(start_dir)
 
 suite = loader.discover(start_dir, '*.py')
 
-runner = unittest.TextTestRunner()
+runner = unittest.TextTestRunner(verbosity=5)
 runner.run(suite)
 

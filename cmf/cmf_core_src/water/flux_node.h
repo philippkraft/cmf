@@ -21,14 +21,14 @@
 
 #include "../math/time.h"
 #include "../math/real.h"
-#include "../geometry/geometry.h"
+#include "../math/geometry.h"
 #include "Solute.h"
 #include <map>
 #include <vector>
 #include <set>
 #include <string>
 #include <stdexcept>
-#include "../cmfmemory.h"
+#include <memory>
 #include <algorithm>
 
 #include "../math/num_array.h"
@@ -69,8 +69,6 @@ namespace cmf {
 			void DeregisterConnection(flux_connection* target);
 			// Allows the flux_connection class to call thereregister / deregister themselfs
 			friend class flux_connection;
-			// allows the waterbalance_integrator to call the water balance without refreshing the connection
-			friend class waterbalance_integrator;
 
 			// The mapping of the connections. The id is holding the node id's
 			typedef std::map<int, con_ptr > ConnectionMap;
@@ -127,10 +125,10 @@ namespace cmf {
 			/// @brief Returns the water potential of the node in m waterhead
             ///
 			/// The base class water storage always returns the height of the location
-			virtual real get_potential() const
-			{
-				return position.z;
-			}
+			virtual real get_potential(cmf::math::Time=cmf::math::never) const
+            {
+                return position.z;
+            }
             /// @brief Sets the potential of this flux node
 			virtual void set_potential(real new_potential)
 			{
@@ -152,150 +150,6 @@ namespace cmf {
 		flux_node::ptr get_higher_node(flux_node::ptr node1,flux_node::ptr node2);
 		flux_node::ptr get_lower_node(flux_node::ptr node1,flux_node::ptr node2);
 
-		/// @brief The waterbalance_integrator is an integratable for precise output of the average water balance 
-		/// of a flux_node over time. It can be added to a solver (any cmf::math::Integrator), 
-		/// which is than calling the integrate method at each substep.
-		class waterbalance_integrator : public cmf::math::integratable {
-		private:
-			double _sum;
-			cmf::math::Time _start_time;
-			cmf::math::Time _t;
-			std::weak_ptr<flux_node> _node;
-			std::string _name;
-
-		public:
-			/// Returns the total absolute waterbalance of the node in integration time [m3]
-			double sum() const {
-				return _sum;
-			}
-			/// Returns the duration of the integration
-			cmf::math::Time integration_t() const {
-				return _t-_start_time;
-			}
-			/// Returns the start time of the integration
-			cmf::math::Time t0() const { return _start_time; }
-
-			/// Returns the average flux over the integration time in m3/day
-			double avg() const;
-			/// Initializes the integration
-			void reset(cmf::math::Time t) {
-				_start_time = t;
-				_t=_start_time;
-				_sum=0.0;
-			}
-			/// Returns the node of this integrator
-			flux_node::ptr get_node() const {
-				return _node.lock();
-			}
-			void set_node(cmf::water::flux_node::ptr node) {
-				_sum=0;
-				_start_time=cmf::math::Time();
-				_t=_start_time;
-				_node =  node;
-			}
-			/// Integrates the flux a timestep further. Note: until is an absolut time. If until is before t0, the integration is initilized again
-			void integrate(cmf::math::Time until);
-			waterbalance_integrator(cmf::water::flux_node::ptr node) 
-				:	_node(node), _sum(0.0), _t(cmf::math::year*5000), _name(node->to_string()+ " (Integrator)") {}
-		};
-/*
-		class ChildNodes;
-		class node_ref{
-			friend class ChildNodes;
-		private:
-			struct node_ref_inner {
-				flux_node* fn;
-				node_ref_inner(flux_node* node) : fn(node) {}
-			};
-			typedef std::shared_ptr<node_ref_inner> inner_ptr;
-			inner_ptr m_ref;
-			node_ref(flux_node* fn) : m_ref(inner_ptr(new node_ref_inner(fn))) {}
-			void kill_node() {
-				delete m_ref->fn;
-				m_ref->fn=0;
-			}
-		public:
-			node_ref(const node_ref& from) : m_ref(from.m_ref) {}
-			node_ref& operator=(const node_ref& from) {
-				m_ref = from.m_ref;
-			}
-			flux_node& operator*() const{
-				if (m_ref->fn) {
-					return *(m_ref->fn);
-				} else {
-					throw std::runtime_error("Node does not exist anymore");
-				}
-			}
-			flux_node* operator->() const {
-				if (m_ref->fn) {
-					return m_ref->fn;
-				} else {
-					throw std::runtime_error("Node does not exist anymore");
-				}
-			}
-			operator bool() const {
-				return m_ref->fn!=0;
-			}
-			bool operator==(const node_ref& cmp) const {
-				return m_ref->fn == cmp.m_ref->fn;
-			}
-			bool operator!=(const node_ref& cmp) const {
-				return m_ref->fn != cmp.m_ref->fn;
-			}
-		};
-		class ChildNodes {
-		private:
-			typedef std::vector<node_ref> ChildNodeVector;
-			ChildNodeVector m_v;
-			friend class flux_node;
-			int add_node(flux_node* fn) {
-				node_ref nr = fn;
-				return add_ref(nr);
-			}
-			int add_ref(const node_ref& nr) {
-				m_v.push_back(nr);
-				return m_v.size();
-			}
-			ChildNodeVector::iterator find(node_ref fn) {
-				ChildNodeVector::iterator it = m_v.begin();
-				for(; it != m_v.end(); ++it)
-					if (*it == fn)
-						break;
-				return it;
-			}
-		public:
-			int kill_child(node_ref fn) {
-				ChildNodeVector::iterator it = find(fn);
-				if (it==m_v.end()) {
-					throw std::invalid_argument(fn->to_string() + " is not part of this owner");
-				} else {
-					m_v.erase(it);
-					fn.kill_node();
-				}
-				return m_v.size();
-			}
-			bool is_child(flux_node* fn) {
-				ChildNodeVector::iterator it = find(fn);
-				return it!=m_v.end();
-			}
-			int transfer_node(node_ref fn,ChildNodes& target) {
-				ChildNodeVector::iterator it = find(fn);
-				if (it==m_v.end()) {
-					throw std::invalid_argument(fn->to_string() + " is not part of this owner");
-				} else {
-					m_v.erase(it);
-					target.add_ref(fn);
-				}
-				return m_v.size();
-			}
-			~ChildNodes() {
-				for(ChildNodeVector::iterator it = m_v.begin(); it != m_v.end(); ++it)
-				{
-					it->kill_node();
-				}
-			}
-		};
-*/
 
 
 	}

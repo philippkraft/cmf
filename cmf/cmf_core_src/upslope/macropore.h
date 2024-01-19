@@ -21,9 +21,9 @@
 
 #include "../water/WaterStorage.h"
 #include "../water/flux_connection.h"
-#include "../geometry/geometry.h"
+#include "../math/geometry.h"
 #include "conductable.h"
-#include "../cmfmemory.h"
+#include <memory>
 #include "../water/flux_connection.h"
 
 namespace cmf {
@@ -80,8 +80,8 @@ namespace cmf {
 		private:
 			std::weak_ptr<SoilLayer> m_layer;
 		protected:
-			virtual real head_to_volume(real head) const;
-			virtual real volume_to_head(real volume) const;
+			real head_to_volume(real head) const override;
+			real volume_to_head(real volume) const override;
 			MacroPore(SoilLayer::ptr layer,real porefraction_min=0.05, real Ksat=10,real density=0.05,real porefraction_max = -1., real K_shape=0.0 );
 			real exp_of_matrixpotential(real factor=1.) const {
 				return exp(minimum(get_layer()->get_matrix_potential(),0.0) * factor);
@@ -127,7 +127,7 @@ namespace cmf {
 				return get_layer()->cell;
 			}
 			/// Returns the actual water level in the macropore in m above reference
-			real get_potential() const;
+			real get_potential(cmf::math::Time t=cmf::math::never) const;
 			/// Returns the actual stored volume in this macropore in m3
 			real get_volume() const;
 			/// Returns the capacity of the macropores in m3

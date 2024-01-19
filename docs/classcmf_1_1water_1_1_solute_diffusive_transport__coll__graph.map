@@ -1,6 +1,11 @@
 <map id="SoluteDiffusiveTransport" name="SoluteDiffusiveTransport">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1_solute_reaction.html" title="Abstract class for a solute reaction. " alt="" coords="5,95,116,121"/>
-<area shape="rect" id="node3" href="$classcmf_1_1water_1_1_solute_storage.html" title="A class for the storage of any tracer. " alt="" coords="141,95,245,121"/>
-<area shape="rect" id="node4" href="$classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable. " alt="" coords="91,5,191,32"/>
-<area shape="rect" id="node5" href="$structcmf_1_1water_1_1solute.html" title="A structure to identify a solute. " alt="" coords="215,5,272,32"/>
+<area shape="rect" id="Node000001" title="Calculates a diffusive flux between solute storages." alt="" coords="5,203,165,229"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1_solute_reaction.html" title="Abstract class for a solute reaction." alt="" coords="9,96,118,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,137,85,202,80,203,67,138"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1water_1_1_solute_storage.html" title="A class for the storage of any tracer." alt="" coords="143,96,246,123"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="173,135,100,204,96,200,169,131"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable." alt="" coords="94,5,193,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="161,44,189,94,185,97,156,47"/>
+<area shape="rect" id="Node000005" href="$structcmf_1_1water_1_1solute.html" title="A structure to identify a solute." alt="" coords="217,5,273,32"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="233,47,204,97,199,94,228,44"/>
 </map>

@@ -57,7 +57,7 @@ equation.
 Now we need to create an integrator for the resulting system. Since the
 Richards equation procduces a very stiff (difficult to solve) system,
 one needs to use an implicit solver with an adaptive time stepping
-scheme. The [CVodeIntegrator](@ref cmf::math::CVodeIntegrator), a
+scheme. The [CVodeKrylov](@ref cmf::math::CVodeKrylov), a
 wrapper for the
 [CVODE-solver](https://computation.llnl.gov/casc/sundials/main.html) by
 Hindmarsh et al. (2005) is such a solver and recommended for all cmf
@@ -65,7 +65,7 @@ models using Richards equation.
 
 ~~~~~~~~~~~~~{.py}
 
-solver = cmf.CVodeIntegrator(project,1e-6)
+solver = cmf.CVodeKrylov(project,1e-6)
 solver.t = cmf.Time(1,1,2011)
 ~~~~~~~~~~~~~
 

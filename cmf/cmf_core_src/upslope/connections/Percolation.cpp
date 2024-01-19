@@ -42,8 +42,8 @@ real cmf::upslope::connections::Richards::calc_q( cmf::math::Time t )
 
 	real
 		distance = fabs(l1->position.z - right_node()->position.z),
-		Psi_t1=l1->get_potential(),
-		Psi_t2=right_node()->get_potential(),
+		Psi_t1=l1->get_potential(t),
+		Psi_t2=right_node()->get_potential(t),
 		gradient=(Psi_t1-Psi_t2)/distance,
 		K=0.0;
 	point direction =  l1->position - right_node()->position;
@@ -53,7 +53,7 @@ real cmf::upslope::connections::Richards::calc_q( cmf::math::Time t )
 		K = geo_mean(l1->get_K(direction),l2->get_K(direction));
 	else if (C2)
 		K = geo_mean(l1->get_K(direction),C2->get_K(direction));
-	else if (right_node()->is_empty() || right_node()->get_potential() < l1->get_gravitational_potential())
+	else if (right_node()->is_empty() || right_node()->get_potential(t) < l1->get_gravitational_potential())
 		K = l1->get_K(direction);
 	else
 		K = geo_mean(l1->get_K(direction),l1->get_Ksat());
@@ -62,31 +62,6 @@ real cmf::upslope::connections::Richards::calc_q( cmf::math::Time t )
 	real r_flow=K*gradient*l1->cell.get_area();
 	return prevent_negative_volume(r_flow);
 }
-void cmf::upslope::connections::SimplRichards::use_for_cell( cmf::upslope::Cell & cell,bool no_override/*=true*/ )
-{
-	for (int i = 0; i < cell.layer_count()-1 ; ++i)
-	{
-		cmf::upslope::SoilLayer::ptr l_upper=cell.get_layer(i), l_lower=cell.get_layer(i+1);
-		if (!(no_override && l_upper->connection_to(*l_lower)))
-			new SimplRichards(l_upper,l_lower);
-	}
-}
-
-real cmf::upslope::connections::SimplRichards::calc_q( cmf::math::Time t )
-{
-	// Richards flux
-	cmf::upslope::SoilLayer::ptr
-		l1=sw1.lock(),
-		l2=sw2.lock();
-
-	real
-		K = l1->get_K();
-	if (l2)
-		K *= 1 - l2->get_wetness();
-	real r_flow=K * l1->cell.get_area();
-	return prevent_negative_volume(r_flow);
-}
-
 
 // SWAT Percolation
 real cmf::upslope::connections::SWATPercolation::calc_q( cmf::math::Time t )

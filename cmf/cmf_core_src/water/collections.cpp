@@ -22,6 +22,7 @@
 #include <algorithm>
 #include "collections.h"
 #include "WaterStorage.h"
+
 real cmf::water::node_list::global_water_balance( cmf::math::Time t )	const
 {
 	real sum=0;
@@ -117,13 +118,13 @@ ptrdiff_t cmf::water::node_list::set_potentials( const cmf::math::num_array& pot
 	return ok_count;
 }
 
-cmf::math::num_array cmf::water::node_list::get_potentials()
+cmf::math::num_array cmf::water::node_list::get_potentials(cmf::math::Time t)
 {
 	cmf::math::num_array res(size());
 	#pragma omp parallel for
 	for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
 	{
-		res[i]=m_nodes[i]->get_potential();		
+		res[i]=m_nodes[i]->get_potential(t);
 	}
 	return res;
 }
@@ -139,26 +140,6 @@ cmf::math::num_array cmf::water::node_list::conc( cmf::math::Time t, const cmf::
 	return res;
 }
 
-ptrdiff_t cmf::water::node_list::set_solute_source( const cmf::water::solute& _Solute, cmf::math::num_array source_fluxes)
-{
-	if (size()!=source_fluxes.size())
-		throw std::out_of_range("Size of solute source array does not fit the size of the node_list");
-	ptrdiff_t ok_count=size();
-#pragma omp parallel for
-	for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
-	{
-		cmf::water::WaterStorage* storage=dynamic_cast<cmf::water::WaterStorage*>(m_nodes[i].get());
-		if (storage)
-		{
-			storage->Solute(_Solute).source = source_fluxes[i];
-		}
-		else
-			--ok_count;
-	}
-	return ok_count;
-
-}
-
 
 void cmf::water::node_list::append( flux_node::ptr node )
 {
@@ -166,24 +147,20 @@ void cmf::water::node_list::append( flux_node::ptr node )
 	m_nodes.push_back(node);
 }
 
-cmf::math::StateVariableList cmf::water::node_list::get_states()
+cmf::water::node_list::operator cmf::math::state_list()
 {
-	cmf::math::StateVariableList q;
-	for(node_vector::const_iterator it = m_nodes.begin(); it != m_nodes.end(); ++it)
+	cmf::math::state_list q;
+	for(auto& node: m_nodes)
 	{
-		cmf::math::StateVariableOwner *state_owner = dynamic_cast<cmf::math::StateVariableOwner *>(it->get());
-		cmf::math::StateVariable::ptr state = std::dynamic_pointer_cast<cmf::math::StateVariable>(*it);
-		if(state_owner) 
-			q.extend(*state_owner);
-		else if (state) 
-			q.append(state);
+		auto stor = cmf::water::WaterStorage::cast(node);
+		if(stor) q += cmf::math::state_list(*stor);
 	}
 	return q;
 }
 
 cmf::water::node_list& cmf::water::node_list::operator+=( const cmf::water::node_list& right )
 {
-	for (size_t i = 0; i < right.size() ; ++i)
+	for(size_t i = 0; i < right.size() ; ++i)
 	{
 		append(right[i]);
 	}
