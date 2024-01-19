@@ -376,7 +376,6 @@ namespace cmf {
 			/// - 'R' RectangularReach, depth is ignored
 			/// - 'P' PipeReach, depth is ignored, width is the diameter of the pipe
 			/// - 'S' SWATReachType, a trapezoid flow cross section, as used in the SWAT model, width (bank width) and depth are used
-			/// @returns the reach type
 			/// @param typecode Describes the geometry of the reach cross section.
 			/// @param length The length of the channel in m
 			/// @param width width of the reach cross section in m (ignored for typecode 'T')

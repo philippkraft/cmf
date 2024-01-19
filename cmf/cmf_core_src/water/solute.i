@@ -32,6 +32,7 @@
 %{
 // Include Water
 #include "water/adsorption.h"
+// #include "water/freundlich_adsorption.h"
 #include "water/Solute.h"
 #include "water/reaction.h"
 %}

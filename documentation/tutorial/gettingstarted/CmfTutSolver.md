@@ -53,7 +53,7 @@ need to be solved together in one system. Due to the high order of the
 conductivity/water content relation of porous media, any cmf model using
 "physical" water retention is a stiff system. Such a system cannot be
 solved effectively with an explicit solver, regardless of its order.
-[Implicit](#Implicit) methods of a higher order than 2 also do have a
+Implicit methods of a higher order than 2 also do have a
 constraint stability and may fail on a stiff system. The simplest way to
 decide how stiff your cmf model is, is not to try to calculate the
 stiffness ratio, as given in the Wikipedia link, but just to try out
@@ -108,14 +108,14 @@ is only marginally different to the explicit formulation:
 \vec{u}(t_{i+1}) = \vec{u}(t_{i}) + h \vec{f}(\vec{u}(t_{i+1}),t_{i+1})
 @f]
 
-Clark and Kavetski ([2010](#clark)) state that even for lumped models,
+Clark and Kavetski (2010) state that even for lumped models,
 implicit schemes should be used.
 
 However, the equation above cannot be directly solved, since
 @f$\vec{u}(t_{i+1})@f$ is on both sides of the equation sign. To solve
 the equation, one needs an iterative approach which raises the
-computational demand. For [stiff](#stiff) systems, the higher demand for
-a single step is compensatated by the larger step size.
+computational demand. For stiff systems, the higher demand for
+a single step is compensated by the larger step size.
 
 In principle, the iteration to yield @f$\vec{u}(t_{i+1})@f$ can be
 done using a Newton iteration or fixpoint iteration.

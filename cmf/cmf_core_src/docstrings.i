@@ -1576,7 +1576,7 @@ and depth are ignored.
 'P' PipeReach, depth is ignored, width is the diameter of the pipe
 
 'S' SWATReachType, a trapezoid flow cross section, as used in the SWAT
-model, width (bank width) and depth are used the reach type
+model, width (bank width) and depth are used
 
 Parameters:
 -----------
@@ -4628,8 +4628,6 @@ cmf.fit_retention_curve.FitVanGenuchtenMualem.__init__";
 The connections in cmf hold the processes for the calculation of
 fluxes between water storages and model boundaries.
 
-Todo Elaborate on this
-
 Represents a connection between flux_nodes, where water fluxes occur.
 
 C++ includes: flux_connection.h ";
@@ -4965,44 +4963,7 @@ cmf::water::flux_connection::to_string";
 
 
 // File: classcmf_1_1water_1_1_freundlich_adsorbtion.xml
-%feature("docstring") cmf::water::FreundlichAdsorbtion "
-
-BROKEN: This class calculates the adsorption equilibrium between
-sorbat and sorbent using the Freundlich isotherme.
-
-Freundlich isotherme:
-
-
-
-.. math::
-
-    \\\\frac{x_{ad}}{m} = K c^n
-
-where  :math:`x_{ad} = x_{tot} - x_{free}` is the adsorbed tracer mass  :math:`x_{tot}` is the total tracer
-mass
-
-:math:`x_{free}` is the dissolved tracer mass
-
-:math:`m` is the mass of the sorbent in the same unit as the tracer mass
-
-:math:`K` is the Freundlich sorption coefficient
-
-:math:`c = \\\\frac{x_{free}}{V}` is the concentration of the tracer in
-tracer mass per m3
-
-:math:`n` is the Freundlich exponent
-
-CMF stores in a solute storage the total mass of a tracer and needs to
-calculate the free tracer mass. The eq. above can not be rearanged to
-get :math:`x_{free}` from :math:`x_{tot}`. Instead, the value is iterated
-usingregula falsi. If n is near to 1, using LinearAdsorption will
-speed up your calculations.
-
-The simplest physically based adsorption model by Langmuir (
-LangmuirAdsorption) has also a analytical solution and is hence
-calculated faster then Freundlich.
-
-C++ includes: adsorption.h ";
+%feature("docstring") cmf::water::FreundlichAdsorbtion "";
 
 %feature("docstring")
 cmf::water::FreundlichAdsorbtion::FreundlichAdsorbtion "FreundlichAdsorbtion(const FreundlichAdsorbtion &other)
@@ -5030,39 +4991,13 @@ cmf::water::FreundlichAdsorbtion::~FreundlichAdsorbtion "virtual
 cmf::water::FreundlichAdsorbtion::~FreundlichAdsorbtion";
 
 %feature("docstring")  cmf::water::FreundlichAdsorbtion::copy "FreundlichAdsorbtion * copy(real m=-1) const
-cmf::water::FreundlichAdsorbtion::copy returns a copy of the
-Adsorption object.
-
-If the adsorption is depending on the sorbent mass, you can give a
-positive value for the sorbent mass m. If the value is not given or
-negative, m is used from the original object. ";
+cmf::water::FreundlichAdsorbtion::copy";
 
 %feature("docstring")  cmf::water::FreundlichAdsorbtion::freesolute "real freesolute(real xt, real V) const
-cmf::water::FreundlichAdsorbtion::freesolute Returns the mass of
-dissolved tracer as a function of the total tracer mass in the solute
-storage and the water volume.
-
-Parameters:
------------
-
-xt:   :math:`x_t` the total tracer mass in the storage
-
-V:   :math:`V m^3` the water volume in the storage
-
-:math:`x_f` the dissolved mass of the tracer ";
+cmf::water::FreundlichAdsorbtion::freesolute";
 
 %feature("docstring")  cmf::water::FreundlichAdsorbtion::totalsolute "real totalsolute(real xf, real V) const
-cmf::water::FreundlichAdsorbtion::totalsolute Returns the total mass
-of the tracer from the dissolved concetration in tracer unit/m3.
-
-Parameters:
------------
-
-xf:   :math:`x_f` the dissolved tracer mass in the storage
-
-V:   :math:`V m^3` the water volume in the storage
-
-:math:`x_t` the total mass of the tracer ";
+cmf::water::FreundlichAdsorbtion::totalsolute";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_gradient_macro_flow.xml
@@ -17994,6 +17929,9 @@ ymax=1) ";
 // File: flux__node_8h.xml
 
 
+// File: freundlich__adsorption_8h.xml
+
+
 // File: reaction_8h.xml
 
 
@@ -18073,18 +18011,6 @@ ymax=1) ";
 
 
 // File: overview_8md.xml
-
-
-// File: customization_8md.xml
-
-
-// File: extensions_8md.xml
-
-
-// File: tricks_8md.xml
-
-
-// File: _r_e_a_d_m_e_8md.xml
 
 
 // File: ems-2011-paper_8md.xml
@@ -18291,18 +18217,6 @@ ymax=1) ";
 // File: contrib_issues.xml
 
 
-// File: md_documentation_2doxygen-awesome-css_2docs_2customization.xml
-
-
-// File: md_documentation_2doxygen-awesome-css_2docs_2extensions.xml
-
-
-// File: md_documentation_2doxygen-awesome-css_2docs_2tricks.xml
-
-
-// File: md_documentation_2doxygen-awesome-css_2_r_e_a_d_m_e.xml
-
-
 // File: ems2011.xml
 
 
@@ -18471,13 +18385,7 @@ ymax=1) ";
 // File: dir_b5c4655dde8714643f73aa924cd61a50.xml
 
 
-// File: dir_410aa21f0837b9c4bec0934ed9f3214f.xml
-
-
 // File: dir_138aff360eb965c43b94267b8d1ce09e.xml
-
-
-// File: dir_f54148d295cc294d77e7dd4677dac0ad.xml
 
 
 // File: dir_e99589850f294dbf4b725494ab1c642e.xml

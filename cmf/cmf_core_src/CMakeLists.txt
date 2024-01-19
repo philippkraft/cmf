@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.15)
 project(cmf_core)
 
 # Super necessary! Without this cannot link to cmf_wrap.cxx to create a shared object!
@@ -38,6 +38,7 @@ add_library(cmf_core STATIC
         math/odesystem.cpp
         math/sparse_struct.cpp
         water/adsorption.cpp
+        # water/freundlich_adsorption.cpp
         water/boundary_condition.cpp
         water/collections.cpp
         water/flux_connection.cpp

@@ -130,38 +130,7 @@ cmf::water::LinearGradientFlux::LinearGradientFlux( cmf::water::flux_node::ptr l
 	cmf::water::flux_node::ptr right, real _Q1,real _d/*=1.0*/)
 	: flux_connection(left,right,"linear gradient connection"), Q1(_Q1)
 {
-    /* TODO: Reinclude when #71 is solved
-    if (!left) {
-        use_count = shared_this.use_count();
-        // kill_me();
-        use_count = shared_this.use_count();
-        throw std::runtime_error("left node is null");
-    }
-    if (!right) {
-        use_count = shared_this.use_count();
-        // kill_me();
-        use_count = shared_this.use_count();
-        throw std::runtime_error("right node is null");
-    }
-    if (!(left->is_storage() || right->is_storage())) {
-        use_count = shared_this.use_count();
-        // kill_me();
-        use_count = shared_this.use_count();
-        throw std::runtime_error("both nodes without storage");
-    }
-
-
-    if (d <= 0) {
-        kill_me();
-        throw std::runtime_error("Cannot create a LinearGradientFlux with a distance <= 0 m");
-    }
-    if (Q1 <= 0) {
-        kill_me();
-        throw std::runtime_error("LinearGradientFlux.Q1 <= 0");
-    }
-     */
     d = _d <= 0 ? left->position.distanceTo(right->position) : _d;
-
 }
 
 cmf::water::WaterbalanceFlux::WaterbalanceFlux(flux_node::ptr source, flux_node::ptr target)

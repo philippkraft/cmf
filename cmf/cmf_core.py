@@ -117,7 +117,7 @@ class cubicspline(object):
         r"""
         __init__(cubicspline self, cmf::math::num_array const & x, cmf::math::num_array const & y) -> cubicspline
         cubicspline(const cmf::math::num_array &x, const cmf::math::num_array
-        &y) 
+        &y) cmf::math::cubicspline::cubicspline
         """
         _cmf_core.cubicspline_swiginit(self, _cmf_core.new_cubicspline(*args, **kwargs))
     generate = _swig_new_instance_method(_cmf_core.cubicspline_generate)
@@ -153,9 +153,8 @@ class point(object):
         __init__(point self, point p) -> point
         __init__(point self, double x_, double y_, double z_=0.0) -> point
         point(double x_,
-        double y_, double z_=0.0)
-
-        Creates a point from two doubles. 
+        double y_, double z_=0.0) cmf::geometry::point::point Creates a point
+        from two doubles. 
         """
         _cmf_core.point_swiginit(self, _cmf_core.new_point(*args))
     distanceTo = _swig_new_instance_method(_cmf_core.point_distanceTo)
@@ -245,8 +244,7 @@ class point_vector(object):
     def __init__(self, *args, **kwargs):
         r"""
         __init__(point_vector self, ptrdiff_t size) -> point_vector
-        point_vector(ptrdiff_t size)
-
+        point_vector(ptrdiff_t size) cmf::geometry::point_vector::point_vector
         Create a point vector of a specific size. 
         """
         _cmf_core.point_vector_swiginit(self, _cmf_core.new_point_vector(*args, **kwargs))
@@ -366,7 +364,7 @@ class Time(object):
         __init__(Time self) -> Time
         __init__(Time self, long long milliseconds) -> Time
         Time(long long
-        milliseconds) 
+        milliseconds) cmf::math::Time::Time
         """
         _cmf_core.Time_swiginit(self, _cmf_core.new_Time(*args))
     AsDays = _swig_new_instance_method(_cmf_core.Time_AsDays)
@@ -475,10 +473,9 @@ class Date(object):
         r"""
         __init__(Date self, int _day, int _month, int _year, int _hour=0, int _minute=0, int _second=0, int _ms=0) -> Date
         __init__(Date self, Time time) -> Date
-        Date(const Time &time)
-
-        Creates a new date from time (based on the 31.12.1899, like in
-        Excel(TM)) 
+        Date(int _day, int
+        _month, int _year, int _hour=0, int _minute=0, int _second=0, int
+        _ms=0) cmf::math::Date::Date Creates a new date. 
         """
         _cmf_core.Date_swiginit(self, _cmf_core.new_Date(*args))
     ToTime = _swig_new_instance_method(_cmf_core.Date_ToTime)
@@ -543,7 +540,8 @@ class timeseries(object):
     def __init__(self, *args, **kwargs):
         r"""
         __init__(timeseries self, Time begin=cmf::math::Time(), Time step=day, int interpolationmethod=1, size_t count=0) -> timeseries
-        timeseries(const cmf::math::timeseries &ts) 
+        timeseries(const cmf::math::timeseries &ts)
+        cmf::math::timeseries::timeseries
         """
         _cmf_core.timeseries_swiginit(self, _cmf_core.new_timeseries(*args, **kwargs))
     from_array = _swig_new_static_method(_cmf_core.timeseries_from_array)
@@ -593,23 +591,19 @@ class timeseries(object):
     begin = property(_cmf_core.timeseries_begin_get, doc=r"""
     begin : cmf::math::Time
     cmf::math::Time
-    begin() const
+    begin() const cmf::math::timeseries::begin First date of measurement.
 
-    First date of measurement. 
     """)
     step = property(_cmf_core.timeseries_step_get, doc=r"""
     step : cmf::math::Time
     cmf::math::Time
-    step() const
-
-    Time between the measurements. 
+    step() const cmf::math::timeseries::step  Time between the
+    measurements. 
     """)
     end = property(_cmf_core.timeseries_end_get, doc=r"""
     end : cmf::math::Time
     cmf::math::Time
-    end() const
-
-    Last date of measurements. 
+    end() const cmf::math::timeseries::end Last date of measurements. 
     """)
     __len__ = _swig_new_instance_method(_cmf_core.timeseries___len__)
 
@@ -688,6 +682,9 @@ class StateVariable(object):
     Abstract class state variable.
 
     Simple exponential system class header implementing a state variable:
+    @code    class RateGrowth    {    public:        real rate;
+    virtual real Derivate(const cmf::math::Time& time) {return
+    rate*get_state();}    };    @endcode
 
     C++ includes: statevariable.h 
     """
@@ -720,7 +717,8 @@ class state_list(object):
         r"""
         __init__(state_list self) -> state_list
         __init__(state_list self, state_list other) -> state_list
-        state_list(const state_list &other) 
+        state_list(const state_list &other)
+        cmf::math::state_list::state_list
         """
         _cmf_core.state_list_swiginit(self, _cmf_core.new_state_list(*args))
     append = _swig_new_instance_method(_cmf_core.state_list_append)
@@ -855,7 +853,8 @@ class LinearAdsorption(Adsorption):
         r"""
         __init__(LinearAdsorption self, real K, real m) -> LinearAdsorption
         __init__(LinearAdsorption self, LinearAdsorption other) -> LinearAdsorption
-        LinearAdsorption(const LinearAdsorption &other) 
+        LinearAdsorption(real K, real m)
+        cmf::water::LinearAdsorption::LinearAdsorption
         """
         _cmf_core.LinearAdsorption_swiginit(self, _cmf_core.new_LinearAdsorption(*args))
     copy = _swig_new_instance_method(_cmf_core.LinearAdsorption_copy)
@@ -863,68 +862,6 @@ class LinearAdsorption(Adsorption):
 
 # Register LinearAdsorption in _cmf_core:
 _cmf_core.LinearAdsorption_swigregister(LinearAdsorption)
-class FreundlichAdsorbtion(Adsorption):
-    r"""
-
-
-    BROKEN: This class calculates the adsorption equilibrium between
-    sorbat and sorbent using the Freundlich isotherme.
-
-    Freundlich isotherme:
-
-
-
-    .. math::
-
-        \\frac{x_{ad}}{m} = K c^n
-
-    where  :math:`x_{ad} = x_{tot} - x_{free}` is the adsorbed tracer mass  :math:`x_{tot}` is the total tracer
-    mass
-
-    :math:`x_{free}` is the dissolved tracer mass
-
-    :math:`m` is the mass of the sorbent in the same unit as the tracer mass
-
-    :math:`K` is the Freundlich sorption coefficient
-
-    :math:`c = \\frac{x_{free}}{V}` is the concentration of the tracer in
-    tracer mass per m3
-
-    :math:`n` is the Freundlich exponent
-
-    CMF stores in a solute storage the total mass of a tracer and needs to
-    calculate the free tracer mass. The eq. above can not be rearanged to
-    get :math:`x_{free}` from :math:`x_{tot}`. Instead, the value is iterated
-    usingregula falsi. If n is near to 1, using LinearAdsorption will
-    speed up your calculations.
-
-    The simplest physically based adsorption model by Langmuir (
-    LangmuirAdsorption) has also a analytical solution and is hence
-    calculated faster then Freundlich.
-
-    C++ includes: adsorption.h 
-    """
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-    K = property(_cmf_core.FreundlichAdsorbtion_K_get, _cmf_core.FreundlichAdsorbtion_K_set, doc=r"""K : real""")
-    n = property(_cmf_core.FreundlichAdsorbtion_n_get, _cmf_core.FreundlichAdsorbtion_n_set, doc=r"""n : real""")
-    m = property(_cmf_core.FreundlichAdsorbtion_m_get, _cmf_core.FreundlichAdsorbtion_m_set, doc=r"""m : real""")
-    epsilon = property(_cmf_core.FreundlichAdsorbtion_epsilon_get, _cmf_core.FreundlichAdsorbtion_epsilon_set, doc=r"""epsilon : real""")
-    maxiter = property(_cmf_core.FreundlichAdsorbtion_maxiter_get, _cmf_core.FreundlichAdsorbtion_maxiter_set, doc=r"""maxiter : int""")
-
-    def __init__(self, *args):
-        r"""
-        __init__(FreundlichAdsorbtion self, real K, real n, real m, real epsilon=1e-12, int maxiter=100) -> FreundlichAdsorbtion
-        __init__(FreundlichAdsorbtion self, FreundlichAdsorbtion other) -> FreundlichAdsorbtion
-        FreundlichAdsorbtion(const FreundlichAdsorbtion &other) 
-        """
-        _cmf_core.FreundlichAdsorbtion_swiginit(self, _cmf_core.new_FreundlichAdsorbtion(*args))
-    copy = _swig_new_instance_method(_cmf_core.FreundlichAdsorbtion_copy)
-    __swig_destroy__ = _cmf_core.delete_FreundlichAdsorbtion
-
-# Register FreundlichAdsorbtion in _cmf_core:
-_cmf_core.FreundlichAdsorbtion_swigregister(FreundlichAdsorbtion)
 class LangmuirAdsorption(Adsorption):
     r"""
 
@@ -972,7 +909,8 @@ class LangmuirAdsorption(Adsorption):
         r"""
         __init__(LangmuirAdsorption self, real K, real m) -> LangmuirAdsorption
         __init__(LangmuirAdsorption self, LangmuirAdsorption other) -> LangmuirAdsorption
-        LangmuirAdsorption(const LangmuirAdsorption &other) 
+        LangmuirAdsorption(real K, real m)
+        cmf::water::LangmuirAdsorption::LangmuirAdsorption
         """
         _cmf_core.LangmuirAdsorption_swiginit(self, _cmf_core.new_LangmuirAdsorption(*args))
     copy = _swig_new_instance_method(_cmf_core.LangmuirAdsorption_copy)
@@ -995,7 +933,7 @@ class solute(object):
         r"""
         __init__(solute self, solute copy) -> solute
         solute(const
-        solute &copy) 
+        solute &copy) cmf::water::solute::solute
         """
         _cmf_core.solute_swiginit(self, _cmf_core.new_solute(*args, **kwargs))
     __eq__ = _swig_new_instance_method(_cmf_core.solute___eq__)
@@ -1034,9 +972,9 @@ class solute_vector(object):
         r"""
         __init__(solute_vector self, std::string str) -> solute_vector
         solute_vector(std::string str)
-
-        Creates a solute vector from solute names, separated by whitespace.
-        E.g. solutes= solute_vector("dO18 dH2") 
+        cmf::water::solute_vector::solute_vector Creates a solute vector from
+        solute names, separated by whitespace. E.g. solutes=
+        solute_vector("dO18 dH2") 
         """
         _cmf_core.solute_vector_swiginit(self, _cmf_core.new_solute_vector(*args, **kwargs))
     get_solute = _swig_new_instance_method(_cmf_core.solute_vector_get_solute)
@@ -1089,7 +1027,9 @@ class SoluteTimeseries(object):
         __init__(SoluteTimeseries self) -> SoluteTimeseries
         __init__(SoluteTimeseries self, solute_vector solutes, Time begin, Time step) -> SoluteTimeseries
         __init__(SoluteTimeseries self, SoluteTimeseries sts) -> SoluteTimeseries
-        SoluteTimeseries(const cmf::water::SoluteTimeseries &sts) 
+        SoluteTimeseries(const solute_vector &solutes, cmf::math::Time
+        begin, cmf::math::Time step)
+        cmf::water::SoluteTimeseries::SoluteTimeseries
         """
         _cmf_core.SoluteTimeseries_swiginit(self, _cmf_core.new_SoluteTimeseries(*args))
     __getitem__ = _swig_new_instance_method(_cmf_core.SoluteTimeseries___getitem__)
@@ -1157,7 +1097,8 @@ class SoluteConstantFluxReaction(SoluteReaction):
     def __init__(self, *args, **kwargs):
         r"""
         __init__(SoluteConstantFluxReaction self, real f) -> SoluteConstantFluxReaction
-        SoluteConstantFluxReaction(real f) 
+        SoluteConstantFluxReaction(real f)
+        cmf::water::SoluteConstantFluxReaction::SoluteConstantFluxReaction
         """
         _cmf_core.SoluteConstantFluxReaction_swiginit(self, _cmf_core.new_SoluteConstantFluxReaction(*args, **kwargs))
 
@@ -1189,7 +1130,8 @@ class SoluteDecayReaction(SoluteReaction):
     def __init__(self, *args, **kwargs):
         r"""
         __init__(SoluteDecayReaction self, real d) -> SoluteDecayReaction
-        SoluteDecayReaction(real d) 
+        SoluteDecayReaction(real d)
+        cmf::water::SoluteDecayReaction::SoluteDecayReaction
         """
         _cmf_core.SoluteDecayReaction_swiginit(self, _cmf_core.new_SoluteDecayReaction(*args, **kwargs))
 
@@ -1234,7 +1176,7 @@ class SoluteEquilibriumReaction(SoluteReaction):
         __init__(SoluteEquilibriumReaction self, solute A, solute B, real k_ab, real k_ba) -> SoluteEquilibriumReaction
         SoluteEquilibriumReaction(const solute &A, const solute &B, real k_ab,
         real k_ba)
-
+        cmf::water::SoluteEquilibriumReaction::SoluteEquilibriumReaction
         Creates a solute equilibrium reaction A<->B. 
         """
         _cmf_core.SoluteEquilibriumReaction_swiginit(self, _cmf_core.new_SoluteEquilibriumReaction(*args, **kwargs))
@@ -1253,8 +1195,9 @@ class SoluteRateReaction(SoluteReaction):
     A general solute reaction system to describe multi-species kinetics
     with a power law.
 
-    WARNING:  Experimental feature!  cf.
-    tohttps://en.wikipedia.org/wiki/Rate_equation
+    WARNING:  Experimental feature!
+
+    cf. tohttps://en.wikipedia.org/wiki/Rate_equation
 
 
 
@@ -1305,7 +1248,8 @@ class SoluteRateReaction(SoluteReaction):
     def __init__(self, *args, **kwargs):
         r"""
         __init__(SoluteRateReaction self, real kForward, real kBack=0.0) -> SoluteRateReaction
-        SoluteRateReaction(real kForward, real kBack=0.0) 
+        SoluteRateReaction(real kForward, real kBack=0.0)
+        cmf::water::SoluteRateReaction::SoluteRateReaction
         """
         _cmf_core.SoluteRateReaction_swiginit(self, _cmf_core.new_SoluteRateReaction(*args, **kwargs))
     __add_reactance = _swig_new_instance_method(_cmf_core.SoluteRateReaction___add_reactance)
@@ -1386,7 +1330,8 @@ class Solute1stOrderReaction(SoluteReaction):
     def __init__(self, *args, **kwargs):
         r"""
         __init__(Solute1stOrderReaction self, solute A, solute B, real k) -> Solute1stOrderReaction
-        Solute1stOrderReaction(const solute &A, const solute &B, real k) 
+        Solute1stOrderReaction(const solute &A, const solute &B, real k)
+        cmf::water::Solute1stOrderReaction::Solute1stOrderReaction
         """
         _cmf_core.Solute1stOrderReaction_swiginit(self, _cmf_core.new_Solute1stOrderReaction(*args, **kwargs))
 
@@ -1433,8 +1378,7 @@ class Solute2ndOrderReaction(SoluteReaction):
         r"""
         __init__(Solute2ndOrderReaction self, solute A, solute B, solute C, real k) -> Solute2ndOrderReaction
         Solute2ndOrderReaction(const solute &A, const solute &B, const solute
-        &C, real k)
-
+        &C, real k) cmf::water::Solute2ndOrderReaction::Solute2ndOrderReaction
         Creates a 2nd order kinetic reaction. 
         """
         _cmf_core.Solute2ndOrderReaction_swiginit(self, _cmf_core.new_Solute2ndOrderReaction(*args, **kwargs))
@@ -1453,15 +1397,17 @@ class SoluteDiffusiveTransport(SoluteReaction):
     Calculates a diffusive flux between solute storages.
 
     WARNING:  Experimental feature! The math might not be a correct
-    diffusion equation  
+    diffusion equation
+
+
 
     .. math::
 
-         q = \\alpha \\cdot \\left([A]_1 -
-        [A]_2\\right) V_2 
+         q = \\alpha \\cdot \\left([A]_1 - [A]_2\\right) V_2
 
-    :math:`[A]_n` Concentration of solute A in
-    storage n in mol/m³ or a similar unit
+
+    :math:`[A]_n` Concentration of solute A in storage n in mol/m³ or a
+    similar unit
 
     :math:`\\alpha` Diffusion velocity in 1/day. Depends on the distance
     between the storages. To calculate it from a distance independent
@@ -1482,7 +1428,8 @@ class SoluteDiffusiveTransport(SoluteReaction):
         r"""
         __init__(SoluteDiffusiveTransport self, real alpha, SoluteStorage left, SoluteStorage right) -> SoluteDiffusiveTransport
         SoluteDiffusiveTransport(real alpha, const SoluteStorage &left, const
-        SoluteStorage &right) 
+        SoluteStorage &right)
+        cmf::water::SoluteDiffusiveTransport::SoluteDiffusiveTransport
         """
         _cmf_core.SoluteDiffusiveTransport_swiginit(self, _cmf_core.new_SoluteDiffusiveTransport(*args, **kwargs))
 
@@ -1511,8 +1458,8 @@ class SoluteReactionList(object):
         r"""
         __init__(SoluteReactionList self) -> SoluteReactionList
         __init__(SoluteReactionList self, SoluteReactionList other) -> SoluteReactionList
-        List(const List< T >
-        &other)=default 
+        List(std::initializer_list< T
+        > l) cmf::List::List
         """
         _cmf_core.SoluteReactionList_swiginit(self, _cmf_core.new_SoluteReactionList(*args))
     __getitem__ = _swig_new_instance_method(_cmf_core.SoluteReactionList___getitem__)
@@ -1620,7 +1567,7 @@ class flux_node(object):
         r"""
         __init__(flux_node self, project _project, point location=cmf::geometry::point()) -> flux_node
         flux_node(cmf::project &_project, cmf::geometry::point
-        location=cmf::geometry::point()) 
+        location=cmf::geometry::point()) cmf::water::flux_node::flux_node
         """
         _cmf_core.flux_node_swiginit(self, _cmf_core.new_flux_node(*args, **kwargs))
     project = property(_cmf_core.flux_node_project_get, doc=r"""project : cmf::project""")
@@ -1647,8 +1594,7 @@ class flux_connection(object):
     The connections in cmf hold the processes for the calculation of
     fluxes between water storages and model boundaries.
 
-    Todo Elaborate on this Represents a connection between flux_nodes,
-    where water fluxes occur.
+    Represents a connection between flux_nodes, where water fluxes occur.
 
     C++ includes: flux_connection.h 
     """
@@ -1777,8 +1723,8 @@ class linear_scale(object):
         r"""
         __init__(linear_scale self, real _slope=1, real _displacement=0) -> linear_scale
         linear_scale(real _slope=1, real _displacement=0)
-
-        Creates a linear scale (by default it is a unity scale, :math:`a=1; b=0`) 
+        cmf::water::linear_scale::linear_scale Creates a linear scale (by
+        default it is a unity scale, :math:`a=1; b=0`) 
         """
         _cmf_core.linear_scale_swiginit(self, _cmf_core.new_linear_scale(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_linear_scale
@@ -1811,7 +1757,8 @@ class DirichletBoundary(flux_node):
         r"""
         __init__(DirichletBoundary self, project _p, real potential, point Location=cmf::geometry::point()) -> DirichletBoundary
         DirichletBoundary(cmf::project &_p, real potential,
-        cmf::geometry::point Location=cmf::geometry::point()) 
+        cmf::geometry::point Location=cmf::geometry::point())
+        cmf::water::DirichletBoundary::DirichletBoundary
         """
         _cmf_core.DirichletBoundary_swiginit(self, _cmf_core.new_DirichletBoundary(*args, **kwargs))
 
@@ -1848,8 +1795,24 @@ class NeumannBoundary(flux_node):
         r"""
         __init__(NeumannBoundary self, project _project, timeseries _flux, SoluteTimeseries _concentration=cmf::water::SoluteTimeseries(), point loc=cmf::geometry::point()) -> NeumannBoundary
         __init__(NeumannBoundary self, project _project, point loc=cmf::geometry::point()) -> NeumannBoundary
-        NeumannBoundary(cmf::project &_project, cmf::geometry::point
-        loc=cmf::geometry::point()) 
+        NeumannBoundary(cmf::project &_project, cmf::math::timeseries _flux,
+        cmf::water::SoluteTimeseries
+        _concentration=cmf::water::SoluteTimeseries(), cmf::geometry::point
+        loc=cmf::geometry::point())
+        cmf::water::NeumannBoundary::NeumannBoundary Ctor of the Neumann
+        boundary.
+
+        Parameters:
+        -----------
+
+        _project:  The project this boundary condition belongs to
+
+        _flux:  The flux timeseries (a scalar is converted to a timeseries
+        automatically)
+
+        _concentration:  The concentration timeseries
+
+        loc:  The location of the boundary condition 
         """
         _cmf_core.NeumannBoundary_swiginit(self, _cmf_core.new_NeumannBoundary(*args))
     create = _swig_new_static_method(_cmf_core.NeumannBoundary_create)
@@ -1883,7 +1846,8 @@ class NeumannFlux(flux_connection):
         r"""
         __init__(NeumannFlux self, std::shared_ptr< cmf::water::NeumannBoundary > left, cmf::water::flux_node::ptr right) -> NeumannFlux
         NeumannFlux(std::shared_ptr< NeumannBoundary > left,
-        cmf::water::flux_node::ptr right) 
+        cmf::water::flux_node::ptr right)
+        cmf::water::NeumannFlux::NeumannFlux
         """
         _cmf_core.NeumannFlux_swiginit(self, _cmf_core.new_NeumannFlux(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_NeumannFlux
@@ -1922,8 +1886,8 @@ class WaterStorage(StateVariable, flux_node):
         __init__(WaterStorage self, project project, std::string const & Name="", double InitialState=0, double scale=1) -> WaterStorage
         WaterStorage(cmf::project &project, const std::string &Name="",
         double InitialState=0, double scale=1)
-
-        creates a water storage (abstract class)
+        cmf::water::WaterStorage::WaterStorage creates a water storage
+        (abstract class)
 
         Parameters:
         -----------
@@ -1980,7 +1944,8 @@ class WaterbalanceFlux(flux_connection):
     def __init__(self, *args, **kwargs):
         r"""
         __init__(WaterbalanceFlux self, cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target) -> WaterbalanceFlux
-        WaterbalanceFlux(flux_node::ptr source, flux_node::ptr target) 
+        WaterbalanceFlux(flux_node::ptr source, flux_node::ptr target)
+        cmf::water::WaterbalanceFlux::WaterbalanceFlux
         """
         _cmf_core.WaterbalanceFlux_swiginit(self, _cmf_core.new_WaterbalanceFlux(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_WaterbalanceFlux
@@ -1988,13 +1953,57 @@ class WaterbalanceFlux(flux_connection):
 # Register WaterbalanceFlux in _cmf_core:
 _cmf_core.WaterbalanceFlux_swigregister(WaterbalanceFlux)
 class PartitionFluxRoute(flux_connection):
-    r"""Proxy of C++ cmf::water::PartitionFluxRoute class."""
+    r"""
+
+
+    Routes a fraction of the flux calculated from a master flux_connection
+    between source to target1 directly further to target2 without any
+    timelag.
+
+    The connection connects target 1 and target 2.
+
+
+
+    .. math::
+
+         q_{t1,t2} = f \\cdot q_{s, t1}(t) 
+
+    Where :math:`q_{t1,t2}` is the flux from t1 to t2, f is the fraction and :math:`q_{s,t1}(t)` is the original flux
+
+    C++ includes: simple_connections.h 
+    """
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(PartitionFluxRoute self, cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target1, cmf::water::flux_node::ptr target2, real fraction, bool no_back_flow=True) -> PartitionFluxRoute"""
+        r"""
+        __init__(PartitionFluxRoute self, cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target1, cmf::water::flux_node::ptr target2, real fraction, bool no_back_flow=True) -> PartitionFluxRoute
+        PartitionFluxRoute(flux_node::ptr source, flux_node::ptr target1,
+        flux_node::ptr target2, real fraction, bool no_back_flow=true)
+        cmf::water::PartitionFluxRoute::PartitionFluxRoute
+
+        Parameters:
+        -----------
+
+        source:  Water storage from which the water flows out. The flux is
+        defined by some other flux connection between
+
+        target1:  Target node (boundary condition or storage). The target of
+        the master flux connection
+
+        target2:  Target node (boundary condition or storage). Does not
+        influence the strength of the flow
+
+        fraction:  Fraction of the source->target1 flow to be routed further
+        to target2
+
+        no_back_flow:  If true (default), no flow between target 1 and target
+        2 occurs, if water is flowing from target 1 to source. If set to
+        false, in the case of water flowing from target 1 to source, the
+        fraction is also flowing from target 2 to target 1. No test if target
+        2 has water is made. 
+        """
         _cmf_core.PartitionFluxRoute_swiginit(self, _cmf_core.new_PartitionFluxRoute(*args, **kwargs))
     source = _swig_new_instance_method(_cmf_core.PartitionFluxRoute_source)
     fraction = property(_cmf_core.PartitionFluxRoute_fraction_get, _cmf_core.PartitionFluxRoute_fraction_set, doc=r"""fraction : real""")
@@ -2025,7 +2034,8 @@ class ExternallyControlledFlux(flux_connection):
         r"""
         __init__(ExternallyControlledFlux self, cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target, real flux_value=0) -> ExternallyControlledFlux
         ExternallyControlledFlux(flux_node::ptr source, flux_node::ptr target,
-        real flux_value=0) 
+        real flux_value=0)
+        cmf::water::ExternallyControlledFlux::ExternallyControlledFlux
         """
         _cmf_core.ExternallyControlledFlux_swiginit(self, _cmf_core.new_ExternallyControlledFlux(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_ExternallyControlledFlux
@@ -2068,8 +2078,8 @@ class LinearStorageConnection(flux_connection):
         __init__(LinearStorageConnection self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real residencetime, real residual=0.0) -> LinearStorageConnection
         LinearStorageConnection(WaterStorage::ptr source, flux_node::ptr
         target, real residencetime, real residual=0.0)
-
-        Creates a linear storage connection or Nash-box.
+        cmf::water::LinearStorageConnection::LinearStorageConnection Creates a
+        linear storage connection or Nash-box.
 
 
 
@@ -2143,8 +2153,8 @@ class PowerLawConnection(flux_connection):
         __init__(PowerLawConnection self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Q0, real V0, real beta=1.0, real residual=0.0) -> PowerLawConnection
         PowerLawConnection(WaterStorage::ptr source, flux_node::ptr target,
         real Q0, real V0, real beta=1.0, real residual=0.0)
-
-        Creates a power law connection.
+        cmf::water::PowerLawConnection::PowerLawConnection Creates a power law
+        connection.
 
         Parameters:
         -----------
@@ -2197,7 +2207,7 @@ class ExponentialDeclineConnection(flux_connection):
         __init__(ExponentialDeclineConnection self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Q0, real V0, real m) -> ExponentialDeclineConnection
         ExponentialDeclineConnection(WaterStorage::ptr source,
         flux_node::ptr target, real Q0, real V0, real m)
-
+        cmf::water::ExponentialDeclineConnection::ExponentialDeclineConnection
         creates the exponential decline connection 
         """
         _cmf_core.ExponentialDeclineConnection_swiginit(self, _cmf_core.new_ExponentialDeclineConnection(*args, **kwargs))
@@ -2250,16 +2260,16 @@ class ConstraintLinearStorageFlux(flux_connection):
         ConstraintLinearStorageFlux(WaterStorage::ptr source,
         WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real
         Vrmax=1.0)
-
+        cmf::water::ConstraintLinearStorageFlux::ConstraintLinearStorageFlux
         Creates a linear storage connection, constrained by the fill level of
-        the source 
+        the source.
+
+
 
         .. math::
 
-             q = \\frac 1 {t_r} {\\left(\\frac{V -
-            V_{residual}}{V_0} \\right)^\\beta} 
-
-        .
+             q = \\frac 1 {t_r} {\\left(\\frac{V - V_{residual}}{V_0}
+            \\right)^\\beta} 
 
         Parameters:
         -----------
@@ -2296,7 +2306,7 @@ class ConstantFlux(flux_connection):
 
          q=\\begin{cases}0 & V_{source}\\le V_{min}\\\\ q_0
         \\frac{V_{source} - V_{min}}{t_{decr} q_{0} - V_{min}} & V_{source}
-        \\le t_{decr} q_{0}\\\\ q_{0} & \\end{cases}
+        \\le t_{decr} q_{0}\\\\ q_{0} &  \\end{cases}
 
     This is similar to a neumann boundary, however this is not a boundary
     condition, but water is taken from the source (left) water storage and
@@ -2317,9 +2327,9 @@ class ConstantFlux(flux_connection):
         ConstantFlux(cmf::water::WaterStorage::ptr source,
         cmf::water::flux_node::ptr target, real maximum_flux, real
         minimal_state=0, cmf::math::Time flux_decrease_time=cmf::math::h)
-
-        Produces a constant but changeable flux from a source to a target, if
-        enough water is present in the source.
+        cmf::water::ConstantFlux::ConstantFlux Produces a constant but
+        changeable flux from a source to a target, if enough water is present
+        in the source.
 
         Parameters:
         -----------
@@ -2375,9 +2385,8 @@ class LinearGradientFlux(flux_connection):
         __init__(LinearGradientFlux self, cmf::water::flux_node::ptr left, cmf::water::flux_node::ptr right, real Q1, real d=-1.0) -> LinearGradientFlux
         LinearGradientFlux(cmf::water::flux_node::ptr left,
         cmf::water::flux_node::ptr right, real Q1, real d=-1.0)
-
-        Creates a generic gradient based flux, if enough water is present in
-        the source.
+        cmf::water::LinearGradientFlux::LinearGradientFlux Creates a generic
+        gradient based flux, if enough water is present in the source.
 
         Parameters:
         -----------
@@ -2431,8 +2440,8 @@ class ConstantStateFlux(flux_connection):
         ConstantStateFlux(cmf::water::WaterStorage::ptr controlled_storage,
         cmf::water::flux_node::ptr other_end, real target_state,
         cmf::math::Time reaction_time)
-
-        Creates a flux connection to control the state of a storage.
+        cmf::water::ConstantStateFlux::ConstantStateFlux Creates a flux
+        connection to control the state of a storage.
 
         Parameters:
         -----------
@@ -2477,8 +2486,7 @@ class node_list(object):
         __init__(node_list self) -> node_list
         __init__(node_list self, node_list forcopy) -> node_list
         node_list(const cmf::water::node_list &forcopy)
-
-        Copy the node_list. 
+        cmf::water::node_list::node_list Copy the node_list. 
         """
         _cmf_core.node_list_swiginit(self, _cmf_core.new_node_list(*args))
     __iadd__ = _swig_new_instance_method(_cmf_core.node_list___iadd__)
@@ -2563,7 +2571,8 @@ class NeumannBoundary_list(object):
         __init__(NeumannBoundary_list self) -> NeumannBoundary_list
         __init__(NeumannBoundary_list self, node_list copy) -> NeumannBoundary_list
         __init__(NeumannBoundary_list self, NeumannBoundary_list copy) -> NeumannBoundary_list
-        NeumannBoundary_list(const NeumannBoundary_list &copy) 
+        NeumannBoundary_list(const NeumannBoundary_list &copy)
+        cmf::water::NeumannBoundary_list::NeumannBoundary_list
         """
         _cmf_core.NeumannBoundary_list_swiginit(self, _cmf_core.new_NeumannBoundary_list(*args))
     to_node_list = _swig_new_instance_method(_cmf_core.NeumannBoundary_list_to_node_list)
@@ -2632,9 +2641,8 @@ class Weather(object):
         __init__(Weather self, double T=15.0, double Tmax=17.0, double Tmin=13.0, double rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double Ra=30, double daylength=12) -> Weather
         Weather(double T=15.0, double Tmax=17.0, double Tmin=13.0, double
         rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double
-        Ra=30, double daylength=12)
-
-        Creates a "weather" from given data.
+        Ra=30, double daylength=12) cmf::atmosphere::Weather::Weather Creates
+        a "weather" from given data.
 
         Parameters:
         -----------
@@ -2719,9 +2727,9 @@ class ConstantMeteorology(Meteorology):
         __init__(ConstantMeteorology self) -> ConstantMeteorology
         __init__(ConstantMeteorology self, Weather w) -> ConstantMeteorology
         __init__(ConstantMeteorology self, ConstantMeteorology other) -> ConstantMeteorology
-        ConstantMeteorology(const cmf::atmosphere::ConstantMeteorology &other)
-
-        Copy constructor. 
+        ConstantMeteorology(const cmf::atmosphere::Weather &w)
+        cmf::atmosphere::ConstantMeteorology::ConstantMeteorology Creates a
+        ConstantMeteorology with weather w. 
         """
         _cmf_core.ConstantMeteorology_swiginit(self, _cmf_core.new_ConstantMeteorology(*args))
     copy = _swig_new_instance_method(_cmf_core.ConstantMeteorology_copy)
@@ -2773,8 +2781,7 @@ class MeteoStation(object):
         r"""
         __init__(MeteoStation self, MeteoStation other) -> MeteoStation
         MeteoStation(const cmf::atmosphere::MeteoStation &other)
-
-        Copy c'tor. 
+        cmf::atmosphere::MeteoStation::MeteoStation Copy c'tor. 
         """
         _cmf_core.MeteoStation_swiginit(self, _cmf_core.new_MeteoStation(*args, **kwargs))
     get_data = _swig_new_instance_method(_cmf_core.MeteoStation_get_data)
@@ -2832,7 +2839,17 @@ class MeteoStationReference(Meteorology):
         r"""
         __init__(MeteoStationReference self, cmf::atmosphere::MeteoStation::ptr station, point location) -> MeteoStationReference
         __init__(MeteoStationReference self, MeteoStationReference copy) -> MeteoStationReference
-        MeteoStationReference(const MeteoStationReference &copy) 
+        MeteoStationReference(MeteoStation::ptr station, cmf::geometry::point
+        location)
+        cmf::atmosphere::MeteoStationReference::MeteoStationReference Create a
+        located reference to a meteo station.
+
+        Parameters:
+        -----------
+
+        station:   MeteoStation
+
+        location:  Location of the reference 
         """
         _cmf_core.MeteoStationReference_swiginit(self, _cmf_core.new_MeteoStationReference(*args))
     copy = _swig_new_instance_method(_cmf_core.MeteoStationReference_copy)
@@ -2865,8 +2882,7 @@ class MeteoStationList(object):
         __init__(MeteoStationList self) -> MeteoStationList
         __init__(MeteoStationList self, MeteoStationList copy) -> MeteoStationList
         MeteoStationList(const MeteoStationList &copy)
-
-        Copy c'tor. 
+        cmf::atmosphere::MeteoStationList::MeteoStationList Copy c'tor. 
         """
         _cmf_core.MeteoStationList_swiginit(self, _cmf_core.new_MeteoStationList(*args))
     reference_to_nearest = _swig_new_instance_method(_cmf_core.MeteoStationList_reference_to_nearest)
@@ -2901,8 +2917,7 @@ class IDW_Meteorology(Meteorology):
         __init__(IDW_Meteorology self, point position, MeteoStationList stations, double z_weight, double power) -> IDW_Meteorology
         __init__(IDW_Meteorology self, IDW_Meteorology copy) -> IDW_Meteorology
         IDW_Meteorology(const IDW_Meteorology &copy)
-
-        Copy c'tor. 
+        cmf::atmosphere::IDW_Meteorology::IDW_Meteorology Copy c'tor. 
         """
         _cmf_core.IDW_Meteorology_swiginit(self, _cmf_core.new_IDW_Meteorology(*args))
     copy = _swig_new_instance_method(_cmf_core.IDW_Meteorology_copy)
@@ -2974,8 +2989,8 @@ class ConstantRainSource(RainSource):
         __init__(ConstantRainSource self, project _project, point location, real _intensity) -> ConstantRainSource
         ConstantRainSource(cmf::project &_project, cmf::geometry::point
         location, real _intensity)
-
-        Creates a new ConstantRainSource.
+        cmf::atmosphere::ConstantRainSource::ConstantRainSource Creates a new
+        ConstantRainSource.
 
         Consider using Cell::set_rainfall for internal creation of a constant
         rain source, instead of direct use
@@ -3049,8 +3064,7 @@ class RainfallStation(object):
         r"""
         __init__(RainfallStation self, RainfallStation copy) -> RainfallStation
         RainfallStation(const RainfallStation &copy)
-
-        copy c'tor 
+        cmf::atmosphere::RainfallStation::RainfallStation copy c'tor 
         """
         _cmf_core.RainfallStation_swiginit(self, _cmf_core.new_RainfallStation(*args, **kwargs))
     __call__ = _swig_new_instance_method(_cmf_core.RainfallStation___call__)
@@ -3172,7 +3186,7 @@ class Vegetation(object):
         _LAI=2.88, double _Height=0.12, double _RootDepth=0.25, double
         _StomatalResistance=100, double _albedo=0.23, double _CanopyClosure=1,
         double _CanopyCapacityPerLAI=0.1, double _fraction_at_rootdepth=1.0)
-
+        cmf::upslope::vegetation::Vegetation::Vegetation
         """
         _cmf_core.Vegetation_swiginit(self, _cmf_core.new_Vegetation(*args, **kwargs))
     __repr__ = _swig_new_instance_method(_cmf_core.Vegetation___repr__)
@@ -3196,7 +3210,8 @@ class CellConnector(object):
     def __init__(self, *args, **kwargs):
         r"""
         __init__(CellConnector self, cmf::upslope::connectorfunction connector) -> CellConnector
-        CellConnector(connectorfunction connector) 
+        CellConnector(connectorfunction connector)
+        cmf::upslope::CellConnector::CellConnector
         """
         _cmf_core.CellConnector_swiginit(self, _cmf_core.new_CellConnector(*args, **kwargs))
     __call__ = _swig_new_instance_method(_cmf_core.CellConnector___call__)
@@ -3266,7 +3281,8 @@ class Cell(object):
         r"""
         __init__(Cell self, double x, double y, double z, double area, project _project) -> Cell
         Cell(double x,
-        double y, double z, double area, cmf::project &_project) 
+        double y, double z, double area, cmf::project &_project)
+        cmf::upslope::Cell::Cell
         """
         _cmf_core.Cell_swiginit(self, _cmf_core.new_Cell(*args, **kwargs))
     to_string = _swig_new_instance_method(_cmf_core.Cell_to_string)
@@ -3395,7 +3411,8 @@ class neighbor_iterator(object):
     def __init__(self, *args, **kwargs):
         r"""
         __init__(neighbor_iterator self, Cell cell) -> neighbor_iterator
-        neighbor_iterator(cmf::upslope::Cell *cell) 
+        neighbor_iterator(cmf::upslope::Topology &topo)
+        cmf::upslope::neighbor_iterator::neighbor_iterator
         """
         _cmf_core.neighbor_iterator_swiginit(self, _cmf_core.new_neighbor_iterator(*args, **kwargs))
     cell = _swig_new_instance_method(_cmf_core.neighbor_iterator_cell)
@@ -3424,7 +3441,8 @@ class cell_vector(object):
         r"""
         __init__(cell_vector self) -> cell_vector
         __init__(cell_vector self, cell_vector copy) -> cell_vector
-        cell_vector(cell_const_iterator first, cell_const_iterator last) 
+        cell_vector(const cell_vector &copy)
+        cmf::upslope::cell_vector::cell_vector
         """
         _cmf_core.cell_vector_swiginit(self, _cmf_core.new_cell_vector(*args))
     __getitem__ = _swig_new_instance_method(_cmf_core.cell_vector___getitem__)
@@ -3481,9 +3499,8 @@ class subcatchment(object):
         r"""
         __init__(subcatchment self, Cell pourpoint, double area_threshold=1e308) -> subcatchment
         subcatchment(cmf::upslope::Cell &pourpoint, double
-        area_threshold=1e308)
-
-        Creates a subcatchment from a pourpoint cell.
+        area_threshold=1e308) cmf::upslope::subcatchment::subcatchment Creates
+        a subcatchment from a pourpoint cell.
 
         Parameters:
         -----------
@@ -3593,7 +3610,7 @@ class BrooksCoreyRetentionCurve(RetentionCurve):
         BrooksCoreyRetentionCurve(real ksat=15, real porosity=0.5, real _b=5,
         real theta_x=0.2, real psi_x=pF_to_waterhead(2.5), real
         porosity_decay=0)
-
+        cmf::upslope::BrooksCoreyRetentionCurve::BrooksCoreyRetentionCurve
         Creates a brooks corey retention curve.
 
         Parameters:
@@ -3683,8 +3700,8 @@ class VanGenuchtenMualem(RetentionCurve):
         __init__(VanGenuchtenMualem self, real Ksat=15, real phi=0.5, real alpha=0.2178, real n=1.211, real m=-1, real theta_r=0.0, real w0=0.99) -> VanGenuchtenMualem
         VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real
         n=1.211, real m=-1, real theta_r=0.0, real w0=0.99)
-
-        Creates a van Genuchten-Mualem retention curve.
+        cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem Creates a van
+        Genuchten-Mualem retention curve.
 
         Parameters:
         -----------
@@ -3737,7 +3754,7 @@ class LinearRetention(RetentionCurve):
 
     .. math::
 
-         K(\\theta) = K_{sat} \\left(\\frac{\\theta -
+         K(\\theta) = K_{sat}  \\left(\\frac{\\theta -
         \\theta_r}{\\theta_s - \\theta_r}\\right)^\\beta 
 
     C++ includes: RetentionCurve.h 
@@ -3758,7 +3775,7 @@ class LinearRetention(RetentionCurve):
         r"""
         __init__(LinearRetention self, real ksat, real phi, real thickness, real residual_wetness=0.1) -> LinearRetention
         LinearRetention(real ksat, real phi, real thickness, real
-        residual_wetness=0.1) 
+        residual_wetness=0.1) cmf::upslope::LinearRetention::LinearRetention
         """
         _cmf_core.LinearRetention_swiginit(self, _cmf_core.new_LinearRetention(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_LinearRetention
@@ -3868,9 +3885,8 @@ class layer_list(object):
         __init__(layer_list self, layer_list for_copy) -> layer_list
         __init__(layer_list self) -> layer_list
         __init__(layer_list self, node_list for_copy) -> layer_list
-        layer_list(const cmf::water::node_list &for_copy)
-
-        Creates a list of all soil layers from a node_list. 
+        layer_list(const layer_list &for_copy)
+        cmf::upslope::layer_list::layer_list Copy constructor. 
         """
         _cmf_core.layer_list_swiginit(self, _cmf_core.new_layer_list(*args))
     pop = _swig_new_instance_method(_cmf_core.layer_list_pop)
@@ -4009,7 +4025,7 @@ class GradientMacroFlow(BaseMacroFlow):
 
     .. math::
 
-         q = K(\\theta) \\frac{\\Delta \\Psi}{\\Delta z} 
+          q = K(\\theta) \\frac{\\Delta \\Psi}{\\Delta z} 
 
     C++ includes: macropore.h 
     """
@@ -4021,7 +4037,8 @@ class GradientMacroFlow(BaseMacroFlow):
         r"""
         __init__(GradientMacroFlow self, cmf::upslope::MacroPore::ptr left, cmf::water::flux_node::ptr right) -> GradientMacroFlow
         GradientMacroFlow(cmf::upslope::MacroPore::ptr left,
-        cmf::water::flux_node::ptr right) 
+        cmf::water::flux_node::ptr right)
+        cmf::upslope::connections::GradientMacroFlow::GradientMacroFlow
         """
         _cmf_core.GradientMacroFlow_swiginit(self, _cmf_core.new_GradientMacroFlow(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_GradientMacroFlow
@@ -4066,7 +4083,7 @@ class KinematicMacroFlow(BaseMacroFlow):
         __init__(KinematicMacroFlow self, cmf::water::WaterStorage::ptr left, cmf::water::flux_node::ptr right, real beta=1.) -> KinematicMacroFlow
         KinematicMacroFlow(cmf::water::WaterStorage::ptr left,
         cmf::water::flux_node::ptr right, real beta=1.)
-
+        cmf::upslope::connections::KinematicMacroFlow::KinematicMacroFlow
         Creates the connection.
 
         Parameters:
@@ -4133,8 +4150,8 @@ class JarvisMacroFlow(BaseMacroFlow):
         JarvisMacroFlow(cmf::water::WaterStorage::ptr left,
         cmf::water::flux_node::ptr right, real beta=1., real
         porefraction_r=0.0)
-
-        Constructs the connection.
+        cmf::upslope::connections::JarvisMacroFlow::JarvisMacroFlow Constructs
+        the connection.
 
         Parameters:
         -----------
@@ -4162,7 +4179,7 @@ class GradientMacroMicroExchange(flux_connection):
 
     .. math::
 
-        q = K \\frac{\\Delta\\Psi}{d/2} A 
+        q = K \\frac{\\Delta\\Psi}{d/2}  A 
 
     where:  :math:`K` The
     conductivity of the aggregate boundary
@@ -4186,7 +4203,8 @@ class GradientMacroMicroExchange(flux_connection):
         r"""
         __init__(GradientMacroMicroExchange self, cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right) -> GradientMacroMicroExchange
         GradientMacroMicroExchange(cmf::upslope::SoilLayer::ptr left,
-        cmf::upslope::MacroPore::ptr right) 
+        cmf::upslope::MacroPore::ptr right)
+        cmf::upslope::connections::GradientMacroMicroExchange::GradientMacroMicroExchange
         """
         _cmf_core.GradientMacroMicroExchange_swiginit(self, _cmf_core.new_GradientMacroMicroExchange(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_GradientMacroMicroExchange
@@ -4240,7 +4258,8 @@ class DiffusiveMacroMicroExchange(flux_connection):
         r"""
         __init__(DiffusiveMacroMicroExchange self, cmf::upslope::MacroPore::ptr left, cmf::upslope::SoilLayer::ptr right, real omega, real pFrmi=4.2) -> DiffusiveMacroMicroExchange
         DiffusiveMacroMicroExchange(cmf::upslope::MacroPore::ptr left,
-        cmf::upslope::SoilLayer::ptr right, real omega, real pFrmi=4.2) 
+        cmf::upslope::SoilLayer::ptr right, real omega, real pFrmi=4.2)
+        cmf::upslope::connections::DiffusiveMacroMicroExchange::DiffusiveMacroMicroExchange
         """
         _cmf_core.DiffusiveMacroMicroExchange_swiginit(self, _cmf_core.new_DiffusiveMacroMicroExchange(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_DiffusiveMacroMicroExchange
@@ -4299,7 +4318,8 @@ class MACROlikeMacroMicroExchange(flux_connection):
         r"""
         __init__(MACROlikeMacroMicroExchange self, cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right, real _gamma_w=0.4, real _Gf=3) -> MACROlikeMacroMicroExchange
         MACROlikeMacroMicroExchange(cmf::upslope::SoilLayer::ptr left,
-        cmf::upslope::MacroPore::ptr right, real _gamma_w=0.4, real _Gf=3) 
+        cmf::upslope::MacroPore::ptr right, real _gamma_w=0.4, real _Gf=3)
+        cmf::upslope::connections::MACROlikeMacroMicroExchange::MACROlikeMacroMicroExchange
         """
         _cmf_core.MACROlikeMacroMicroExchange_swiginit(self, _cmf_core.new_MACROlikeMacroMicroExchange(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_MACROlikeMacroMicroExchange
@@ -4350,7 +4370,8 @@ class Prism(IVolumeHeightFunction):
         r"""
         __init__(Prism self, double base_area, double thickness_of_rough_ground=0.01) -> Prism
         Prism(double
-        base_area, double thickness_of_rough_ground=0.01) 
+        base_area, double thickness_of_rough_ground=0.01)
+        cmf::river::Prism::Prism
         """
         _cmf_core.Prism_swiginit(self, _cmf_core.new_Prism(*args, **kwargs))
     copy = _swig_new_instance_method(_cmf_core.Prism_copy)
@@ -4374,9 +4395,9 @@ class volume_height_function(IVolumeHeightFunction):
         r"""
         __init__(volume_height_function self, volume_height_function for_copy) -> volume_height_function
         __init__(volume_height_function self, IVolumeHeightFunction for_copy) -> volume_height_function
-        volume_height_function(const IVolumeHeightFunction &for_copy)
-
-        Wrapper for any IVolumeHeightFunction. 
+        volume_height_function(const volume_height_function &for_copy)
+        cmf::river::volume_height_function::volume_height_function Copy
+        constructable. 
         """
         _cmf_core.volume_height_function_swiginit(self, _cmf_core.new_volume_height_function(*args))
     copy = _swig_new_instance_method(_cmf_core.volume_height_function_copy)
@@ -4441,8 +4462,8 @@ class SWATReachType(IChannel):
         __init__(SWATReachType self, double l) -> SWATReachType
         __init__(SWATReachType self, double l, double BankWidth, double Depth) -> SWATReachType
         SWATReachType(double l, double BankWidth, double Depth)
-
-        Creates a new reach structure from a give width and depth.
+        cmf::river::SWATReachType::SWATReachType Creates a new reach structure
+        from a give width and depth.
 
         Parameters:
         -----------
@@ -4481,7 +4502,9 @@ class TriangularReach(IChannel):
         r"""
         __init__(TriangularReach self, double l, double bankSlope=2) -> TriangularReach
         __init__(TriangularReach self, TriangularReach copy) -> TriangularReach
-        TriangularReach(const TriangularReach &copy) 
+        TriangularReach(double l, double bankSlope=2)
+        cmf::river::TriangularReach::TriangularReach Creates a new triangular
+        reach type. 
         """
         _cmf_core.TriangularReach_swiginit(self, _cmf_core.new_TriangularReach(*args))
     copy = _swig_new_instance_method(_cmf_core.TriangularReach_copy)
@@ -4505,7 +4528,9 @@ class RectangularReach(IChannel):
         r"""
         __init__(RectangularReach self, double l, double width) -> RectangularReach
         __init__(RectangularReach self, RectangularReach copy) -> RectangularReach
-        RectangularReach(const RectangularReach &copy) 
+        RectangularReach(double l, double width)
+        cmf::river::RectangularReach::RectangularReach Creates a new
+        rectangular reach type with width [m]. 
         """
         _cmf_core.RectangularReach_swiginit(self, _cmf_core.new_RectangularReach(*args))
     copy = _swig_new_instance_method(_cmf_core.RectangularReach_copy)
@@ -4530,7 +4555,8 @@ class PipeReach(IChannel):
         r"""
         __init__(PipeReach self, double l, double diameter) -> PipeReach
         __init__(PipeReach self, PipeReach copy) -> PipeReach
-        PipeReach(const PipeReach &copy) 
+        PipeReach(double l, double diameter) cmf::river::PipeReach::PipeReach
+        Creates a tube IChannel with diameter [m]. 
         """
         _cmf_core.PipeReach_swiginit(self, _cmf_core.new_PipeReach(*args))
     copy = _swig_new_instance_method(_cmf_core.PipeReach_copy)
@@ -4558,32 +4584,9 @@ class Channel(IChannel):
         __init__(Channel self, IVolumeHeightFunction for_casting) -> Channel
         __init__(Channel self, Channel for_copy) -> Channel
         __init__(Channel self, char typecode, double length, double width=1., double depth=0.25) -> Channel
-        Channel(char
-        typecode, double length, double width=1., double depth=0.25)
-
-        Creates a reachtype using a short cut character.
-
-        Acceptes one of the following characters: 'T' TriangularReach, width
-        and depth are ignored.
-
-        'R' RectangularReach, depth is ignored
-
-        'P' PipeReach, depth is ignored, width is the diameter of the pipe
-
-        'S' SWATReachType, a trapezoid flow cross section, as used in the SWAT
-        model, width (bank width) and depth are used the reach type
-
-        Parameters:
-        -----------
-
-        typecode:  Describes the geometry of the reach cross section.
-
-        length:  The length of the channel in m
-
-        width:  width of the reach cross section in m (ignored for typecode
-        'T')
-
-        depth:  depth of the reach (ignored for typecode 'T','R','P','S') 
+        Channel(double
+        length) cmf::river::Channel::Channel Creates a triangular reach of a
+        length. 
         """
         _cmf_core.Channel_swiginit(self, _cmf_core.new_Channel(*args))
     copy = _swig_new_instance_method(_cmf_core.Channel_copy)
@@ -4607,7 +4610,8 @@ class MeanChannel(IChannel):
         r"""
         __init__(MeanChannel self, IChannel channel1, IChannel channel2) -> MeanChannel
         __init__(MeanChannel self, MeanChannel meanChannel) -> MeanChannel
-        MeanChannel(const MeanChannel &meanChannel) 
+        MeanChannel(const MeanChannel &meanChannel)
+        cmf::river::MeanChannel::MeanChannel
         """
         _cmf_core.MeanChannel_swiginit(self, _cmf_core.new_MeanChannel(*args))
     copy = _swig_new_instance_method(_cmf_core.MeanChannel_copy)
@@ -4638,7 +4642,10 @@ class CrossSectionReach(IChannel):
         r"""
         __init__(CrossSectionReach self, double l, cmf::math::num_array x, cmf::math::num_array depth) -> CrossSectionReach
         __init__(CrossSectionReach self, CrossSectionReach copy) -> CrossSectionReach
-        CrossSectionReach(const CrossSectionReach &copy) 
+        CrossSectionReach(double l, cmf::math::num_array x,
+        cmf::math::num_array depth)
+        cmf::river::CrossSectionReach::CrossSectionReach Creates a new
+        triangular reach type. 
         """
         _cmf_core.CrossSectionReach_swiginit(self, _cmf_core.new_CrossSectionReach(*args))
     copy = _swig_new_instance_method(_cmf_core.CrossSectionReach_copy)
@@ -4720,9 +4727,8 @@ class Reach(OpenWaterStorage):
     upstream_count = property(_cmf_core.Reach_upstream_count_get, doc=r"""
     upstream_count : int
     int
-    upstream_count() const
-
-    Returns the number of reaches upstream of this. 
+    upstream_count() const cmf::river::Reach::upstream_count Returns the
+    number of reaches upstream of this. 
     """)
     diffusive = property(_cmf_core.Reach_diffusive_get, _cmf_core.Reach_diffusive_set, doc=r"""diffusive : bool""")
 
@@ -4783,17 +4789,16 @@ class ReachIterator(object):
         r"""
         __init__(ReachIterator self, cmf::river::Reach::ptr first) -> ReachIterator
         ReachIterator(Reach::ptr first)
-
-        Creates a ReachIterator from a first reach. 
+        cmf::river::ReachIterator::ReachIterator Creates a ReachIterator from
+        a first reach. 
         """
         _cmf_core.ReachIterator_swiginit(self, _cmf_core.new_ReachIterator(*args, **kwargs))
     __reach = _swig_new_instance_method(_cmf_core.ReachIterator___reach)
     position = property(_cmf_core.ReachIterator_position_get, doc=r"""
     position : double
     double
-    position() const
-
-    Returns the distance to the root reach. 
+    position() const cmf::river::ReachIterator::position Returns the
+    distance to the root reach. 
     """)
 
     reach = property(fget=_cmf_core.ReachIterator___reach)
@@ -4898,7 +4903,7 @@ class KinematicSurfaceRunoff(flux_connection):
         __init__(KinematicSurfaceRunoff self, cmf::upslope::SurfaceWater::ptr left, cmf::water::flux_node::ptr right, real flowwidth, real distance=-1) -> KinematicSurfaceRunoff
         KinematicSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left,
         cmf::water::flux_node::ptr right, real flowwidth, real distance=-1)
-
+        cmf::upslope::connections::KinematicSurfaceRunoff::KinematicSurfaceRunoff
         Creates a KinematicSurfaceRunoff between a SurfaceWater (left) with
         another (right) node.
 
@@ -4995,7 +5000,8 @@ class DiffusiveSurfaceRunoff(flux_connection):
         r"""
         __init__(DiffusiveSurfaceRunoff self, cmf::upslope::SurfaceWater::ptr left, cmf::water::flux_node::ptr right, real flowwidth, real distance=-1) -> DiffusiveSurfaceRunoff
         DiffusiveSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left,
-        cmf::water::flux_node::ptr right, real flowwidth, real distance=-1) 
+        cmf::water::flux_node::ptr right, real flowwidth, real distance=-1)
+        cmf::upslope::connections::DiffusiveSurfaceRunoff::DiffusiveSurfaceRunoff
         """
         _cmf_core.DiffusiveSurfaceRunoff_swiginit(self, _cmf_core.new_DiffusiveSurfaceRunoff(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_DiffusiveSurfaceRunoff
@@ -5049,9 +5055,8 @@ class aquifer(WaterStorage, conductable):
         __init__(aquifer self, project p, point position, real area, real thickness, real porosity, real K=1e-4) -> aquifer
         __init__(aquifer self, cell_vector cells, real thickness, real porosity, real K=1e-4) -> aquifer
         aquifer(cmf::upslope::cell_vector &cells, real thickness, real
-        porosity, real K=1e-4)
-
-        Creates an aquifer below a collection of cells.
+        porosity, real K=1e-4) cmf::upslope::aquifer::aquifer Creates an
+        aquifer below a collection of cells.
 
         Parameters:
         -----------
@@ -5109,10 +5114,9 @@ class aquifer_Darcy(flux_connection):
         r"""
         __init__(aquifer_Darcy self, cmf::upslope::aquifer::ptr left, cmf::water::flux_node::ptr right, real width) -> aquifer_Darcy
         aquifer_Darcy(aquifer::ptr left, cmf::water::flux_node::ptr right,
-        real width)
-
-        Creates a new Darcy flow connection between two aquifers, or an
-        aquifer and another node acting as Dirichlet boundary condition.
+        real width) cmf::upslope::aquifer_Darcy::aquifer_Darcy Creates a new
+        Darcy flow connection between two aquifers, or an aquifer and another
+        node acting as Dirichlet boundary condition.
 
         Parameters:
         -----------
@@ -5181,7 +5185,8 @@ class Darcy(lateral_sub_surface_flux):
         r"""
         __init__(Darcy self, cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) -> Darcy
         Darcy(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr
-        right, real FlowWidth, real Distance=0) 
+        right, real FlowWidth, real Distance=0)
+        cmf::upslope::connections::Darcy::Darcy
         """
         _cmf_core.Darcy_swiginit(self, _cmf_core.new_Darcy(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_Darcy
@@ -5224,7 +5229,7 @@ class TopographicGradientDarcy(lateral_sub_surface_flux):
         __init__(TopographicGradientDarcy self, cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) -> TopographicGradientDarcy
         TopographicGradientDarcy(cmf::upslope::SoilLayer::ptr left,
         cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0)
-
+        cmf::upslope::connections::TopographicGradientDarcy::TopographicGradientDarcy
         Creates the connection.
 
         Parameters:
@@ -5271,8 +5276,8 @@ class DarcyKinematic(lateral_sub_surface_flux):
         __init__(DarcyKinematic self, cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) -> DarcyKinematic
         DarcyKinematic(cmf::upslope::SoilLayer::ptr left,
         cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0)
-
-        Creates the connection.
+        cmf::upslope::connections::DarcyKinematic::DarcyKinematic Creates the
+        connection.
 
         Parameters:
         -----------
@@ -5298,16 +5303,16 @@ class Richards_lateral(lateral_sub_surface_flux):
     r"""
 
 
-    Calculates the flux using Richard's equation for adjacent layers 
+    Calculates the flux using Richard's equation for adjacent layers.
+
+
 
     .. math::
 
-
-        q_{lat} = \\frac{\\Psi_1 - \\Psi_2}{\\|C_1-C_2\\|}
-        K(\\theta) A 
+              q_{lat} = \\frac{\\Psi_1 -
+        \\Psi_2}{\\|C_1-C_2\\|}      K(\\theta) A 
 
     where:
-
     :math:`q_{lat}` the lateral flow in :math:`m^3/day`
 
     :math:`\\Psi_i` the head of node i
@@ -5331,8 +5336,8 @@ class Richards_lateral(lateral_sub_surface_flux):
         __init__(Richards_lateral self, cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth=0, real Distance=0) -> Richards_lateral
         Richards_lateral(cmf::upslope::SoilLayer::ptr left,
         cmf::water::flux_node::ptr right, real FlowWidth=0, real Distance=0)
-
-        Creates the connection.
+        cmf::upslope::connections::Richards_lateral::Richards_lateral Creates
+        the connection.
 
         Parameters:
         -----------
@@ -5410,7 +5415,8 @@ class TOPModelFlow(flux_connection):
         __init__(TOPModelFlow self, cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real T0, real m, real flowwidth, real distance=0) -> TOPModelFlow
         TOPModelFlow(cmf::upslope::SoilLayer::ptr left,
         cmf::water::flux_node::ptr right, real T0, real m, real flowwidth,
-        real distance=0) 
+        real distance=0)
+        cmf::upslope::connections::TOPModelFlow::TOPModelFlow
         """
         _cmf_core.TOPModelFlow_swiginit(self, _cmf_core.new_TOPModelFlow(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_TOPModelFlow
@@ -5432,8 +5438,9 @@ class Manning(flux_connection):
 
     .. math::
 
-         v = R^{\\frac 2 3}
-        \\frac{\\sqrt{\\Delta_z}}{n} \\\\ q = v \\cdot A 
+           v =  R^{\\frac 2 3}
+        \\frac{\\sqrt{\\Delta_z}}{n} \\\\   q =  v \\cdot A
+
 
     Where:  :math:`A = \\frac V l`: Crosssectional area of the wetted
     crossection, Volume per length
@@ -5490,12 +5497,12 @@ class Manning_Diffusive(Manning):
 
 
         q_{Manning}&=& A R^{\\frac 2 3} \\sqrt{\\frac {\\Delta_z} n}
-        \\\\ A &=& \\frac V l \\mbox{, (Crosssectional area of the
-        wetted crossection, Volume per length)} \\\\ R &=& \\frac A
-        {P(d)} \\\\ P(d) &=& \\mbox{ the perimeter of the wetted
-        crosssection, a function of reach depth} \\\\ d(V) &=& \\mbox{
-        the depth of the reach a function of the volume} \\\\ \\Delta_z
-        = \\|\\frac{h_1 - h_2}{l} \\mbox{ Slope of the reach
+        \\\\   A &=& \\frac V l \\mbox{, (Crosssectional area of the
+        wetted crossection, Volume per length)} \\\\   R &=& \\frac A
+        {P(d)} \\\\   P(d) &=& \\mbox{ the perimeter of the wetted
+        crosssection, a function of reach depth} \\\\   d(V) &=& \\mbox{
+        the depth of the reach a function of the volume} \\\\
+        \\Delta_z = \\|\\frac{h_1 - h_2}{l} \\mbox{ Slope of the reach
         waterlevels} \\\\ n&=&\\mbox{Manning friction number}
 
 
@@ -5512,9 +5519,8 @@ class Manning_Diffusive(Manning):
         __init__(Manning_Diffusive self, cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype) -> Manning_Diffusive
         Manning_Diffusive(cmf::river::OpenWaterStorage::ptr left,
         cmf::water::flux_node::ptr right, const cmf::river::IChannel
-        &reachtype)
-
-        Creates a diffusive wave connection between to open water storages.
+        &reachtype) cmf::river::Manning_Diffusive::Manning_Diffusive Creates a
+        diffusive wave connection between to open water storages.
 
         Parameters:
         -----------
@@ -5541,13 +5547,14 @@ class Manning_Kinematic(Manning):
 
 
         q_{Manning}&=& A R^{\\frac 2 3} \\sqrt{\\frac {\\Delta_z} n}
-        \\\\ A &=& \\frac V l \\mbox{, (Crosssectional area of the
-        wetted crossection, Volume per length)} \\\\ R &=& \\frac A
-        {P(d)} \\\\ P(d) &=& \\mbox{ the perimeter of the wetted
-        crosssection, a function of reach depth} \\\\ d(V) &=& \\mbox{
-        the depth of the reach a function of the volume} \\\\ \\Delta_z
-        &=& \\frac{\\|z_1 - z_2\\|}{l} \\mbox{ Slope of the reach}
-        \\\\ n&=&\\mbox{Manning friction number} 
+        \\\\   A &=& \\frac V l \\mbox{, (Crosssectional area of the
+        wetted crossection, Volume per length)} \\\\   R &=& \\frac A
+        {P(d)} \\\\   P(d) &=& \\mbox{ the perimeter of the wetted
+        crosssection, a function of reach depth} \\\\   d(V) &=& \\mbox{
+        the depth of the reach a function of the volume} \\\\
+        \\Delta_z &=& \\frac{\\|z_1 - z_2\\|}{l} \\mbox{ Slope of
+        the reach} \\\\ n&=&\\mbox{Manning friction number}
+
 
 
 
@@ -5562,9 +5569,8 @@ class Manning_Kinematic(Manning):
         __init__(Manning_Kinematic self, cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype) -> Manning_Kinematic
         Manning_Kinematic(cmf::river::OpenWaterStorage::ptr left,
         cmf::water::flux_node::ptr right, const cmf::river::IChannel
-        &reachtype)
-
-        Creates a kinematic wave connection between to open water storages.
+        &reachtype) cmf::river::Manning_Kinematic::Manning_Kinematic Creates a
+        kinematic wave connection between to open water storages.
 
         Parameters:
         -----------
@@ -5615,7 +5621,8 @@ class CanopyOverflow(flux_connection):
         r"""
         __init__(CanopyOverflow self, cmf::water::WaterStorage::ptr Canopy, cmf::water::flux_node::ptr target, Cell cell) -> CanopyOverflow
         CanopyOverflow(cmf::water::WaterStorage::ptr Canopy,
-        cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell) 
+        cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell)
+        cmf::upslope::connections::CanopyOverflow::CanopyOverflow
         """
         _cmf_core.CanopyOverflow_swiginit(self, _cmf_core.new_CanopyOverflow(*args, **kwargs))
     use_for_cell = _swig_new_static_method(_cmf_core.CanopyOverflow_use_for_cell)
@@ -5675,7 +5682,8 @@ class RutterInterception(flux_connection):
         r"""
         __init__(RutterInterception self, cmf::water::WaterStorage::ptr Canopy, cmf::water::flux_node::ptr target, Cell cell) -> RutterInterception
         RutterInterception(cmf::water::WaterStorage::ptr Canopy,
-        cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell) 
+        cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell)
+        cmf::upslope::connections::RutterInterception::RutterInterception
         """
         _cmf_core.RutterInterception_swiginit(self, _cmf_core.new_RutterInterception(*args, **kwargs))
     use_for_cell = _swig_new_static_method(_cmf_core.RutterInterception_use_for_cell)
@@ -5710,7 +5718,7 @@ class TempIndexSnowMelt(flux_connection):
         TempIndexSnowMelt(cmf::water::WaterStorage::ptr snow,
         cmf::water::flux_node::ptr surface_water, cmf::upslope::Cell &cell,
         real rate=7.0)
-
+        cmf::upslope::connections::TempIndexSnowMelt::TempIndexSnowMelt
         Creates a new snow melt connection.
 
         Parameters:
@@ -5746,7 +5754,8 @@ class EnergyBudgetSnowMelt(flux_connection):
         r"""
         __init__(EnergyBudgetSnowMelt self, cmf::water::WaterStorage::ptr snow, cmf::water::flux_node::ptr surface_water, Cell cell) -> EnergyBudgetSnowMelt
         EnergyBudgetSnowMelt(cmf::water::WaterStorage::ptr snow,
-        cmf::water::flux_node::ptr surface_water, cmf::upslope::Cell &cell) 
+        cmf::water::flux_node::ptr surface_water, cmf::upslope::Cell &cell)
+        cmf::upslope::connections::EnergyBudgetSnowMelt::EnergyBudgetSnowMelt
         """
         _cmf_core.EnergyBudgetSnowMelt_swiginit(self, _cmf_core.new_EnergyBudgetSnowMelt(*args, **kwargs))
     use_for_cell = _swig_new_static_method(_cmf_core.EnergyBudgetSnowMelt_use_for_cell)
@@ -5775,8 +5784,8 @@ class Rainfall(flux_connection):
         __init__(Rainfall self, cmf::water::flux_node::ptr target, Cell cell, bool getthroughfall=True, bool getintercepted=True) -> Rainfall
         Rainfall(cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell,
         bool getthroughfall=true, bool getintercepted=true)
-
-        Creates a new Rainfall connection. 
+        cmf::upslope::connections::Rainfall::Rainfall Creates a new Rainfall
+        connection. 
         """
         _cmf_core.Rainfall_swiginit(self, _cmf_core.new_Rainfall(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_Rainfall
@@ -5800,7 +5809,7 @@ class Snowfall(flux_connection):
         r"""
         __init__(Snowfall self, cmf::water::flux_node::ptr target, Cell cell) -> Snowfall
         Snowfall(cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell)
-
+        cmf::upslope::connections::Snowfall::Snowfall
         """
         _cmf_core.Snowfall_swiginit(self, _cmf_core.new_Snowfall(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_Snowfall
@@ -5860,7 +5869,8 @@ class MatrixInfiltration(flux_connection):
         r"""
         __init__(MatrixInfiltration self, cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater) -> MatrixInfiltration
         MatrixInfiltration(cmf::upslope::SoilLayer::ptr soilwater,
-        cmf::water::flux_node::ptr surfacewater) 
+        cmf::water::flux_node::ptr surfacewater)
+        cmf::upslope::connections::MatrixInfiltration::MatrixInfiltration
         """
         _cmf_core.MatrixInfiltration_swiginit(self, _cmf_core.new_MatrixInfiltration(*args, **kwargs))
     use_for_cell = _swig_new_static_method(_cmf_core.MatrixInfiltration_use_for_cell)
@@ -5949,7 +5959,8 @@ class GreenAmptInfiltration(flux_connection):
         r"""
         __init__(GreenAmptInfiltration self, cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater) -> GreenAmptInfiltration
         GreenAmptInfiltration(cmf::upslope::SoilLayer::ptr soilwater,
-        cmf::water::flux_node::ptr surfacewater) 
+        cmf::water::flux_node::ptr surfacewater)
+        cmf::upslope::connections::GreenAmptInfiltration::GreenAmptInfiltration
         """
         _cmf_core.GreenAmptInfiltration_swiginit(self, _cmf_core.new_GreenAmptInfiltration(*args, **kwargs))
     use_for_cell = _swig_new_static_method(_cmf_core.GreenAmptInfiltration_use_for_cell)
@@ -6000,7 +6011,7 @@ class ConceptualInfiltration(flux_connection):
         __init__(ConceptualInfiltration self, cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater, real W0=0.9) -> ConceptualInfiltration
         ConceptualInfiltration(cmf::upslope::SoilLayer::ptr soilwater,
         cmf::water::flux_node::ptr surfacewater, real W0=0.9)
-
+        cmf::upslope::connections::ConceptualInfiltration::ConceptualInfiltration
         Creates the connection between surfacewater and first soil layer.
 
         Parameters:
@@ -6047,7 +6058,8 @@ class SWATPercolation(flux_connection):
         r"""
         __init__(SWATPercolation self, cmf::upslope::SoilLayer::ptr upperLayer, cmf::upslope::SoilLayer::ptr lowerLayer) -> SWATPercolation
         SWATPercolation(cmf::upslope::SoilLayer::ptr upperLayer,
-        cmf::upslope::SoilLayer::ptr lowerLayer) 
+        cmf::upslope::SoilLayer::ptr lowerLayer)
+        cmf::upslope::connections::SWATPercolation::SWATPercolation
         """
         _cmf_core.SWATPercolation_swiginit(self, _cmf_core.new_SWATPercolation(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_SWATPercolation
@@ -6094,10 +6106,9 @@ class Richards(flux_connection):
         r"""
         __init__(Richards self, cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> Richards
         Richards(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr
-        right)
-
-        Creates a Richards equation connection between two soil layers (left
-        and right, rather top and bottom) of the same cell. 
+        right) cmf::upslope::connections::Richards::Richards Creates a
+        Richards equation connection between two soil layers (left and right,
+        rather top and bottom) of the same cell. 
         """
         _cmf_core.Richards_swiginit(self, _cmf_core.new_Richards(*args, **kwargs))
     use_for_cell = _swig_new_static_method(_cmf_core.Richards_use_for_cell)
@@ -6136,7 +6147,8 @@ class FreeDrainagePercolation(flux_connection):
         r"""
         __init__(FreeDrainagePercolation self, cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> FreeDrainagePercolation
         FreeDrainagePercolation(cmf::upslope::SoilLayer::ptr left,
-        cmf::water::flux_node::ptr right) 
+        cmf::water::flux_node::ptr right)
+        cmf::upslope::connections::FreeDrainagePercolation::FreeDrainagePercolation
         """
         _cmf_core.FreeDrainagePercolation_swiginit(self, _cmf_core.new_FreeDrainagePercolation(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_FreeDrainagePercolation
@@ -6188,9 +6200,8 @@ class LayerBypass(flux_connection):
         __init__(LayerBypass self, cmf::water::flux_node::ptr left, cmf::upslope::SoilLayer::ptr right, real Kmax=100., real w0=0.0, real beta=1.0) -> LayerBypass
         LayerBypass(cmf::water::flux_node::ptr left,
         cmf::upslope::SoilLayer::ptr right, real Kmax=100., real w0=0.0, real
-        beta=1.0)
-
-        Creates a layer bypass connection.
+        beta=1.0) cmf::upslope::connections::LayerBypass::LayerBypass Creates
+        a layer bypass connection.
 
         Parameters:
         -----------
@@ -6274,7 +6285,9 @@ class SuctionStress(RootUptakeStressFunction):
         r"""
         __init__(SuctionStress self, real P0=1e308, real P1=1e307, real P2=-5, real P3=-160) -> SuctionStress
         __init__(SuctionStress self, SuctionStress other) -> SuctionStress
-        SuctionStress(const SuctionStress &other) 
+        SuctionStress(real P0=1e308, real P1=1e307, real P2=-5, real
+        P3=-160) cmf::upslope::ET::SuctionStress::SuctionStress Creates a new
+        suction stress function. 
         """
         _cmf_core.SuctionStress_swiginit(self, _cmf_core.new_SuctionStress(*args))
     copy = _swig_new_instance_method(_cmf_core.SuctionStress_copy)
@@ -6317,9 +6330,9 @@ class ContentStress(RootUptakeStressFunction):
         r"""
         __init__(ContentStress self, real theta_d=-1, real theta_w=-1) -> ContentStress
         ContentStress(real theta_d=-1, real theta_w=-1)
-
-        Creates a new ContentStress for critical water content theta_d in vol
-        Water/vol Soil and wilting point theta_w. 
+        cmf::upslope::ET::ContentStress::ContentStress Creates a new
+        ContentStress for critical water content theta_d in vol Water/vol Soil
+        and wilting point theta_w. 
         """
         _cmf_core.ContentStress_swiginit(self, _cmf_core.new_ContentStress(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_ContentStress
@@ -6347,7 +6360,16 @@ class VolumeStress(RootUptakeStressFunction):
         r"""
         __init__(VolumeStress self, real V1, real V0) -> VolumeStress
         __init__(VolumeStress self, VolumeStress other) -> VolumeStress
-        VolumeStress(const VolumeStress &other) 
+        VolumeStress(real V1, real V0)
+        cmf::upslope::ET::VolumeStress::VolumeStress Creates a new water
+        stress function for water volume.
+
+        Parameters:
+        -----------
+
+        V1:  Water content in :math:`m^3` without stress ( ET=ETpot)
+
+        V0:  Water content in :math:`m^3` with full stress ( ET=0.0) 
         """
         _cmf_core.VolumeStress_swiginit(self, _cmf_core.new_VolumeStress(*args))
     copy = _swig_new_instance_method(_cmf_core.VolumeStress_copy)
@@ -6372,7 +6394,8 @@ class log_wind_profile(aerodynamic_resistance):
     def __init__(self, *args, **kwargs):
         r"""
         __init__(log_wind_profile self, Cell _cell) -> log_wind_profile
-        log_wind_profile(cmf::upslope::Cell &_cell) 
+        log_wind_profile(cmf::upslope::Cell &_cell)
+        cmf::atmosphere::log_wind_profile::log_wind_profile
         """
         _cmf_core.log_wind_profile_swiginit(self, _cmf_core.new_log_wind_profile(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_log_wind_profile
@@ -6423,7 +6446,8 @@ class constantETpot(stressedET):
         r"""
         __init__(constantETpot self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, double constantETpot_value) -> constantETpot
         constantETpot(cmf::upslope::SoilLayer::ptr source,
-        cmf::water::flux_node::ptr ET_target, double constantETpot_value) 
+        cmf::water::flux_node::ptr ET_target, double constantETpot_value)
+        cmf::upslope::ET::constantETpot::constantETpot
         """
         _cmf_core.constantETpot_swiginit(self, _cmf_core.new_constantETpot(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_constantETpot
@@ -6453,7 +6477,7 @@ class timeseriesETpot(stressedET):
         __init__(timeseriesETpot self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, timeseries ETpot_values) -> timeseriesETpot
         timeseriesETpot(cmf::upslope::SoilLayer::ptr source,
         cmf::water::flux_node::ptr ET_target, cmf::math::timeseries
-        ETpot_values) 
+        ETpot_values) cmf::upslope::ET::timeseriesETpot::timeseriesETpot
         """
         _cmf_core.timeseriesETpot_swiginit(self, _cmf_core.new_timeseriesETpot(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_timeseriesETpot
@@ -6476,25 +6500,25 @@ class PenmanMonteithET(stressedET):
         \\gamma\\left(1+\\frac{r_s}{r_a}\\right)} \\mbox{ FAO 1998,
         Eq. 3} \\\\ \\mbox{With:} \\\\ \\Delta &=& 4098
         \\frac{0.6108 e^{17.27 T}}{(T+237.3)^2} \\frac{kPa}{^\\circ C}
-        \\mbox{ (FAO 1998, Eq. 13)} \\\\ T &=& \\mbox{Actual
-        Temperature in } ^\\circ C \\\\ R_n &=& \\mbox{net Radiation
-        (see Atmosphere) in } \\frac{MJ}{m^2day} \\\\ G &=& 0 \\
+        \\mbox{   (FAO 1998, Eq. 13)} \\\\ T &=& \\mbox{Actual
+        Temperature in } ^\\circ C  \\\\ R_n &=& \\mbox{net Radiation
+        (see Atmosphere) in } \\frac{MJ}{m^2day}   \\\\ G &=& 0 \\
         \\frac{MJ}{m^2day} \\mbox{ if daily average (FAO 1998, Eq. 42)}
-        \\\\ && 0.1 R_n \\ \\mbox{ if day time (FAO 1998, Eq. 45)}
-        \\\\ && 0.5 R_n \\ \\mbox{ if night time (FAO 1998, Eq. 46)}
-        \\\\ \\gamma &=& \\frac{c_p P}{\\epsilon \\lambda}
+        \\\\     && 0.1 R_n \\ \\mbox{ if day time (FAO 1998, Eq. 45)}
+        \\\\     && 0.5 R_n \\ \\mbox{ if night time (FAO 1998, Eq.
+        46)} \\\\ \\gamma &=& \\frac{c_p P}{\\epsilon \\lambda}
         \\mbox{ (FAO 1998,Eq. 8): Psychrometric constant }
         \\frac{kPa}{^\\circ C} \\\\ c_p &=& 0.001013
         \\frac{MJ}{kg\\ ^\\circ C}\\mbox{ specific heat at constant
         pressure } \\\\ P &=& 101.3
-        \\left(\\frac{293-0.0065z}{293}\\right)^{5.26} \\mbox{ (FAO
+        \\left(\\frac{293-0.0065z}{293}\\right)^{5.26}  \\mbox{ (FAO
         1998,Eq. 7)} \\\\ \\epsilon &=& 0.622 \\frac{mol/g \\mbox{
         vapor}}{mol/g \\mbox{ liquid water}} \\\\ \\lambda &=& 2.45
         \\frac{MJ}{kg} \\mbox{ (FAO 1998,Eq. 8)} \\\\ R &=& 0.287
-        \\frac{kJ}{kg\\ k}\\mbox{ Spec. gas const.} \\\\ \\rho_a
-        &=& \\frac{P}{1.01(T+273)R} \\mbox{ (FAO 1998,Box. 6)} \\\\
-        e_s &=& \\mbox{ Sat. vapor press. } [kPa] \\\\ e_a &=& \\mbox{
-        Act. vapor press. } [kPa] \\\\ r_a &=&
+        \\frac{kJ}{kg\\ k}\\mbox{ Spec. gas const.}        \\\\
+        \\rho_a &=&     \\frac{P}{1.01(T+273)R} \\mbox{ (FAO 1998,Box.
+        6)} \\\\ e_s &=& \\mbox{ Sat. vapor press. } [kPa] \\\\ e_a
+        &=& \\mbox{ Act. vapor press. } [kPa] \\\\ r_a &=&
         \\frac{\\ln\\left(\\frac{2-d}{z_{om}}\\right)\\ln\\left(\\frac{2-d}{z_{oh}}\\right)}{k^2
         u_2} \\mbox{ (FAO 1998, Eq. 4/Box 4} \\frac s m \\\\ &&
         d=\\frac 2 3 h,z_{om}=0.123 h,z_{oh}=0.1 z_{om}, k=0.41 \\\\ h
@@ -6517,7 +6541,8 @@ class PenmanMonteithET(stressedET):
         r"""
         __init__(PenmanMonteithET self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> PenmanMonteithET
         PenmanMonteithET(cmf::upslope::SoilLayer::ptr source,
-        cmf::water::flux_node::ptr ET_target) 
+        cmf::water::flux_node::ptr ET_target)
+        cmf::upslope::ET::PenmanMonteithET::PenmanMonteithET
         """
         _cmf_core.PenmanMonteithET_swiginit(self, _cmf_core.new_PenmanMonteithET(*args, **kwargs))
     r_s = _swig_new_static_method(_cmf_core.PenmanMonteithET_r_s)
@@ -6566,7 +6591,8 @@ class PriestleyTaylorET(stressedET):
         r"""
         __init__(PriestleyTaylorET self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, real alpha=1.26) -> PriestleyTaylorET
         PriestleyTaylorET(cmf::upslope::SoilLayer::ptr source,
-        cmf::water::flux_node::ptr ET_target, real alpha=1.26) 
+        cmf::water::flux_node::ptr ET_target, real alpha=1.26)
+        cmf::upslope::ET::PriestleyTaylorET::PriestleyTaylorET
         """
         _cmf_core.PriestleyTaylorET_swiginit(self, _cmf_core.new_PriestleyTaylorET(*args, **kwargs))
     use_for_cell = _swig_new_static_method(_cmf_core.PriestleyTaylorET_use_for_cell)
@@ -6626,7 +6652,8 @@ class HargreaveET(stressedET):
         r"""
         __init__(HargreaveET self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> HargreaveET
         HargreaveET(cmf::upslope::SoilLayer::ptr source,
-        cmf::water::flux_node::ptr ET_target) 
+        cmf::water::flux_node::ptr ET_target)
+        cmf::upslope::ET::HargreaveET::HargreaveET
         """
         _cmf_core.HargreaveET_swiginit(self, _cmf_core.new_HargreaveET(*args, **kwargs))
     use_for_cell = _swig_new_static_method(_cmf_core.HargreaveET_use_for_cell)
@@ -6661,7 +6688,8 @@ class OudinET(stressedET):
         r"""
         __init__(OudinET self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, double K1=100, double K2=5) -> OudinET
         OudinET(cmf::upslope::SoilLayer::ptr source,
-        cmf::water::flux_node::ptr ET_target, double K1=100, double K2=5) 
+        cmf::water::flux_node::ptr ET_target, double K1=100, double K2=5)
+        cmf::upslope::ET::OudinET::OudinET
         """
         _cmf_core.OudinET_swiginit(self, _cmf_core.new_OudinET(*args, **kwargs))
     JensenHaise1963 = _swig_new_static_method(_cmf_core.OudinET_JensenHaise1963)
@@ -6707,7 +6735,7 @@ class TurcET(stressedET):
         r"""
         __init__(TurcET self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> TurcET
         TurcET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr
-        ET_target) 
+        ET_target) cmf::upslope::ET::TurcET::TurcET
         """
         _cmf_core.TurcET_swiginit(self, _cmf_core.new_TurcET(*args, **kwargs))
     use_for_cell = _swig_new_static_method(_cmf_core.TurcET_use_for_cell)
@@ -6731,7 +6759,8 @@ class CanopyStorageEvaporation(flux_connection):
         r"""
         __init__(CanopyStorageEvaporation self, cmf::water::WaterStorage::ptr CanopyStorage, cmf::water::flux_node::ptr ET_target, Cell cell) -> CanopyStorageEvaporation
         CanopyStorageEvaporation(cmf::water::WaterStorage::ptr CanopyStorage,
-        cmf::water::flux_node::ptr ET_target, cmf::upslope::Cell &cell) 
+        cmf::water::flux_node::ptr ET_target, cmf::upslope::Cell &cell)
+        cmf::upslope::ET::CanopyStorageEvaporation::CanopyStorageEvaporation
         """
         _cmf_core.CanopyStorageEvaporation_swiginit(self, _cmf_core.new_CanopyStorageEvaporation(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_CanopyStorageEvaporation
@@ -6755,7 +6784,8 @@ class PenmanEvaporation(flux_connection):
         __init__(PenmanEvaporation self, cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr Evap_target, Meteorology meteo) -> PenmanEvaporation
         PenmanEvaporation(cmf::river::OpenWaterStorage::ptr source,
         cmf::water::flux_node::ptr Evap_target, const
-        cmf::atmosphere::Meteorology &meteo) 
+        cmf::atmosphere::Meteorology &meteo)
+        cmf::upslope::ET::PenmanEvaporation::PenmanEvaporation
         """
         _cmf_core.PenmanEvaporation_swiginit(self, _cmf_core.new_PenmanEvaporation(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_PenmanEvaporation
@@ -6777,7 +6807,7 @@ class ShuttleworthWallace(aerodynamic_resistance):
 
 
         \\frac{T_{act}}{T_{pot}} = \\begin{cases}1 & pF \\le 3.35
-        \\\\ \\frac{pF - 4.2}{3.35 - 4.2} & pF \\in [3.35 .. 4.2]
+        \\\\  \\frac{pF - 4.2}{3.35 - 4.2} & pF \\in [3.35 .. 4.2]
         \\\\ 0 & pF \\ge 4.2\\end{cases} 
 
     Calculation procedure, as in BROOK 90:
@@ -6840,9 +6870,8 @@ class ShuttleworthWallace(aerodynamic_resistance):
         r"""
         __init__(ShuttleworthWallace self, Cell cell, bool allow_dew=True) -> ShuttleworthWallace
         ShuttleworthWallace(cmf::upslope::Cell &cell, bool allow_dew=true)
-
-        Calculates the transpiration and the soil evaporation from dry
-        surfaces. 
+        cmf::upslope::ET::ShuttleworthWallace::ShuttleworthWallace Calculates
+        the transpiration and the soil evaporation from dry surfaces. 
         """
         _cmf_core.ShuttleworthWallace_swiginit(self, _cmf_core.new_ShuttleworthWallace(*args, **kwargs))
     use_for_cell = _swig_new_static_method(_cmf_core.ShuttleworthWallace_use_for_cell)
@@ -6867,7 +6896,7 @@ class SW_transpiration(flux_connection):
         __init__(SW_transpiration self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_transpiration
         SW_transpiration(cmf::upslope::SoilLayer::ptr source,
         cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)
-
+        cmf::upslope::ET::SW_transpiration::SW_transpiration
         """
         _cmf_core.SW_transpiration_swiginit(self, _cmf_core.new_SW_transpiration(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_SW_transpiration
@@ -6891,7 +6920,7 @@ class SW_evap_from_layer(flux_connection):
         __init__(SW_evap_from_layer self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_layer
         SW_evap_from_layer(cmf::upslope::SoilLayer::ptr source,
         cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)
-
+        cmf::upslope::ET::SW_evap_from_layer::SW_evap_from_layer
         """
         _cmf_core.SW_evap_from_layer_swiginit(self, _cmf_core.new_SW_evap_from_layer(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_SW_evap_from_layer
@@ -6915,7 +6944,7 @@ class SW_evap_from_canopy(flux_connection):
         __init__(SW_evap_from_canopy self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_canopy
         SW_evap_from_canopy(cmf::water::WaterStorage::ptr source,
         cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)
-
+        cmf::upslope::ET::SW_evap_from_canopy::SW_evap_from_canopy
         """
         _cmf_core.SW_evap_from_canopy_swiginit(self, _cmf_core.new_SW_evap_from_canopy(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_SW_evap_from_canopy
@@ -6939,7 +6968,7 @@ class SW_evap_from_snow(flux_connection):
         __init__(SW_evap_from_snow self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_snow
         SW_evap_from_snow(cmf::water::WaterStorage::ptr source,
         cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)
-
+        cmf::upslope::ET::SW_evap_from_snow::SW_evap_from_snow
         """
         _cmf_core.SW_evap_from_snow_swiginit(self, _cmf_core.new_SW_evap_from_snow(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_SW_evap_from_snow
@@ -6963,7 +6992,7 @@ class SW_evap_from_surfacewater(flux_connection):
         __init__(SW_evap_from_surfacewater self, cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_surfacewater
         SW_evap_from_surfacewater(cmf::river::OpenWaterStorage::ptr source,
         cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)
-
+        cmf::upslope::ET::SW_evap_from_surfacewater::SW_evap_from_surfacewater
         """
         _cmf_core.SW_evap_from_surfacewater_swiginit(self, _cmf_core.new_SW_evap_from_surfacewater(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_SW_evap_from_surfacewater
@@ -7041,9 +7070,7 @@ class project(object):
         r"""
         __init__(project self, std::string solute_names="") -> project
         project(std::string
-        solute_names="")
-
-        Creates a new project.
+        solute_names="") cmf::project::project Creates a new project.
 
         Parameters:
         -----------
@@ -7272,9 +7299,7 @@ class BDF2(Integrator):
         __init__(BDF2 self, state_list states, real epsilon=1e-9, Time tStepMin=cmf::math::timespan(10)) -> BDF2
         __init__(BDF2 self, Integrator templ) -> BDF2
         BDF2(const Integrator
-        &templ)
-
-        Constructs a new BDF2 integrator.
+        &templ) cmf::math::BDF2::BDF2 Constructs a new BDF2 integrator.
 
         Parameters:
         -----------
@@ -7304,8 +7329,8 @@ class ExplicitEuler_fixed(Integrator):
         __init__(ExplicitEuler_fixed self) -> ExplicitEuler_fixed
         __init__(ExplicitEuler_fixed self, Integrator copy) -> ExplicitEuler_fixed
         ExplicitEuler_fixed(const Integrator &copy)
+        cmf::math::ExplicitEuler_fixed::ExplicitEuler_fixed copy constructor
 
-        copy constructor 
         """
         _cmf_core.ExplicitEuler_fixed_swiginit(self, _cmf_core.new_ExplicitEuler_fixed(*args))
     __swig_destroy__ = _cmf_core.delete_ExplicitEuler_fixed
@@ -7332,9 +7357,15 @@ class HeunIntegrator(Integrator):
         __init__(HeunIntegrator self, state_list states, real Alpha=0.5) -> HeunIntegrator
         __init__(HeunIntegrator self, real Alpha=0.5) -> HeunIntegrator
         __init__(HeunIntegrator self, Integrator copy) -> HeunIntegrator
-        HeunIntegrator(const Integrator &copy)
+        HeunIntegrator(real Alpha=0.5)
+        cmf::math::HeunIntegrator::HeunIntegrator Constructs a new Heun
+        integrator.
 
-        copy constructor 
+        Parameters:
+        -----------
+
+        Alpha:  Weight factor :math:`\\alpha` to weight :math:`f(y^n)` and :math:`f(y^{n+1})`
+
         """
         _cmf_core.HeunIntegrator_swiginit(self, _cmf_core.new_HeunIntegrator(*args))
     __swig_destroy__ = _cmf_core.delete_HeunIntegrator
@@ -7360,8 +7391,7 @@ class ImplicitEuler(Integrator):
         __init__(ImplicitEuler self, real epsilon=1e-9, Time tStepMin=cmf::math::timespan(10)) -> ImplicitEuler
         __init__(ImplicitEuler self, Integrator arg2) -> ImplicitEuler
         ImplicitEuler(const Integrator &)
-
-        copy constructor 
+        cmf::math::ImplicitEuler::ImplicitEuler copy constructor 
         """
         _cmf_core.ImplicitEuler_swiginit(self, _cmf_core.new_ImplicitEuler(*args))
     __swig_destroy__ = _cmf_core.delete_ImplicitEuler
@@ -7387,8 +7417,8 @@ class RKFIntegrator(Integrator):
         __init__(RKFIntegrator self, real epsilon=1e-9, Time dt_min=cmf::math::timespan(1000)) -> RKFIntegrator
         RKFIntegrator(real epsilon=1e-9, cmf::math::Time
         dt_min=cmf::math::timespan(1000))
-
-        Constructs a new RKFIntegrator.
+        cmf::math::RKFIntegrator::RKFIntegrator Constructs a new
+        RKFIntegrator.
 
         Parameters:
         -----------
@@ -7414,8 +7444,9 @@ class CVodeOptions(object):
     See Hindmarsh, A., Serban, R. and Reynolds, D.: User Documentation for
     cvode v3.1.0, 2017, UCRL-SM-208108
 
-    Usage example: >>>solver = CVodeDens(p, 1e-9)
-    >>>solver.options.max_order = 2
+    Usage example:
+
+    >solver = CVodeDens(p, 1e-9) >solver.options.max_order = 2
 
     C++ includes: cvode.h 
     """
@@ -7432,7 +7463,7 @@ class CVodeOptions(object):
     def __init__(self, *args, **kwargs):
         r"""
         __init__(CVodeOptions self) -> CVodeOptions
-        CVodeOptions() 
+        CVodeOptions() cmf::math::CVodeOptions::CVodeOptions
         """
         _cmf_core.CVodeOptions_swiginit(self, _cmf_core.new_CVodeOptions(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_CVodeOptions
@@ -7532,7 +7563,7 @@ class CVodeDense(CVodeBase):
         r"""
         __init__(CVodeDense self, state_list states, real epsilon=1e-9) -> CVodeDense
         __init__(CVodeDense self, real epsilon=1e-9) -> CVodeDense
-        CVodeDense(real epsilon=1e-9) 
+        CVodeDense(real epsilon=1e-9) cmf::math::CVodeDense::CVodeDense
         """
         _cmf_core.CVodeDense_swiginit(self, _cmf_core.new_CVodeDense(*args))
     copy = _swig_new_instance_method(_cmf_core.CVodeDense_copy)
@@ -7556,7 +7587,7 @@ class CVodeAdams(CVodeBase):
         r"""
         __init__(CVodeAdams self, real epsilon=1e-9) -> CVodeAdams
         __init__(CVodeAdams self, state_list states, real epsilon=1e-9) -> CVodeAdams
-        CVodeAdams(const cmf::math::state_list &states, real epsilon=1e-9) 
+        CVodeAdams(real epsilon=1e-9) cmf::math::CVodeAdams::CVodeAdams
         """
         _cmf_core.CVodeAdams_swiginit(self, _cmf_core.new_CVodeAdams(*args))
     copy = _swig_new_instance_method(_cmf_core.CVodeAdams_copy)
@@ -7581,8 +7612,8 @@ class CVodeBanded(CVodeBase):
         r"""
         __init__(CVodeBanded self, real epsilon=1e-9, int w=5) -> CVodeBanded
         __init__(CVodeBanded self, state_list states, real epsilon=1e-9, int w=5) -> CVodeBanded
-        CVodeBanded(const cmf::math::state_list &states, real epsilon=1e-9,
-        int w=5) 
+        CVodeBanded(real epsilon=1e-9, int w=5)
+        cmf::math::CVodeBanded::CVodeBanded
         """
         _cmf_core.CVodeBanded_swiginit(self, _cmf_core.new_CVodeBanded(*args))
     copy = _swig_new_instance_method(_cmf_core.CVodeBanded_copy)
@@ -7607,7 +7638,7 @@ class CVodeDiag(CVodeBase):
         r"""
         __init__(CVodeDiag self, state_list states, real epsilon=1e-9) -> CVodeDiag
         __init__(CVodeDiag self, real epsilon=1e-9) -> CVodeDiag
-        CVodeDiag(real epsilon=1e-9) 
+        CVodeDiag(real epsilon=1e-9) cmf::math::CVodeDiag::CVodeDiag
         """
         _cmf_core.CVodeDiag_swiginit(self, _cmf_core.new_CVodeDiag(*args))
     copy = _swig_new_instance_method(_cmf_core.CVodeDiag_copy)
@@ -7633,7 +7664,8 @@ class CVodeKrylov(CVodeBase):
         r"""
         __init__(CVodeKrylov self, state_list states, real epsilon=1e-9, int w=5, char p='L') -> CVodeKrylov
         __init__(CVodeKrylov self, real epsilon=1e-9, int w=5, char p='L') -> CVodeKrylov
-        CVodeKrylov(real epsilon=1e-9, int w=5, char p='L') 
+        CVodeKrylov(real epsilon=1e-9, int w=5, char p='L')
+        cmf::math::CVodeKrylov::CVodeKrylov
         """
         _cmf_core.CVodeKrylov_swiginit(self, _cmf_core.new_CVodeKrylov(*args))
     copy = _swig_new_instance_method(_cmf_core.CVodeKrylov_copy)
@@ -7651,8 +7683,8 @@ class CVodeKLU(CVodeBase):
         r"""
         __init__(CVodeKLU self, real epsilon=1e-9) -> CVodeKLU
         __init__(CVodeKLU self, state_list states, real epsilon=1e-9) -> CVodeKLU
-        CVodeKLU(const
-        cmf::math::state_list &states, real epsilon=1e-9) 
+        CVodeKLU(real
+        epsilon=1e-9) cmf::math::CVodeKLU::CVodeKLU
         """
         _cmf_core.CVodeKLU_swiginit(self, _cmf_core.new_CVodeKLU(*args))
     copy = _swig_new_instance_method(_cmf_core.CVodeKLU_copy)
@@ -7679,9 +7711,8 @@ class MultiIntegrator(Integrator):
         r"""
         __init__(MultiIntegrator self, Integrator template_integrator, int count) -> MultiIntegrator
         MultiIntegrator(const cmf::math::Integrator &template_integrator, int
-        count)
-
-        Creates a new MultiIntegrator.
+        count) cmf::math::MultiIntegrator::MultiIntegrator Creates a new
+        MultiIntegrator.
 
         Parameters:
         -----------
@@ -7719,8 +7750,8 @@ class SoluteWaterIntegrator(Integrator):
         SoluteWaterIntegrator(const cmf::water::solute_vector &solutes, const
         cmf::math::Integrator &water_integrator, const cmf::math::Integrator
         &solute_integrator, const cmf::math::state_list &states)
-
-        Creates a new SoluteWaterIntegrator.
+        cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator Creates a new
+        SoluteWaterIntegrator.
 
         Parameters:
         -----------

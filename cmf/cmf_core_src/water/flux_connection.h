@@ -37,8 +37,7 @@ namespace cmf {
 		/// @brief The connections between the nodes (boundary conditions, storages) of the water network
         ///
 		/// The connections in cmf hold the processes for the calculation of fluxes between water storages and model boundaries
-		/// @todo Elaborate on this
-
+		///
 		/// @ingroup connections
 		/// Represents a connection between flux_nodes, where water fluxes occur. 
 		class flux_connection 
