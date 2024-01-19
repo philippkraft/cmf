@@ -26,7 +26,6 @@ typedef double real;
 const real REAL_MAX = std::numeric_limits<real>::max();
 #endif
 
-const std::string __compiledate__ = std::string("cmf compiled ") + std::string(__DATE__) + " - " + std::string(__TIME__);
 
 // Some helper functions
 /// Returns the minimum of two values

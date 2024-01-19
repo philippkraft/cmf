@@ -1,11 +1,9 @@
-# -*- coding: utf-8 -*-
 """
-Created on Tue May  2 12:33:44 2017
-
-@author: gh1961
+Shows the effect of a solute filtering flux connection
 """
-# %%
 import cmf
+import datetime
+
 
 p = cmf.project('no_filter filter')
 NF, F = p.solutes
@@ -19,20 +17,20 @@ q = cmf.LinearStorageConnection(source=W1, target=W2, residencetime=1.0)
 q.set_tracer_filter(F, 0.5)
 # %%
 W1.volume = 1.0
-W1.conc(NF, 1.0)
-W1.conc(F, 1.0)
+W1[NF].state = 1.0
+W1[F].state = 1.0
+
 W2.volume = 0.0
-W2.Solute(NF).state = 0.0
-W2.Solute(F).state = 0.0
+W2[NF].state = 0.0
+W2[F].state = 0.0
 # Create an integrator for the ODE represented by project p, with an error tolerance of 1e-9
 solver = cmf.CVodeAdams(p, 1e-9)
 # Import Python's datetime module
-import datetime
 
 # Set the intitial time of the solver
 solver.t = datetime.datetime(2012, 1, 1)
 # %%
-result = [[W1.Solute(NF).state, W2.Solute(NF).state, W1.Solute(F).state, W2.Solute(F).state] for t in
+result = [[W1[NF].state, W2[NF].state, W1[F].state, W2[F].state] for t in
           solver.run(datetime.datetime(2012, 1, 1), datetime.datetime(2012, 1, 7), datetime.timedelta(hours=1))]
 import pylab as plt
 

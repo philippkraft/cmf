@@ -188,3 +188,21 @@ real cmf::water::WaterbalanceFlux::calc_q(cmf::math::Time t) {
     if (q > 0) return q;
     else return 0.0;
 }
+
+cmf::water::PartitionFluxRoute::PartitionFluxRoute(flux_node::ptr source, flux_node::ptr target1,
+                                                   flux_node::ptr target2, real _fraction, bool _no_back_flow)
+        : flux_connection(target1, target2, "PartitionFluxRoute"), fraction(_fraction), no_back_flow(_no_back_flow), m_source(source)
+{
+    if (fraction < 0.0 || fraction > 1.0) {
+        throw std::runtime_error("PartitionFluxRoute: fraction must be in [0..1]");
+    }
+    RecalcAlways = true;
+}
+
+real cmf::water::PartitionFluxRoute::calc_q(cmf::math::Time t) {
+    real q_original = source()->flux_to(*left_node(), t);
+    if (q_original < 0 && no_back_flow) {
+        return 0.0;
+    }
+    return fraction * q_original;
+}

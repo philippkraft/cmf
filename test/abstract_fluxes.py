@@ -55,6 +55,15 @@ class TestAbstractFluxes(unittest.TestCase):
         for flux in np.arange(0, 10, 0.1):
             assert_flux(flux, flux)
 
+    def test_partition_flux(self):
+        p, w, o = get_project()
+        i = p.NewNeumannBoundary('input', w)
+        t0 = cmf.Time()
+        pfr = cmf.PartitionFluxRoute(i, w, o, 0.5)
+        for flux in np.arange(0, 10, 0.1):
+            i.flux = flux
+            self.assertAlmostEqual(w.flux_to(o, t0), flux * pfr.fraction)
+
     @unittest.skip('Issue #71')
     def test_multi_balance_fails(self):
         p, w, o = get_project()

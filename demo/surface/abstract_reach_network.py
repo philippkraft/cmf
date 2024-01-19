@@ -3,7 +3,7 @@ import numpy as np
 import time
 
 def SoluteWaterSolver(states, epsilon=1e-9):
-    wsolver = cmf.CVodeKrylov(epsilon)
+    wsolver = cmf.CVodeKLU(epsilon)
     ssolver = cmf.CVodeAdams(epsilon)
     return cmf.SoluteWaterIntegrator(states.solutes, wsolver, ssolver, states)
 
@@ -81,7 +81,7 @@ if __name__ == '__main__':
     from pylab import imshow, show
 
     print(f'{"solver":<25}level size {"init sec":<10}{"run sec":<10}{"method calls":<15}')
-    for solver_type in [cmf.CVodeKLU, cmf.CVodeKrylov, cmf.CVodeAdams]:
+    for solver_type in [SoluteWaterSolver, cmf.CVodeKLU, cmf.CVodeKrylov, cmf.CVodeAdams]:
         for level in range(1, 12):
             tstart = time.time()
             model = Model(level, solver_type, 100)

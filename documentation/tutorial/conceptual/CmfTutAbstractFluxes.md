@@ -149,3 +149,12 @@ This connection holds the state of a water storage constant getting or releasing
 to the other node of the connection. The flux between the nodes is proportional to
 the difference between the state of the storage and the defined target state of the 
 storage. This connection is called [ConstantStateFlux](@ref cmf::water::ConstantStateFlux).
+
+## Partitioning of a water flux calculated by another connection
+
+[PartitioningFluxRoute](@ref cmf::water::PartitioningFluxRoute) reads the flux between two nodes (source and target1) 
+and routes a fraction of the actual flux to a third node (target2) immediately and without a time lag. The PartitioningFluxRoute
+connects target1 with target2 but gets the flux from the other connection.
+
+This can be used for divides in the network, bypassing layers as in BROOK90 or leaky connections in conceptual models. Another
+option is to divide a water flux into a fast and slow path way. 

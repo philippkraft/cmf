@@ -24,7 +24,38 @@ namespace cmf {
 			WaterbalanceFlux(flux_node::ptr source, flux_node::ptr target);
 		};
 
-		/// @ingroup connections
+        /// @ingroup connections
+        /// @brief Routes a fraction of the flux calculated from a master flux_connection between source to target1
+        /// directly further to target2 without any timelag. The connection connects target 1 and target 2.
+        ///
+        /// \f[ q_{t1,t2} = f \cdot q_{s, t1}(t) \f]
+        ///
+        /// Where \f$ q_{t1,t2}\f$ is the flux from t1 to t2, f is the fraction and \f$ q_{s,t1}(t)\f$ is the original
+        /// flux
+        class PartitionFluxRoute : public flux_connection
+        {
+        private:
+            std::weak_ptr<flux_node> m_source;
+        protected:
+            real calc_q(cmf::math::Time t) override;
+            void NewNodes() {}
+        public:
+            /// @param source Water storage from which the water flows out. The flux is defined by some other flux connection between
+            /// @param target1 Target node (boundary condition or storage). The target of the master flux connection
+            /// @param target2 Target node (boundary condition or storage). Does not influence the strength of the flow
+            /// @param fraction Fraction of the source->target1 flow to be routed further to target2
+            /// @param no_back_flow If true (default), no flow between target 1 and target 2 occurs, if water is flowing from
+            ///                     target 1 to source. If set to false, in the case of water flowing from target 1 to source,
+            ///                     the fraction is also flowing from target 2 to target 1. No test if target 2 has water is made.
+            PartitionFluxRoute(flux_node::ptr source, flux_node::ptr target1, flux_node::ptr target2, real fraction, bool no_back_flow=true);
+            flux_node::ptr source() const {
+                return m_source.expired() ? flux_node::ptr() : flux_node::ptr(m_source);
+            }
+            real fraction;
+            bool no_back_flow;
+        };
+
+        /// @ingroup connections
 		/// @brief Flux from one node to another, controlled by the user or an external program, 
 		/// by changing the flux constant
 		///
