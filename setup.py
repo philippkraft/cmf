@@ -31,20 +31,7 @@ from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import customize_compiler
 from distutils.command.build_py import build_py
 
-version = '2.0.0b10'
-
-branchversion = version
-try:
-    from pygit2 import Repository
-    head = Repository('.').head.shorthand
-    if head != 'master':
-        branchversion = version + '.' + head
-except:
-    Repository = None
-
-print('cmf', branchversion)
-
-
+version = '2.0.0'
 
 swig = False
 openmp = False
@@ -259,7 +246,7 @@ def updateversion():
         fout = open('cmf/__init__.py', 'w')
         for line in module_code:
             if line.startswith('__version__'):
-                fout.write("__version__ = '{}'\n".format(branchversion))
+                fout.write("__version__ = '{}'\n".format(version))
             elif line.startswith('__compiletime__'):
                 fout.write("__compiletime__ = '{}'\n".format(time.ctime()))
             else:
