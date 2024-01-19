@@ -69,7 +69,7 @@ import weakref
 class SwigPyIterator(object):
     r"""Proxy of C++ swig::SwigPyIterator class."""
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
 
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined - class is abstract")
@@ -1146,7 +1146,7 @@ class SoluteReaction(object):
     C++ includes: reaction.h 
     """
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     get_flux = _swig_new_instance_method(_cmf_core.SoluteReaction_get_flux)
     __call__ = _swig_new_instance_method(_cmf_core.SoluteReaction___call__)
@@ -1187,7 +1187,7 @@ class SoluteConstantFluxReaction(SoluteReaction):
     C++ includes: reaction.h 
     """
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     flux = property(_cmf_core.SoluteConstantFluxReaction_flux_get, _cmf_core.SoluteConstantFluxReaction_flux_set, doc=r"""flux : real""")
 
@@ -1220,7 +1220,7 @@ class SoluteDecayReaction(SoluteReaction):
     C++ includes: reaction.h 
     """
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     decay = property(_cmf_core.SoluteDecayReaction_decay_get, _cmf_core.SoluteDecayReaction_decay_set, doc=r"""decay : real""")
 
@@ -1261,7 +1261,7 @@ class SoluteEquilibriumReaction(SoluteReaction):
     C++ includes: reaction.h 
     """
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     A = property(_cmf_core.SoluteEquilibriumReaction_A_get, _cmf_core.SoluteEquilibriumReaction_A_set, doc=r"""A : cmf::water::solute""")
     B = property(_cmf_core.SoluteEquilibriumReaction_B_get, _cmf_core.SoluteEquilibriumReaction_B_set, doc=r"""B : cmf::water::solute""")
@@ -1337,7 +1337,7 @@ class SoluteRateReaction(SoluteReaction):
     C++ includes: reaction.h 
     """
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     k_forward = property(_cmf_core.SoluteRateReaction_k_forward_get, _cmf_core.SoluteRateReaction_k_forward_set, doc=r"""k_forward : real""")
     k_back = property(_cmf_core.SoluteRateReaction_k_back_get, _cmf_core.SoluteRateReaction_k_back_set, doc=r"""k_back : real""")
@@ -1418,7 +1418,7 @@ class Solute1stOrderReaction(SoluteReaction):
     C++ includes: reaction.h 
     """
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     A = property(_cmf_core.Solute1stOrderReaction_A_get, _cmf_core.Solute1stOrderReaction_A_set, doc=r"""A : cmf::water::solute""")
     B = property(_cmf_core.Solute1stOrderReaction_B_get, _cmf_core.Solute1stOrderReaction_B_set, doc=r"""B : cmf::water::solute""")
@@ -1464,7 +1464,7 @@ class Solute2ndOrderReaction(SoluteReaction):
     C++ includes: reaction.h 
     """
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     A = property(_cmf_core.Solute2ndOrderReaction_A_get, _cmf_core.Solute2ndOrderReaction_A_set, doc=r"""A : cmf::water::solute""")
     B = property(_cmf_core.Solute2ndOrderReaction_B_get, _cmf_core.Solute2ndOrderReaction_B_set, doc=r"""B : cmf::water::solute""")
@@ -1515,7 +1515,7 @@ class SoluteDiffusiveTransport(SoluteReaction):
     C++ includes: reaction.h 
     """
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     alpha = property(_cmf_core.SoluteDiffusiveTransport_alpha_get, _cmf_core.SoluteDiffusiveTransport_alpha_set, doc=r"""alpha : real""")
     left = property(_cmf_core.SoluteDiffusiveTransport_left_get, doc=r"""left : r.q(const).cmf::water::SoluteStorage""")
@@ -1541,7 +1541,7 @@ clear_reactions_of_waterstorage = _cmf_core.clear_reactions_of_waterstorage
 class SoluteReactionList(object):
     r"""Proxy of C++ cmf::List< cmf::water::SoluteReaction::ptr > class."""
 
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     append = _swig_new_instance_method(_cmf_core.SoluteReactionList_append)
     extend = _swig_new_instance_method(_cmf_core.SoluteReactionList_extend)
