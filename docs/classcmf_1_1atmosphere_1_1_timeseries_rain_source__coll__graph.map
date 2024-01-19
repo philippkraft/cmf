@@ -1,7 +1,13 @@
 <map id="TimeseriesRainSource" name="TimeseriesRainSource">
-<area shape="rect" id="node2" href="$classcmf_1_1atmosphere_1_1_rain_source.html" title="An abstract class for different types of rainfall sources. " alt="" coords="5,171,95,197"/>
-<area shape="rect" id="node3" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="11,95,89,121"/>
-<area shape="rect" id="node4" href="$classcmf_1_1geometry_1_1point.html" title="2D&#45;Point Class. " alt="" coords="25,5,75,32"/>
-<area shape="rect" id="node5" href="$classcmf_1_1math_1_1timeseries.html" title="A timeseries is a list of values, equally distributed over time. " alt="" coords="119,171,202,197"/>
-<area shape="rect" id="node6" href="$classcmf_1_1water_1_1_solute_timeseries.html" title="A map of concentration time series for solutes. " alt="" coords="226,171,349,197"/>
+<area shape="rect" id="Node000001" title="A rainsource with a timeseries." alt="" coords="83,263,235,289"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1atmosphere_1_1_rain_source.html" title="An abstract class for different types of rainfall sources." alt="" coords="5,172,94,199"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,207,145,260,142,264,75,211"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes." alt="" coords="11,96,88,123"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="52,138,52,172,47,172,47,138"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1geometry_1_1point.html" title="2D&#45;Point Class." alt="" coords="25,5,74,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="52,48,52,95,47,95,47,48"/>
+<area shape="rect" id="Node000005" href="$classcmf_1_1math_1_1timeseries.html" title="A timeseries is a list of values, equally distributed over time." alt="" coords="118,172,200,199"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="162,214,162,262,156,262,156,214"/>
+<area shape="rect" id="Node000006" href="$classcmf_1_1water_1_1_solute_timeseries.html" title="A map of concentration time series for solutes." alt="" coords="224,172,345,199"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="255,210,178,264,175,260,252,206"/>
 </map>

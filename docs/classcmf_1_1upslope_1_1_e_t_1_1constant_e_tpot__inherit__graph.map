@@ -1,4 +1,7 @@
 <map id="constantETpot" name="constantETpot">
-<area shape="rect" id="node2" href="$classcmf_1_1upslope_1_1_e_t_1_1stressed_e_t.html" title="An abstract base class for ET Methods with a WaterStressFunction. " alt="" coords="17,80,105,107"/>
-<area shape="rect" id="node3" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="5,5,117,32"/>
+<area shape="rect" id="Node000001" title="A constant evapotranspiration." alt="" coords="8,155,114,181"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1upslope_1_1_e_t_1_1stressed_e_t.html" title="An abstract base class for ET Methods with a WaterStressFunction." alt="" coords="17,80,105,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,122,64,154,58,154,58,122"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="5,5,117,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="64,48,64,80,58,80,58,48"/>
 </map>

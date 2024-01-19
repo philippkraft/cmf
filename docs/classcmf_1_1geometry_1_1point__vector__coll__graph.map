@@ -1,3 +1,5 @@
 <map id="point_vector" name="point_vector">
-<area shape="rect" id="node2" href="$classcmf_1_1math_1_1num__array.html" title="A valarray kind of vector implementation with OpenMP capabilities. " alt="" coords="9,5,92,32"/>
+<area shape="rect" id="Node000001" title="Holds three arrays x,y and z for fast access of point coordinates." alt="" coords="5,128,96,155"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1math_1_1num__array.html" title="A valarray kind of vector implementation with OpenMP capabilities." alt="" coords="9,5,92,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="53,48,53,127,48,127,48,48"/>
 </map>

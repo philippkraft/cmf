@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['hargreaveet',['HargreaveET',['../classcmf_1_1upslope_1_1_e_t_1_1_hargreave_e_t.html',1,'cmf::upslope::ET']]],
-  ['heunintegrator',['HeunIntegrator',['../classcmf_1_1math_1_1_heun_integrator.html',1,'cmf::math']]],
-  ['hillplot',['HillPlot',['../classcmf_1_1draw_1_1hillplot_1_1_hill_plot.html',1,'cmf::draw::hillplot']]]
+  ['gradientmacroflow_0',['GradientMacroFlow',['../classcmf_1_1upslope_1_1connections_1_1_gradient_macro_flow.html',1,'cmf::upslope::connections']]],
+  ['gradientmacromicroexchange_1',['GradientMacroMicroExchange',['../classcmf_1_1upslope_1_1connections_1_1_gradient_macro_micro_exchange.html',1,'cmf::upslope::connections']]],
+  ['greenamptinfiltration_2',['GreenAmptInfiltration',['../classcmf_1_1upslope_1_1connections_1_1_green_ampt_infiltration.html',1,'cmf::upslope::connections']]]
 ];

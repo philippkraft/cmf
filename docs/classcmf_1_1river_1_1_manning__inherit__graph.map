@@ -1,5 +1,9 @@
 <map id="Manning" name="Manning">
-<area shape="rect" id="node3" href="$classcmf_1_1river_1_1_manning___diffusive.html" title="Connecting surface water bodies using a diffusive wave. " alt="" coords="5,155,131,181"/>
-<area shape="rect" id="node4" href="$classcmf_1_1river_1_1_manning___kinematic.html" title="Connecting surface water bodies using a kinematic wave. " alt="" coords="155,155,291,181"/>
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="89,5,201,32"/>
+<area shape="rect" id="Node000001" title="Calculates the flux between two open water bodies, using Manning&#39;s equation." alt="" coords="108,80,179,107"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1river_1_1_manning___diffusive.html" title="Connecting surface water bodies using a diffusive wave." alt="" coords="5,155,130,181"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="121,119,82,156,79,152,118,116"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1river_1_1_manning___kinematic.html" title="Connecting surface water bodies using a kinematic wave." alt="" coords="153,155,289,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="170,116,209,152,206,156,166,119"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="88,5,199,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,48,146,80,141,80,141,48"/>
 </map>

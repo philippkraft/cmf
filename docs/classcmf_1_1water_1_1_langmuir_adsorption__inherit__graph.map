@@ -1,3 +1,5 @@
 <map id="LangmuirAdsorption" name="LangmuirAdsorption">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1_adsorption.html" title="Abstract class to use adsorption process for tracers on surfaces. " alt="" coords="32,5,116,32"/>
+<area shape="rect" id="Node000001" title="This class calculates the adsorption equilibrium between sorbat and sorbent using the Langmuir isothe..." alt="" coords="5,80,142,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1_adsorption.html" title="Abstract class to use adsorption process for tracers on surfaces." alt="" coords="32,5,115,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,48,76,80,71,80,71,48"/>
 </map>

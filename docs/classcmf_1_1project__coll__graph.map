@@ -1,5 +1,9 @@
 <map id="project" name="project">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1solute__vector.html" title="Manages the solutes of the model. " alt="" coords="5,5,104,32"/>
-<area shape="rect" id="node3" href="$classcmf_1_1atmosphere_1_1_meteo_station_list.html" title="A list of meteorological stations. " alt="" coords="128,5,248,32"/>
-<area shape="rect" id="node4" href="$classcmf_1_1atmosphere_1_1_rainfall_station_list.html" title="A list of rainfall stations. " alt="" coords="273,5,399,32"/>
+<area shape="rect" id="Node000001" title="The study area, holding all cells, outlets and streams." alt="" coords="156,96,216,123"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1solute__vector.html" title="Manages the solutes of the model." alt="" coords="5,5,103,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,39,169,93,166,98,84,43"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1atmosphere_1_1_meteo_station_list.html" title="A list of meteorological stations." alt="" coords="126,5,246,32"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="189,48,189,95,183,95,183,48"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1atmosphere_1_1_rainfall_station_list.html" title="A list of rainfall stations." alt="" coords="270,5,395,32"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="317,46,286,74,252,92,218,103,216,98,249,87,283,70,313,42"/>
 </map>

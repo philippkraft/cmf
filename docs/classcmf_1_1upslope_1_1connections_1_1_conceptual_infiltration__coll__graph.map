@@ -1,0 +1,5 @@
+<map id="ConceptualInfiltration" name="ConceptualInfiltration">
+<area shape="rect" id="Node000001" title="Connects the surfacewater and the most upper layer using a simplified infiltration model suitable for..." alt="" coords="5,80,147,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="20,5,132,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,48,79,80,73,80,73,48"/>
+</map>

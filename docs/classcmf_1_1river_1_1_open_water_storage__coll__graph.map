@@ -1,6 +1,11 @@
 <map id="OpenWaterStorage" name="OpenWaterStorage">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water. " alt="" coords="40,171,143,197"/>
-<area shape="rect" id="node3" href="$classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable. " alt="" coords="5,95,105,121"/>
-<area shape="rect" id="node4" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="130,95,207,121"/>
-<area shape="rect" id="node5" href="$classcmf_1_1geometry_1_1point.html" title="2D&#45;Point Class. " alt="" coords="143,5,194,32"/>
+<area shape="rect" id="Node000001" title="An open water body." alt="" coords="5,248,138,275"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water." alt="" coords="21,172,122,199"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,214,74,248,69,248,69,214"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable." alt="" coords="6,96,105,123"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="64,137,71,171,66,172,59,138"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes." alt="" coords="129,96,206,123"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="141,134,89,174,86,170,138,130"/>
+<area shape="rect" id="Node000005" href="$classcmf_1_1geometry_1_1point.html" title="2D&#45;Point Class." alt="" coords="143,5,192,32"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="170,48,170,95,165,95,165,48"/>
 </map>

@@ -1,3 +1,5 @@
 <map id="NullAdsorption" name="NullAdsorption">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1_adsorption.html" title="Abstract class to use adsorption process for tracers on surfaces. " alt="" coords="17,5,101,32"/>
+<area shape="rect" id="Node000001" title="A class for tracers without interaction with the storage container. freesolute returns xt." alt="" coords="5,80,111,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1_adsorption.html" title="Abstract class to use adsorption process for tracers on surfaces." alt="" coords="16,5,100,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="61,48,61,80,55,80,55,48"/>
 </map>

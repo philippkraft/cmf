@@ -1,7 +1,14 @@
 <map id="aquifer" name="aquifer">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water. " alt="" coords="39,184,142,211"/>
-<area shape="rect" id="node3" href="$classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable. " alt="" coords="141,95,241,121"/>
-<area shape="rect" id="node4" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="39,95,116,121"/>
-<area shape="rect" id="node5" href="$classcmf_1_1geometry_1_1point.html" title="2D&#45;Point Class. " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node6" href="$classcmf_1_1upslope_1_1conductable.html" title="An abstract interface for all classes providing a conductivity (e.g. " alt="" coords="166,184,258,211"/>
+<area shape="rect" id="Node000001" title="A class to represent large groundwater storages, not bounded to the usual horizontal discretization s..." alt="" coords="67,263,126,289"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water." alt="" coords="46,187,147,213"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,228,99,262,94,262,94,228"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable." alt="" coords="147,96,246,123"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="173,135,113,188,109,184,169,131"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes." alt="" coords="47,96,123,123"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="91,138,98,186,92,186,86,139"/>
+<area shape="rect" id="Node000005" href="$classcmf_1_1geometry_1_1point.html" title="2D&#45;Point Class." alt="" coords="5,5,55,32"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="27,48,22,82,20,124,24,169,36,212,55,240,79,260,76,264,51,243,32,214,19,170,15,124,17,82,22,47"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="48,44,79,94,75,97,44,47"/>
+<area shape="rect" id="Node000006" href="$classcmf_1_1upslope_1_1conductable.html" title="An abstract interface for all classes providing a conductivity (e.g." alt="" coords="171,187,262,213"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="185,224,119,264,116,260,182,219"/>
 </map>

@@ -1,5 +1,9 @@
 <map id="subcatchment" name="subcatchment">
-<area shape="rect" id="node2" href="$classcmf_1_1upslope_1_1cell__vector.html" title="A cell vector holds a bunch of cells. " alt="" coords="5,95,88,121"/>
-<area shape="rect" id="node3" href="$classcmf_1_1upslope_1_1_cell.html" title="This class is the basic landscape object. " alt="" coords="119,95,163,121"/>
-<area shape="rect" id="node4" href="$classcmf_1_1upslope_1_1vegetation_1_1_vegetation.html" title="Holds the vegetation parameters for the calculation of ET and fractionating rainfall. Not every ET method uses all parameters. " alt="" coords="99,5,183,32"/>
+<area shape="rect" id="Node000001" title="A class to structure cells in a project using their main outlets." alt="" coords="39,203,143,229"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1upslope_1_1_cell.html" title="This class is the basic landscape object." alt="" coords="25,96,69,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="45,138,46,158,51,178,60,190,72,200,68,204,56,194,46,180,40,159,40,138"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1upslope_1_1vegetation_1_1_vegetation.html" title="Holds the vegetation parameters for the calculation of ET and fractionating rainfall...." alt="" coords="5,5,89,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="50,48,50,95,44,95,44,48"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1upslope_1_1cell__vector.html" title="A cell vector holds a bunch of cells." alt="" coords="94,96,176,123"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="126,138,99,203,94,201,122,136"/>
 </map>

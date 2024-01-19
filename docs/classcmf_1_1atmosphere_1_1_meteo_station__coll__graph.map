@@ -1,3 +1,5 @@
 <map id="MeteoStation" name="MeteoStation">
-<area shape="rect" id="node2" href="$classcmf_1_1math_1_1timeseries.html" title="A timeseries is a list of values, equally distributed over time. " alt="" coords="13,5,96,32"/>
+<area shape="rect" id="Node000001" title="A meteorological station holding timeseries to create Weather records." alt="" coords="5,256,104,283"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1math_1_1timeseries.html" title="A timeseries is a list of values, equally distributed over time." alt="" coords="14,5,95,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,48,57,256,52,256,52,48"/>
 </map>

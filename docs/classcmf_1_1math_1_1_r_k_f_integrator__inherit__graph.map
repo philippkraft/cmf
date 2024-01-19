@@ -1,3 +1,5 @@
 <map id="RKFIntegrator" name="RKFIntegrator">
-<area shape="rect" id="node2" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator. " alt="" coords="19,5,95,32"/>
+<area shape="rect" id="Node000001" title="Integrates a vector of cmf::math::StateVariable with the Runge&#45;Kutta&#45;Fehlberg (RKF54) method." alt="" coords="5,80,107,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator." alt="" coords="18,5,94,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,48,59,80,53,80,53,48"/>
 </map>

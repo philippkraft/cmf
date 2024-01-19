@@ -1,0 +1,5 @@
+<map id="SoluteDecayReaction" name="SoluteDecayReaction">
+<area shape="rect" id="Node000001" title="Adds a linear decay to solute storages." alt="" coords="5,80,152,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1_solute_reaction.html" title="Abstract class for a solute reaction." alt="" coords="24,5,133,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,48,81,80,76,80,76,48"/>
+</map>

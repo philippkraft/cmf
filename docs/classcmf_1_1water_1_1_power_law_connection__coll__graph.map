@@ -1,3 +1,5 @@
 <map id="PowerLawConnection" name="PowerLawConnection">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="23,5,135,32"/>
+<area shape="rect" id="Node000001" title="Calculates flux out of a storage as a linear function of its volume to a power." alt="" coords="5,80,151,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="22,5,134,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,48,81,80,75,80,75,48"/>
 </map>

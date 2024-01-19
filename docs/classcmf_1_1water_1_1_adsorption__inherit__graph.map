@@ -1,6 +1,9 @@
 <map id="Adsorption" name="Adsorption">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1_freundlich_adsorbtion.html" title="BROKEN: This class calculates the adsorption equilibrium between sorbat and sorbent using the Freundl..." alt="" coords="5,80,149,107"/>
-<area shape="rect" id="node3" href="$classcmf_1_1water_1_1_langmuir_adsorption.html" title="This class calculates the adsorption equilibrium between sorbat and sorbent using the Langmuir isothe..." alt="" coords="174,80,311,107"/>
-<area shape="rect" id="node4" href="$classcmf_1_1water_1_1_linear_adsorption.html" title="This class calculates the adsorption equilibrium between sorbat and sorbent using the linear (Henry) ..." alt="" coords="335,80,454,107"/>
-<area shape="rect" id="node5" href="$classcmf_1_1water_1_1_null_adsorption.html" title="A class for tracers without interaction with the storage container. freesolute returns xt..." alt="" coords="479,80,585,107"/>
+<area shape="rect" id="Node000001" title="Abstract class to use adsorption process for tracers on surfaces." alt="" coords="184,5,267,32"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1_langmuir_adsorption.html" title="This class calculates the adsorption equilibrium between sorbat and sorbent using the Langmuir isothe..." alt="" coords="5,80,142,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="187,41,101,82,99,77,184,37"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1water_1_1_linear_adsorption.html" title="This class calculates the adsorption equilibrium between sorbat and sorbent using the linear (Henry) ..." alt="" coords="166,80,285,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="228,48,228,80,223,80,223,48"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1water_1_1_null_adsorption.html" title="A class for tracers without interaction with the storage container. freesolute returns xt." alt="" coords="309,80,414,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="264,37,339,77,336,82,261,42"/>
 </map>

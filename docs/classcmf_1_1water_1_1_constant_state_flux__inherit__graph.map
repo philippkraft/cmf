@@ -1,0 +1,5 @@
+<map id="ConstantStateFlux" name="ConstantStateFlux">
+<area shape="rect" id="Node000001" title="Calculates a flux to or from a water storage to hold it&#39;s state at a more or less constant level." alt="" coords="5,80,135,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="14,5,126,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,48,73,80,67,80,67,48"/>
+</map>

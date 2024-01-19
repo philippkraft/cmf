@@ -1,10 +1,19 @@
 <map id="WaterStorage" name="WaterStorage">
-<area shape="rect" id="node4" href="$classcmf_1_1river_1_1_open_water_storage.html" title="An open water body. " alt="" coords="20,155,153,181"/>
-<area shape="rect" id="node7" href="$classcmf_1_1upslope_1_1aquifer.html" title="A class to represent large groundwater storages, not bounded to the usual horizontal discretization s..." alt="" coords="178,155,238,181"/>
-<area shape="rect" id="node8" href="$classcmf_1_1upslope_1_1_macro_pore.html" title="An additional water storage for a soil layer to model matrix water and macro pore water seperately..." alt="" coords="263,155,348,181"/>
-<area shape="rect" id="node9" href="$classcmf_1_1upslope_1_1_soil_layer.html" title="A representation of a SoilLayer. " alt="" coords="373,155,449,181"/>
-<area shape="rect" id="node2" href="$classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable. " alt="" coords="150,5,250,32"/>
-<area shape="rect" id="node3" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="275,5,352,32"/>
-<area shape="rect" id="node5" href="$classcmf_1_1river_1_1_reach.html" title="A reach represents the section of a riover and is a specialization of an open water storage..." alt="" coords="5,229,64,256"/>
-<area shape="rect" id="node6" href="$classcmf_1_1upslope_1_1_surface_water.html" title="A child class of OpenWaterStorage to model surface water on a cell. " alt="" coords="88,229,189,256"/>
+<area shape="rect" id="Node000001" title="A state variable for the storage of water." alt="" coords="220,80,321,107"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1river_1_1_open_water_storage.html" title="An open water body." alt="" coords="20,155,153,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="225,115,120,157,118,152,223,110"/>
+<area shape="rect" id="Node000007" href="$classcmf_1_1upslope_1_1_macro_pore.html" title="An additional water storage for a soil layer to model matrix water and macro pore water seperately." alt="" coords="176,155,261,181"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="255,121,230,156,225,153,250,118"/>
+<area shape="rect" id="Node000008" href="$classcmf_1_1upslope_1_1_soil_layer.html" title="A representation of a SoilLayer." alt="" coords="285,155,360,181"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="291,118,316,153,311,156,286,121"/>
+<area shape="rect" id="Node000009" href="$classcmf_1_1upslope_1_1aquifer.html" title="A class to represent large groundwater storages, not bounded to the usual horizontal discretization s..." alt="" coords="385,155,444,181"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="310,112,390,152,388,156,308,116"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable." alt="" coords="165,5,264,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="236,43,263,78,259,81,231,46"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes." alt="" coords="288,5,365,32"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="310,46,282,81,278,78,305,43"/>
+<area shape="rect" id="Node000005" href="$classcmf_1_1river_1_1_reach.html" title="A reach represents the section of a riover and is a specialization of an open water storage." alt="" coords="5,229,64,256"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="71,196,46,230,41,227,66,193"/>
+<area shape="rect" id="Node000006" href="$classcmf_1_1upslope_1_1_surface_water.html" title="A child class of OpenWaterStorage to model surface water on a cell." alt="" coords="88,229,189,256"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="107,193,132,227,127,230,102,196"/>
 </map>

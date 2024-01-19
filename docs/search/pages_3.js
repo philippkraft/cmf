@@ -1,12 +1,9 @@
 var searchData=
 [
-  ['create_20a_20one_20dimensional_20richards_20equation_20based_20model',['Create a one dimensional Richards equation based model',['../cmf_tut1d.html',1,'physical']]],
-  ['cells',['Cells',['../cmf_tut_cell.html',1,'gettingstarted']]],
-  ['channelled_20flow_20in_20cmf',['Channelled flow in cmf',['../cmf_tut_channel.html',1,'physical']]],
-  ['choosing_20a_20solver',['Choosing a solver',['../cmf_tut_solver.html',1,'gettingstarted']]],
-  ['conceptual_20models_20with_20cmf',['Conceptual Models with CMF',['../conceptual.html',1,'tutorial']]],
-  ['contribute_20to_20the_20c_2b_2b_20source_20of_20cmf',['Contribute to the C++ source of cmf',['../contrib_cpp.html',1,'contribOverview']]],
-  ['contributing_20to_20cmf',['Contributing to cmf',['../contrib_overview.html',1,'index']]],
-  ['cmf_20descriptor',['CMF Descriptor',['../descriptor.html',1,'gettingstarted']]],
-  ['check_20the_20cmf_20installation',['Check the cmf installation',['../install_check.html',1,'gettingstarted']]]
+  ['background_20of_20cmf_0',['Scientific background of cmf',['../cmf_introduction.html',1,'index']]],
+  ['based_20boundary_20conditions_1',['Head based boundary conditions',['../cmf_tut_boundary2.html',1,'physical']]],
+  ['based_20model_2',['Create a one dimensional Richards equation based model',['../cmf_tut1d.html',1,'physical']]],
+  ['basic_20usage_20of_20cmf_3',['Understand the basic usage of cmf',['../gettingstarted.html',1,'tutorial']]],
+  ['boundary_20conditions_4',['Boundary conditions',['../cmf_tut_boundary.html',1,'gettingstarted']]],
+  ['boundary_20conditions_5',['Head based boundary conditions',['../cmf_tut_boundary2.html',1,'physical']]]
 ];

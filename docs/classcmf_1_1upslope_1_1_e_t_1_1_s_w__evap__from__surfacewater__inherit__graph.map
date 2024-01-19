@@ -1,3 +1,5 @@
 <map id="SW_evap_from_surfacewater" name="SW_evap_from_surfacewater">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="44,5,156,32"/>
+<area shape="rect" id="Node000001" title="Connection for Shuttleworth&#45;Wallace canopy interception evaporation." alt="" coords="5,80,194,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="44,5,155,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,48,102,80,97,80,97,48"/>
 </map>

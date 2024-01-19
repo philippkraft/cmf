@@ -1,3 +1,5 @@
 <map id="ImplicitEuler" name="ImplicitEuler">
-<area shape="rect" id="node2" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator. " alt="" coords="14,5,90,32"/>
+<area shape="rect" id="Node000001" title="An implicit (backward) Euler integrator using fixpoint iteration." alt="" coords="5,80,98,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator." alt="" coords="14,5,89,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="54,48,54,80,49,80,49,48"/>
 </map>

@@ -1,4 +1,7 @@
 <map id="ConstantRainSource" name="ConstantRainSource">
-<area shape="rect" id="node2" href="$classcmf_1_1atmosphere_1_1_rain_source.html" title="An abstract class for different types of rainfall sources. " alt="" coords="31,80,121,107"/>
-<area shape="rect" id="node3" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="37,5,115,32"/>
+<area shape="rect" id="Node000001" title="A simple implementation of RainSource." alt="" coords="5,155,146,181"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1atmosphere_1_1_rain_source.html" title="An abstract class for different types of rainfall sources." alt="" coords="31,80,120,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,122,78,154,73,154,73,122"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes." alt="" coords="37,5,114,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="78,48,78,80,73,80,73,48"/>
 </map>

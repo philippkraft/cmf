@@ -1,6 +1,11 @@
 <map id="SoilLayer" name="SoilLayer">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water. " alt="" coords="60,80,163,107"/>
-<area shape="rect" id="node3" href="$classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable. " alt="" coords="5,5,105,32"/>
-<area shape="rect" id="node4" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="130,5,207,32"/>
-<area shape="rect" id="node5" href="$classcmf_1_1upslope_1_1conductable.html" title="An abstract interface for all classes providing a conductivity (e.g. " alt="" coords="187,80,279,107"/>
+<area shape="rect" id="Node000001" title="A representation of a SoilLayer." alt="" coords="133,155,209,181"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water." alt="" coords="60,80,162,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,117,163,153,159,156,129,120"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable." alt="" coords="5,5,105,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="76,43,103,78,99,81,72,46"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes." alt="" coords="129,5,205,32"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="150,46,123,81,119,78,146,43"/>
+<area shape="rect" id="Node000005" href="$classcmf_1_1upslope_1_1conductable.html" title="An abstract interface for all classes providing a conductivity (e.g." alt="" coords="185,80,277,107"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="213,120,183,156,179,153,209,117"/>
 </map>

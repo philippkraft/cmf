@@ -1,5 +1,7 @@
 <map id="HeunIntegrator" name="HeunIntegrator">
-<area shape="rect" id="node2" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator. " alt="" coords="46,109,122,136"/>
-<area shape="rect" id="node3" href="$classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times. " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node4" href="$classcmf_1_1math_1_1integratable__list.html" title="A list of cmf::math::integratable objects. " alt="" coords="81,5,194,32"/>
+<area shape="rect" id="Node000001" title="A simple predictor &#45; corrector solver." alt="" coords="5,188,111,215"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator." alt="" coords="20,112,96,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="61,154,61,188,55,188,55,154"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times." alt="" coords="33,5,83,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="61,47,61,112,55,112,55,47"/>
 </map>

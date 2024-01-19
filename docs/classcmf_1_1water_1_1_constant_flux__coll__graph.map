@@ -1,0 +1,7 @@
+<map id="ConstantFlux" name="ConstantFlux">
+<area shape="rect" id="Node000001" title="Produces a constant but changeable flux from a source to a target, if enough water is present in the ..." alt="" coords="64,96,162,123"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="5,5,117,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,44,108,94,103,97,74,47"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times." alt="" coords="140,5,190,32"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="152,47,123,97,118,94,148,44"/>
+</map>

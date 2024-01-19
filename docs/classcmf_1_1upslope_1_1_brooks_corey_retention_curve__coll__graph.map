@@ -1,3 +1,5 @@
 <map id="BrooksCoreyRetentionCurve" name="BrooksCoreyRetentionCurve">
-<area shape="rect" id="node2" href="$classcmf_1_1upslope_1_1_retention_curve.html" title="Abstract base class for different types of retention curves. " alt="" coords="43,5,152,32"/>
+<area shape="rect" id="Node000001" title="Provides the use of the Brooks&#45;Corey retention curve." alt="" coords="5,80,189,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1upslope_1_1_retention_curve.html" title="Abstract base class for different types of retention curves." alt="" coords="43,5,151,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,48,100,80,94,80,94,48"/>
 </map>

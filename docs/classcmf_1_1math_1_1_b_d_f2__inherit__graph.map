@@ -1,3 +1,5 @@
 <map id="BDF2" name="BDF2">
-<area shape="rect" id="node2" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator. " alt="" coords="5,5,81,32"/>
+<area shape="rect" id="Node000001" title="An order 2 BDF&#45;Method with fixed&#45;point iteration and variable step size." alt="" coords="16,80,70,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator." alt="" coords="5,5,81,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="46,48,46,80,40,80,40,48"/>
 </map>

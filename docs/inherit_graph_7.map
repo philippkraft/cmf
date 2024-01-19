@@ -1,3 +1,38 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classcmf_1_1math_1_1cubicspline.html" title="Interpolates points with a cubic spline interpolation. " alt="" coords="5,5,92,32"/>
+<area shape="rect" id="Node000000" href="$classcmf_1_1upslope_1_1conductable.html" title="An abstract interface for all classes providing a conductivity (e.g." alt="" coords="173,157,264,184"/>
+<area shape="rect" id="Node000001" href="$classcmf_1_1upslope_1_1_soil_layer.html" title="A representation of a SoilLayer." alt="" coords="376,208,451,235"/>
+<area shape="poly" id="edge6_Node000000_Node000001" title=" " alt="" coords="279,184,376,209,375,214,278,189"/>
+<area shape="rect" id="Node000007" href="$classcmf_1_1upslope_1_1aquifer.html" title="A class to represent large groundwater storages, not bounded to the usual horizontal discretization s..." alt="" coords="384,259,443,285"/>
+<area shape="poly" id="edge7_Node000000_Node000007" title=" " alt="" coords="278,189,286,194,301,207,310,220,319,232,333,244,358,256,384,264,382,269,356,261,331,249,315,236,306,223,297,211,282,198,275,194"/>
+<area shape="rect" id="Node000008" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes." alt="" coords="17,247,93,273"/>
+<area shape="rect" id="Node000009" href="$classcmf_1_1atmosphere_1_1_rain_source.html" title="An abstract class for different types of rainfall sources." alt="" coords="174,107,263,133"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="71,232,105,187,127,164,151,143,172,131,175,136,154,148,130,168,109,190,75,235"/>
+<area shape="rect" id="Node000014" href="$classcmf_1_1water_1_1_dirichlet_boundary.html" title="Dirichlet (constant head) boundary condition." alt="" coords="157,208,280,235"/>
+<area shape="poly" id="edge13_Node000008_Node000014" title=" " alt="" coords="108,245,159,233,160,238,109,250"/>
+<area shape="rect" id="Node000015" href="$classcmf_1_1water_1_1_neumann_boundary.html" title="A Neumann boundary condition (constant flux boundary condition)" alt="" coords="153,259,284,285"/>
+<area shape="poly" id="edge14_Node000008_Node000015" title=" " alt="" coords="109,261,152,265,152,270,108,267"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water." alt="" coords="168,309,269,336"/>
+<area shape="poly" id="edge15_Node000008_Node000002" title=" " alt="" coords="107,277,182,306,180,311,105,282"/>
+<area shape="rect" id="Node000010" href="$classcmf_1_1atmosphere_1_1_constant_rain_source.html" title="A simple implementation of RainSource." alt="" coords="343,5,483,32"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="247,95,286,68,331,42,359,30,361,35,333,46,288,72,250,99"/>
+<area shape="rect" id="Node000011" href="$classcmf_1_1atmosphere_1_1_i_d_w_rainfall.html" title="A RainSource using a spatially interpolated rainfall intensity from all stations." alt="" coords="369,56,457,83"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="277,102,368,78,370,83,278,107"/>
+<area shape="rect" id="Node000012" href="$classcmf_1_1atmosphere_1_1_rainfall_station_reference.html" title="References a single RainfallStation to provide rainfall intensity data." alt="" coords="332,107,494,133"/>
+<area shape="poly" id="edge11_Node000009_Node000012" title=" " alt="" coords="278,117,331,117,331,123,278,123"/>
+<area shape="rect" id="Node000013" href="$classcmf_1_1atmosphere_1_1_timeseries_rain_source.html" title="A rainsource with a timeseries." alt="" coords="338,157,489,184"/>
+<area shape="poly" id="edge12_Node000009_Node000013" title=" " alt="" coords="278,133,360,154,358,159,277,138"/>
+<area shape="poly" id="edge20_Node000002_Node000001" title=" " alt="" coords="275,300,282,295,297,283,306,270,315,257,331,244,374,226,376,231,333,249,319,261,310,273,301,286,286,299,278,304"/>
+<area shape="poly" id="edge21_Node000002_Node000007" title=" " alt="" coords="283,303,382,277,384,282,285,308"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1river_1_1_open_water_storage.html" title="An open water body." alt="" coords="347,309,479,336"/>
+<area shape="poly" id="edge16_Node000002_Node000003" title=" " alt="" coords="284,320,347,320,347,325,284,325"/>
+<area shape="rect" id="Node000006" href="$classcmf_1_1upslope_1_1_macro_pore.html" title="An additional water storage for a soil layer to model matrix water and macro pore water seperately." alt="" coords="371,360,455,387"/>
+<area shape="poly" id="edge19_Node000002_Node000006" title=" " alt="" coords="285,337,371,360,370,365,283,342"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1river_1_1_reach.html" title="A reach represents the section of a riover and is a specialization of an open water storage." alt="" coords="563,284,622,311"/>
+<area shape="poly" id="edge17_Node000003_Node000004" title=" " alt="" coords="494,309,563,299,563,304,495,314"/>
+<area shape="rect" id="Node000005" href="$classcmf_1_1upslope_1_1_surface_water.html" title="A child class of OpenWaterStorage to model surface water on a cell." alt="" coords="542,335,643,361"/>
+<area shape="poly" id="edge18_Node000003_Node000005" title=" " alt="" coords="495,332,543,338,542,344,494,337"/>
+<area shape="rect" id="Node000016" href="$classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable." alt="" coords="5,323,105,349"/>
+<area shape="poly" id="edge23_Node000016_Node000002" title=" " alt="" coords="120,328,167,324,168,329,120,333"/>
+<area shape="rect" id="Node000017" href="$classcmf_1_1water_1_1_solute_storage.html" title="A class for the storage of any tracer." alt="" coords="167,360,270,387"/>
+<area shape="poly" id="edge22_Node000016_Node000017" title=" " alt="" coords="120,348,167,359,166,364,119,353"/>
 </map>

@@ -1,3 +1,5 @@
 <map id="FreundlichAdsorbtion" name="FreundlichAdsorbtion">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1_adsorption.html" title="Abstract class to use adsorption process for tracers on surfaces. " alt="" coords="35,5,119,32"/>
+<area shape="rect" id="Node000001" title="BROKEN: This class calculates the adsorption equilibrium between sorbat and sorbent using the Freundl..." alt="" coords="5,80,149,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1_adsorption.html" title="Abstract class to use adsorption process for tracers on surfaces." alt="" coords="35,5,119,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,48,80,80,74,80,74,48"/>
 </map>

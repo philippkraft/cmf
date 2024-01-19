@@ -1,0 +1,5 @@
+<map id="PartitionFluxRoute" name="PartitionFluxRoute">
+<area shape="rect" id="Node000001" title="Routes a fraction of the flux calculated from a master flux_connection between source to target1 dire..." alt="" coords="5,80,134,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="14,5,125,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,48,72,80,67,80,67,48"/>
+</map>

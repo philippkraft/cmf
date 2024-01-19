@@ -1,5 +1,9 @@
 <map id="CanopyOverflow" name="CanopyOverflow">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="5,95,117,121"/>
-<area shape="rect" id="node3" href="$classcmf_1_1upslope_1_1_cell.html" title="This class is the basic landscape object. " alt="" coords="142,95,186,121"/>
-<area shape="rect" id="node4" href="$classcmf_1_1upslope_1_1vegetation_1_1_vegetation.html" title="Holds the vegetation parameters for the calculation of ET and fractionating rainfall. Not every ET method uses all parameters. " alt="" coords="122,5,206,32"/>
+<area shape="rect" id="Node000001" title="Calculates the overflow of a canopy storage using a kinematic wave approach." alt="" coords="40,187,154,213"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="5,96,117,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,136,94,185,89,187,69,138"/>
+<area shape="rect" id="Node000003" href="$classcmf_1_1upslope_1_1_cell.html" title="This class is the basic landscape object." alt="" coords="141,96,184,123"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="146,137,108,188,104,184,142,134"/>
+<area shape="rect" id="Node000004" href="$classcmf_1_1upslope_1_1vegetation_1_1_vegetation.html" title="Holds the vegetation parameters for the calculation of ET and fractionating rainfall...." alt="" coords="121,5,204,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="165,48,165,95,160,95,160,48"/>
 </map>

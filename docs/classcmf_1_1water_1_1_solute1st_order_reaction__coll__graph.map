@@ -1,0 +1,7 @@
+<map id="Solute1stOrderReaction" name="Solute1stOrderReaction">
+<area shape="rect" id="Node000001" title="A solute reaction of 1st order kinetics (linear decline to product) A&#45;&gt;B." alt="" coords="34,112,193,139"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1_solute_reaction.html" title="Abstract class for a solute reaction." alt="" coords="5,5,115,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,45,109,110,105,113,71,47"/>
+<area shape="rect" id="Node000003" href="$structcmf_1_1water_1_1solute.html" title="A structure to identify a solute." alt="" coords="139,5,195,32"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="156,47,122,113,117,110,151,45"/>
+</map>

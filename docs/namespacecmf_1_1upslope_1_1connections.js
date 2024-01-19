@@ -26,5 +26,6 @@ var namespacecmf_1_1upslope_1_1connections =
     [ "SWATPercolation", "classcmf_1_1upslope_1_1connections_1_1_s_w_a_t_percolation.html", "classcmf_1_1upslope_1_1connections_1_1_s_w_a_t_percolation" ],
     [ "TempIndexSnowMelt", "classcmf_1_1upslope_1_1connections_1_1_temp_index_snow_melt.html", "classcmf_1_1upslope_1_1connections_1_1_temp_index_snow_melt" ],
     [ "TOPModelFlow", "classcmf_1_1upslope_1_1connections_1_1_t_o_p_model_flow.html", "classcmf_1_1upslope_1_1connections_1_1_t_o_p_model_flow" ],
-    [ "TopographicGradientDarcy", "classcmf_1_1upslope_1_1connections_1_1_topographic_gradient_darcy.html", "classcmf_1_1upslope_1_1connections_1_1_topographic_gradient_darcy" ]
+    [ "TopographicGradientDarcy", "classcmf_1_1upslope_1_1connections_1_1_topographic_gradient_darcy.html", "classcmf_1_1upslope_1_1connections_1_1_topographic_gradient_darcy" ],
+    [ "snowfraction", "group__connections.html#gad29bbb29fbdcec96d6c352efec70e138", null ]
 ];

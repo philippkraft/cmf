@@ -2,9 +2,9 @@ var structcmf_1_1atmosphere_1_1_weather =
 [
     [ "Weather", "structcmf_1_1atmosphere_1_1_weather.html#a744d278ec9f511cf23396d421291bcbe", null ],
     [ "operator*", "structcmf_1_1atmosphere_1_1_weather.html#a1bed1ddf8db0e3c283b0f702f8c3ff7b", null ],
-    [ "operator*=", "structcmf_1_1atmosphere_1_1_weather.html#af84106dc3e352a33b455010ee88ebd1b", null ],
+    [ "operator*=", "structcmf_1_1atmosphere_1_1_weather.html#a18f1c1ccf571efffdb57ef77550b3039", null ],
     [ "operator+", "structcmf_1_1atmosphere_1_1_weather.html#ade0ab6638c493122965a47a0572e6158", null ],
-    [ "operator+=", "structcmf_1_1atmosphere_1_1_weather.html#add9c97db8d424d4bf82046262b9f2345", null ],
+    [ "operator+=", "structcmf_1_1atmosphere_1_1_weather.html#ae6b2a051ee2c64faa9c362b7a9b7da33", null ],
     [ "Rn", "structcmf_1_1atmosphere_1_1_weather.html#a4965b71db56fe156bb2331a2c0cdc12c", null ],
     [ "to_string", "structcmf_1_1atmosphere_1_1_weather.html#aac993ecccd3d88aafefb6b8e3caa1dee", null ],
     [ "e_a", "structcmf_1_1atmosphere_1_1_weather.html#a37675f7ad31912a675e6cfebbe9a938e", null ],

@@ -1,0 +1,5 @@
+<map id="SoluteRateReaction" name="SoluteRateReaction">
+<area shape="rect" id="Node000001" title="A general solute reaction system to describe multi&#45;species kinetics with a power law." alt="" coords="5,80,142,107"/>
+<area shape="rect" id="Node000002" href="$classcmf_1_1water_1_1_solute_reaction.html" title="Abstract class for a solute reaction." alt="" coords="19,5,128,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,48,76,80,71,80,71,48"/>
+</map>

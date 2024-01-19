@@ -1,3 +1,4 @@
 <map id="Connections for local aboveground fluxes" name="Connections for local aboveground fluxes">
-<area shape="rect" id="node2" href="$group__connections.html" title="The connections between the nodes (boundary conditions, storages) of the water network. " alt="" coords="5,13,127,39"/>
+<area shape="rect" id="Node000002" href="$group__connections.html" title=" " alt="" coords="5,13,126,40"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="174,5,316,48"/>
 </map>

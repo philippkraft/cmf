@@ -16,5 +16,6 @@ var namespacecmf_1_1river =
     [ "RectangularReach", "classcmf_1_1river_1_1_rectangular_reach.html", "classcmf_1_1river_1_1_rectangular_reach" ],
     [ "SWATReachType", "classcmf_1_1river_1_1_s_w_a_t_reach_type.html", "classcmf_1_1river_1_1_s_w_a_t_reach_type" ],
     [ "TriangularReach", "classcmf_1_1river_1_1_triangular_reach.html", "classcmf_1_1river_1_1_triangular_reach" ],
-    [ "volume_height_function", "classcmf_1_1river_1_1volume__height__function.html", "classcmf_1_1river_1_1volume__height__function" ]
+    [ "volume_height_function", "classcmf_1_1river_1_1volume__height__function.html", "classcmf_1_1river_1_1volume__height__function" ],
+    [ "make_river_gap", "namespacecmf_1_1river.html#a693195d458b49fe0ddfc0589a62d126b", null ]
 ];
