@@ -42,6 +42,7 @@
              << "              RootDepth = " << $self->RootDepth << " [m]" << std::endl
              << "  fraction_at_rootdepth = " << $self->fraction_at_rootdepth << " [-]" << std::endl
              << "            RootContent = " << $self->RootContent << " [kg/m3]" << std::endl
+             << "                     Kc = " << $self->Kc << " [-]" << std::endl
              << ")" << std::endl;
         return sstr.str();
     }

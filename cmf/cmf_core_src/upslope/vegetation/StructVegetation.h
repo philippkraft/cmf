@@ -38,7 +38,8 @@ namespace cmf {
 					StomatalResistance, ///< optimal stomatal resistence of the plant tissue for vapor, in s/m
 					CanopyClosure, ///< Fraction of bare soil to the surface, influences the routing of rainfall
 					CanopyPARExtinction, ///<  extinction coefficient for photosynthetically-active radiation in the canopy. Values usually range from 0.5 to 0.7. Values outside this range should be used very cautiously. 
-					LeafWidth;     ///< Average width of leaves in m (only for Shuttleworth-Wallace ET)
+					LeafWidth,     ///< Average width of leaves in m (only for Shuttleworth-Wallace ET)
+					Kc;  ///< FAO crop factor from CROPWAT, should vary with time
 
 
 				/// @brief Returns the average root length in m/m2
@@ -84,12 +85,12 @@ namespace cmf {
 					return res;
 				}
 				Vegetation(double _LAI=2.88,double _Height=0.12,double _RootDepth=0.25,double _StomatalResistance=100,
-					double _albedo=0.23,double _CanopyClosure=1,double _CanopyCapacityPerLAI=0.1,double _fraction_at_rootdepth=1.0)
+					double _albedo=0.23,double _CanopyClosure=1,double _CanopyCapacityPerLAI=0.1,double _fraction_at_rootdepth=1.0, double _Kc=1.0)
 					: LAI(_LAI),Height(_Height),albedo(_albedo), RootContent(2.0),
 					  CanopyCapacityPerLAI(_CanopyCapacityPerLAI),CanopyPARExtinction(0.6),
 					  RootDepth(_RootDepth),StomatalResistance(_StomatalResistance),
 					  CanopyClosure(_CanopyClosure), LeafWidth(0.05),
-					  fraction_at_rootdepth(_fraction_at_rootdepth), snow_albedo(0.85)
+					  fraction_at_rootdepth(_fraction_at_rootdepth), snow_albedo(0.85), Kc(_Kc)
 				{
 				}
 			};			
