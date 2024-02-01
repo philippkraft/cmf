@@ -29,7 +29,7 @@ import glob
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import customize_compiler
-from distutils.command.build_py import build_py
+from setuptools.command.build_py import build_py
 
 version = '2.0.1'
 
