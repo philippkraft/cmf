@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 CWD=$PWD
-TOOLDIR=$(dirname $0)
-TOOLDIR=$(realpath $TOOLDIR)
+TOOLDIR=$( cd "$(dirname "$0")"; pwd -P )
+
 echo "TOOLDIR="$TOOLDIR
 CMFDIR=$(realpath $TOOLDIR/..)
 echo "CMFDIR="$CMFDIR

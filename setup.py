@@ -28,8 +28,8 @@ import glob
 
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
-from distutils.sysconfig import customize_compiler
-from setuptools.command.build_py import build_py
+from setuptools._distutils.sysconfig import customize_compiler
+# from setuptools.command.build_py import build_py
 
 version = '2.0.1'
 
@@ -200,7 +200,6 @@ class CmfBuildExt(build_ext):
         print('library_dirs:', ' '.join(cmf_core.library_dirs))
         print('include_dirs:', ' '.join(cmf_core.include_dirs))
         print('extra_objects:', ' '.join(cmf_core.extra_objects))
-
 
     def build_extensions(self):
         customize_compiler(self.compiler)
@@ -439,8 +438,7 @@ if __name__ == '__main__':
           description=description,
           long_description=long_description,
           classifiers=classifiers,
-          cmdclass=dict(build_py=build_py,
-                        build_ext=CmfBuildExt),
-          package_data={'':['*.h']}
+          cmdclass=dict(build_ext=CmfBuildExt),
+          package_data={'': ['*.h']}
           )
 

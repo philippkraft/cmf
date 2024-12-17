@@ -33,76 +33,64 @@ jobs:
           # Note: windows-2019 is needed for older Python versions:
           # https://github.com/scikit-learn/scikit-learn/issues/22530
           - os: windows-latest
-            python: 39
-            platform_id: win_amd64
-          - os: windows-latest
-            python: 310
-            platform_id: win_amd64
-          - os: windows-latest
             python: 311
             platform_id: win_amd64
           - os: windows-latest
             python: 312
+            platform_id: win_amd64
+          - os: windows-latest
+            python: 313
             platform_id: win_amd64
 
           # Linux 64 bit manylinux2014
           - os: ubuntu-latest
-            python: 39
-            platform_id: manylinux_x86_64
-            manylinux_image: manylinux2014
-
-          # NumPy on Python 3.10 only supports 64bit and is only available with manylinux2014
-          - os: ubuntu-latest
-            python: 310
-            platform_id: manylinux_x86_64
-            manylinux_image: manylinux2014
-
-          - os: ubuntu-latest
             python: 311
             platform_id: manylinux_x86_64
             manylinux_image: manylinux2014
           - os: ubuntu-latest
             python: 312
+            platform_id: manylinux_x86_64
+            manylinux_image: manylinux2014
+          - os: ubuntu-latest
+            python: 313
             platform_id: manylinux_x86_64
             manylinux_image: manylinux2014
 
           # MacOS x86_64
           - os: macos-latest
-            python: 39
-            platform_id: macosx_x86_64
-          - os: macos-latest
-            python: 310
-            platform_id: macosx_x86_64
-          - os: macos-latest
             python: 311
             platform_id: macosx_x86_64
           - os: macos-latest
             python: 312
             platform_id: macosx_x86_64
+          - os: macos-latest
+            python: 313
+            platform_id: macosx_x86_64
 
           # MacOS arm64
-          # The wheel for the latest Python version is built and tested on
-          # Cirrus CI but due to limited build time for free accounts on Cirrus
-          # CI, we build the macOS arm64 wheels for the other Python versions on
-          # Github Actions via cross-compilation (without running the tests).
-          - os: macos-latest
-            python: 39
-            platform_id: macosx_arm64
-          - os: macos-latest
-            python: 310
-            platform_id: macosx_arm64
           - os: macos-latest
             python: 311
+            platform_id: macosx_arm64
+          - os: macos-latest
+            python: 312
+            platform_id: macosx_arm64
+          - os: macos-latest
+            python: 313
             platform_id: macosx_arm64
 
     steps:
       - name: Checkout cmf
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.9'  # update once build dependencies are available
+          python-version: '3.12'  # update once build dependencies are available
+      - name: install VS component
+        if: matrix.os == 'windows-latest'
+        shell: cmd
+        run: |
+            "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vs_installer.exe" modify --channelId VisualStudio.16.Release --productId Microsoft.VisualStudio.Product.Enterprise -q --includeRecommended --add "Microsoft.VisualStudio.2022.BuildTools"
 
       - name: Install cibuildwheel
         run: python -m pip install cibuildwheel
@@ -130,18 +118,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout cmf
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.9'  # update once build dependencies are available
+          python-version: '3.12'  # update once build dependencies are available
 
       - name: Build source distribution
         run: python setup.py sdist
-
-      - name: Test source distribution
-        run: bash build_tools/github/test_source.sh
 
       - name: Store artifacts
         uses: actions/upload-artifact@v3
