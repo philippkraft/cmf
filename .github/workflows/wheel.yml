@@ -85,15 +85,10 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'  # update once build dependencies are available
-      - name: install VS component
-        if: matrix.os == 'windows-latest'
-        shell: cmd
-        run: |
-            "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vs_installer.exe" modify --channelId VisualStudio.16.Release --productId Microsoft.VisualStudio.Product.Enterprise -q --includeRecommended --add "Microsoft.VisualStudio.2022.BuildTools"
+          python-version: '3.11'  # update once build dependencies are available
 
       - name: Install cibuildwheel
-        run: python -m pip install cibuildwheel
+        run: python -m pip install cibuildwheel setuptools
 
       - name: Build wheels
         env:
@@ -123,8 +118,9 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'  # update once build dependencies are available
-
+          python-version: '3.11'  # update once build dependencies are available
+      - name: Setup dependencies
+        run: python -m pip install setuptools numpy
       - name: Build source distribution
         run: python setup.py sdist
 
