@@ -14,12 +14,6 @@
 .. |pypi| image:: https://badge.fury.io/py/cmf.svg
     :target: https://pypi.python.org/pypi/cmf/
 
-.. |travis| image:: https://api.travis-ci.org/philippkraft/cmf.svg 
-    :target: https://travis-ci.org/philippkraft/cmf
-
-.. |appveyor| image:: https://ci.appveyor.com/api/projects/status/24crp4ejkacykkrk?svg=true
-    :target: https://ci.appveyor.com/project/philippkraft/cmf
-
 
 Modelling water and solute fluxes
 ===================================
