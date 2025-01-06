@@ -5322,6 +5322,7 @@ SWIGINTERN std::string cmf_upslope_vegetation_Vegetation___repr__(cmf::upslope::
              << "              RootDepth = " << self->RootDepth << " [m]" << std::endl
              << "  fraction_at_rootdepth = " << self->fraction_at_rootdepth << " [-]" << std::endl
              << "            RootContent = " << self->RootContent << " [kg/m3]" << std::endl
+             << "                     Kc = " << self->Kc << " [-]" << std::endl
              << ")" << std::endl;
         return sstr.str();
     }
@@ -44615,6 +44616,60 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Vegetation_Kc_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::vegetation::Vegetation *arg1 = (cmf::upslope::vegetation::Vegetation *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "Vegetation_Kc_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__vegetation__Vegetation, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vegetation_Kc_set" "', argument " "1"" of type '" "cmf::upslope::vegetation::Vegetation *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Vegetation_Kc_set" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  if (arg1) (arg1)->Kc = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Vegetation_Kc_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::vegetation::Vegetation *arg1 = (cmf::upslope::vegetation::Vegetation *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__vegetation__Vegetation, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vegetation_Kc_get" "', argument " "1"" of type '" "cmf::upslope::vegetation::Vegetation *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp1);
+  result = (double) ((arg1)->Kc);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Vegetation_RootLength(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   cmf::upslope::vegetation::Vegetation *arg1 = (cmf::upslope::vegetation::Vegetation *) 0 ;
@@ -44858,6 +44913,7 @@ SWIGINTERN PyObject *_wrap_new_Vegetation(PyObject *self, PyObject *args, PyObje
   double arg6 = (double) 1 ;
   double arg7 = (double) 0.1 ;
   double arg8 = (double) 1.0 ;
+  double arg9 = (double) 1.0 ;
   double val1 ;
   int ecode1 = 0 ;
   double val2 ;
@@ -44874,6 +44930,8 @@ SWIGINTERN PyObject *_wrap_new_Vegetation(PyObject *self, PyObject *args, PyObje
   int ecode7 = 0 ;
   double val8 ;
   int ecode8 = 0 ;
+  double val9 ;
+  int ecode9 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -44882,13 +44940,14 @@ SWIGINTERN PyObject *_wrap_new_Vegetation(PyObject *self, PyObject *args, PyObje
   PyObject * obj5 = 0 ;
   PyObject * obj6 = 0 ;
   PyObject * obj7 = 0 ;
+  PyObject * obj8 = 0 ;
   char * kwnames[] = {
-    (char *)"_LAI",  (char *)"_Height",  (char *)"_RootDepth",  (char *)"_StomatalResistance",  (char *)"_albedo",  (char *)"_CanopyClosure",  (char *)"_CanopyCapacityPerLAI",  (char *)"_fraction_at_rootdepth",  NULL 
+    (char *)"_LAI",  (char *)"_Height",  (char *)"_RootDepth",  (char *)"_StomatalResistance",  (char *)"_albedo",  (char *)"_CanopyClosure",  (char *)"_CanopyCapacityPerLAI",  (char *)"_fraction_at_rootdepth",  (char *)"_Kc",  NULL 
   };
   cmf::upslope::vegetation::Vegetation *result = 0 ;
   
   (void)self;
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "|OOOOOOOO:new_Vegetation", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "|OOOOOOOOO:new_Vegetation", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7, &obj8)) SWIG_fail;
   if (obj0) {
     ecode1 = SWIG_AsVal_double(obj0, &val1);
     if (!SWIG_IsOK(ecode1)) {
@@ -44945,9 +45004,16 @@ SWIGINTERN PyObject *_wrap_new_Vegetation(PyObject *self, PyObject *args, PyObje
     } 
     arg8 = static_cast< double >(val8);
   }
+  if (obj8) {
+    ecode9 = SWIG_AsVal_double(obj8, &val9);
+    if (!SWIG_IsOK(ecode9)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode9), "in method '" "new_Vegetation" "', argument " "9"" of type '" "double""'");
+    } 
+    arg9 = static_cast< double >(val9);
+  }
   {
     try {
-      result = (cmf::upslope::vegetation::Vegetation *)new cmf::upslope::vegetation::Vegetation(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
+      result = (cmf::upslope::vegetation::Vegetation *)new cmf::upslope::vegetation::Vegetation(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -87432,6 +87498,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "Vegetation_CanopyPARExtinction_get", _wrap_Vegetation_CanopyPARExtinction_get, METH_O, "Vegetation_CanopyPARExtinction_get(Vegetation self) -> double"},
 	 { "Vegetation_LeafWidth_set", _wrap_Vegetation_LeafWidth_set, METH_VARARGS, "Vegetation_LeafWidth_set(Vegetation self, double LeafWidth)"},
 	 { "Vegetation_LeafWidth_get", _wrap_Vegetation_LeafWidth_get, METH_O, "Vegetation_LeafWidth_get(Vegetation self) -> double"},
+	 { "Vegetation_Kc_set", _wrap_Vegetation_Kc_set, METH_VARARGS, "Vegetation_Kc_set(Vegetation self, double Kc)"},
+	 { "Vegetation_Kc_get", _wrap_Vegetation_Kc_get, METH_O, "Vegetation_Kc_get(Vegetation self) -> double"},
 	 { "Vegetation_RootLength", _wrap_Vegetation_RootLength, METH_O, "\n"
 		"Vegetation_RootLength(Vegetation self) -> double\n"
 		"double RootLength()\n"
@@ -87466,7 +87534,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		""},
 	 { "new_Vegetation", (PyCFunction)(void(*)(void))_wrap_new_Vegetation, METH_VARARGS|METH_KEYWORDS, "\n"
-		"new_Vegetation(double _LAI=2.88, double _Height=0.12, double _RootDepth=0.25, double _StomatalResistance=100, double _albedo=0.23, double _CanopyClosure=1, double _CanopyCapacityPerLAI=0.1, double _fraction_at_rootdepth=1.0) -> Vegetation\n"
+		"new_Vegetation(double _LAI=2.88, double _Height=0.12, double _RootDepth=0.25, double _StomatalResistance=100, double _albedo=0.23, double _CanopyClosure=1, double _CanopyCapacityPerLAI=0.1, double _fraction_at_rootdepth=1.0, double _Kc=1.0) -> Vegetation\n"
 		"Vegetation(double\n"
 		"_LAI=2.88, double _Height=0.12, double _RootDepth=0.25, double\n"
 		"_StomatalResistance=100, double _albedo=0.23, double _CanopyClosure=1,\n"
@@ -93502,6 +93570,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Vegetation_CanopyPARExtinction_get", _wrap_Vegetation_CanopyPARExtinction_get, METH_O, "Vegetation_CanopyPARExtinction_get(Vegetation self) -> double"},
 	 { "Vegetation_LeafWidth_set", _wrap_Vegetation_LeafWidth_set, METH_VARARGS, "Vegetation_LeafWidth_set(Vegetation self, double LeafWidth)"},
 	 { "Vegetation_LeafWidth_get", _wrap_Vegetation_LeafWidth_get, METH_O, "Vegetation_LeafWidth_get(Vegetation self) -> double"},
+	 { "Vegetation_Kc_set", _wrap_Vegetation_Kc_set, METH_VARARGS, "Vegetation_Kc_set(Vegetation self, double Kc)"},
+	 { "Vegetation_Kc_get", _wrap_Vegetation_Kc_get, METH_O, "Vegetation_Kc_get(Vegetation self) -> double"},
 	 { "Vegetation_RootLength", _wrap_Vegetation_RootLength, METH_O, "\n"
 		"RootLength(Vegetation self) -> double\n"
 		"double RootLength()\n"
@@ -93536,7 +93606,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"\n"
 		""},
 	 { "new_Vegetation", (PyCFunction)(void(*)(void))_wrap_new_Vegetation, METH_VARARGS|METH_KEYWORDS, "\n"
-		"new_Vegetation(double _LAI=2.88, double _Height=0.12, double _RootDepth=0.25, double _StomatalResistance=100, double _albedo=0.23, double _CanopyClosure=1, double _CanopyCapacityPerLAI=0.1, double _fraction_at_rootdepth=1.0) -> Vegetation\n"
+		"new_Vegetation(double _LAI=2.88, double _Height=0.12, double _RootDepth=0.25, double _StomatalResistance=100, double _albedo=0.23, double _CanopyClosure=1, double _CanopyCapacityPerLAI=0.1, double _fraction_at_rootdepth=1.0, double _Kc=1.0) -> Vegetation\n"
 		"Vegetation(double\n"
 		"_LAI=2.88, double _Height=0.12, double _RootDepth=0.25, double\n"
 		"_StomatalResistance=100, double _albedo=0.23, double _CanopyClosure=1,\n"

@@ -28,10 +28,10 @@ import glob
 
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
-from distutils.sysconfig import customize_compiler
-from distutils.command.build_py import build_py
+from setuptools._distutils.sysconfig import customize_compiler
+# from setuptools.command.build_py import build_py
 
-version = '2.0.0'
+version = '2.0.1'
 
 swig = False
 openmp = False
@@ -40,6 +40,13 @@ debug = False
 class StaticLibrary:
     """
     A wrapper to build and link static libraries to an extension
+
+    The extension object uses for linking libraries (in library paths) and extra objects.
+    This is OS dependent for static libraries.
+    dependent way - see https://stackoverflow.com/a/49139257/3032680
+
+    .to_lists is mapped to `as_posix` or `as_win32` that returns the libraries paths, libraries and extra objects associated
+    with this static library for the right OS. 
     """
     def __init__(self, includepath, libpath, *libs, build_script=None, build_always=False):
         self.includepath = includepath
@@ -64,19 +71,19 @@ class StaticLibrary:
         return [self.libpath], reversed(checked_libs), []
 
     def as_posix(self):
-        # Move static libraries to extra_objects (with path) to ensure static linking in posix systems
-        if os.path.exists(self.libpath):
-            libpath = self.libpath
-        elif os.path.exists(self.libpath + '64'):
-            libpath = self.libpath + '64'
-        else:
-            raise FileNotFoundError("Can't find static library directory" + self.libpath)
+        def get_lib_path(libname):
+            """
+            depending on the distro / UNIX variant, the built static libs end either in libpath/libXXX.a or libpath64/libXXX.a
+            This function looks in both places
+            """
+            if os.path.exists(self.libpath + '/lib' + libname + '.a'):
+                return self.libpath + '/lib' + libname + '.a'
+            elif os.path.exists(self.libpath + '64/lib' + libname + '.a'):
+                return self.libpath + '64/lib' + libname + '.a'
+            else:
+                raise FileNotFoundError(f"Can't find static library lib{libname}.a in {self.libpath}[64]")
 
-        libfiles = ['{}/lib{}.a'.format(libpath, l) for l in self.libs]
-        for lf in libfiles:
-            if not os.path.exists(lf):
-                raise FileNotFoundError("Can't find static library " + lf)
-        return [], [], libfiles
+        return [], [], [get_lib_path(l) for l in self.libs]
 
     def exists(self):
         try:
@@ -127,7 +134,6 @@ static_libraries = [
                   'cmf_core',
                   build_script='install_cmf_core', build_always=True),
 ]
-
 
 class CmfBuildExt(build_ext):
     """
@@ -185,7 +191,10 @@ class CmfBuildExt(build_ext):
         for sl in static_libraries:
             if not sl.exists():
                 print(sl, 'get downloaded and installed')
-
+            else:
+                print(sl, ' exists')
+        print('#' * 50)
+        print('build_library')
         for sl in static_libraries:
             if not sl.exists() or sl.build_always:
                 sl.build()
@@ -200,7 +209,6 @@ class CmfBuildExt(build_ext):
         print('library_dirs:', ' '.join(cmf_core.library_dirs))
         print('include_dirs:', ' '.join(cmf_core.include_dirs))
         print('extra_objects:', ' '.join(cmf_core.extra_objects))
-
 
     def build_extensions(self):
         customize_compiler(self.compiler)
@@ -439,8 +447,7 @@ if __name__ == '__main__':
           description=description,
           long_description=long_description,
           classifiers=classifiers,
-          cmdclass=dict(build_py=build_py,
-                        build_ext=CmfBuildExt),
-          package_data={'':['*.h']}
+          cmdclass=dict(build_ext=CmfBuildExt),
+          package_data={'': ['*.h']}
           )
 

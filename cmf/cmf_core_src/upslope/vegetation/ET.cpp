@@ -100,6 +100,12 @@ namespace cmf {
 				return Tact(ETpot_value);
 			}
 
+			real timeseriesETpot::ETpot(cmf::math::Time t) const {
+				cmf::upslope::SoilLayer::ptr layer=sw.lock();
+				const cmf::upslope::vegetation::Vegetation& veg=layer->cell.vegetation;
+				return ETpot_data.get_t(t) * veg.Kc;
+			}
+
 			real timeseriesETpot::calc_q( cmf::math::Time t )
 			{
 				cmf::upslope::SoilLayer::ptr layer=sw.lock();
@@ -139,7 +145,7 @@ namespace cmf {
 					G = daily ? 0									// If calculation takes place on daily basis, the soil heat flux is 0 (FAO 1998,Eq. 42)
 					: Rn>0 ? 0.1*Rn : 0.5 * Rn,	           // On a shorter basis, it is proportional to Rn, different for day and night (FAO 1998,Eq. 45f)
 					PM = PenmanMonteith(Rn - G, r_a(A, veg.Height), r_s(veg), A.T, A.e_s - A.e_a);
-				return PM;
+				return PM  * veg.Kc;
 			}
 			real PenmanMonteithET::calc_q( cmf::math::Time t )
 			{
@@ -174,7 +180,7 @@ namespace cmf {
 				cmf::upslope::vegetation::Vegetation veg=layer->cell.vegetation;
 				double etrc = ETpot(t);
 				
-				return Tact(etrc*veg.LAI/2.88) * (1-layer->cell.leave_wetness());
+				return Tact(etrc) * (1-layer->cell.leave_wetness());
 
 			}
 
@@ -204,7 +210,7 @@ namespace cmf {
 					etrc = 0.0135 * KT * s0 * sqrt(TD) * (A.T + 17.8);
 
 
-				return etrc;
+				return etrc * veg.Kc;
 			}
 			real PenmanEvaporation::calc_q( cmf::math::Time t )
 			{
@@ -228,7 +234,7 @@ namespace cmf {
 				cmf::upslope::vegetation::Vegetation veg = layer->cell.vegetation;
 
 				real ETp = ETpot(t);
-				return Tact(ETp * veg.LAI/2.88) * (1-layer->cell.leave_wetness());
+				return Tact(ETp) * (1-layer->cell.leave_wetness());
 			}
 
 			void TurcET::use_for_cell( cmf::upslope::Cell & cell )
@@ -251,7 +257,7 @@ namespace cmf {
 					rH = 100 * A.e_a / A.e_s,
 					C = rH<50 ? 1 + ((50 - rH) / 70) : 1.0,
 					ETp = 0.0031 * C * (RG + 209) * (T / (T + 15));
-				return ETp;
+				return ETp * veg.Kc;
 			}
 
 
@@ -286,7 +292,7 @@ namespace cmf {
 					radTerm = alpha * Delta / (Delta + gamma) * (Rn - G),
 
 					PT = radTerm / lambda;
-				return PT;
+				return PT * veg.Kc;
 			}
 
 			real PriestleyTaylorET::calc_q( cmf::math::Time t )
@@ -295,7 +301,7 @@ namespace cmf {
 				cmf::upslope::Cell & cell=layer->cell;
 				cmf::upslope::vegetation::Vegetation veg=cell.vegetation;
 				real PT = ETpot(t);
-				return Tact(PT * veg.LAI/2.88) * (1-cell.leave_wetness());
+				return Tact(PT) * (1-cell.leave_wetness());
 
 			}
 
@@ -304,7 +310,7 @@ namespace cmf {
 				cmf::upslope::Cell & cell=layer->cell;
 				cmf::upslope::vegetation::Vegetation veg=cell.vegetation;
 				real O_ET = ETpot(t);
-				return Tact(O_ET * veg.LAI/2.88) * (1-cell.leave_wetness());
+				return Tact(O_ET) * (1-cell.leave_wetness());
             }
 
             void OudinET::use_for_cell(cmf::upslope::Cell &cell) {
@@ -321,7 +327,7 @@ namespace cmf {
 				cmf::upslope::vegetation::Vegetation veg = cell.vegetation;
 				double lambda = 2.45; // MJ / kg latent heat of vaporization
 				if (A.T + K2 > 0) {
-					return (A.Ra / lambda) * (A.T + K2) / K1;
+					return veg.Kc * (A.Ra / lambda) * (A.T + K2) / K1;
 				}
 				else {
 					return 0.0;

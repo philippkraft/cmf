@@ -82,6 +82,9 @@ venv.bak/
 .spyderproject
 .spyproject
 
+# Visual Studio Code
+.vscode
+
 # PyCharm
 .idea
 cmake-build-*/

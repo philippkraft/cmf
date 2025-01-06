@@ -109,7 +109,7 @@ namespace cmf {
 			///
 			/// Uses a constant measured or elsewhere modelled ETpot. Actual Evapotranspiration is calculated
 			/// from rootdepth and actual matrix potential in the layers using Tact. The value of ETpot can be
-			/// changed during runtime
+			/// changed during runtime. The Kc factor fron cell.vegetation is ignored.
 			class constantETpot : public stressedET {
 			protected:
 				virtual real calc_q(cmf::math::Time t);
@@ -129,13 +129,13 @@ namespace cmf {
 			///
 			/// Uses a timeseries of measured or elsewhere modelled ETpot. Actual Evapotranspiration is calculated
 			/// from rootdepth and actual matrix potential in the layers using Tact. The value of ETpot can be
-			/// changed during runtime
+			/// changed during runtime by varying the Kc factor in the cell's vegetation object
 			class timeseriesETpot: public stressedET {
 			protected:
 				virtual real calc_q(cmf::math::Time t);
 			public:
 				cmf::math::timeseries ETpot_data;
-				virtual real ETpot(cmf::math::Time t) const {return ETpot_data.get_t(t);}
+				virtual real ETpot(cmf::math::Time t) const;
 				timeseriesETpot(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target,cmf::math::timeseries ETpot_values)
 					: stressedET (source,ET_target,"Timeseries based ET connection"), ETpot_data(ETpot_values)
 				{
@@ -143,7 +143,7 @@ namespace cmf {
 
 			};
 			/// @ingroup ET
-			/// Calculates the potential evapotranspiration according to FAO(1998)
+			/// Calculates the potential evapotranspiration according to FAO(1998). 
 			///
 			/// Governing equations:
 			/// \f[
@@ -171,6 +171,9 @@ namespace cmf {
 			/// r_s &=& \frac{r_l}{LAI_{Active}} \mbox{ (FAO 1998, Eq. 5/Box 5)} \frac s m \\
 			/// && r_l=100 \frac s m, LAI_{Active}=0.5 LAI
 			/// \f]
+			///
+			/// The result can be modified with the crop factor Kc in cell.vegetation.
+			///
 			class PenmanMonteithET : public stressedET {
 
 			protected:
@@ -189,7 +192,7 @@ namespace cmf {
 			};
 
 			///@ingroup ET
-			/// Calculates the Evapotranspiration using Priestley-Taylor equation
+			/// Calculates the Evapotranspiration using Priestley-Taylor equation.
 			///
 			/// \f[lambda ET = \alpha \frac{\Delta}{\Delta + \gamma} \left(R_n - G\right)\f]
 			/// where:
@@ -199,6 +202,10 @@ namespace cmf {
 			///  - \f$R_n \frac{MJ}{m^2day}\f$ net Radiation (see Atmosphere)
 			///  - \f$G\f$ Ground heat flux
 			///  - \f$\alpha\f$ the Priestley-Taylor constant (default 1.26 for humid climates)
+			///
+			/// The result can be modified with the crop factor Kc in cell.vegetation.
+			///
+
 			class PriestleyTaylorET : public stressedET {
 			protected:
 				real calc_q(cmf::math::Time t);
@@ -214,7 +221,7 @@ namespace cmf {
 			};
 
 			/// @ingroup ET
-			/// Calculates the Evapotranspiration using Hargreave's equation
+			/// Calculates the Evapotranspiration using Hargreave's equation.
 			///
 			/// \f[ET_{rc} = 0.0135 K_T\ s_0 \sqrt{\Delta T} (T + 17.8)\f]
 			/// where:
@@ -227,6 +234,8 @@ namespace cmf {
 			/// - \f$ \omega_s = \arccos(-\tan{\Phi} \tan{\gamma}) \f$ sunset hour angle (radians)
 			/// - \f$ \gamma = 0.4039 \sin(DOY\frac{2 \pi}{365}  - 1.405) \f$ solar declination (radians)
 			/// - \f$ \Phi\f$ geographic latitude (radians)
+			///
+			/// The result can be modified with the crop factor Kc in cell.vegetation.
 			///
 			/// @see SAMANI, Zohrab. [Estimating solar radiation and evapotranspiration using minimum climatological data.][1]
 			/// _Journal of Irrigation and Drainage Engineering,_ 2000, 126. Jg., Nr. 4, S. 265-267.
@@ -258,6 +267,9 @@ namespace cmf {
 			/// Oudin et al (2005) found an optimum for \f$K_1=100, K_2=5\f$.
 			/// The origin of this formula lays in Jensen & Haise (1963) with \f$K_1=40, K_2=0\f$
 			/// and McGuiness-Bordne (1972) with \f$K_1=68, K_2=5\f$.
+			///
+			/// The result can be modified with the crop factor Kc in cell.vegetation.
+			///
 			class OudinET : public stressedET {
 			protected:
 				real calc_q(cmf::math::Time t);
@@ -289,6 +301,9 @@ namespace cmf {
 			///   a modification parameter for low humidity
 			/// - \f$rH\f$ relative Humidity in %
 			/// - \f$R_G\f$ global radiation in \f$J/cm^2\f$
+			///
+			/// The result can be modified with the crop factor Kc in cell.vegetation.
+			///
 			class TurcET : public stressedET {
 			protected:
 				real calc_q(cmf::math::Time t);

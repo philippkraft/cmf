@@ -3176,12 +3176,13 @@ class Vegetation(object):
     CanopyClosure = property(_cmf_core.Vegetation_CanopyClosure_get, _cmf_core.Vegetation_CanopyClosure_set, doc=r"""CanopyClosure : double""")
     CanopyPARExtinction = property(_cmf_core.Vegetation_CanopyPARExtinction_get, _cmf_core.Vegetation_CanopyPARExtinction_set, doc=r"""CanopyPARExtinction : double""")
     LeafWidth = property(_cmf_core.Vegetation_LeafWidth_get, _cmf_core.Vegetation_LeafWidth_set, doc=r"""LeafWidth : double""")
+    Kc = property(_cmf_core.Vegetation_Kc_get, _cmf_core.Vegetation_Kc_set, doc=r"""Kc : double""")
     RootLength = _swig_new_instance_method(_cmf_core.Vegetation_RootLength)
     RootFraction = _swig_new_instance_method(_cmf_core.Vegetation_RootFraction)
 
     def __init__(self, *args, **kwargs):
         r"""
-        __init__(Vegetation self, double _LAI=2.88, double _Height=0.12, double _RootDepth=0.25, double _StomatalResistance=100, double _albedo=0.23, double _CanopyClosure=1, double _CanopyCapacityPerLAI=0.1, double _fraction_at_rootdepth=1.0) -> Vegetation
+        __init__(Vegetation self, double _LAI=2.88, double _Height=0.12, double _RootDepth=0.25, double _StomatalResistance=100, double _albedo=0.23, double _CanopyClosure=1, double _CanopyCapacityPerLAI=0.1, double _fraction_at_rootdepth=1.0, double _Kc=1.0) -> Vegetation
         Vegetation(double
         _LAI=2.88, double _Height=0.12, double _RootDepth=0.25, double
         _StomatalResistance=100, double _albedo=0.23, double _CanopyClosure=1,

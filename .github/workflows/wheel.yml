@@ -19,9 +19,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Build the wheels for Linux, Windows and macOS for Python 3.9 and newer
+  # Build the wheels for Linux, Windows and macOS for Python 3.11 and newer
   build_wheels:
-    name: Build wheel for cp${{ matrix.python }}-${{ matrix.platform_id }}-${{ matrix.manylinux_image }}
+    name: Build cmf-wheel for cp${{ matrix.python }}-${{ matrix.platform_id }}-${{ matrix.manylinux_image }}
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -33,30 +33,24 @@ jobs:
           # Note: windows-2019 is needed for older Python versions:
           # https://github.com/scikit-learn/scikit-learn/issues/22530
           - os: windows-latest
-            python: 39
-            platform_id: win_amd64
-          - os: windows-latest
-            python: 310
-            platform_id: win_amd64
-          - os: windows-latest
             python: 311
             platform_id: win_amd64
           - os: windows-latest
             python: 312
             platform_id: win_amd64
+          - os: windows-latest
+            python: 313
+            platform_id: win_amd64
+          - os: windows-latest
+            python: 313t
+            platform_id: win_amd64
+            free_threaded_support: True
 
           # Linux 64 bit manylinux2014
           - os: ubuntu-latest
-            python: 39
-            platform_id: manylinux_x86_64
-            manylinux_image: manylinux2014
-
-          # NumPy on Python 3.10 only supports 64bit and is only available with manylinux2014
-          - os: ubuntu-latest
             python: 310
             platform_id: manylinux_x86_64
             manylinux_image: manylinux2014
-
           - os: ubuntu-latest
             python: 311
             platform_id: manylinux_x86_64
@@ -65,53 +59,70 @@ jobs:
             python: 312
             platform_id: manylinux_x86_64
             manylinux_image: manylinux2014
+          - os: ubuntu-latest
+            python: 313
+            platform_id: manylinux_x86_64
+            manylinux_image: manylinux2014
+          - os: ubuntu-latest
+            python: 313t
+            platform_id: manylinux_x86_64
+            manylinux_image: manylinux2014
+            free_threaded_support: True
+
 
           # MacOS x86_64
-          - os: macos-latest
-            python: 39
-            platform_id: macosx_x86_64
-          - os: macos-latest
+          - os: macos-13
             python: 310
             platform_id: macosx_x86_64
-          - os: macos-latest
+          - os: macos-13
             python: 311
             platform_id: macosx_x86_64
-          - os: macos-latest
+          - os: macos-13
             python: 312
             platform_id: macosx_x86_64
+          - os: macos-13
+            python: 313
+            platform_id: macosx_x86_64
+          - os: macos-13
+            python: 313t
+            platform_id: macosx_x86_64
+            free_threaded_support: True
 
           # MacOS arm64
-          # The wheel for the latest Python version is built and tested on
-          # Cirrus CI but due to limited build time for free accounts on Cirrus
-          # CI, we build the macOS arm64 wheels for the other Python versions on
-          # Github Actions via cross-compilation (without running the tests).
-          - os: macos-latest
-            python: 39
-            platform_id: macosx_arm64
-          - os: macos-latest
-            python: 310
-            platform_id: macosx_arm64
-          - os: macos-latest
+          - os: macos-14
             python: 311
             platform_id: macosx_arm64
+          - os: macos-14
+            python: 312
+            platform_id: macosx_arm64
+          - os: macos-14
+            python: 313
+            platform_id: macosx_arm64
+          - os: macos-14
+            python: 313t
+            platform_id: macosx_arm64
+            free_threaded_support: True
 
     steps:
       - name: Checkout cmf
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.9'  # update once build dependencies are available
-
+          python-version: '3.11'  # update once build dependencies are available
+      - name: Use VCvarsall.bat
+        uses: ilammy/msvc-dev-cmd@v1
       - name: Install cibuildwheel
-        run: python -m pip install cibuildwheel
+        run: python -m pip install cibuildwheel setuptools numpy
 
       - name: Build wheels
         env:
           CIBW_PRERELEASE_PYTHONS: ${{ matrix.prerelease }}
+          CIBW_FREE_THREADED_SUPPORT: ${{ matrix.free_threaded_support }}
           CIBW_BUILD: cp${{ matrix.python }}-${{ matrix.platform_id }}
           CIBW_ARCHS: all
+          CIBW_BEFORE_ALL: python -m pip install numpy cmake setuptools
           CIBW_BEFORE_BUILD: python -m pip install numpy cmake setuptools
           CIBW_MANYLINUX_X86_64_IMAGE: ${{ matrix.manylinux_image }}
           CIBW_MANYLINUX_I686_IMAGE: ${{ matrix.manylinux_image }}
@@ -120,8 +131,9 @@ jobs:
         run: python -m cibuildwheel --output-dir wheelhouse
 
       - name: Store artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
+          name: cibw-wheels-cp${{ matrix.python }}-${{ matrix.platform_id }}
           path: wheelhouse/*.whl
 
   # Build the source distribution under Linux
@@ -130,21 +142,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout cmf
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.9'  # update once build dependencies are available
-
+          python-version: '3.11'  # update once build dependencies are available
+      - name: Setup dependencies
+        run: python -m pip install setuptools numpy
       - name: Build source distribution
         run: python setup.py sdist
 
-      - name: Test source distribution
-        run: bash build_tools/github/test_source.sh
-
       - name: Store artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
+          name: cmf-sdist
           path: dist/*.tar.gz
 
