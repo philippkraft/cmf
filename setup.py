@@ -77,13 +77,13 @@ class StaticLibrary:
             This function looks in both places
             """
             if os.path.exists(self.libpath + '/lib' + libname + '.a'):
-                return self.libpath + '/' + libname
+                return self.libpath + '/lib' + libname + '.a'
             elif os.path.exists(self.libpath + '64/lib' + libname + '.a'):
-                return self.libpath + '64/' + libname
+                return self.libpath + '64/lib' + libname + '.a'
             else:
                 raise FileNotFoundError(f"Can't find static library lib{libname}.a in {self.libpath}[64]")
 
-        return [], [], map(get_lib_path, self.libs)
+        return [], [], [get_lib_path(l) for l in self.libs]
 
     def exists(self):
         try:
@@ -134,7 +134,6 @@ static_libraries = [
                   'cmf_core',
                   build_script='install_cmf_core', build_always=True),
 ]
-
 
 class CmfBuildExt(build_ext):
     """
@@ -192,7 +191,10 @@ class CmfBuildExt(build_ext):
         for sl in static_libraries:
             if not sl.exists():
                 print(sl, 'get downloaded and installed')
-
+            else:
+                print(sl, ' exists')
+        print('#' * 50)
+        print('build_library')
         for sl in static_libraries:
             if not sl.exists() or sl.build_always:
                 sl.build()
