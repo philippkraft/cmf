@@ -1,6 +1,6 @@
 |logo|
 
-|lic| |zeno| |pypi| |travis| |appveyor|
+|lic| |zeno| |pypi| |github-action|
 
 .. |logo| image:: https://raw.githubusercontent.com/philippkraft/cmf/master/documentation/media/cmf-logo-klein-2018.png
     :target: https://philippkraft.github.io/cmf
@@ -14,6 +14,8 @@
 .. |pypi| image:: https://badge.fury.io/py/cmf.svg
     :target: https://pypi.python.org/pypi/cmf/
 
+.. |github-action| image:: https://github.com/philippkraft/cmf/actions/workflows/wheel.yml/badge.svg
+    :target: https://github.com/philippkraft/cmf/actions/workflows/wheel.yml
 
 Modelling water and solute fluxes
 ===================================
