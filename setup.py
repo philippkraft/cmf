@@ -43,6 +43,13 @@ class StaticLibraryError(IOError):
 class StaticLibrary:
     """
     A wrapper to build and link static libraries to an extension
+
+    The extension object uses for linking libraries (in library paths) and extra objects.
+    This is OS dependent for static libraries.
+    dependent way - see https://stackoverflow.com/a/49139257/3032680
+
+    .to_lists is mapped to `as_posix` or `as_win32` that returns the libraries paths, libraries and extra objects associated
+    with this static library for the right OS. 
     """
     def __init__(self, includepath, libpath, *libs, build_script=None, build_always=False):
         self.includepath = includepath
@@ -67,15 +74,19 @@ class StaticLibrary:
         return [self.libpath], reversed(checked_libs), []
 
     def as_posix(self):
-        # Move static libraries to extra_objects (with path) to ensure static linking in posix systems
-        def find(libname):
-            for libpath in [self.libpath, self.libpath + '64']:
-                libfn = os.path.join(libpath, f'lib{libname}.a')
-                if os.path.exists(libfn):
-                    return libfn
-            raise StaticLibraryError("cmf.setup: Can't find static library " + libfn)
-        libfiles = [find(l) for l in self.libs]
-        return [], [], libfiles
+        def get_lib_path(libname):
+            """
+            depending on the distro / UNIX variant, the built static libs end either in libpath/libXXX.a or libpath64/libXXX.a
+            This function looks in both places
+            """
+            if os.path.exists(self.libpath + '/lib' + libname + '.a'):
+                return self.libpath + '/lib' + libname + '.a'
+            elif os.path.exists(self.libpath + '64/lib' + libname + '.a'):
+                return self.libpath + '64/lib' + libname + '.a'
+            else:
+                raise FileNotFoundError(f"Can't find static library lib{libname}.a in {self.libpath}[64]")
+
+        return [], [], [get_lib_path(l) for l in self.libs]
 
     def exists(self):
         try:
@@ -126,7 +137,6 @@ static_libraries = [
                   'cmf_core',
                   build_script='install_cmf_core', build_always=True),
 ]
-
 
 class CmfBuildExt(build_ext):
     """
@@ -184,7 +194,10 @@ class CmfBuildExt(build_ext):
         for sl in static_libraries:
             if not sl.exists():
                 print(sl, 'get downloaded and installed')
-
+            else:
+                print(sl, ' exists')
+        print('#' * 50)
+        print('build_library')
         for sl in static_libraries:
             if not sl.exists() or sl.build_always:
                 sl.build()

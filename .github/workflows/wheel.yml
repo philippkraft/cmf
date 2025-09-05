@@ -19,9 +19,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Build the wheels for Linux, Windows and macOS for Python 3.9 and newer
+  # Build the wheels for Linux, Windows and macOS for Python 3.11 and newer
   build_wheels:
-    name: Build wheel for cp${{ matrix.python }}-${{ matrix.platform_id }}-${{ matrix.manylinux_image }}
+    name: Build cmf-wheel for cp${{ matrix.python }}-${{ matrix.platform_id }}-${{ matrix.manylinux_image }}
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -48,6 +48,10 @@ jobs:
 
           # Linux 64 bit manylinux2014
           - os: ubuntu-latest
+            python: 310
+            platform_id: manylinux_x86_64
+            manylinux_image: manylinux2014
+          - os: ubuntu-latest
             python: 311
             platform_id: manylinux_x86_64
             manylinux_image: manylinux2014
@@ -67,6 +71,9 @@ jobs:
 
 
           # MacOS x86_64
+          - os: macos-13
+            python: 310
+            platform_id: macosx_x86_64
           - os: macos-13
             python: 311
             platform_id: macosx_x86_64
@@ -92,7 +99,7 @@ jobs:
             python: 313
             platform_id: macosx_arm64
           - os: macos-14
-            python: 313
+            python: 313t
             platform_id: macosx_arm64
             free_threaded_support: True
 
@@ -112,6 +119,7 @@ jobs:
       - name: Build wheels
         env:
           CIBW_PRERELEASE_PYTHONS: ${{ matrix.prerelease }}
+          CIBW_FREE_THREADED_SUPPORT: ${{ matrix.free_threaded_support }}
           CIBW_BUILD: cp${{ matrix.python }}-${{ matrix.platform_id }}
           CIBW_ARCHS: all
           CIBW_BEFORE_ALL: python -m pip install numpy cmake setuptools

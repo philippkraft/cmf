@@ -177,8 +177,8 @@ def voronoi_cells(project: Project, x, y, z, buffer=0.0, mask=None):
 
     :param project: The cmf project
     :param x: a sequence of x values
-    :param y: a sequence of x values
-    :param z: a sequence of x values
+    :param y: a sequence of y values
+    :param z: a sequence of z values
     :param buffer: a float indicating the buffer around the hull. Expressed as a fraction of the sqrt of the hull's area
     :param mask: a polygon to use as a mask. If given, the convex hull is ignored
     :return: list of cells
