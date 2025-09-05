@@ -34,6 +34,7 @@ venv-py*/
 *.egg-info/
 .installed.cfg
 *.egg
+*.whl
 MANIFEST
 
 # PyInstaller
