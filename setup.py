@@ -37,6 +37,9 @@ swig = False
 openmp = False
 debug = False
 
+class StaticLibraryError(IOError):
+    pass
+
 class StaticLibrary:
     """
     A wrapper to build and link static libraries to an extension
@@ -60,28 +63,24 @@ class StaticLibrary:
             elif os.path.exists(os.path.join(self.libpath, 'lib' + lib + '.lib')):
                 checked_libs.append('lib' + lib)
             else:
-                raise FileNotFoundError("Can't find static library " + os.path.join(self.libpath, lib))
+                raise StaticLibraryError("cmf.setup: Can't find static library " + os.path.join(self.libpath, lib))
         return [self.libpath], reversed(checked_libs), []
 
     def as_posix(self):
         # Move static libraries to extra_objects (with path) to ensure static linking in posix systems
-        if os.path.exists(self.libpath):
-            libpath = self.libpath
-        elif os.path.exists(self.libpath + '64'):
-            libpath = self.libpath + '64'
-        else:
-            raise FileNotFoundError("Can't find static library directory" + self.libpath)
-
-        libfiles = ['{}/lib{}.a'.format(libpath, l) for l in self.libs]
-        for lf in libfiles:
-            if not os.path.exists(lf):
-                raise FileNotFoundError("Can't find static library " + lf)
+        def find(libname):
+            for libpath in [self.libpath, self.libpath + '64']:
+                libfn = os.path.join(libpath, f'lib{libname}.a')
+                if os.path.exists(libfn):
+                    return libfn
+            raise StaticLibraryError("cmf.setup: Can't find static library " + libfn)
+        libfiles = [find(l) for l in self.libs]
         return [], [], libfiles
 
     def exists(self):
         try:
             self.to_lists()
-        except FileNotFoundError:
+        except StaticLibraryError:
             return False
         else:
             return True
