@@ -2,7 +2,6 @@
 This file contains a map for cells. Does only work with shapely support
 """
 
-from __future__ import print_function, division, absolute_import
 from .. import cmf_core as cmf
 from .. import draw
 from matplotlib import pylab as plt
@@ -59,8 +58,8 @@ class CellMap(ScalarMappable):
     def draw_shapes(shape, c, **kwargs):
         if hasattr(shape, "exterior"):
             shape = shape.exterior
-        a = plt.asarray(shape)
-        return plt.fill(a[:, 0], a[:, 1], fc=c, **kwargs)[0]
+        x,y  = shape.xy
+        return plt.fill(x, y, fc=c, **kwargs)[0]
 
     def __init__(self, cells, value_function, cmap=default_colormap,
                  hold=True, vmin=None, vmax=None, **kwargs):
@@ -78,7 +77,7 @@ class CellMap(ScalarMappable):
 
         if not hasattr(cmf.Cell, 'geometry'):
             raise NotImplementedError('The geometry of the cells can not be used, shapely is not installed')
-        self.cmap = cmap
+        super().__init__(cmap=cmap)
         self.cells = [c for c in cells if c.geometry]
         self.__f = value_function
 
@@ -111,8 +110,8 @@ class CellMap(ScalarMappable):
             self.polygons[cell] = [self.draw_shapes(s, c, **kwargs) for s in shapes]
 
         plt.axis('equal')
-        norm = Normalize(self.minvalue, self.maxvalue)
-        plt.matplotlib.cm.ScalarMappable.__init__(self, norm, cmap)
+        self.norm = Normalize(self.minvalue, self.maxvalue)
+
 
         if was_interactive:
             plt.draw()

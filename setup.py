@@ -31,7 +31,7 @@ from setuptools.command.build_ext import build_ext
 from setuptools._distutils.sysconfig import customize_compiler
 # from setuptools.command.build_py import build_py
 
-version = '2.0.1'
+version = '2.0.2'
 
 swig = False
 openmp = False

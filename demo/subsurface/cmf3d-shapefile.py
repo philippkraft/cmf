@@ -7,9 +7,9 @@ The API is likely to change some day
 import cmf
 import cmf.geometry
 import numpy as np
-from shapefile import Reader as Shapefile
+import geopandas as gpd
 import cmf.draw
-import pylab as plt
+import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 from datetime import datetime, timedelta
@@ -147,18 +147,18 @@ class Model:
         """
 
         p = cmf.project()
-        shp = Shapefile('data/vollnkirchner_bach_cells.shp')
+        shp = gpd.read_file('data/vollnkirchner_bach_cells.shp')
 
         # Create cells
         self.outlet_cells = []
-        for oid, feature in enumerate(shp):
-            record = feature.record
+        for oid, feature in shp.iterrows():
+            
             # Create a cell for each feature in the shape file
-            c = cmf.geometry.create_cell(p, feature.shape, record.HEIGHT,
+            c = cmf.geometry.create_cell(p, feature.geometry, feature.HEIGHT,
                                          oid, with_surfacewater=False)
 
             # If it is an outlet feature, add cell to the list of outletcells
-            if record.LANDUSE_CU.startswith('outlet'):
+            if feature.LANDUSE_CU.startswith('outlet'):
                 self.outlet_cells.append(c)
             else:
                 # If it is a normal upload cell, add layers
@@ -191,6 +191,12 @@ class Model:
 
 
 class Animator(FuncAnimation):
+    """
+    A matplotlib animator for the model
+    
+    Shows the map of cells and the fluxes between them, the cells are colored with
+    their wetness. The animation runs the model and updates the fluxes and colors.
+    """
     def __init__(self, model):
         self.model = model
         self.figure = plt.figure()
@@ -217,7 +223,5 @@ class Animator(FuncAnimation):
 
 if __name__ == '__main__':
     p = Model(cmf.Darcy, cmf.KinematicSurfaceRunoff, 1)
-
-    # cm = cmf.draw.CellMap(p.project, lambda c: c.saturated_depth)
     anim = Animator(p)
     plt.show()

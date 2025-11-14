@@ -3,7 +3,7 @@ from __future__ import unicode_literals, print_function, absolute_import, divisi
 
 from shapely.geometry import shape
 from shapely.wkb import loads as __load_wkb
-from shapely.geos import WKBReadingError as WKBReadingError
+from shapely.errors import GEOSException
 from time import time
 
 import logging
@@ -22,7 +22,7 @@ def add_geometry_property():
     def get_geometry(c):
         try:
             return __load_wkb(c.get_WKB())
-        except (TypeError, WKBReadingError):
+        except (TypeError, GEOSException):
             return None
 
     def set_geometry(c, geom):

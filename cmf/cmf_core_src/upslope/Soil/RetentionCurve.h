@@ -358,7 +358,7 @@ namespace cmf {
 
 			}
 		};
-#ifdef EXPERIMENTAL
+
 		/// The VGM_BC_RetentionCurve_Windhorst retention curve. Mixture between the van Genuchten-Mualem retention curve for the actual retention curve and the conductivity at a certain wetness is computed like in BrooksCorey
 		class VGM_BC_RetentionCurve_Windhorst : public VanGenuchtenMualem
 		{
@@ -382,7 +382,7 @@ namespace cmf {
 			virtual ~VGM_BC_RetentionCurve_Windhorst()
 			{	}
 		};
-#endif
+
 
 	}
 }

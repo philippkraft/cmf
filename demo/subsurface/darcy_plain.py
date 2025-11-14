@@ -48,7 +48,7 @@ class DarcyPlain(cmf.project):
         super().__init__()
         self.ET = []
         # Numerische Zauberei
-        cmf.DiffusiveSurfaceRunoff.set_linear_slope(0.01)
+        # cmf.options.diffusive_slope_singularity_protection = 0.01
         for i in range(100):
             x = i * self.length / 100
             c: cmf.Cell = self.NewCell(x, 0, self.depth + x * self.slope + np.random.normal(0, self.roughness),

@@ -14,7 +14,7 @@ SET BUILDDIR=%CMFDIR%\build\extern
 
 if not exist %BUILDDIR% mkdir %BUILDDIR%
 cd %BUILDDIR%
-cmake %TOOLSDIR% -DCMAKE_BUILD_TYPE=Release -G"NMake Makefiles"
+cmake %TOOLSDIR% -DCMAKE_BUILD_TYPE=Release -G"NMake Makefiles" -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 nmake
 cd %CMFDIR%
 
