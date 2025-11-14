@@ -15,9 +15,10 @@ function repair_wheel {
 
 export CFLAGS="-fPIC"
 export CXXFLAGS="-fPIC"
+export MAKEFLAGS="-j30"
 CMFDIR=/io/cmf2
 TOOLDIR=$CMFDIR/tools
-
+pushd $CMFDIR
 # Install solvers
 SOLVERBUILDDIR=$CMFDIR/build/extern
 rm -rf $SOLVERBUILDDIR
@@ -34,15 +35,15 @@ make install -C $CMFBUILDDIR
 
 # Compile wheels
 for PYBIN in /opt/python/cp31*/bin; do
-    "${PYBIN}/pip" install -r $CMFDIR/requirements.txt
-    "${PYBIN}/pip" wheel $CMFDIR/ --no-deps -w dist/
+    "${PYBIN}/python" -m pip install -r $CMFDIR/requirements.txt
+    "${PYBIN}/python" setup.py bdist_wheel
 done
 
 # Bundle external shared libraries into the wheels
 for whl in dist/*.whl; do
     repair_wheel "$whl"
 done
-
+popd
 # Install packages and test
 # for PYBIN in /opt/python/*/bin/; do
 #    "${PYBIN}/pip" install python-manylinux-demo --no-index -f /io/wheelhouse

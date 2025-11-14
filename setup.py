@@ -37,6 +37,9 @@ swig = False
 openmp = False
 debug = False
 
+class StaticLibraryError(IOError):
+    pass
+
 class StaticLibrary:
     """
     A wrapper to build and link static libraries to an extension
@@ -67,7 +70,7 @@ class StaticLibrary:
             elif os.path.exists(os.path.join(self.libpath, 'lib' + lib + '.lib')):
                 checked_libs.append('lib' + lib)
             else:
-                raise FileNotFoundError("Can't find static library " + os.path.join(self.libpath, lib))
+                raise StaticLibraryError("cmf.setup: Can't find static library " + os.path.join(self.libpath, lib))
         return [self.libpath], reversed(checked_libs), []
 
     def as_posix(self):
@@ -88,7 +91,7 @@ class StaticLibrary:
     def exists(self):
         try:
             self.to_lists()
-        except FileNotFoundError:
+        except StaticLibraryError:
             return False
         else:
             return True

@@ -16,14 +16,14 @@ real cmf::upslope::ET::ContentStress::Tact(const cmf::upslope::SoilLayer* sl, re
 {
 	real
 		wetness = sl->get_wetness(),
-		w_wp = theta_w * sl->get_porosity(),
-		w_d = theta_d * sl->get_porosity();
+		w_wp = theta_w / sl->get_porosity(),
+		w_d = theta_d / sl->get_porosity();
 		
 	if (theta_w < 0) {
 		w_wp = sl->get_soil().Wetness_pF(4.2);
 	}
 	if (theta_d < 0) {
-		w_d = 0.5 * (sl->get_soil().Wetness_pF(1.8) + w_wp);
+		w_d = 0.5 * (sl->get_soil().Wetness_pF(1.8) - w_wp) + w_wp;
 	}
 	real
 		area = sl->cell.get_area(),
