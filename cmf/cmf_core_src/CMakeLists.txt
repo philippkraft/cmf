@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.15)
-cmake_policy(SET CMP0177 NEW)
 project(cmf_core)
 
 # Super necessary! Without this cannot link to cmf_wrap.cxx to create a shared object!

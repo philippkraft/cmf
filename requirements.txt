@@ -1,3 +1,4 @@
+setuptools
 numpy>=1.14
 wheel
 scipy>=1.0

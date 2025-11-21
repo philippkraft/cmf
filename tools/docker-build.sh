@@ -16,20 +16,22 @@ function repair_wheel {
 export CFLAGS="-fPIC"
 export CXXFLAGS="-fPIC"
 export MAKEFLAGS="-j30"
+
+yum install -y atlas atlas-devel lapack-devel blas-devel cmake3
 CMFDIR=/io/cmf2
 TOOLDIR=$CMFDIR/tools
 pushd $CMFDIR
 # Install solvers
 SOLVERBUILDDIR=$CMFDIR/build/extern
 rm -rf $SOLVERBUILDDIR
-cmake -S ${TOOLDIR} -B ${SOLVERBUILDDIR} -DCMAKE_BUILD_TYPE=Release
+cmake3 -S ${TOOLDIR} -B ${SOLVERBUILDDIR} -DCMAKE_BUILD_TYPE=Release
 make -C ${SOLVERBUILDDIR}
 
 # build cmf_core
 CMFBUILDDIR=$CMFDIR/build/cmf_core
 rm -rf $CMFBUILDDIR
 CMFSOURCEDIR=$CMFDIR/cmf/cmf_core_src
-cmake -S $CMFSOURCEDIR -B $CMFBUILDDIR -DCMAKE_BUILD_TYPE=Release
+cmake3 -S $CMFSOURCEDIR -B $CMFBUILDDIR -DCMAKE_BUILD_TYPE=Release
 make -C $CMFBUILDDIR
 make install -C $CMFBUILDDIR
 
