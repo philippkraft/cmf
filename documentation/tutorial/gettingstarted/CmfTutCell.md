@@ -21,7 +21,6 @@ For 1D and lumped models, an area of 1000m² is helpful to use any volume in m³
 mm.
 
 ~~~~~~~~~~~~~{.py}
-
 c = p.NewCell(x=0.0,y=0.0,z=0.0,area=1000.0)
 ~~~~~~~~~~~~~
 
@@ -31,15 +30,13 @@ changed with `c.vegetation` and the boundary conditions noted above.
 ### Adding soil layers
 
 ~~~~~~~~~~~~~{.py}
-
-c.add_layer(d=0.1,r_curve=cmf.VanGenuchtenMualem())
+c.add_layer(1.0)
 ~~~~~~~~~~~~~
 
-Adds a new soil layer up to the depth of 10cm below ground (d in m) with
-a default paramterized van Genuchten - Mualem retention curve. The usage
-of retention curves in cmf is discussed [here](@ref cmfTutRetentioncurve),
-but it is recommended to read about that later in the [CMF-1D
-tutorial](@ref cmfTut1d)
+Adds a new soil layer up to the depth of 1.0 m below ground or 1000 mm capacity.
+You can add a retention curve for physical models ([see here](@ref cmfTutRetentioncurve)),
+but it is recommended to read about that later in the [CMF-1D tutorial](@ref cmfTut1d),
+or change the capacity by changing the "porosity".
 
 ### Adding a surface water storage
 
@@ -71,13 +68,12 @@ Cell topology defines neighborhood relation between 2 cells by saving
 the length of the shared boundary of the cells.
 
 ~~~~~~~~~~~~~{.py}
-
 c1.topology.AddNeighbor(c2,5.0)
 ~~~~~~~~~~~~~
 
 defines c1 and c2 as neighbors with a shared boundary of 5m. Topology is
-used in \[\[wiki:CmfTutDarcianLateralFlow\]|and
-\[wiki:CmfTutSurfaceRunoff\]\].
+used in lateral [subsurface](@ref CmfTutDarcianLateralFlow) and 
+[surface](@ref CmfTutSurfaceRunoff) flows.
 
 # Rivers and reaches
 
@@ -111,7 +107,6 @@ As a general type, [Channel](@ref cmf::river::Channel) is used,
 denoting the crosssection by the shortcuts listed above:
 
 ~~~~~~~~~~~~~{.py}
-
 r1=p.NewReach(x=0,y=0,z=1.0,length=100,Type='S',width=0.5,depth=0.1,diffusive=False)
 r2=p.NewReach(x=100,y=0,z=0,length=100,Type='S',width=0.5,depth=0.1,diffusive=False)
 ~~~~~~~~~~~~~
@@ -129,19 +124,17 @@ for modelling channeled flow (see CmfTutChannel), hence the two reaches
 can be connected by definining r2 as the downstream reach of r1:
 
 ~~~~~~~~~~~~~{.py}
-
 r1.set_downstream(r2)
 ~~~~~~~~~~~~~
 
 r2 should be connected to the area outlet:
 
 ~~~~~~~~~~~~~{.py}
-
 outlet = p.NewOutlet('outlet',x=200,y=0,z=-1.0)
 r2.set_outlet(outlet)
 ~~~~~~~~~~~~~
 
-CmfTutChannel will show a full running example.
+@ref CmfTutChannel will show a full running example.
 
 
 
