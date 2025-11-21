@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
+cmake_policy(SET CMP0177 NEW)
 project(cmf_core)
 
 # Super necessary! Without this cannot link to cmf_wrap.cxx to create a shared object!
@@ -112,20 +113,6 @@ foreach(filename ${files})
     get_filename_component(target_name ${filename} NAME_WE)
     message(STATUS "Build ${target_name} from ${filename}")
     add_executable(${target_name} ${filename})
-#    if(MSVC)
-#        target_compile_options(${target_name} PRIVATE /W3)
-#    else()
-#        target_compile_options(${target_name} PRIVATE -Wall -Wextra)
-#    endif()
     target_link_libraries(${target_name} cmf_core)
     install(TARGETS ${target_name} RUNTIME DESTINATION ${CMF_BIN_DIR})
 endforeach()
-
-
-# set(PYTHON_INCLUDE $ENV{PYTHON_INCLUDE})
-# add_library(_cmf_core SHARED cmf_wrap.cpp)
-# target_link_libraries(_cmf_core cmf_core)
-
-# if(MSVC)
-#     set_target_properties(_cmf_core PROPERTIES SUFFIX ".pyd")
-# endif(MSVC)
